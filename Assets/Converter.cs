@@ -1306,30 +1306,85 @@ public class Converter : MonoBehaviour
         text = text.Replace("bonus bDex,", "๐ DEX +");
         text = text.Replace("bonus bLuk,", "๐ LUK +");
         text = text.Replace("bonus bAllStats,", "๐ All Status +");
-        text = text.Replace("bonus bAgiVit,", "๐ AGI และ VIT +");
-        text = text.Replace("bonus bAgiDexStr,", "๐ AGI, DEX และ STR +");
+        text = text.Replace("bonus bAgiVit,", "๐ AGI, VIT +");
+        text = text.Replace("bonus bAgiDexStr,", "๐ AGI, DEX, STR +");
         text = text.Replace("bonus bMaxHP,", "๐ MaxHP +");
-        text = text.Replace("bonus bMaxHPrate,", "๐ MaxHP(%) +");
+        if (text.Contains("bonus bMaxHPrate,"))
+        {
+            var temp = text.Replace("bonus bMaxHPrate,", string.Empty);
+            var temps = MergeMath(temp.Split(','));
+            text = string.Format("๐ MaxHP +{0}%", TryParseInt(temps[0]));
+        }
         text = text.Replace("bonus bMaxSP,", "๐ MaxSP +");
-        text = text.Replace("bonus bMaxSPrate,", "๐ MaxSP(%) +");
+        if (text.Contains("bonus bMaxSPrate,"))
+        {
+            var temp = text.Replace("bonus bMaxSPrate,", string.Empty);
+            var temps = MergeMath(temp.Split(','));
+            text = string.Format("๐ MaxSP +{0}%", TryParseInt(temps[0]));
+        }
         text = text.Replace("bonus bBaseAtk,", "๐ ฐาน ATK +");
         text = text.Replace("bonus bAtk,", "๐ ATK +");
         text = text.Replace("bonus bAtk2,", "๐ ATK +");
-        text = text.Replace("bonus bAtkRate,", "๐ ATK(%) +");
-        text = text.Replace("bonus bWeaponAtkRate,", "๐ ATK อาวุธ(%) +");
+        if (text.Contains("bonus bAtkRate,"))
+        {
+            var temp = text.Replace("bonus bAtkRate,", string.Empty);
+            var temps = MergeMath(temp.Split(','));
+            text = string.Format("๐ ATK +{0}%", TryParseInt(temps[0]));
+        }
+        if (text.Contains("bonus bWeaponAtkRate,"))
+        {
+            var temp = text.Replace("bonus bWeaponAtkRate,", string.Empty);
+            var temps = MergeMath(temp.Split(','));
+            text = string.Format("๐ ATK อาวุธ +{0}%", TryParseInt(temps[0]));
+        }
         text = text.Replace("bonus bMatk,", "๐ MATK +");
-        text = text.Replace("bonus bMatkRate,", "๐ MATK(%) +");
-        text = text.Replace("bonus bWeaponMatkRate,", "๐ MATK อาวุธ(%) +");
+        if (text.Contains("bonus bMatkRate,"))
+        {
+            var temp = text.Replace("bonus bMatkRate,", string.Empty);
+            var temps = MergeMath(temp.Split(','));
+            text = string.Format("๐ MATK +{0}%", TryParseInt(temps[0]));
+        }
+        if (text.Contains("bonus bWeaponMatkRate,"))
+        {
+            var temp = text.Replace("bonus bWeaponMatkRate,", string.Empty);
+            var temps = MergeMath(temp.Split(','));
+            text = string.Format("๐ MATK อาวุธ +{0}%", TryParseInt(temps[0]));
+        }
         text = text.Replace("bonus bDef,", "๐ DEF +");
-        text = text.Replace("bonus bDefRate,", "๐ DEF(%) +");
+        if (text.Contains("bonus bDefRate,"))
+        {
+            var temp = text.Replace("bonus bDefRate,", string.Empty);
+            var temps = MergeMath(temp.Split(','));
+            text = string.Format("๐ DEF +{0}%", TryParseInt(temps[0]));
+        }
         text = text.Replace("bonus bDef2,", "๐ ฐาน DEF +");
-        text = text.Replace("bonus bDef2Rate,", "๐ ฐาน DEF(%) +");
+        if (text.Contains("bonus bDef2Rate,"))
+        {
+            var temp = text.Replace("bonus bDef2Rate,", string.Empty);
+            var temps = MergeMath(temp.Split(','));
+            text = string.Format("๐ ฐาน DEF +{0}%", TryParseInt(temps[0]));
+        }
         text = text.Replace("bonus bMdef,", "๐ MDEF +");
-        text = text.Replace("bonus bMdefRate,", "๐ MDEF(%) +");
+        if (text.Contains("bonus bMdefRate,"))
+        {
+            var temp = text.Replace("bonus bMdefRate,", string.Empty);
+            var temps = MergeMath(temp.Split(','));
+            text = string.Format("๐ MDEF +{0}%", TryParseInt(temps[0]));
+        }
         text = text.Replace("bonus bMdef2,", "๐ ฐาน MDEF +");
-        text = text.Replace("bonus bMdef2Rate,", "๐ ฐาน MDEF(%) +");
+        if (text.Contains("bonus bMdef2Rate,"))
+        {
+            var temp = text.Replace("bonus bMdef2Rate,", string.Empty);
+            var temps = MergeMath(temp.Split(','));
+            text = string.Format("๐ ฐาน MDEF +{0}%", TryParseInt(temps[0]));
+        }
         text = text.Replace("bonus bHit,", "๐ HIT +");
-        text = text.Replace("bonus bHitRate,", "๐ HIT(%) +");
+        if (text.Contains("bonus bHitRate,"))
+        {
+            var temp = text.Replace("bonus bHitRate,", string.Empty);
+            var temps = MergeMath(temp.Split(','));
+            text = string.Format("๐ HIT +{0}%", TryParseInt(temps[0]));
+        }
         text = text.Replace("bonus bCritical,", "๐ Critical +");
         text = text.Replace("bonus bCriticalLong,", "๐ Critical โจมตีไกล +");
         if (text.Contains("bonus2 bCriticalAddRace,"))
@@ -1338,17 +1393,57 @@ public class Converter : MonoBehaviour
             var temps = MergeMath(temp.Split(','));
             text = string.Format("๐ Critical กับ {0} +{1}", ParseRace(temps[0]), TryParseInt(temps[1]));
         }
-        text = text.Replace("bonus bCriticalRate,", "๐ Critical(%) +");
+        if (text.Contains("bonus bCriticalRate,"))
+        {
+            var temp = text.Replace("bonus bCriticalRate,", string.Empty);
+            var temps = MergeMath(temp.Split(','));
+            text = string.Format("๐ Critical +{0}%", TryParseInt(temps[0]));
+        }
         text = text.Replace("bonus bFlee,", "๐ Flee +");
-        text = text.Replace("bonus bFleeRate,", "๐ Flee(%) +");
+        if (text.Contains("bonus bFleeRate,"))
+        {
+            var temp = text.Replace("bonus bFleeRate,", string.Empty);
+            var temps = MergeMath(temp.Split(','));
+            text = string.Format("๐ Flee +{0}%", TryParseInt(temps[0]));
+        }
         text = text.Replace("bonus bFlee2,", "๐ Perfect Dodge +");
-        text = text.Replace("bonus bFlee2Rate,", "๐ Perfect Dodge(%) +");
-        text = text.Replace("bonus bPerfectHitRate,", "๐ Perfect Hit(%)(ไม่ทับ) +");
-        text = text.Replace("bonus bPerfectHitAddRate,", "๐ Perfect Hit(%) +");
-        text = text.Replace("bonus bSpeedRate,", "๐ เคลื่อนที่เร็ว(%)(ไม่ทับ) +");
-        text = text.Replace("bonus bSpeedAddRate,", "๐ เคลื่อนที่เร็ว(%) +");
+        if (text.Contains("bonus bFlee2Rate,"))
+        {
+            var temp = text.Replace("bonus bFlee2Rate,", string.Empty);
+            var temps = MergeMath(temp.Split(','));
+            text = string.Format("๐ Perfect Dodge +{0}%", TryParseInt(temps[0]));
+        }
+        if (text.Contains("bonus bPerfectHitRate,"))
+        {
+            var temp = text.Replace("bonus bPerfectHitRate,", string.Empty);
+            var temps = MergeMath(temp.Split(','));
+            text = string.Format("๐ Perfect Hit(ทับไม่ได้) +{0}%", TryParseInt(temps[0]));
+        }
+        if (text.Contains("bonus bPerfectHitAddRate,"))
+        {
+            var temp = text.Replace("bonus bPerfectHitAddRate,", string.Empty);
+            var temps = MergeMath(temp.Split(','));
+            text = string.Format("๐ Perfect Hit +{0}%", TryParseInt(temps[0]));
+        }
+        if (text.Contains("bonus bSpeedRate,"))
+        {
+            var temp = text.Replace("bonus bSpeedRate,", string.Empty);
+            var temps = MergeMath(temp.Split(','));
+            text = string.Format("๐ เคลื่อนที่เร็ว(ทับไม่ได้) +{0}%", TryParseInt(temps[0]));
+        }
+        if (text.Contains("bonus bSpeedAddRate,"))
+        {
+            var temp = text.Replace("bonus bSpeedAddRate,", string.Empty);
+            var temps = MergeMath(temp.Split(','));
+            text = string.Format("๐ เคลื่อนที่เร็ว +{0}%", TryParseInt(temps[0]));
+        }
         text = text.Replace("bonus bAspd,", "๐ ASPD +");
-        text = text.Replace("bonus bAspdRate,", "๐ ASPD(%) +");
+        if (text.Contains("bonus bAspdRate,"))
+        {
+            var temp = text.Replace("bonus bAspdRate,", string.Empty);
+            var temps = MergeMath(temp.Split(','));
+            text = string.Format("๐ ASPD +{0}%", TryParseInt(temps[0]));
+        }
         text = text.Replace("bonus bAtkRange,", "๐ ระยะโจมตี +");
         if (text.Contains("bonus bAddMaxWeight,"))
         {
@@ -1356,8 +1451,18 @@ public class Converter : MonoBehaviour
             var temps = MergeMath(temp.Split(','));
             text = string.Format("๐ ขนาดกระเป๋า +{0}", TryParseInt(temps[0], 10));
         }
-        text = text.Replace("bonus bHPrecovRate,", "๐ การฟื้นฟู HP ปกติ(%) +");
-        text = text.Replace("bonus bSPrecovRate,", "๐ การฟื้นฟู SP ปกติ(%) +");
+        if (text.Contains("bonus bHPrecovRate,"))
+        {
+            var temp = text.Replace("bonus bHPrecovRate,", string.Empty);
+            var temps = MergeMath(temp.Split(','));
+            text = string.Format("๐ การฟื้นฟู HP ปกติ +{0}%", TryParseInt(temps[0]));
+        }
+        if (text.Contains("bonus bSPrecovRate,"))
+        {
+            var temp = text.Replace("bonus bSPrecovRate,", string.Empty);
+            var temps = MergeMath(temp.Split(','));
+            text = string.Format("๐ การฟื้นฟู SP ปกติ +{0}%", TryParseInt(temps[0]));
+        }
         if (text.Contains("bonus2 bHPRegenRate,"))
         {
             var temp = text.Replace("bonus2 bHPRegenRate,", string.Empty);
@@ -1396,7 +1501,12 @@ public class Converter : MonoBehaviour
         }
         text = text.Replace("bonus bNoRegen,1", "๐ หยุดการฟื้นฟู HP ปกติ");
         text = text.Replace("bonus bNoRegen,2", "๐ หยุดการฟื้นฟู SP ปกติ");
-        text = text.Replace("bonus bUseSPrate,", "๐ SP ที่ต้องใช้(%) +");
+        if (text.Contains("bonus bUseSPrate,"))
+        {
+            var temp = text.Replace("bonus bUseSPrate,", string.Empty);
+            var temps = MergeMath(temp.Split(','));
+            text = string.Format("๐ SP ที่ต้องใช้ +{0}%", TryParseInt(temps[0]));
+        }
         if (text.Contains("bonus2 bSkillUseSP,"))
         {
             var temp = text.Replace("bonus2 bSkillUseSP,", string.Empty);
@@ -1415,11 +1525,36 @@ public class Converter : MonoBehaviour
             var temps = MergeMath(temp.Split(','));
             text = string.Format("๐ ความแรง {0} +{1}%", GetSkillName(RemoveQuote(temps[0])), TryParseInt(temps[1]));
         }
-        text = text.Replace("bonus bShortAtkRate,", "๐ พลังโจมตีกายภาพ ระยะใกล้(%) +");
-        text = text.Replace("bonus bLongAtkRate,", "๐ พลังโจมตีกายภาพ ระยะไกล(%) +");
-        text = text.Replace("bonus bCritAtkRate,", "๐ ความแรง Critical(%) +");
-        text = text.Replace("bonus bCritDefRate,", "๐ ป้องกัน Critical(%) +");
-        text = text.Replace("bonus bCriticalDef,", "๐ หลบ Critical(%) +");
+        if (text.Contains("bonus bShortAtkRate,"))
+        {
+            var temp = text.Replace("bonus bShortAtkRate,", string.Empty);
+            var temps = MergeMath(temp.Split(','));
+            text = string.Format("๐ พลังโจมตีกายภาพ ระยะใกล้ +{0}%", TryParseInt(temps[0]));
+        }
+        if (text.Contains("bonus bLongAtkRate,"))
+        {
+            var temp = text.Replace("bonus bLongAtkRate,", string.Empty);
+            var temps = MergeMath(temp.Split(','));
+            text = string.Format("๐ พลังโจมตีกายภาพ ระยะไกล +{0}%", TryParseInt(temps[0]));
+        }
+        if (text.Contains("bonus bCritAtkRate,"))
+        {
+            var temp = text.Replace("bonus bCritAtkRate,", string.Empty);
+            var temps = MergeMath(temp.Split(','));
+            text = string.Format("๐ ความแรง Critical +{0}%", TryParseInt(temps[0]));
+        }
+        if (text.Contains("bonus bCritDefRate,"))
+        {
+            var temp = text.Replace("bonus bCritDefRate,", string.Empty);
+            var temps = MergeMath(temp.Split(','));
+            text = string.Format("๐ ป้องกัน Critical +{0}%", TryParseInt(temps[0]));
+        }
+        if (text.Contains("bonus bCriticalDef,"))
+        {
+            var temp = text.Replace("bonus bCriticalDef,", string.Empty);
+            var temps = MergeMath(temp.Split(','));
+            text = string.Format("๐ หลบ Critical +{0}%", TryParseInt(temps[0]));
+        }
         if (text.Contains("bonus2 bWeaponAtk,"))
         {
             var temp = text.Replace("bonus2 bWeaponAtk,", string.Empty);
@@ -1432,15 +1567,60 @@ public class Converter : MonoBehaviour
             var temps = MergeMath(temp.Split(','));
             text = string.Format("๐ หากสวมใส่ {0} พลังโจมตีกายภาพ +{1}%", RemoveQuote(temps[0]), TryParseInt(temps[1]));
         }
-        text = text.Replace("bonus bNearAtkDef,", "๐ ป้องกัน การโจมตีกายภาพ ระยะใกล้(%) +");
-        text = text.Replace("bonus bLongAtkDef,", "๐ ป้องกัน การโจมตีกายภาพ ระยะไกล(%) +");
-        text = text.Replace("bonus bMagicAtkDef,", "๐ ป้องกัน การโจมตีเวทย์(%) +");
-        text = text.Replace("bonus bMiscAtkDef,", "๐ ป้องกัน การโจมตีอื่น ๆ(%) +");
-        text = text.Replace("bonus bNoWeaponDamage,", "๐ ป้องกัน การโจมตีกายภาพ(%) +");
-        text = text.Replace("bonus bNoMagicDamage,", "๐ ป้องกัน เวทย์(%) +");
-        text = text.Replace("bonus bNoMiscDamage,", "๐ ป้องกัน การโจมตีอื่น ๆ(%) +");
-        text = text.Replace("bonus bHealPower,", "๐ ความแรง เวทย์ฟื้นฟู(%) +");
-        text = text.Replace("bonus bHealPower2,", "๐ ได้รับความแรงเวทย์ฟื้นฟู(%) +");
+        if (text.Contains("bonus bNearAtkDef,"))
+        {
+            var temp = text.Replace("bonus bNearAtkDef,", string.Empty);
+            var temps = MergeMath(temp.Split(','));
+            text = string.Format("๐ ป้องกัน การโจมตีกายภาพ ระยะใกล้ +{0}%", TryParseInt(temps[0]));
+        }
+        if (text.Contains("bonus bLongAtkDef,"))
+        {
+            var temp = text.Replace("bonus bLongAtkDef,", string.Empty);
+            var temps = MergeMath(temp.Split(','));
+            text = string.Format("๐ ป้องกัน การโจมตีกายภาพ ระยะไกล +{0}%", TryParseInt(temps[0]));
+        }
+        if (text.Contains("bonus bMagicAtkDef,"))
+        {
+            var temp = text.Replace("bonus bMagicAtkDef,", string.Empty);
+            var temps = MergeMath(temp.Split(','));
+            text = string.Format("๐ ป้องกัน การโจมตีเวทย์ +{0}%", TryParseInt(temps[0]));
+        }
+        if (text.Contains("bonus bMiscAtkDef,"))
+        {
+            var temp = text.Replace("bonus bMiscAtkDef,", string.Empty);
+            var temps = MergeMath(temp.Split(','));
+            text = string.Format("๐ ป้องกัน การโจมตีอื่น ๆ +{0}%", TryParseInt(temps[0]));
+        }
+        if (text.Contains("bonus bNoWeaponDamage,"))
+        {
+            var temp = text.Replace("bonus bNoWeaponDamage,", string.Empty);
+            var temps = MergeMath(temp.Split(','));
+            text = string.Format("๐ ป้องกัน การโจมตีกายภาพ +{0}%", TryParseInt(temps[0]));
+        }
+        if (text.Contains("bonus bNoMagicDamage,"))
+        {
+            var temp = text.Replace("bonus bNoMagicDamage,", string.Empty);
+            var temps = MergeMath(temp.Split(','));
+            text = string.Format("๐ ป้องกัน เวทย์ +{0}%", TryParseInt(temps[0]));
+        }
+        if (text.Contains("bonus bNoMiscDamage,"))
+        {
+            var temp = text.Replace("bonus bNoMiscDamage,", string.Empty);
+            var temps = MergeMath(temp.Split(','));
+            text = string.Format("๐ ป้องกัน การโจมตีอื่น ๆ +{0}%", TryParseInt(temps[0]));
+        }
+        if (text.Contains("bonus bHealPower,"))
+        {
+            var temp = text.Replace("bonus bHealPower,", string.Empty);
+            var temps = MergeMath(temp.Split(','));
+            text = string.Format("๐ ความแรง เวทย์ฟื้นฟู +{0}%", TryParseInt(temps[0]));
+        }
+        if (text.Contains("bonus bHealPower2,"))
+        {
+            var temp = text.Replace("bonus bHealPower2,", string.Empty);
+            var temps = MergeMath(temp.Split(','));
+            text = string.Format("๐ ได้รับความแรงเวทย์ฟื้นฟู +{0}%", TryParseInt(temps[0]));
+        }
         if (text.Contains("bonus2 bSkillHeal,"))
         {
             var temp = text.Replace("bonus2 bSkillHeal,", string.Empty);
@@ -1453,7 +1633,12 @@ public class Converter : MonoBehaviour
             var temps = MergeMath(temp.Split(','));
             text = string.Format("๐ ได้รับความแรงเวทย์ฟื้นฟู {0} +{1}%", GetSkillName(RemoveQuote(temps[0])), TryParseInt(temps[1]));
         }
-        text = text.Replace("bonus bAddItemHealRate,", "๐ ความแรง ไอเท็มฟื้นฟู(%) +");
+        if (text.Contains("bonus bAddItemHealRate,"))
+        {
+            var temp = text.Replace("bonus bAddItemHealRate,", string.Empty);
+            var temps = MergeMath(temp.Split(','));
+            text = string.Format("๐ ความแรง ไอเท็มฟื้นฟู +{0}%", TryParseInt(temps[0]));
+        }
         if (text.Contains("bonus2 bAddItemHealRate,"))
         {
             var temp = text.Replace("bonus2 bAddItemHealRate,", string.Empty);
@@ -1466,54 +1651,74 @@ public class Converter : MonoBehaviour
             var temps = MergeMath(temp.Split(','));
             text = string.Format("๐ ความแรง ไอเท็มฟื้นฟูกลุ่ม {0} +{1}%", RemoveQuote(temps[0]), TryParseInt(temps[1]));
         }
-        text = text.Replace("bonus bCastrate,", "เวลาร่าย1(%) +");
+        if (text.Contains("bonus bCastrate,"))
+        {
+            var temp = text.Replace("bonus bCastrate,", string.Empty);
+            var temps = MergeMath(temp.Split(','));
+            text = string.Format("๐ เวลาร่าย V. +{0}%", TryParseInt(temps[0]));
+        }
         if (text.Contains("bonus2 bCastrate,"))
         {
             var temp = text.Replace("bonus2 bCastrate,", string.Empty);
             var temps = MergeMath(temp.Split(','));
-            text = string.Format("๐ เวลาร่าย1 {0} +{1}%", GetSkillName(RemoveQuote(temps[0])), TryParseInt(temps[1]));
+            text = string.Format("๐ เวลาร่าย V. {0} +{1}%", GetSkillName(RemoveQuote(temps[0])), TryParseInt(temps[1]));
         }
-        text = text.Replace("bonus bFixedCastrate,", "๐ เวลาร่าย2(%) +");
+        if (text.Contains("bonus bFixedCastrate,"))
+        {
+            var temp = text.Replace("bonus bFixedCastrate,", string.Empty);
+            var temps = MergeMath(temp.Split(','));
+            text = string.Format("๐ เวลาร่าย F. +{0}%", TryParseInt(temps[0]));
+        }
         if (text.Contains("bonus2 bFixedCastrate,"))
         {
             var temp = text.Replace("bonus2 bFixedCastrate,", string.Empty);
             var temps = MergeMath(temp.Split(','));
-            text = string.Format("๐ เวลาร่าย2 {0} +{1}%", GetSkillName(RemoveQuote(temps[0])), TryParseInt(temps[1]));
+            text = string.Format("๐ เวลาร่าย F. {0} +{1}%", GetSkillName(RemoveQuote(temps[0])), TryParseInt(temps[1]));
         }
-        text = text.Replace("bonus bVariableCastrate,", "๐ เวลาร่าย1(%) +");
+        if (text.Contains("bonus bVariableCastrate,"))
+        {
+            var temp = text.Replace("bonus bVariableCastrate,", string.Empty);
+            var temps = MergeMath(temp.Split(','));
+            text = string.Format("๐ เวลาร่าย V. +{0}%", TryParseInt(temps[0]));
+        }
         if (text.Contains("bonus2 bVariableCastrate,"))
         {
             var temp = text.Replace("bonus2 bVariableCastrate,", string.Empty);
             var temps = MergeMath(temp.Split(','));
-            text = string.Format("๐ เวลาร่าย1 {0} +{1}%", GetSkillName(RemoveQuote(temps[0])), TryParseInt(temps[1]));
+            text = string.Format("๐ เวลาร่าย V. {0} +{1}%", GetSkillName(RemoveQuote(temps[0])), TryParseInt(temps[1]));
         }
         if (text.Contains("bonus bFixedCast,"))
         {
             var temp = text.Replace("bonus bFixedCast,", string.Empty);
             var temps = MergeMath(temp.Split(','));
-            text = string.Format("๐ เวลาร่าย2 +{0} วินาที", TryParseInt(temps[0], 1000));
+            text = string.Format("๐ เวลาร่าย F. +{0} วินาที", TryParseInt(temps[0], 1000));
         }
         if (text.Contains("bonus2 bSkillFixedCast,"))
         {
             var temp = text.Replace("bonus2 bSkillFixedCast,", string.Empty);
             var temps = MergeMath(temp.Split(','));
-            text = string.Format("๐ เวลาร่าย2 {0} +{1} วินาที", GetSkillName(RemoveQuote(temps[0])), TryParseInt(temps[1], 1000));
+            text = string.Format("๐ เวลาร่าย F. {0} +{1} วินาที", GetSkillName(RemoveQuote(temps[0])), TryParseInt(temps[1], 1000));
         }
         if (text.Contains("bonus bVariableCast,"))
         {
             var temp = text.Replace("bonus bVariableCast,", string.Empty);
             var temps = MergeMath(temp.Split(','));
-            text = string.Format("๐ เวลาร่าย1 +{0} วินาที", TryParseInt(temps[0], 1000));
+            text = string.Format("๐ เวลาร่าย V. +{0} วินาที", TryParseInt(temps[0], 1000));
         }
         if (text.Contains("bonus2 bSkillVariableCast,"))
         {
             var temp = text.Replace("bonus2 bSkillVariableCast,", string.Empty);
             var temps = MergeMath(temp.Split(','));
-            text = string.Format("๐ เวลาร่าย1 {0} +{1} วินาที", GetSkillName(RemoveQuote(temps[0])), TryParseInt(temps[1], 1000));
+            text = string.Format("๐ เวลาร่าย V. {0} +{1} วินาที", GetSkillName(RemoveQuote(temps[0])), TryParseInt(temps[1], 1000));
         }
         text = text.Replace("bonus bNoCastCancel2", "๐ การร่ายไม่ถูกหยุด");
         text = text.Replace("bonus bNoCastCancel", "๐ การร่ายไม่ถูกหยุด (GvG [x])");
-        text = text.Replace("bonus bDelayrate,", "๐ หน่วงหลังร่าย(%) +");
+        if (text.Contains("bonus bDelayrate,"))
+        {
+            var temp = text.Replace("bonus bDelayrate,", string.Empty);
+            var temps = MergeMath(temp.Split(','));
+            text = string.Format("๐ หน่วงหลังร่าย +{0}%", TryParseInt(temps[0]));
+        }
         if (text.Contains("bonus2 bSkillDelay,"))
         {
             var temp = text.Replace("bonus2 bSkillDelay,", string.Empty);
@@ -1626,7 +1831,7 @@ public class Converter : MonoBehaviour
         {
             var temp = text.Replace("bonus2 bSubSize,", string.Empty);
             var temps = MergeMath(temp.Split(','));
-            text = string.Format("๐ ป้องกัน การโจมตีกายภาพขนาด {0} +{1}%", ParseClass(temps[0]), TryParseInt(temps[1]));
+            text = string.Format("๐ ป้องกัน การโจมตีกายภาพขนาด {0} +{1}%", ParseSize(temps[0]), TryParseInt(temps[1]));
         }
         if (text.Contains("bonus2 bMagicSubSize,"))
         {
@@ -1683,7 +1888,12 @@ public class Converter : MonoBehaviour
             var temps = MergeMath(temp.Split(','));
             text = string.Format("๐ ป้องกัน {0} +{1}%", GetSkillName(RemoveQuote(temps[0])), TryParseInt(temps[1]));
         }
-        text = text.Replace("bonus bAbsorbDmgMaxHP,", "๐ หากโดนโจมตีแรงกว่า เลือดมากสุด จะโดนแค่(% จาก MaxHP) (ไม่ทับ) +");
+        if (text.Contains("bonus bAbsorbDmgMaxHP,"))
+        {
+            var temp = text.Replace("bonus bAbsorbDmgMaxHP,", string.Empty);
+            var temps = MergeMath(temp.Split(','));
+            text = string.Format("๐ หากโดนโจมตีแรงกว่า เลือดมากสุด จะโดนแค่ {0}% จาก MaxHP(ทับไม่ได้)", TryParseInt(temps[0]));
+        }
         if (text.Contains("bonus bAtkEle,"))
         {
             var temp = text.Replace("bonus bAtkEle,", string.Empty);
@@ -2040,10 +2250,30 @@ public class Converter : MonoBehaviour
         text = text.Replace("bonus bLongSPGainValue,", "๐ เมื่อกำจัดศัตรูด้วย การโจมตีกายภาพ ระยะไกล จะได้รับ SP +");
         text = text.Replace("bonus bMagicHPGainValue,", "๐ เมื่อกำจัดศัตรูด้วย การโจมตีเวทย์ จะได้รับ HP +");
         text = text.Replace("bonus bMagicSPGainValue,", "๐ เมื่อกำจัดศัตรูด้วย การโจมตีเวทย์ จะได้รับ SP +");
-        text = text.Replace("bonus bShortWeaponDamageReturn,", "๐ สะท้อน การโจมตีกายภาพ ระยะใกล้(%) +");
-        text = text.Replace("bonus bLongWeaponDamageReturn,", "๐ สะท้อน การโจมตีกายภาพ ระยะไกล(%) +");
-        text = text.Replace("bonus bMagicDamageReturn,", "๐ สะท้อน การโจมตีเวทย์(%) +");
-        text = text.Replace("bonus bReduceDamageReturn,", "๐ ป้องกัน การสะท้อน(%) +");
+        if (text.Contains("bonus bShortWeaponDamageReturn,"))
+        {
+            var temp = text.Replace("bonus bShortWeaponDamageReturn,", string.Empty);
+            var temps = MergeMath(temp.Split(','));
+            text = string.Format("๐ สะท้อน การโจมตีกายภาพ ระยะใกล้ +{0}%", TryParseInt(temps[0]));
+        }
+        if (text.Contains("bonus bLongWeaponDamageReturn,"))
+        {
+            var temp = text.Replace("bonus bLongWeaponDamageReturn,", string.Empty);
+            var temps = MergeMath(temp.Split(','));
+            text = string.Format("๐ สะท้อน การโจมตีกายภาพ ระยะไกล +{0}%", TryParseInt(temps[0]));
+        }
+        if (text.Contains("bonus bMagicDamageReturn,"))
+        {
+            var temp = text.Replace("bonus bMagicDamageReturn,", string.Empty);
+            var temps = MergeMath(temp.Split(','));
+            text = string.Format("๐ สะท้อน การโจมตีเวทย์ +{0}%", TryParseInt(temps[0]));
+        }
+        if (text.Contains("bonus bReduceDamageReturn,"))
+        {
+            var temp = text.Replace("bonus bReduceDamageReturn,", string.Empty);
+            var temps = MergeMath(temp.Split(','));
+            text = string.Format("๐ ป้องกัน การสะท้อน +{0}%", TryParseInt(temps[0]));
+        }
         text = text.Replace("bonus bUnstripableWeapon", "๐ ป้องกัน การปลดอาวุธ");
         text = text.Replace("bonus bUnstripableArmor", "๐ ป้องกัน การปลดชุดเกราะ");
         text = text.Replace("bonus bUnstripableHelm", "๐ ป้องกัน การปลดหมวก");
@@ -2055,7 +2285,12 @@ public class Converter : MonoBehaviour
         text = text.Replace("bonus bUnbreakableHelm", "๐ หมวก จะไม่พัง");
         text = text.Replace("bonus bUnbreakableShield", "๐ โล่ จะไม่พัง");
         text = text.Replace("bonus bUnbreakableShoes", "๐ รองเท้า จะไม่พัง");
-        text = text.Replace("bonus bUnbreakable,", "๐ กันอุปกรณ์สวมใส่ทุกชนิดพัง(%) +");
+        if (text.Contains("bonus bUnbreakable,"))
+        {
+            var temp = text.Replace("bonus bUnbreakable,", string.Empty);
+            var temps = MergeMath(temp.Split(','));
+            text = string.Format("๐ กันอุปกรณ์สวมใส่ทุกชนิดพัง +{0}%", TryParseInt(temps[0]));
+        }
         if (text.Contains("bonus bBreakWeaponRate,"))
         {
             var temp = text.Replace("bonus bBreakWeaponRate,", string.Empty);
@@ -2126,7 +2361,7 @@ public class Converter : MonoBehaviour
         {
             var temp = text.Replace("bonus2 bGetZenyNum,", string.Empty);
             var temps = MergeMath(temp.Split(','));
-            text = string.Format("๐ มีโอกาส {1}% ที่จะได้รับ 1~{0} Zeny เมื่อกำจัด Monster (ไม่ทับ)", TryParseInt(temps[0]), TryParseInt(temps[1]));
+            text = string.Format("๐ มีโอกาส {1}% ที่จะได้รับ 1~{0} Zeny เมื่อกำจัด Monster (ทับไม่ได้)", TryParseInt(temps[0]), TryParseInt(temps[1]));
         }
         if (text.Contains("bonus2 bAddGetZenyNum,"))
         {
@@ -2134,9 +2369,19 @@ public class Converter : MonoBehaviour
             var temps = MergeMath(temp.Split(','));
             text = string.Format("๐ มีโอกาส {1}% ที่จะได้รับ 1~{0} Zeny เมื่อกำจัด Monster", TryParseInt(temps[0]), TryParseInt(temps[1]));
         }
-        text = text.Replace("bonus bDoubleRate,", "๐ มีโอกาส โจมตีกายภาพสองครั้ง(%) (ไม่ทับ) +");
-        text = text.Replace("bonus bDoubleAddRate,", "๐ มีโอกาส โจมตีกายภาพสองครั้ง(%) +");
-        text = text.Replace("bonus bSplashRange,", "๐ โจมตีกระจาย(ไม่ทับ) +");
+        if (text.Contains("bonus bDoubleRate,"))
+        {
+            var temp = text.Replace("bonus bDoubleRate,", string.Empty);
+            var temps = MergeMath(temp.Split(','));
+            text = string.Format("๐ มีโอกาส โจมตีกายภาพสองครั้ง(ทับไม่ได้) +{0}%", TryParseInt(temps[0]));
+        }
+        if (text.Contains("bonus bDoubleAddRate,"))
+        {
+            var temp = text.Replace("bonus bDoubleAddRate,", string.Empty);
+            var temps = MergeMath(temp.Split(','));
+            text = string.Format("๐ มีโอกาส โจมตีกายภาพสองครั้ง +{0}%", TryParseInt(temps[0]));
+        }
+        text = text.Replace("bonus bSplashRange,", "๐ โจมตีกระจาย(ทับไม่ได้) +");
         text = text.Replace("bonus bSplashAddRange,", "๐ โจมตีกระจาย +");
         if (text.Contains("bonus2 bAddSkillBlow,"))
         {
@@ -2149,8 +2394,18 @@ public class Converter : MonoBehaviour
         text = text.Replace("bonus bIntravision", "๐ มองเห็นการหายตัว");
         text = text.Replace("bonus bPerfectHide", "๐ หายตัวโดยที่ MvP มองไม่เห็น");
         text = text.Replace("bonus bRestartFullRecover", "๐ HP และ SP เต็มเมื่อ พ้นจากการหมดสติ");
-        text = text.Replace("bonus bClassChange,", "๐ มีโอกาส เปลี่ยนแปลงรูปแบบ เป้าหมาย(%) +");
-        text = text.Replace("bonus bAddStealRate,", "๐ เพิ่มโอกาส การขโมยของ(%) +");
+        if (text.Contains("bonus bClassChange,"))
+        {
+            var temp = text.Replace("bonus bClassChange,", string.Empty);
+            var temps = MergeMath(temp.Split(','));
+            text = string.Format("๐ มีโอกาส เปลี่ยนแปลงรูปแบบ เป้าหมาย +{0}%", TryParseInt(temps[0]));
+        }
+        if (text.Contains("bonus bAddStealRate,"))
+        {
+            var temp = text.Replace("bonus bAddStealRate,", string.Empty);
+            var temps = MergeMath(temp.Split(','));
+            text = string.Format("๐ เพิ่มโอกาส การขโมยของ +{0}%", TryParseInt(temps[0]));
+        }
         text = text.Replace("bonus bNoMadoFuel", "๐ ไม่ต้องใช้ Mado Fuel ในการร่าย");
         text = text.Replace("bonus bNoWalkDelay", "๐ เมื่อโดนโจมตีจะไม่ชะงัก");
         text = text.Replace("specialeffect2", "๐ แสดง Effect");
@@ -2520,7 +2775,10 @@ public class Converter : MonoBehaviour
             {
                 var sum = "			\"^666478[หากใส่พร้อม ";
                 for (int j = 0; j < comboDatas[i].ids.Count; j++)
-                    sum += GetItemName(comboDatas[i].ids[j].ToString("f0")) + ", ";
+                {
+                    if (id != comboDatas[i].ids[j])
+                        sum += GetItemName(comboDatas[i].ids[j].ToString("f0")) + ", ";
+                }
                 sum = sum.Substring(0, sum.Length - 2);
                 sum += "]^000000\",\n";
                 for (int j = 0; j < comboDatas[i].descriptions.Count; j++)

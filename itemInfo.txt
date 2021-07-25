@@ -1,28 +1,25 @@
 ﻿tbl = {
-	[1101] = {
-		unidentifiedDisplayName = "Sword",
-		unidentifiedResourceName = "ผาตๅ",
+	[5815] = {
+		unidentifiedDisplayName = "Classic Hat",
+		unidentifiedResourceName = "ลฌทกฝฤว",
 		unidentifiedDescriptionName = {
 			""
 		},
-		identifiedDisplayName = "Sword",
-		identifiedResourceName = "ผาตๅ",
+		identifiedDisplayName = "Classic Hat",
+		identifiedResourceName = "ลฌทกฝฤว",
 		identifiedDescriptionName = {
-			"^3F28FFID:^000000 1101",
-			"^3F28FFประเภท:^000000 Weapon",
-			"^3F28FFประเภทรอง:^000000 1hSword",
-			"^3F28FFตำแหน่ง:^000000 มือขวา",
-			"^3F28FFอาชีพ:^000000 Alchemist, Assassin, Blacksmith, Crusader, Knight, Merchant, Novice, Rogue, Super Novice, Swordman, Thief",
-			"^3F28FFโจมตี:^000000 25",
-			"^3F28FFระยะโจมตี:^000000 1",
-			"^3F28FFเลเวลอาวุธ:^000000 1",
-			"^3F28FFเลเวลขั้นต่ำ:^000000 2",
+			"๐ STR +1",
+			"๐ ป้องกัน การโจมตีกายภาพขนาด ทุก Size +5%",
+			"^3F28FFID:^000000 5815",
+			"^3F28FFประเภท:^000000 Armor",
+			"^3F28FFตำแหน่ง:^000000 หมวกส่วนบน",
+			"^3F28FFป้องกัน:^000000 2",
 			"^3F28FFตีบวก:^000000 ได้",
 			"^3F28FFน้ำหนัก:^000000 50",
 			""
 		},
-		slotCount = 3,
-		ClassNum = 2,
+		slotCount = 0,
+		ClassNum = 475,
 		costume = false
 	}
 }

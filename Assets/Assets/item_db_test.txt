@@ -1,27 +1,14 @@
-  - Id: 1101
-    AegisName: Sword
-    Name: Sword
-    Type: Weapon
-    SubType: 1hSword
-    Buy: 100
+  - Id: 5815
+    AegisName: Classic_Hat_J
+    Name: Classic Hat
+    Type: Armor
+    Buy: 20
     Weight: 500
-    Attack: 25
-    Range: 1
-    Slots: 3
-    Jobs:
-      Alchemist: true
-      Assassin: true
-      Blacksmith: true
-      Crusader: true
-      Knight: true
-      Merchant: true
-      Novice: true
-      Rogue: true
-      SuperNovice: true
-      Swordman: true
-      Thief: true
+    Defense: 2
     Locations:
-      Right_Hand: true
-    WeaponLevel: 1
-    EquipLevelMin: 2
+      Head_Top: true
     Refineable: true
+    View: 475
+    Script: |
+      bonus bStr,1;
+      bonus2 bSubSize,Size_All,5;
