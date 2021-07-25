@@ -80,22 +80,27 @@ public class Converter : MonoBehaviour
         builder += "setarray $weaponIds[0],";
         foreach (var item in weaponIds)
             builder += item + ",";
+        builder = builder.Substring(0, builder.Length - 1);
         builder += ";\n";
         builder += "setarray $equipmentIds[0],";
         foreach (var item in equipmentIds)
             builder += item + ",";
+        builder = builder.Substring(0, builder.Length - 1);
         builder += ";\n";
         builder += "setarray $costumeIds[0],";
         foreach (var item in costumeIds)
             builder += item + ",";
+        builder = builder.Substring(0, builder.Length - 1);
         builder += ";\n";
         builder += "setarray $cardIds[0],";
         foreach (var item in cardIds)
             builder += item + ",";
+        builder = builder.Substring(0, builder.Length - 1);
         builder += ";\n";
         builder += "setarray $enchantIds[0],";
         foreach (var item in enchantIds)
             builder += item + ",";
+        builder = builder.Substring(0, builder.Length - 1);
         builder += ";\n";
         Debug.Log("Printed all item type.");
         File.WriteAllText("global_item_ids.txt", builder, System.Text.Encoding.UTF8);
@@ -472,6 +477,36 @@ public class Converter : MonoBehaviour
                 text = RemoveQuote(text);
                 text = RemoveSpace(text);
                 if (text.ToLower().Contains("costume_head_top")
+                   || text.ToLower().Contains("costume_head_mid")
+                   || text.ToLower().Contains("costume_head_low")
+                   || text.ToLower().Contains("costume_garment")
+                   || text.ToLower().Contains("shadow_armor")
+                   || text.ToLower().Contains("shadow_weapon")
+                   || text.ToLower().Contains("shadow_shield")
+                   || text.ToLower().Contains("shadow_shoes")
+                   || text.ToLower().Contains("shadow_right_accessory")
+                   || text.ToLower().Contains("shadow_left_accessory")
+                   )
+                    costumeIds.Add(id);
+                else if (text.ToLower().Contains("head_top")
+                   || text.ToLower().Contains("head_mid")
+                   || text.ToLower().Contains("head_low")
+                   || text.ToLower().Contains("armor")
+                   || text.ToLower().Contains("left_hand")
+                   || text.ToLower().Contains("garment")
+                   || text.ToLower().Contains("shoes")
+                   || text.ToLower().Contains("right_accessory")
+                   || text.ToLower().Contains("left_accessory")
+                   || text.ToLower().Contains("both_accessory")
+                   )
+                    equipmentIds.Add(id);
+            }
+            // Locations
+            else if (!isArmor)
+            {
+                text = RemoveQuote(text);
+                text = RemoveSpace(text);
+                if (text.ToLower().Contains("costume_head_top")
                     || text.ToLower().Contains("costume_head_mid")
                     || text.ToLower().Contains("costume_head_low")
                     || text.ToLower().Contains("costume_garment")
@@ -483,18 +518,6 @@ public class Converter : MonoBehaviour
                     || text.ToLower().Contains("shadow_left_accessory")
                     )
                     costumeIds.Add(id);
-                else if (text.ToLower().Contains("head_top")
-                    || text.ToLower().Contains("head_mid")
-                    || text.ToLower().Contains("head_low")
-                    || text.ToLower().Contains("armor")
-                    || text.ToLower().Contains("left_hand")
-                    || text.ToLower().Contains("garment")
-                    || text.ToLower().Contains("shoes")
-                    || text.ToLower().Contains("right_accessory")
-                    || text.ToLower().Contains("left_accessory")
-                    || text.ToLower().Contains("Both_Accessory")
-                    )
-                    equipmentIds.Add(id);
             }
         }
         Debug.Log("idNameDatas.Count:" + idNameDatas.Count);

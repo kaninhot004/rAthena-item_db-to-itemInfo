@@ -1330,6 +1330,42 @@ Body:
     WeaponLevel: 3
     EquipLevelMin: 27
     Refineable: true
+  - Id: 1150
+    AegisName: Libra_Krasnaya_J
+    Name: Libra's Krasnaya
+    Type: Weapon
+    SubType: 2hSword
+    Weight: 3500
+    Attack: 10
+    Range: 1
+    Slots: 1
+    Jobs:
+      Crusader: true
+      Knight: true
+      Swordman: true
+    Locations:
+      Both_Hand: true
+    WeaponLevel: 4
+    EquipLevelMin: 1
+    Refineable: true
+    Script: |
+      bonus bAspdRate,10;
+      bonus bBaseAtk,70+BaseLevel;
+      bonus bUnbreakableWeapon;
+      if (BaseJob == Job_Rune_Knight) {
+         bonus bDelayrate,-10;
+         bonus2 bAddRace,RC_All,50;
+         bonus bLongAtkRate,25;
+         bonus2 bSubClass,Class_Boss,50;
+         bonus2 bSkillUseSP,"LK_SPIRALPIERCE",15;
+         .@r = getrefine();
+         if (.@r>=7) {
+            .@val = 50;
+            if (.@r>=9)
+               .@val += 50;
+            bonus2 bIgnoreDefRaceRate,RC_All,.@val;
+         }
+      }
   - Id: 1151
     AegisName: Slayer
     Name: Slayer
@@ -13957,10 +13993,13 @@ Body:
     Locations:
       Right_Hand: true
     WeaponLevel: 1
-    EquipLevelMin: 1
+    EquipLevelMin: 30
     Refineable: true
     Script: |
       bonus bUnbreakableWeapon;
+      bonus bMatkRate,15;
+      bonus bInt,5-(BaseLevel/10);
+      bonus bMaxSP,200-(40*(BaseLevel/10));
   - Id: 1657
     AegisName: Wand_Of_Affection
     Name: Wand Of Affection
@@ -14396,6 +14435,32 @@ Body:
          }
          bonus bMatkRate,.@dmg;
       }
+  - Id: 1672
+    AegisName: Safety_Rod
+    Name: Safety Rod
+    Type: Weapon
+    SubType: Staff
+    Weight: 500
+    Attack: 10
+    MagicAttack: 120
+    Range: 1
+    Slots: 1
+    Jobs:
+      Acolyte: true
+      Monk: true
+      Priest: true
+    Locations:
+      Right_Hand: true
+    WeaponLevel: 4
+    EquipLevelMin: 36
+    Refineable: true
+    Script: |
+      bonus bInt,2;
+      bonus3 bAutoSpellWhenHit,"AL_HEAL",max(1,getskilllv("AL_HEAL")),20;
+      if (getrefine()>5)
+        .@val += getrefine()-5;
+      bonus2 bSubRace,RC_DemiHuman,5+.@val;
+      bonus2 bSubRace,RC_Player_Human,5+.@val;
   - Id: 1673
     AegisName: Half_BF_Staff4
     Name: Half BF Staff4
@@ -14777,6 +14842,80 @@ Body:
     Script: |
       bonus bMaxHP,100;
       bonus bUnbreakableWeapon;
+  - Id: 1688
+    AegisName: Staff_of_Trust
+    Name: Thunder Wand
+    Type: Weapon
+    SubType: Staff
+    Weight: 1000
+    Attack: 160
+    MagicAttack: 145
+    Range: 1
+    Slots: 2
+    Jobs:
+      Acolyte: true
+      Mage: true
+      Monk: true
+      Novice: true
+      Priest: true
+      Sage: true
+      SoulLinker: true
+      SuperNovice: true
+      Wizard: true
+    Locations:
+      Right_Hand: true
+    WeaponLevel: 3
+    EquipLevelMin: 50
+    Refineable: true
+    Script: |
+      .@r = getrefine();
+      bonus bAtkEle,Ele_Wind;
+      bonus bUnbreakableWeapon;
+      if (.@r>=7) {
+         .@val = 10;
+         if (.@r>=9)
+            .@val += 15;
+        bonus2 bMagicAddEle,Ele_Water,.@val;
+        bonus2 bMagicAddRace,RC_Fish,.@val;
+      }
+  - Id: 1689
+    AegisName: Staff_of_Trust2
+    Name: "[Rental] Hunting Wand"
+    Type: Weapon
+    SubType: Staff
+    Attack: 160
+    MagicAttack: 145
+    Range: 1
+    Jobs:
+      Acolyte: true
+      Mage: true
+      Monk: true
+      Novice: true
+      Priest: true
+      Sage: true
+      SoulLinker: true
+      SuperNovice: true
+      Wizard: true
+    Locations:
+      Right_Hand: true
+    WeaponLevel: 3
+    EquipLevelMin: 50
+    Refineable: true
+    Script: |
+      .@r = getrefine();
+      bonus bAtkEle,Ele_Fire;
+      if (.@r>=7) {
+         bonus2 bMagicAddEle,Ele_Earth,10;
+         bonus2 bMagicAddEle,Ele_Water,10;
+         bonus2 bMagicAddRace,RC_DemiHuman,10;
+         bonus2 bMagicAddRace,RC_Insect,10;
+      }
+      if (.@r>=9) {
+         bonus2 bMagicAddEle,Ele_Earth,15;
+         bonus2 bMagicAddEle,Ele_Water,15;
+         bonus2 bMagicAddRace,RC_DemiHuman,15;
+         bonus2 bMagicAddRace,RC_Insect,15;
+      }
   - Id: 1690
     AegisName: Amazing_Foxtail
     Name: Mysterious Foxtail Staff
@@ -16521,13 +16660,12 @@ Body:
       NoMail: true
       NoAuction: true
     Script: |
-      bonus bAtkEle,Ele_Wind;
       bonus2 bAddRace,RC_Undead,5;
       bonus2 bAddEle,Ele_Water,10;
       bonus2 bAddEle,Ele_Earth,10;
       bonus2 bAddEle,Ele_Fire,10;
       bonus2 bAddEle,Ele_Wind,10;
-      bonus bAspdRate,5;
+      bonus bAspdRate,12;
   - Id: 1818
     AegisName: Magma_Fist
     Name: Magma Fist
@@ -17145,10 +17283,10 @@ Body:
     Script: |
       .@r = getrefine();
       .@b = 40;
-      if (.@r>=5) {
+      if (.@r>=5)
          .@b += (.@r-5)*15+20;
-      }
       bonus2 bAddRace2,RC2_BioLab,.@b;
+      bonus bUnbreakableWeapon;
   - Id: 1841
     AegisName: Claw_Of_Flash_
     Name: Claw of Flash
@@ -17249,10 +17387,8 @@ Body:
     Refineable: true
     Script: |
       .@r = getrefine();
-      if (.@r >= 2)
-         bonus bBaseAtk,.@r/2;
-      if (.@r >= 3)
-         bonus bLongAtkRate,.@r/3*4;
+      bonus bBaseAtk,.@r/2*10;
+      bonus bLongAtkRate,.@r/3*4;
       if (.@r >= 9)
          bonus2 bSkillAtk,"SR_RAMPAGEBLASTER",10;
       if (.@r >= 11)
@@ -17444,7 +17580,7 @@ Body:
       }
       if (.@r>=9) {
          bonus2 bSkillAtk,"SR_KNUCKLEARROW",15;
-         autobonus "{ bonus2 bAddSize,Size_All,15; }",1,10000,BF_WEAPON;
+         autobonus "{ bonus2 bAddSize,Size_All,15; }",10,10000,BF_WEAPON;
       }
       if (.@r>=11) {
          bonus bDelayrate,-20;
@@ -18112,7 +18248,7 @@ Body:
     Script: |
       bonus bAspdRate,100;
       bonus bHPrecovRate,-100;
-      bonus2 bHPLossRate,50,5000;
+      bonus2 bHPLossRate,25,5000;
       bonus bDex,-readparam(bDex);
   - Id: 1929
     AegisName: Guitar_C
@@ -18256,7 +18392,7 @@ Body:
     Name: Contrabass
     Type: Weapon
     SubType: Musical
-    Buy: 20
+    Buy: 20000
     Weight: 250
     Attack: 180
     MagicAttack: 120
@@ -18273,7 +18409,7 @@ Body:
     EquipLevelMin: 130
     Refineable: true
     Script: |
-      bonus2 bSkillCooldown,"WM_RANDOMIZESPELL",-20;
+      bonus2 bSkillCooldown,"WM_RANDOMIZESPELL",-2000;
   - Id: 1935
     AegisName: Ukulele_Of_Newoz
     Name: Oz's New Ukulele
@@ -18301,9 +18437,8 @@ Body:
     Name: Blue Violin
     Type: Weapon
     SubType: Musical
-    Buy: 10
     Weight: 1500
-    Attack: 180
+    Attack: 200
     Range: 2
     Slots: 1
     Jobs:
@@ -18344,7 +18479,7 @@ Body:
     Name: Infinity Violin
     Type: Weapon
     SubType: Musical
-    Buy: 10
+    Buy: 20
     Weight: 500
     Attack: 150
     Range: 2
@@ -18411,7 +18546,7 @@ Body:
       .@r = getrefine();
       bonus bDex,.@r;
       bonus bInt,.@r;
-      .@per = ((.@r > 9) ? 40 : ((.@r > 7) ? 20 : ((.@r > 5) ? 10 : 0)));
+      .@per = ((.@r >= 9) ? 40 : ((.@r >= 7) ? 20 : ((.@r >= 5) ? 10 : 0)));
       bonus2 bSkillAtk,"WM_REVERBERATION",.@per;
       bonus2 bVariableCastrate,"WM_REVERBERATION",-.@per;
   - Id: 1941
@@ -28606,10 +28741,11 @@ Body:
     Refineable: true
     Script: |
       bonus bUnbreakableGarment;
+      .@r = getrefine();
       if (BaseClass == Job_Mage || BaseClass == Job_Archer || BaseClass == Job_Acolyte)
-         bonus bFlee2,5+(getequiprefinerycnt(EQI_GARMENT)*2);
+         bonus bFlee2,5+(min(.@r,10)*2);
       else if (BaseClass == Job_Swordman || BaseClass == Job_Merchant || BaseClass == Job_Thief)
-         bonus bShortWeaponDamageReturn,5+(getequiprefinerycnt(EQI_GARMENT)*2);
+         bonus bShortWeaponDamageReturn,5+(min(.@r,10)*2);
   - Id: 2525
     AegisName: Cape_Of_Ancient_Lord_
     Name: Ancient Cape
@@ -52239,20 +52375,18 @@ Body:
     EquipLevelMin: 1
     View: 1378
     Script: |
-      hateffect HAT_EF_FLUTTER_BUTTERFLY,true;
     UnEquipScript: |
-      hateffect HAT_EF_FLUTTER_BUTTERFLY,false;
   - Id: 5915
     AegisName: Roundly_Woolly_Hat
     Name: Costume Angel Veil
     Type: Armor
-    View: 1168
+    View: 1379
     Buy: 20
     Weight: 300
     Defense: 10
     Slots: 1
     Locations:
-      Head_Top: true
+      Costume_Head_Top: true
     Refineable: true
   - Id: 5916
     AegisName: Exosrcist_Glass
@@ -52324,10 +52458,8 @@ Body:
     Script: |
       bonus bMdef,20;
       bonus3 bAutoSpell,"AL_PNEUMA",1,30+getrefine()*5;
-      hateffect(HAT_EF_CAMELLIA_HAIR_PIN,true);
       /* CONFIRM The Rate*/
     UnEquipScript: |
-      hateffect(HAT_EF_CAMELLIA_HAIR_PIN,false);
   - Id: 5920
     AegisName: Medical_Boots
     Name: Medical Boots
@@ -52685,9 +52817,7 @@ Body:
     EquipLevelMin: 1
     View: 1380
     Script: |
-      hateffect HAT_EF_ANGEL_FLUTTERING,true;
     UnEquipScript: |
-      hateffect HAT_EF_ANGEL_FLUTTERING,false;
   - Id: 5980
     AegisName: C_Classical_Fhat
     Name: C Classical Fhat
@@ -59400,6 +59530,7 @@ Body:
       Both_Hand: true
     WeaponLevel: 4
     EquipLevelMin: 170
+    Refineable: true
     Script: |
       .@r = getrefine();
       bonus2 bAddClass,Class_All,15;
@@ -69167,6 +69298,7 @@ Body:
       NoGuildStorage: true
       NoMail: true
       NoAuction: true
+    Refineable: true
     Script: |
       .@r = getrefine();
       bonus bBaseAtk,10*(.@r/2);
@@ -69207,6 +69339,7 @@ Body:
       NoGuildStorage: true
       NoMail: true
       NoAuction: true
+    Refineable: true
     Script: |
       .@r = getrefine();
       bonus bBaseAtk,10*(.@r/2);
@@ -69370,6 +69503,7 @@ Body:
       Both_Hand: true
     WeaponLevel: 4
     EquipLevelMin: 170
+    Refineable: true
     Script: |
       .@r = getrefine();
       bonus2 bAddClass,Class_All,10;
@@ -73370,7 +73504,6 @@ Body:
     Locations:
       Costume_Head_Top: true
     EquipLevelMin: 1
-    View: 880
     EquipScript: |
       sc_start SC_STRANGELIGHTS,INFINITE_TICK,0;
     UnEquipScript: |
@@ -77204,9 +77337,7 @@ Body:
     Script: |
       bonus bMaxSP,50;
       bonus4 bAutoSpellWhenHit,"MG_SAFETYWALL",10,50,0;
-      hateffect(HAT_EF_VALHALLA_IDOL,true);
     UnEquipScript: |
-      hateffect(HAT_EF_VALHALLA_IDOL,false);
   - Id: 19111
     AegisName: Laser_Of_Eagle
     Name: Laser of Eagle
@@ -80399,9 +80530,7 @@ Body:
     EquipLevelMin: 1
     View: 1823
     Script: |
-      hateffect(HAT_EF_RESONATETAEGO,true);
     UnEquipScript: |
-      hateffect(HAT_EF_RESONATETAEGO,false);
   - Id: 19439
     AegisName: Subject_Aura
     Name: Vicious Mind Aura
@@ -81705,6 +81834,7 @@ Body:
     Buy: 20
     Locations:
       Costume_Head_Top: true
+      Costume_Head_Mid: true
     EquipLevelMin: 1
     View: 468
     Script: |
@@ -81717,7 +81847,6 @@ Body:
     Locations:
       Costume_Head_Top: true
       Costume_Head_Mid: true
-      Costume_Head_Low: true
     EquipLevelMin: 1
     View: 515
     Script: |
@@ -83171,7 +83300,7 @@ Body:
     Type: Armor
     Buy: 10
     Locations:
-      Head_Top: true
+      Costume_Head_Top: true
     EquipLevelMin: 1
     View: 413
   - Id: 19709
@@ -87313,7 +87442,6 @@ Body:
     Locations:
       Costume_Head_Top: true
     EquipLevelMin: 1
-    View: 1299
     EquipScript: |
       sc_start SC_MERMAID_LONGING,INFINITE_TICK,0;
     UnEquipScript: |
@@ -87949,9 +88077,7 @@ Body:
       Override: 100
       NoDrop: true
     Script: |
-      hateffect HAT_EF_BLOSSOM_FLUTTERING,true;
     UnEquipScript: |
-      hateffect HAT_EF_BLOSSOM_FLUTTERING,false;
   - Id: 20286
     AegisName: C_Under_Rim_Glasses_Red
     Name: Costume Under Rim Glasses Red
@@ -88820,9 +88946,7 @@ Body:
     EquipLevelMin: 1
     View: 1425
     Script: |
-      hateffect(HAT_EF_BLESSING_OF_ANGELS,true);
     UnEquipScript: |
-      hateffect(HAT_EF_BLESSING_OF_ANGELS,false);
   - Id: 20405
     AegisName: C_Eremes_Scarf
     Name: Costume Eremes Scarf
@@ -89031,9 +89155,7 @@ Body:
     EquipLevelMin: 1
     View: 1203
     Script: |
-      hateffect(HAT_EF_CAMELLIA_HAIR_PIN,true);
     UnEquipScript: |
-      hateffect(HAT_EF_CAMELLIA_HAIR_PIN,false);
   - Id: 20436
     AegisName: C_Angelring_Furhat
     Name: Costume Angelring Furhat
@@ -89066,9 +89188,7 @@ Body:
       Costume_Head_Mid: true
     EquipLevelMin: 1
     Script: |
-      hateffect(HAT_EF_GLOW_OF_NEW_YEAR,true);
     UnEquipScript: |
-      hateffect(HAT_EF_GLOW_OF_NEW_YEAR,false);
   - Id: 20440
     AegisName: C_Tone_of_Gold
     Name: Costume Tone of Gold
@@ -89174,9 +89294,7 @@ Body:
     EquipLevelMin: 1
     View: 1461
     Script: |
-      hateffect(HAT_EF_FEATHER_FLUTTERING,true);
     UnEquipScript: |
-      hateffect(HAT_EF_FEATHER_FLUTTERING,false);
   - Id: 20458
     AegisName: C_Wild_Poring_Rider
     Name: Costume Wild Poring Rider
@@ -89194,9 +89312,7 @@ Body:
     EquipLevelMin: 1
     View: 1423
     Script: |
-      hateffect(HAT_EF_VALHALLA_IDOL,true);
     UnEquipScript: |
-      hateffect(HAT_EF_VALHALLA_IDOL,false);
   - Id: 20460
     AegisName: C_Thorny_Hairband
     Name: Costume Thorny Hairband
@@ -89329,9 +89445,7 @@ Body:
     EquipLevelMin: 1
     View: 1473
     Script: |
-      hateffect(HAT_EF_FLORAL_WALTZ,true);
     UnEquipScript: |
-      hateffect(HAT_EF_FLORAL_WALTZ,false);
   - Id: 20488
     AegisName: C_Pope_Ribbon
     Name: Costume Pope Ribbon
@@ -89515,9 +89629,7 @@ Body:
       Costume_Garment: true
     EquipLevelMin: 1
     Script: |
-      hateffect(HAT_EF_MAGICCIRCLE,true);
     UnEquipScript: |
-      hateffect(HAT_EF_MAGICCIRCLE,false);
   - Id: 20516
     AegisName: C_Wings_of_Michael
     Name: Costume Wings of Michael
@@ -89542,9 +89654,7 @@ Body:
       Costume_Garment: true
     EquipLevelMin: 1
     Script: |
-      hateffect(HAT_EF_FULL_BLOOMCHERRY_TREE,true);
     UnEquipScript: |
-      hateffect(HAT_EF_FULL_BLOOMCHERRY_TREE,false);
   - Id: 20522
     AegisName: C_Blessings_Of_Soul
     Name: Costume Blessings Of Soul
@@ -89553,9 +89663,7 @@ Body:
       Costume_Head_Low: true
     EquipLevelMin: 1
     Script: |
-      hateffect(HAT_EF_C_BLESSINGS_OF_SOUL,true);
     UnEquipScript: |
-      hateffect(HAT_EF_C_BLESSINGS_OF_SOUL,false);
   - Id: 20524
     AegisName: C_Shining_Angel_Wings
     Name: Costume Shining Angel Wings
@@ -89564,9 +89672,7 @@ Body:
       Costume_Garment: true
     EquipLevelMin: 1
     Script: |
-      hateffect(HAT_EF_C_SHINING_ANGEL_WING,true);
     UnEquipScript: |
-      hateffect(HAT_EF_C_SHINING_ANGEL_WING,false);
   - Id: 20525
     AegisName: C_Bloody_Wing
     Name: Costume Crimson Wings
@@ -89615,9 +89721,7 @@ Body:
       Costume_Garment: true
     EquipLevelMin: 1
     Script: |
-      hateffect(HAT_EF_DIGITAL_SPACE,true);
     UnEquipScript: |
-      hateffect(HAT_EF_DIGITAL_SPACE,false);
   - Id: 20537
     AegisName: C_Maple_Which_Falls_Rd
     Name: Costume Falling Red Foliage
@@ -89626,9 +89730,7 @@ Body:
       Costume_Garment: true
     EquipLevelMin: 1
     Script: |
-      hateffect(HAT_EF_C_MAPLE_WHICH_FALLS_RD,true);
     UnEquipScript: |
-      hateffect(HAT_EF_C_MAPLE_WHICH_FALLS_RD,false);
   - Id: 20538
     AegisName: C_Magic_Circle_Rainbow
     Name: Costume Magic Circle Rainbow
@@ -89637,9 +89739,7 @@ Body:
       Costume_Garment: true
     EquipLevelMin: 1
     Script: |
-      hateffect(HAT_EF_MAGICCIRCLERAINBOW,true);
     UnEquipScript: |
-      hateffect(HAT_EF_MAGICCIRCLERAINBOW,false);
   - Id: 20541
     AegisName: C_AngelRibbonWing_TW
     Name: Costume angel ribbon wings    # !todo check english name
@@ -89671,9 +89771,7 @@ Body:
       Costume_Garment: true
     EquipLevelMin: 1
     Script: |
-      hateffect(HAT_EF_C_GHOST_EFFECT,true);
     UnEquipScript: |
-      hateffect(HAT_EF_C_GHOST_EFFECT,false);
   - Id: 20548
     AegisName: Costume_Popping_Poring_Aura
     Name: Costume Popping Poring Aura
@@ -89682,9 +89780,7 @@ Body:
       Costume_Garment: true
     EquipLevelMin: 1
     Script: |
-      hateffect(HAT_EF_C_POPPING_PORING_AURA,true);
     UnEquipScript: |
-      hateffect(HAT_EF_C_POPPING_PORING_AURA,false);
   - Id: 20570
     AegisName: C_HeartChocoBag
     Name: Costume HeartChocoBag
@@ -89701,9 +89797,7 @@ Body:
     Locations:
       Costume_Garment: true
     Script: |
-      hateffect HAT_EF_C_VALKYRIE_WING,true;
     UnEquipScript: |
-      hateffect HAT_EF_C_VALKYRIE_WING,false;
   - Id: 20572
     AegisName: C_WingOfHeart
     Name: Costume WingOfHeart
@@ -90323,7 +90417,6 @@ Body:
       Garment: true
     EquipLevelMin: 30
     Refineable: true
-    View: 7
     Script: |
       bonus bInt,1;
       bonus bDex,1;
@@ -90651,7 +90744,7 @@ Body:
     Locations:
       Costume_Garment: true
     EquipLevelMin: 1
-    View: 49
+    View: 48
   - Id: 20773
     AegisName: Excelion_Wing
     Name: Excelion Wing
@@ -93713,6 +93806,7 @@ Body:
       Both_Hand: true
     WeaponLevel: 4
     EquipLevelMin: 170
+    Refineable: true
     Script: |
       .@r = getrefine();
       bonus bCritical,5;
@@ -93762,7 +93856,7 @@ Body:
     AegisName: Up_Dragonic_Slayer
     Name: Patent Dragonic Slayer
     Type: Weapon
-    SubType: 1hSword
+    SubType: 2hSword
     Weight: 2000
     Attack: 200
     Range: 1
@@ -109932,6 +110026,7 @@ Body:
       Both_Hand: true
     WeaponLevel: 4
     EquipLevelMin: 170
+    Refineable: true
     Script: |
       .@r = getrefine();
       bonus2 bAddClass,Class_All,10;
@@ -115689,7 +115784,6 @@ Body:
     EquipLevelMin: 1
     View: 1279
     Script: |
-      hateffect(HAT_EF_MAGICAL_FEATHER,true);
     EquipScript: |
       /* commented because only the last sentence is seen
       showscript "Oh Holy Light!";
@@ -115699,7 +115793,6 @@ Body:
       */
       showscript "Every day I struggle against the darkness but today will be magical!";
     UnEquipScript: |
-      hateffect(HAT_EF_MAGICAL_FEATHER,false);
   - Id: 31041
     AegisName: C_Cat_Lace_Hairband
     Name: Costume Cat Lace Hairband
@@ -115830,10 +115923,8 @@ Body:
       Costume_Head_Mid: true
     EquipLevelMin: 1
     Script: |
-      hateffect(HAT_EF_DOUBLEGUMGANG,true);
       /* Need to confirm this */
     UnEquipScript: |
-      hateffect(HAT_EF_DOUBLEGUMGANG,false);
   - Id: 31057
     AegisName: C_Eremes_Scarf_Black
     Name: "Costume: Eremes' Scarf (Black)"
@@ -116100,10 +116191,8 @@ Body:
     EquipLevelMin: 1
     View: 1500
     Script: |
-      hateffect(HAT_EF_BAKURETSU_HADOU,true);
       /* Need to confirm this */
     UnEquipScript: |
-      hateffect(HAT_EF_BAKURETSU_HADOU,false);
   - Id: 31090
     AegisName: C_Angelring_Hat
     Name: Costume Angelring Hat
@@ -116121,10 +116210,8 @@ Body:
     EquipLevelMin: 1
     View: 1528
     Script: |
-      hateffect(HAT_EF_GOLD_SHOWER,true);
       bonus2 bGetZenyNum,500,3;
     UnEquipScript: |
-      hateffect(HAT_EF_GOLD_SHOWER,false);
   - Id: 31092
     AegisName: C_Rabbit_Ribbon_Hat
     Name: Costume Bunny Ribbon Hat
@@ -117877,9 +117964,7 @@ Body:
     EquipLevelMin: 1
     View: 1665
     Script: |
-      hateffect(HAT_EF_C_FLUTTERBUTTERFLY_BL,true);
     UnEquipScript: |
-      hateffect(HAT_EF_C_FLUTTERBUTTERFLY_BL,false);
   - Id: 31317
     AegisName: C_15th_Anniversary_Wing
     Name: C 15th Anniversary Wing
@@ -117964,9 +118049,7 @@ Body:
     EquipLevelMin: 1
     View: 1231
     Script: |
-      hateffect(HAT_EF_QSCARABA,true);
     UnEquipScript: |
-      hateffect(HAT_EF_QSCARABA,false);
   - Id: 31326
     AegisName: C_Rolf_Von_Ziege_666_II
     Name: C Rolf Von Ziege 666 II
@@ -118814,9 +118897,7 @@ Body:
     EquipLevelMin: 1
     View: 1729
     Script: |
-      hateffect(HAT_EF_MANYSTARS,true);
     UnEquipScript: |
-      hateffect(HAT_EF_MANYSTARS,false);
   - Id: 31481
     AegisName: C_CatCoffeeCup_TW
     Name: C TriColor CatCup
@@ -119519,7 +119600,6 @@ Body:
     Locations:
       Costume_Head_Low: true
     EquipLevelMin: 1
-    View: 880
     EquipScript: |
       sc_start SC_STRANGELIGHTS,INFINITE_TICK,0;
     UnEquipScript: |
@@ -119541,9 +119621,7 @@ Body:
     EquipLevelMin: 1
     View: 1799
     Script: |
-      hateffect(HAT_EF_SNOWFLAKE_TIARA,true);
     UnEquipScript: |
-      hateffect(HAT_EF_SNOWFLAKE_TIARA,false);
   - Id: 31589
     AegisName: C_Golden_Majestic_Goat
     Name: C Golden Majestic Goat
@@ -119639,11 +119717,8 @@ Body:
     Locations:
       Costume_Head_Top: true
     EquipLevelMin: 1
-    View: 1807
     Script: |
-      hateffect(HAT_EF_MIDGARTS_GLORY,true);
     UnEquipScript: |
-      hateffect(HAT_EF_MIDGARTS_GLORY,false);
   - Id: 31606
     AegisName: C_Autumn_Headband
     Name: C Autumn Headband
@@ -120391,13 +120466,15 @@ Body:
     EquipLevelMin: 1
     View: 1827
   - Id: 31721
-    AegisName: Costume_Resonating_Drums
+    AegisName: C_ResonateTaego
     Name: C Resonating Drums
     Type: Armor
     Locations:
       Costume_Head_Top: true
     EquipLevelMin: 1
     View: 1823
+    Script: |
+    UnEquipScript: |
   - Id: 31723
     AegisName: Costume_TW_Rice_Ball
     Name: C Tw Rice Ball
@@ -122326,6 +122403,7 @@ Body:
       Both_Hand: true
     WeaponLevel: 4
     EquipLevelMin: 170
+    Refineable: true
     Script: |
       .@r = getrefine();
       bonus bLongAtkRate,15;
@@ -123468,8 +123546,7 @@ Body:
     Type: Armor
     View: 1996
     Locations:
-      Head_Top: true
-      Head_Low: true
+      Costume_Head_Mid: true
   - Id: 410013
     AegisName: EXP_Processor_
     Name: EXP Advisor    # !todo check english name
@@ -123574,7 +123651,7 @@ Body:
       Costume_Head_Mid: true
     View: 2055
   - Id: 420003
-    AegisName: aegis_420003
+    AegisName: CD_In_MouthK
     Name: CD in Mouth
     Type: Armor
     View: 815
@@ -123592,8 +123669,7 @@ Body:
     Type: Armor
     View: 2020
     Locations:
-      Head_Mid: true
-      Head_Low: true
+      Costume_Head_Low: true
   - Id: 420017
     AegisName: aegis_420017
     Name: Young leaves of the world tree (power)    # !todo check english name
@@ -123601,7 +123677,6 @@ Body:
     View: 848
     Weight: 50
     Locations:
-      Head_Mid: true
       Head_Low: true
     EquipLevelMin: 100
   - Id: 420018
@@ -123611,7 +123686,6 @@ Body:
     View: 848
     Weight: 50
     Locations:
-      Head_Mid: true
       Head_Low: true
     EquipLevelMin: 100
   - Id: 420019
@@ -123621,7 +123695,6 @@ Body:
     View: 848
     Weight: 50
     Locations:
-      Head_Mid: true
       Head_Low: true
     EquipLevelMin: 100
   - Id: 420020
@@ -123631,7 +123704,6 @@ Body:
     View: 848
     Weight: 50
     Locations:
-      Head_Mid: true
       Head_Low: true
     EquipLevelMin: 100
   - Id: 420021
@@ -123641,7 +123713,6 @@ Body:
     View: 848
     Weight: 50
     Locations:
-      Head_Mid: true
       Head_Low: true
     EquipLevelMin: 100
   - Id: 420022
@@ -123651,17 +123722,15 @@ Body:
     View: 848
     Weight: 50
     Locations:
-      Head_Mid: true
       Head_Low: true
     EquipLevelMin: 100
   - Id: 420025
-    AegisName: aegis_420025
+    AegisName: C_OneEyedJack
     Name: Costume One Eyed Jack    # !todo check english name
     Type: Armor
     View: 2023
     Locations:
-      Head_Mid: true
-      Head_Low: true
+      Costume_Head_Low: true
   - Id: 420029
     AegisName: C_Imperial_Glory
     Name: "Costume: Imperial Glory"
@@ -123676,7 +123745,6 @@ Body:
     View: 1143
     Weight: 10
     Locations:
-      Head_Mid: true
       Head_Low: true
     Script: |
       bonus bLongAtkRate,5;
@@ -123687,7 +123755,6 @@ Body:
     View: 1089
     Weight: 10
     Locations:
-      Head_Mid: true
       Head_Low: true
     Script: |
       bonus bShortAtkRate,5;
@@ -123805,9 +123872,9 @@ Body:
     Type: Armor
     View: 1085
     Locations:
-      Head_Top: true
-      Head_Mid: true
-      Head_Low: true
+      Costume_Head_Top: true
+      Costume_Head_Mid: true
+      Costume_Head_Low: true
     Trade:
       Override: 100
       NoDrop: true
@@ -123823,9 +123890,9 @@ Body:
     Type: Armor
     View: 1481
     Locations:
-      Head_Top: true
-      Head_Mid: true
-      Head_Low: true
+      Costume_Head_Top: true
+      Costume_Head_Mid: true
+      Costume_Head_Low: true
     Trade:
       Override: 100
       NoDrop: true
@@ -128335,8 +128402,8 @@ Body:
     Name: Costume Heavenly Fallen Angel's Wings    # !todo check english name
     Type: Armor
     Locations:
-      Garment: true
-    Refineable: true
+      Costume_Garment: true
+    View: 3
   - Id: 480062
     AegisName: E_Illusion_Engine_A
     Name: Illusion engine wing type A (attributable)    # !todo check english name
@@ -128463,7 +128530,7 @@ Body:
     Type: Armor
     Locations:
       Costume_Garment: true
-    View: 100
+    View: 99
   - Id: 490004
     AegisName: Attacker_Booster_Ring
     Name: Attacker Booster Ring
@@ -128637,6 +128704,21 @@ Body:
       bonus bAspdRate,7;
       bonus bVariableCastrate,-10;
       bonus bCritAtkRate,10;
+  - Id: 490022
+    AegisName: TrustRing
+    Name: Thunder Ring
+    Type: Armor
+    Weight: 300
+    Slots: 1
+    Locations:
+      Both_Accessory: true
+    EquipLevelMin: 100
+    Script: |
+      bonus2 bAddRace,RC_All,5;
+      bonus bMatkRate,5;
+      bonus2 bAddEle,Ele_Water,10;
+      bonus2 bMagicAddEle,Ele_Water,10;
+      bonus2 bSubEle,Ele_Water,5;
   - Id: 490020
     AegisName: Grace_Magic_Ring
     Name: Grace Magic Ring
@@ -134514,6 +134596,7 @@ Body:
       Both_Hand: true
     WeaponLevel: 4
     EquipLevelMin: 150
+    Refineable: true
     Script: |
       .@r = getrefine();
       bonus2 bSkillAtk,"RA_ARROWSTORM",10;
@@ -134544,6 +134627,7 @@ Body:
       Both_Hand: true
     WeaponLevel: 4
     EquipLevelMin: 150
+    Refineable: true
     Script: |
       .@r = getrefine();
       bonus2 bSkillAtk,"SC_TRIANGLESHOT",10;
@@ -134574,6 +134658,7 @@ Body:
       Both_Hand: true
     WeaponLevel: 4
     EquipLevelMin: 150
+    Refineable: true
     Script: |
       .@r = getrefine();
       bonus2 bSkillAtk,"WM_SEVERE_RAINSTORM",10;
@@ -134638,6 +134723,7 @@ Body:
       Left_Hand: true
     WeaponLevel: 4
     EquipLevelMin: 100
+    Refineable: true
     Trade:
       Override: 100
       NoDrop: true
@@ -134685,6 +134771,7 @@ Body:
       Left_Hand: true
     WeaponLevel: 4
     EquipLevelMin: 100
+    Refineable: true
     Trade:
       Override: 100
       NoDrop: true
@@ -134730,6 +134817,7 @@ Body:
       Left_Hand: true
     WeaponLevel: 4
     EquipLevelMin: 100
+    Refineable: true
     Trade:
       Override: 100
       NoDrop: true
@@ -134889,6 +134977,7 @@ Body:
       Both_Hand: true
     WeaponLevel: 4
     EquipLevelMin: 180
+    Refineable: true
     Script: |
       .@r = getrefine();
       bonus2 bSkillAtk,"SC_TRIANGLESHOT",10;
@@ -134922,6 +135011,7 @@ Body:
       Both_Hand: true
     WeaponLevel: 4
     EquipLevelMin: 180
+    Refineable: true
     Script: |
       .@r = getrefine();
       bonus bUnbreakableWeapon;
@@ -134956,6 +135046,7 @@ Body:
       Both_Hand: true
     WeaponLevel: 4
     EquipLevelMin: 180
+    Refineable: true
     Script: |
       .@r = getrefine();
       bonus2 bSkillAtk,"RA_AIMEDBOLT",10;
