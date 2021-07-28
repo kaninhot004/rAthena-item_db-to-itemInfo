@@ -1276,6 +1276,7 @@ public class Converter : MonoBehaviour
         // Wrong wording fix
         text = text.Replace("Ele_dark", "Ele_Dark");
         text = text.Replace("bonus2 bIgnoreMDefRaceRate", "bonus2 bIgnoreMdefRaceRate");
+        text = text.Replace("Baselevel", "BaseLevel");
         // End wrong wording fix
 
         text = text.Replace("      ", string.Empty);
@@ -1579,13 +1580,13 @@ public class Converter : MonoBehaviour
         {
             var temp = text.Replace("bonus2 bSkillUseSP,", string.Empty);
             var temps = MergeMath(temp.Split(','));
-            text = string.Format("๐ SP ที่ต้องใช้กับ {0} +{1}", RemoveQuote(temps[0]), TryParseInt(temps[1]));
+            text = string.Format("๐ SP ที่ต้องใช้กับ {0} +{1}", GetSkillName(RemoveQuote(temps[0])), TryParseInt(temps[1]));
         }
         if (text.Contains("bonus2 bSkillUseSPrate,"))
         {
             var temp = text.Replace("bonus2 bSkillUseSPrate,", string.Empty);
             var temps = MergeMath(temp.Split(','));
-            text = string.Format("๐ SP ที่ต้องใช้กับ {0} +{1}%", RemoveQuote(temps[0]), TryParseInt(temps[1]));
+            text = string.Format("๐ SP ที่ต้องใช้กับ {0} +{1}%", GetSkillName(RemoveQuote(temps[0])), TryParseInt(temps[1]));
         }
         if (text.Contains("bonus2 bSkillAtk,"))
         {
@@ -2570,6 +2571,12 @@ public class Converter : MonoBehaviour
 
         // Negative value
         text = text.Replace("+-", "-");
+
+        // Whitespace
+        text = text.Replace("    ", " ");
+        text = text.Replace("   ", " ");
+        text = text.Replace("  ", " ");
+        text = text.Replace("\\", string.Empty);
         return text;
     }
 

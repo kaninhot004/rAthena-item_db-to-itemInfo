@@ -1,19 +1,20 @@
-  - Id: 18569
-    AegisName: Soft_Sheep_Hat
-    Name: Soft Sheep Hat
+  - Id: 28429
+    AegisName: Arquien's_Necklace
+    Name: Arquien's Necklace
     Type: Armor
     Buy: 20
-    Weight: 1000
+    Weight: 100
+    Slots: 1
     Locations:
-      Head_Top: true
-    EquipLevelMin: 10
-    Refineable: true
-    View: 738
-    Trade:
-      Override: 100
-      NoDrop: true
+      Both_Accessory: true
+    EquipLevelMin: 20
     Script: |
-      bonus bMaxHPrate,1+getrefine();
-      if (getrefine()>9) {
-         bonus2 bExpAddClass,Class_All,5;
-      }
+      bonus2 bSkillAtk,"MC_CARTREVOLUTION",Baselevel;
+      bonus2 bSkillAtk,"NC_AXETORNADO",(Baselevel/3);
+      bonus2 bSkillAtk,"NC_POWERSWING",(Baselevel/5);
+      bonus2 bSkillUseSP,"NC_POWERSWING",2;
+      bonus2 bAddMonsterDropItem,529,2000;
+      bonus2 bAddMonsterDropItem,530,2000;
+      bonus2 bAddMonsterDropItem,573,150;
+      bonus2 bAddItemHealRate,529,100;
+      bonus2 bAddItemHealRate,530,100;

@@ -1,22 +1,30 @@
 ﻿tbl = {
-	[29432] = {
-		unidentifiedDisplayName = "Professor Stone (Upper)",
-		unidentifiedResourceName = "ธถผ๚ป็ววฑิพ๎",
+	[28429] = {
+		unidentifiedDisplayName = "Arquien's Necklace",
+		unidentifiedResourceName = "พหฤ๛ฟฃภวธ๑ฐษภฬ",
 		unidentifiedDescriptionName = {
 			""
 		},
-		identifiedDisplayName = "Professor Stone (Upper)",
-		identifiedResourceName = "ธถผ๚ป็ววฑิพ๎",
+		identifiedDisplayName = "Arquien's Necklace",
+		identifiedResourceName = "พหฤ๛ฟฃภวธ๑ฐษภฬ",
 		identifiedDescriptionName = {
-			"^666478[หากใส่พร้อม SorcererStone (Garment)]^000000",
-			"๐ ความแรง Psychic Wave +15%",
-			" }",
-			"๐ ASPD +Lv. Skill(Study)%",
-			"^3F28FFID:^000000 29432",
-			"^3F28FFประเภท:^000000 Card",
+			"๐ ความแรง Cart Revolution +Level%",
+			"๐ ความแรง Axe Tornado +(Level/3)%",
+			"๐ ความแรง Power Swing +(Level/5)%",
+			"๐ SP ที่ต้องใช้กับ Power Swing +2",
+			"๐ มีโอกาส 20% ที่จะ Drop Candy เมื่อกำจัด Monster",
+			"๐ มีโอกาส 20% ที่จะ Drop Candy Cane เมื่อกำจัด Monster",
+			"๐ มีโอกาส 2% ที่จะ Drop Chocolate Drink เมื่อกำจัด Monster",
+			"๐ ความแรง ไอเท็มฟื้นฟู Candy +100%",
+			"๐ ความแรง ไอเท็มฟื้นฟู Candy Cane +100%",
+			"^3F28FFID:^000000 28429",
+			"^3F28FFประเภท:^000000 Armor",
+			"^3F28FFตำแหน่ง:^000000 เครื่องประดับสองข้าง",
+			"^3F28FFเลเวลขั้นต่ำ:^000000 20",
+			"^3F28FFน้ำหนัก:^000000 10",
 			""
 		},
-		slotCount = 0,
+		slotCount = 1,
 		ClassNum = 0,
 		costume = false
 	}
