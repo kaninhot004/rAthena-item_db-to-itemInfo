@@ -1,33 +1,19 @@
-  - Id: 20967
-    AegisName: Temporal_M_Dex
-    Name: Temporal Dex Manteau
+  - Id: 18569
+    AegisName: Soft_Sheep_Hat
+    Name: Soft Sheep Hat
     Type: Armor
-    Weight: 400
-    Defense: 38
-    Slots: 1
-    Classes:
-      All_Third: true
+    Buy: 20
+    Weight: 1000
     Locations:
-      Garment: true
-    EquipLevelMin: 100
+      Head_Top: true
+    EquipLevelMin: 10
     Refineable: true
+    View: 738
+    Trade:
+      Override: 100
+      NoDrop: true
     Script: |
-      .@r = getrefine();
-      bonus bLongAtkRate,(.@r/2);
-      bonus bBaseAtk,10*(.@r/2);
-      bonus bCritAtkRate,3*(.@r/4);
-      if (.@r>=7) {
-         bonus2 bAddClass,Class_All,7;
-      }
-      if (.@r>=9) {
-         bonus2 bIgnoreDefRaceRate,RC_Demon,20;
-         bonus2 bIgnoreMDefRaceRate,RC_Demon,20;
-         bonus2 bIgnoreDefRaceRate,RC_Brute,20;
-         bonus2 bIgnoreMDefRaceRate,RC_Brute,20;
-      }
-      if (.@r>=11) {
-         bonus2 bIgnoreDefRaceRate,RC_Demon,10;
-         bonus2 bIgnoreMDefRaceRate,RC_Demon,10;
-         bonus2 bIgnoreDefRaceRate,RC_Brute,10;
-         bonus2 bIgnoreMDefRaceRate,RC_Brute,10;
+      bonus bMaxHPrate,1+getrefine();
+      if (getrefine()>9) {
+         bonus2 bExpAddClass,Class_All,5;
       }

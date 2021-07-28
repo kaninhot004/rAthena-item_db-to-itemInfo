@@ -2826,7 +2826,10 @@ public class Converter : MonoBehaviour
 
         text = ParseEQI(text);
 
+        bool isHadQuote = text.Contains("\"");
         text = RemoveQuote(text);
+        if (isHadQuote)
+            text = ParseSkillName(text);
 
         return text;
     }
@@ -2935,6 +2938,19 @@ public class Converter : MonoBehaviour
         return text;
     }
 
+    string ParseSkillName(string text)
+    {
+        foreach (var item in skillDatas)
+        {
+            if (text.Contains(item.name))
+            {
+                text = text.Replace(item.name, item.description);
+                break;
+            }
+        }
+        return text;
+    }
+
     string GetClassNumFromId(int id)
     {
         foreach (var item in classNumDatas)
@@ -2957,6 +2973,6 @@ public class Converter : MonoBehaviour
                     return item.monsterName;
             }
         }
-        return string.Empty;
+        return text;
     }
 }
