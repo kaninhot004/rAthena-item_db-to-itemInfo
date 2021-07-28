@@ -1,28 +1,29 @@
 ﻿tbl = {
-	[5894] = {
-		unidentifiedDisplayName = "RCC2013 3RD CROWN",
-		unidentifiedResourceName = "Bio_Reseearch_Docu",
+	[24185] = {
+		unidentifiedDisplayName = "Bearer's Shadow Pendant",
+		unidentifiedResourceName = "ฦๆด๘ฦฎฝฆตตฟ์",
 		unidentifiedDescriptionName = {
 			""
 		},
-		identifiedDisplayName = "RCC2013 3RD CROWN",
-		identifiedResourceName = "Bio_Reseearch_Docu",
+		identifiedDisplayName = "Bearer's Shadow Pendant",
+		identifiedResourceName = "ฦๆด๘ฦฎฝฆตตฟ์",
 		identifiedDescriptionName = {
-			"๐ All Status +3",
-			"๐ สามารถใช้ Lv.1 Teleport",
-			"    ^666478[เมื่อสวมใส่]^000000",
-			"๐ รับผล SPEEDUP0 เป็นเวลา ถาวร วินาที",
-			"    ^666478[เมื่อถอด]^000000",
-			"๐ ลบผล SPEEDUP0",
-			"^3F28FFID:^000000 5894",
-			"^3F28FFประเภท:^000000 Armor",
-			"^3F28FFตำแหน่ง:^000000 หมวกส่วนบน",
-			"^3F28FFป้องกัน:^000000 7",
+			"^666478[หากใส่พร้อม Bearer's Shadow Armor, Bearer's Shadow Shoes, Bearer's Shadow Shield, Bearer's Shadow Weapon, Bearer's Shadow Earring]^000000",
+			" .@r = ค่าบวก(ชุดเกราะ Shadow)+ค่าบวก(อาวุธ Shadow)+ค่าบวก(โล่ Shadow)+ค่าบวก(รองเท้า Shadow)+ค่าบวก(เครื่องประดับ Shadow ข้างขวา)+ค่าบวก(เครื่องประดับ Shadow ข้างซ้าย)",
+			" ๐ All Status +1",
+			" ถ้า(.@r>=45) {",
+			"๐ MaxHP + (.@r-60)%",
+			" ๐ เมื่อโดนโจมตีจะไม่ชะงัก",
+			" } }",
+			"๐ ฐาน ATK +5+(ค่าบวก/2)",
+			"^3F28FFID:^000000 24185",
+			"^3F28FFประเภท:^000000 Shadowgear",
+			"^3F28FFตำแหน่ง:^000000 เครื่องประดับ Shadow ข้างซ้าย",
 			"^3F28FFเลเวลขั้นต่ำ:^000000 1",
-			"^3F28FFน้ำหนัก:^000000 250",
+			"^3F28FFตีบวก:^000000 ได้",
 			""
 		},
-		slotCount = 1,
+		slotCount = 0,
 		ClassNum = 0,
 		costume = false
 	}

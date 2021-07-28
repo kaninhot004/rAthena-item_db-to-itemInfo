@@ -1283,10 +1283,13 @@ public class Converter : MonoBehaviour
         if (text.Contains("autobonus3 \"{"))
         {
             var temp = text.Replace("autobonus3 \"{", string.Empty);
-            var duplicate = temp;
-            var duplicates = duplicate.Split(',');
+            string duplicate = string.Empty;
             if (temp.IndexOf("}\"") > 0)
+            {
+                duplicate = temp.Substring(temp.IndexOf("}\""));
                 temp = temp.Substring(0, temp.IndexOf("}\""));
+            }
+            var duplicates = duplicate.Split(',');
             var bonuses = string.Empty;
             int retry = 30;
             while (temp.Contains("bonus"))
@@ -1294,16 +1297,16 @@ public class Converter : MonoBehaviour
                 var sumBonus = temp.Substring(0, temp.IndexOf(';'));
                 bonuses += ConvertItemBonus(sumBonus);
                 if (temp.Length > temp.IndexOf(';') + 1)
-                    temp = temp.Substring(0, temp.IndexOf(';') + 1);
+                    temp = temp.Substring(temp.IndexOf(';') + 1);
                 else
                     temp = string.Empty;
                 retry--;
                 if (retry <= 0)
                     break;
             }
-            var skillName = RemoveQuote(duplicates[3]);
+            var skillName = RemoveQuote(duplicates.Length >= 4 ? duplicates[3] : string.Empty);
             if (!string.IsNullOrEmpty(bonuses) || !string.IsNullOrWhiteSpace(bonuses))
-                text = string.Format("เมื่อใช้ {1} มีโอกาสเล็กน้อย ที่จะ {0} ชั่วคราว", bonuses, skillName);
+                text = string.Format("เมื่อใช้ {1} มีโอกาสเล็กน้อย ที่จะ {0} ชั่วคราว", bonuses, GetSkillName(skillName));
             else
                 text = string.Empty;
         }
@@ -1320,7 +1323,7 @@ public class Converter : MonoBehaviour
                 var sumBonus = temp.Substring(0, temp.IndexOf(';'));
                 bonuses += ConvertItemBonus(sumBonus);
                 if (temp.Length > temp.IndexOf(';') + 1)
-                    temp = temp.Substring(0, temp.IndexOf(';') + 1);
+                    temp = temp.Substring(temp.IndexOf(';') + 1);
                 else
                     temp = string.Empty;
                 retry--;
@@ -1683,7 +1686,7 @@ public class Converter : MonoBehaviour
         {
             var temp = text.Replace("bonus bHealPower2,", string.Empty);
             var temps = MergeMath(temp.Split(','));
-            text = string.Format("๐ ได้รับความแรงเวทย์ฟื้นฟู +{0}%", TryParseInt(temps[0]));
+            text = string.Format("๐ เวทย์ฟื้นฟูที่ได้รับ +{0}%", TryParseInt(temps[0]));
         }
         if (text.Contains("bonus2 bSkillHeal,"))
         {
@@ -1695,7 +1698,7 @@ public class Converter : MonoBehaviour
         {
             var temp = text.Replace("bonus2 bSkillHeal2,", string.Empty);
             var temps = MergeMath(temp.Split(','));
-            text = string.Format("๐ ได้รับความแรงเวทย์ฟื้นฟู {0} +{1}%", GetSkillName(RemoveQuote(temps[0])), TryParseInt(temps[1]));
+            text = string.Format("๐ เวทย์ฟื้นฟูที่ได้รับ {0} +{1}%", GetSkillName(RemoveQuote(temps[0])), TryParseInt(temps[1]));
         }
         if (text.Contains("bonus bAddItemHealRate,"))
         {

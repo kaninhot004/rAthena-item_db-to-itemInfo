@@ -1,35 +1,10 @@
-  - Id: 18982
-    AegisName: Old_Circlet_Of_Bone
-    Name: Old Circlet Of Bones
-    Type: Armor
-    Buy: 10
-    Weight: 100
-    Defense: 10
-    Slots: 1
-    Jobs:
-      Assassin: true
-    Classes:
-      All_Third: true
+  - Id: 24185
+    AegisName: S_Bearers_Pendent
+    Name: Bearer's Shadow Pendant
+    Type: Shadowgear
     Locations:
-      Head_Top: true
-    EquipLevelMin: 170
+      Shadow_Left_Accessory: true
+    EquipLevelMin: 1
     Refineable: true
-    View: 1141
-    Trade:
-      Override: 100
-      NoDrop: true
-      NoTrade: true
-      NoSell: true
-      NoCart: true
-      NoGuildStorage: true
-      NoMail: true
-      NoAuction: true
     Script: |
-      .@r = getrefine();
-      bonus bAllStats,1;
-      bonus bCritAtkRate,.@r;
-      bonus bAspdRate,.@r;
-      bonus bMaxHPrate,(.@r/2);
-      bonus bMaxSPrate,(.@r/2);
-      bonus2 bSkillAtk,"GC_CROSSIMPACT",15*(.@r/2);
-      bonus2 bSkillAtk,"GC_CROSSRIPPERSLASHER",20*(.@r/2);
+      bonus bBaseAtk,5+(getrefine()/2);
