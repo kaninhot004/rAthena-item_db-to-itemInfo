@@ -1,14 +1,13 @@
-  - Id: 5815
-    AegisName: Classic_Hat_J
-    Name: Classic Hat
-    Type: Armor
-    Buy: 20
-    Weight: 500
-    Defense: 2
-    Locations:
-      Head_Top: true
-    Refineable: true
-    View: 475
+  - Id: 619
+    AegisName: Unripe_Apple
+    Name: Unripe Apple
+    Type: Usable
+    Buy: 1000
+    Weight: 50
+    Flags:
+      BuyingStore: true
+    NoUse:
+      Override: 100
+      Sitting: true
     Script: |
-      bonus bStr,1;
-      bonus2 bSubSize,Size_All,5;
+      pet 1002;

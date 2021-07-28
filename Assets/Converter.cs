@@ -129,6 +129,52 @@ public class Converter : MonoBehaviour
     List<string> enchantIds = new List<string>();
 
     [Button]
+    public void FetchMonsterName()
+    {
+        if (!File.Exists(Application.dataPath + "/Assets/mob_db.txt"))
+        {
+            isConvertError = true;
+            return;
+        }
+        var mobDb = File.ReadAllText(Application.dataPath + "/Assets/mob_db.txt");
+        var lines = mobDb.Split('\n');
+        monsterNameDatas = new List<MonsterNameData>();
+        MonsterNameData monsterNameData = new MonsterNameData();
+        for (int i = 0; i < lines.Length; i++)
+        {
+            var text = lines[i];
+
+            // Null
+            if (string.IsNullOrEmpty(text) || string.IsNullOrWhiteSpace(text))
+                continue;
+
+            if (text.Contains("#"))
+                text = text.Substring(0, text.IndexOf("#"));
+
+            // Id
+            if (text.Contains("  - Id:"))
+                monsterNameData.id = int.Parse(RemoveSpace(text).Replace("-Id:", string.Empty));
+            // Name
+            else if (text.Contains("    Name:"))
+            {
+                monsterNameData.monsterName = RemoveQuote(text.Replace("    Name: ", string.Empty));
+                monsterNameDatas.Add(monsterNameData);
+                monsterNameData = new MonsterNameData();
+            }
+        }
+        Debug.Log("monsterNameDatas.Count:" + monsterNameDatas.Count);
+    }
+
+    List<MonsterNameData> monsterNameDatas = new List<MonsterNameData>();
+
+    [Serializable]
+    public class MonsterNameData
+    {
+        public int id;
+        public string monsterName;
+    }
+
+    [Button]
     public void FetchClassNum()
     {
         if (!File.Exists(Application.dataPath + "/Assets/classNum.txt"))
@@ -2487,6 +2533,14 @@ public class Converter : MonoBehaviour
             var temps = MergeMath(temp.Split(','));
             text = string.Format("๐ รับ {0} {1} ชิ้น", GetItemName(RemoveQuote(temps[0])), TryParseInt(temps[1]));
         }
+        // pet
+        if (text.Contains("pet "))
+        {
+            var temp = text.Replace("pet ", string.Empty);
+            var temps = MergeMath(temp.Split(','));
+            text = string.Format("๐ สำหรับจับ {0}", GetMonsterNameFromId(RemoveQuote(temps[0])));
+        }
+
         text = text.Replace("sc_end_class", "๐ ลบ Buff ทุกอย่าง");
 
         // All in one parse...
@@ -2856,5 +2910,20 @@ public class Converter : MonoBehaviour
                 return item.classNum;
         }
         return "0";
+    }
+
+    string GetMonsterNameFromId(string text)
+    {
+        int _int = 0;
+        if (int.TryParse(text, out _int))
+        {
+            _int = int.Parse(text);
+            foreach (var item in monsterNameDatas)
+            {
+                if (item.id == _int)
+                    return item.monsterName;
+            }
+        }
+        return string.Empty;
     }
 }

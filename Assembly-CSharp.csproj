@@ -70,6 +70,7 @@
     <None Include="Assets\Assets\skill_db.txt" />
     <None Include="Assets\Assets\item_db_etc.txt" />
     <None Include="Assets\Assets\classNum.txt" />
+    <None Include="Assets\Assets\mob_db.txt" />
     <None Include="Assets\Assets\item_db_test.txt" />
     <None Include="Assets\Assets\item_db_usable.txt" />
     <None Include="Assets\Assets\item_db_equip.txt" />
