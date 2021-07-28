@@ -1,13 +1,24 @@
-  - Id: 619
-    AegisName: Unripe_Apple
-    Name: Unripe Apple
+  - Id: 12622
+    AegisName: Boarding_Halter
+    Name: Reins Of Mount
     Type: Usable
-    Buy: 1000
-    Weight: 50
     Flags:
-      BuyingStore: true
-    NoUse:
+      NoConsume: true
+    Delay:
+      Duration: 3000
+      Status: All_Riding_Reuse_Limit
+    Trade:
       Override: 100
-      Sitting: true
+      NoDrop: true
+      NoTrade: true
+      NoSell: true
+      NoCart: true
+      NoStorage: true
+      NoGuildStorage: true
+      NoMail: true
+      NoAuction: true
     Script: |
-      pet 1002;
+      setmounting();
+    UnEquipScript: |
+      if (ismounting())
+         setmounting();

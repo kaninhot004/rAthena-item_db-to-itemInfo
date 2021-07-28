@@ -1,17 +1,19 @@
 ﻿tbl = {
-	[619] = {
-		unidentifiedDisplayName = "Unripe Apple",
-		unidentifiedResourceName = "ด๚ภอภบป็ฐ๚",
+	[12622] = {
+		unidentifiedDisplayName = "Reins Of Mount",
+		unidentifiedResourceName = "ลพฝยฟ๋ฐํป฿",
 		unidentifiedDescriptionName = {
 			""
 		},
-		identifiedDisplayName = "Unripe Apple",
-		identifiedResourceName = "ด๚ภอภบป็ฐ๚",
+		identifiedDisplayName = "Reins Of Mount",
+		identifiedResourceName = "ลพฝยฟ๋ฐํป฿",
 		identifiedDescriptionName = {
-			"๐ สำหรับจับ Poring",
-			"^3F28FFID:^000000 619",
+			"๐ ขึ้น/ลง พาหนะ",
+			"    ^666478[เมื่อถอด]^000000",
+			"ถ้า(หากขี่หาหนะ)",
+			"   ๐ ขึ้น/ลง พาหนะ",
+			"^3F28FFID:^000000 12622",
 			"^3F28FFประเภท:^000000 Usable",
-			"^3F28FFน้ำหนัก:^000000 5",
 			""
 		},
 		slotCount = 0,

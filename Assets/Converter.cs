@@ -1356,6 +1356,9 @@ public class Converter : MonoBehaviour
 
         text = text.Replace(";", string.Empty);
 
+        text = text.Replace("UnEquipScript: |", "^666478[เมื่อถอด]^000000");
+        text = text.Replace("EquipScript: |", "^666478[เมื่อสวมใส่]^000000");
+
         text = text.Replace("bonus bStr,", "๐ STR +");
         text = text.Replace("bonus bAgi,", "๐ AGI +");
         text = text.Replace("bonus bVit,", "๐ VIT +");
@@ -2551,8 +2554,8 @@ public class Converter : MonoBehaviour
             var temps = MergeMath(temp.Split(','));
             text = string.Format("๐ สำหรับจับ {0}", GetMonsterNameFromId(RemoveQuote(temps[0])));
         }
-
         text = text.Replace("sc_end_class", "๐ ลบ Buff ทุกอย่าง");
+        text = text.Replace("setmounting()", "๐ ขึ้น/ลง พาหนะ");
 
         // All in one parse...
         text = AllInOneParse(text);
@@ -2782,6 +2785,7 @@ public class Converter : MonoBehaviour
         text = text.Replace("EAJ_THIRDMASK", "คลาส 3");
         text = text.Replace("getequiprefinerycnt", "จำนวนตีบวก");
         text = text.Replace("getrefine()", "จำนวนตีบวก");
+        text = text.Replace("ismounting()", "หากขี่หาหนะ");
         text = text.Replace("getskilllv", "Lv. Skill");
         text = text.Replace("pow (", "ยกกำลัง(");
         text = text.Replace("pow(", "ยกกำลัง(");
