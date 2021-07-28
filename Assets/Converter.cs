@@ -1273,6 +1273,10 @@ public class Converter : MonoBehaviour
 
     string ConvertItemBonus(string text)
     {
+        // Wrong wording fix
+        text = text.Replace("Ele_dark", "Ele_Dark");
+        // End wrong wording fix
+
         text = text.Replace("      ", string.Empty);
 
         // autobonus3
@@ -2709,11 +2713,18 @@ public class Converter : MonoBehaviour
         text = text.Replace("ATF_SELF", "ตนเอง");
         text = text.Replace("ATF_TARGET", "เป้าหมาย");
         text = text.Replace("ATF_SHORT", "โจมตีกายภาพ ระยะใกล้");
+        text = text.Replace("BF_SHORT", "โจมตีกายภาพ ระยะใกล้");
         text = text.Replace("ATF_LONG", "โจมตีกายภาพ ระยะไกล");
+        text = text.Replace("BF_LONG", "โจมตีกายภาพ ระยะไกล");
         text = text.Replace("ATF_SKILL", "ใช้ Skill");
         text = text.Replace("ATF_WEAPON", "โจมตี");
+        text = text.Replace("BF_WEAPON", "โจมตี");
         text = text.Replace("ATF_MAGIC", "ใช้ Skill");
+        text = text.Replace("BF_MAGIC", "ใช้ Skill");
+        text = text.Replace("BF_SKILL", "ใช้ Skill");
         text = text.Replace("ATF_MISC", "ใช้ Skill อื่น ๆ");
+        text = text.Replace("BF_MISC", "ใช้ Skill อื่น ๆ");
+        text = text.Replace("BF_NORMAL", "โจมตีกายภาพ");
         return text;
     }
 
@@ -2818,6 +2829,9 @@ public class Converter : MonoBehaviour
 
     string TryParseInt(string text, int divider = 1)
     {
+        if (text == "INFINITE_TICK")
+            return "ถาวร";
+
         float sum = -1;
         if (float.TryParse(text, out sum))
             sum = int.Parse(text);

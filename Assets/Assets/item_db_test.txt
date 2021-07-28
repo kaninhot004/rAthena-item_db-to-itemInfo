@@ -1,24 +1,35 @@
-  - Id: 12622
-    AegisName: Boarding_Halter
-    Name: Reins Of Mount
-    Type: Usable
-    Flags:
-      NoConsume: true
-    Delay:
-      Duration: 3000
-      Status: All_Riding_Reuse_Limit
+  - Id: 18982
+    AegisName: Old_Circlet_Of_Bone
+    Name: Old Circlet Of Bones
+    Type: Armor
+    Buy: 10
+    Weight: 100
+    Defense: 10
+    Slots: 1
+    Jobs:
+      Assassin: true
+    Classes:
+      All_Third: true
+    Locations:
+      Head_Top: true
+    EquipLevelMin: 170
+    Refineable: true
+    View: 1141
     Trade:
       Override: 100
       NoDrop: true
       NoTrade: true
       NoSell: true
       NoCart: true
-      NoStorage: true
       NoGuildStorage: true
       NoMail: true
       NoAuction: true
     Script: |
-      setmounting();
-    UnEquipScript: |
-      if (ismounting())
-         setmounting();
+      .@r = getrefine();
+      bonus bAllStats,1;
+      bonus bCritAtkRate,.@r;
+      bonus bAspdRate,.@r;
+      bonus bMaxHPrate,(.@r/2);
+      bonus bMaxSPrate,(.@r/2);
+      bonus2 bSkillAtk,"GC_CROSSIMPACT",15*(.@r/2);
+      bonus2 bSkillAtk,"GC_CROSSRIPPERSLASHER",20*(.@r/2);
