@@ -1275,6 +1275,7 @@ public class Converter : MonoBehaviour
     {
         // Wrong wording fix
         text = text.Replace("Ele_dark", "Ele_Dark");
+        text = text.Replace("bonus2 bIgnoreMDefRaceRate", "bonus2 bIgnoreMdefRaceRate");
         // End wrong wording fix
 
         text = text.Replace("      ", string.Empty);

@@ -1,10 +1,33 @@
-  - Id: 24185
-    AegisName: S_Bearers_Pendent
-    Name: Bearer's Shadow Pendant
-    Type: Shadowgear
+  - Id: 20967
+    AegisName: Temporal_M_Dex
+    Name: Temporal Dex Manteau
+    Type: Armor
+    Weight: 400
+    Defense: 38
+    Slots: 1
+    Classes:
+      All_Third: true
     Locations:
-      Shadow_Left_Accessory: true
-    EquipLevelMin: 1
+      Garment: true
+    EquipLevelMin: 100
     Refineable: true
     Script: |
-      bonus bBaseAtk,5+(getrefine()/2);
+      .@r = getrefine();
+      bonus bLongAtkRate,(.@r/2);
+      bonus bBaseAtk,10*(.@r/2);
+      bonus bCritAtkRate,3*(.@r/4);
+      if (.@r>=7) {
+         bonus2 bAddClass,Class_All,7;
+      }
+      if (.@r>=9) {
+         bonus2 bIgnoreDefRaceRate,RC_Demon,20;
+         bonus2 bIgnoreMDefRaceRate,RC_Demon,20;
+         bonus2 bIgnoreDefRaceRate,RC_Brute,20;
+         bonus2 bIgnoreMDefRaceRate,RC_Brute,20;
+      }
+      if (.@r>=11) {
+         bonus2 bIgnoreDefRaceRate,RC_Demon,10;
+         bonus2 bIgnoreMDefRaceRate,RC_Demon,10;
+         bonus2 bIgnoreDefRaceRate,RC_Brute,10;
+         bonus2 bIgnoreMDefRaceRate,RC_Brute,10;
+      }
