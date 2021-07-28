@@ -669,6 +669,17 @@ public class Converter : MonoBehaviour
 
         yield return new WaitForSeconds(1);
 
+        txtConvertProgression.text = "Fetching monster name data...";
+        yield return null;
+        FetchMonsterName();
+        if (isConvertError)
+        {
+            txtConvertProgression.text = "<color=red>Error</color> - Fetching monster name data...";
+            yield break;
+        }
+
+        yield return new WaitForSeconds(1);
+
         txtConvertProgression.text = "Convert process take 20~30 minutes please wait.";
 
         yield return new WaitForSeconds(1);
