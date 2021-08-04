@@ -1,20 +1,22 @@
-  - Id: 28429
-    AegisName: Arquien's_Necklace
-    Name: Arquien's Necklace
-    Type: Armor
+  - Id: 1284
+    AegisName: Krishna
+    Name: Krishna
+    Type: Weapon
+    SubType: Katar
     Buy: 20
-    Weight: 100
-    Slots: 1
+    Weight: 1200
+    Attack: 120
+    Range: 1
+    Slots: 2
+    Jobs:
+      Assassin: true
+    Classes:
+      All_Upper: true
     Locations:
-      Both_Accessory: true
-    EquipLevelMin: 20
+      Both_Hand: true
+    WeaponLevel: 3
+    EquipLevelMin: 50
+    Refineable: true
     Script: |
-      bonus2 bSkillAtk,"MC_CARTREVOLUTION",Baselevel;
-      bonus2 bSkillAtk,"NC_AXETORNADO",(Baselevel/3);
-      bonus2 bSkillAtk,"NC_POWERSWING",(Baselevel/5);
-      bonus2 bSkillUseSP,"NC_POWERSWING",2;
-      bonus2 bAddMonsterDropItem,529,2000;
-      bonus2 bAddMonsterDropItem,530,2000;
-      bonus2 bAddMonsterDropItem,573,150;
-      bonus2 bAddItemHealRate,529,100;
-      bonus2 bAddItemHealRate,530,100;
+      bonus2 bSkillAtk,"AS_GRIMTOOTH",10;
+      bonus3 bAutoSpell,"AS_SONICBLOW",max(getskilllv("AS_SONICBLOW"),1),100;

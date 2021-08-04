@@ -2832,7 +2832,6 @@ public class Converter : MonoBehaviour
         text = text.Replace(":", " ถ้าไม่ใช่ ");
 
         text = ParseEQI(text);
-
         bool isHadQuote = text.Contains("\"");
         text = RemoveQuote(text);
         if (isHadQuote)
