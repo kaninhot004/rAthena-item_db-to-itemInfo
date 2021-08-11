@@ -3551,6 +3551,7 @@ Body:
     Script: |
       bonus bCritical,30;
       bonus3 bAddMonsterDropItem,517,RC_Brute,5000;
+      bonus2 bAddRace,RC_DemiHuman,3;
   - Id: 1230
     AegisName: House_Auger
     Name: Ice Pick
@@ -6047,6 +6048,41 @@ Body:
       bonus2 bSkillAtk,"NC_AXETORNADO",(100+.@val);
       bonus2 bSkillAtk,"NC_AXEBOOMERANG",(100+.@val);
       bonus2 bSkillAtk,"GN_CART_TORNADO",(75+.@val);
+  - Id: 1331
+    AegisName: Variant_Axe
+    Name: Abyss Axe
+    Type: Weapon
+    SubType: 1hAxe
+    Weight: 1800
+    Attack: 180
+    MagicAttack: 110
+    Range: 1
+    Slots: 1
+    Jobs:
+      Alchemist: true
+      Assassin: true
+      Blacksmith: true
+      Crusader: true
+      Knight: true
+      SuperNovice: true
+    Classes:
+      All_Third: true
+    Locations:
+      Right_Hand: true
+    WeaponLevel: 4
+    EquipLevelMin: 165
+    Refineable: true
+    Script: |
+      .@r = getrefine();
+      bonus bUnbreakableWeapon;
+      if (.@r>=7) {
+         bonus2 bAddRace,RC_All,5;
+         bonus2 bSubRace,RC_Player_Human,5;
+      }
+      if (.@r>=9) {
+         bonus2 bAddRace,RC_All,5;
+         bonus2 bSubRace,RC_Player_Human,5;
+      }
   - Id: 1333
     AegisName: Golden_Wrench
     Name: Golden Wrench
@@ -17579,6 +17615,37 @@ Body:
       bonus bAspdRate,10;
       if (getrefine()>=7) {
          bonus2 bSkillAtk,"SR_TIGERCANNON",15;
+      }
+  - Id: 1861
+    AegisName: Variant_Claw
+    Name: Abyss Claw
+    Type: Weapon
+    SubType: Knuckle
+    Weight: 400
+    Attack: 140
+    MagicAttack: 100
+    Range: 1
+    Slots: 1
+    Jobs:
+      Monk: true
+      Priest: true
+    Classes:
+      All_Third: true
+    Locations:
+      Right_Hand: true
+    WeaponLevel: 4
+    EquipLevelMin: 165
+    Refineable: true
+    Script: |
+      .@r = getrefine();
+      bonus bUnbreakableWeapon;
+      if (.@r>=7) {
+         bonus2 bAddRace,RC_All,5;
+         bonus2 bSubRace,RC_Player_Human,5;
+      }
+      if (.@r>=9) {
+         bonus2 bAddRace,RC_All,5;
+         bonus2 bSubRace,RC_Player_Human,5;
       }
   - Id: 1862
     AegisName: Burning_Knuckle_OS
@@ -48791,6 +48858,7 @@ Body:
       Head_Top: true
     EquipLevelMin: 70
     View: 600
+    Refineable: true
     Script: |
       bonus bSPGainValue,2;
       bonus bMagicSPGainValue,2;
@@ -56484,7 +56552,7 @@ Body:
          bonus bBaseAtk,((.@i-2)*5);
   - Id: 13081
     AegisName: Octo_kitchen_Knife
-    Name: Discount knife Octopus
+    Name: Octopus Knife
     Type: Weapon
     SubType: Dagger
     Buy: 200000
@@ -56596,6 +56664,7 @@ Body:
       Right_Hand: true
     WeaponLevel: 4
     EquipLevelMin: 60
+    Refineable: true
     Script: |
       bonus bAtkEle,Ele_Fire;
       bonus bAgi,2;
@@ -57878,6 +57947,7 @@ Body:
       NoGuildStorage: true
       NoMail: true
       NoAuction: true
+    Refineable: true
     Script: |
       bonus bAspdRate,10;
       if (getrefine()>=7) {
@@ -59888,12 +59958,43 @@ Body:
       NoGuildStorage: true
       NoMail: true
       NoAuction: true
+    Refineable: true
     Script: |
       bonus bUnbreakableWeapon;
       bonus bVariableCastrate,-10;
       bonus bMatk,130;
       if (getrefine()>=7) {
          bonus2 bSkillAtk,"KO_HUUMARANKA",15;
+      }
+  - Id: 13343
+    AegisName: Variant_Huuma
+    Name: Abyss Huuma
+    Type: Weapon
+    SubType: Huuma
+    Weight: 1500
+    Attack: 150
+    MagicAttack: 160
+    Range: 3
+    Slots: 1
+    Jobs:
+      KagerouOboro: true
+      Ninja: true
+    Locations:
+      Both_Hand: true
+    WeaponLevel: 4
+    EquipLevelMin: 165
+    Refineable: true
+    Script: |
+      .@r = getrefine();
+      bonus bUnbreakableWeapon;
+      bonus2 bSubRace,RC_Player_Human,30;
+      if (.@r>=7) {
+         bonus2 bAddRace,RC_All,5;
+         bonus2 bSubRace,RC_Player_Human,5;
+      }
+      if (.@r>=9) {
+         bonus2 bAddRace,RC_All,5;
+         bonus2 bSubRace,RC_Player_Human,5;
       }
   - Id: 13345
     AegisName: Humma_Clear
@@ -59979,6 +60080,7 @@ Body:
       Both_Hand: true
     WeaponLevel: 4
     EquipLevelMin: 170
+    Refineable: true
     Script: |
       .@r = getrefine();
       bonus bLongAtkRate,15;
@@ -64394,6 +64496,7 @@ Body:
     Locations:
       Armor: true
     EquipLevelMin: 50
+    Refineable: true
     Script: |
       if (getrefine()>5) {
          .@r = getrefine()-5;
@@ -68346,6 +68449,42 @@ Body:
       if (getrefine()>=7) {
          bonus bCritAtkRate,7;
       }
+  - Id: 16087
+    AegisName: Variant_Mace
+    Name: Abyss Mace
+    Type: Weapon
+    SubType: Mace
+    Weight: 1500
+    Attack: 150
+    MagicAttack: 110
+    Range: 1
+    Slots: 1
+    Jobs:
+      Alchemist: true
+      Blacksmith: true
+      Crusader: true
+      Knight: true
+      Monk: true
+      Priest: true
+      SuperNovice: true
+    Classes:
+      All_Third: true
+    Locations:
+      Right_Hand: true
+    WeaponLevel: 4
+    EquipLevelMin: 165
+    Refineable: true
+    Script: |
+      .@r = getrefine();
+      bonus bUnbreakableWeapon;
+      if (.@r>=7) {
+         bonus2 bAddClass,Class_All,5;
+         bonus2 bSubRace,RC_Player_Human,5;
+      }
+      if (.@r>=9) {
+         bonus2 bAddClass,Class_All,5;
+         bonus2 bSubRace,RC_Player_Human,5;
+      }
   - Id: 16088
     AegisName: Saphir_Hall_OS
     Name: Sapphire Mace-OS
@@ -69789,6 +69928,7 @@ Body:
       NoGuildStorage: true
       NoMail: true
       NoAuction: true
+    Refineable: true
     Script: |
       bonus bLongAtkRate,5;
       if (getrefine()>=7) {
@@ -69822,6 +69962,7 @@ Body:
       NoGuildStorage: true
       NoMail: true
       NoAuction: true
+    Refineable: true
     Script: |
       bonus bLongAtkRate,5;
       if (getrefine()>=7) {
@@ -69885,6 +70026,39 @@ Body:
                bonus2 bAddRace,RC_Player_Doram,30;
             }
          }
+      }
+  - Id: 18177
+    AegisName: Variant_Wing
+    Name: Abyss Wing
+    Type: Weapon
+    SubType: Bow
+    Weight: 900
+    Attack: 160
+    MagicAttack: 170
+    Range: 5
+    Slots: 1
+    Jobs:
+      BardDancer: true
+      Hunter: true
+      Rogue: true
+    Classes:
+      All_Third: true
+    Locations:
+      Both_Hand: true
+    WeaponLevel: 4
+    EquipLevelMin: 165
+    Refineable: true
+    Script: |
+      .@r = getrefine();
+      bonus bUnbreakableWeapon;
+      bonus2 bSubRace,RC_Player_Human,30;
+      if (.@r>=7) {
+         bonus2 bAddRace,RC_All,5;
+         bonus2 bSubRace,RC_Player_Human,5;
+      }
+      if (.@r>=9) {
+         bonus2 bAddRace,RC_All,5;
+         bonus2 bSubRace,RC_Player_Human,5;
       }
   - Id: 18178
     AegisName: Virtual_Bow_OS
@@ -70249,6 +70423,7 @@ Body:
       Both_Hand: true
     WeaponLevel: 4
     EquipLevelMin: 170
+    Refineable: true
     Script: |
       .@r = getrefine();
       bonus bLongAtkRate,15;
@@ -70277,6 +70452,7 @@ Body:
       Both_Hand: true
     WeaponLevel: 4
     EquipLevelMin: 170
+    Refineable: true
     Script: |
       .@r = getrefine();
       bonus bLongAtkRate,15;
@@ -74987,6 +75163,7 @@ Body:
     Locations:
       Head_Top: true
     View: 908
+    Refineable: true
     Script: |
       bonus bInt,1;
       bonus bVit,2;
@@ -79009,6 +79186,7 @@ Body:
       Head_Top: true
     EquipLevelMin: 100
     View: 1552
+    Refineable: true
     Script: |
       .@bonus = (getrefine() >= 7 ? 12 : 10);
       bonus2 bSubRace,RC_DemiHuman,.@bonus;
@@ -80018,6 +80196,7 @@ Body:
       Head_Top: true
     EquipLevelMin: 120
     View: 4
+    Refineable: true
     Script: |
       bonus bMatkRate,1;
       bonus bMatk,(2*getrefine());
@@ -81263,6 +81442,37 @@ Body:
       Head_Mid: true
     EquipLevelMin: 100
     View: 1093
+    Script: |
+      skill "MC_IDENTIFY",1,0;
+      .@a = readparam(bStr);
+      .@b = readparam(bAgi);
+      .@c = readparam(bVit);
+      .@d = readparam(bInt);
+      .@e = readparam(bDex);
+      .@f = readparam(bLuk);
+      bonus bHit,2*(.@a/18);
+      bonus bMaxHPrate,2*(.@a/18);
+      bonus bFlee,2*(.@b/18);
+      bonus bDelayrate,-2*(.@b/18);
+      bonus bMdef,2*(.@c/18);
+      bonus bVariableCastrate,-2*(.@c/18);
+      bonus bMaxSPrate,2*(.@d/18);
+      bonus bUseSPrate,-2*(.@d/18);
+      bonus bCritical,2*(.@e/18);
+      bonus bAspdRate,2*(.@e/18);
+      bonus bBaseAtk,15*(.@f/18);
+      bonus bMatk,15*(.@f/18);
+      bonus bDef,20*(.@f/18);
+  - Id: 19452
+    AegisName: Heavenly_Order_
+    Name: Heavenly Order
+    Type: Armor
+    View: 1093
+    Buy: 20
+    Slots: 1
+    Locations:
+      Head_Mid: true
+    EquipLevelMin: 100
     Script: |
       skill "MC_IDENTIFY",1,0;
       .@a = readparam(bStr);
@@ -94376,6 +94586,7 @@ Body:
       NoGuildStorage: true
       NoMail: true
       NoAuction: true
+    Refineable: true
     Script: |
       bonus bAspdRate,10;
       if (getrefine()>=7) {
@@ -94430,6 +94641,38 @@ Body:
          bonus bCritAtkRate,10;
       if (.@r>=9)
          bonus bUnbreakableWeapon;
+  - Id: 21046
+    AegisName: Variant_Claymore
+    Name: Abyss Claymore
+    Type: Weapon
+    SubType: 2hSword
+    Weight: 3400
+    Attack: 280
+    MagicAttack: 230
+    Range: 1
+    Slots: 1
+    Jobs:
+      Crusader: true
+      Knight: true
+    Classes:
+      All_Third: true
+    Locations:
+      Both_Hand: true
+    WeaponLevel: 4
+    EquipLevelMin: 165
+    Refineable: true
+    Script: |
+      .@r = getrefine();
+      bonus bUnbreakableWeapon;
+      bonus2 bSubRace,RC_Player_Human,30;
+      if (.@r>=7) {
+         bonus2 bAddRace,RC_All,5;
+         bonus2 bSubRace,RC_Player_Human,5;
+      }
+      if (.@r>=9) {
+         bonus2 bAddRace,RC_All,5;
+         bonus2 bSubRace,RC_Player_Human,5;
+      }
   - Id: 21047
     AegisName: Beam_Claymore_OS
     Name: Beam Claymor-OS
@@ -94493,6 +94736,7 @@ Body:
       NoGuildStorage: true
       NoMail: true
       NoAuction: true
+    Refineable: true
     Script: |
       .@r = getrefine();
       bonus bBaseAtk,10*(.@r/2);
@@ -94648,6 +94892,7 @@ Body:
       Both_Hand: true
     WeaponLevel: 4
     EquipLevelMin: 170
+    Refineable: true
     Script: |
       .@r = getrefine();
       bonus2 bAddClass,Class_All,5;
@@ -108843,6 +109088,7 @@ Body:
       NoGuildStorage: true
       NoMail: true
       NoAuction: true
+    Refineable: true
     Script: |
       bonus bAspdRate,10;
       if (getrefine()>=7) {
@@ -108875,6 +109121,38 @@ Body:
          bonus2 bAddClass,Class_All,5;
       if (.@r>=9)
          bonus2 bAddRace,RC_All,15;
+  - Id: 26021
+    AegisName: Variant_Lance
+    Name: Abyss Lance
+    Type: Weapon
+    SubType: 2hSpear
+    Weight: 3500
+    Attack: 200
+    MagicAttack: 230
+    Range: 3
+    Slots: 1
+    Jobs:
+      Crusader: true
+      Knight: true
+    Classes:
+      All_Third: true
+    Locations:
+      Both_Hand: true
+    WeaponLevel: 4
+    EquipLevelMin: 165
+    Refineable: true
+    Script: |
+      .@r = getrefine();
+      bonus bUnbreakableWeapon;
+      bonus2 bSubRace,RC_Player_Human,30;
+      if (.@r>=7) {
+         bonus2 bAddRace,RC_All,5;
+         bonus2 bSubRace,RC_Player_Human,5;
+      }
+      if (.@r>=9) {
+         bonus2 bAddRace,RC_All,5;
+         bonus2 bSubRace,RC_Player_Human,5;
+      }
   - Id: 26100
     AegisName: P_Foxtail2
     Name: Eden Group Foxtail Staff II
@@ -109375,6 +109653,71 @@ Body:
          bonus bBaseAtk,30;
          bonus bHit,5;
          bonus bMatkRate,4;
+      }
+  - Id: 26149
+    AegisName: Variant_Wand
+    Name: Abyss Wand
+    Type: Weapon
+    SubType: Staff
+    Weight: 300
+    Attack: 60
+    MagicAttack: 180
+    Range: 1
+    Slots: 1
+    Jobs:
+      Monk: true
+      Priest: true
+      Sage: true
+      SoulLinker: true
+      SuperNovice: true
+      Wizard: true
+    Classes:
+      All_Third: true
+    Locations:
+      Right_Hand: true
+    WeaponLevel: 4
+    EquipLevelMin: 165
+    Refineable: true
+    Script: |
+      .@r = getrefine();
+      bonus bUnbreakableWeapon;
+      bonus bHealPower,.@r*2;
+      if (.@r>=7) {
+         bonus2 bMagicAddClass,Class_All,5;
+         bonus2 bSubRace,RC_Player_Human,5;
+      }
+      if (.@r>=9) {
+         bonus2 bMagicAddClass,Class_All,5;
+         bonus2 bSubRace,RC_Player_Human,5;
+      }
+  - Id: 26150
+    AegisName: Variant_Foxtail
+    Name: Abyss Foxtail
+    Type: Weapon
+    SubType: Staff
+    Weight: 400
+    Attack: 150
+    MagicAttack: 180
+    Range: 1
+    Slots: 1
+    Jobs:
+      Summoner: true
+    Locations:
+      Right_Hand: true
+    WeaponLevel: 4
+    EquipLevelMin: 165
+    Refineable: true
+    Script: |
+      .@r = getrefine();
+      bonus bUnbreakableWeapon;
+      bonus bHealPower,.@r*2;
+      if (.@r>=7) {
+         bonus2 bMagicAddClass,Class_All,5;
+         bonus2 bSubRace,RC_Player_Human,5;
+      }
+      if (.@r>=9) {
+         bonus2 bMagicAddClass,Class_All,5;
+         bonus2 bSubRace,RC_Player_Human,5;
       }
   - Id: 26151
     AegisName: Rutilus_Stick_OS
@@ -110427,10 +110770,42 @@ Body:
       NoGuildStorage: true
       NoMail: true
       NoAuction: true
+    Refineable: true
     Script: |
       bonus bAspdRate,10;
       if (getrefine()>=7) {
          bonus bCritAtkRate,7;
+      }
+  - Id: 28037
+    AegisName: Variant_Katar
+    Name: Abyss Katar
+    Type: Weapon
+    SubType: Katar
+    Weight: 2800
+    Attack: 150
+    MagicAttack: 250
+    Range: 1
+    Slots: 1
+    Jobs:
+      Assassin: true
+    Classes:
+      All_Third: true
+    Locations:
+      Both_Hand: true
+    WeaponLevel: 4
+    EquipLevelMin: 165
+    Refineable: true
+    Script: |
+      .@r = getrefine();
+      bonus bUnbreakableWeapon;
+      bonus2 bSubRace,RC_Player_Human,30;
+      if (.@r>=7) {
+         bonus2 bAddRace,RC_All,5;
+         bonus2 bSubRace,RC_Player_Human,5;
+      }
+      if (.@r>=9) {
+         bonus2 bAddRace,RC_All,5;
+         bonus2 bSubRace,RC_Player_Human,5;
       }
   - Id: 28038
     AegisName: Meuchler_OS
@@ -110525,6 +110900,7 @@ Body:
       NoGuildStorage: true
       NoMail: true
       NoAuction: true
+    Refineable: true
     Script: |
       .@r = getrefine();
       bonus bBaseAtk,10*(.@r/2);
@@ -110611,6 +110987,7 @@ Body:
       Both_Hand: true
     WeaponLevel: 4
     EquipLevelMin: 170
+    Refineable: true
     Script: |
       .@r = getrefine();
       bonus2 bAddClass,Class_All,10;
@@ -110643,6 +111020,7 @@ Body:
       Both_Hand: true
     WeaponLevel: 4
     EquipLevelMin: 170
+    Refineable: true
     Script: |
       .@r = getrefine();
       bonus2 bAddClass,Class_All,5;
@@ -111094,6 +111472,42 @@ Body:
       if (.@r>=11) {
          bonus2 bAddSize,Size_All,15;
       }
+  - Id: 28135
+    AegisName: Variant_Twohand_Axe
+    Name: Abyss Two Hand Axe
+    Type: Weapon
+    SubType: 2hAxe
+    Weight: 4000
+    Attack: 320
+    MagicAttack: 200
+    Range: 1
+    Slots: 1
+    Jobs:
+      Alchemist: true
+      Assassin: true
+      Blacksmith: true
+      Crusader: true
+      Knight: true
+      SuperNovice: true
+    Classes:
+      All_Third: true
+    Locations:
+      Both_Hand: true
+    WeaponLevel: 4
+    EquipLevelMin: 165
+    Refineable: true
+    Script: |
+      .@r = getrefine();
+      bonus bUnbreakableWeapon;
+      bonus2 bSubRace,RC_Player_Human,30;
+      if (.@r>=7) {
+         bonus2 bAddRace,RC_All,5;
+         bonus2 bSubRace,RC_Player_Human,5;
+      }
+      if (.@r>=9) {
+         bonus2 bAddRace,RC_All,5;
+         bonus2 bSubRace,RC_Player_Human,5;
+      }
   - Id: 28136
     AegisName: Blasti_OS
     Name: Blasti-OS
@@ -111158,6 +111572,7 @@ Body:
       NoGuildStorage: true
       NoMail: true
       NoAuction: true
+    Refineable: true
     Script: |
       .@r = getrefine();
       bonus bUnbreakableWeapon;
@@ -111250,6 +111665,7 @@ Body:
       Both_Hand: true
     WeaponLevel: 4
     EquipLevelMin: 170
+    Refineable: true
     Script: |
       .@r = getrefine();
       bonus2 bSubSize,Size_Medium,10;
@@ -111986,6 +112402,135 @@ Body:
          }
       }
       bonus bLongAtkRate,.@val;
+  - Id: 28249
+    AegisName: Variant_Rifle
+    Name: Abyss Rifle
+    Type: Weapon
+    SubType: Rifle
+    Weight: 850
+    Attack: 170
+    Range: 9
+    Slots: 1
+    Jobs:
+      Rebellion: true
+    Locations:
+      Both_Hand: true
+    WeaponLevel: 4
+    EquipLevelMin: 165
+    Refineable: true
+    Script: |
+      .@r = getrefine();
+      bonus bUnbreakableWeapon;
+      bonus2 bSubRace,RC_Player_Human,30;
+      bonus2 bSkillAtk,"RL_HAMMER_OF_GOD",7*(readparam(bInt)/10);
+      if (readparam(bInt)>=110) {
+         bonus2 bSkillAtk,"RL_HAMMER_OF_GOD",30;
+      }
+      if (.@r>=7) {
+         bonus2 bAddRace,RC_All,5;
+         bonus2 bSubRace,RC_Player_Human,5;
+      }
+      if (.@r>=9) {
+         bonus2 bAddRace,RC_All,5;
+         bonus2 bSubRace,RC_Player_Human,5;
+      }
+  - Id: 28250
+    AegisName: Variant_Gatling_Gun
+    Name: Abyss Gatling Gun
+    Type: Weapon
+    SubType: Gatling
+    Weight: 2500
+    Attack: 120
+    Range: 9
+    Slots: 1
+    Jobs:
+      Rebellion: true
+    Locations:
+      Both_Hand: true
+    WeaponLevel: 4
+    EquipLevelMin: 165
+    Refineable: true
+    Script: |
+      .@r = getrefine();
+      bonus bUnbreakableWeapon;
+      bonus2 bSubRace,RC_Player_Human,30;
+      bonus2 bSkillAtk,"RL_R_TRIP",7*(readparam(bAgi)/10);
+      if (readparam(bAgi)>=110) {
+         bonus2 bSkillAtk,"RL_R_TRIP",30;
+      }
+      if (.@r>=7) {
+         bonus2 bAddRace,RC_All,5;
+         bonus2 bSubRace,RC_Player_Human,5;
+      }
+      if (.@r>=9) {
+         bonus2 bAddRace,RC_All,5;
+         bonus2 bSubRace,RC_Player_Human,5;
+      }
+  - Id: 28251
+    AegisName: Variant_Shotgun
+    Name: Abyss Shotgun
+    Type: Weapon
+    SubType: Shotgun
+    Weight: 3000
+    Attack: 180
+    Range: 9
+    Slots: 1
+    Jobs:
+      Rebellion: true
+    Locations:
+      Both_Hand: true
+    WeaponLevel: 4
+    EquipLevelMin: 165
+    Refineable: true
+    Script: |
+      .@r = getrefine();
+      bonus bUnbreakableWeapon;
+      bonus bSplashRange,1;
+      bonus2 bSubRace,RC_Player_Human,30;
+      bonus2 bSkillAtk,"RL_SLUGSHOT",7*(readparam(bStr)/10);
+      if (readparam(bStr)>=110) {
+         bonus2 bSkillAtk,"RL_SLUGSHOT",30;
+      }
+      if (.@r>=7) {
+         bonus2 bAddRace,RC_All,5;
+         bonus2 bSubRace,RC_Player_Human,5;
+      }
+      if (.@r>=9) {
+         bonus2 bAddRace,RC_All,5;
+         bonus2 bSubRace,RC_Player_Human,5;
+      }
+  - Id: 28252
+    AegisName: Variant_Launcher
+    Name: Abyss Grenade Gun
+    Type: Weapon
+    SubType: Grenade
+    Weight: 1400
+    Attack: 210
+    Range: 9
+    Slots: 1
+    Jobs:
+      Rebellion: true
+    Locations:
+      Both_Hand: true
+    WeaponLevel: 4
+    EquipLevelMin: 165
+    Refineable: true
+    Script: |
+      .@r = getrefine();
+      bonus bUnbreakableWeapon;
+      bonus2 bSubRace,RC_Player_Human,30;
+      bonus2 bSkillAtk,"RL_D_TAIL",7*(readparam(bLuk)/10);
+      if (readparam(bLuk)>=110) {
+         bonus2 bSkillAtk,"RL_D_TAIL",30;
+      }
+      if (.@r>=7) {
+         bonus2 bAddRace,RC_All,5;
+         bonus2 bSubRace,RC_Player_Human,5;
+      }
+      if (.@r>=9) {
+         bonus2 bAddRace,RC_All,5;
+         bonus2 bSubRace,RC_Player_Human,5;
+      }
   - Id: 28253
     AegisName: HR_S55_OS
     Name: HR-S55-OS
@@ -115260,6 +115805,39 @@ Body:
       bonus2 bAddEle,Ele_Poison,.@val;
       bonus2 bAddEle,Ele_Ghost,.@val;
       bonus2 bSubDefEle,Ele_Dark,-30;
+  - Id: 28627
+    AegisName: Variant_Book
+    Name: Abyss Book
+    Type: Weapon
+    SubType: Book
+    Weight: 800
+    Attack: 120
+    MagicAttack: 140
+    Range: 1
+    Slots: 1
+    Jobs:
+      Priest: true
+      Sage: true
+      StarGladiator: true
+    Classes:
+      All_Third: true
+    Locations:
+      Right_Hand: true
+    WeaponLevel: 4
+    EquipLevelMin: 165
+    Refineable: true
+    Script: |
+      .@r = getrefine();
+      bonus bUnbreakableWeapon;
+      bonus bHealPower,.@r*2;
+      if (.@r>=7) {
+         bonus2 bMagicAddClass,Class_All,5;
+         bonus2 bSubRace,RC_Player_Human,5;
+      }
+      if (.@r>=9) {
+         bonus2 bMagicAddClass,Class_All,5;
+         bonus2 bSubRace,RC_Player_Human,5;
+      }
   - Id: 28629
     AegisName: Circuit_Board_OS
     Name: Circuit Board-OS
@@ -116190,6 +116768,7 @@ Body:
       Right_Hand: true
     WeaponLevel: 4
     EquipLevelMin: 120
+    Refineable: true
     Script: |
       .@r = getrefine();
       bonus bCritical,90;
@@ -116202,6 +116781,53 @@ Body:
                bonus2 bAddEle,Ele_All,20;
             }
          }
+      }
+  - Id: 28753
+    AegisName: Variant_Dagger
+    Name: Abyss Dagger
+    Type: Weapon
+    SubType: Dagger
+    Weight: 600
+    Attack: 120
+    MagicAttack: 120
+    Range: 1
+    Slots: 1
+    Jobs:
+      Alchemist: true
+      Archer: true
+      Assassin: true
+      BardDancer: true
+      Blacksmith: true
+      Crusader: true
+      Hunter: true
+      KagerouOboro: true
+      Knight: true
+      Mage: true
+      Merchant: true
+      Ninja: true
+      Novice: true
+      Rogue: true
+      Sage: true
+      SoulLinker: true
+      SuperNovice: true
+      Swordman: true
+      Thief: true
+      Wizard: true
+    Locations:
+      Right_Hand: true
+    WeaponLevel: 4
+    EquipLevelMin: 165
+    Refineable: true
+    Script: |
+      .@r = getrefine();
+      bonus bUnbreakableWeapon;
+      if (.@r>=7) {
+         bonus2 bAddRace,RC_All,5;
+         bonus2 bSubRace,RC_Player_Human,5;
+      }
+      if (.@r>=9) {
+         bonus2 bAddRace,RC_All,5;
+         bonus2 bSubRace,RC_Player_Human,5;
       }
   - Id: 28755
     AegisName: Kuroiro_OS
@@ -117107,6 +117733,7 @@ Body:
       Left_Hand: true
     EquipLevelMin: 1
     Refineable: true
+    View: 1
     Script: |
       bonus bAspdRate,10;
       bonus2 bAddClass,Class_All,3;
@@ -117135,6 +117762,7 @@ Body:
       Left_Hand: true
     EquipLevelMin: 1
     Refineable: true
+    View: 1
     Script: |
       bonus bAspdRate,10;
       bonus2 bAddClass,Class_All,3;
@@ -117163,6 +117791,7 @@ Body:
       Left_Hand: true
     EquipLevelMin: 1
     Refineable: true
+    View: 1
     Script: |
       bonus bAspdRate,10;
       bonus2 bAddClass,Class_All,5;
@@ -117180,6 +117809,28 @@ Body:
       }
       if (.@r>=12) {
          bonus bDelayrate,-5;
+      }
+  - Id: 28950
+    AegisName: Variant_Shield
+    Name: Abyss Shield
+    Type: Armor
+    Weight: 1200
+    Defense: 150
+    Locations:
+      Left_Hand: true
+    EquipLevelMin: 165
+    Refineable: true
+    View: 1
+    Script: |
+      .@r = getrefine();
+      bonus bUnbreakableWeapon;
+      if (.@r>=6) {
+         bonus2 bResEff,Eff_Fear,50;
+         bonus2 bSubRace,RC_Player_Human,20;
+      }
+      if (.@r>=8) {
+         bonus2 bResEff,Eff_Fear,50;
+         bonus2 bSubRace,RC_Player_Human,10;
       }
   - Id: 28951
     AegisName: Nero_Shield
@@ -123150,6 +123801,37 @@ Body:
          bonus bMaxHPrate,15;
          bonus bMaxSPrate,15;
       }
+  - Id: 32017
+    AegisName: Variant_Spear
+    Name: Abyss Spear
+    Type: Weapon
+    SubType: 1hSpear
+    Weight: 1800
+    Attack: 150
+    MagicAttack: 110
+    Range: 3
+    Slots: 1
+    Jobs:
+      Crusader: true
+      Knight: true
+    Classes:
+      All_Third: true
+    Locations:
+      Right_Hand: true
+    WeaponLevel: 4
+    EquipLevelMin: 165
+    Refineable: true
+    Script: |
+      .@r = getrefine();
+      bonus bUnbreakableWeapon;
+      if (.@r>=7) {
+         bonus2 bAddRace,RC_All,5;
+         bonus2 bSubRace,RC_Player_Human,5;
+      }
+      if (.@r>=9) {
+         bonus2 bAddRace,RC_All,5;
+         bonus2 bSubRace,RC_Player_Human,5;
+      }
   - Id: 32018
     AegisName: Undine_Spear_K
     Name: Aquatic Spear
@@ -123404,6 +124086,68 @@ Body:
       if (.@r>=11) {
          bonus2 bAddRace,RC_Undead,20;
          bonus2 bAddRace,RC_Angel,20;
+      }
+  - Id: 32105
+    AegisName: Variant_Viollin
+    Name: Abyss Violin
+    Type: Weapon
+    SubType: Musical
+    Weight: 250
+    Attack: 180
+    MagicAttack: 120
+    Range: 1
+    Slots: 1
+    Jobs:
+      BardDancer: true
+    Classes:
+      All_Third: true
+    Gender: Male
+    Locations:
+      Right_Hand: true
+    WeaponLevel: 4
+    EquipLevelMin: 165
+    Refineable: true
+    Script: |
+      .@r = getrefine();
+      bonus bUnbreakableWeapon;
+      if (.@r>=7) {
+         bonus2 bSkillAtk,"CG_ARROWVULCAN",150;
+         bonus2 bSubRace,RC_Player_Human,5;
+      }
+      if (.@r>=9) {
+         bonus2 bSkillAtk,"CG_ARROWVULCAN",50;
+         bonus2 bSubRace,RC_Player_Human,5;
+      }
+  - Id: 32106
+    AegisName: Variant_Blade_Whip
+    Name: Abyss Blade Whip
+    Type: Weapon
+    SubType: Whip
+    Weight: 500
+    Attack: 150
+    MagicAttack: 120
+    Range: 2
+    Slots: 1
+    Jobs:
+      BardDancer: true
+    Classes:
+      All_Third: true
+    Gender: Female
+    Locations:
+      Right_Hand: true
+    WeaponLevel: 4
+    EquipLevelMin: 165
+    Refineable: true
+    Script: |
+      .@r = getrefine();
+      bonus bUnbreakableWeapon;
+      if (.@r>=7) {
+         bonus2 bSkillAtk,"CG_ARROWVULCAN",150;
+         bonus2 bSubRace,RC_Player_Human,5;
+      }
+      if (.@r>=9) {
+         bonus2 bSkillAtk,"CG_ARROWVULCAN",50;
+         bonus2 bSubRace,RC_Player_Human,5;
       }
   - Id: 32107
     AegisName: Black_Circle
@@ -124012,6 +124756,34 @@ Body:
          bonus2 bSkillVariableCast,"LG_EARTHDRIVE",-500;
          bonus2 bSkillUseSP,"LG_EARTHDRIVE",25;
       }
+  - Id: 32300
+    AegisName: Variant_Handgun
+    Name: Abyss Hand Gun
+    Type: Weapon
+    SubType: Revolver
+    Weight: 350
+    Attack: 70
+    Range: 7
+    Slots: 1
+    Jobs:
+      Rebellion: true
+    Locations:
+      Both_Hand: true
+    WeaponLevel: 4
+    EquipLevelMin: 165
+    Refineable: true
+    Script: |
+      .@r = getrefine();
+      bonus bUnbreakableWeapon;
+      bonus2 bSubRace,RC_Player_Human,30;
+      if (.@r>=7) {
+         bonus2 bAddRace,RC_All,5;
+         bonus2 bSubRace,RC_Player_Human,5;
+      }
+      if (.@r>=9) {
+         bonus2 bAddRace,RC_All,5;
+         bonus2 bSubRace,RC_Player_Human,5;
+      }
   - Id: 32301
     AegisName: Illusion_Gold_Lux
     Name: Illusion Gold Lux
@@ -124122,6 +124894,7 @@ Body:
       Both_Hand: true
     WeaponLevel: 4
     EquipLevelMin: 170
+    Refineable: true
     Script: |
       .@r = getrefine();
       bonus bLongAtkRate,15;
@@ -126347,6 +127120,7 @@ Body:
       NoGuildStorage: true
       NoMail: true
       NoAuction: true
+    Refineable: true
     Script: |
       .@r = getrefine();
       bonus bBaseAtk,50;
@@ -129144,6 +129918,7 @@ Body:
       NoGuildStorage: true
       NoMail: true
       NoAuction: true
+    Refineable: true
     Script: |
       .@r = getrefine();
       bonus bBaseAtk,100+10*(.@r/2);
@@ -129168,6 +129943,7 @@ Body:
       NoGuildStorage: true
       NoMail: true
       NoAuction: true
+    Refineable: true
     Script: |
       .@r = getrefine();
       bonus bMatk,100+10*(.@r/2);
@@ -129660,6 +130436,7 @@ Body:
       NoGuildStorage: true
       NoMail: true
       NoAuction: true
+    Refineable: true
     Script: |
       .@r = getrefine();
       bonus bMaxSP,200+20*(.@r/2);
@@ -129684,6 +130461,7 @@ Body:
       NoGuildStorage: true
       NoMail: true
       NoAuction: true
+    Refineable: true
     Script: |
       .@r = getrefine();
       bonus bMaxSP,200+20*(.@r/2);
@@ -130109,6 +130887,7 @@ Body:
       NoGuildStorage: true
       NoMail: true
       NoAuction: true
+    Refineable: true
     Script: |
       .@r = getrefine();
       bonus bMaxHP,1000+100*(.@r/2);
@@ -130133,6 +130912,7 @@ Body:
       NoGuildStorage: true
       NoMail: true
       NoAuction: true
+    Refineable: true
     Script: |
       .@r = getrefine();
       bonus bMaxHP,1000+100*(.@r/2);
@@ -131082,7 +131862,7 @@ Body:
     AegisName: Boost_Sword
     Name: Booster Sword
     Type: Weapon
-    SubType: Dagger
+    SubType: 1hSword
     Attack: 160
     Range: 1
     Slots: 2
@@ -131109,7 +131889,7 @@ Body:
     AegisName: Light_Blade
     Name: Light Blade
     Type: Weapon
-    SubType: Dagger
+    SubType: 1hSword
     Weight: 1000
     Attack: 130
     MagicAttack: 170
@@ -131143,7 +131923,7 @@ Body:
     AegisName: Slate_Sword
     Name: Slate Sword
     Type: Weapon
-    SubType: Dagger
+    SubType: 1hSword
     Weight: 1000
     Attack: 190
     Range: 1
@@ -131316,6 +132096,7 @@ Body:
       Right_Hand: true
     WeaponLevel: 4
     EquipLevelMin: 100
+    Refineable: true
     Trade:
       Override: 100
       NoDrop: true
@@ -131364,6 +132145,7 @@ Body:
       Right_Hand: true
     WeaponLevel: 4
     EquipLevelMin: 100
+    Refineable: true
     Trade:
       Override: 100
       NoDrop: true
@@ -131714,6 +132496,7 @@ Body:
       Right_Hand: true
     WeaponLevel: 4
     EquipLevelMin: 100
+    Refineable: true
     Trade:
       Override: 100
       NoDrop: true
@@ -131762,6 +132545,7 @@ Body:
       Right_Hand: true
     WeaponLevel: 4
     EquipLevelMin: 100
+    Refineable: true
     Trade:
       Override: 100
       NoDrop: true
@@ -131949,7 +132733,7 @@ Body:
     AegisName: Boost_Axe
     Name: Booster Axe
     Type: Weapon
-    SubType: 2hSpear
+    SubType: 1hAxe
     Attack: 200
     Range: 1
     Slots: 2
@@ -132043,7 +132827,7 @@ Body:
     AegisName: Boost_Spear
     Name: Booster Spear
     Type: Weapon
-    SubType: 2hSword
+    SubType: 1hSpear
     Attack: 160
     MagicAttack: 160
     Range: 3
@@ -132080,7 +132864,7 @@ Body:
     AegisName: Ep172_1h_Spear
     Name: Gluttony Stick
     Type: Weapon
-    SubType: 2hSpear
+    SubType: 1hSpear
     Weight: 2000
     Attack: 190
     MagicAttack: 200
@@ -132112,7 +132896,7 @@ Body:
     AegisName: BC_B_Spear
     Name: Vanishing Cannon Booster Spear
     Type: Weapon
-    SubType: 2hSpear
+    SubType: 1hSpear
     Attack: 200
     Range: 3
     Jobs:
@@ -132125,6 +132909,7 @@ Body:
       Right_Hand: true
     WeaponLevel: 4
     EquipLevelMin: 100
+    Refineable: true
     Trade:
       Override: 100
       NoDrop: true
@@ -132195,7 +132980,7 @@ Body:
     AegisName: Adulter_F_G_Spear
     Name: Adulter Fides Guardian Spear
     Type: Weapon
-    SubType: 2hSpear
+    SubType: 1hSpear
     Weight: 1800
     Attack: 220
     Range: 3
@@ -132229,7 +133014,7 @@ Body:
     AegisName: Gelerdria_IL
     Name: Illusion Gelerdria
     Type: Weapon
-    SubType: 2hSpear
+    SubType: 1hSpear
     Weight: 2000
     Attack: 170
     Range: 3
@@ -132401,6 +133186,7 @@ Body:
       Right_Hand: true
     WeaponLevel: 4
     EquipLevelMin: 100
+    Refineable: true
     Trade:
       Override: 100
       NoDrop: true
@@ -132895,6 +133681,7 @@ Body:
       Right_Hand: true
     WeaponLevel: 4
     EquipLevelMin: 100
+    Refineable: true
     Trade:
       Override: 100
       NoDrop: true
@@ -132953,6 +133740,7 @@ Body:
       Right_Hand: true
     WeaponLevel: 4
     EquipLevelMin: 100
+    Refineable: true
     Trade:
       Override: 100
       NoDrop: true
@@ -133493,6 +134281,7 @@ Body:
       Right_Hand: true
     WeaponLevel: 4
     EquipLevelMin: 100
+    Refineable: true
     Trade:
       Override: 100
       NoDrop: true
@@ -133539,6 +134328,7 @@ Body:
       Right_Hand: true
     WeaponLevel: 4
     EquipLevelMin: 100
+    Refineable: true
     Trade:
       Override: 100
       NoDrop: true
@@ -133901,6 +134691,7 @@ Body:
       Right_Hand: true
     WeaponLevel: 4
     EquipLevelMin: 100
+    Refineable: true
     Trade:
       Override: 100
       NoDrop: true
@@ -134017,6 +134808,7 @@ Body:
       Right_Hand: true
     WeaponLevel: 4
     EquipLevelMin: 100
+    Refineable: true
     Trade:
       Override: 100
       NoDrop: True
@@ -134241,6 +135033,7 @@ Body:
       Right_Hand: true
     WeaponLevel: 4
     EquipLevelMin: 100
+    Refineable: true
     Trade:
       Override: 100
       NoDrop: true
@@ -134357,6 +135150,7 @@ Body:
       Right_Hand: true
     WeaponLevel: 4
     EquipLevelMin: 100
+    Refineable: true
     Trade:
       Override: 100
       NoDrop: True
@@ -134389,7 +135183,7 @@ Body:
     AegisName: Boost_Mace
     Name: Booster Mace
     Type: Weapon
-    SubType: 2hAxe
+    SubType: Mace
     Attack: 160
     MagicAttack: 160
     Range: 1
@@ -134424,7 +135218,7 @@ Body:
     AegisName: Meteor_Striker
     Name: Meteor Striker
     Type: Weapon
-    SubType: 2hAxe
+    SubType: Mace
     Weight: 3000
     Attack: 300
     Range: 1
@@ -134436,6 +135230,8 @@ Body:
     Locations:
       Both_Hand: true
     WeaponLevel: 4
+    EquipLevelMin: 100
+    Refineable: true
     Script: |
       .@r = getrefine();
       if (.@r>=2) {
@@ -134533,6 +135329,7 @@ Body:
       Right_Hand: true
     WeaponLevel: 4
     EquipLevelMin: 100
+    Refineable: true
     Trade:
       Override: 100
       NoDrop: true
@@ -134580,6 +135377,7 @@ Body:
       Right_Hand: true
     WeaponLevel: 4
     EquipLevelMin: 100
+    Refineable: true
     Trade:
       Override: 100
       NoDrop: true
@@ -134627,6 +135425,7 @@ Body:
       Right_Hand: true
     WeaponLevel: 4
     EquipLevelMin: 100
+    Refineable: true
     Trade:
       Override: 100
       NoDrop: true
@@ -134829,7 +135628,7 @@ Body:
     AegisName: Boost_TH_Sword
     Name: Booster Two-handed Sword
     Type: Weapon
-    SubType: 1hSword
+    SubType: 2hSword
     Attack: 250
     Range: 1
     Slots: 2
@@ -134858,7 +135657,7 @@ Body:
     AegisName: Dragonic_Slayer
     Name: Dragonic Slayer
     Type: Weapon
-    SubType: 1hSword
+    SubType: 2hSword
     Weight: 1000
     Attack: 180
     Range: 1
@@ -134870,6 +135669,8 @@ Body:
     Locations:
       Both_Hand: true
     WeaponLevel: 4
+    EquipLevelMin: 100
+    Refineable: true
     Script: |
       .@r = getrefine();
       if (.@r>=2) {
@@ -134903,6 +135704,7 @@ Body:
       Both_Hand: true
     WeaponLevel: 4
     EquipLevelMin: 150
+    Refineable: true
     Script: |
       .@r = getrefine();
       bonus bUnbreakableWeapon;
@@ -134971,6 +135773,7 @@ Body:
       Both_Hand: true
     WeaponLevel: 4
     EquipLevelMin: 120
+    Refineable: true
     Script: |
       .@r = getrefine();
       bonus bBaseAtk,4*.@r;
@@ -135002,6 +135805,7 @@ Body:
       Left_Hand: true
     WeaponLevel: 4
     EquipLevelMin: 100
+    Refineable: true
     Trade:
       Override: 100
       NoDrop: true
@@ -135049,6 +135853,7 @@ Body:
       Both_Hand: true
     WeaponLevel: 4
     EquipLevelMin: 180
+    Refineable: true
     Script: |
       .@r = getrefine();
       bonus2 bSkillAtk,"RK_WINDCUTTER",10;
@@ -135139,6 +135944,7 @@ Body:
       Both_Hand: true
     WeaponLevel: 4
     EquipLevelMin: 150
+    Refineable: true
     Script: |
       .@r = getrefine();
       bonus2 bSkillAtk,"GC_ROLLINGCUTTER",10;
@@ -135235,6 +136041,7 @@ Body:
       Both_Hand: true
     WeaponLevel: 4
     EquipLevelMin: 120
+    Refineable: true
     Script: |
       .@r = getrefine();
       bonus bBaseAtk,5*.@r;
@@ -135267,6 +136074,7 @@ Body:
       Left_Hand: true
     WeaponLevel: 4
     EquipLevelMin: 100
+    Refineable: true
     Trade:
       Override: 100
       NoDrop: true
@@ -135313,6 +136121,7 @@ Body:
       Both_Hand: true
     WeaponLevel: 4
     EquipLevelMin: 180
+    Refineable: true
     Script: |
       .@r = getrefine();
       bonus2 bSkillAtk,"GC_ROLLINGCUTTER",10;
@@ -135346,6 +136155,7 @@ Body:
       Both_Hand: true
     WeaponLevel: 4
     EquipLevelMin: 180
+    Refineable: true
     Script: |
       .@r = getrefine();
       bonus2 bSkillAtk,"GC_COUNTERSLASH",10;
@@ -135377,6 +136187,7 @@ Body:
       Both_Hand: true
     WeaponLevel: 4
     EquipLevelMin: 100
+    Refineable: true
     Trade:
       Override: 100
       NoDrop: True
@@ -135425,6 +136236,7 @@ Body:
       Left_Hand: true
     WeaponLevel: 4
     EquipLevelMin: 100
+    Refineable: true
     Trade:
       Override: 100
       NoDrop: true
@@ -135501,6 +136313,7 @@ Body:
       Both_Hand: true
     WeaponLevel: 4
     EquipLevelMin: 120
+    Refineable: true
     Script: |
       .@r = getrefine();
       bonus bUnbreakableWeapon;
@@ -135536,6 +136349,7 @@ Body:
       Both_Hand: true
     WeaponLevel: 4
     EquipLevelMin: 150
+    Refineable: true
     Script: |
       .@r = getrefine();
       bonus2 bSkillAtk,"RK_HUNDREDSPEAR",10;
@@ -135568,6 +136382,7 @@ Body:
       Both_Hand: true
     WeaponLevel: 4
     EquipLevelMin: 120
+    Refineable: true
     Script: |
       .@r = getrefine();
       bonus2 bAddClass,Class_All,10;
@@ -135602,6 +136417,7 @@ Body:
       Both_Hand: true
     WeaponLevel: 4
     EquipLevelMin: 120
+    Refineable: true
     Script: |
       .@r = getrefine();
       bonus bBaseAtk,4*.@r;
@@ -135635,6 +136451,7 @@ Body:
       Left_Hand: true
     WeaponLevel: 4
     EquipLevelMin: 100
+    Refineable: true
     Trade:
       Override: 100
       NoDrop: true
@@ -135684,6 +136501,7 @@ Body:
       Both_Hand: true
     WeaponLevel: 4
     EquipLevelMin: 180
+    Refineable: true
     Script: |
       .@r = getrefine();
       bonus2 bSkillAtk,"RK_HUNDREDSPEAR",10;
@@ -135704,7 +136522,7 @@ Body:
     AegisName: Boost_Staff
     Name: Booster Staff
     Type: Weapon
-    SubType: Staff
+    SubType: 2hStaff
     Attack: 100
     MagicAttack: 200
     Range: 1
@@ -135737,7 +136555,7 @@ Body:
     AegisName: Blue_Crystal_Staff
     Name: Blue Crystal Staff
     Type: Weapon
-    SubType: Staff
+    SubType: 2hStaff
     Weight: 800
     Attack: 100
     MagicAttack: 200
@@ -135768,7 +136586,7 @@ Body:
     AegisName: Ep172_Bh_Staff
     Name: Pride Stone
     Type: Weapon
-    SubType: Huuma
+    SubType: 2hStaff
     Weight: 2000
     Attack: 180
     MagicAttack: 320
@@ -135782,6 +136600,7 @@ Body:
       Both_Hand: true
     WeaponLevel: 4
     EquipLevelMin: 150
+    Refineable: true
     Script: |
       .@r = getrefine();
       bonus bUnbreakableWeapon;
@@ -135805,7 +136624,7 @@ Body:
     AegisName: CS_B_Staff
     Name: Crimson Strain Booster Staff
     Type: Weapon
-    SubType: Huuma
+    SubType: 2hStaff
     Attack: 150
     Range: 1
     Jobs:
@@ -135819,6 +136638,7 @@ Body:
       Left_Hand: true
     WeaponLevel: 4
     EquipLevelMin: 100
+    Refineable: true
     Trade:
       Override: 100
       NoDrop: true
@@ -135855,7 +136675,7 @@ Body:
     AegisName: CJ_B_Staff
     Name: Chain Jack Booster Staff
     Type: Weapon
-    SubType: Huuma
+    SubType: 2hStaff
     Attack: 150
     Range: 1
     Jobs:
@@ -135869,6 +136689,7 @@ Body:
       Left_Hand: true
     WeaponLevel: 4
     EquipLevelMin: 100
+    Refineable: true
     Trade:
       Override: 100
       NoDrop: true
@@ -135942,7 +136763,7 @@ Body:
     AegisName: Up_Blue_Crystal_Staff
     Name: Patent Blue Crystal Staff
     Type: Weapon
-    SubType: Staff
+    SubType: 2hStaff
     Weight: 1000
     Attack: 100
     MagicAttack: 235
@@ -135979,7 +136800,7 @@ Body:
     AegisName: Adulter_F_T_Staff
     Name: Adulter Fides Two-Handed Staff
     Type: Weapon
-    SubType: Huuma
+    SubType: 2hStaff
     Weight: 2000
     Attack: 200
     MagicAttack: 340
@@ -135993,6 +136814,7 @@ Body:
       Both_Hand: true
     WeaponLevel: 4
     EquipLevelMin: 180
+    Refineable: true
     Script: |
       .@r = getrefine();
       bonus bUnbreakableWeapon;
@@ -136014,7 +136836,7 @@ Body:
     AegisName: Adulter_F_Rod
     Name: Adulter Fides Rod
     Type: Weapon
-    SubType: Huuma
+    SubType: 2hStaff
     Weight: 1900
     Attack: 200
     MagicAttack: 340
@@ -136028,6 +136850,7 @@ Body:
       Both_Hand: true
     WeaponLevel: 4
     EquipLevelMin: 180
+    Refineable: true
     Script: |
       .@r = getrefine();
       bonus bUnbreakableWeapon;
@@ -136062,6 +136885,7 @@ Body:
       Left_Hand: true
     WeaponLevel: 4
     EquipLevelMin: 150
+    Refineable: true
     Script: |
       .@r = getrefine();
       bonus bAtkEle,Ele_Wind;
@@ -136133,6 +136957,7 @@ Body:
       Both_Hand: true
     WeaponLevel: 4
     EquipLevelMin: 180
+    Refineable: true
     Script: |
       .@r = getrefine();
       bonus bUnbreakableWeapon;
@@ -136165,6 +136990,7 @@ Body:
       Both_Hand: true
     WeaponLevel: 4
     EquipLevelMin: 180
+    Refineable: true
     Script: |
       .@r = getrefine();
       bonus bUnbreakableWeapon;
@@ -136550,6 +137376,7 @@ Body:
       Left_Hand: true
     WeaponLevel: 4
     EquipLevelMin: 100
+    Refineable: true
     Trade:
       Override: 100
       NoDrop: true
@@ -136815,6 +137642,7 @@ Body:
       Both_Hand: true
     WeaponLevel: 4
     EquipLevelMin: 180
+    Refineable: true
     Script: |
       .@r = getrefine();
       bonus bUnbreakableWeapon;
@@ -136850,6 +137678,7 @@ Body:
       Both_Hand: true
     WeaponLevel: 4
     EquipLevelMin: 150
+    Refineable: true
     Script: |
       .@r = getrefine();
       bonus2 bSkillAtk,"RL_HAMMER_OF_GOD",10;
@@ -136914,6 +137743,7 @@ Body:
       Both_Hand: true
     WeaponLevel: 4
     EquipLevelMin: 180
+    Refineable: true
     Script: |
       .@r = getrefine();
       bonus bUnbreakableWeapon;
@@ -136947,6 +137777,7 @@ Body:
       Both_Hand: true
     WeaponLevel: 4
     EquipLevelMin: 150
+    Refineable: true
     Script: |
       .@r = getrefine();
       bonus bSplashRange,1;
@@ -137013,6 +137844,7 @@ Body:
       Both_Hand: true
     WeaponLevel: 4
     EquipLevelMin: 180
+    Refineable: true
     Script: |
       .@r = getrefine();
       bonus bSplashRange,1;
@@ -137072,6 +137904,7 @@ Body:
       Both_Hand: true
     WeaponLevel: 4
     EquipLevelMin: 150
+    Refineable: true
     Script: |
       .@r = getrefine();
       bonus2 bSkillAtk,"RL_FIRE_RAIN",10;
@@ -137134,6 +137967,7 @@ Body:
       Both_Hand: true
     WeaponLevel: 4
     EquipLevelMin: 180
+    Refineable: true
     Script: |
       .@r = getrefine();
       bonus2 bSkillAtk,"RL_R_TRIP",10;
@@ -137166,6 +138000,7 @@ Body:
       Both_Hand: true
     WeaponLevel: 4
     EquipLevelMin: 150
+    Refineable: true
     Script: |
       .@r = getrefine();
       bonus2 bSkillAtk,"RL_H_MINE",10;
@@ -137229,6 +138064,7 @@ Body:
       Both_Hand: true
     WeaponLevel: 4
     EquipLevelMin: 180
+    Refineable: true
     Script: |
       .@r = getrefine();
       bonus2 bSkillAtk,"RL_D_TAIL",10;
