@@ -65,6 +65,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\Converter.cs" />
+    <Compile Include="Assets\ItemGenerator.cs" />
     <None Include="Assets\Assets\resourceName.txt" />
     <None Include="Assets\Assets\item_combo_db.txt" />
     <None Include="Assets\Assets\skill_db.txt" />

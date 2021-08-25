@@ -8,7 +8,7 @@
       "url": "https://package.openupm.com"
     },
     "com.unity.2d.animation": {
-      "version": "3.2.9",
+      "version": "3.2.11",
       "depth": 0,
       "source": "registry",
       "dependencies": {
@@ -31,7 +31,7 @@
       "url": "https://packages.unity.com"
     },
     "com.unity.2d.path": {
-      "version": "2.1.0",
+      "version": "2.1.1",
       "depth": 1,
       "source": "registry",
       "dependencies": {},
@@ -62,13 +62,13 @@
       "dependencies": {}
     },
     "com.unity.2d.spriteshape": {
-      "version": "3.0.16",
+      "version": "3.0.17",
       "depth": 0,
       "source": "registry",
       "dependencies": {
         "com.unity.mathematics": "1.1.0",
         "com.unity.2d.common": "2.1.0",
-        "com.unity.2d.path": "2.1.0"
+        "com.unity.2d.path": "2.1.1"
       },
       "url": "https://packages.unity.com"
     },
@@ -116,7 +116,7 @@
       "url": "https://packages.unity.com"
     },
     "com.unity.test-framework": {
-      "version": "1.1.27",
+      "version": "1.1.29",
       "depth": 0,
       "source": "registry",
       "dependencies": {

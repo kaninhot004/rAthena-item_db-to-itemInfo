@@ -5,6 +5,7 @@ using UnityEngine.UI;
 using System.IO;
 using EasyButtons;
 using System;
+using System.Text;
 
 public class Converter : MonoBehaviour
 {
@@ -625,17 +626,6 @@ public class Converter : MonoBehaviour
 
         yield return new WaitForSeconds(1);
 
-        txtConvertProgression.text = "Fetching combo data...";
-        yield return null;
-        FetchCombo();
-        if (isConvertError)
-        {
-            txtConvertProgression.text = "<color=red>Error</color> - Fetching combo data...";
-            yield break;
-        }
-
-        yield return new WaitForSeconds(1);
-
         txtConvertProgression.text = "Fetching resource name data...";
         yield return null;
         FetchResourceName();
@@ -680,6 +670,17 @@ public class Converter : MonoBehaviour
 
         yield return new WaitForSeconds(1);
 
+        txtConvertProgression.text = "Fetching combo data...";
+        yield return null;
+        FetchCombo();
+        if (isConvertError)
+        {
+            txtConvertProgression.text = "<color=red>Error</color> - Fetching combo data...";
+            yield break;
+        }
+
+        yield return new WaitForSeconds(1);
+
         txtConvertProgression.text = "Convert process take 20~30 minutes please wait.";
 
         yield return new WaitForSeconds(1);
@@ -694,7 +695,7 @@ public class Converter : MonoBehaviour
 
         Clean();
 
-        var builder = string.Empty;
+        StringBuilder builder = new StringBuilder();
         var allTextAsset = File.ReadAllText(Application.dataPath + "/Assets/item_db_equip.txt") + "\n" + File.ReadAllText(Application.dataPath + "/Assets/item_db_usable.txt") + "\n" + File.ReadAllText(Application.dataPath + "/Assets/item_db_etc.txt");
         var lines = allTextAsset.Split('\n');
         if (isUseTestTextAsset)
@@ -1153,21 +1154,21 @@ public class Converter : MonoBehaviour
             if (nextText.Contains("- Id:") && !string.IsNullOrEmpty(id) && !string.IsNullOrWhiteSpace(id) || (i + 1) >= lines.Length)
             {
                 // Id
-                builder += "	[" + id + "] = {\n";
+                builder.Append("	[" + id + "] = {\n");
                 // Unidentified display name
-                builder += "		unidentifiedDisplayName = \"" + _name + "\",\n";
+                builder.Append("		unidentifiedDisplayName = \"" + _name + "\",\n");
                 // Unidentified resource name
-                builder += "		unidentifiedResourceName = " + GetResourceNameFromId(int.Parse(id)) + ",\n";
+                builder.Append("		unidentifiedResourceName = " + GetResourceNameFromId(int.Parse(id)) + ",\n");
                 // Unidentified description
-                builder += "		unidentifiedDescriptionName = {\n";
-                builder += "			\"\"\n";
-                builder += "		},\n";
+                builder.Append("		unidentifiedDescriptionName = {\n");
+                builder.Append("			\"\"\n");
+                builder.Append("		},\n");
                 // Identified display name
-                builder += "		identifiedDisplayName = \"" + _name + "\",\n";
+                builder.Append("		identifiedDisplayName = \"" + _name + "\",\n");
                 // Identified resource name
-                builder += "		identifiedResourceName = " + GetResourceNameFromId(int.Parse(id)) + ",\n";
+                builder.Append("		identifiedResourceName = " + GetResourceNameFromId(int.Parse(id)) + ",\n");
                 // Identified description
-                builder += "		identifiedDescriptionName = {\n";
+                builder.Append("		identifiedDescriptionName = {\n");
                 // Description here
                 var sumCombo = GetCombo(int.Parse(id));
                 var sumBonus = !string.IsNullOrEmpty(script) ? script : string.Empty;
@@ -1203,26 +1204,26 @@ public class Converter : MonoBehaviour
                     sumDesc += "			\"^3F28FFตีบวก:^000000 " + refineable + "\",\n";
                 if (!string.IsNullOrEmpty(weight))
                     sumDesc += "			\"^3F28FFน้ำหนัก:^000000 " + weight + "\",\n";
-                builder += sumCombo;
-                builder += sumBonus;
-                builder += sumEquipBonus;
-                builder += sumUnEquipBonus;
-                builder += sumDesc;
-                builder += "			\"\"\n";
-                builder += "		},\n";
+                builder.Append(sumCombo);
+                builder.Append(sumBonus);
+                builder.Append(sumEquipBonus);
+                builder.Append(sumUnEquipBonus);
+                builder.Append(sumDesc);
+                builder.Append("			\"\"\n");
+                builder.Append("		},\n");
                 // Slot Count
                 if (!string.IsNullOrEmpty(slots))
-                    builder += "		slotCount = " + slots + ",\n";
+                    builder.Append("		slotCount = " + slots + ",\n");
                 else
-                    builder += "		slotCount = 0,\n";
+                    builder.Append("		slotCount = 0,\n");
                 // View / Class Number
-                builder += "		ClassNum = " + GetClassNumFromId(int.Parse(id)) + ",\n";
+                builder.Append("		ClassNum = " + GetClassNumFromId(int.Parse(id)) + ",\n");
                 // Costume
-                builder += "		costume = false\n";
+                builder.Append("		costume = false\n");
                 if (string.IsNullOrEmpty(nextNextText) || string.IsNullOrWhiteSpace(nextNextText))
-                    builder += "	}\n";
+                    builder.Append("	}\n");
                 else
-                    builder += "	},\n";
+                    builder.Append("	},\n");
 
                 Clean();
             }
@@ -1264,7 +1265,7 @@ public class Converter : MonoBehaviour
             "	return true, \"good\"\n" +
             "end\n";
         #endregion
-        File.WriteAllText("itemInfo.txt", prefix + builder + postfix, System.Text.Encoding.UTF8);
+        File.WriteAllText("itemInfo.txt", prefix + builder.ToString() + postfix, System.Text.Encoding.UTF8);
 
         Debug.Log(DateTime.UtcNow);
 
