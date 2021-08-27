@@ -12,7 +12,7 @@ public class ItemGenerator : MonoBehaviour
 
     List<string> allWeaponLocation = new List<string>() { "Right_Hand", "Left_Hand", "Both_Hand" };
     List<string> allShieldLocation = new List<string>() { "Left_Hand" };
-    List<string> allArmorLocation = new List<string>() { "Head_Top", "Head_Mid", "Head_Low", "Armor", "Garment", "Shoes", "Right_Accessory", "Left_Accessory", "Both_Accessory" };
+    List<string> allArmorLocation = new List<string>() { "Head_Top", "Head_Mid", "Head_Low", "Armor", "Garment", "Shoes", "Right_Accessory", "Left_Accessory", "Both_Accessory", "Costume_Head_Top", "Costume_Head_Mid", "Costume_Head_Low", "Costume_Garment", "Shadow_Armor", "Shadow_Weapon", "Shadow_Shield", "Shadow_Shoes", "Shadow_Right_Accessory", "Shadow_Left_Accessory" };
     List<string> allAmmoLocation = new List<string>() { "Ammo" };
     List<int> allShieldView = new List<int>() { 1, 2, 3, 4 };
     List<int> allRobeView = new List<int>() { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84, 85, 86, 87, 88, 89, 90, 91, 92, 93, 94, 95, 96, 97, 98, 99, 100, 101, 102, 103, 104, 105, 106, 107, 108, 109, 110 };
@@ -44,45 +44,79 @@ public class ItemGenerator : MonoBehaviour
     // View
     int GetWeaponView(string subType)
     {
-        if (subType == "Dagger") return 1;
-        else if (subType == "1hSword") return 2;
-        else if (subType == "2hSword") return 3;
-        else if (subType == "1hSpear") return 4;
-        else if (subType == "2hSpear") return 5;
-        else if (subType == "1hAxe") return 6;
-        else if (subType == "2hAxe") return 7;
-        else if (subType == "Mace") return 8;
-        else if (subType == "Staff") return 10;
-        else if (subType == "Bow") return 11;
-        else if (subType == "Knuckle") return 12;
-        else if (subType == "Musical") return 13;
-        else if (subType == "Whip") return 14;
-        else if (subType == "Book") return 15;
-        else if (subType == "Katar") return 16;
-        else if (subType == "Revolver") return 17;
-        else if (subType == "Rifle") return 18;
-        else if (subType == "Gatling") return 19;
-        else if (subType == "Shotgun") return 20;
-        else if (subType == "Grenade") return 21;
-        else if (subType == "Huuma") return 22;
-        else if (subType == "2hStaff") return 23;
+        if (subType == "Dagger") return allDaggerView[Random.Range(0, allDaggerView.Count)];
+        else if (subType == "1hSword") return all1hSwordView[Random.Range(0, all1hSwordView.Count)];
+        else if (subType == "2hSword") return all2hSwordView[Random.Range(0, all2hSwordView.Count)];
+        else if (subType == "1hSpear") return all1hSpearView[Random.Range(0, all1hSpearView.Count)];
+        else if (subType == "2hSpear") return all2hSpearView[Random.Range(0, all2hSpearView.Count)];
+        else if (subType == "1hAxe") return all1hAxeView[Random.Range(0, all1hAxeView.Count)];
+        else if (subType == "2hAxe") return all2hAxeView[Random.Range(0, all2hAxeView.Count)];
+        else if (subType == "Mace") return all1hMaceView[Random.Range(0, all1hMaceView.Count)];
+        else if (subType == "Staff") return all1hRodView[Random.Range(0, all1hRodView.Count)];
+        else if (subType == "Bow") return allBowView[Random.Range(0, allBowView.Count)];
+        else if (subType == "Knuckle") return allKnuckleView[Random.Range(0, allKnuckleView.Count)];
+        else if (subType == "Musical") return allInstrumentView[Random.Range(0, allInstrumentView.Count)];
+        else if (subType == "Whip") return allWhipView[Random.Range(0, allWhipView.Count)];
+        else if (subType == "Book") return allBookView[Random.Range(0, allBookView.Count)];
+        else if (subType == "Katar") return allKatarView[Random.Range(0, allKatarView.Count)];
+        else if (subType == "Revolver") return allHandgunView[Random.Range(0, allHandgunView.Count)];
+        else if (subType == "Rifle") return allRifleView[Random.Range(0, allRifleView.Count)];
+        else if (subType == "Gatling") return allGatlingView[Random.Range(0, allGatlingView.Count)];
+        else if (subType == "Shotgun") return allShotgunView[Random.Range(0, allShotgunView.Count)];
+        else if (subType == "Grenade") return allGrenadeLauncherView[Random.Range(0, allGrenadeLauncherView.Count)];
+        else if (subType == "Huuma") return allHuumaView[Random.Range(0, allHuumaView.Count)];
+        else if (subType == "2hStaff") return all2hRodView[Random.Range(0, all2hRodView.Count)];
         return 0;
     }
-
+    int GetArmorView(string location)
+    {
+        if (location == "Head_Top" || location == "Head_Mid" || location == "Head_Low" || location == "Costume_Head_Top" || location == "Costume_Head_Mid" || location == "Costume_Head_Low") return allHeadgearView[Random.Range(0, allHeadgearView.Count)];
+        else if (location == "Garment" || location == "Costume_Garment") return allRobeView[Random.Range(0, allRobeView.Count)];
+        return 0;
+    }
     enum GenType { Weapon, Shield, Armor, Ammo };
+
+    string GetTierName(int id)
+    {
+        if (id <= startId + (itemPerTier * 1))
+            return "Normal";
+        else if (id <= startId + (itemPerTier * 2))
+            return "Advance";
+        else if (id <= startId + (itemPerTier * 3))
+            return "Rare";
+        else if (id <= startId + (itemPerTier * 4))
+            return "Mystical";
+        else if (id <= startId + (itemPerTier * 5))
+            return "Legendary";
+        return "Normal";
+    }
+    int GetTierBonusValue(int id)//1~5, 6~15, 16~30, 31~50, 51~100
+    {
+        if (id < itemPerTier * 1)
+            return Random.Range(1, 6);
+        else if (id < itemPerTier * 2)
+            return Random.Range(6, 15);
+        else if (id < itemPerTier * 3)
+            return Random.Range(16, 30);
+        else if (id < itemPerTier * 4)
+            return Random.Range(31, 50);
+        else if (id < itemPerTier * 5)
+            return Random.Range(51, 100);
+        return Random.Range(1, 6);
+    }
+
+    const int itemPerTier = 10000;
+    const int highestTier = 5;
+    const int startId = 10000000;
 
     [Button]
     public void Generate()
     {
         StringBuilder sum = new StringBuilder();
 
-        int itemName = 1;
+        int itemName = 0;
 
-        int itemPerTier = 10000;
-
-        int id = 100000;
-
-        for (int i = 0; i < itemPerTier; i++)
+        for (int i = 0; i < (itemPerTier * highestTier) + 1; i++)
         {
             int itemType = Random.Range(0, 4);
             GenType genType = GenType.Weapon;
@@ -94,24 +128,81 @@ public class ItemGenerator : MonoBehaviour
                 genType = GenType.Ammo;
 
             string subType = genType == GenType.Weapon ? allWeaponSubType[Random.Range(0, allWeaponSubType.Count)] : genType == GenType.Ammo ? allAmmoSubType[Random.Range(0, allAmmoSubType.Count)] : "";
-            sum.Append(string.Format(" - Id: {0}\n   AegisName: {1}\n   Name: {2}\n   Type: {3}\n   SubType: {4}\n   Weight: {5}\n   Attack: {6}\n   MagicAttack: {7}\n   Defense: {8}\n   Range: {9}\n   Slots: {10}\n   Locations:\n      {11}\n   WeaponLevel: {12}\n   View: {13}\n   Script: |\n      {14}\n"
-            , id.ToString("f0") // ID
-                , "aegis_" + id.ToString("f0") // Aegis Name
-                , itemName.ToString("f0") // Name
-                , genType.ToString() // Type
-                , subType // Sub Type
-                , Random.Range(10, 10000).ToString("f0") // Weight
-                , (genType == GenType.Weapon || genType == GenType.Ammo) ? Random.Range(1, 501).ToString("f0") : "0" // Attack
-                , (genType == GenType.Weapon || genType == GenType.Ammo) ? Random.Range(1, 501).ToString("f0") : "0" // Magic Attack
-                , (genType == GenType.Armor || genType == GenType.Shield) ? Random.Range(1, 51).ToString("f0") : "0" // Defense
-                , genType == GenType.Weapon ? Random.Range(1, 6).ToString("f0") : "0" // Range
-                , "0" // Slots
-                , genType == GenType.Weapon ? allWeaponLocation[Random.Range(0, allWeaponLocation.Count)] + ": true" : genType == GenType.Shield ? allShieldLocation[Random.Range(0, allShieldLocation.Count)] + ": true" : genType == GenType.Armor ? allArmorLocation[Random.Range(0, allArmorLocation.Count)] + ": true" : genType == GenType.Ammo ? allAmmoLocation[Random.Range(0, allAmmoLocation.Count)] + ": true" : string.Empty  // Locations
-                , genType == GenType.Weapon ? Random.Range(1, 5).ToString("f0") : "0" // Weapon Level
-                , genType == GenType.Weapon ? GetWeaponView(subType).ToString("f0") : genType == GenType.Shield ? allShieldView[Random.Range(0, allShieldView.Count)].ToString("f0") : 0.ToString("f0") // View
-                , "bonus bInt,1;" // Script
-                ));
-            id++;
+            string location = genType == GenType.Weapon ? allWeaponLocation[Random.Range(0, allWeaponLocation.Count)] + ": true" : genType == GenType.Shield ? allShieldLocation[Random.Range(0, allShieldLocation.Count)] + ": true" : genType == GenType.Armor ? allArmorLocation[Random.Range(0, allArmorLocation.Count)] + ": true" : genType == GenType.Ammo ? allAmmoLocation[Random.Range(0, allAmmoLocation.Count)] + ": true" : string.Empty;
+
+            if (genType == GenType.Ammo)
+                sum.Append(string.Format("  - Id: {0}\n    AegisName: {1}\n    Name: {2}\n    Type: {3}\n    SubType: {4}\n    Weight: {5}\n    Attack: {6}\n    MagicAttack: {7}\n    Locations:\n        {11}\n    Script: |\n        {14}\n"
+                , (startId + i).ToString("f0") // ID
+                     , "aegis_" + (startId + i).ToString("f0") // Aegis Name
+                     , "\"[" + GetTierName(startId + i) + "]" + itemName.ToString("f0") + "\"" // Name
+                     , genType.ToString() // Type
+                     , subType // Sub Type
+                     , Random.Range(1, 1000).ToString("f0") // Weight
+                     , (genType == GenType.Weapon || genType == GenType.Ammo) ? Random.Range(1, 501).ToString("f0") : "0" // Attack
+                     , (genType == GenType.Weapon || genType == GenType.Ammo) ? Random.Range(1, 501).ToString("f0") : "0" // Magic Attack
+                     , (genType == GenType.Armor || genType == GenType.Shield) ? Random.Range(1, 51).ToString("f0") : "0" // Defense
+                     , genType == GenType.Weapon ? Random.Range(1, 6).ToString("f0") : "0" // Range
+                     , "0" // Slots
+                     , location  // Locations
+                     , genType == GenType.Weapon ? Random.Range(1, 5).ToString("f0") : "0" // Weapon Level
+                     , genType == GenType.Weapon ? GetWeaponView(subType).ToString("f0") : genType == GenType.Shield ? allShieldView[Random.Range(0, allShieldView.Count)].ToString("f0") : genType == GenType.Armor ? GetArmorView(location).ToString("f0") : "0" // View
+                     , "bonus bInt,1;" // Script
+                     ));
+            else if (genType == GenType.Armor)
+                sum.Append(string.Format("  - Id: {0}\n    AegisName: {1}\n    Name: {2}\n    Type: {3}\n    Weight: {5}\n    Defense: {8}\n    Locations:\n        {11}\n    View: {13}\n    Script: |\n        {14}\n"
+                , (startId + i).ToString("f0") // ID
+                     , "aegis_" + (startId + i).ToString("f0") // Aegis Name
+                     , "\"[" + GetTierName(startId + i) + "]" + itemName.ToString("f0") + "\"" // Name
+                     , genType.ToString() // Type
+                     , subType // Sub Type
+                     , Random.Range(10, 10000).ToString("f0") // Weight
+                     , (genType == GenType.Weapon || genType == GenType.Ammo) ? Random.Range(1, 501).ToString("f0") : "0" // Attack
+                     , (genType == GenType.Weapon || genType == GenType.Ammo) ? Random.Range(1, 501).ToString("f0") : "0" // Magic Attack
+                     , (genType == GenType.Armor || genType == GenType.Shield) ? Random.Range(1, 51).ToString("f0") : "0" // Defense
+                     , genType == GenType.Weapon ? Random.Range(1, 6).ToString("f0") : "0" // Range
+                     , "0" // Slots
+                     , location  // Locations
+                     , genType == GenType.Weapon ? Random.Range(1, 5).ToString("f0") : "0" // Weapon Level
+                     , genType == GenType.Weapon ? GetWeaponView(subType).ToString("f0") : genType == GenType.Shield ? allShieldView[Random.Range(0, allShieldView.Count)].ToString("f0") : genType == GenType.Armor ? GetArmorView(location).ToString("f0") : "0" // View
+                     , "bonus bInt,1;" // Script
+                     ));
+            else if (genType == GenType.Shield)
+                sum.Append(string.Format("  - Id: {0}\n    AegisName: {1}\n    Name: {2}\n    Type: {3}\n    Weight: {5}\n    Defense: {8}\n    Locations:\n        {11}\n    View: {13}\n    Script: |\n        {14}\n"
+                , (startId + i).ToString("f0") // ID
+                     , "aegis_" + (startId + i).ToString("f0") // Aegis Name
+                     , "\"[" + GetTierName(startId + i) + "]" + itemName.ToString("f0") + "\"" // Name
+                     , GenType.Armor.ToString() // Type
+                     , subType // Sub Type
+                     , Random.Range(10, 10000).ToString("f0") // Weight
+                     , (genType == GenType.Weapon || genType == GenType.Ammo) ? Random.Range(1, 501).ToString("f0") : "0" // Attack
+                     , (genType == GenType.Weapon || genType == GenType.Ammo) ? Random.Range(1, 501).ToString("f0") : "0" // Magic Attack
+                     , (genType == GenType.Armor || genType == GenType.Shield) ? Random.Range(1, 51).ToString("f0") : "0" // Defense
+                     , genType == GenType.Weapon ? Random.Range(1, 6).ToString("f0") : "0" // Range
+                     , "0" // Slots
+                     , location  // Locations
+                     , genType == GenType.Weapon ? Random.Range(1, 5).ToString("f0") : "0" // Weapon Level
+                     , genType == GenType.Weapon ? GetWeaponView(subType).ToString("f0") : genType == GenType.Shield ? allShieldView[Random.Range(0, allShieldView.Count)].ToString("f0") : genType == GenType.Armor ? GetArmorView(location).ToString("f0") : "0" // View
+                     , "bonus bInt,1;" // Script
+                     ));
+            else if (genType == GenType.Weapon)
+                sum.Append(string.Format("  - Id: {0}\n    AegisName: {1}\n    Name: {2}\n    Type: {3}\n    SubType: {4}\n    Weight: {5}\n    Attack: {6}\n    MagicAttack: {7}\n    Defense: {8}\n    Range: {9}\n{15}    Locations:\n        {11}\n    WeaponLevel: {12}\n    View: {13}\n    Script: |\n        {14}\n"
+                , (startId + i).ToString("f0") // ID
+                     , "aegis_" + (startId + i).ToString("f0") // Aegis Name
+                     , "\"[" + GetTierName(startId + i) + "]" + itemName.ToString("f0") + "\"" // Name
+                     , genType.ToString() // Type
+                     , subType // Sub Type
+                     , Random.Range(10, 10000).ToString("f0") // Weight
+                     , (genType == GenType.Weapon || genType == GenType.Ammo) ? Random.Range(1, 501).ToString("f0") : "0" // Attack
+                     , (genType == GenType.Weapon || genType == GenType.Ammo) ? Random.Range(1, 501).ToString("f0") : "0" // Magic Attack
+                     , (genType == GenType.Armor || genType == GenType.Shield) ? Random.Range(1, 51).ToString("f0") : "0" // Defense
+                     , genType == GenType.Weapon ? Random.Range(1, 6).ToString("f0") : "0" // Range
+                     , "0" // Slots
+                     , location  // Locations
+                     , genType == GenType.Weapon ? Random.Range(1, 5).ToString("f0") : "0" // Weapon Level
+                     , genType == GenType.Weapon ? GetWeaponView(subType).ToString("f0") : genType == GenType.Shield ? allShieldView[Random.Range(0, allShieldView.Count)].ToString("f0") : genType == GenType.Armor ? GetArmorView(location).ToString("f0") : "0" // View
+                     , "bonus bInt,1;" // Script
+                     , subType == "Musical" ? "    Gender: Male\n" : subType == "Whip" ? "    Gender: Female\n" : string.Empty // Gender
+                     ));
             itemName++;
         }
 
@@ -132,23 +223,23 @@ public class ItemGenerator : MonoBehaviour
             GenType genType = GenType.Armor;
 
             string subType = genType == GenType.Weapon ? allWeaponSubType[Random.Range(0, allWeaponSubType.Count)] : genType == GenType.Ammo ? allAmmoSubType[Random.Range(0, allAmmoSubType.Count)] : "";
-            sum.Append(string.Format(" - Id: {0}\n   AegisName: {1}\n   Name: {2}\n   Type: {3}\n   SubType: {4}\n   Weight: {5}\n   Attack: {6}\n   MagicAttack: {7}\n   Defense: {8}\n   Range: {9}\n   Slots: {10}\n   Locations:\n      {11}\n   WeaponLevel: {12}\n   View: {13}\n   Script: |\n      {14}\n"
+            sum.Append(string.Format(" - Id: {0}\n    AegisName: {1}\n    Name: {2}\n    Type: {3}\n    SubType: {4}\n    Weight: {5}\n    Attack: {6}\n    MagicAttack: {7}\n    Defense: {8}\n    Range: {9}\n    Slots: {10}\n    Locations:\n        {11}\n    WeaponLevel: {12}\n    View: {13}\n    Script: |\n        {14}\n"
             , id.ToString("f0") // ID
-                , "aegis_" + id.ToString("f0") // Aegis Name
-                , itemName.ToString("f0") // Name
-                , genType.ToString() // Type
-                , subType // Sub Type
-                , Random.Range(10, 10000).ToString("f0") // Weight
-                , (genType == GenType.Weapon || genType == GenType.Ammo) ? Random.Range(1, 501).ToString("f0") : "0" // Attack
-                , (genType == GenType.Weapon || genType == GenType.Ammo) ? Random.Range(1, 501).ToString("f0") : "0" // Magic Attack
-                , (genType == GenType.Armor || genType == GenType.Shield) ? Random.Range(1, 51).ToString("f0") : "0" // Defense
-                , genType == GenType.Weapon ? Random.Range(1, 6).ToString("f0") : "0" // Range
-                , "0" // Slots
-                , "Head_Top: true" // Locations
-                , genType == GenType.Weapon ? Random.Range(1, 5).ToString("f0") : "0" // Weapon Level
-                , i.ToString("f0") // View
-                , "bonus bInt,1;" // Script
-                ));
+                 , "aegis_" + id.ToString("f0") // Aegis Name
+                 , itemName.ToString("f0") // Name
+                 , genType.ToString() // Type
+                 , subType // Sub Type
+                 , Random.Range(10, 10000).ToString("f0") // Weight
+                 , (genType == GenType.Weapon || genType == GenType.Ammo) ? Random.Range(1, 501).ToString("f0") : "0" // Attack
+                 , (genType == GenType.Weapon || genType == GenType.Ammo) ? Random.Range(1, 501).ToString("f0") : "0" // Magic Attack
+                 , (genType == GenType.Armor || genType == GenType.Shield) ? Random.Range(1, 51).ToString("f0") : "0" // Defense
+                 , genType == GenType.Weapon ? Random.Range(1, 6).ToString("f0") : "0" // Range
+                 , "0" // Slots
+                 , "Head_Top: true" // Locations
+                 , genType == GenType.Weapon ? Random.Range(1, 5).ToString("f0") : "0" // Weapon Level
+                 , i.ToString("f0") // View
+                 , "bonus bInt,1;" // Script
+                 ));
             id++;
             itemName++;
         }
