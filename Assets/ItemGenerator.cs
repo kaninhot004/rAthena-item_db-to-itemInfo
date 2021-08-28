@@ -139,17 +139,17 @@ public class ItemGenerator : MonoBehaviour
                 isElementalAlreadyHad = true;
 
             // Value
-            int sum = Random.Range(5, 11);
+            int sum = Random.Range(5, 26);
             if (id <= startId + (itemPerTier * 1))
-                sum = Random.Range(5, 11);
-            else if (id <= startId + (itemPerTier * 2))
-                sum = Random.Range(10, 21);
-            else if (id <= startId + (itemPerTier * 3))
                 sum = Random.Range(25, 51);
+            else if (id <= startId + (itemPerTier * 2))
+                sum = Random.Range(50, 76);
+            else if (id <= startId + (itemPerTier * 3))
+                sum = Random.Range(75, 101);
             else if (id <= startId + (itemPerTier * 4))
-                sum = Random.Range(60, 76);
+                sum = Random.Range(100, 151);
             else if (id <= startId + (itemPerTier * 5))
-                sum = Random.Range(75, 100);
+                sum = Random.Range(150, 200);
             bonus = bonus.Replace("{n20}", (sum / 20 <= 0) ? "1" : (sum / 20).ToString("f0"));
             bonus = bonus.Replace("{n10}", (sum / 10 <= 0) ? "1" : (sum / 10).ToString("f0"));
             bonus = bonus.Replace("{n5}", (sum / 5 <= 0) ? "1" : (sum / 5).ToString("f0"));

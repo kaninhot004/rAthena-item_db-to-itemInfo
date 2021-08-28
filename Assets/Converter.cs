@@ -1907,7 +1907,7 @@ public class Converter : MonoBehaviour
         {
             var temp = text.Replace("bonus2 bMagicAddSize,", string.Empty);
             var temps = MergeMath(temp.Split(','));
-            text = string.Format("๐ พลังโจมตีเวทย์กับขนาด {0} +{1}%", ParseClass(temps[0]), TryParseInt(temps[1]));
+            text = string.Format("๐ พลังโจมตีเวทย์กับขนาด {0} +{1}%", ParseSize(temps[0]), TryParseInt(temps[1]));
         }
         if (text.Contains("bonus2 bSubSize,"))
         {
@@ -1919,7 +1919,7 @@ public class Converter : MonoBehaviour
         {
             var temp = text.Replace("bonus2 bMagicSubSize,", string.Empty);
             var temps = MergeMath(temp.Split(','));
-            text = string.Format("๐ ป้องกัน การโจมตีเวทย์ขนาด {0} +{1}%", ParseClass(temps[0]), TryParseInt(temps[1]));
+            text = string.Format("๐ ป้องกัน การโจมตีเวทย์ขนาด {0} +{1}%", ParseSize(temps[0]), TryParseInt(temps[1]));
         }
         text = text.Replace("bonus bNoSizeFix", "ไม่สนใจขนาด ในการคำนวณความแรง");
         if (text.Contains("bonus2 bAddDamageClass,"))
