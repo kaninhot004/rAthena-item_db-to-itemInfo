@@ -413,12 +413,18 @@ public class Converter : MonoBehaviour
     [Button]
     public void FetchIdName()
     {
-        if (!File.Exists(Application.dataPath + "/Assets/item_db_equip.txt") || !File.Exists(Application.dataPath + "/Assets/item_db_usable.txt") || !File.Exists(Application.dataPath + "/Assets/item_db_etc.txt"))
+        if (!File.Exists(Application.dataPath + "/Assets/item_db_equip.txt")
+            || !File.Exists(Application.dataPath + "/Assets/item_db_usable.txt")
+            || !File.Exists(Application.dataPath + "/Assets/item_db_etc.txt"))
         {
             isConvertError = true;
             return;
         }
-        var allTextAsset = File.ReadAllText(Application.dataPath + "/Assets/item_db_equip.txt") + "\n" + File.ReadAllText(Application.dataPath + "/Assets/item_db_usable.txt") + "\n" + File.ReadAllText(Application.dataPath + "/Assets/item_db_etc.txt");
+
+        var allTextAsset = File.ReadAllText(Application.dataPath + "/Assets/item_db_equip.txt") + "\n"
+            + File.ReadAllText(Application.dataPath + "/Assets/item_db_usable.txt") + "\n"
+            + File.ReadAllText(Application.dataPath + "/Assets/item_db_etc.txt") + "\n"
+            + (File.Exists(Application.dataPath + "/Assets/item_db_custom.txt") ? File.ReadAllText(Application.dataPath + "/Assets/item_db_custom.txt") : string.Empty);
         var lines = allTextAsset.Split('\n');
         idNameDatas = new List<IdNameData>();
         weaponIds = new List<string>();
@@ -681,12 +687,15 @@ public class Converter : MonoBehaviour
 
         yield return new WaitForSeconds(1);
 
-        txtConvertProgression.text = "Convert process take 20~30 minutes please wait.";
+        txtConvertProgression.text = "Please wait around 1 minutes.";
 
         yield return new WaitForSeconds(1);
 
         Invoke("Convert", 1);
     }
+
+    [SerializeField] bool isRandomizeResourceName;
+    [SerializeField] bool isRandomizeResourceNameCustomItemOnly;
 
     [Button]
     public void Convert()
@@ -696,7 +705,10 @@ public class Converter : MonoBehaviour
         Clean();
 
         StringBuilder builder = new StringBuilder();
-        var allTextAsset = File.ReadAllText(Application.dataPath + "/Assets/item_db_equip.txt") + "\n" + File.ReadAllText(Application.dataPath + "/Assets/item_db_usable.txt") + "\n" + File.ReadAllText(Application.dataPath + "/Assets/item_db_etc.txt");
+        var allTextAsset = File.ReadAllText(Application.dataPath + "/Assets/item_db_equip.txt") + "\n"
+            + File.ReadAllText(Application.dataPath + "/Assets/item_db_usable.txt") + "\n"
+            + File.ReadAllText(Application.dataPath + "/Assets/item_db_etc.txt") + "\n"
+            + (File.Exists(Application.dataPath + "/Assets/item_db_custom.txt") ? File.ReadAllText(Application.dataPath + "/Assets/item_db_custom.txt") : string.Empty);
         var lines = allTextAsset.Split('\n');
         if (isUseTestTextAsset)
             lines = File.ReadAllText(Application.dataPath + "/Assets/item_db_test.txt").Split('\n');
@@ -1158,7 +1170,7 @@ public class Converter : MonoBehaviour
                 // Unidentified display name
                 builder.Append("		unidentifiedDisplayName = \"" + _name + "\",\n");
                 // Unidentified resource name
-                builder.Append("		unidentifiedResourceName = " + GetResourceNameFromId(int.Parse(id)) + ",\n");
+                builder.Append("		unidentifiedResourceName = " + GetResourceNameFromId(int.Parse(id), isRandomizeResourceName, isRandomizeResourceNameCustomItemOnly) + ",\n");
                 // Unidentified description
                 builder.Append("		unidentifiedDescriptionName = {\n");
                 builder.Append("			\"\"\n");
@@ -1166,7 +1178,7 @@ public class Converter : MonoBehaviour
                 // Identified display name
                 builder.Append("		identifiedDisplayName = \"" + _name + "\",\n");
                 // Identified resource name
-                builder.Append("		identifiedResourceName = " + GetResourceNameFromId(int.Parse(id)) + ",\n");
+                builder.Append("		identifiedResourceName = " + GetResourceNameFromId(int.Parse(id), isRandomizeResourceName, isRandomizeResourceNameCustomItemOnly) + ",\n");
                 // Identified description
                 builder.Append("		identifiedDescriptionName = {\n");
                 // Description here
@@ -2911,13 +2923,25 @@ public class Converter : MonoBehaviour
         return string.Empty;
     }
 
-    string GetResourceNameFromId(int id)
+    string GetResourceNameFromId(int id, bool isRandom = false, bool isOnlyRandomCustomItem = false)
     {
+        if (isOnlyRandomCustomItem)
+        {
+            if (isRandom && id >= ItemGenerator.startId)
+                return resourceNameDatas[UnityEngine.Random.Range(0, resourceNameDatas.Count)].resourceName;
+        }
+        else
+        {
+            if (isRandom)
+                return resourceNameDatas[UnityEngine.Random.Range(0, resourceNameDatas.Count)].resourceName;
+        }
+
         foreach (var item in resourceNameDatas)
         {
             if (item.id == id)
                 return item.resourceName;
         }
+
         return "\"Bio_Reseearch_Docu\"";
     }
 
