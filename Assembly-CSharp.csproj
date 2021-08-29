@@ -69,9 +69,9 @@
     <None Include="Assets\Assets\resourceName.txt" />
     <None Include="Assets\Assets\item_combo_db.txt" />
     <None Include="Assets\Assets\all_english_word.txt" />
+    <None Include="Assets\Assets\resourceName(Not had null).txt" />
     <None Include="Assets\Assets\skill_db.txt" />
     <None Include="Assets\Assets\item_db_etc.txt" />
-    <None Include="Assets\Assets\resourceName(Not had null).txt" />
     <None Include="Assets\Assets\classNum.txt" />
     <None Include="Assets\Assets\mob_db.txt" />
     <None Include="Assets\Assets\item_db_test.txt" />

@@ -229,23 +229,26 @@ public class ItemGenerator : MonoBehaviour
 
         for (int i = 0; i < (itemPerTier * highestTier) + 1; i++)
         {
-            int itemType = Random.Range(0, 4);
-            GenType genType = GenType.Weapon;
-            if (itemType == 1)
+            int itemType = Random.Range(0, 10);
+            GenType genType = GenType.Weapon; // 40% (0, 1, 2, 3)
+            if (itemType >= 8) // 20% (8, 9)
                 genType = GenType.Shield;
-            else if (itemType == 2)
+            else if (itemType >= 5) // 30% (5, 6, 7)
                 genType = GenType.Armor;
-            else if (itemType == 3)
+            else if (itemType == 4) // 10% (4)
                 genType = GenType.Ammo;
 
             string subType = genType == GenType.Weapon ? allWeaponSubType[Random.Range(0, allWeaponSubType.Count)] : genType == GenType.Ammo ? allAmmoSubType[Random.Range(0, allAmmoSubType.Count)] : "";
             string location = genType == GenType.Weapon ? allWeaponLocation[Random.Range(0, allWeaponLocation.Count)] + ": true" : genType == GenType.Shield ? allShieldLocation[Random.Range(0, allShieldLocation.Count)] + ": true" : genType == GenType.Armor ? allArmorLocation[Random.Range(0, allArmorLocation.Count)] + ": true" : genType == GenType.Ammo ? allAmmoLocation[Random.Range(0, allAmmoLocation.Count)] + ": true" : string.Empty;
 
-            if (subType == "2hSword" || subType == "2hSpear" || subType == "2hAxe" || subType == "Mace" || subType == "Staff" || subType == "Bow" || subType == "Knuckle" || subType == "Musical" || subType == "Katar" || subType == "Revolver" || subType == "Rifle" || subType == "Gatling" || subType == "Shotgun" || subType == "Grenade" || subType == "Huuma" || subType == "2hStaff")
-                location = "Both_Hand: true";
+            if (genType == GenType.Weapon)
+            {
+                if (subType == "2hSword" || subType == "2hSpear" || subType == "2hAxe" || subType == "Mace" || subType == "Staff" || subType == "Bow" || subType == "Knuckle" || subType == "Musical" || subType == "Katar" || subType == "Revolver" || subType == "Rifle" || subType == "Gatling" || subType == "Shotgun" || subType == "Grenade" || subType == "Huuma" || subType == "2hStaff")
+                    location = "Both_Hand: true";
 
-            if (subType == "Dagger" || subType == "1hSword" || subType == "1hSpear" || subType == "1hAxe" || subType == "Mace" || subType == "Staff" || subType == "Whip" || subType == "Book")
-                location = "Right_Hand: true";
+                if (subType == "Dagger" || subType == "1hSword" || subType == "1hSpear" || subType == "1hAxe" || subType == "Mace" || subType == "Staff" || subType == "Whip" || subType == "Book")
+                    location = "Right_Hand: true";
+            }
 
             if (genType == GenType.Ammo)
                 sum.Append(string.Format("  - Id: {0}\n    AegisName: {1}\n    Name: {2}\n    Type: {3}\n    SubType: {4}\n    Weight: {5}\n    Attack: {6}\n    MagicAttack: {7}\n    Locations:\n        {11}\n    Script: |\n{14}"
