@@ -83,8 +83,8 @@ public class ItemGenerator : MonoBehaviour
     }
     int GetArmorView(string location)
     {
-        if (location == "Head_Top" || location == "Head_Mid" || location == "Head_Low") return allHeadgearView[Random.Range(0, allHeadgearView.Count)];
-        else if (location == "Garment") return allRobeView[Random.Range(0, allRobeView.Count)];
+        if (location == "Head_Top: true" || location == "Head_Mid: true" || location == "Head_Low: true") return allHeadgearView[Random.Range(0, allHeadgearView.Count)];
+        else if (location == "Garment: true") return allRobeView[Random.Range(0, allRobeView.Count)];
         return 0;
     }
     enum GenType { Weapon, Shield, Armor, Ammo };
