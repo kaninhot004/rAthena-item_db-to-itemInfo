@@ -264,15 +264,16 @@ public class Converter : MonoBehaviour
         public string description;
     }
 
+    [SerializeField] bool isUseNotHadNullResourceName;
     [Button]
     public void FetchResourceName()
     {
-        if (!File.Exists(Application.dataPath + "/Assets/resourceName.txt"))
+        if (isUseNotHadNullResourceName ? !File.Exists(Application.dataPath + "/Assets/resourceName(Not had null).txt") : !File.Exists(Application.dataPath + "/Assets/resourceName.txt"))
         {
             isConvertError = true;
             return;
         }
-        var resourceName = File.ReadAllText(Application.dataPath + "/Assets/resourceName.txt");
+        var resourceName = File.ReadAllText(isUseNotHadNullResourceName ? Application.dataPath + "/Assets/resourceName(Not had null).txt" : Application.dataPath + "/Assets/resourceName.txt");
         var lines = resourceName.Split('\n');
         resourceNameDatas = new List<ResourceNameData>();
         ResourceNameData resourceNameData = new ResourceNameData();
@@ -1165,12 +1166,13 @@ public class Converter : MonoBehaviour
             // Write builder now
             if (nextText.Contains("- Id:") && !string.IsNullOrEmpty(id) && !string.IsNullOrWhiteSpace(id) || (i + 1) >= lines.Length)
             {
+                var resName = GetResourceNameFromId(int.Parse(id));
                 // Id
                 builder.Append("	[" + id + "] = {\n");
                 // Unidentified display name
                 builder.Append("		unidentifiedDisplayName = \"" + _name + "\",\n");
                 // Unidentified resource name
-                builder.Append("		unidentifiedResourceName = " + GetResourceNameFromId(int.Parse(id), isRandomizeResourceName, isRandomizeResourceNameCustomItemOnly) + ",\n");
+                builder.Append("		unidentifiedResourceName = " + resName + ",\n");
                 // Unidentified description
                 builder.Append("		unidentifiedDescriptionName = {\n");
                 builder.Append("			\"\"\n");
@@ -1178,7 +1180,7 @@ public class Converter : MonoBehaviour
                 // Identified display name
                 builder.Append("		identifiedDisplayName = \"" + _name + "\",\n");
                 // Identified resource name
-                builder.Append("		identifiedResourceName = " + GetResourceNameFromId(int.Parse(id), isRandomizeResourceName, isRandomizeResourceNameCustomItemOnly) + ",\n");
+                builder.Append("		identifiedResourceName = " + resName + ",\n");
                 // Identified description
                 builder.Append("		identifiedDescriptionName = {\n");
                 // Description here
@@ -1277,7 +1279,7 @@ public class Converter : MonoBehaviour
             "	return true, \"good\"\n" +
             "end\n";
         #endregion
-        File.WriteAllText("itemInfo.txt", prefix + builder.ToString() + postfix, System.Text.Encoding.UTF8);
+        File.WriteAllText("itemInfo.txt", prefix + builder.ToString() + postfix, Encoding.UTF8);
 
         Debug.Log(DateTime.UtcNow);
 
@@ -2923,16 +2925,16 @@ public class Converter : MonoBehaviour
         return string.Empty;
     }
 
-    string GetResourceNameFromId(int id, bool isRandom = false, bool isOnlyRandomCustomItem = false)
+    string GetResourceNameFromId(int id)
     {
-        if (isOnlyRandomCustomItem)
+        if (isRandomizeResourceNameCustomItemOnly)
         {
-            if (isRandom && id >= ItemGenerator.startId)
+            if (isRandomizeResourceName && id >= ItemGenerator.startId)
                 return resourceNameDatas[UnityEngine.Random.Range(0, resourceNameDatas.Count)].resourceName;
         }
         else
         {
-            if (isRandom)
+            if (isRandomizeResourceName)
                 return resourceNameDatas[UnityEngine.Random.Range(0, resourceNameDatas.Count)].resourceName;
         }
 
