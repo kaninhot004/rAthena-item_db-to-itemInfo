@@ -140,13 +140,13 @@ public class ItemGenerator : MonoBehaviour
                 isElementalAlreadyHad = true;
 
             // Value
-            int sum = Random.Range(5, 26);
+            int sum = 0;
             if (id <= startId + (itemPerTier * 1))
-                sum = Random.Range(25, 51);
+                sum = Random.Range(5, 16);
             else if (id <= startId + (itemPerTier * 2))
-                sum = Random.Range(50, 76);
+                sum = Random.Range(15, 46);
             else if (id <= startId + (itemPerTier * 3))
-                sum = Random.Range(75, 101);
+                sum = Random.Range(45, 101);
             else if (id <= startId + (itemPerTier * 4))
                 sum = Random.Range(100, 151);
             else if (id <= startId + (itemPerTier * 5))

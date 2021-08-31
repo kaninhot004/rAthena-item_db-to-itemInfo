@@ -130,6 +130,244 @@ public class Converter : MonoBehaviour
     List<string> enchantIds = new List<string>();
 
     [Button]
+    public void FetchResourceNameWithType()
+    {
+        var allTextAsset = File.ReadAllText(Application.dataPath + "/Assets/item_db_equip.txt");
+        var lines = allTextAsset.Split('\n');
+        resNameDagger = new List<string>();
+        resName1hSword = new List<string>();
+        resName2hSword = new List<string>();
+        resName1hSpear = new List<string>();
+        resName2hSpear = new List<string>();
+        resName1hAxe = new List<string>();
+        resName2hAxe = new List<string>();
+        resNameMace = new List<string>();
+        resNameStaff = new List<string>();
+        resNameBow = new List<string>();
+        resNameKnuckle = new List<string>();
+        resNameMusical = new List<string>();
+        resNameWhip = new List<string>();
+        resNameBook = new List<string>();
+        resNameKatar = new List<string>();
+        resNameRevolver = new List<string>();
+        resNameRifle = new List<string>();
+        resNameGatling = new List<string>();
+        resNameShotgun = new List<string>();
+        resNameGrenade = new List<string>();
+        resNameHuuma = new List<string>();
+        //resName2hStaff = new List<string>();
+        resNameHead_Top = new List<string>();
+        resNameHead_Mid = new List<string>();
+        resNameHead_Low = new List<string>();
+        resNameArmor = new List<string>();
+        resNameGarment = new List<string>();
+        resNameShoes = new List<string>();
+        resNameAccessory = new List<string>();
+
+        string id = string.Empty;
+        bool isArmor = false;
+        for (int i = 0; i < lines.Length; i++)
+        {
+            var text = lines[i];
+            text = text.Replace("    # !todo check english name", string.Empty);
+            text = text.Replace("   # unknown view", string.Empty);
+            if (text.Contains("#"))
+                text = text.Substring(0, text.IndexOf("#"));
+
+            // Skip these
+            if (text.Contains("    Buy:")
+                || text.Contains("    Sell:")
+                || text.Contains("    Jobs:")
+                || text.Contains("    Classes:")
+                || text.Contains("    AliasName:")
+                || text.Contains("    Flags:")
+                || text.Contains("    BuyingStore:")
+                || text.Contains("    DeadBranch:")
+                || text.Contains("    Container:")
+                || text.Contains("    UniqueId:")
+                || text.Contains("    BindOnEquip:")
+                || text.Contains("    DropAnnounce:")
+                || text.Contains("    NoConsume:")
+                || text.Contains("    DropEffect:")
+                || text.Contains("    Delay:")
+                || text.Contains("    Duration:")
+                || text.Contains("    Status:")
+                || text.Contains("    Stack:")
+                || text.Contains("    Amount:")
+                || text.Contains("    Inventory:")
+                || text.Contains("    Cart:")
+                || text.Contains("    Storage:")
+                || text.Contains("    GuildStorage:")
+                || text.Contains("    NoUse:")
+                || text.Contains("    Override:")
+                || text.Contains("    Sitting:")
+                || text.Contains("    Trade:")
+                || text.Contains("    NoDrop:")
+                || text.Contains("    NoTrade:")
+                || text.Contains("    TradePartner:")
+                || text.Contains("    NoSell:")
+                || text.Contains("    NoCart:")
+                || text.Contains("    NoStorage:")
+                || text.Contains("    NoGuildStorage:")
+                || text.Contains("    NoMail:")
+                || text.Contains("    NoAuction:")
+                || text.Contains("    Script:")
+                || text.Contains("    OnEquip_Script:")
+                || text.Contains("    OnUnequip_Script:")
+                )
+                text = string.Empty;
+
+            // Id
+            if (text.Contains("  - Id:"))
+            {
+                text = RemoveSpace(text);
+                id = text.Replace("-Id:", string.Empty);
+            }
+            // Type
+            else if (text.Contains("    Type:"))
+            {
+                text = text.Replace("    Type: ", string.Empty);
+                text = RemoveQuote(text);
+                text = RemoveSpace(text);
+                if (text.ToLower() == "armor" || text.ToLower() == "shadowgear")
+                    isArmor = true;
+                else
+                    isArmor = false;
+            }
+            // Locations
+            else if (isArmor)
+            {
+                text = RemoveQuote(text);
+                text = RemoveSpace(text);
+                if (text.ToLower().Contains("costume_head_top") || text.ToLower().Contains("head_top"))
+                    resNameHead_Top.Add(id);
+                else if (text.ToLower().Contains("costume_head_mid") || text.ToLower().Contains("head_mid"))
+                    resNameHead_Mid.Add(id);
+                else if (text.ToLower().Contains("costume_head_low") || text.ToLower().Contains("head_low"))
+                    resNameHead_Low.Add(id);
+                else if (text.ToLower().Contains("costume_garment") || text.ToLower().Contains("garment"))
+                    resNameGarment.Add(id);
+                else if (text.ToLower().Contains("shadow_armor") || text.ToLower().Contains("armor"))
+                    resNameArmor.Add(id);
+                else if (text.ToLower().Contains("shadow_weapon") || text.ToLower().Contains("shadow_shield"))
+                    resNameShield.Add(id);
+                else if (text.ToLower().Contains("shadow_shoes") || text.ToLower().Contains("shoes"))
+                    resNameShoes.Add(id);
+                else if (text.ToLower().Contains("shadow_right_accessory") || text.ToLower().Contains("shadow_left_accessory") || text.ToLower().Contains("right_accessory") || text.ToLower().Contains("left_accessory") || text.ToLower().Contains("both_accessory"))
+                    resNameAccessory.Add(id);
+            }
+            else
+            {
+                if (text.ToLower().Contains("dagger"))
+                    resNameDagger.Add(id);
+                else if (text.ToLower().Contains("1hsword"))
+                    resName1hSword.Add(id);
+                else if (text.ToLower().Contains("2hsword"))
+                    resName2hSword.Add(id);
+                else if (text.ToLower().Contains("1hspear"))
+                    resName1hSpear.Add(id);
+                else if (text.ToLower().Contains("2hspear"))
+                    resName2hSpear.Add(id);
+                else if (text.ToLower().Contains("1haxe"))
+                    resName1hAxe.Add(id);
+                else if (text.ToLower().Contains("2haxe"))
+                    resName2hAxe.Add(id);
+                else if (text.ToLower().Contains("mace"))
+                    resNameMace.Add(id);
+                else if (text.ToLower().Contains("staff"))
+                    resNameStaff.Add(id);
+                else if (text.ToLower().Contains("bow"))
+                    resNameBow.Add(id);
+                else if (text.ToLower().Contains("knuckle"))
+                    resNameKnuckle.Add(id);
+                else if (text.ToLower().Contains("musical"))
+                    resNameMusical.Add(id);
+                else if (text.ToLower().Contains("whip"))
+                    resNameWhip.Add(id);
+                else if (text.ToLower().Contains("book"))
+                    resNameBook.Add(id);
+                else if (text.ToLower().Contains("katar"))
+                    resNameKatar.Add(id);
+                else if (text.ToLower().Contains("revolver"))
+                    resNameRevolver.Add(id);
+                else if (text.ToLower().Contains("rifle"))
+                    resNameRifle.Add(id);
+                else if (text.ToLower().Contains("gatling"))
+                    resNameGatling.Add(id);
+                else if (text.ToLower().Contains("shotgun"))
+                    resNameShotgun.Add(id);
+                else if (text.ToLower().Contains("grenade"))
+                    resNameGrenade.Add(id);
+                else if (text.ToLower().Contains("huuma"))
+                    resNameHuuma.Add(id);
+                //else if (text.ToLower().Contains("2hstaff"))
+                //    resName2hStaff.Add(id);
+            }
+        }
+        Debug.Log(resNameDagger.Count);
+        Debug.Log(resName1hSword.Count);
+        Debug.Log(resName2hSword.Count);
+        Debug.Log(resName1hSpear.Count);
+        Debug.Log(resName2hSpear.Count);
+        Debug.Log(resName1hAxe.Count);
+        Debug.Log(resName2hAxe.Count);
+        Debug.Log(resNameMace.Count);
+        Debug.Log(resNameStaff.Count);
+        Debug.Log(resNameBow.Count);
+        Debug.Log(resNameKnuckle.Count);
+        Debug.Log(resNameMusical.Count);
+        Debug.Log(resNameWhip.Count);
+        Debug.Log(resNameBook.Count);
+        Debug.Log(resNameKatar.Count);
+        Debug.Log(resNameRevolver.Count);
+        Debug.Log(resNameRifle.Count);
+        Debug.Log(resNameGatling.Count);
+        Debug.Log(resNameShotgun.Count);
+        Debug.Log(resNameGrenade.Count);
+        Debug.Log(resNameHuuma.Count);
+        //Debug.Log(resName2hStaff.Count);
+        Debug.Log(resNameHead_Top.Count);
+        Debug.Log(resNameHead_Mid.Count);
+        Debug.Log(resNameHead_Low.Count);
+        Debug.Log(resNameArmor.Count);
+        Debug.Log(resNameShield.Count);
+        Debug.Log(resNameGarment.Count);
+        Debug.Log(resNameShoes.Count);
+        Debug.Log(resNameAccessory.Count);
+    }
+
+    List<string> resNameDagger = new List<string>();
+    List<string> resName1hSword = new List<string>();
+    List<string> resName2hSword = new List<string>();
+    List<string> resName1hSpear = new List<string>();
+    List<string> resName2hSpear = new List<string>();
+    List<string> resName1hAxe = new List<string>();
+    List<string> resName2hAxe = new List<string>();
+    List<string> resNameMace = new List<string>();
+    List<string> resNameStaff = new List<string>();
+    List<string> resNameBow = new List<string>();
+    List<string> resNameKnuckle = new List<string>();
+    List<string> resNameMusical = new List<string>();
+    List<string> resNameWhip = new List<string>();
+    List<string> resNameBook = new List<string>();
+    List<string> resNameKatar = new List<string>();
+    List<string> resNameRevolver = new List<string>();
+    List<string> resNameRifle = new List<string>();
+    List<string> resNameGatling = new List<string>();
+    List<string> resNameShotgun = new List<string>();
+    List<string> resNameGrenade = new List<string>();
+    List<string> resNameHuuma = new List<string>();
+    //List<string> resName2hStaff = new List<string>();
+    List<string> resNameHead_Top = new List<string>();
+    List<string> resNameHead_Mid = new List<string>();
+    List<string> resNameHead_Low = new List<string>();
+    List<string> resNameArmor = new List<string>();
+    List<string> resNameShield = new List<string>();
+    List<string> resNameGarment = new List<string>();
+    List<string> resNameShoes = new List<string>();
+    List<string> resNameAccessory = new List<string>();
+
+    [Button]
     public void FetchMonsterName()
     {
         if (!File.Exists(Application.dataPath + "/Assets/mob_db.txt"))
@@ -1166,7 +1404,7 @@ public class Converter : MonoBehaviour
             // Write builder now
             if (nextText.Contains("- Id:") && !string.IsNullOrEmpty(id) && !string.IsNullOrWhiteSpace(id) || (i + 1) >= lines.Length)
             {
-                var resName = GetResourceNameFromId(int.Parse(id));
+                var resName = GetResourceNameFromId(int.Parse(id), type, subType, !string.IsNullOrEmpty(location) ? location.Substring(0, location.Length - 2) : string.Empty);
                 // Id
                 builder.Append("	[" + id + "] = {\n");
                 // Unidentified display name
@@ -2925,12 +3163,257 @@ public class Converter : MonoBehaviour
         return string.Empty;
     }
 
-    string GetResourceNameFromId(int id)
+    string GetResourceNameFromId(int id, string type, string subType, string location)
     {
         if (isRandomizeResourceNameCustomItemOnly)
         {
             if (isRandomizeResourceName && id >= ItemGenerator.startId)
+            {
+                if (subType.ToLower().Contains("dagger"))
+                {
+                    var s = GetResourceNameFromId(int.Parse(resNameDagger[UnityEngine.Random.Range(0, resNameDagger.Count)]), null, null, null);
+                    if (s != "\"Bio_Reseearch_Docu\"")
+                        return s;
+                    else
+                        return resourceNameDatas[UnityEngine.Random.Range(0, resourceNameDatas.Count)].resourceName;
+                }
+                else if (subType.ToLower().Contains("1hsword"))
+                {
+                    var s = GetResourceNameFromId(int.Parse(resName1hSword[UnityEngine.Random.Range(0, resName1hSword.Count)]), null, null, null);
+                    if (s != "\"Bio_Reseearch_Docu\"")
+                        return s;
+                    else
+                        return resourceNameDatas[UnityEngine.Random.Range(0, resourceNameDatas.Count)].resourceName;
+                }
+                else if (subType.ToLower().Contains("2hsword"))
+                {
+                    var s = GetResourceNameFromId(int.Parse(resName2hSword[UnityEngine.Random.Range(0, resName2hSword.Count)]), null, null, null);
+                    if (s != "\"Bio_Reseearch_Docu\"")
+                        return s;
+                    else
+                        return resourceNameDatas[UnityEngine.Random.Range(0, resourceNameDatas.Count)].resourceName;
+                }
+                else if (subType.ToLower().Contains("1hspear"))
+                {
+                    var s = GetResourceNameFromId(int.Parse(resName1hSpear[UnityEngine.Random.Range(0, resName1hSpear.Count)]), null, null, null);
+                    if (s != "\"Bio_Reseearch_Docu\"")
+                        return s;
+                    else
+                        return resourceNameDatas[UnityEngine.Random.Range(0, resourceNameDatas.Count)].resourceName;
+                }
+                else if (subType.ToLower().Contains("2hspear"))
+                {
+                    var s = GetResourceNameFromId(int.Parse(resName2hSpear[UnityEngine.Random.Range(0, resName2hSpear.Count)]), null, null, null);
+                    if (s != "\"Bio_Reseearch_Docu\"")
+                        return s;
+                    else
+                        return resourceNameDatas[UnityEngine.Random.Range(0, resourceNameDatas.Count)].resourceName;
+                }
+                else if (subType.ToLower().Contains("1haxe"))
+                {
+                    var s = GetResourceNameFromId(int.Parse(resName1hAxe[UnityEngine.Random.Range(0, resName1hAxe.Count)]), null, null, null);
+                    if (s != "\"Bio_Reseearch_Docu\"")
+                        return s;
+                    else
+                        return resourceNameDatas[UnityEngine.Random.Range(0, resourceNameDatas.Count)].resourceName;
+                }
+                else if (subType.ToLower().Contains("2haxe"))
+                {
+                    var s = GetResourceNameFromId(int.Parse(resName2hAxe[UnityEngine.Random.Range(0, resName2hAxe.Count)]), null, null, null);
+                    if (s != "\"Bio_Reseearch_Docu\"")
+                        return s;
+                    else
+                        return resourceNameDatas[UnityEngine.Random.Range(0, resourceNameDatas.Count)].resourceName;
+                }
+                else if (subType.ToLower().Contains("mace"))
+                {
+                    var s = GetResourceNameFromId(int.Parse(resNameMace[UnityEngine.Random.Range(0, resNameMace.Count)]), null, null, null);
+                    if (s != "\"Bio_Reseearch_Docu\"")
+                        return s;
+                    else
+                        return resourceNameDatas[UnityEngine.Random.Range(0, resourceNameDatas.Count)].resourceName;
+                }
+                else if (subType.ToLower().Contains("staff"))
+                {
+                    var s = GetResourceNameFromId(int.Parse(resNameStaff[UnityEngine.Random.Range(0, resNameStaff.Count)]), null, null, null);
+                    if (s != "\"Bio_Reseearch_Docu\"")
+                        return s;
+                    else
+                        return resourceNameDatas[UnityEngine.Random.Range(0, resourceNameDatas.Count)].resourceName;
+                }
+                else if (subType.ToLower().Contains("bow"))
+                {
+                    var s = GetResourceNameFromId(int.Parse(resNameBow[UnityEngine.Random.Range(0, resNameBow.Count)]), null, null, null);
+                    if (s != "\"Bio_Reseearch_Docu\"")
+                        return s;
+                    else
+                        return resourceNameDatas[UnityEngine.Random.Range(0, resourceNameDatas.Count)].resourceName;
+                }
+                else if (subType.ToLower().Contains("knuckle"))
+                {
+                    var s = GetResourceNameFromId(int.Parse(resNameKnuckle[UnityEngine.Random.Range(0, resNameKnuckle.Count)]), null, null, null);
+                    if (s != "\"Bio_Reseearch_Docu\"")
+                        return s;
+                    else
+                        return resourceNameDatas[UnityEngine.Random.Range(0, resourceNameDatas.Count)].resourceName;
+                }
+                else if (subType.ToLower().Contains("musical"))
+                {
+                    var s = GetResourceNameFromId(int.Parse(resNameMusical[UnityEngine.Random.Range(0, resNameMusical.Count)]), null, null, null);
+                    if (s != "\"Bio_Reseearch_Docu\"")
+                        return s;
+                    else
+                        return resourceNameDatas[UnityEngine.Random.Range(0, resourceNameDatas.Count)].resourceName;
+                }
+                else if (subType.ToLower().Contains("whip"))
+                {
+                    var s = GetResourceNameFromId(int.Parse(resNameWhip[UnityEngine.Random.Range(0, resNameWhip.Count)]), null, null, null);
+                    if (s != "\"Bio_Reseearch_Docu\"")
+                        return s;
+                    else
+                        return resourceNameDatas[UnityEngine.Random.Range(0, resourceNameDatas.Count)].resourceName;
+                }
+                else if (subType.ToLower().Contains("book"))
+                {
+                    var s = GetResourceNameFromId(int.Parse(resNameBook[UnityEngine.Random.Range(0, resNameBook.Count)]), null, null, null);
+                    if (s != "\"Bio_Reseearch_Docu\"")
+                        return s;
+                    else
+                        return resourceNameDatas[UnityEngine.Random.Range(0, resourceNameDatas.Count)].resourceName;
+                }
+                else if (subType.ToLower().Contains("katar"))
+                {
+                    var s = GetResourceNameFromId(int.Parse(resNameKatar[UnityEngine.Random.Range(0, resNameKatar.Count)]), null, null, null);
+                    if (s != "\"Bio_Reseearch_Docu\"")
+                        return s;
+                    else
+                        return resourceNameDatas[UnityEngine.Random.Range(0, resourceNameDatas.Count)].resourceName;
+                }
+                else if (subType.ToLower().Contains("revolver"))
+                {
+                    var s = GetResourceNameFromId(int.Parse(resNameRevolver[UnityEngine.Random.Range(0, resNameRevolver.Count)]), null, null, null);
+                    if (s != "\"Bio_Reseearch_Docu\"")
+                        return s;
+                    else
+                        return resourceNameDatas[UnityEngine.Random.Range(0, resourceNameDatas.Count)].resourceName;
+                }
+                else if (subType.ToLower().Contains("rifle"))
+                {
+                    var s = GetResourceNameFromId(int.Parse(resNameRifle[UnityEngine.Random.Range(0, resNameRifle.Count)]), null, null, null);
+                    if (s != "\"Bio_Reseearch_Docu\"")
+                        return s;
+                    else
+                        return resourceNameDatas[UnityEngine.Random.Range(0, resourceNameDatas.Count)].resourceName;
+                }
+                else if (subType.ToLower().Contains("gatling"))
+                {
+                    var s = GetResourceNameFromId(int.Parse(resNameGatling[UnityEngine.Random.Range(0, resNameGatling.Count)]), null, null, null);
+                    if (s != "\"Bio_Reseearch_Docu\"")
+                        return s;
+                    else
+                        return resourceNameDatas[UnityEngine.Random.Range(0, resourceNameDatas.Count)].resourceName;
+                }
+                else if (subType.ToLower().Contains("shotgun"))
+                {
+                    var s = GetResourceNameFromId(int.Parse(resNameShotgun[UnityEngine.Random.Range(0, resNameShotgun.Count)]), null, null, null);
+                    if (s != "\"Bio_Reseearch_Docu\"")
+                        return s;
+                    else
+                        return resourceNameDatas[UnityEngine.Random.Range(0, resourceNameDatas.Count)].resourceName;
+                }
+                else if (subType.ToLower().Contains("grenade"))
+                {
+                    var s = GetResourceNameFromId(int.Parse(resNameGrenade[UnityEngine.Random.Range(0, resNameGrenade.Count)]), null, null, null);
+                    if (s != "\"Bio_Reseearch_Docu\"")
+                        return s;
+                    else
+                        return resourceNameDatas[UnityEngine.Random.Range(0, resourceNameDatas.Count)].resourceName;
+                }
+                else if (subType.ToLower().Contains("huuma"))
+                {
+                    var s = GetResourceNameFromId(int.Parse(resNameHuuma[UnityEngine.Random.Range(0, resNameHuuma.Count)]), null, null, null);
+                    if (s != "\"Bio_Reseearch_Docu\"")
+                        return s;
+                    else
+                        return resourceNameDatas[UnityEngine.Random.Range(0, resourceNameDatas.Count)].resourceName;
+                }
+                else if (subType.ToLower().Contains("2hstaff"))
+                {
+                    var s = GetResourceNameFromId(int.Parse(resNameStaff[UnityEngine.Random.Range(0, resNameStaff.Count)]), null, null, null);
+                    if (s != "\"Bio_Reseearch_Docu\"")
+                        return s;
+                    else
+                        return resourceNameDatas[UnityEngine.Random.Range(0, resourceNameDatas.Count)].resourceName;
+                }
+                if (type.ToLower() == "armor")
+                {
+                    if (location == "หมวกส่วนบน")
+                    {
+                        var s = GetResourceNameFromId(int.Parse(resNameHead_Top[UnityEngine.Random.Range(0, resNameHead_Top.Count)]), null, null, null);
+                        if (s != "\"Bio_Reseearch_Docu\"")
+                            return s;
+                        else
+                            return resourceNameDatas[UnityEngine.Random.Range(0, resourceNameDatas.Count)].resourceName;
+                    }
+                    else if (location == "หมวกส่วนกลาง")
+                    {
+                        var s = GetResourceNameFromId(int.Parse(resNameHead_Mid[UnityEngine.Random.Range(0, resNameHead_Mid.Count)]), null, null, null);
+                        if (s != "\"Bio_Reseearch_Docu\"")
+                            return s;
+                        else
+                            return resourceNameDatas[UnityEngine.Random.Range(0, resourceNameDatas.Count)].resourceName;
+                    }
+                    else if (location == "หมวกส่วนล่าง")
+                    {
+                        var s = GetResourceNameFromId(int.Parse(resNameHead_Low[UnityEngine.Random.Range(0, resNameHead_Low.Count)]), null, null, null);
+                        if (s != "\"Bio_Reseearch_Docu\"")
+                            return s;
+                        else
+                            return resourceNameDatas[UnityEngine.Random.Range(0, resourceNameDatas.Count)].resourceName;
+                    }
+                    else if (location == "ชุดเกราะ")
+                    {
+                        var s = GetResourceNameFromId(int.Parse(resNameArmor[UnityEngine.Random.Range(0, resNameArmor.Count)]), null, null, null);
+                        if (s != "\"Bio_Reseearch_Docu\"")
+                            return s;
+                        else
+                            return resourceNameDatas[UnityEngine.Random.Range(0, resourceNameDatas.Count)].resourceName;
+                    }
+                    else if (location == "ผ้าคลุม")
+                    {
+                        var s = GetResourceNameFromId(int.Parse(resNameGarment[UnityEngine.Random.Range(0, resNameGarment.Count)]), null, null, null);
+                        if (s != "\"Bio_Reseearch_Docu\"")
+                            return s;
+                        else
+                            return resourceNameDatas[UnityEngine.Random.Range(0, resourceNameDatas.Count)].resourceName;
+                    }
+                    else if (location == "รองเท้า")
+                    {
+                        var s = GetResourceNameFromId(int.Parse(resNameShoes[UnityEngine.Random.Range(0, resNameShoes.Count)]), null, null, null);
+                        if (s != "\"Bio_Reseearch_Docu\"")
+                            return s;
+                        else
+                            return resourceNameDatas[UnityEngine.Random.Range(0, resourceNameDatas.Count)].resourceName;
+                    }
+                    else if (location == "เครื่องประดับข้างซ้าย" || location == "เครื่องประดับข้างขวา" || location == "เครื่องประดับสองข้าง")
+                    {
+                        var s = GetResourceNameFromId(int.Parse(resNameAccessory[UnityEngine.Random.Range(0, resNameAccessory.Count)]), null, null, null);
+                        if (s != "\"Bio_Reseearch_Docu\"")
+                            return s;
+                        else
+                            return resourceNameDatas[UnityEngine.Random.Range(0, resourceNameDatas.Count)].resourceName;
+                    }
+                    else if (location == "มือซ้าย")
+                    {
+                        var s = GetResourceNameFromId(int.Parse(resNameShield[UnityEngine.Random.Range(0, resNameShield.Count)]), null, null, null);
+                        if (s != "\"Bio_Reseearch_Docu\"")
+                            return s;
+                        else
+                            return resourceNameDatas[UnityEngine.Random.Range(0, resourceNameDatas.Count)].resourceName;
+                    }
+                }
                 return resourceNameDatas[UnityEngine.Random.Range(0, resourceNameDatas.Count)].resourceName;
+            }
         }
         else
         {
