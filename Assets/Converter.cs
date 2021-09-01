@@ -2830,6 +2830,7 @@ public class Converter : MonoBehaviour
         text = text.Replace("   ", " ");
         text = text.Replace("  ", " ");
         text = text.Replace("\\", string.Empty);
+        text = text.Replace("[NEW_LINE]", "\",\n			\"");
         return text;
     }
 
