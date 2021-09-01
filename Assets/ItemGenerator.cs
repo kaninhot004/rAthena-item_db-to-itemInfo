@@ -192,6 +192,74 @@ public class ItemGenerator : MonoBehaviour
 
         return sumBonus.ToString();
     }
+    string GetTierDamageValue(int id)
+    {
+        // Value
+        int damage = 1;
+        if (id <= startId + (itemPerTier * 1))
+            damage = Random.Range(25, 51); // 25~50
+        else if (id <= startId + (itemPerTier * 2))
+            damage = Random.Range(50, 101); // 50~100
+        else if (id <= startId + (itemPerTier * 3))
+            damage = Random.Range(100, 201); // 100~200
+        else if (id <= startId + (itemPerTier * 4))
+            damage = Random.Range(200, 301); // 200~300
+        else if (id <= startId + (itemPerTier * 5))
+            damage = Random.Range(300, 501); // 300~500
+
+        return damage.ToString("f0");
+    }
+    string GetTierDefenseValue(int id)
+    {
+        // Value
+        int defense = 1;
+        if (id <= startId + (itemPerTier * 1))
+            defense = Random.Range(1, 6); // 1~5
+        else if (id <= startId + (itemPerTier * 2))
+            defense = Random.Range(5, 11); // 5~10
+        else if (id <= startId + (itemPerTier * 3))
+            defense = Random.Range(10, 21); // 10~20
+        else if (id <= startId + (itemPerTier * 4))
+            defense = Random.Range(20, 36); // 20~35
+        else if (id <= startId + (itemPerTier * 5))
+            defense = Random.Range(35, 51); // 35~50
+
+        return defense.ToString("f0");
+    }
+    string GetTierLevelRequirementValue(int id)
+    {
+        // Value
+        int lv = 1;
+        if (id <= startId + (itemPerTier * 1))
+            lv = 1;
+        else if (id <= startId + (itemPerTier * 2))
+            lv = 30;
+        else if (id <= startId + (itemPerTier * 3))
+            lv = 70;
+        else if (id <= startId + (itemPerTier * 4))
+            lv = 110;
+        else if (id <= startId + (itemPerTier * 5))
+            lv = 140;
+
+        return lv.ToString("f0");
+    }
+    string GetTierRangeValue(int id)
+    {
+        // Value
+        int range = 1;
+        if (id <= startId + (itemPerTier * 1))
+            range = Random.Range(1, 3); // 1~2
+        else if (id <= startId + (itemPerTier * 2))
+            range = Random.Range(1, 4); // 1~3
+        else if (id <= startId + (itemPerTier * 3))
+            range = Random.Range(1, 5); // 1~4
+        else if (id <= startId + (itemPerTier * 4))
+            range = Random.Range(1, 6); // 1~5
+        else if (id <= startId + (itemPerTier * 5))
+            range = Random.Range(1, 7); // 1~6
+
+        return range.ToString("f0");
+    }
 
     public const int itemPerTier = 10000;
     public const int highestTier = 5;
@@ -248,25 +316,26 @@ public class ItemGenerator : MonoBehaviour
             }
 
             if (genType == GenType.Ammo)
-                sum.Append(string.Format("  - Id: {0}\n    AegisName: {1}\n    Name: {2}\n    Type: {3}\n    SubType: {4}\n    Weight: {5}\n    Attack: {6}\n    MagicAttack: {7}\n    Locations:\n        {11}\n    Script: |\n{14}"
+                sum.Append(string.Format("  - Id: {0}\n    AegisName: {1}\n    Name: {2}\n    Type: {3}\n    SubType: {4}\n    Weight: {5}\n    Attack: {6}\n    MagicAttack: {7}\n    Locations:\n        {11}\n    EquipLevelMin: {15}\n    Script: |\n{14}"
                 , (startId + i).ToString("f0") // ID
                      , "aegis_" + (startId + i).ToString("f0") // Aegis Name
                      , "\"[" + GetTierName(startId + i) + "]" + GetRandomEnglishWord + "\"" // Name
                      , "Ammo" // Type
                      , subType // Sub Type
                      , Random.Range(1, 100).ToString("f0") // Weight
-                     , Random.Range(1, 501) // Attack
-                     , Random.Range(1, 501) // Magic Attack
+                     , GetTierDamageValue(startId + i) // Attack
+                     , GetTierDamageValue(startId + i) // Magic Attack
                      , "0" // Defense
-                     , Random.Range(1, 6).ToString("f0") // Range
+                     , "0" // Range
                      , "0" // Slots
                      , location  // Locations
                      , "0" // Weapon Level
                      , "0" // View
                      , GetTierBonusValue(startId + i, location) // Script
+                     , GetTierLevelRequirementValue(startId + i) // Level Requirement
                      ));
             else if (genType == GenType.Armor)
-                sum.Append(string.Format("  - Id: {0}\n    AegisName: {1}\n    Name: {2}\n    Type: {3}\n    Weight: {5}\n    Defense: {8}\n    Locations:\n        {11}\n    View: {13}\n    Script: |\n{14}"
+                sum.Append(string.Format("  - Id: {0}\n    AegisName: {1}\n    Name: {2}\n    Type: {3}\n    Weight: {5}\n    Defense: {8}\n    Locations:\n        {11}\n    EquipLevelMin: {15}\n    View: {13}\n    Script: |\n{14}"
                 , (startId + i).ToString("f0") // ID
                      , "aegis_" + (startId + i).ToString("f0") // Aegis Name
                      , "\"[" + GetTierName(startId + i) + "]" + GetRandomEnglishWord + "\"" // Name
@@ -275,16 +344,17 @@ public class ItemGenerator : MonoBehaviour
                      , Random.Range(10, 1000).ToString("f0") // Weight
                      , "0" // Attack
                      , "0" // Magic Attack
-                     , Random.Range(1, 51).ToString("f0") // Defense
+                     , GetTierDefenseValue(startId + i) // Defense
                      , "0" // Range
                      , "0" // Slots
                      , location  // Locations
                      , "0" // Weapon Level
                      , GetArmorView(location).ToString("f0") // View
                      , GetTierBonusValue(startId + i, location) // Script
+                     , GetTierLevelRequirementValue(startId + i) // Level Requirement
                      ));
             else if (genType == GenType.Shield)
-                sum.Append(string.Format("  - Id: {0}\n    AegisName: {1}\n    Name: {2}\n    Type: {3}\n    Weight: {5}\n    Defense: {8}\n    Locations:\n        {11}\n    View: {13}\n    Script: |\n{14}"
+                sum.Append(string.Format("  - Id: {0}\n    AegisName: {1}\n    Name: {2}\n    Type: {3}\n    Weight: {5}\n    Defense: {8}\n    Locations:\n        {11}\n    EquipLevelMin: {15}\n    View: {13}\n    Script: |\n{14}"
                 , (startId + i).ToString("f0") // ID
                      , "aegis_" + (startId + i).ToString("f0") // Aegis Name
                      , "\"[" + GetTierName(startId + i) + "]" + GetRandomEnglishWord + "\"" // Name
@@ -293,31 +363,33 @@ public class ItemGenerator : MonoBehaviour
                      , Random.Range(10, 1000).ToString("f0") // Weight
                      , "0" // Attack
                      , "0" // Magic Attack
-                     , Random.Range(1, 51).ToString("f0") // Defense
+                     , GetTierDefenseValue(startId + i) // Defense
                      , "0" // Range
                      , "0" // Slots
                      , location  // Locations
                      , "0" // Weapon Level
                      , allShieldView[Random.Range(0, allShieldView.Count)].ToString("f0") // View
                      , GetTierBonusValue(startId + i, location) // Script
+                     , GetTierLevelRequirementValue(startId + i) // Level Requirement
                      ));
             else if (genType == GenType.Weapon)
-                sum.Append(string.Format("  - Id: {0}\n    AegisName: {1}\n    Name: {2}\n    Type: {3}\n    SubType: {4}\n    Weight: {5}\n    Attack: {6}\n    MagicAttack: {7}\n    Defense: {8}\n    Range: {9}\n{15}    Locations:\n        {11}\n    WeaponLevel: {12}\n    View: {13}\n    Script: |\n{14}"
+                sum.Append(string.Format("  - Id: {0}\n    AegisName: {1}\n    Name: {2}\n    Type: {3}\n    SubType: {4}\n    Weight: {5}\n    Attack: {6}\n    MagicAttack: {7}\n    Defense: {8}\n    Range: {9}\n{16}    Locations:\n        {11}\n    WeaponLevel: {12}\n    EquipLevelMin: {15}\n    View: {13}\n    Script: |\n{14}"
                 , (startId + i).ToString("f0") // ID
                      , "aegis_" + (startId + i).ToString("f0") // Aegis Name
                      , "\"[" + GetTierName(startId + i) + "]" + GetRandomEnglishWord + "\"" // Name
                      , "Weapon" // Type
                      , subType // Sub Type
                      , Random.Range(10, 1000).ToString("f0") // Weight
-                     , Random.Range(1, 501).ToString("f0") // Attack
-                     , Random.Range(1, 501).ToString("f0") // Magic Attack
+                     , GetTierDamageValue(startId + i) // Attack
+                     , GetTierDamageValue(startId + i) // Magic Attack
                      , "0" // Defense
-                     , Random.Range(1, 6).ToString("f0") // Range
+                     , GetTierRangeValue(startId + i) // Range
                      , "0" // Slots
                      , location  // Locations
                      , Random.Range(1, 5).ToString("f0") // Weapon Level
                      , GetWeaponView(subType).ToString("f0") // View
                      , GetTierBonusValue(startId + i, location) // Script
+                     , GetTierLevelRequirementValue(startId + i) // Level Requirement
                      , (subType == "Musical") ? "    Gender: Male\n" : (subType == "Whip") ? "    Gender: Female\n" : string.Empty // Gender
                      ));
         }
