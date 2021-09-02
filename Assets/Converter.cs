@@ -441,6 +441,33 @@ public class Converter : MonoBehaviour
             classNumData = new ClassNumData();
         }
         Debug.Log("classNumDatas.Count:" + classNumDatas.Count);
+
+        if (!File.Exists(Application.dataPath + "/Assets/item_db_custom.txt"))
+            return;
+
+        classNum = File.ReadAllText(Application.dataPath + "/Assets/item_db_custom.txt");
+        lines = classNum.Split('\n');
+        classNumData = new ClassNumData();
+        for (int i = 0; i < lines.Length; i++)
+        {
+            var text = lines[i];
+
+            // Null
+            if (string.IsNullOrEmpty(text) || string.IsNullOrWhiteSpace(text))
+                continue;
+
+            // Id
+            if (text.Contains("- Id:"))
+                classNumData.id = int.Parse(RemoveSpace(text).Replace("-Id:", string.Empty));
+            // Name
+            else if (text.Contains("    View:"))
+            {
+                classNumData.classNum = RemoveSpace(text).Replace("View:", string.Empty);
+                classNumDatas.Add(classNumData);
+                classNumData = new ClassNumData();
+            }
+        }
+        Debug.Log("classNumDatas.Count:" + classNumDatas.Count);
     }
 
     List<ClassNumData> classNumDatas = new List<ClassNumData>();
@@ -3173,244 +3200,214 @@ public class Converter : MonoBehaviour
                 if (subType.ToLower().Contains("dagger"))
                 {
                     var s = GetResourceNameFromId(int.Parse(resNameDagger[UnityEngine.Random.Range(0, resNameDagger.Count)]), null, null, null);
-                    if (s != "\"Bio_Reseearch_Docu\"")
-                        return s;
-                    else
-                        return resourceNameDatas[UnityEngine.Random.Range(0, resourceNameDatas.Count)].resourceName;
+                    while (s == "\"Bio_Reseearch_Docu\"")
+                        s = GetResourceNameFromId(int.Parse(resNameDagger[UnityEngine.Random.Range(0, resNameDagger.Count)]), null, null, null);
+                    return s;
                 }
                 else if (subType.ToLower().Contains("1hsword"))
                 {
                     var s = GetResourceNameFromId(int.Parse(resName1hSword[UnityEngine.Random.Range(0, resName1hSword.Count)]), null, null, null);
-                    if (s != "\"Bio_Reseearch_Docu\"")
-                        return s;
-                    else
-                        return resourceNameDatas[UnityEngine.Random.Range(0, resourceNameDatas.Count)].resourceName;
+                    while (s == "\"Bio_Reseearch_Docu\"")
+                        s = GetResourceNameFromId(int.Parse(resName1hSword[UnityEngine.Random.Range(0, resName1hSword.Count)]), null, null, null);
+                    return s;
                 }
                 else if (subType.ToLower().Contains("2hsword"))
                 {
                     var s = GetResourceNameFromId(int.Parse(resName2hSword[UnityEngine.Random.Range(0, resName2hSword.Count)]), null, null, null);
-                    if (s != "\"Bio_Reseearch_Docu\"")
-                        return s;
-                    else
-                        return resourceNameDatas[UnityEngine.Random.Range(0, resourceNameDatas.Count)].resourceName;
+                    while (s == "\"Bio_Reseearch_Docu\"")
+                        s = GetResourceNameFromId(int.Parse(resName2hSword[UnityEngine.Random.Range(0, resName2hSword.Count)]), null, null, null);
+                    return s;
                 }
                 else if (subType.ToLower().Contains("1hspear"))
                 {
                     var s = GetResourceNameFromId(int.Parse(resName1hSpear[UnityEngine.Random.Range(0, resName1hSpear.Count)]), null, null, null);
-                    if (s != "\"Bio_Reseearch_Docu\"")
-                        return s;
-                    else
-                        return resourceNameDatas[UnityEngine.Random.Range(0, resourceNameDatas.Count)].resourceName;
+                    while (s == "\"Bio_Reseearch_Docu\"")
+                        s = GetResourceNameFromId(int.Parse(resName1hSpear[UnityEngine.Random.Range(0, resName1hSpear.Count)]), null, null, null);
+                    return s;
                 }
                 else if (subType.ToLower().Contains("2hspear"))
                 {
                     var s = GetResourceNameFromId(int.Parse(resName2hSpear[UnityEngine.Random.Range(0, resName2hSpear.Count)]), null, null, null);
-                    if (s != "\"Bio_Reseearch_Docu\"")
-                        return s;
-                    else
-                        return resourceNameDatas[UnityEngine.Random.Range(0, resourceNameDatas.Count)].resourceName;
+                    while (s == "\"Bio_Reseearch_Docu\"")
+                        s = GetResourceNameFromId(int.Parse(resName2hSpear[UnityEngine.Random.Range(0, resName2hSpear.Count)]), null, null, null);
+                    return s;
                 }
                 else if (subType.ToLower().Contains("1haxe"))
                 {
                     var s = GetResourceNameFromId(int.Parse(resName1hAxe[UnityEngine.Random.Range(0, resName1hAxe.Count)]), null, null, null);
-                    if (s != "\"Bio_Reseearch_Docu\"")
-                        return s;
-                    else
-                        return resourceNameDatas[UnityEngine.Random.Range(0, resourceNameDatas.Count)].resourceName;
+                    while (s == "\"Bio_Reseearch_Docu\"")
+                        s = GetResourceNameFromId(int.Parse(resName1hAxe[UnityEngine.Random.Range(0, resName1hAxe.Count)]), null, null, null);
+                    return s;
                 }
                 else if (subType.ToLower().Contains("2haxe"))
                 {
                     var s = GetResourceNameFromId(int.Parse(resName2hAxe[UnityEngine.Random.Range(0, resName2hAxe.Count)]), null, null, null);
-                    if (s != "\"Bio_Reseearch_Docu\"")
-                        return s;
-                    else
-                        return resourceNameDatas[UnityEngine.Random.Range(0, resourceNameDatas.Count)].resourceName;
+                    while (s == "\"Bio_Reseearch_Docu\"")
+                        s = GetResourceNameFromId(int.Parse(resName2hAxe[UnityEngine.Random.Range(0, resName2hAxe.Count)]), null, null, null);
+                    return s;
                 }
                 else if (subType.ToLower().Contains("mace"))
                 {
                     var s = GetResourceNameFromId(int.Parse(resNameMace[UnityEngine.Random.Range(0, resNameMace.Count)]), null, null, null);
-                    if (s != "\"Bio_Reseearch_Docu\"")
-                        return s;
-                    else
-                        return resourceNameDatas[UnityEngine.Random.Range(0, resourceNameDatas.Count)].resourceName;
+                    while (s == "\"Bio_Reseearch_Docu\"")
+                        s = GetResourceNameFromId(int.Parse(resNameMace[UnityEngine.Random.Range(0, resNameMace.Count)]), null, null, null);
+                    return s;
                 }
                 else if (subType.ToLower().Contains("staff"))
                 {
                     var s = GetResourceNameFromId(int.Parse(resNameStaff[UnityEngine.Random.Range(0, resNameStaff.Count)]), null, null, null);
-                    if (s != "\"Bio_Reseearch_Docu\"")
-                        return s;
-                    else
-                        return resourceNameDatas[UnityEngine.Random.Range(0, resourceNameDatas.Count)].resourceName;
+                    while (s == "\"Bio_Reseearch_Docu\"")
+                        s = GetResourceNameFromId(int.Parse(resNameStaff[UnityEngine.Random.Range(0, resNameStaff.Count)]), null, null, null);
+                    return s;
                 }
                 else if (subType.ToLower().Contains("bow"))
                 {
                     var s = GetResourceNameFromId(int.Parse(resNameBow[UnityEngine.Random.Range(0, resNameBow.Count)]), null, null, null);
-                    if (s != "\"Bio_Reseearch_Docu\"")
-                        return s;
-                    else
-                        return resourceNameDatas[UnityEngine.Random.Range(0, resourceNameDatas.Count)].resourceName;
+                    while (s == "\"Bio_Reseearch_Docu\"")
+                        s = GetResourceNameFromId(int.Parse(resNameBow[UnityEngine.Random.Range(0, resNameBow.Count)]), null, null, null);
+                    return s;
                 }
                 else if (subType.ToLower().Contains("knuckle"))
                 {
                     var s = GetResourceNameFromId(int.Parse(resNameKnuckle[UnityEngine.Random.Range(0, resNameKnuckle.Count)]), null, null, null);
-                    if (s != "\"Bio_Reseearch_Docu\"")
-                        return s;
-                    else
-                        return resourceNameDatas[UnityEngine.Random.Range(0, resourceNameDatas.Count)].resourceName;
+                    while (s == "\"Bio_Reseearch_Docu\"")
+                        s = GetResourceNameFromId(int.Parse(resNameKnuckle[UnityEngine.Random.Range(0, resNameKnuckle.Count)]), null, null, null);
+                    return s;
                 }
                 else if (subType.ToLower().Contains("musical"))
                 {
                     var s = GetResourceNameFromId(int.Parse(resNameMusical[UnityEngine.Random.Range(0, resNameMusical.Count)]), null, null, null);
-                    if (s != "\"Bio_Reseearch_Docu\"")
-                        return s;
-                    else
-                        return resourceNameDatas[UnityEngine.Random.Range(0, resourceNameDatas.Count)].resourceName;
+                    while (s == "\"Bio_Reseearch_Docu\"")
+                        s = GetResourceNameFromId(int.Parse(resNameMusical[UnityEngine.Random.Range(0, resNameMusical.Count)]), null, null, null);
+                    return s;
                 }
                 else if (subType.ToLower().Contains("whip"))
                 {
                     var s = GetResourceNameFromId(int.Parse(resNameWhip[UnityEngine.Random.Range(0, resNameWhip.Count)]), null, null, null);
-                    if (s != "\"Bio_Reseearch_Docu\"")
-                        return s;
-                    else
-                        return resourceNameDatas[UnityEngine.Random.Range(0, resourceNameDatas.Count)].resourceName;
+                    while (s == "\"Bio_Reseearch_Docu\"")
+                        s = GetResourceNameFromId(int.Parse(resNameWhip[UnityEngine.Random.Range(0, resNameWhip.Count)]), null, null, null);
+                    return s;
                 }
                 else if (subType.ToLower().Contains("book"))
                 {
                     var s = GetResourceNameFromId(int.Parse(resNameBook[UnityEngine.Random.Range(0, resNameBook.Count)]), null, null, null);
-                    if (s != "\"Bio_Reseearch_Docu\"")
-                        return s;
-                    else
-                        return resourceNameDatas[UnityEngine.Random.Range(0, resourceNameDatas.Count)].resourceName;
+                    while (s == "\"Bio_Reseearch_Docu\"")
+                        s = GetResourceNameFromId(int.Parse(resNameBook[UnityEngine.Random.Range(0, resNameBook.Count)]), null, null, null);
+                    return s;
                 }
                 else if (subType.ToLower().Contains("katar"))
                 {
                     var s = GetResourceNameFromId(int.Parse(resNameKatar[UnityEngine.Random.Range(0, resNameKatar.Count)]), null, null, null);
-                    if (s != "\"Bio_Reseearch_Docu\"")
-                        return s;
-                    else
-                        return resourceNameDatas[UnityEngine.Random.Range(0, resourceNameDatas.Count)].resourceName;
+                    while (s == "\"Bio_Reseearch_Docu\"")
+                        s = GetResourceNameFromId(int.Parse(resNameKatar[UnityEngine.Random.Range(0, resNameKatar.Count)]), null, null, null);
+                    return s;
                 }
                 else if (subType.ToLower().Contains("revolver"))
                 {
                     var s = GetResourceNameFromId(int.Parse(resNameRevolver[UnityEngine.Random.Range(0, resNameRevolver.Count)]), null, null, null);
-                    if (s != "\"Bio_Reseearch_Docu\"")
-                        return s;
-                    else
-                        return resourceNameDatas[UnityEngine.Random.Range(0, resourceNameDatas.Count)].resourceName;
+                    while (s == "\"Bio_Reseearch_Docu\"")
+                        s = GetResourceNameFromId(int.Parse(resNameRevolver[UnityEngine.Random.Range(0, resNameRevolver.Count)]), null, null, null);
+                    return s;
                 }
                 else if (subType.ToLower().Contains("rifle"))
                 {
                     var s = GetResourceNameFromId(int.Parse(resNameRifle[UnityEngine.Random.Range(0, resNameRifle.Count)]), null, null, null);
-                    if (s != "\"Bio_Reseearch_Docu\"")
-                        return s;
-                    else
-                        return resourceNameDatas[UnityEngine.Random.Range(0, resourceNameDatas.Count)].resourceName;
+                    while (s == "\"Bio_Reseearch_Docu\"")
+                        s = GetResourceNameFromId(int.Parse(resNameRifle[UnityEngine.Random.Range(0, resNameRifle.Count)]), null, null, null);
+                    return s;
                 }
                 else if (subType.ToLower().Contains("gatling"))
                 {
                     var s = GetResourceNameFromId(int.Parse(resNameGatling[UnityEngine.Random.Range(0, resNameGatling.Count)]), null, null, null);
-                    if (s != "\"Bio_Reseearch_Docu\"")
-                        return s;
-                    else
-                        return resourceNameDatas[UnityEngine.Random.Range(0, resourceNameDatas.Count)].resourceName;
+                    while (s == "\"Bio_Reseearch_Docu\"")
+                        s = GetResourceNameFromId(int.Parse(resNameGatling[UnityEngine.Random.Range(0, resNameGatling.Count)]), null, null, null);
+                    return s;
                 }
                 else if (subType.ToLower().Contains("shotgun"))
                 {
                     var s = GetResourceNameFromId(int.Parse(resNameShotgun[UnityEngine.Random.Range(0, resNameShotgun.Count)]), null, null, null);
-                    if (s != "\"Bio_Reseearch_Docu\"")
-                        return s;
-                    else
-                        return resourceNameDatas[UnityEngine.Random.Range(0, resourceNameDatas.Count)].resourceName;
+                    while (s == "\"Bio_Reseearch_Docu\"")
+                        s = GetResourceNameFromId(int.Parse(resNameShotgun[UnityEngine.Random.Range(0, resNameShotgun.Count)]), null, null, null);
+                    return s;
                 }
                 else if (subType.ToLower().Contains("grenade"))
                 {
                     var s = GetResourceNameFromId(int.Parse(resNameGrenade[UnityEngine.Random.Range(0, resNameGrenade.Count)]), null, null, null);
-                    if (s != "\"Bio_Reseearch_Docu\"")
-                        return s;
-                    else
-                        return resourceNameDatas[UnityEngine.Random.Range(0, resourceNameDatas.Count)].resourceName;
+                    while (s == "\"Bio_Reseearch_Docu\"")
+                        s = GetResourceNameFromId(int.Parse(resNameGrenade[UnityEngine.Random.Range(0, resNameGrenade.Count)]), null, null, null);
+                    return s;
                 }
                 else if (subType.ToLower().Contains("huuma"))
                 {
                     var s = GetResourceNameFromId(int.Parse(resNameHuuma[UnityEngine.Random.Range(0, resNameHuuma.Count)]), null, null, null);
-                    if (s != "\"Bio_Reseearch_Docu\"")
-                        return s;
-                    else
-                        return resourceNameDatas[UnityEngine.Random.Range(0, resourceNameDatas.Count)].resourceName;
+                    while (s == "\"Bio_Reseearch_Docu\"")
+                        s = GetResourceNameFromId(int.Parse(resNameHuuma[UnityEngine.Random.Range(0, resNameHuuma.Count)]), null, null, null);
+                    return s;
                 }
                 else if (subType.ToLower().Contains("2hstaff"))
                 {
                     var s = GetResourceNameFromId(int.Parse(resNameStaff[UnityEngine.Random.Range(0, resNameStaff.Count)]), null, null, null);
-                    if (s != "\"Bio_Reseearch_Docu\"")
-                        return s;
-                    else
-                        return resourceNameDatas[UnityEngine.Random.Range(0, resourceNameDatas.Count)].resourceName;
+                    while (s == "\"Bio_Reseearch_Docu\"")
+                        s = GetResourceNameFromId(int.Parse(resNameStaff[UnityEngine.Random.Range(0, resNameStaff.Count)]), null, null, null);
+                    return s;
                 }
                 if (type.ToLower() == "armor")
                 {
                     if (location == "หมวกส่วนบน")
                     {
                         var s = GetResourceNameFromId(int.Parse(resNameHead_Top[UnityEngine.Random.Range(0, resNameHead_Top.Count)]), null, null, null);
-                        if (s != "\"Bio_Reseearch_Docu\"")
-                            return s;
-                        else
-                            return resourceNameDatas[UnityEngine.Random.Range(0, resourceNameDatas.Count)].resourceName;
+                        while (s == "\"Bio_Reseearch_Docu\"")
+                            s = GetResourceNameFromId(int.Parse(resNameHead_Top[UnityEngine.Random.Range(0, resNameHead_Top.Count)]), null, null, null);
+                        return s;
                     }
                     else if (location == "หมวกส่วนกลาง")
                     {
                         var s = GetResourceNameFromId(int.Parse(resNameHead_Mid[UnityEngine.Random.Range(0, resNameHead_Mid.Count)]), null, null, null);
-                        if (s != "\"Bio_Reseearch_Docu\"")
-                            return s;
-                        else
-                            return resourceNameDatas[UnityEngine.Random.Range(0, resourceNameDatas.Count)].resourceName;
+                        while (s == "\"Bio_Reseearch_Docu\"")
+                            s = GetResourceNameFromId(int.Parse(resNameHead_Mid[UnityEngine.Random.Range(0, resNameHead_Mid.Count)]), null, null, null);
+                        return s;
                     }
                     else if (location == "หมวกส่วนล่าง")
                     {
                         var s = GetResourceNameFromId(int.Parse(resNameHead_Low[UnityEngine.Random.Range(0, resNameHead_Low.Count)]), null, null, null);
-                        if (s != "\"Bio_Reseearch_Docu\"")
-                            return s;
-                        else
-                            return resourceNameDatas[UnityEngine.Random.Range(0, resourceNameDatas.Count)].resourceName;
+                        while (s == "\"Bio_Reseearch_Docu\"")
+                            s = GetResourceNameFromId(int.Parse(resNameHead_Low[UnityEngine.Random.Range(0, resNameHead_Low.Count)]), null, null, null);
+                        return s;
                     }
                     else if (location == "ชุดเกราะ")
                     {
                         var s = GetResourceNameFromId(int.Parse(resNameArmor[UnityEngine.Random.Range(0, resNameArmor.Count)]), null, null, null);
-                        if (s != "\"Bio_Reseearch_Docu\"")
-                            return s;
-                        else
-                            return resourceNameDatas[UnityEngine.Random.Range(0, resourceNameDatas.Count)].resourceName;
+                        while (s == "\"Bio_Reseearch_Docu\"")
+                            s = GetResourceNameFromId(int.Parse(resNameArmor[UnityEngine.Random.Range(0, resNameArmor.Count)]), null, null, null);
+                        return s;
                     }
                     else if (location == "ผ้าคลุม")
                     {
                         var s = GetResourceNameFromId(int.Parse(resNameGarment[UnityEngine.Random.Range(0, resNameGarment.Count)]), null, null, null);
-                        if (s != "\"Bio_Reseearch_Docu\"")
-                            return s;
-                        else
-                            return resourceNameDatas[UnityEngine.Random.Range(0, resourceNameDatas.Count)].resourceName;
+                        while (s == "\"Bio_Reseearch_Docu\"")
+                            s = GetResourceNameFromId(int.Parse(resNameGarment[UnityEngine.Random.Range(0, resNameGarment.Count)]), null, null, null);
+                        return s;
                     }
                     else if (location == "รองเท้า")
                     {
                         var s = GetResourceNameFromId(int.Parse(resNameShoes[UnityEngine.Random.Range(0, resNameShoes.Count)]), null, null, null);
-                        if (s != "\"Bio_Reseearch_Docu\"")
-                            return s;
-                        else
-                            return resourceNameDatas[UnityEngine.Random.Range(0, resourceNameDatas.Count)].resourceName;
+                        while (s == "\"Bio_Reseearch_Docu\"")
+                            s = GetResourceNameFromId(int.Parse(resNameShoes[UnityEngine.Random.Range(0, resNameShoes.Count)]), null, null, null);
+                        return s;
                     }
                     else if (location == "เครื่องประดับข้างซ้าย" || location == "เครื่องประดับข้างขวา" || location == "เครื่องประดับสองข้าง")
                     {
                         var s = GetResourceNameFromId(int.Parse(resNameAccessory[UnityEngine.Random.Range(0, resNameAccessory.Count)]), null, null, null);
-                        if (s != "\"Bio_Reseearch_Docu\"")
-                            return s;
-                        else
-                            return resourceNameDatas[UnityEngine.Random.Range(0, resourceNameDatas.Count)].resourceName;
+                        while (s == "\"Bio_Reseearch_Docu\"")
+                            s = GetResourceNameFromId(int.Parse(resNameAccessory[UnityEngine.Random.Range(0, resNameAccessory.Count)]), null, null, null);
+                        return s;
                     }
                     else if (location == "มือซ้าย")
                     {
                         var s = GetResourceNameFromId(int.Parse(resNameShield[UnityEngine.Random.Range(0, resNameShield.Count)]), null, null, null);
-                        if (s != "\"Bio_Reseearch_Docu\"")
-                            return s;
-                        else
-                            return resourceNameDatas[UnityEngine.Random.Range(0, resourceNameDatas.Count)].resourceName;
+                        while (s == "\"Bio_Reseearch_Docu\"")
+                            s = GetResourceNameFromId(int.Parse(resNameShield[UnityEngine.Random.Range(0, resNameShield.Count)]), null, null, null);
+                        return s;
                     }
                 }
                 return resourceNameDatas[UnityEngine.Random.Range(0, resourceNameDatas.Count)].resourceName;

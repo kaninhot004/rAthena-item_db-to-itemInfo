@@ -10,7 +10,7 @@ public class ItemGenerator : MonoBehaviour
     [SerializeField] List<string> allWeaponSubType = new List<string>() { "Dagger", "1hSword", "2hSword", "1hSpear", "2hSpear", "1hAxe", "2hAxe", "Mace", "Staff", "Bow", "Knuckle", "Musical", "Whip", "Book", "Katar", "Revolver", "Rifle", "Gatling", "Shotgun", "Grenade", "Huuma", "2hStaff" };
     [SerializeField] List<string> allAmmoSubType = new List<string>() { "Arrow", "Dagger", "Bullet", "Shell", "Grenade", "Shuriken", "Kunai", "CannonBall", "ThrowWeapon" };
 
-    [SerializeField] List<string> allWeaponLocation = new List<string>() { "Right_Hand", "Left_Hand", "Both_Hand" };
+    [SerializeField] List<string> allWeaponLocation = new List<string>() { "Right_Hand", "Both_Hand" };
     [SerializeField] List<string> allShieldLocation = new List<string>() { "Left_Hand" };
     [SerializeField] List<string> allArmorLocation = new List<string>() { "Head_Top", "Head_Mid", "Head_Low", "Armor", "Garment", "Shoes", "Right_Accessory", "Left_Accessory", "Both_Accessory" };
     [SerializeField] List<string> allAmmoLocation = new List<string>() { "Ammo" };
@@ -308,10 +308,10 @@ public class ItemGenerator : MonoBehaviour
 
             if (genType == GenType.Weapon)
             {
-                if (subType == "2hSword" || subType == "2hSpear" || subType == "2hAxe" || subType == "Mace" || subType == "Staff" || subType == "Bow" || subType == "Knuckle" || subType == "Musical" || subType == "Katar" || subType == "Revolver" || subType == "Rifle" || subType == "Gatling" || subType == "Shotgun" || subType == "Grenade" || subType == "Huuma" || subType == "2hStaff")
+                if (subType == "2hSword" || subType == "2hSpear" || subType == "2hAxe" || subType == "Bow" || subType == "Knuckle" || subType == "Katar" || subType == "Revolver" || subType == "Rifle" || subType == "Gatling" || subType == "Shotgun" || subType == "Grenade" || subType == "Huuma" || subType == "2hStaff")
                     location = "Both_Hand: true";
 
-                if (subType == "Dagger" || subType == "1hSword" || subType == "1hSpear" || subType == "1hAxe" || subType == "Mace" || subType == "Staff" || subType == "Whip" || subType == "Book")
+                if (subType == "Dagger" || subType == "1hSword" || subType == "1hSpear" || subType == "1hAxe" || subType == "Mace" || subType == "Whip" || subType == "Book" || subType == "Musical")
                     location = "Right_Hand: true";
             }
 
