@@ -19,6 +19,7 @@ public class Converter : MonoBehaviour
     string _name;
     string type;
     string subType;
+    string buy;
     string weight;
     string atk;
     string mAtk;
@@ -991,7 +992,7 @@ public class Converter : MonoBehaviour
             #region Description
             // Skip these
             if (text.Contains("    AegisName:")
-                || text.Contains("    Buy:")
+                //|| text.Contains("    Buy:")
                 || text.Contains("    Sell:")
                 || text.Contains("    Jobs:")
                 || text.Contains("    Classes:")
@@ -1095,6 +1096,12 @@ public class Converter : MonoBehaviour
             // SubType
             else if (text.Contains("    SubType:"))
                 subType = text.Replace("    SubType: ", string.Empty);
+            // Buy
+            else if (text.Contains("    Buy:"))
+            {
+                text = text.Replace("    Buy: ", string.Empty);
+                buy = TryParseInt(text);
+            }
             // Weight
             else if (text.Contains("    Weight:"))
             {
@@ -1483,6 +1490,8 @@ public class Converter : MonoBehaviour
                     sumDesc += "			\"^3F28FFตีบวก:^000000 " + refineable + "\",\n";
                 if (!string.IsNullOrEmpty(weight))
                     sumDesc += "			\"^3F28FFน้ำหนัก:^000000 " + weight + "\",\n";
+                if (!string.IsNullOrEmpty(buy))
+                    sumDesc += "			\"^3F28FFราคา:^000000 " + buy + "\",\n";
                 builder.Append(sumCombo);
                 builder.Append(sumBonus);
                 builder.Append(sumEquipBonus);

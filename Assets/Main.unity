@@ -152,15 +152,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   testItemComboId: 0
   isUseTestTextAsset: 0
-  isUseNotHadNullResourceName: 1
+  isUseNotHadNullResourceName: 0
   txtProgression: {fileID: 1288952205}
   btnConvert: {fileID: 1002731954}
   btnCredit: {fileID: 606623798}
   objConvertBtn: {fileID: 1002731952}
   objConvertProgression: {fileID: 1288952203}
   txtConvertProgression: {fileID: 1288952205}
-  isRandomizeResourceName: 1
-  isRandomizeResourceNameCustomItemOnly: 1
+  isRandomizeResourceName: 0
+  isRandomizeResourceNameCustomItemOnly: 0
 --- !u!4 &1553148
 Transform:
   m_ObjectHideFlags: 0
