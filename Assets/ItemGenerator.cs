@@ -308,10 +308,10 @@ public class ItemGenerator : MonoBehaviour
 
             if (genType == GenType.Weapon)
             {
-                if (subType == "2hSword" || subType == "2hSpear" || subType == "2hAxe" || subType == "Bow" || subType == "Knuckle" || subType == "Katar" || subType == "Revolver" || subType == "Rifle" || subType == "Gatling" || subType == "Shotgun" || subType == "Grenade" || subType == "Huuma" || subType == "2hStaff")
+                if (subType == "2hSword" || subType == "2hSpear" || subType == "2hAxe" || subType == "Bow" || subType == "Katar" || subType == "Revolver" || subType == "Rifle" || subType == "Gatling" || subType == "Shotgun" || subType == "Grenade" || subType == "Huuma" || subType == "2hStaff")
                     location = "Both_Hand: true";
 
-                if (subType == "Dagger" || subType == "1hSword" || subType == "1hSpear" || subType == "1hAxe" || subType == "Mace" || subType == "Whip" || subType == "Book" || subType == "Musical")
+                if (subType == "Dagger" || subType == "1hSword" || subType == "1hSpear" || subType == "1hAxe" || subType == "Mace" || subType == "Whip" || subType == "Book" || subType == "Musical" || subType == "Knuckle")
                     location = "Right_Hand: true";
             }
 
