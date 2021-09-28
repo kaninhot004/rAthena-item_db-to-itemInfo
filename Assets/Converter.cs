@@ -14,6 +14,7 @@ public class Converter : MonoBehaviour
     public int testItemComboId;
 
     public bool isUseTestTextAsset;
+    public bool isOnlyUseCustomTextAsset;
 
     string id;
     string _name;
@@ -579,6 +580,8 @@ public class Converter : MonoBehaviour
             return;
         }
         var itemComboDb = File.ReadAllText(Application.dataPath + "/Assets/item_combo_db.txt");
+        if (isOnlyUseCustomTextAsset)
+            itemComboDb = string.Empty;
         var lines = itemComboDb.Split('\n');
         comboDatas = new List<ComboData>();
         ComboData comboData = new ComboData();
@@ -976,6 +979,8 @@ public class Converter : MonoBehaviour
             + File.ReadAllText(Application.dataPath + "/Assets/item_db_usable.txt") + "\n"
             + File.ReadAllText(Application.dataPath + "/Assets/item_db_etc.txt") + "\n"
             + (File.Exists(Application.dataPath + "/Assets/item_db_custom.txt") ? File.ReadAllText(Application.dataPath + "/Assets/item_db_custom.txt") : string.Empty);
+        if (isOnlyUseCustomTextAsset)
+            allTextAsset = File.ReadAllText(Application.dataPath + "/Assets/item_db_custom.txt");
         var lines = allTextAsset.Split('\n');
         if (isUseTestTextAsset)
             lines = File.ReadAllText(Application.dataPath + "/Assets/item_db_test.txt").Split('\n');
