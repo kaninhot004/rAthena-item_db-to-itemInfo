@@ -152,7 +152,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   testItemComboId: 0
   isUseTestTextAsset: 0
-  isUseNotHadNullResourceName: 0
+  isOnlyUseCustomTextAsset: 0
+  isUseNotHadNullResourceName: 1
   txtProgression: {fileID: 1288952205}
   btnConvert: {fileID: 1002731954}
   btnCredit: {fileID: 606623798}
