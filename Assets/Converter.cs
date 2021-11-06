@@ -134,7 +134,7 @@ public class Converter : MonoBehaviour
     [Button]
     public void FetchResourceNameWithType()
     {
-        var allTextAsset = File.ReadAllText(Application.dataPath + "/Assets/item_db_equip.txt");
+        var allTextAsset = File.ReadAllText(Application.dataPath + "/Assets/item_db_equip.yml");
         var lines = allTextAsset.Split('\n');
         resNameDagger = new List<string>();
         resName1hSword = new List<string>();
@@ -171,10 +171,8 @@ public class Converter : MonoBehaviour
         for (int i = 0; i < lines.Length; i++)
         {
             var text = lines[i];
-            text = text.Replace("    # !todo check english name", string.Empty);
-            text = text.Replace("   # unknown view", string.Empty);
-            if (text.Contains("#"))
-                text = text.Substring(0, text.IndexOf("#"));
+
+            text = RemoveCommentAndUnwantedWord(text);
 
             // Skip these
             if (text.Contains("    Buy:")
@@ -372,12 +370,12 @@ public class Converter : MonoBehaviour
     [Button]
     public void FetchMonsterName()
     {
-        if (!File.Exists(Application.dataPath + "/Assets/mob_db.txt"))
+        if (!File.Exists(Application.dataPath + "/Assets/mob_db.yml"))
         {
             isConvertError = true;
             return;
         }
-        var mobDb = File.ReadAllText(Application.dataPath + "/Assets/mob_db.txt");
+        var mobDb = File.ReadAllText(Application.dataPath + "/Assets/mob_db.yml");
         var lines = mobDb.Split('\n');
         monsterNameDatas = new List<MonsterNameData>();
         MonsterNameData monsterNameData = new MonsterNameData();
@@ -389,8 +387,7 @@ public class Converter : MonoBehaviour
             if (string.IsNullOrEmpty(text) || string.IsNullOrWhiteSpace(text))
                 continue;
 
-            if (text.Contains("#"))
-                text = text.Substring(0, text.IndexOf("#"));
+            text = RemoveCommentAndUnwantedWord(text);
 
             // Id
             if (text.Contains("  - Id:"))
@@ -484,12 +481,12 @@ public class Converter : MonoBehaviour
     [Button]
     public void FetchSkill()
     {
-        if (!File.Exists(Application.dataPath + "/Assets/skill_db.txt"))
+        if (!File.Exists(Application.dataPath + "/Assets/skill_db.yml"))
         {
             isConvertError = true;
             return;
         }
-        var skillDb = File.ReadAllText(Application.dataPath + "/Assets/skill_db.txt");
+        var skillDb = File.ReadAllText(Application.dataPath + "/Assets/skill_db.yml");
         var lines = skillDb.Split('\n');
         skillDatas = new List<SkillData>();
         SkillData skillData = new SkillData();
@@ -501,8 +498,7 @@ public class Converter : MonoBehaviour
             if (string.IsNullOrEmpty(text) || string.IsNullOrWhiteSpace(text))
                 continue;
 
-            if (text.Contains("#"))
-                text = text.Substring(0, text.IndexOf("#"));
+            text = RemoveCommentAndUnwantedWord(text);
 
             // Id
             if (text.Contains("  - Id:"))
@@ -683,17 +679,17 @@ public class Converter : MonoBehaviour
     [Button]
     public void FetchIdName()
     {
-        if (!File.Exists(Application.dataPath + "/Assets/item_db_equip.txt")
-            || !File.Exists(Application.dataPath + "/Assets/item_db_usable.txt")
-            || !File.Exists(Application.dataPath + "/Assets/item_db_etc.txt"))
+        if (!File.Exists(Application.dataPath + "/Assets/item_db_equip.yml")
+            || !File.Exists(Application.dataPath + "/Assets/item_db_usable.yml")
+            || !File.Exists(Application.dataPath + "/Assets/item_db_etc.yml"))
         {
             isConvertError = true;
             return;
         }
 
-        var allTextAsset = File.ReadAllText(Application.dataPath + "/Assets/item_db_equip.txt") + "\n"
-            + File.ReadAllText(Application.dataPath + "/Assets/item_db_usable.txt") + "\n"
-            + File.ReadAllText(Application.dataPath + "/Assets/item_db_etc.txt") + "\n"
+        var allTextAsset = File.ReadAllText(Application.dataPath + "/Assets/item_db_equip.yml") + "\n"
+            + File.ReadAllText(Application.dataPath + "/Assets/item_db_usable.yml") + "\n"
+            + File.ReadAllText(Application.dataPath + "/Assets/item_db_etc.yml") + "\n"
             + (File.Exists(Application.dataPath + "/Assets/item_db_custom.txt") ? File.ReadAllText(Application.dataPath + "/Assets/item_db_custom.txt") : string.Empty);
         var lines = allTextAsset.Split('\n');
         idNameDatas = new List<IdNameData>();
@@ -707,10 +703,8 @@ public class Converter : MonoBehaviour
         for (int i = 0; i < lines.Length; i++)
         {
             var text = lines[i];
-            text = text.Replace("    # !todo check english name", string.Empty);
-            text = text.Replace("   # unknown view", string.Empty);
-            if (text.Contains("#"))
-                text = text.Substring(0, text.IndexOf("#"));
+
+            text = RemoveCommentAndUnwantedWord(text);
 
             // Skip these
             if (text.Contains("    Buy:")
@@ -975,9 +969,9 @@ public class Converter : MonoBehaviour
         Clean();
 
         StringBuilder builder = new StringBuilder();
-        var allTextAsset = File.ReadAllText(Application.dataPath + "/Assets/item_db_equip.txt") + "\n"
-            + File.ReadAllText(Application.dataPath + "/Assets/item_db_usable.txt") + "\n"
-            + File.ReadAllText(Application.dataPath + "/Assets/item_db_etc.txt") + "\n"
+        var allTextAsset = File.ReadAllText(Application.dataPath + "/Assets/item_db_equip.yml") + "\n"
+            + File.ReadAllText(Application.dataPath + "/Assets/item_db_usable.yml") + "\n"
+            + File.ReadAllText(Application.dataPath + "/Assets/item_db_etc.yml") + "\n"
             + (File.Exists(Application.dataPath + "/Assets/item_db_custom.txt") ? File.ReadAllText(Application.dataPath + "/Assets/item_db_custom.txt") : string.Empty);
         if (isOnlyUseCustomTextAsset)
             allTextAsset = File.ReadAllText(Application.dataPath + "/Assets/item_db_custom.txt");
@@ -987,10 +981,9 @@ public class Converter : MonoBehaviour
         for (int i = 0; i < lines.Length; i++)
         {
             var text = lines[i];
-            text = text.Replace("    # !todo check english name", string.Empty);
-            text = text.Replace("   # unknown view", string.Empty);
-            if (text.Contains("#"))
-                text = text.Substring(0, text.IndexOf("#"));
+
+            text = RemoveCommentAndUnwantedWord(text);
+
             var nextText = i + 1 < lines.Length ? lines[i + 1] : string.Empty;
             var nextNextText = i + 2 < lines.Length ? lines[i + 2] : string.Empty;
 
@@ -3102,6 +3095,7 @@ public class Converter : MonoBehaviour
         text = text.Replace("EAJ_THIRDMASK", "คลาส 3");
         text = text.Replace("getequiprefinerycnt", "จำนวนตีบวก");
         text = text.Replace("getrefine()", "จำนวนตีบวก");
+        text = text.Replace("getequipweaponlv()", "Lv. อาวุธ");
         text = text.Replace("ismounting()", "หากขี่หาหนะ");
         text = text.Replace("getskilllv", "Lv. Skill");
         text = text.Replace("pow (", "ยกกำลัง(");
@@ -3144,7 +3138,12 @@ public class Converter : MonoBehaviour
         if (float.TryParse(text, out sum))
             sum = int.Parse(text);
         else if (divider == 1)
-            return text;
+        {
+            if (string.IsNullOrEmpty(text) || string.IsNullOrWhiteSpace(text))
+                return "0";
+            else
+                return text;
+        }
         else
             return text + " หาร " + divider.ToString("f0");
         if ((sum / divider) == 0)
@@ -3202,7 +3201,7 @@ public class Converter : MonoBehaviour
             }
         }
 
-        return string.Empty;
+        return text;
     }
 
     string GetResourceNameFromId(int id, string type, string subType, string location)
@@ -3502,5 +3501,23 @@ public class Converter : MonoBehaviour
             }
         }
         return text;
+    }
+
+    public static string RemoveCommentAndUnwantedWord(string s)
+    {
+        if (string.IsNullOrWhiteSpace(s) || string.IsNullOrEmpty(s))
+            return string.Empty;
+        else
+        {
+            s = s.Replace("    # !todo check english name", string.Empty);
+            s = s.Replace("   # unknown view", string.Empty);
+            if (s.Contains("#"))
+                s = s.Substring(0, s.IndexOf("#"));
+            s = s.Replace("Header:", string.Empty);
+            s = s.Replace("  Type: ITEM_DB", string.Empty);
+            if (s.Contains("  Version: "))
+                s = string.Empty;
+            return s;
+        }
     }
 }
