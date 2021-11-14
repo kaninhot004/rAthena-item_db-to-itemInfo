@@ -1993,19 +1993,37 @@ public class Converter : MonoBehaviour
         {
             var temp = text.Replace("bonus bAddItemHealRate,", string.Empty);
             var temps = MergeMath(temp.Split(','));
-            text = string.Format("๐ ความแรง ไอเท็มฟื้นฟู +{0}%", TryParseInt(temps[0]));
+            text = string.Format("๐ ความแรง ไอเท็มฟื้นฟู HP +{0}%", TryParseInt(temps[0]));
         }
         if (text.Contains("bonus2 bAddItemHealRate,"))
         {
             var temp = text.Replace("bonus2 bAddItemHealRate,", string.Empty);
             var temps = MergeMath(temp.Split(','));
-            text = string.Format("๐ ความแรง ไอเท็มฟื้นฟู {0} +{1}%", GetItemName(RemoveQuote(temps[0])), TryParseInt(temps[1]));
+            text = string.Format("๐ ความแรง ไอเท็มฟื้นฟู HP {0} +{1}%", GetItemName(RemoveQuote(temps[0])), TryParseInt(temps[1]));
         }
         if (text.Contains("bonus2 bAddItemGroupHealRate,"))
         {
             var temp = text.Replace("bonus2 bAddItemGroupHealRate,", string.Empty);
             var temps = MergeMath(temp.Split(','));
-            text = string.Format("๐ ความแรง ไอเท็มฟื้นฟูกลุ่ม {0} +{1}%", RemoveQuote(temps[0]), TryParseInt(temps[1]));
+            text = string.Format("๐ ความแรง ไอเท็มฟื้นฟู HP กลุ่ม {0} +{1}%", RemoveQuote(temps[0]), TryParseInt(temps[1]));
+        }
+        if (text.Contains("bonus bAddItemSPHealRate,"))
+        {
+            var temp = text.Replace("bonus bAddItemSPHealRate,", string.Empty);
+            var temps = MergeMath(temp.Split(','));
+            text = string.Format("๐ ความแรง ไอเท็มฟื้นฟู SP +{0}%", TryParseInt(temps[0]));
+        }
+        if (text.Contains("bonus2 bAddItemSPHealRate,"))
+        {
+            var temp = text.Replace("bonus2 bAddItemSPHealRate,", string.Empty);
+            var temps = MergeMath(temp.Split(','));
+            text = string.Format("๐ ความแรง ไอเท็มฟื้นฟู SP {0} +{1}%", GetItemName(RemoveQuote(temps[0])), TryParseInt(temps[1]));
+        }
+        if (text.Contains("bonus2 bAddItemGroupSPHealRate,"))
+        {
+            var temp = text.Replace("bonus2 bAddItemGroupSPHealRate,", string.Empty);
+            var temps = MergeMath(temp.Split(','));
+            text = string.Format("๐ ความแรง ไอเท็มฟื้นฟู SP กลุ่ม {0} +{1}%", RemoveQuote(temps[0]), TryParseInt(temps[1]));
         }
         if (text.Contains("bonus bCastrate,"))
         {
