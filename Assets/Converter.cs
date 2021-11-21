@@ -2093,6 +2093,12 @@ public class Converter : MonoBehaviour
             var temps = MergeMath(temp.Split(','));
             text = string.Format("๐ หน่วงหลังร่าย +{0}%", TryParseInt(temps[0]));
         }
+        if (text.Contains("bonus bDelayRate,"))
+        {
+            var temp = text.Replace("bonus bDelayRate,", string.Empty);
+            var temps = MergeMath(temp.Split(','));
+            text = string.Format("๐ หน่วงหลังร่าย +{0}%", TryParseInt(temps[0]));
+        }
         if (text.Contains("bonus2 bSkillDelay,"))
         {
             var temp = text.Replace("bonus2 bSkillDelay,", string.Empty);
