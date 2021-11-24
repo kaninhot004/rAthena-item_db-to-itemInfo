@@ -105,10 +105,38 @@ public class Converter : MonoBehaviour
             builder += item + ",";
         builder = builder.Substring(0, builder.Length - 1);
         builder += ";\n";
+        File.WriteAllText("global_item_ids.txt", builder, Encoding.UTF8);
         Debug.Log("Printed all item type.");
-        File.WriteAllText("global_item_ids.txt", builder, System.Text.Encoding.UTF8);
     }
+    [Button]
+    public void PrintAllItemIdToItemMall()
+    {
+        int shopNumber = 0;
 
+        string builder = string.Empty;
+
+        for (int i = 0; i < allItemIds.Count; i++)
+        {
+            if ((i == 0)
+                || (i % 100 == 0))
+            {
+                if (!string.IsNullOrEmpty(builder))
+                    builder = builder.Substring(0, builder.Length - 1);
+
+                shopNumber++;
+
+                builder += "\n-	shop	ItemMall" + shopNumber + "	-1,no,";
+            }
+
+            builder += allItemIds[i] + ":1000000000,";
+        }
+
+        builder = builder.Substring(0, builder.Length - 1);
+
+        File.WriteAllText("item_mall.txt", builder, Encoding.UTF8);
+
+        Debug.Log("Printed item mall.");
+    }
     [Button]
     public void CheckAdditionalRequirement()
     {
@@ -122,6 +150,7 @@ public class Converter : MonoBehaviour
         Debug.Log("costumeIds.Count:" + costumeIds.Count);
         Debug.Log("cardIds.Count:" + cardIds.Count);
         Debug.Log("enchantIds.Count:" + enchantIds.Count);
+        Debug.Log("allItemIds.Count:" + allItemIds.Count);
         Debug.Log(GetCombo(testItemComboId));
     }
 
@@ -130,6 +159,7 @@ public class Converter : MonoBehaviour
     List<string> costumeIds = new List<string>();
     List<string> cardIds = new List<string>();
     List<string> enchantIds = new List<string>();
+    List<string> allItemIds = new List<string>();
 
     [Button]
     public void FetchResourceNameWithType()
@@ -698,6 +728,7 @@ public class Converter : MonoBehaviour
         costumeIds = new List<string>();
         cardIds = new List<string>();
         enchantIds = new List<string>();
+        allItemIds = new List<string>();
         IdNameData idNameData = new IdNameData();
         bool isArmor = false;
         for (int i = 0; i < lines.Length; i++)
@@ -755,6 +786,8 @@ public class Converter : MonoBehaviour
                 text = RemoveSpace(text);
                 id = text.Replace("-Id:", string.Empty);
                 idNameData.id = int.Parse(id);
+
+                allItemIds.Add(id);
             }
             // Aegis Name
             else if (text.Contains("    AegisName:"))
@@ -843,6 +876,7 @@ public class Converter : MonoBehaviour
         Debug.Log("costumeIds.Count:" + costumeIds.Count);
         Debug.Log("cardIds.Count:" + cardIds.Count);
         Debug.Log("enchantIds.Count:" + enchantIds.Count);
+        Debug.Log("allItemIds.Count:" + allItemIds.Count);
     }
 
     List<IdNameData> idNameDatas = new List<IdNameData>();
