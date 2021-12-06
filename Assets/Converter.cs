@@ -9,8 +9,6 @@ using System.Text;
 
 public class Converter : MonoBehaviour
 {
-    bool isTheBox2PkMode = false; // Do not set this to true (for my own purpose only)
-
     bool isConvertError;
 
     public int testItemComboId;
@@ -559,16 +557,15 @@ public class Converter : MonoBehaviour
         public string description;
     }
 
-    [SerializeField] bool isUseNotHadNullResourceName;
     [Button]
     public void FetchResourceName()
     {
-        if (isUseNotHadNullResourceName ? !File.Exists(Application.dataPath + "/Assets/resourceName(Not had null).txt") : !File.Exists(Application.dataPath + "/Assets/resourceName.txt"))
+        if (!File.Exists(Application.dataPath + "/Assets/resourceName.txt"))
         {
             isConvertError = true;
             return;
         }
-        var resourceName = File.ReadAllText(isUseNotHadNullResourceName ? Application.dataPath + "/Assets/resourceName(Not had null).txt" : Application.dataPath + "/Assets/resourceName.txt");
+        var resourceName = File.ReadAllText(Application.dataPath + "/Assets/resourceName.txt");
         var lines = resourceName.Split('\n');
         resourceNameDatas = new List<ResourceNameData>();
         ResourceNameData resourceNameData = new ResourceNameData();
@@ -1500,9 +1497,9 @@ public class Converter : MonoBehaviour
                     sumDesc += "			\"^3F28FFประเภทรอง:^000000 " + subType + "\",\n";
                 if (!string.IsNullOrEmpty(location))
                     sumDesc += "			\"^3F28FFตำแหน่ง:^000000 " + location.Substring(0, location.Length - 2) + "\",\n";
-                if (!string.IsNullOrEmpty(jobs) && !isTheBox2PkMode)
+                if (!string.IsNullOrEmpty(jobs))
                     sumDesc += "			\"^3F28FFอาชีพ:^000000 " + jobs.Substring(0, jobs.Length - 2) + "\",\n";
-                if (!string.IsNullOrEmpty(classes) && !isTheBox2PkMode)
+                if (!string.IsNullOrEmpty(classes))
                     sumDesc += "			\"^3F28FFคลาส:^000000 " + classes.Substring(0, classes.Length - 2) + "\",\n";
                 if (!string.IsNullOrEmpty(gender))
                     sumDesc += "			\"^3F28FFเพศ:^000000 " + gender.Substring(0, gender.Length - 2) + "\",\n";
@@ -1516,34 +1513,25 @@ public class Converter : MonoBehaviour
                     sumDesc += "			\"^3F28FFระยะโจมตี:^000000 " + atkRange + "\",\n";
                 if (!string.IsNullOrEmpty(weaponLv))
                     sumDesc += "			\"^3F28FFเลเวลอาวุธ:^000000 " + weaponLv + "\",\n";
-                if (!string.IsNullOrEmpty(equipLevelMin) && !isTheBox2PkMode)
+                if (!string.IsNullOrEmpty(equipLevelMin))
                     sumDesc += "			\"^3F28FFเลเวลขั้นต่ำ:^000000 " + equipLevelMin + "\",\n";
-                if (!string.IsNullOrEmpty(equipLevelMax) && !isTheBox2PkMode)
+                if (!string.IsNullOrEmpty(equipLevelMax))
                     sumDesc += "			\"^3F28FFเลเวลสูงสุด:^000000 " + equipLevelMax + "\",\n";
-                if (!string.IsNullOrEmpty(refineable) && !isTheBox2PkMode)
+                if (!string.IsNullOrEmpty(refineable))
                     sumDesc += "			\"^3F28FFตีบวก:^000000 " + refineable + "\",\n";
                 if (!string.IsNullOrEmpty(weight))
                     sumDesc += "			\"^3F28FFน้ำหนัก:^000000 " + weight + "\",\n";
-                if (!string.IsNullOrEmpty(buy) && !isTheBox2PkMode)
+                if (!string.IsNullOrEmpty(buy))
                     sumDesc += "			\"^3F28FFราคา:^000000 " + buy + "\",\n";
-                if (!isTheBox2PkMode)
-                    builder.Append(sumCombo);
-                if (isTheBox2PkMode)
-                {
-                    if (string.IsNullOrEmpty(location))
-                        builder.Append(sumBonus);
-                }
-                else
-                    builder.Append(sumBonus);
-                if (!isTheBox2PkMode)
-                    builder.Append(sumEquipBonus);
-                if (!isTheBox2PkMode)
-                    builder.Append(sumUnEquipBonus);
+                builder.Append(sumCombo);
+                builder.Append(sumBonus);
+                builder.Append(sumEquipBonus);
+                builder.Append(sumUnEquipBonus);
                 builder.Append(sumDesc);
                 builder.Append("			\"\"\n");
                 builder.Append("		},\n");
                 // Slot Count
-                if (!string.IsNullOrEmpty(slots) && !isTheBox2PkMode)
+                if (!string.IsNullOrEmpty(slots))
                     builder.Append("		slotCount = " + slots + ",\n");
                 else
                     builder.Append("		slotCount = 0,\n");
