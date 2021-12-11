@@ -838,7 +838,12 @@ public class Converter : MonoBehaviour
                    || text.ToLower().Contains("shadow_right_accessory")
                    || text.ToLower().Contains("shadow_left_accessory")
                    )
+                {
                     costumeIds.Add(id);
+
+                    // Always clear isArmor
+                    isArmor = false;
+                }
                 else if (text.ToLower().Contains("head_top")
                    || text.ToLower().Contains("head_mid")
                    || text.ToLower().Contains("head_low")
@@ -850,10 +855,12 @@ public class Converter : MonoBehaviour
                    || text.ToLower().Contains("left_accessory")
                    || text.ToLower().Contains("both_accessory")
                    )
+                {
                     equipmentIds.Add(id);
 
-                // Always clear isArmor
-                isArmor = false;
+                    // Always clear isArmor
+                    isArmor = false;
+                }
             }
             // Locations
             else if (!isArmor)
@@ -871,10 +878,12 @@ public class Converter : MonoBehaviour
                     || text.ToLower().Contains("shadow_right_accessory")
                     || text.ToLower().Contains("shadow_left_accessory")
                     )
+                {
                     costumeIds.Add(id);
 
-                // Always clear isArmor
-                isArmor = false;
+                    // Always clear isArmor
+                    isArmor = false;
+                }
             }
         }
 
