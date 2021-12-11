@@ -34,6 +34,7 @@ public class Converter : MonoBehaviour
     string gender;
     string location;
     string weaponLv;
+    string armorLv;
     string equipLevelMin;
     string equipLevelMax;
     string refineable;
@@ -64,6 +65,7 @@ public class Converter : MonoBehaviour
         gender = string.Empty;
         location = string.Empty;
         weaponLv = string.Empty;
+        armorLv = string.Empty;
         equipLevelMin = string.Empty;
         equipLevelMax = string.Empty;
         refineable = string.Empty;
@@ -849,6 +851,9 @@ public class Converter : MonoBehaviour
                    || text.ToLower().Contains("both_accessory")
                    )
                     equipmentIds.Add(id);
+
+                // Always clear isArmor
+                isArmor = false;
             }
             // Locations
             else if (!isArmor)
@@ -867,8 +872,12 @@ public class Converter : MonoBehaviour
                     || text.ToLower().Contains("shadow_left_accessory")
                     )
                     costumeIds.Add(id);
+
+                // Always clear isArmor
+                isArmor = false;
             }
         }
+
         Debug.Log("idNameDatas.Count:" + idNameDatas.Count);
         Debug.Log("weaponIds.Count:" + weaponIds.Count);
         Debug.Log("equipmentIds.Count:" + equipmentIds.Count);
@@ -1429,6 +1438,9 @@ public class Converter : MonoBehaviour
             // Weapon Level
             else if (text.Contains("    WeaponLevel:"))
                 weaponLv = text.Replace("    WeaponLevel: ", string.Empty);
+            // Armor Level
+            else if (text.Contains("    ArmorLevel:"))
+                armorLv = text.Replace("    ArmorLevel: ", string.Empty);
             // Equip Level Min
             else if (text.Contains("    EquipLevelMin:"))
                 equipLevelMin = text.Replace("    EquipLevelMin: ", string.Empty);
@@ -1513,6 +1525,8 @@ public class Converter : MonoBehaviour
                     sumDesc += "			\"^3F28FFระยะโจมตี:^000000 " + atkRange + "\",\n";
                 if (!string.IsNullOrEmpty(weaponLv))
                     sumDesc += "			\"^3F28FFเลเวลอาวุธ:^000000 " + weaponLv + "\",\n";
+                if (!string.IsNullOrEmpty(armorLv))
+                    sumDesc += "			\"^3F28FFเลเวลชุดเกราะ:^000000 " + armorLv + "\",\n";
                 if (!string.IsNullOrEmpty(equipLevelMin))
                     sumDesc += "			\"^3F28FFเลเวลขั้นต่ำ:^000000 " + equipLevelMin + "\",\n";
                 if (!string.IsNullOrEmpty(equipLevelMax))
