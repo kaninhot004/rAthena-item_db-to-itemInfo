@@ -61,6 +61,7 @@
     <Compile Include="Assets\Converter.cs" />
     <Compile Include="Assets\ItemGenerator.cs" />
     <Compile Include="Assets\ViewFix.cs" />
+    <Compile Include="Assets\HardcodeItemScripts.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Assets\item_combo_db.txt" />

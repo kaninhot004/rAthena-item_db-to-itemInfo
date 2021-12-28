@@ -153,10 +153,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6a2ea3f90661bbf40b92a368a58efab0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  hardcodeItemScripts: {fileID: 1801718642}
   testItemComboId: 0
   isUseTestTextAsset: 0
   isOnlyUseCustomTextAsset: 0
-  isUseNotHadNullResourceName: 1
   txtProgression: {fileID: 1288952205}
   btnConvert: {fileID: 1002731954}
   btnCredit: {fileID: 606623798}
@@ -1189,6 +1189,93 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1801718641
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1801718643}
+  - component: {fileID: 1801718642}
+  m_Layer: 0
+  m_Name: Hardcode Item Scripts
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1801718642
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1801718641}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7913bc0b9b58b8540bd044f011150702, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  datas:
+  - itemId: 1599
+    itemScriptDescription: "\u0E44\u0E21\u0E48\u0E21\u0E35\u0E04\u0E38\u0E13\u0E2A\u0E21\u0E1A\u0E31\u0E15\u0E34\u0E1E\u0E34\u0E40\u0E28\u0E29"
+  - itemId: 2199
+    itemScriptDescription: "\u0E44\u0E21\u0E48\u0E21\u0E35\u0E04\u0E38\u0E13\u0E2A\u0E21\u0E1A\u0E31\u0E15\u0E34\u0E1E\u0E34\u0E40\u0E28\u0E29"
+  - itemId: 645
+    itemScriptDescription: "ASPD +4% \u0E40\u0E1B\u0E47\u0E19\u0E40\u0E27\u0E25\u0E32
+      30 \u0E19\u0E32\u0E17\u0E35"
+  - itemId: 656
+    itemScriptDescription: "ASPD +6% \u0E40\u0E1B\u0E47\u0E19\u0E40\u0E27\u0E25\u0E32
+      30 \u0E19\u0E32\u0E17\u0E35"
+  - itemId: 657
+    itemScriptDescription: "ASPD +9% \u0E40\u0E1B\u0E47\u0E19\u0E40\u0E27\u0E25\u0E32
+      30 \u0E19\u0E32\u0E17\u0E35"
+  - itemId: 12214
+    itemScriptDescription: "\u0E2A\u0E33\u0E2B\u0E23\u0E31\u0E1A\u0E43\u0E0A\u0E49\u0E2B\u0E32\u0E15\u0E33\u0E41\u0E2B\u0E19\u0E48\u0E07
+      Boss \u0E20\u0E32\u0E22\u0E43\u0E19 Map"
+  - itemId: 12114
+    itemScriptDescription: "\u0E40\u0E04\u0E25\u0E37\u0E2D\u0E1A\u0E18\u0E32\u0E15\u0E38
+      Fire \u0E43\u0E2B\u0E49\u0E2D\u0E32\u0E27\u0E38\u0E18\u0E0A\u0E31\u0E48\u0E27\u0E04\u0E23\u0E32\u0E27"
+  - itemId: 12115
+    itemScriptDescription: "\u0E40\u0E04\u0E25\u0E37\u0E2D\u0E1A\u0E18\u0E32\u0E15\u0E38
+      Water \u0E43\u0E2B\u0E49\u0E2D\u0E32\u0E27\u0E38\u0E18\u0E0A\u0E31\u0E48\u0E27\u0E04\u0E23\u0E32\u0E27"
+  - itemId: 12116
+    itemScriptDescription: "\u0E40\u0E04\u0E25\u0E37\u0E2D\u0E1A\u0E18\u0E32\u0E15\u0E38
+      Earth \u0E43\u0E2B\u0E49\u0E2D\u0E32\u0E27\u0E38\u0E18\u0E0A\u0E31\u0E48\u0E27\u0E04\u0E23\u0E32\u0E27"
+  - itemId: 12117
+    itemScriptDescription: "\u0E40\u0E04\u0E25\u0E37\u0E2D\u0E1A\u0E18\u0E32\u0E15\u0E38
+      Wind \u0E43\u0E2B\u0E49\u0E2D\u0E32\u0E27\u0E38\u0E18\u0E0A\u0E31\u0E48\u0E27\u0E04\u0E23\u0E32\u0E27"
+  - itemId: 12118
+    itemScriptDescription: "\u0E40\u0E04\u0E25\u0E37\u0E2D\u0E1A\u0E18\u0E32\u0E15\u0E38
+      Fire \u0E43\u0E2B\u0E49\u0E0A\u0E38\u0E14\u0E40\u0E01\u0E23\u0E32\u0E30\u0E0A\u0E31\u0E48\u0E27\u0E04\u0E23\u0E32\u0E27"
+  - itemId: 12119
+    itemScriptDescription: "\u0E40\u0E04\u0E25\u0E37\u0E2D\u0E1A\u0E18\u0E32\u0E15\u0E38
+      Water \u0E43\u0E2B\u0E49\u0E0A\u0E38\u0E14\u0E40\u0E01\u0E23\u0E32\u0E30\u0E0A\u0E31\u0E48\u0E27\u0E04\u0E23\u0E32\u0E27"
+  - itemId: 12120
+    itemScriptDescription: "\u0E40\u0E04\u0E25\u0E37\u0E2D\u0E1A\u0E18\u0E32\u0E15\u0E38
+      Earth \u0E43\u0E2B\u0E49\u0E0A\u0E38\u0E14\u0E40\u0E01\u0E23\u0E32\u0E30\u0E0A\u0E31\u0E48\u0E27\u0E04\u0E23\u0E32\u0E27"
+  - itemId: 12121
+    itemScriptDescription: "\u0E40\u0E04\u0E25\u0E37\u0E2D\u0E1A\u0E18\u0E32\u0E15\u0E38
+      Wind \u0E43\u0E2B\u0E49\u0E0A\u0E38\u0E14\u0E40\u0E01\u0E23\u0E32\u0E30\u0E0A\u0E31\u0E48\u0E27\u0E04\u0E23\u0E32\u0E27"
+  - itemId: 12020
+    itemScriptDescription: "\u0E40\u0E04\u0E25\u0E37\u0E2D\u0E1A\u0E18\u0E32\u0E15\u0E38
+      Dark \u0E43\u0E2B\u0E49\u0E2D\u0E32\u0E27\u0E38\u0E18\u0E0A\u0E31\u0E48\u0E27\u0E04\u0E23\u0E32\u0E27"
+--- !u!4 &1801718643
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1801718641}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1927989908
 GameObject:

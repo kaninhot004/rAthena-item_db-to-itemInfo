@@ -11,6 +11,8 @@ public class Converter : MonoBehaviour
 {
     bool isConvertError;
 
+    public HardcodeItemScripts hardcodeItemScripts;
+
     public int testItemComboId;
 
     public bool isUseTestTextAsset;
@@ -1333,6 +1335,18 @@ public class Converter : MonoBehaviour
                 classes += "คลาส 3, ";
             else if (isClass && text.Contains("      All_Third: false"))
                 classes += "คลาส 3 [x], ";
+            else if (isClass && text.Contains("      Fourth: true"))
+                classes += "คลาส 4, ";
+            else if (isClass && text.Contains("      Fourth: false"))
+                classes += "คลาส 4 [x], ";
+            else if (isClass && text.Contains("      Fourth_Baby: true"))
+                classes += "คลาส 4 Baby, ";
+            else if (isClass && text.Contains("      Fourth_Baby: false"))
+                classes += "คลาส 4 Baby [x], ";
+            else if (isClass && text.Contains("      All_Fourth: true"))
+                classes += "คลาส 4, ";
+            else if (isClass && text.Contains("      All_Fourth: false"))
+                classes += "คลาส 4 [x], ";
             #endregion
             // Gender
             #region Gender
@@ -1509,7 +1523,8 @@ public class Converter : MonoBehaviour
                 builder.Append("		identifiedDescriptionName = {\n");
                 // Description here
                 var sumCombo = GetCombo(int.Parse(id));
-                var sumBonus = !string.IsNullOrEmpty(script) ? script : string.Empty;
+                string hardcodeBonus = hardcodeItemScripts.GetHardcodeItemScript(int.Parse(id));
+                var sumBonus = !string.IsNullOrEmpty(hardcodeBonus) ? hardcodeBonus : !string.IsNullOrEmpty(script) ? script : string.Empty;
                 var sumEquipBonus = !string.IsNullOrEmpty(equipScript) ? "			\"^666478[เมื่อสวมใส่]^000000\",\n" + equipScript : string.Empty;
                 var sumUnEquipBonus = !string.IsNullOrEmpty(unEquipScript) ? "			\"^666478[เมื่อถอด]^000000\",\n" + unEquipScript : string.Empty;
                 var sumDesc = "			\"^3F28FFID:^000000 " + id + "\",\n"
@@ -1573,45 +1588,59 @@ public class Converter : MonoBehaviour
         #region prefix postfix
         var prefix = "tbl = {\n";
         var postfix = "}\n\n" +
+            "-- Function #0\n" +
             "main = function()\n" +
-            "	for ItemID,DESC in pairs(tbl) do\n" +
+            "	for ItemID, DESC in pairs(tbl) do\n" +
             "		result, msg = AddItem(ItemID, DESC.unidentifiedDisplayName, DESC.unidentifiedResourceName, DESC.identifiedDisplayName, DESC.identifiedResourceName, DESC.slotCount, DESC.ClassNum)\n" +
-            "		if not result then\n" +
+            "		if not result == true then\n" +
             "			return false, msg\n" +
             "		end\n" +
-            "		for k,v in pairs(DESC.unidentifiedDescriptionName) do\n" +
+            "		for k, v in pairs(DESC.unidentifiedDescriptionName) do\n" +
             "			result, msg = AddItemUnidentifiedDesc(ItemID, v)\n" +
-            "			if not result then\n" +
+            "			if not result == true then\n" +
             "				return false, msg\n" +
             "			end\n" +
             "		end\n" +
-            "		for k,v in pairs(DESC.identifiedDescriptionName) do\n" +
+            "		for k, v in pairs(DESC.identifiedDescriptionName) do\n" +
             "			result, msg = AddItemIdentifiedDesc(ItemID, v)\n" +
-            "			if not result then\n" +
+            "			if not result == true then\n" +
             "				return false, msg\n" +
             "			end\n" +
             "		end\n" +
-            "		if DESC.EffectID ~= nil then\n" +
+            "		if nil ~= DESC.EffectID then\n" +
             "			result, msg = AddItemEffectInfo(ItemID, DESC.EffectID)\n" +
             "			if not result == true then\n" +
             "				return false, msg\n" +
             "			end\n" +
             "		end\n" +
-            "		if DESC.costume ~= nil then\n" +
+            "		if nil ~= DESC.costume then\n" +
             "			result, msg = AddItemIsCostume(ItemID, DESC.costume)\n" +
             "			if not result == true then\n" +
             "				return false, msg\n" +
             "			end\n" +
             "		end\n" +
+            "		k = DESC.unidentifiedResourceName\n" +
+            "		v = DESC.identifiedDisplayName\n" +
+            "	end\n" +
+            "	return true, \"good\"\n" +
+            "end\n" +
+            "\n" +
+            "-- Function #1\n" +
+            "main_server = function()\n" +
+            "	for ItemID, DESC in pairs(tbl) do\n" +
+            "		result, msg = AddItem(ItemID, DESC.identifiedDisplayName, DESC.slotCount)\n" +
+            "		if not result == true then\n" +
+            "			return false, msg\n" +
+            "		end\n" +
             "	end\n" +
             "	return true, \"good\"\n" +
             "end\n";
         #endregion
-        File.WriteAllText("itemInfo.txt", prefix + builder.ToString() + postfix, Encoding.UTF8);
+        File.WriteAllText("itemInfo_true.lub", prefix + builder.ToString() + postfix, Encoding.UTF8);
 
         Debug.Log(DateTime.UtcNow);
 
-        txtConvertProgression.text = "Done!! File name 'itemInfo.txt'";
+        txtConvertProgression.text = "Done!! File name 'itemInfo_true.lub'";
     }
 
     string ConvertItemBonus(string text)
@@ -1720,6 +1749,20 @@ public class Converter : MonoBehaviour
         text = text.Replace("bonus bAllStats,", "๐ All Status +");
         text = text.Replace("bonus bAgiVit,", "๐ AGI, VIT +");
         text = text.Replace("bonus bAgiDexStr,", "๐ AGI, DEX, STR +");
+
+        text = text.Replace("bonus bPow,", "๐ POW +");
+        text = text.Replace("bonus bSta,", "๐ STA +");
+        text = text.Replace("bonus bWis,", "๐ WIS +");
+        text = text.Replace("bonus bSpl,", "๐ SPL +");
+        text = text.Replace("bonus bCon,", "๐ CON +");
+        text = text.Replace("bonus bCrt,", "๐ CRT +");
+        text = text.Replace("bonus bPatk,", "๐ P.ATK +");
+        text = text.Replace("bonus bSmatk,", "๐ S.MATK +");
+        text = text.Replace("bonus bHplus,", "๐ H.PLUS +");
+        text = text.Replace("bonus bCrate,", "๐ C.RATE +");
+        text = text.Replace("bonus bRes,", "๐ RES +");
+        text = text.Replace("bonus bMres,", "๐ MRES +");
+
         text = text.Replace("bonus bMaxHP,", "๐ MaxHP +");
         if (text.Contains("bonus bMaxHPrate,"))
         {
@@ -3174,6 +3217,8 @@ public class Converter : MonoBehaviour
         text = text.Replace("EAJ_UPPERMASK", "ไฮคลาส");
         text = text.Replace("EAJ_THIRDMASK", "คลาส 3");
         text = text.Replace("getequiprefinerycnt", "จำนวนตีบวก");
+        text = text.Replace("getenchantgrade()", "เกรด");
+        text = text.Replace("getenchantgrade", "เกรด");
         text = text.Replace("getrefine()", "จำนวนตีบวก");
         text = text.Replace("getequipweaponlv()", "Lv. อาวุธ");
         text = text.Replace("ismounting()", "หากขี่หาหนะ");
