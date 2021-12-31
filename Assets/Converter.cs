@@ -1636,11 +1636,11 @@ public class Converter : MonoBehaviour
             "	return true, \"good\"\n" +
             "end\n";
         #endregion
-        File.WriteAllText("itemInfo_true.lub", prefix + builder.ToString() + postfix, Encoding.UTF8);
+        File.WriteAllText("itemInfo_Sak.lub", prefix + builder.ToString() + postfix, Encoding.UTF8);
 
         Debug.Log(DateTime.UtcNow);
 
-        txtConvertProgression.text = "Done!! File name 'itemInfo_true.lub'";
+        txtConvertProgression.text = "Done!! File name 'itemInfo_Sak.lub'";
     }
 
     string ConvertItemBonus(string text)
