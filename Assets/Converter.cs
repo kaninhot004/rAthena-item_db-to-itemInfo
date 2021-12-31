@@ -1756,27 +1756,30 @@ public class Converter : MonoBehaviour
         text = text.Replace("bonus bSpl,", "๐ SPL +");
         text = text.Replace("bonus bCon,", "๐ CON +");
         text = text.Replace("bonus bCrt,", "๐ CRT +");
-        text = text.Replace("bonus bPatk,", "๐ P.ATK +");
-        text = text.Replace("bonus bSmatk,", "๐ S.MATK +");
-        text = text.Replace("bonus bHplus,", "๐ H.PLUS +");
-        text = text.Replace("bonus bCrate,", "๐ C.RATE +");
-        text = text.Replace("bonus bRes,", "๐ RES +");
-        text = text.Replace("bonus bMres,", "๐ MRES +");
+        text = text.Replace("bonus bAllTraitStats,", "๐ All Trait +");
 
-        text = text.Replace("bonus bMaxHP,", "๐ MaxHP +");
+        text = text.Replace("bonus bMaxHP,", "๐ Max HP +");
         if (text.Contains("bonus bMaxHPrate,"))
         {
             var temp = text.Replace("bonus bMaxHPrate,", string.Empty);
             var temps = MergeMath(temp.Split(','));
-            text = string.Format("๐ MaxHP +{0}%", TryParseInt(temps[0]));
+            text = string.Format("๐ Max HP +{0}%", TryParseInt(temps[0]));
         }
-        text = text.Replace("bonus bMaxSP,", "๐ MaxSP +");
+        text = text.Replace("bonus bMaxSP,", "๐ Max SP +");
         if (text.Contains("bonus bMaxSPrate,"))
         {
             var temp = text.Replace("bonus bMaxSPrate,", string.Empty);
             var temps = MergeMath(temp.Split(','));
-            text = string.Format("๐ MaxSP +{0}%", TryParseInt(temps[0]));
+            text = string.Format("๐ Max SP +{0}%", TryParseInt(temps[0]));
         }
+        text = text.Replace("bonus bMaxAP,", "๐ Max AP +");
+        if (text.Contains("bonus bMaxAPrate,"))
+        {
+            var temp = text.Replace("bonus bMaxAPrate,", string.Empty);
+            var temps = MergeMath(temp.Split(','));
+            text = string.Format("๐ Max AP +{0}%", TryParseInt(temps[0]));
+        }
+
         text = text.Replace("bonus bBaseAtk,", "๐ ฐาน ATK +");
         text = text.Replace("bonus bAtk,", "๐ ATK +");
         text = text.Replace("bonus bAtk2,", "๐ ATK +");
@@ -1906,6 +1909,50 @@ public class Converter : MonoBehaviour
             var temps = MergeMath(temp.Split(','));
             text = string.Format("๐ ขนาดกระเป๋า +{0}", TryParseInt(temps[0], 10));
         }
+
+        text = text.Replace("bonus bPatk,", "๐ P.ATK +");
+        if (text.Contains("bonus bPAtkRate,"))
+        {
+            var temp = text.Replace("bonus bPAtkRate,", string.Empty);
+            var temps = MergeMath(temp.Split(','));
+            text = string.Format("๐ P.ATK +{0}%", TryParseInt(temps[0]));
+        }
+        text = text.Replace("bonus bSmatk,", "๐ S.MATK +");
+        if (text.Contains("bonus bSMatkRate,"))
+        {
+            var temp = text.Replace("bonus bSMatkRate,", string.Empty);
+            var temps = MergeMath(temp.Split(','));
+            text = string.Format("๐ S.MATK +{0}%", TryParseInt(temps[0]));
+        }
+        text = text.Replace("bonus bRes,", "๐ RES +");
+        if (text.Contains("bonus bResRate,"))
+        {
+            var temp = text.Replace("bonus bResRate,", string.Empty);
+            var temps = MergeMath(temp.Split(','));
+            text = string.Format("๐ RES +{0}%", TryParseInt(temps[0]));
+        }
+        text = text.Replace("bonus bMres,", "๐ M.RES +");
+        if (text.Contains("bonus bMResRate,"))
+        {
+            var temp = text.Replace("bonus bMResRate,", string.Empty);
+            var temps = MergeMath(temp.Split(','));
+            text = string.Format("๐ M.RES +{0}%", TryParseInt(temps[0]));
+        }
+        text = text.Replace("bonus bHplus,", "๐ H.PLUS +");
+        if (text.Contains("bonus bHPlusRate,"))
+        {
+            var temp = text.Replace("bonus bHPlusRate,", string.Empty);
+            var temps = MergeMath(temp.Split(','));
+            text = string.Format("๐ H.PLUS +{0}%", TryParseInt(temps[0]));
+        }
+        text = text.Replace("bonus bCrate,", "๐ C.RATE +");
+        if (text.Contains("bonus bCRateRate,"))
+        {
+            var temp = text.Replace("bonus bCRateRate,", string.Empty);
+            var temps = MergeMath(temp.Split(','));
+            text = string.Format("๐ C.RATE +{0}%", TryParseInt(temps[0]));
+        }
+
         if (text.Contains("bonus bHPrecovRate,"))
         {
             var temp = text.Replace("bonus bHPrecovRate,", string.Empty);
@@ -2309,6 +2356,12 @@ public class Converter : MonoBehaviour
         if (text.Contains("bonus2 bSubSize,"))
         {
             var temp = text.Replace("bonus2 bSubSize,", string.Empty);
+            var temps = MergeMath(temp.Split(','));
+            text = string.Format("๐ ป้องกัน การโจมตีกายภาพขนาด {0} +{1}%", ParseSize(temps[0]), TryParseInt(temps[1]));
+        }
+        if (text.Contains("bonus2 bWeaponSubSize,"))
+        {
+            var temp = text.Replace("bonus2 bWeaponSubSize,", string.Empty);
             var temps = MergeMath(temp.Split(','));
             text = string.Format("๐ ป้องกัน การโจมตีกายภาพขนาด {0} +{1}%", ParseSize(temps[0]), TryParseInt(temps[1]));
         }

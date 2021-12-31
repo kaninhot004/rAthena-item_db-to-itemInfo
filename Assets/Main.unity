@@ -1263,6 +1263,18 @@ MonoBehaviour:
   - itemId: 12020
     itemScriptDescription: "\u0E40\u0E04\u0E25\u0E37\u0E2D\u0E1A\u0E18\u0E32\u0E15\u0E38
       Dark \u0E43\u0E2B\u0E49\u0E2D\u0E32\u0E27\u0E38\u0E18\u0E0A\u0E31\u0E48\u0E27\u0E04\u0E23\u0E32\u0E27"
+  - itemId: 100452
+    itemScriptDescription: "\u0E40\u0E23\u0E35\u0E22\u0E01\u0E04\u0E37\u0E19 1 POW"
+  - itemId: 100453
+    itemScriptDescription: "\u0E40\u0E23\u0E35\u0E22\u0E01\u0E04\u0E37\u0E19 1 SPL"
+  - itemId: 100454
+    itemScriptDescription: "\u0E40\u0E23\u0E35\u0E22\u0E01\u0E04\u0E37\u0E19 1 STA"
+  - itemId: 100455
+    itemScriptDescription: "\u0E40\u0E23\u0E35\u0E22\u0E01\u0E04\u0E37\u0E19 1 WIS"
+  - itemId: 100456
+    itemScriptDescription: "\u0E40\u0E23\u0E35\u0E22\u0E01\u0E04\u0E37\u0E19 1 CON"
+  - itemId: 100457
+    itemScriptDescription: "\u0E40\u0E23\u0E35\u0E22\u0E01\u0E04\u0E37\u0E19 1 CRT"
 --- !u!4 &1801718643
 Transform:
   m_ObjectHideFlags: 0
