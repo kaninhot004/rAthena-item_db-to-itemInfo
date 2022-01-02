@@ -1648,6 +1648,7 @@ public class Converter : MonoBehaviour
         // Wrong wording fix
         text = text.Replace("Ele_dark", "Ele_Dark");
         text = text.Replace("bonus2 bIgnoreMDefRaceRate", "bonus2 bIgnoreMdefRaceRate");
+        text = text.Replace("bVariableCastRate", "bVariableCastrate");
         text = text.Replace("Baselevel", "BaseLevel");
         // End wrong wording fix
 
