@@ -1561,8 +1561,10 @@ public class Converter : MonoBehaviour
                     sumDesc += "			\"^3F28FFน้ำหนัก:^000000 " + weight + "\",\n";
                 if (!string.IsNullOrEmpty(buy))
                     sumDesc += "			\"^3F28FFราคา:^000000 " + buy + "\",\n";
-                builder.Append(sumCombo);
                 builder.Append(sumBonus);
+                if (!string.IsNullOrEmpty(sumBonus) && !string.IsNullOrWhiteSpace(sumBonus))
+                    builder.Append("			\"^58990F[สิ้นสุด Bonus]^000000" + "\",\n");
+                builder.Append(sumCombo);
                 builder.Append(sumEquipBonus);
                 builder.Append(sumUnEquipBonus);
                 builder.Append(sumDesc);
@@ -1649,6 +1651,8 @@ public class Converter : MonoBehaviour
         text = text.Replace("Ele_dark", "Ele_Dark");
         text = text.Replace("bonus2 bIgnoreMDefRaceRate", "bonus2 bIgnoreMdefRaceRate");
         text = text.Replace("bVariableCastRate", "bVariableCastrate");
+        text = text.Replace("bMaxHPRate", "bMaxHPrate");
+        text = text.Replace("bMaxSPRate", "bMaxSPrate");
         text = text.Replace("Baselevel", "BaseLevel");
         // End wrong wording fix
 
@@ -3352,6 +3356,7 @@ public class Converter : MonoBehaviour
                 sum += "]^000000\",\n";
                 for (int j = 0; j < comboDatas[i].descriptions.Count; j++)
                     sum += "			\"" + comboDatas[i].descriptions[j].Replace("\r", string.Empty).Replace("\n", string.Empty) + "\",\n";
+                sum += "			\"^58990F[สิ้นสุด Combo]^000000\",\n";
                 builder += sum;
             }
         }
