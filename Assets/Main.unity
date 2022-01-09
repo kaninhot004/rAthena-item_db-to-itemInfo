@@ -1054,7 +1054,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Done!! File name 'itemInfo.txt'
+  m_Text: Done!! File name 'itemInfo_Sak.lub'
 --- !u!222 &1288952206
 CanvasRenderer:
   m_ObjectHideFlags: 0

@@ -1,22 +1,38 @@
-  - Id: 1284
-    AegisName: Krishna
-    Name: Krishna
+  - Id: 21049
+    AegisName: Evt_Oriental_Sword
+    Name: Sealed Eastern Sword
     Type: Weapon
-    SubType: Katar
-    Buy: 20
-    Weight: 1200
-    Attack: 120
+    SubType: 2hSword
+    Attack: 180
     Range: 1
     Slots: 2
     Jobs:
-      Assassin: true
+      Knight: true
     Classes:
-      All_Upper: true
+      All_Third: true
+      Fourth: true
     Locations:
-      Both_Hand: true
-    WeaponLevel: 3
-    EquipLevelMin: 50
+      Right_Hand: true
+      Left_Hand: true
+    WeaponLevel: 4
+    EquipLevelMin: 99
+    Trade:
+      Override: 100
+      NoDrop: true
+      NoTrade: true
+      NoCart: true
+      NoStorage: true
+      NoGuildStorage: true
+      NoMail: true
+      NoAuction: true
     Refineable: true
     Script: |
-      bonus2 bSkillAtk,"AS_GRIMTOOTH",10;
-      bonus3 bAutoSpell,"AS_SONICBLOW",max(getskilllv("AS_SONICBLOW"),1),100;
+      .@r = getrefine();
+      bonus bBaseAtk,10*(.@r/2);
+      bonus2 bSkillAtk,"RK_SONICWAVE",10*(.@r/3);
+      if (.@r>=7) {
+         bonus5 bAutoSpell,"RK_SONICWAVE",max(2,getskilllv("RK_SONICWAVE")),100,BF_SHORT|BF_WEAPON,1;
+      }
+      if (.@r>=9) {
+         bonus bUnbreakableWeapon;
+      }
