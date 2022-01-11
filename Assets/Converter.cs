@@ -54,6 +54,7 @@ public class Converter : MonoBehaviour
         _name = string.Empty;
         type = string.Empty;
         subType = string.Empty;
+        buy = string.Empty;
         weight = string.Empty;
         atk = string.Empty;
         mAtk = string.Empty;
