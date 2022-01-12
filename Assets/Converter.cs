@@ -156,7 +156,7 @@ public class Converter : MonoBehaviour
         Debug.Log("cardIds.Count:" + cardIds.Count);
         Debug.Log("enchantIds.Count:" + enchantIds.Count);
         Debug.Log("allItemIds.Count:" + allItemIds.Count);
-        Debug.Log(GetCombo(testItemComboId));
+        Debug.Log(GetCombo(GetIdNameData(testItemComboId).aegisName));
     }
 
     List<string> weaponIds = new List<string>();
@@ -604,29 +604,76 @@ public class Converter : MonoBehaviour
     [Button]
     public void FetchCombo()
     {
-        if (!File.Exists(Application.dataPath + "/Assets/item_combo_db.txt"))
+        // Not found
+        if (!File.Exists(Application.dataPath + "/Assets/item_combos.yml"))
         {
             isConvertError = true;
             return;
         }
-        var itemComboDb = File.ReadAllText(Application.dataPath + "/Assets/item_combo_db.txt");
+
+        // Found
+        var itemComboDb = File.ReadAllText(Application.dataPath + "/Assets/item_combos.yml");
+
+        // Custom text asset check
         if (isOnlyUseCustomTextAsset)
             itemComboDb = string.Empty;
+
+        // Split
         var lines = itemComboDb.Split('\n');
+
+        // New combo data list
         comboDatas = new List<ComboData>();
+
+        // New combo data
         ComboData comboData = new ComboData();
+
+        bool isScript = false;
+
+        string script = string.Empty;
+
         for (int i = 0; i < lines.Length; i++)
         {
             var text = lines[i];
+            //Debug.Log("Line:" + i + " >> text:" + text);
 
             // Comment remover
             if (text.Contains("//"))
                 text = string.Empty;
+
             int retry = 30;
+
+            // Unexpected error
+            if (lines[i].Contains("/*") && !lines[i].Contains("*/"))
+            {
+                int retryUnexpected = 30;
+                while (retryUnexpected > 0)
+                {
+                    retryUnexpected--;
+
+                    int incrementCommentCheck = 1;
+                    if ((i + incrementCommentCheck < lines.Length)
+                        && lines[i + incrementCommentCheck].Contains("*/"))
+                    {
+                        while (incrementCommentCheck > 0)
+                        {
+                            lines[i + incrementCommentCheck] = string.Empty;
+                            incrementCommentCheck--;
+                        }
+                    }
+                    else
+                    {
+                        incrementCommentCheck++;
+                    }
+                }
+            }
+
             while (text.Contains("/*"))
             {
                 var copier = text;
-                text = copier.Substring(0, copier.IndexOf("/*")) + copier.Substring(copier.IndexOf("*/") + 2);
+                if (!copier.Contains("*/"))
+                    text = copier.Substring(0, copier.IndexOf("/*"));
+                else
+                    text = copier.Substring(0, copier.IndexOf("/*")) + copier.Substring(copier.IndexOf("*/") + 2);
                 retry--;
                 if (retry <= 0)
                     break;
@@ -639,64 +686,34 @@ public class Converter : MonoBehaviour
             text = text.Replace("\\", string.Empty);
             //Debug.Log(text);
 
-            // Get Ids first
-            var idCopier = text.Substring(0, text.IndexOf(','));
-            var bonusCopier = text.Substring(text.IndexOf(',') + 1);
-            var ids = idCopier.Split(':');
-            foreach (var item in ids)
-                comboData.ids.Add(int.Parse(item));
-            // Remove first { and last }
-            while (bonusCopier[0] == '{')
-                bonusCopier = bonusCopier.Substring(1);
-            while (bonusCopier[bonusCopier.Length - 1] == '}')
-                bonusCopier = bonusCopier.Substring(0, bonusCopier.Length - 1);
-            //Debug.Log("bonusCopier:" + bonusCopier);
-            // Try split new line like item_db yml
-            var texts = bonusCopier.Split(';');
-            var textLists = new List<string>();
-            foreach (var item in texts)
-                textLists.Add(item + ";");
-            int redoCount = 30;
-        L_Redo:
-            for (int j = 0; j < textLists.Count; j++)
+            text = RemoveCommentAndUnwantedWord(text);
+
+            // New combo data
+            if (text.Contains("- Combos:"))
             {
-                if (j + 1 < textLists.Count && textLists[j].Contains("autobonus") && !textLists[j].Contains("}\""))
-                {
-                    textLists[j] += textLists[j + 1];
-                    textLists.RemoveAt(j + 1);
-                    redoCount--;
-                    if (redoCount <= 0)
-                        break;
-                    goto L_Redo;
-                }
-                if ((textLists[j].Contains("if") || textLists[j].Contains("else")) && textLists[j].Contains(") {"))
-                {
-                    var copier = textLists[j];
-                    textLists[j] = copier.Substring(0, copier.IndexOf(") {") + 3);
-                    textLists.Insert(j + 1, copier.Substring(copier.IndexOf(") {") + 3));
-                }
-                if ((textLists[j].Contains("if") || textLists[j].Contains("else")) && textLists[j].Contains("){"))
-                {
-                    var copier = textLists[j];
-                    textLists[j] = copier.Substring(0, copier.IndexOf("){") + 2);
-                    textLists.Insert(j + 1, copier.Substring(copier.IndexOf("){") + 2));
-                }
+                comboData = new ComboData();
+                comboDatas.Add(comboData);
+                isScript = false;
+                script = string.Empty;
             }
-            //foreach (var item in textLists)
-            //    Debug.Log("item#2:" + item);
-            foreach (var item in textLists)
-                comboData.descriptions.Add(ConvertItemBonus(item));
-            for (int j = comboData.descriptions.Count - 1; j >= 0; j--)
+            // New same combo data
+            else if (text.Contains("- Combo:"))
+                comboData.sameComboDatas.Add(new ComboData.SameComboData());
+            // Name
+            else if (text.Contains("          - "))
+                comboData.sameComboDatas[comboData.sameComboDatas.Count - 1].aegis_names.Add(RemoveQuote(text.Replace("          - ", string.Empty)));
+            // Description
+            else if (text.Contains("Script: |"))
+                isScript = true;
+            else if (isScript)
             {
-                if (comboData.descriptions[j].ToLower().Contains("bf_"))
-                    comboData.descriptions.RemoveAt(j);
+                var sum = ConvertItemBonus(text);
+                if (!string.IsNullOrEmpty(sum))
+                    script += "			\"" + sum + "\",\n";
+                // Check if next line is new combo data or last line
+                if ((i + 1) >= lines.Length || lines[i + 1].Contains("- Combos:"))
+                    comboData.descriptions.Add(script);
             }
-            /*foreach (var item in comboData.ids)
-                Debug.Log("id:" + item);
-            foreach (var item in comboData.descriptions)
-                Debug.Log("desc:" + item);*/
-            comboDatas.Add(comboData);
-            comboData = new ComboData();
         }
         Debug.Log("comboDatas.Count:" + comboDatas.Count);
     }
@@ -706,8 +723,25 @@ public class Converter : MonoBehaviour
     [Serializable]
     public class ComboData
     {
-        public List<int> ids = new List<int>();
+        [Serializable]
+        public class SameComboData
+        {
+            public List<string> aegis_names = new List<string>();
+        }
+
+        public List<SameComboData> sameComboDatas = new List<SameComboData>();
+
         public List<string> descriptions = new List<string>();
+
+        public bool IsAegisNameContain(string aegis_name)
+        {
+            for (int i = 0; i < sameComboDatas.Count; i++)
+            {
+                if (sameComboDatas[i].aegis_names.Contains(aegis_name))
+                    return true;
+            }
+            return false;
+        }
     }
 
     [Button]
@@ -1523,7 +1557,8 @@ public class Converter : MonoBehaviour
                 // Identified description
                 builder.Append("		identifiedDescriptionName = {\n");
                 // Description here
-                var sumCombo = GetCombo(int.Parse(id));
+                var sumCombo = GetCombo(GetIdNameData(int.Parse(id)).aegisName);
+                //var sumCombo = string.Empty;
                 string hardcodeBonus = hardcodeItemScripts.GetHardcodeItemScript(int.Parse(id));
                 var sumBonus = !string.IsNullOrEmpty(hardcodeBonus) ? hardcodeBonus : !string.IsNullOrEmpty(script) ? script : string.Empty;
                 var sumEquipBonus = !string.IsNullOrEmpty(equipScript) ? "			\"^666478[เมื่อสวมใส่]^000000\",\n" + equipScript : string.Empty;
@@ -3450,34 +3485,88 @@ public class Converter : MonoBehaviour
             return (sum / divider).ToString("f0");
     }
 
-    string GetCombo(int id)
+    string GetCombo(string aegis_name)
     {
-        var builder = string.Empty;
+        StringBuilder builder = new StringBuilder();
+
+        // Loop all combo data
         for (int i = 0; i < comboDatas.Count; i++)
         {
-            if (comboDatas[i].ids.Contains(id))
+            var currentComboData = comboDatas[i];
+
+            // Found
+            if (currentComboData.IsAegisNameContain(aegis_name))
             {
-                var sum = "			\"^666478[หากใส่พร้อม ";
-                for (int j = 0; j < comboDatas[i].ids.Count; j++)
+                StringBuilder sum = new StringBuilder();
+
+                bool isFoundNow = false;
+
+                for (int j = 0; j < currentComboData.sameComboDatas.Count; j++)
                 {
-                    if (id != comboDatas[i].ids[j])
-                        sum += GetItemName(comboDatas[i].ids[j].ToString("f0")) + ", ";
+                    var currentSameComboData = currentComboData.sameComboDatas[j];
+
+                    // Add item name
+                    for (int k = 0; k < currentSameComboData.aegis_names.Count; k++)
+                    {
+                        var currentAegisName = currentSameComboData.aegis_names[k];
+
+                        if (currentAegisName == aegis_name)
+                            isFoundNow = true;
+                    }
+
+                    if (isFoundNow)
+                    {
+                        // Declare header
+                        var same_set_name_list = "			\"^666478[หากใส่พร้อม ";
+
+                        // Add item name
+                        for (int k = 0; k < currentSameComboData.aegis_names.Count; k++)
+                        {
+                            var currentAegisName = currentSameComboData.aegis_names[k];
+
+                            // Should not add base item name
+                            if (currentAegisName == aegis_name)
+                                continue;
+                            else
+                                same_set_name_list += GetItemName(currentAegisName, true) + ", ";
+                        }
+
+                        // Remove leftover ,
+                        same_set_name_list = same_set_name_list.Substring(0, same_set_name_list.Length - 2);
+
+                        // End
+                        same_set_name_list += "]^000000\",\n";
+
+                        sum.Append(same_set_name_list);
+
+                        break;
+                    }
                 }
-                sum = sum.Substring(0, sum.Length - 2);
-                sum += "]^000000\",\n";
-                for (int j = 0; j < comboDatas[i].descriptions.Count; j++)
-                    sum += "			\"" + comboDatas[i].descriptions[j].Replace("\r", string.Empty).Replace("\n", string.Empty) + "\",\n";
-                sum += "			\"^58990F[สิ้นสุด Combo]^000000\",\n";
-                builder += sum;
+
+                // Add combo bonus description
+                for (int j = 0; j < currentComboData.descriptions.Count; j++)
+                {
+                    if (j >= currentComboData.descriptions.Count - 1)
+                        sum.Append(currentComboData.descriptions[j]);
+                    else
+                        sum.Append(currentComboData.descriptions[j] + "\n");
+                }
+
+                // End
+                sum.Append("			\"^58990F[สิ้นสุด Combo]^000000\",\n");
+
+                // Finalize this combo data
+                builder.Append(sum);
             }
         }
-        return builder;
+
+        return builder.ToString();
     }
 
-    string GetItemName(string text)
+    string GetItemName(string text, bool isForceAegisName = false)
     {
         int _int = 0;
-        if (int.TryParse(text, out _int))
+        if (!isForceAegisName && int.TryParse(text, out _int))
         {
             _int = int.Parse(text);
             foreach (var item in idNameDatas)
@@ -3814,5 +3903,15 @@ public class Converter : MonoBehaviour
                 s = string.Empty;
             return s;
         }
+    }
+
+    public IdNameData GetIdNameData(int id)
+    {
+        for (int i = 0; i < idNameDatas.Count; i++)
+        {
+            if (idNameDatas[i].id == id)
+                return idNameDatas[i];
+        }
+        return null;
     }
 }

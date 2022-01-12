@@ -64,7 +64,6 @@
     <Compile Include="Assets\ViewFix.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Assets\Assets\item_combo_db.txt" />
     <None Include="Assets\Assets\all_english_word.txt" />
     <None Include="Assets\Assets\resourceName.txt" />
     <None Include="Assets\Assets\classNum.txt" />

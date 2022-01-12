@@ -1,38 +1,21 @@
-  - Id: 21049
-    AegisName: Evt_Oriental_Sword
-    Name: Sealed Eastern Sword
+  - Id: 1171
+    AegisName: Zweihander_
+    Name: Zweihander
     Type: Weapon
     SubType: 2hSword
-    Attack: 180
+    Buy: 20
+    Weight: 2200
+    Attack: 200
     Range: 1
     Slots: 2
     Jobs:
+      Crusader: true
       Knight: true
-    Classes:
-      All_Third: true
-      Fourth: true
+      Swordman: true
     Locations:
-      Right_Hand: true
-      Left_Hand: true
+      Both_Hand: true
     WeaponLevel: 4
-    EquipLevelMin: 99
-    Trade:
-      Override: 100
-      NoDrop: true
-      NoTrade: true
-      NoCart: true
-      NoStorage: true
-      NoGuildStorage: true
-      NoMail: true
-      NoAuction: true
+    EquipLevelMin: 48
     Refineable: true
     Script: |
-      .@r = getrefine();
-      bonus bBaseAtk,10*(.@r/2);
-      bonus2 bSkillAtk,"RK_SONICWAVE",10*(.@r/3);
-      if (.@r>=7) {
-         bonus5 bAutoSpell,"RK_SONICWAVE",max(2,getskilllv("RK_SONICWAVE")),100,BF_SHORT|BF_WEAPON,1;
-      }
-      if (.@r>=9) {
-         bonus bUnbreakableWeapon;
-      }
+      bonus bUnbreakableWeapon;
