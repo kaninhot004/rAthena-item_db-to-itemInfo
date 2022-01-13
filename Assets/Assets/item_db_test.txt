@@ -1,21 +1,31 @@
-  - Id: 1171
-    AegisName: Zweihander_
-    Name: Zweihander
-    Type: Weapon
-    SubType: 2hSword
-    Buy: 20
-    Weight: 2200
-    Attack: 200
-    Range: 1
-    Slots: 2
-    Jobs:
-      Crusader: true
-      Knight: true
-      Swordman: true
+  - Id: 490083
+    AegisName: Themis_Balance
+    Name: Scales of Judgement
+    Type: Armor
+    Weight: 100
+    Defense: 10
+    Slots: 1
     Locations:
-      Both_Hand: true
-    WeaponLevel: 4
-    EquipLevelMin: 48
-    Refineable: true
+      Both_Accessory: true
+    ArmorLevel: 1
+    EquipLevelMin: 100
     Script: |
-      bonus bUnbreakableWeapon;
+      bonus bMdef,5;
+      bonus bInt,7;
+      bonus2 bSkillAtk,"LG_RAYOFGENESIS",(BaseLevel/5);
+      if (getskilllv("LG_INSPIRATION") == 5) {
+         bonus2 bVariableCastrate,"LG_RAYOFGENESIS",-50;
+         bonus2 bSkillUseSP,"LG_RAYOFGENESIS",20;
+      }
+      if (getskilllv("CR_DEVOTION") == 5)
+         bonus2 bMagicAddClass,Class_Boss,15;
+      if (getskilllv("LG_HESPERUSLIT") == 5)
+         bonus bDelayrate,-30;
+  - Id: 29371
+    AegisName: Release_Of_Magic
+    Name: Release of Truth
+    Type: Card
+    SubType: Enchant
+    Script: |
+      autobonus "{ bonus bFlee2,100; bonus2 bMagicAddClass,Class_Boss,100; }",50,10000,BF_MAGIC,"{ active_transform 1639,10000 }";
+      /*Unknow Rate*/

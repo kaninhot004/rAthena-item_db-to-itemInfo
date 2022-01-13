@@ -680,8 +680,8 @@ public class Converter : MonoBehaviour
             }
 
             // Null
-            if (string.IsNullOrEmpty(text) || string.IsNullOrWhiteSpace(text))
-                continue;
+            //if (string.IsNullOrEmpty(text) || string.IsNullOrWhiteSpace(text))
+            //    continue;
 
             text = text.Replace("\\", string.Empty);
             //Debug.Log(text);
