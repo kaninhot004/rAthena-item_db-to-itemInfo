@@ -3278,6 +3278,7 @@ public class Converter : MonoBehaviour
         text = text.Replace("Eff_DPoison", "Deadly Poison");
         text = text.Replace("Eff_Fear", "Fear");
         text = text.Replace("Eff_Freeze", "Freeze");
+        text = text.Replace("Eff_Freezing", "Freezing");
         text = text.Replace("Eff_Poison", "Poison");
         text = text.Replace("Eff_Silence", "Silence");
         text = text.Replace("Eff_Sleep", "Sleep");
