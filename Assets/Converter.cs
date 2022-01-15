@@ -583,6 +583,7 @@ public class Converter : MonoBehaviour
                 continue;
 
             // Get Ids first
+            //Debug.Log(text);
             var texts = text.Split('=');
             resourceNameData.id = int.Parse(texts[0]);
             resourceNameData.resourceName = texts[1].Replace("\r", string.Empty).Replace("/n", string.Empty);
@@ -1677,30 +1678,6 @@ public class Converter : MonoBehaviour
 
         string finalTexts = prefix + builder.ToString() + postfix;
         finalTexts = finalTexts.Replace("[NEW_LINE]", "\",\n			\"");
-        finalTexts = finalTexts.Replace("คือ 0 ", "คือ มือเปล่า ");
-        finalTexts = finalTexts.Replace("คือ 1 ", "คือ Dagger ");
-        finalTexts = finalTexts.Replace("คือ 2 ", "คือ One-handed Sword ");
-        finalTexts = finalTexts.Replace("คือ 3 ", "คือ Two-handed Sword ");
-        finalTexts = finalTexts.Replace("คือ 4 ", "คือ One-handed Spear ");
-        finalTexts = finalTexts.Replace("คือ 5 ", "คือ Two-handed Spear ");
-        finalTexts = finalTexts.Replace("คือ 6 ", "คือ One-handed Axe ");
-        finalTexts = finalTexts.Replace("คือ 7 ", "คือ Two-handed Axe ");
-        finalTexts = finalTexts.Replace("คือ 8 ", "คือ Mace ");
-        finalTexts = finalTexts.Replace("คือ 9 ", "คือ Two-handed Mace ");
-        finalTexts = finalTexts.Replace("คือ 10 ", "คือ One-handed Staff ");
-        finalTexts = finalTexts.Replace("คือ 11 ", "คือ Bow ");
-        finalTexts = finalTexts.Replace("คือ 12 ", "คือ Knuckle ");
-        finalTexts = finalTexts.Replace("คือ 13 ", "คือ Musical ");
-        finalTexts = finalTexts.Replace("คือ 14 ", "คือ Whip ");
-        finalTexts = finalTexts.Replace("คือ 15 ", "คือ Book ");
-        finalTexts = finalTexts.Replace("คือ 16 ", "คือ Kater ");
-        finalTexts = finalTexts.Replace("คือ 17 ", "คือ Revolver ");
-        finalTexts = finalTexts.Replace("คือ 18 ", "คือ Rifle ");
-        finalTexts = finalTexts.Replace("คือ 19 ", "คือ Gatling ");
-        finalTexts = finalTexts.Replace("คือ 20 ", "คือ Shotgun ");
-        finalTexts = finalTexts.Replace("คือ 21 ", "คือ Grenade Launcher ");
-        finalTexts = finalTexts.Replace("คือ 22 ", "คือ Huuma ");
-        finalTexts = finalTexts.Replace("คือ 23 ", "คือ Two-handed Staff ");
         finalTexts = finalTexts.Replace("กับ 11)", "ประเภท)");
         finalTexts = finalTexts.Replace("กับ 11 )", "ประเภท)");
         finalTexts = finalTexts.Replace("กับ II_VIEW)", "ประเภท)");
