@@ -662,9 +662,7 @@ public class Converter : MonoBehaviour
                         }
                     }
                     else
-                    {
                         incrementCommentCheck++;
-                    }
                 }
             }
 
@@ -679,10 +677,6 @@ public class Converter : MonoBehaviour
                 if (retry <= 0)
                     break;
             }
-
-            // Null
-            //if (string.IsNullOrEmpty(text) || string.IsNullOrWhiteSpace(text))
-            //    continue;
 
             text = text.Replace("\\", string.Empty);
             //Debug.Log(text);
@@ -1069,6 +1063,29 @@ public class Converter : MonoBehaviour
             lines = File.ReadAllText(Application.dataPath + "/Assets/item_db_test.txt").Split('\n');
         for (int i = 0; i < lines.Length; i++)
         {
+            // Unexpected error
+            if (lines[i].Contains("/*") && !lines[i].Contains("*/"))
+            {
+                int retryUnexpected = 30;
+                while (retryUnexpected > 0)
+                {
+                    retryUnexpected--;
+
+                    int incrementCommentCheck = 1;
+                    if ((i + incrementCommentCheck < lines.Length)
+                        && lines[i + incrementCommentCheck].Contains("*/"))
+                    {
+                        while (incrementCommentCheck > 0)
+                        {
+                            lines[i + incrementCommentCheck] = string.Empty;
+                            incrementCommentCheck--;
+                        }
+                    }
+                    else
+                        incrementCommentCheck++;
+                }
+            }
+
             var text = lines[i];
 
             text = RemoveCommentAndUnwantedWord(text);
@@ -1696,14 +1713,18 @@ public class Converter : MonoBehaviour
     {
         // Comment fix
         int commentFixRetry = 300;
-        while (text.Contains("/*") && text.Contains("*/") && commentFixRetry > 0)
+        while (text.Contains("/*"))
         {
+            var copier = text;
+            if (!copier.Contains("*/"))
+                text = copier.Substring(0, copier.IndexOf("/*"));
+            else
+                text = copier.Substring(0, copier.IndexOf("/*")) + copier.Substring(copier.IndexOf("*/") + 2);
+
             commentFixRetry--;
 
-            int currentCommaFixerStartIndex = text.IndexOf("/*");
-            int currentCommaFixerEndIndex = text.IndexOf("*/");
-            var commentFixer = text.Substring(currentCommaFixerStartIndex - 1, currentCommaFixerEndIndex - currentCommaFixerStartIndex + 3);
-            text = text.Replace(commentFixer, string.Empty);
+            if (commentFixRetry <= 0)
+                break;
         }
 
         // Wrong wording fix
