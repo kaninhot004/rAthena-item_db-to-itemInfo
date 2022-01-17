@@ -1213,7 +1213,11 @@ public class Converter : MonoBehaviour
             else if (text.Contains("    Buy:"))
             {
                 text = text.Replace("    Buy: ", string.Empty);
-                buy = TryParseInt(text);
+                int b = 0;
+                if (int.TryParse(text, out b))
+                    buy = b.ToString("n0");
+                else
+                    buy = TryParseInt(text);
             }
             // Weight
             else if (text.Contains("    Weight:"))
