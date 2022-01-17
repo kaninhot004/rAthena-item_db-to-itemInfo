@@ -17649,3 +17649,5 @@
 31952="GatesofNetherworld"
 31953="Cor_Core_Headset"
 31954="Vassalage_Necklace"
+24736="ฟฦ๙ฝฆตตฟ์3"
+24735="ฝฏตๅฝฆตตฟ์3"
