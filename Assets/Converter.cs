@@ -11,12 +11,13 @@ public class Converter : MonoBehaviour
 {
     bool isConvertError;
 
-    public HardcodeItemScripts hardcodeItemScripts;
+    [SerializeField] HardcodeItemScripts hardcodeItemScripts;
 
-    public int testItemComboId;
+    [SerializeField] int testItemComboId;
 
-    public bool isUseTestTextAsset;
-    public bool isOnlyUseCustomTextAsset;
+    [SerializeField] bool isZeroValuePrintable;
+    [SerializeField] bool isUseTestTextAsset;
+    [SerializeField] bool isOnlyUseCustomTextAsset;
 
     string id;
     string _name;
@@ -1598,39 +1599,72 @@ public class Converter : MonoBehaviour
                     + "			\"^3F28FFประเภท:^000000 " + type + "\",\n";
                 if (!string.IsNullOrEmpty(subType))
                     sumDesc += "			\"^3F28FFประเภทรอง:^000000 " + subType + "\",\n";
+                else if (isZeroValuePrintable)
+                    sumDesc += "			\"^3F28FFประเภทรอง:^000000 -\",\n";
                 if (!string.IsNullOrEmpty(location))
                     sumDesc += "			\"^3F28FFตำแหน่ง:^000000 " + location.Substring(0, location.Length - 2) + "\",\n";
+                else if (isZeroValuePrintable)
+                    sumDesc += "			\"^3F28FFตำแหน่ง:^000000 -\",\n";
                 if (!string.IsNullOrEmpty(jobs))
                     sumDesc += "			\"^3F28FFอาชีพ:^000000 " + jobs.Substring(0, jobs.Length - 2) + "\",\n";
+                else if (isZeroValuePrintable)
+                    sumDesc += "			\"^3F28FFอาชีพ:^000000 -\",\n";
                 if (!string.IsNullOrEmpty(classes))
                     sumDesc += "			\"^3F28FFคลาส:^000000 " + classes.Substring(0, classes.Length - 2) + "\",\n";
+                else if (isZeroValuePrintable)
+                    sumDesc += "			\"^3F28FFคลาส:^000000 -\",\n";
                 if (!string.IsNullOrEmpty(gender))
                     sumDesc += "			\"^3F28FFเพศ:^000000 " + gender.Substring(0, gender.Length - 2) + "\",\n";
+                else if (isZeroValuePrintable)
+                    sumDesc += "			\"^3F28FFเพศ:^000000 -\",\n";
                 if (!string.IsNullOrEmpty(atk))
                     sumDesc += "			\"^3F28FFโจมตี:^000000 " + atk + "\",\n";
+                else if (isZeroValuePrintable)
+                    sumDesc += "			\"^3F28FFโจมตี:^000000 -\",\n";
                 if (!string.IsNullOrEmpty(mAtk))
                     sumDesc += "			\"^3F28FFโจมตีเวทย์:^000000 " + mAtk + "\",\n";
+                else if (isZeroValuePrintable)
+                    sumDesc += "			\"^3F28FFโจมตีเวทย์:^000000 -\",\n";
                 if (!string.IsNullOrEmpty(def))
                     sumDesc += "			\"^3F28FFป้องกัน:^000000 " + def + "\",\n";
+                else if (isZeroValuePrintable)
+                    sumDesc += "			\"^3F28FFป้องกัน:^000000 -\",\n";
                 if (!string.IsNullOrEmpty(atkRange))
                     sumDesc += "			\"^3F28FFระยะตี:^000000 " + atkRange + "\",\n";
+                else if (isZeroValuePrintable)
+                    sumDesc += "			\"^3F28FFระยะตี:^000000 -\",\n";
                 if (!string.IsNullOrEmpty(weaponLv))
                     sumDesc += "			\"^3F28FFเลเวลอาวุธ:^000000 " + weaponLv + "\",\n";
+                else if (isZeroValuePrintable)
+                    sumDesc += "			\"^3F28FFเลเวลอาวุธ:^000000 -\",\n";
                 if (!string.IsNullOrEmpty(armorLv))
                     sumDesc += "			\"^3F28FFเลเวลชุดเกราะ:^000000 " + armorLv + "\",\n";
+                else if (isZeroValuePrintable)
+                    sumDesc += "			\"^3F28FFเลเวลชุดเกราะ:^000000 -\",\n";
                 if (!string.IsNullOrEmpty(equipLevelMin))
                     sumDesc += "			\"^3F28FFเลเวลขั้นต่ำ:^000000 " + equipLevelMin + "\",\n";
+                else if (isZeroValuePrintable)
+                    sumDesc += "			\"^3F28FFเลเวลขั้นต่ำ:^000000 -\",\n";
                 if (!string.IsNullOrEmpty(equipLevelMax))
                     sumDesc += "			\"^3F28FFเลเวลสูงสุด:^000000 " + equipLevelMax + "\",\n";
+                else if (isZeroValuePrintable)
+                    sumDesc += "			\"^3F28FFเลเวลสูงสุด:^000000 -\",\n";
                 if (!string.IsNullOrEmpty(refineable))
                     sumDesc += "			\"^3F28FFตีบวก:^000000 " + refineable + "\",\n";
+                else if (isZeroValuePrintable)
+                    sumDesc += "			\"^3F28FFตีบวก:^000000 -\",\n";
                 if (!string.IsNullOrEmpty(weight))
                     sumDesc += "			\"^3F28FFน้ำหนัก:^000000 " + weight + "\",\n";
+                else if (isZeroValuePrintable)
+                    sumDesc += "			\"^3F28FFน้ำหนัก:^000000 -\",\n";
                 if (!string.IsNullOrEmpty(buy))
                     sumDesc += "			\"^3F28FFราคา:^000000 " + buy + "\",\n";
+                else if (isZeroValuePrintable)
+                    sumDesc += "			\"^3F28FFราคา:^000000 -\",\n";
                 builder.Append(sumBonus);
                 if (!string.IsNullOrEmpty(sumBonus) && !string.IsNullOrWhiteSpace(sumBonus))
-                    builder.Append("			\"^58990F[สิ้นสุด Bonus]^000000" + "\",\n");
+                    builder.Append("			\"^000000————————————^000000\",\n");
+                //builder.Append("			\"^58990F[สิ้นสุด Bonus]^000000\",\n");
                 builder.Append(sumCombo);
                 builder.Append(sumEquipBonus);
                 builder.Append(sumUnEquipBonus);
@@ -3557,7 +3591,7 @@ public class Converter : MonoBehaviour
                     if (isFoundNow)
                     {
                         // Declare header
-                        var same_set_name_list = "			\"^666478[ถ้าใส่คู่ ";
+                        var same_set_name_list = "			\"^666478หากสวมใส่ร่วมกับ";
 
                         // Add item name
                         for (int k = 0; k < currentSameComboData.aegis_names.Count; k++)
@@ -3568,14 +3602,14 @@ public class Converter : MonoBehaviour
                             if (currentAegisName == aegis_name)
                                 continue;
                             else
-                                same_set_name_list += GetItemName(currentAegisName, true) + ", ";
+                                same_set_name_list += "[NEW_LINE]+ " + GetItemName(currentAegisName, true);
                         }
 
                         // Remove leftover ,
-                        same_set_name_list = same_set_name_list.Substring(0, same_set_name_list.Length - 2);
+                        //same_set_name_list = same_set_name_list.Substring(0, same_set_name_list.Length - 2);
 
                         // End
-                        same_set_name_list += "]^000000\",\n";
+                        same_set_name_list += "^000000\",\n";
 
                         sum.Append(same_set_name_list);
 
@@ -3593,7 +3627,8 @@ public class Converter : MonoBehaviour
                 }
 
                 // End
-                sum.Append("			\"^58990F[สิ้นสุด Combo]^000000\",\n");
+                sum.Append("			\"^000000————————————^000000\",\n");
+                //sum.Append("			\"^58990F[สิ้นสุด Combo]^000000\",\n");
 
                 // Finalize this combo data
                 builder.Append(sum);

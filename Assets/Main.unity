@@ -155,6 +155,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hardcodeItemScripts: {fileID: 1801718642}
   testItemComboId: 0
+  isZeroValuePrintable: 0
   isUseTestTextAsset: 0
   isOnlyUseCustomTextAsset: 0
   txtProgression: {fileID: 1288952205}
