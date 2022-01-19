@@ -1663,7 +1663,7 @@ public class Converter : MonoBehaviour
                     sumDesc += "			\"^3F28FFราคา:^000000 -\",\n";
                 builder.Append(sumBonus);
                 if (!string.IsNullOrEmpty(sumBonus) && !string.IsNullOrWhiteSpace(sumBonus))
-                    builder.Append("			\"^000000————————————^000000\",\n");
+                    builder.Append("			\"————————————\",\n");
                 //builder.Append("			\"^58990F[สิ้นสุด Bonus]^000000\",\n");
                 builder.Append(sumCombo);
                 builder.Append(sumEquipBonus);
@@ -3627,7 +3627,7 @@ public class Converter : MonoBehaviour
                 }
 
                 // End
-                sum.Append("			\"^000000————————————^000000\",\n");
+                sum.Append("			\"————————————\",\n");
                 //sum.Append("			\"^58990F[สิ้นสุด Combo]^000000\",\n");
 
                 // Finalize this combo data
