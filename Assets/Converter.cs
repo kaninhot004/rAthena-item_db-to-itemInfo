@@ -1575,7 +1575,7 @@ public class Converter : MonoBehaviour
                 // Id
                 builder.Append("	[" + id + "] = {\n");
                 // Unidentified display name
-                builder.Append("		unidentifiedDisplayName = \"" + _name + " [" + ((!string.IsNullOrEmpty(slots) && (type.ToLower() == "weapon" || type.ToLower() == "armor")) ? slots : "0") + "]" + "\",\n");
+                builder.Append("		unidentifiedDisplayName = \"" + _name + ((type.ToLower() == "weapon" || type.ToLower() == "armor"|| type.ToLower() == "shadowgear") ? " [" + (!string.IsNullOrEmpty(slots) ? slots : "0") + "]" : string.Empty) + "\",\n");
                 // Unidentified resource name
                 builder.Append("		unidentifiedResourceName = " + resName + ",\n");
                 // Unidentified description
