@@ -208,7 +208,7 @@ public class Converter : MonoBehaviour
         {
             var text = lines[i];
 
-            text = RemoveCommentAndUnwantedWord(text);
+            text = RemoveCommentAndUnwantedWord(text); // Fetch resource name with type
 
             // Skip these
             if (text.Contains("    Buy:")
@@ -423,7 +423,7 @@ public class Converter : MonoBehaviour
             if (string.IsNullOrEmpty(text) || string.IsNullOrWhiteSpace(text))
                 continue;
 
-            text = RemoveCommentAndUnwantedWord(text);
+            text = RemoveCommentAndUnwantedWord(text); // Fetch mosnter name
 
             // Id
             if (text.Contains("  - Id:"))
@@ -534,7 +534,7 @@ public class Converter : MonoBehaviour
             if (string.IsNullOrEmpty(text) || string.IsNullOrWhiteSpace(text))
                 continue;
 
-            text = RemoveCommentAndUnwantedWord(text);
+            text = RemoveCommentAndUnwantedWord(text); // Fetch skill
 
             // Id
             if (text.Contains("  - Id:"))
@@ -691,7 +691,7 @@ public class Converter : MonoBehaviour
             text = text.Replace("\\", string.Empty);
             //Debug.Log(text);
 
-            text = RemoveCommentAndUnwantedWord(text);
+            text = RemoveCommentAndUnwantedWord(text); // Fetch combo
 
             // New combo data
             if (text.Contains("- Combos:"))
@@ -706,7 +706,7 @@ public class Converter : MonoBehaviour
                 comboData.sameComboDatas.Add(new ComboData.SameComboData());
             // Name
             else if (text.Contains("          - "))
-                comboData.sameComboDatas[comboData.sameComboDatas.Count - 1].aegis_names.Add(RemoveQuote(text.Replace("          - ", string.Empty)));
+                comboData.sameComboDatas[comboData.sameComboDatas.Count - 1].aegis_names.Add(RemoveSpace(RemoveQuote(text.Replace("          - ", string.Empty))));
             // Description
             else if (text.Contains("Script: |"))
                 isScript = true;
@@ -778,7 +778,7 @@ public class Converter : MonoBehaviour
         {
             var text = lines[i];
 
-            text = RemoveCommentAndUnwantedWord(text);
+            text = RemoveCommentAndUnwantedWord(text); // Fetch id and name
 
             // Skip these
             if (text.Contains("    Buy:")
@@ -1098,7 +1098,7 @@ public class Converter : MonoBehaviour
 
             var text = lines[i];
 
-            text = RemoveCommentAndUnwantedWord(text);
+            text = RemoveCommentAndUnwantedWord(text); // Convert
 
             var nextText = i + 1 < lines.Length ? lines[i + 1] : string.Empty;
             var nextNextText = i + 2 < lines.Length ? lines[i + 2] : string.Empty;
