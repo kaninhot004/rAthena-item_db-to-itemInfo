@@ -3546,6 +3546,9 @@ public class Converter : MonoBehaviour
         text = text.Replace("getenchantgrade", "เกรด");
         text = text.Replace("getrefine()", "ตีบวก");
         text = text.Replace("getequipweaponlv()", "Lv. อาวุธ");
+        text = text.Replace("getequipweaponlv", "Lv. อาวุธ");
+        text = text.Replace("getequiparmorlv()", "Lv. อุปกรณ์สวมใส่");
+        text = text.Replace("getequiparmorlv", "Lv. อุปกรณ์สวมใส่");
         text = text.Replace("ismounting()", "หากขี่หาหนะ");
         text = text.Replace("getskilllv", "Lv. Skill");
         text = text.Replace("pow (", "ยกกำลัง(");
