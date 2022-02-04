@@ -1,31 +1,27 @@
-  - Id: 490083
-    AegisName: Themis_Balance
-    Name: Scales of Judgement
-    Type: Armor
-    Weight: 100
-    Defense: 10
-    Slots: 1
+  - Id: 1598
+    AegisName: Snake_Encyclopedia_
+    Name: Daizenshu Dakatsu
+    Type: Weapon
+    SubType: Book
+    Buy: 60000
+    Weight: 1500
+    Attack: 10
+    MagicAttack: 110
+    Range: 1
+    Slots: 3
+    Jobs:
+      Priest: true
+      Sage: true
+    Classes:
+      All_Third: true
+      Fourth: true
     Locations:
-      Both_Accessory: true
-    ArmorLevel: 1
-    EquipLevelMin: 100
+      Right_Hand: true
+    WeaponLevel: 4
+    EquipLevelMin: 105
+    Refineable: true
     Script: |
-      bonus bMdef,5;
-      bonus bInt,7;
-      bonus2 bSkillAtk,"LG_RAYOFGENESIS",(BaseLevel/5);
-      if (getskilllv("LG_INSPIRATION") == 5) {
-         bonus2 bVariableCastrate,"LG_RAYOFGENESIS",-50;
-         bonus2 bSkillUseSP,"LG_RAYOFGENESIS",20;
-      }
-      if (getskilllv("CR_DEVOTION") == 5)
-         bonus2 bMagicAddClass,Class_Boss,15;
-      if (getskilllv("LG_HESPERUSLIT") == 5)
-         bonus bDelayrate,-30;
-  - Id: 29371
-    AegisName: Release_Of_Magic
-    Name: Release of Truth
-    Type: Card
-    SubType: Enchant
-    Script: |
-      autobonus "{ bonus bFlee2,100; bonus2 bMagicAddClass,Class_Boss,100; }",50,10000,BF_MAGIC,"{ active_transform 1639,10000 }";
-      /*Unknow Rate*/
+      bonus bUnbreakableWeapon;
+      .@r = getrefine();
+      bonus bBaseAtk,.@r*3;
+      bonus bMatk,.@r*3;

@@ -1575,7 +1575,7 @@ public class Converter : MonoBehaviour
                 // Id
                 builder.Append("	[" + id + "] = {\n");
                 // Unidentified display name
-                builder.Append("		unidentifiedDisplayName = \"" + _name + ((type.ToLower() == "weapon" || type.ToLower() == "armor"|| type.ToLower() == "shadowgear") ? " [" + (!string.IsNullOrEmpty(slots) ? slots : "0") + "]" : string.Empty) + "\",\n");
+                builder.Append("		unidentifiedDisplayName = \"" + _name + ((type.ToLower() == "weapon" || type.ToLower() == "armor" || type.ToLower() == "shadowgear") ? " [" + (!string.IsNullOrEmpty(slots) ? slots : "0") + "]" : string.Empty) + "\",\n");
                 // Unidentified resource name
                 builder.Append("		unidentifiedResourceName = " + resName + ",\n");
                 // Unidentified description
@@ -1875,6 +1875,7 @@ public class Converter : MonoBehaviour
             if (!string.IsNullOrEmpty(bonuses) || !string.IsNullOrWhiteSpace(bonuses))
             {
                 bonuses = bonuses.Replace("๐", "[NEW_LINE]๐");
+                bonuses = bonuses.Replace("^FF2525", "[NEW_LINE]^FF2525");
                 text = string.Format("เมื่อใช้ {1} มีโอกาสเล็กน้อย ที่จะ {0} ชั่วคราว", bonuses, GetSkillName(skillName));
             }
             else
@@ -1884,6 +1885,7 @@ public class Converter : MonoBehaviour
         if (text.Contains("autobonus2 \"{"))
         {
             var temp = text.Replace("autobonus2 \"{", string.Empty);
+            var flag = GetAllAtf(temp);
             if (temp.IndexOf("}\"") > 0)
                 temp = temp.Substring(0, temp.IndexOf("}\""));
             var bonuses = string.Empty;
@@ -1903,7 +1905,8 @@ public class Converter : MonoBehaviour
             if (!string.IsNullOrEmpty(bonuses) || !string.IsNullOrWhiteSpace(bonuses))
             {
                 bonuses = bonuses.Replace("๐", "[NEW_LINE]๐");
-                text = string.Format("เมื่อโดนตีกายภาพ มีโอกาสเล็กน้อย ที่จะ {0} ชั่วคราว", bonuses);
+                bonuses = bonuses.Replace("^FF2525", "[NEW_LINE]^FF2525");
+                text = string.Format("เมื่อโดน" + flag + " มีโอกาสเล็กน้อย ที่จะ {0} ชั่วคราว", bonuses);
             }
             else
                 text = string.Empty;
@@ -1912,6 +1915,7 @@ public class Converter : MonoBehaviour
         if (text.Contains("autobonus \"{"))
         {
             var temp = text.Replace("autobonus \"{", string.Empty);
+            var flag = GetAllAtf(temp);
             if (temp.IndexOf("}\"") > 0)
                 temp = temp.Substring(0, temp.IndexOf("}\""));
             var bonuses = string.Empty;
@@ -1931,7 +1935,8 @@ public class Converter : MonoBehaviour
             if (!string.IsNullOrEmpty(bonuses) || !string.IsNullOrWhiteSpace(bonuses))
             {
                 bonuses = bonuses.Replace("๐", "[NEW_LINE]๐");
-                text = string.Format("เมื่อตีกายภาพ มีโอกาสเล็กน้อย ที่จะ {0} ชั่วคราว", bonuses);
+                bonuses = bonuses.Replace("^FF2525", "[NEW_LINE]^FF2525");
+                text = string.Format("เมื่อ" + flag + " มีโอกาสเล็กน้อย ที่จะ {0} ชั่วคราว", bonuses);
             }
             else
                 text = string.Empty;
@@ -3376,6 +3381,50 @@ public class Converter : MonoBehaviour
         return text;
     }
 
+    string GetAllAtf(string text)
+    {
+        string atf = string.Empty;
+
+        if (text.Contains("ATF_SELF"))
+            atf += "ตีตนเอง, ";
+        if (text.Contains("ATF_TARGET"))
+            atf += "ตีศัตรู, ";
+        if (text.Contains("ATF_SHORT"))
+            atf += "ตีใกล้, ";
+        if (text.Contains("BF_SHORT"))
+            atf += "ตีใกล้, ";
+        if (text.Contains("ATF_LONG"))
+            atf += "ตีไกล, ";
+        if (text.Contains("BF_LONG"))
+            atf += "ตีไกล, ";
+        if (text.Contains("ATF_SKILL"))
+            atf += "ใช้ Skill, ";
+        if (text.Contains("ATF_WEAPON"))
+            atf += "ตีกายภาพ, ";
+        if (text.Contains("BF_WEAPON"))
+            atf += "ตีกายภาพ, ";
+        if (text.Contains("ATF_MAGIC"))
+            atf += "ใช้ Skill, ";
+        if (text.Contains("BF_MAGIC"))
+            atf += "ใช้ Skill, ";
+        if (text.Contains("BF_SKILL"))
+            atf += "ใช้ Skill, ";
+        if (text.Contains("ATF_MISC"))
+            atf += "ใช้ Skill อื่น ๆ, ";
+        if (text.Contains("BF_MISC"))
+            atf += "ใช้ Skill อื่น ๆ, ";
+        if (text.Contains("BF_NORMAL"))
+            atf += "ตีกายภาพ, ";
+
+        // Remove leftover ,
+        if (!string.IsNullOrEmpty(atf))
+            atf = atf.Substring(0, atf.Length - 2);
+        else
+            atf = "ตีกายภาพ";
+
+        return atf;
+    }
+
     string ParseI(string text)
     {
         text = text.Replace("0", "ตนเอง");
@@ -3582,9 +3631,7 @@ public class Converter : MonoBehaviour
                     // Add item name
                     for (int k = 0; k < currentSameComboData.aegis_names.Count; k++)
                     {
-                        var currentAegisName = currentSameComboData.aegis_names[k];
-
-                        if (currentAegisName == aegis_name)
+                        if (currentSameComboData.aegis_names[k] == aegis_name)
                             isFoundNow = true;
                     }
 
@@ -3605,30 +3652,26 @@ public class Converter : MonoBehaviour
                                 same_set_name_list += "[NEW_LINE]+ " + GetItemName(currentAegisName, true);
                         }
 
-                        // Remove leftover ,
-                        //same_set_name_list = same_set_name_list.Substring(0, same_set_name_list.Length - 2);
-
                         // End
                         same_set_name_list += "^000000\",\n";
 
                         sum.Append(same_set_name_list);
 
-                        break;
+                        // Add combo bonus description
+                        for (int l = 0; l < currentComboData.descriptions.Count; l++)
+                        {
+                            if (l >= currentComboData.descriptions.Count - 1)
+                                sum.Append(currentComboData.descriptions[l]);
+                            else
+                                sum.Append(currentComboData.descriptions[l] + "\n");
+                        }
+
+                        // End
+                        sum.Append("			\"————————————\",\n");
+
+                        isFoundNow = false;
                     }
                 }
-
-                // Add combo bonus description
-                for (int j = 0; j < currentComboData.descriptions.Count; j++)
-                {
-                    if (j >= currentComboData.descriptions.Count - 1)
-                        sum.Append(currentComboData.descriptions[j]);
-                    else
-                        sum.Append(currentComboData.descriptions[j] + "\n");
-                }
-
-                // End
-                sum.Append("			\"————————————\",\n");
-                //sum.Append("			\"^58990F[สิ้นสุด Combo]^000000\",\n");
 
                 // Finalize this combo data
                 builder.Append(sum);
