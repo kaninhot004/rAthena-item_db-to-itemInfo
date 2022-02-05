@@ -546,6 +546,7 @@ public class Converter : MonoBehaviour
             else if (text.Contains("    Description:"))
             {
                 skillData.description = RemoveQuote(text.Replace("    Description: ", string.Empty));
+                skillData.nameWithQuote = "\"" + skillData.name + "\"";
                 skillDatas.Add(skillData);
                 skillData = new SkillData();
             }
@@ -560,6 +561,7 @@ public class Converter : MonoBehaviour
     {
         public int id;
         public string name;
+        public string nameWithQuote;
         public string description;
     }
 
@@ -3577,9 +3579,9 @@ public class Converter : MonoBehaviour
         text = ParseWeaponType(text);
         text = ParseEQI(text);
         bool isHadQuote = text.Contains("\"");
-        text = RemoveQuote(text);
         if (isHadQuote)
             text = ParseSkillName(text);
+        text = RemoveQuote(text);
 
         return text;
     }
@@ -3652,7 +3654,10 @@ public class Converter : MonoBehaviour
                             if (currentAegisName == aegis_name)
                                 continue;
                             else
+                            {
                                 same_set_name_list += "[NEW_LINE]+ " + GetItemName(currentAegisName, true);
+                                same_set_name_list += "[NEW_LINE]+ (ID:" + GetItemId(currentAegisName, true) + ")";
+                            }
                         }
 
                         // End
@@ -3703,6 +3708,31 @@ public class Converter : MonoBehaviour
             {
                 if (item.aegisName.ToLower() == text.ToLower())
                     return item._name;
+            }
+        }
+
+        return text;
+    }
+
+    string GetItemId(string text, bool isForceAegisName = false)
+    {
+        int _int = 0;
+        if (!isForceAegisName && int.TryParse(text, out _int))
+        {
+            _int = int.Parse(text);
+            foreach (var item in idNameDatas)
+            {
+                if (item.id == _int)
+                    return item.id.ToString("f0");
+            }
+        }
+        else
+        {
+            text = RemoveSpace(text);
+            foreach (var item in idNameDatas)
+            {
+                if (item.aegisName.ToLower() == text.ToLower())
+                    return item.id.ToString("f0");
             }
         }
 
@@ -3974,9 +4004,10 @@ public class Converter : MonoBehaviour
     {
         foreach (var item in skillDatas)
         {
-            if (text.Contains(item.name))
+            if (text.Contains(item.nameWithQuote))
             {
-                text = text.Replace(item.name, item.description);
+                text = text.Replace(item.name, "^990B0B" + item.description + "^000000");
+
                 break;
             }
         }
