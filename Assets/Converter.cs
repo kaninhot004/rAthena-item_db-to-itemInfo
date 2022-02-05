@@ -86,32 +86,207 @@ public class Converter : MonoBehaviour
     public void PrintAllItemTypeToArray()
     {
         string builder = string.Empty;
+
         builder += "setarray $weaponIds[0],";
         foreach (var item in weaponIds)
             builder += item + ",";
         builder = builder.Substring(0, builder.Length - 1);
         builder += ";\n";
+
         builder += "setarray $equipmentIds[0],";
         foreach (var item in equipmentIds)
             builder += item + ",";
         builder = builder.Substring(0, builder.Length - 1);
         builder += ";\n";
+
         builder += "setarray $costumeIds[0],";
         foreach (var item in costumeIds)
             builder += item + ",";
         builder = builder.Substring(0, builder.Length - 1);
         builder += ";\n";
+
         builder += "setarray $cardIds[0],";
         foreach (var item in cardIds)
             builder += item + ",";
         builder = builder.Substring(0, builder.Length - 1);
         builder += ";\n";
+
         builder += "setarray $enchantIds[0],";
         foreach (var item in enchantIds)
             builder += item + ",";
         builder = builder.Substring(0, builder.Length - 1);
         builder += ";\n";
+
+        builder += "setarray $acolyteItemIds[0],";
+        foreach (var item in acolyteItemIds)
+            builder += item + ",";
+        builder = builder.Substring(0, builder.Length - 1);
+        builder += ";\n";
+
+        builder += "setarray $alchemistItemIds[0],";
+        foreach (var item in alchemistItemIds)
+            builder += item + ",";
+        builder = builder.Substring(0, builder.Length - 1);
+        builder += ";\n";
+
+        builder += "setarray $archerItemIds[0],";
+        foreach (var item in archerItemIds)
+            builder += item + ",";
+        builder = builder.Substring(0, builder.Length - 1);
+        builder += ";\n";
+
+        builder += "setarray $assassinItemIds[0],";
+        foreach (var item in assassinItemIds)
+            builder += item + ",";
+        builder = builder.Substring(0, builder.Length - 1);
+        builder += ";\n";
+
+        builder += "setarray $bardDancerItemIds[0],";
+        foreach (var item in bardDancerItemIds)
+            builder += item + ",";
+        builder = builder.Substring(0, builder.Length - 1);
+        builder += ";\n";
+
+        builder += "setarray $blacksmithItemIds[0],";
+        foreach (var item in blacksmithItemIds)
+            builder += item + ",";
+        builder = builder.Substring(0, builder.Length - 1);
+        builder += ";\n";
+
+        builder += "setarray $crusaderItemIds[0],";
+        foreach (var item in crusaderItemIds)
+            builder += item + ",";
+        builder = builder.Substring(0, builder.Length - 1);
+        builder += ";\n";
+
+        builder += "setarray $gunslingerItemIds[0],";
+        foreach (var item in gunslingerItemIds)
+            builder += item + ",";
+        builder = builder.Substring(0, builder.Length - 1);
+        builder += ";\n";
+
+        builder += "setarray $hunterItemIds[0],";
+        foreach (var item in hunterItemIds)
+            builder += item + ",";
+        builder = builder.Substring(0, builder.Length - 1);
+        builder += ";\n";
+
+        builder += "setarray $kagerouOboroItemIds[0],";
+        foreach (var item in kagerouOboroItemIds)
+            builder += item + ",";
+        builder = builder.Substring(0, builder.Length - 1);
+        builder += ";\n";
+
+        builder += "setarray $knightItemIds[0],";
+        foreach (var item in knightItemIds)
+            builder += item + ",";
+        builder = builder.Substring(0, builder.Length - 1);
+        builder += ";\n";
+
+        builder += "setarray $mageItemIds[0],";
+        foreach (var item in mageItemIds)
+            builder += item + ",";
+        builder = builder.Substring(0, builder.Length - 1);
+        builder += ";\n";
+
+        builder += "setarray $merchantItemIds[0],";
+        foreach (var item in merchantItemIds)
+            builder += item + ",";
+        builder = builder.Substring(0, builder.Length - 1);
+        builder += ";\n";
+
+        builder += "setarray $monkItemIds[0],";
+        foreach (var item in monkItemIds)
+            builder += item + ",";
+        builder = builder.Substring(0, builder.Length - 1);
+        builder += ";\n";
+
+        builder += "setarray $ninjaItemIds[0],";
+        foreach (var item in ninjaItemIds)
+            builder += item + ",";
+        builder = builder.Substring(0, builder.Length - 1);
+        builder += ";\n";
+
+        builder += "setarray $noviceItemIds[0],";
+        foreach (var item in noviceItemIds)
+            builder += item + ",";
+        builder = builder.Substring(0, builder.Length - 1);
+        builder += ";\n";
+
+        builder += "setarray $priestItemIds[0],";
+        foreach (var item in priestItemIds)
+            builder += item + ",";
+        builder = builder.Substring(0, builder.Length - 1);
+        builder += ";\n";
+
+        builder += "setarray $rebellionItemIds[0],";
+        foreach (var item in rebellionItemIds)
+            builder += item + ",";
+        builder = builder.Substring(0, builder.Length - 1);
+        builder += ";\n";
+
+        builder += "setarray $rogueItemIds[0],";
+        foreach (var item in rogueItemIds)
+            builder += item + ",";
+        builder = builder.Substring(0, builder.Length - 1);
+        builder += ";\n";
+
+        builder += "setarray $sageItemIds[0],";
+        foreach (var item in sageItemIds)
+            builder += item + ",";
+        builder = builder.Substring(0, builder.Length - 1);
+        builder += ";\n";
+
+        builder += "setarray $soulLinkerItemIds[0],";
+        foreach (var item in soulLinkerItemIds)
+            builder += item + ",";
+        builder = builder.Substring(0, builder.Length - 1);
+        builder += ";\n";
+
+        builder += "setarray $starGladiatorItemIds[0],";
+        foreach (var item in starGladiatorItemIds)
+            builder += item + ",";
+        builder = builder.Substring(0, builder.Length - 1);
+        builder += ";\n";
+
+        builder += "setarray $summonnerItemIds[0],";
+        foreach (var item in summonnerItemIds)
+            builder += item + ",";
+        builder = builder.Substring(0, builder.Length - 1);
+        builder += ";\n";
+
+        builder += "setarray $superNoviceItemIds[0],";
+        foreach (var item in superNoviceItemIds)
+            builder += item + ",";
+        builder = builder.Substring(0, builder.Length - 1);
+        builder += ";\n";
+
+        builder += "setarray $swordmanItemIds[0],";
+        foreach (var item in swordmanItemIds)
+            builder += item + ",";
+        builder = builder.Substring(0, builder.Length - 1);
+        builder += ";\n";
+
+        builder += "setarray $taekwonItemIds[0],";
+        foreach (var item in taekwonItemIds)
+            builder += item + ",";
+        builder = builder.Substring(0, builder.Length - 1);
+        builder += ";\n";
+
+        builder += "setarray $thiefItemIds[0],";
+        foreach (var item in thiefItemIds)
+            builder += item + ",";
+        builder = builder.Substring(0, builder.Length - 1);
+        builder += ";\n";
+
+        builder += "setarray $wizardItemIds[0],";
+        foreach (var item in wizardItemIds)
+            builder += item + ",";
+        builder = builder.Substring(0, builder.Length - 1);
+        builder += ";\n";
+
         File.WriteAllText("global_item_ids.txt", builder, Encoding.UTF8);
+
         Debug.Log("Printed all item type.");
     }
     [Button]
@@ -166,6 +341,35 @@ public class Converter : MonoBehaviour
     List<string> cardIds = new List<string>();
     List<string> enchantIds = new List<string>();
     List<string> allItemIds = new List<string>();
+
+    List<string> acolyteItemIds = new List<string>();
+    List<string> alchemistItemIds = new List<string>();
+    List<string> archerItemIds = new List<string>();
+    List<string> assassinItemIds = new List<string>();
+    List<string> bardDancerItemIds = new List<string>();
+    List<string> blacksmithItemIds = new List<string>();
+    List<string> crusaderItemIds = new List<string>();
+    List<string> gunslingerItemIds = new List<string>();
+    List<string> hunterItemIds = new List<string>();
+    List<string> kagerouOboroItemIds = new List<string>();
+    List<string> knightItemIds = new List<string>();
+    List<string> mageItemIds = new List<string>();
+    List<string> merchantItemIds = new List<string>();
+    List<string> monkItemIds = new List<string>();
+    List<string> ninjaItemIds = new List<string>();
+    List<string> noviceItemIds = new List<string>();
+    List<string> priestItemIds = new List<string>();
+    List<string> rebellionItemIds = new List<string>();
+    List<string> rogueItemIds = new List<string>();
+    List<string> sageItemIds = new List<string>();
+    List<string> soulLinkerItemIds = new List<string>();
+    List<string> starGladiatorItemIds = new List<string>();
+    List<string> summonnerItemIds = new List<string>();
+    List<string> superNoviceItemIds = new List<string>();
+    List<string> swordmanItemIds = new List<string>();
+    List<string> taekwonItemIds = new List<string>();
+    List<string> thiefItemIds = new List<string>();
+    List<string> wizardItemIds = new List<string>();
 
     [Button]
     public void FetchResourceNameWithType()
@@ -1056,10 +1260,44 @@ public class Converter : MonoBehaviour
     [SerializeField] bool isRandomizeResourceName;
     [SerializeField] bool isRandomizeResourceNameCustomItemOnly;
 
+    void CleanJobItemIds()
+    {
+        acolyteItemIds = new List<string>();
+        alchemistItemIds = new List<string>();
+        archerItemIds = new List<string>();
+        assassinItemIds = new List<string>();
+        bardDancerItemIds = new List<string>();
+        blacksmithItemIds = new List<string>();
+        crusaderItemIds = new List<string>();
+        gunslingerItemIds = new List<string>();
+        hunterItemIds = new List<string>();
+        kagerouOboroItemIds = new List<string>();
+        knightItemIds = new List<string>();
+        mageItemIds = new List<string>();
+        merchantItemIds = new List<string>();
+        monkItemIds = new List<string>();
+        ninjaItemIds = new List<string>();
+        noviceItemIds = new List<string>();
+        priestItemIds = new List<string>();
+        rebellionItemIds = new List<string>();
+        rogueItemIds = new List<string>();
+        sageItemIds = new List<string>();
+        soulLinkerItemIds = new List<string>();
+        starGladiatorItemIds = new List<string>();
+        summonnerItemIds = new List<string>();
+        superNoviceItemIds = new List<string>();
+        swordmanItemIds = new List<string>();
+        taekwonItemIds = new List<string>();
+        thiefItemIds = new List<string>();
+        wizardItemIds = new List<string>();
+    }
+
     [Button]
     public void Convert()
     {
         Debug.Log(DateTime.UtcNow);
+
+        CleanJobItemIds();
 
         Clean();
 
@@ -1250,115 +1488,227 @@ public class Converter : MonoBehaviour
             else if (isJob && text.Contains("      All: false"))
                 jobs += "ทุกอาชีพ [x], ";
             else if (isJob && text.Contains("      Acolyte: true"))
+            {
+                if (!acolyteItemIds.Contains(id) && ((type.ToLower() == "weapon") || (type.ToLower() == "armor") || (type.ToLower() == "shadowgear")))
+                    acolyteItemIds.Add(id);
                 jobs += "Acolyte, ";
+            }
             else if (isJob && text.Contains("      Acolyte: false"))
                 jobs += "Acolyte [x], ";
             else if (isJob && text.Contains("      Alchemist: true"))
+            {
+                if (!alchemistItemIds.Contains(id) && ((type.ToLower() == "weapon") || (type.ToLower() == "armor") || (type.ToLower() == "shadowgear")))
+                    alchemistItemIds.Add(id);
                 jobs += "Alchemist, ";
+            }
             else if (isJob && text.Contains("      Alchemist: false"))
                 jobs += "Alchemist [x], ";
             else if (isJob && text.Contains("      Archer: true"))
+            {
+                if (!archerItemIds.Contains(id) && ((type.ToLower() == "weapon") || (type.ToLower() == "armor") || (type.ToLower() == "shadowgear")))
+                    archerItemIds.Add(id);
                 jobs += "Archer, ";
+            }
             else if (isJob && text.Contains("      Archer: false"))
                 jobs += "Archer [x], ";
             else if (isJob && text.Contains("      Assassin: true"))
+            {
+                if (!assassinItemIds.Contains(id) && ((type.ToLower() == "weapon") || (type.ToLower() == "armor") || (type.ToLower() == "shadowgear")))
+                    assassinItemIds.Add(id);
                 jobs += "Assassin, ";
+            }
             else if (isJob && text.Contains("      Assassin: false"))
                 jobs += "Assassin [x], ";
             else if (isJob && text.Contains("      BardDancer: true"))
+            {
+                if (!bardDancerItemIds.Contains(id) && ((type.ToLower() == "weapon") || (type.ToLower() == "armor") || (type.ToLower() == "shadowgear")))
+                    bardDancerItemIds.Add(id);
                 jobs += "Bard & Dancer, ";
+            }
             else if (isJob && text.Contains("      BardDancer: false"))
                 jobs += "Bard & Dancer [x], ";
             else if (isJob && text.Contains("      Blacksmith: true"))
+            {
+                if (!blacksmithItemIds.Contains(id) && ((type.ToLower() == "weapon") || (type.ToLower() == "armor") || (type.ToLower() == "shadowgear")))
+                    blacksmithItemIds.Add(id);
                 jobs += "Blacksmith, ";
+            }
             else if (isJob && text.Contains("      Blacksmith: false"))
                 jobs += "Blacksmith [x], ";
             else if (isJob && text.Contains("      Crusader: true"))
+            {
+                if (!crusaderItemIds.Contains(id) && ((type.ToLower() == "weapon") || (type.ToLower() == "armor") || (type.ToLower() == "shadowgear")))
+                    crusaderItemIds.Add(id);
                 jobs += "Crusader, ";
+            }
             else if (isJob && text.Contains("      Crusader: false"))
                 jobs += "Crusader [x], ";
             else if (isJob && text.Contains("      Gunslinger: true"))
+            {
+                if (!gunslingerItemIds.Contains(id) && ((type.ToLower() == "weapon") || (type.ToLower() == "armor") || (type.ToLower() == "shadowgear")))
+                    gunslingerItemIds.Add(id);
                 jobs += "Gunslinger, ";
+            }
             else if (isJob && text.Contains("      Gunslinger: false"))
                 jobs += "Gunslinger [x], ";
             else if (isJob && text.Contains("      Hunter: true"))
+            {
+                if (!hunterItemIds.Contains(id) && ((type.ToLower() == "weapon") || (type.ToLower() == "armor") || (type.ToLower() == "shadowgear")))
+                    hunterItemIds.Add(id);
                 jobs += "Hunter, ";
+            }
             else if (isJob && text.Contains("      Hunter: false"))
                 jobs += "Hunter [x], ";
             else if (isJob && text.Contains("      KagerouOboro: true"))
+            {
+                if (!kagerouOboroItemIds.Contains(id) && ((type.ToLower() == "weapon") || (type.ToLower() == "armor") || (type.ToLower() == "shadowgear")))
+                    kagerouOboroItemIds.Add(id);
                 jobs += "Kagerou & Oboro, ";
+            }
             else if (isJob && text.Contains("      KagerouOboro: false"))
                 jobs += "Kagerou & Oboro [x], ";
             else if (isJob && text.Contains("      Knight: true"))
+            {
+                if (!knightItemIds.Contains(id) && ((type.ToLower() == "weapon") || (type.ToLower() == "armor") || (type.ToLower() == "shadowgear")))
+                    knightItemIds.Add(id);
                 jobs += "Knight, ";
+            }
             else if (isJob && text.Contains("      Knight: false"))
                 jobs += "Knight [x], ";
             else if (isJob && text.Contains("      Mage: true"))
+            {
+                if (!mageItemIds.Contains(id) && ((type.ToLower() == "weapon") || (type.ToLower() == "armor") || (type.ToLower() == "shadowgear")))
+                    mageItemIds.Add(id);
                 jobs += "Mage, ";
+            }
             else if (isJob && text.Contains("      Mage: false"))
                 jobs += "Mage [x], ";
             else if (isJob && text.Contains("      Merchant: true"))
+            {
+                if (!merchantItemIds.Contains(id) && ((type.ToLower() == "weapon") || (type.ToLower() == "armor") || (type.ToLower() == "shadowgear")))
+                    merchantItemIds.Add(id);
                 jobs += "Merchant, ";
+            }
             else if (isJob && text.Contains("      Merchant: false"))
                 jobs += "Merchant [x], ";
             else if (isJob && text.Contains("      Monk: true"))
+            {
+                if (!monkItemIds.Contains(id) && ((type.ToLower() == "weapon") || (type.ToLower() == "armor") || (type.ToLower() == "shadowgear")))
+                    monkItemIds.Add(id);
                 jobs += "Monk, ";
+            }
             else if (isJob && text.Contains("      Monk: false"))
                 jobs += "Monk [x], ";
             else if (isJob && text.Contains("      Ninja: true"))
+            {
+                if (!ninjaItemIds.Contains(id) && ((type.ToLower() == "weapon") || (type.ToLower() == "armor") || (type.ToLower() == "shadowgear")))
+                    ninjaItemIds.Add(id);
                 jobs += "Ninja, ";
+            }
             else if (isJob && text.Contains("      Ninja: false"))
                 jobs += "Ninja [x], ";
             else if (isJob && text.Contains("      Novice: true"))
+            {
+                if (!noviceItemIds.Contains(id) && ((type.ToLower() == "weapon") || (type.ToLower() == "armor") || (type.ToLower() == "shadowgear")))
+                    noviceItemIds.Add(id);
                 jobs += "Novice, ";
+            }
             else if (isJob && text.Contains("      Novice: false"))
                 jobs += "Novice [x], ";
             else if (isJob && text.Contains("      Priest: true"))
+            {
+                if (!priestItemIds.Contains(id) && ((type.ToLower() == "weapon") || (type.ToLower() == "armor") || (type.ToLower() == "shadowgear")))
+                    priestItemIds.Add(id);
                 jobs += "Priest, ";
+            }
             else if (isJob && text.Contains("      Priest: false"))
                 jobs += "Priest [x], ";
             else if (isJob && text.Contains("      Rebellion: true"))
+            {
+                if (!rebellionItemIds.Contains(id) && ((type.ToLower() == "weapon") || (type.ToLower() == "armor") || (type.ToLower() == "shadowgear")))
+                    rebellionItemIds.Add(id);
                 jobs += "Rebellion, ";
+            }
             else if (isJob && text.Contains("      Rebellion: false"))
                 jobs += "Rebellion [x], ";
             else if (isJob && text.Contains("      Rogue: true"))
+            {
+                if (!rogueItemIds.Contains(id) && ((type.ToLower() == "weapon") || (type.ToLower() == "armor") || (type.ToLower() == "shadowgear")))
+                    rogueItemIds.Add(id);
                 jobs += "Rogue, ";
-            else if (isJob && text.Contains("      Sage: false"))
-                jobs += "Sage [x], ";
-            else if (isJob && text.Contains("      Sage: true"))
-                jobs += "Sage, ";
+            }
             else if (isJob && text.Contains("      Rogue: false"))
                 jobs += "Rogue [x], ";
+            else if (isJob && text.Contains("      Sage: true"))
+            {
+                if (!sageItemIds.Contains(id) && ((type.ToLower() == "weapon") || (type.ToLower() == "armor") || (type.ToLower() == "shadowgear")))
+                    sageItemIds.Add(id);
+                jobs += "Sage, ";
+            }
+            else if (isJob && text.Contains("      Sage: false"))
+                jobs += "Sage [x], ";
             else if (isJob && text.Contains("      SoulLinker: true"))
+            {
+                if (!soulLinkerItemIds.Contains(id) && ((type.ToLower() == "weapon") || (type.ToLower() == "armor") || (type.ToLower() == "shadowgear")))
+                    soulLinkerItemIds.Add(id);
                 jobs += "Soul Linker, ";
+            }
             else if (isJob && text.Contains("      SoulLinker: false"))
                 jobs += "Soul Linker [x], ";
             else if (isJob && text.Contains("      StarGladiator: true"))
+            {
+                if (!starGladiatorItemIds.Contains(id) && ((type.ToLower() == "weapon") || (type.ToLower() == "armor") || (type.ToLower() == "shadowgear")))
+                    starGladiatorItemIds.Add(id);
                 jobs += "Star Gladiator, ";
+            }
             else if (isJob && text.Contains("      StarGladiator: false"))
                 jobs += "Star Gladiator [x], ";
             else if (isJob && text.Contains("      Summoner: true"))
+            {
+                if (!summonnerItemIds.Contains(id) && ((type.ToLower() == "weapon") || (type.ToLower() == "armor") || (type.ToLower() == "shadowgear")))
+                    summonnerItemIds.Add(id);
                 jobs += "Summoner, ";
+            }
             else if (isJob && text.Contains("      Summoner: false"))
                 jobs += "Summoner [x], ";
             else if (isJob && text.Contains("      SuperNovice: true"))
+            {
+                if (!superNoviceItemIds.Contains(id) && ((type.ToLower() == "weapon") || (type.ToLower() == "armor") || (type.ToLower() == "shadowgear")))
+                    superNoviceItemIds.Add(id);
                 jobs += "Super Novice, ";
+            }
             else if (isJob && text.Contains("      SuperNovice: false"))
                 jobs += "Super Novice [x], ";
             else if (isJob && text.Contains("      Swordman: true"))
+            {
+                if (!swordmanItemIds.Contains(id) && ((type.ToLower() == "weapon") || (type.ToLower() == "armor") || (type.ToLower() == "shadowgear")))
+                    swordmanItemIds.Add(id);
                 jobs += "Swordman, ";
+            }
             else if (isJob && text.Contains("      Swordman: false"))
                 jobs += "Swordman [x], ";
             else if (isJob && text.Contains("      Taekwon: true"))
+            {
+                if (!taekwonItemIds.Contains(id) && ((type.ToLower() == "weapon") || (type.ToLower() == "armor") || (type.ToLower() == "shadowgear")))
+                    taekwonItemIds.Add(id);
                 jobs += "Taekwon, ";
+            }
             else if (isJob && text.Contains("      Taekwon: false"))
                 jobs += "Taekwon [x], ";
             else if (isJob && text.Contains("      Thief: true"))
+            {
+                if (!thiefItemIds.Contains(id) && ((type.ToLower() == "weapon") || (type.ToLower() == "armor") || (type.ToLower() == "shadowgear")))
+                    thiefItemIds.Add(id);
                 jobs += "Thief, ";
+            }
             else if (isJob && text.Contains("      Thief: false"))
                 jobs += "Thief [x], ";
             else if (isJob && text.Contains("      Wizard: true"))
+            {
+                if (!wizardItemIds.Contains(id) && ((type.ToLower() == "weapon") || (type.ToLower() == "armor") || (type.ToLower() == "shadowgear")))
+                    wizardItemIds.Add(id);
                 jobs += "Wizard, ";
+            }
             else if (isJob && text.Contains("      Wizard: false"))
                 jobs += "Wizard [x], ";
             #endregion
