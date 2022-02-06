@@ -3489,7 +3489,7 @@ public class Converter : MonoBehaviour
         {
             var temp = text.Replace("bonus bClassChange,", string.Empty);
             var temps = temp.Split(',');
-            text = string.Format("๐ มีโอกาสเปลี่ยนแปลง รูปแบบเป้าหมาย +{0}%", TryParseInt(temps[0]));
+            text = string.Format("๐ มีโอกาสเปลี่ยนแปลง รูปแบบเป้าหมาย +{0}%", TryParseInt(temps[0],100));
         }
         if (text.Contains("bonus bAddStealRate,"))
         {
