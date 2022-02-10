@@ -285,6 +285,60 @@ public class Converter : MonoBehaviour
         builder = builder.Substring(0, builder.Length - 1);
         builder += ";\n";
 
+        builder += "setarray $statsItemIds[0],";
+        foreach (var item in statsItemIds)
+            builder += item + ",";
+        builder = builder.Substring(0, builder.Length - 1);
+        builder += ";\n";
+
+        builder += "setarray $hpSpApItemIds[0],";
+        foreach (var item in hpSpApItemIds)
+            builder += item + ",";
+        builder = builder.Substring(0, builder.Length - 1);
+        builder += ";\n";
+
+        builder += "setarray $offensiveItemIds[0],";
+        foreach (var item in offensiveItemIds)
+            builder += item + ",";
+        builder = builder.Substring(0, builder.Length - 1);
+        builder += ";\n";
+
+        builder += "setarray $defensiveItemIds[0],";
+        foreach (var item in defensiveItemIds)
+            builder += item + ",";
+        builder = builder.Substring(0, builder.Length - 1);
+        builder += ";\n";
+
+        builder += "setarray $specialItemIds[0],";
+        foreach (var item in specialItemIds)
+            builder += item + ",";
+        builder = builder.Substring(0, builder.Length - 1);
+        builder += ";\n";
+
+        builder += "setarray $castItemIds[0],";
+        foreach (var item in castItemIds)
+            builder += item + ",";
+        builder = builder.Substring(0, builder.Length - 1);
+        builder += ";\n";
+
+        builder += "setarray $effectItemIds[0],";
+        foreach (var item in effectItemIds)
+            builder += item + ",";
+        builder = builder.Substring(0, builder.Length - 1);
+        builder += ";\n";
+
+        builder += "setarray $autoSpellItemIds[0],";
+        foreach (var item in autoSpellItemIds)
+            builder += item + ",";
+        builder = builder.Substring(0, builder.Length - 1);
+        builder += ";\n";
+
+        builder += "setarray $comboItemIds[0],";
+        foreach (var item in comboItemIds)
+            builder += item + ",";
+        builder = builder.Substring(0, builder.Length - 1);
+        builder += ";\n";
+
         File.WriteAllText("global_item_ids.txt", builder, Encoding.UTF8);
 
         Debug.Log("Printed all item type.");
@@ -370,6 +424,17 @@ public class Converter : MonoBehaviour
     List<string> taekwonItemIds = new List<string>();
     List<string> thiefItemIds = new List<string>();
     List<string> wizardItemIds = new List<string>();
+
+    List<string> statsItemIds = new List<string>();
+    List<string> hpSpApItemIds = new List<string>();
+    List<string> offensiveItemIds = new List<string>();
+    List<string> defensiveItemIds = new List<string>();
+    List<string> specialItemIds = new List<string>();
+    List<string> castItemIds = new List<string>();
+    List<string> effectItemIds = new List<string>();
+    List<string> autoSpellItemIds = new List<string>();
+
+    List<string> comboItemIds = new List<string>();
 
     [Button]
     public void FetchResourceNameWithType()
@@ -1291,6 +1356,19 @@ public class Converter : MonoBehaviour
         thiefItemIds = new List<string>();
         wizardItemIds = new List<string>();
     }
+    void CleanTypeItemIds()
+    {
+        statsItemIds = new List<string>();
+        hpSpApItemIds = new List<string>();
+        offensiveItemIds = new List<string>();
+        defensiveItemIds = new List<string>();
+        specialItemIds = new List<string>();
+        castItemIds = new List<string>();
+        effectItemIds = new List<string>();
+        autoSpellItemIds = new List<string>();
+
+        comboItemIds = new List<string>();
+    }
 
     [Button]
     public void Convert()
@@ -1298,6 +1376,7 @@ public class Converter : MonoBehaviour
         Debug.Log(DateTime.UtcNow);
 
         CleanJobItemIds();
+        CleanTypeItemIds();
 
         Clean();
 
@@ -2293,6 +2372,8 @@ public class Converter : MonoBehaviour
             else
                 text = string.Empty;
         }
+
+        ParseBonusIntoTypesItemId(text);
 
         text = text.Replace(";", string.Empty);
 
@@ -3489,7 +3570,7 @@ public class Converter : MonoBehaviour
         {
             var temp = text.Replace("bonus bClassChange,", string.Empty);
             var temps = temp.Split(',');
-            text = string.Format("๐ มีโอกาสเปลี่ยนแปลง รูปแบบเป้าหมาย +{0}%", TryParseInt(temps[0],100));
+            text = string.Format("๐ มีโอกาสเปลี่ยนแปลง รูปแบบเป้าหมาย +{0}%", TryParseInt(temps[0], 100));
         }
         if (text.Contains("bonus bAddStealRate,"))
         {
@@ -4006,7 +4087,10 @@ public class Converter : MonoBehaviour
                             else
                             {
                                 same_set_name_list += "[NEW_LINE]+ " + GetItemName(currentAegisName, true);
-                                same_set_name_list += "[NEW_LINE]+ (ID:" + GetItemId(currentAegisName, true) + ")";
+                                var comboItemId = GetItemId(currentAegisName, true);
+                                if (!comboItemIds.Contains(comboItemId))
+                                    comboItemIds.Add(comboItemId);
+                                same_set_name_list += "[NEW_LINE]+ (ID:" + comboItemId + ")";
                             }
                         }
 
@@ -4415,5 +4499,275 @@ public class Converter : MonoBehaviour
                 return idNameDatas[i];
         }
         return null;
+    }
+
+    void ParseBonusIntoTypesItemId(string text)
+    {
+        // Stats
+        if (text.Contains("bonus bStr,")) { if (!statsItemIds.Contains(id)) statsItemIds.Add(id); }
+        if (text.Contains("bonus bAgi,")) { if (!statsItemIds.Contains(id)) statsItemIds.Add(id); }
+        if (text.Contains("bonus bVit,")) { if (!statsItemIds.Contains(id)) statsItemIds.Add(id); }
+        if (text.Contains("bonus bInt,")) { if (!statsItemIds.Contains(id)) statsItemIds.Add(id); }
+        if (text.Contains("bonus bDex,")) { if (!statsItemIds.Contains(id)) statsItemIds.Add(id); }
+        if (text.Contains("bonus bLuk,")) { if (!statsItemIds.Contains(id)) statsItemIds.Add(id); }
+        if (text.Contains("bonus bAllStats,")) { if (!statsItemIds.Contains(id)) statsItemIds.Add(id); }
+        if (text.Contains("bonus bAgiVit,")) { if (!statsItemIds.Contains(id)) statsItemIds.Add(id); }
+        if (text.Contains("bonus bAgiDexStr,")) { if (!statsItemIds.Contains(id)) statsItemIds.Add(id); }
+        if (text.Contains("bonus bPow,")) { if (!statsItemIds.Contains(id)) statsItemIds.Add(id); }
+        if (text.Contains("bonus bSta,")) { if (!statsItemIds.Contains(id)) statsItemIds.Add(id); }
+        if (text.Contains("bonus bWis,")) { if (!statsItemIds.Contains(id)) statsItemIds.Add(id); }
+        if (text.Contains("bonus bSpl,")) { if (!statsItemIds.Contains(id)) statsItemIds.Add(id); }
+        if (text.Contains("bonus bCon,")) { if (!statsItemIds.Contains(id)) statsItemIds.Add(id); }
+        if (text.Contains("bonus bCrt,")) { if (!statsItemIds.Contains(id)) statsItemIds.Add(id); }
+        if (text.Contains("bonus bAllTraitStats,")) { if (!statsItemIds.Contains(id)) statsItemIds.Add(id); }
+        // HP/SP/AP
+        if (text.Contains("bonus bMaxHP,")) { if (!hpSpApItemIds.Contains(id)) hpSpApItemIds.Add(id); }
+        if (text.Contains("bonus bMaxHPrate,")) { if (!hpSpApItemIds.Contains(id)) hpSpApItemIds.Add(id); }
+        if (text.Contains("bonus bMaxSP,")) { if (!hpSpApItemIds.Contains(id)) hpSpApItemIds.Add(id); }
+        if (text.Contains("bonus bMaxSPrate,")) { if (!hpSpApItemIds.Contains(id)) hpSpApItemIds.Add(id); }
+        if (text.Contains("bonus bMaxAP,")) { if (!hpSpApItemIds.Contains(id)) hpSpApItemIds.Add(id); }
+        if (text.Contains("bonus bMaxAPrate,")) { if (!hpSpApItemIds.Contains(id)) hpSpApItemIds.Add(id); }
+        if (text.Contains("bonus bHPrecovRate,")) { if (!hpSpApItemIds.Contains(id)) hpSpApItemIds.Add(id); }
+        if (text.Contains("bonus bSPrecovRate,")) { if (!hpSpApItemIds.Contains(id)) hpSpApItemIds.Add(id); }
+        if (text.Contains("bonus2 bHPRegenRate,")) { if (!hpSpApItemIds.Contains(id)) hpSpApItemIds.Add(id); }
+        if (text.Contains("bonus2 bHPLossRate,")) { if (!hpSpApItemIds.Contains(id)) hpSpApItemIds.Add(id); }
+        if (text.Contains("bonus2 bSPRegenRate,")) { if (!hpSpApItemIds.Contains(id)) hpSpApItemIds.Add(id); }
+        if (text.Contains("bonus2 bSPLossRate,")) { if (!hpSpApItemIds.Contains(id)) hpSpApItemIds.Add(id); }
+        if (text.Contains("bonus2 bRegenPercentHP,")) { if (!hpSpApItemIds.Contains(id)) hpSpApItemIds.Add(id); }
+        if (text.Contains("bonus2 bRegenPercentSP,")) { if (!hpSpApItemIds.Contains(id)) hpSpApItemIds.Add(id); }
+        if (text.Contains("bonus bNoRegen,")) { if (!hpSpApItemIds.Contains(id)) hpSpApItemIds.Add(id); }
+        if (text.Contains("bonus bUseSPrate,")) { if (!hpSpApItemIds.Contains(id)) hpSpApItemIds.Add(id); }
+        if (text.Contains("bonus2 bSkillUseSP,")) { if (!hpSpApItemIds.Contains(id)) hpSpApItemIds.Add(id); }
+        if (text.Contains("bonus2 bSkillUseSPrate,")) { if (!hpSpApItemIds.Contains(id)) hpSpApItemIds.Add(id); }
+        if (text.Contains("bonus bHealPower,")) { if (!hpSpApItemIds.Contains(id)) hpSpApItemIds.Add(id); }
+        if (text.Contains("bonus bHealPower2,")) { if (!hpSpApItemIds.Contains(id)) hpSpApItemIds.Add(id); }
+        if (text.Contains("bonus2 bSkillHeal,")) { if (!hpSpApItemIds.Contains(id)) hpSpApItemIds.Add(id); }
+        if (text.Contains("bonus2 bSkillHeal2,")) { if (!hpSpApItemIds.Contains(id)) hpSpApItemIds.Add(id); }
+        if (text.Contains("bonus bAddItemHealRate,")) { if (!hpSpApItemIds.Contains(id)) hpSpApItemIds.Add(id); }
+        if (text.Contains("bonus2 bAddItemHealRate,")) { if (!hpSpApItemIds.Contains(id)) hpSpApItemIds.Add(id); }
+        if (text.Contains("bonus2 bAddItemGroupHealRate,")) { if (!hpSpApItemIds.Contains(id)) hpSpApItemIds.Add(id); }
+        if (text.Contains("bonus bAddItemSPHealRate,")) { if (!hpSpApItemIds.Contains(id)) hpSpApItemIds.Add(id); }
+        if (text.Contains("bonus2 bAddItemSPHealRate,")) { if (!hpSpApItemIds.Contains(id)) hpSpApItemIds.Add(id); }
+        if (text.Contains("bonus2 bAddItemGroupSPHealRate,")) { if (!hpSpApItemIds.Contains(id)) hpSpApItemIds.Add(id); }
+        if (text.Contains("bonus bHPDrainValue,")) { if (!hpSpApItemIds.Contains(id)) hpSpApItemIds.Add(id); }
+        if (text.Contains("bonus2 bHPDrainValueRace,")) { if (!hpSpApItemIds.Contains(id)) hpSpApItemIds.Add(id); }
+        if (text.Contains("bonus2 bHpDrainValueClass,")) { if (!hpSpApItemIds.Contains(id)) hpSpApItemIds.Add(id); }
+        if (text.Contains("bonus bSPDrainValue,")) { if (!hpSpApItemIds.Contains(id)) hpSpApItemIds.Add(id); }
+        if (text.Contains("bonus2 bSPDrainValueRace,")) { if (!hpSpApItemIds.Contains(id)) hpSpApItemIds.Add(id); }
+        if (text.Contains("bonus2 bSpDrainValueClass,")) { if (!hpSpApItemIds.Contains(id)) hpSpApItemIds.Add(id); }
+        if (text.Contains("bonus2 bHPDrainRate,")) { if (!hpSpApItemIds.Contains(id)) hpSpApItemIds.Add(id); }
+        if (text.Contains("bonus2 bSPDrainRate,")) { if (!hpSpApItemIds.Contains(id)) hpSpApItemIds.Add(id); }
+        if (text.Contains("bonus bHPGainValue,")) { if (!hpSpApItemIds.Contains(id)) hpSpApItemIds.Add(id); }
+        if (text.Contains("bonus bSPGainValue,")) { if (!hpSpApItemIds.Contains(id)) hpSpApItemIds.Add(id); }
+        if (text.Contains("bonus2 bSPGainRace,")) { if (!hpSpApItemIds.Contains(id)) hpSpApItemIds.Add(id); }
+        if (text.Contains("bonus bLongHPGainValue,")) { if (!hpSpApItemIds.Contains(id)) hpSpApItemIds.Add(id); }
+        if (text.Contains("bonus bLongSPGainValue,")) { if (!hpSpApItemIds.Contains(id)) hpSpApItemIds.Add(id); }
+        if (text.Contains("bonus bMagicHPGainValue,")) { if (!hpSpApItemIds.Contains(id)) hpSpApItemIds.Add(id); }
+        if (text.Contains("bonus bMagicSPGainValue,")) { if (!hpSpApItemIds.Contains(id)) hpSpApItemIds.Add(id); }
+        // Offensive
+        if (text.Contains("bonus bBaseAtk,")) { if (!offensiveItemIds.Contains(id)) offensiveItemIds.Add(id); }
+        if (text.Contains("bonus bAtk,")) { if (!offensiveItemIds.Contains(id)) offensiveItemIds.Add(id); }
+        if (text.Contains("bonus bAtk2,")) { if (!offensiveItemIds.Contains(id)) offensiveItemIds.Add(id); }
+        if (text.Contains("bonus bAtkRate,")) { if (!offensiveItemIds.Contains(id)) offensiveItemIds.Add(id); }
+        if (text.Contains("bonus bWeaponAtkRate,")) { if (!offensiveItemIds.Contains(id)) offensiveItemIds.Add(id); }
+        if (text.Contains("bonus bMatk,")) { if (!offensiveItemIds.Contains(id)) offensiveItemIds.Add(id); }
+        if (text.Contains("bonus bMatkRate,")) { if (!offensiveItemIds.Contains(id)) offensiveItemIds.Add(id); }
+        if (text.Contains("bonus bWeaponMatkRate,")) { if (!offensiveItemIds.Contains(id)) offensiveItemIds.Add(id); }
+        if (text.Contains("bonus2 bSkillAtk,")) { if (!offensiveItemIds.Contains(id)) offensiveItemIds.Add(id); }
+        if (text.Contains("bonus bShortAtkRate,")) { if (!offensiveItemIds.Contains(id)) offensiveItemIds.Add(id); }
+        if (text.Contains("bonus bLongAtkRate,")) { if (!offensiveItemIds.Contains(id)) offensiveItemIds.Add(id); }
+        if (text.Contains("bonus bCritAtkRate,")) { if (!offensiveItemIds.Contains(id)) offensiveItemIds.Add(id); }
+        if (text.Contains("bonus2 bWeaponAtk,")) { if (!offensiveItemIds.Contains(id)) offensiveItemIds.Add(id); }
+        if (text.Contains("bonus2 bWeaponDamageRate,")) { if (!offensiveItemIds.Contains(id)) offensiveItemIds.Add(id); }
+        if (text.Contains("bonus2 bAddEle,")) { if (!offensiveItemIds.Contains(id)) offensiveItemIds.Add(id); }
+        if (text.Contains("bonus3 bAddEle,")) { if (!offensiveItemIds.Contains(id)) offensiveItemIds.Add(id); }
+        if (text.Contains("bonus2 bMagicAddEle,")) { if (!offensiveItemIds.Contains(id)) offensiveItemIds.Add(id); }
+        if (text.Contains("bonus2 bAddRace,")) { if (!offensiveItemIds.Contains(id)) offensiveItemIds.Add(id); }
+        if (text.Contains("bonus2 bMagicAddRace,")) { if (!offensiveItemIds.Contains(id)) offensiveItemIds.Add(id); }
+        if (text.Contains("bonus2 bAddClass,")) { if (!offensiveItemIds.Contains(id)) offensiveItemIds.Add(id); }
+        if (text.Contains("bonus2 bMagicAddClass,")) { if (!offensiveItemIds.Contains(id)) offensiveItemIds.Add(id); }
+        if (text.Contains("bonus2 bAddSize,")) { if (!offensiveItemIds.Contains(id)) offensiveItemIds.Add(id); }
+        if (text.Contains("bonus2 bMagicAddSize,")) { if (!offensiveItemIds.Contains(id)) offensiveItemIds.Add(id); }
+        if (text.Contains("bonus bNoSizeFix;")) { if (!offensiveItemIds.Contains(id)) offensiveItemIds.Add(id); }
+        if (text.Contains("bonus2 bAddDamageClass,")) { if (!offensiveItemIds.Contains(id)) offensiveItemIds.Add(id); }
+        if (text.Contains("bonus2 bAddMagicDamageClass,")) { if (!offensiveItemIds.Contains(id)) offensiveItemIds.Add(id); }
+        if (text.Contains("bonus2 bAddRace2,")) { if (!offensiveItemIds.Contains(id)) offensiveItemIds.Add(id); }
+        if (text.Contains("bonus2 bMagicAddRace2,")) { if (!offensiveItemIds.Contains(id)) offensiveItemIds.Add(id); }
+        if (text.Contains("bonus bAtkEle,")) { if (!offensiveItemIds.Contains(id)) offensiveItemIds.Add(id); }
+        if (text.Contains("bonus2 bMagicAtkEle,")) { if (!offensiveItemIds.Contains(id)) offensiveItemIds.Add(id); }
+        if (text.Contains("bonus bDefRatioAtkRace,")) { if (!offensiveItemIds.Contains(id)) offensiveItemIds.Add(id); }
+        if (text.Contains("bonus bDefRatioAtkEle,")) { if (!offensiveItemIds.Contains(id)) offensiveItemIds.Add(id); }
+        if (text.Contains("bonus bDefRatioAtkClass,")) { if (!offensiveItemIds.Contains(id)) offensiveItemIds.Add(id); }
+        if (text.Contains("bonus4 bSetDefRace,")) { if (!offensiveItemIds.Contains(id)) offensiveItemIds.Add(id); }
+        if (text.Contains("bonus4 bSetMDefRace,")) { if (!offensiveItemIds.Contains(id)) offensiveItemIds.Add(id); }
+        if (text.Contains("bonus bIgnoreDefEle,")) { if (!offensiveItemIds.Contains(id)) offensiveItemIds.Add(id); }
+        if (text.Contains("bonus bIgnoreDefRace,")) { if (!offensiveItemIds.Contains(id)) offensiveItemIds.Add(id); }
+        if (text.Contains("bonus bIgnoreDefClass,")) { if (!offensiveItemIds.Contains(id)) offensiveItemIds.Add(id); }
+        if (text.Contains("bonus bIgnoreMDefRace,")) { if (!offensiveItemIds.Contains(id)) offensiveItemIds.Add(id); }
+        if (text.Contains("bonus2 bIgnoreDefRaceRate,")) { if (!offensiveItemIds.Contains(id)) offensiveItemIds.Add(id); }
+        if (text.Contains("bonus2 bIgnoreMdefRaceRate,")) { if (!offensiveItemIds.Contains(id)) offensiveItemIds.Add(id); }
+        if (text.Contains("bonus2 bIgnoreMdefRace2Rate,")) { if (!offensiveItemIds.Contains(id)) offensiveItemIds.Add(id); }
+        if (text.Contains("bonus bIgnoreMDefEle,")) { if (!offensiveItemIds.Contains(id)) offensiveItemIds.Add(id); }
+        if (text.Contains("bonus2 bIgnoreDefClassRate,")) { if (!offensiveItemIds.Contains(id)) offensiveItemIds.Add(id); }
+        if (text.Contains("bonus2 bIgnoreMdefClassRate,")) { if (!offensiveItemIds.Contains(id)) offensiveItemIds.Add(id); }
+        if (text.Contains("bonus2 bHPVanishRate,")) { if (!offensiveItemIds.Contains(id)) offensiveItemIds.Add(id); }
+        if (text.Contains("bonus3 bHPVanishRaceRate,")) { if (!offensiveItemIds.Contains(id)) offensiveItemIds.Add(id); }
+        if (text.Contains("bonus3 bHPVanishRate,")) { if (!offensiveItemIds.Contains(id)) offensiveItemIds.Add(id); }
+        if (text.Contains("bonus2 bSPVanishRate,")) { if (!offensiveItemIds.Contains(id)) offensiveItemIds.Add(id); }
+        if (text.Contains("bonus3 bSPVanishRaceRate,")) { if (!offensiveItemIds.Contains(id)) offensiveItemIds.Add(id); }
+        if (text.Contains("bonus3 bSPVanishRate,")) { if (!offensiveItemIds.Contains(id)) offensiveItemIds.Add(id); }
+        if (text.Contains("bonus3 bStateNoRecoverRace,")) { if (!offensiveItemIds.Contains(id)) offensiveItemIds.Add(id); }
+        if (text.Contains("bonus bBreakWeaponRate,")) { if (!offensiveItemIds.Contains(id)) offensiveItemIds.Add(id); }
+        if (text.Contains("bonus bBreakArmorRate,")) { if (!offensiveItemIds.Contains(id)) offensiveItemIds.Add(id); }
+        // Defensive
+        if (text.Contains("bonus bDef,")) { if (!defensiveItemIds.Contains(id)) defensiveItemIds.Add(id); }
+        if (text.Contains("bonus bDefRate,")) { if (!defensiveItemIds.Contains(id)) defensiveItemIds.Add(id); }
+        if (text.Contains("bonus bDef2,")) { if (!defensiveItemIds.Contains(id)) defensiveItemIds.Add(id); }
+        if (text.Contains("bonus bDef2Rate,")) { if (!defensiveItemIds.Contains(id)) defensiveItemIds.Add(id); }
+        if (text.Contains("bonus bMdef,")) { if (!defensiveItemIds.Contains(id)) defensiveItemIds.Add(id); }
+        if (text.Contains("bonus bMdefRate,")) { if (!defensiveItemIds.Contains(id)) defensiveItemIds.Add(id); }
+        if (text.Contains("bonus bMdef2,")) { if (!defensiveItemIds.Contains(id)) defensiveItemIds.Add(id); }
+        if (text.Contains("bonus bMdef2Rate,")) { if (!defensiveItemIds.Contains(id)) defensiveItemIds.Add(id); }
+        if (text.Contains("bonus bCritDefRate,")) { if (!defensiveItemIds.Contains(id)) defensiveItemIds.Add(id); }
+        if (text.Contains("bonus bCriticalDef,")) { if (!defensiveItemIds.Contains(id)) defensiveItemIds.Add(id); }
+        if (text.Contains("bonus bNearAtkDef,")) { if (!defensiveItemIds.Contains(id)) defensiveItemIds.Add(id); }
+        if (text.Contains("bonus bLongAtkDef,")) { if (!defensiveItemIds.Contains(id)) defensiveItemIds.Add(id); }
+        if (text.Contains("bonus bMagicAtkDef,")) { if (!defensiveItemIds.Contains(id)) defensiveItemIds.Add(id); }
+        if (text.Contains("bonus bMiscAtkDef,")) { if (!defensiveItemIds.Contains(id)) defensiveItemIds.Add(id); }
+        if (text.Contains("bonus bNoWeaponDamage,")) { if (!defensiveItemIds.Contains(id)) defensiveItemIds.Add(id); }
+        if (text.Contains("bonus bNoMagicDamage,")) { if (!defensiveItemIds.Contains(id)) defensiveItemIds.Add(id); }
+        if (text.Contains("bonus bNoMiscDamage,")) { if (!defensiveItemIds.Contains(id)) defensiveItemIds.Add(id); }
+        if (text.Contains("bonus2 bSubEle,")) { if (!defensiveItemIds.Contains(id)) defensiveItemIds.Add(id); }
+        if (text.Contains("bonus3 bSubEle,")) { if (!defensiveItemIds.Contains(id)) defensiveItemIds.Add(id); }
+        if (text.Contains("bonus2 bSubDefEle,")) { if (!defensiveItemIds.Contains(id)) defensiveItemIds.Add(id); }
+        if (text.Contains("bonus2 bMagicSubDefEle,")) { if (!defensiveItemIds.Contains(id)) defensiveItemIds.Add(id); }
+        if (text.Contains("bonus2 bSubRace,")) { if (!defensiveItemIds.Contains(id)) defensiveItemIds.Add(id); }
+        if (text.Contains("bonus3 bSubRace,")) { if (!defensiveItemIds.Contains(id)) defensiveItemIds.Add(id); }
+        if (text.Contains("bonus2 bSubClass,")) { if (!defensiveItemIds.Contains(id)) defensiveItemIds.Add(id); }
+        if (text.Contains("bonus2 bSubSize,")) { if (!defensiveItemIds.Contains(id)) defensiveItemIds.Add(id); }
+        if (text.Contains("bonus2 bWeaponSubSize,")) { if (!defensiveItemIds.Contains(id)) defensiveItemIds.Add(id); }
+        if (text.Contains("bonus2 bMagicSubSize,")) { if (!defensiveItemIds.Contains(id)) defensiveItemIds.Add(id); }
+        if (text.Contains("bonus2 bAddDefMonster,")) { if (!defensiveItemIds.Contains(id)) defensiveItemIds.Add(id); }
+        if (text.Contains("bonus2 bAddMDefMonster,")) { if (!defensiveItemIds.Contains(id)) defensiveItemIds.Add(id); }
+        if (text.Contains("bonus2 bSubRace2,")) { if (!defensiveItemIds.Contains(id)) defensiveItemIds.Add(id); }
+        if (text.Contains("bonus2 bSubSkill,")) { if (!defensiveItemIds.Contains(id)) defensiveItemIds.Add(id); }
+        if (text.Contains("bonus bAbsorbDmgMaxHP,")) { if (!defensiveItemIds.Contains(id)) defensiveItemIds.Add(id); }
+        if (text.Contains("bonus bDefEle,")) { if (!defensiveItemIds.Contains(id)) defensiveItemIds.Add(id); }
+        if (text.Contains("bonus bShortWeaponDamageReturn,")) { if (!defensiveItemIds.Contains(id)) defensiveItemIds.Add(id); }
+        if (text.Contains("bonus bLongWeaponDamageReturn,")) { if (!defensiveItemIds.Contains(id)) defensiveItemIds.Add(id); }
+        if (text.Contains("bonus bMagicDamageReturn,")) { if (!defensiveItemIds.Contains(id)) defensiveItemIds.Add(id); }
+        if (text.Contains("bonus bReduceDamageReturn,")) { if (!defensiveItemIds.Contains(id)) defensiveItemIds.Add(id); }
+        if (text.Contains("bonus bUnstripableWeapon;")) { if (!defensiveItemIds.Contains(id)) defensiveItemIds.Add(id); }
+        if (text.Contains("bonus bUnstripableArmor;")) { if (!defensiveItemIds.Contains(id)) defensiveItemIds.Add(id); }
+        if (text.Contains("bonus bUnstripableHelm;")) { if (!defensiveItemIds.Contains(id)) defensiveItemIds.Add(id); }
+        if (text.Contains("bonus bUnstripableShield;")) { if (!defensiveItemIds.Contains(id)) defensiveItemIds.Add(id); }
+        if (text.Contains("bonus bUnstripable;")) { if (!defensiveItemIds.Contains(id)) defensiveItemIds.Add(id); }
+        if (text.Contains("bonus bUnbreakableGarment;")) { if (!defensiveItemIds.Contains(id)) defensiveItemIds.Add(id); }
+        if (text.Contains("bonus bUnbreakableWeapon;")) { if (!defensiveItemIds.Contains(id)) defensiveItemIds.Add(id); }
+        if (text.Contains("bonus bUnbreakableArmor;")) { if (!defensiveItemIds.Contains(id)) defensiveItemIds.Add(id); }
+        if (text.Contains("bonus bUnbreakableHelm;")) { if (!defensiveItemIds.Contains(id)) defensiveItemIds.Add(id); }
+        if (text.Contains("bonus bUnbreakableShield;")) { if (!defensiveItemIds.Contains(id)) defensiveItemIds.Add(id); }
+        if (text.Contains("bonus bUnbreakableShoes;")) { if (!defensiveItemIds.Contains(id)) defensiveItemIds.Add(id); }
+        if (text.Contains("bonus bUnbreakable,")) { if (!defensiveItemIds.Contains(id)) defensiveItemIds.Add(id); }
+        // Special
+        if (text.Contains("bonus bHit,")) { if (!specialItemIds.Contains(id)) specialItemIds.Add(id); }
+        if (text.Contains("bonus bHitRate,")) { if (!specialItemIds.Contains(id)) specialItemIds.Add(id); }
+        if (text.Contains("bonus bCritical,")) { if (!specialItemIds.Contains(id)) specialItemIds.Add(id); }
+        if (text.Contains("bonus bCriticalLong,")) { if (!specialItemIds.Contains(id)) specialItemIds.Add(id); }
+        if (text.Contains("bonus2 bCriticalAddRace,")) { if (!specialItemIds.Contains(id)) specialItemIds.Add(id); }
+        if (text.Contains("bonus bCriticalRate,")) { if (!specialItemIds.Contains(id)) specialItemIds.Add(id); }
+        if (text.Contains("bonus bFlee,")) { if (!specialItemIds.Contains(id)) specialItemIds.Add(id); }
+        if (text.Contains("bonus bFleeRate,")) { if (!specialItemIds.Contains(id)) specialItemIds.Add(id); }
+        if (text.Contains("bonus bFlee2,")) { if (!specialItemIds.Contains(id)) specialItemIds.Add(id); }
+        if (text.Contains("bonus bFlee2Rate,")) { if (!specialItemIds.Contains(id)) specialItemIds.Add(id); }
+        if (text.Contains("bonus bPerfectHitRate,")) { if (!specialItemIds.Contains(id)) specialItemIds.Add(id); }
+        if (text.Contains("bonus bPerfectHitAddRate,")) { if (!specialItemIds.Contains(id)) specialItemIds.Add(id); }
+        if (text.Contains("bonus bSpeedRate,")) { if (!specialItemIds.Contains(id)) specialItemIds.Add(id); }
+        if (text.Contains("bonus bSpeedAddRate,")) { if (!specialItemIds.Contains(id)) specialItemIds.Add(id); }
+        if (text.Contains("bonus bAspd,")) { if (!specialItemIds.Contains(id)) specialItemIds.Add(id); }
+        if (text.Contains("bonus bAspdRate,")) { if (!specialItemIds.Contains(id)) specialItemIds.Add(id); }
+        if (text.Contains("bonus bAtkRange,")) { if (!specialItemIds.Contains(id)) specialItemIds.Add(id); }
+        if (text.Contains("bonus bAddMaxWeight,")) { if (!specialItemIds.Contains(id)) specialItemIds.Add(id); }
+        if (text.Contains("bonus bPAtk,")) { if (!specialItemIds.Contains(id)) specialItemIds.Add(id); }
+        if (text.Contains("bonus bPAtkRate,")) { if (!specialItemIds.Contains(id)) specialItemIds.Add(id); }
+        if (text.Contains("bonus bSMatk,")) { if (!specialItemIds.Contains(id)) specialItemIds.Add(id); }
+        if (text.Contains("bonus bSMatkRate,")) { if (!specialItemIds.Contains(id)) specialItemIds.Add(id); }
+        if (text.Contains("bonus bRes,")) { if (!specialItemIds.Contains(id)) specialItemIds.Add(id); }
+        if (text.Contains("bonus bResRate,")) { if (!specialItemIds.Contains(id)) specialItemIds.Add(id); }
+        if (text.Contains("bonus bMRes,")) { if (!specialItemIds.Contains(id)) specialItemIds.Add(id); }
+        if (text.Contains("bonus bMResRate,")) { if (!specialItemIds.Contains(id)) specialItemIds.Add(id); }
+        if (text.Contains("bonus bHPlus,")) { if (!specialItemIds.Contains(id)) specialItemIds.Add(id); }
+        if (text.Contains("bonus bHPlusRate,")) { if (!specialItemIds.Contains(id)) specialItemIds.Add(id); }
+        if (text.Contains("bonus bCRate,")) { if (!specialItemIds.Contains(id)) specialItemIds.Add(id); }
+        if (text.Contains("bonus bCRateRate,")) { if (!specialItemIds.Contains(id)) specialItemIds.Add(id); }
+        if (text.Contains("bonus2 bExpAddRace,")) { if (!specialItemIds.Contains(id)) specialItemIds.Add(id); }
+        if (text.Contains("bonus2 bExpAddClass,")) { if (!specialItemIds.Contains(id)) specialItemIds.Add(id); }
+        if (text.Contains("bonus2 bDropAddRace,")) { if (!specialItemIds.Contains(id)) specialItemIds.Add(id); }
+        if (text.Contains("bonus2 bDropAddClass,")) { if (!specialItemIds.Contains(id)) specialItemIds.Add(id); }
+        if (text.Contains("bonus3 bAddMonsterIdDropItem,")) { if (!specialItemIds.Contains(id)) specialItemIds.Add(id); }
+        if (text.Contains("bonus2 bAddMonsterDropItem,")) { if (!specialItemIds.Contains(id)) specialItemIds.Add(id); }
+        if (text.Contains("bonus3 bAddMonsterDropItem,")) { if (!specialItemIds.Contains(id)) specialItemIds.Add(id); }
+        if (text.Contains("bonus3 bAddClassDropItem,")) { if (!specialItemIds.Contains(id)) specialItemIds.Add(id); }
+        if (text.Contains("bonus2 bAddMonsterDropItemGroup,")) { if (!specialItemIds.Contains(id)) specialItemIds.Add(id); }
+        if (text.Contains("bonus3 bAddMonsterDropItemGroup,")) { if (!specialItemIds.Contains(id)) specialItemIds.Add(id); }
+        if (text.Contains("bonus3 bAddClassDropItemGroup,")) { if (!specialItemIds.Contains(id)) specialItemIds.Add(id); }
+        if (text.Contains("bonus2 bGetZenyNum,")) { if (!specialItemIds.Contains(id)) specialItemIds.Add(id); }
+        if (text.Contains("bonus2 bAddGetZenyNum,")) { if (!specialItemIds.Contains(id)) specialItemIds.Add(id); }
+        if (text.Contains("bonus bDoubleRate,")) { if (!specialItemIds.Contains(id)) specialItemIds.Add(id); }
+        if (text.Contains("bonus bDoubleAddRate,")) { if (!specialItemIds.Contains(id)) specialItemIds.Add(id); }
+        if (text.Contains("bonus bSplashRange,")) { if (!specialItemIds.Contains(id)) specialItemIds.Add(id); }
+        if (text.Contains("bonus bSplashAddRange,")) { if (!specialItemIds.Contains(id)) specialItemIds.Add(id); }
+        if (text.Contains("bonus2 bAddSkillBlow,")) { if (!specialItemIds.Contains(id)) specialItemIds.Add(id); }
+        if (text.Contains("bonus bNoKnockback;")) { if (!specialItemIds.Contains(id)) specialItemIds.Add(id); }
+        if (text.Contains("bonus bNoGemStone;")) { if (!specialItemIds.Contains(id)) specialItemIds.Add(id); }
+        if (text.Contains("bonus bIntravision;")) { if (!specialItemIds.Contains(id)) specialItemIds.Add(id); }
+        if (text.Contains("bonus bPerfectHide;")) { if (!specialItemIds.Contains(id)) specialItemIds.Add(id); }
+        if (text.Contains("bonus bRestartFullRecover;")) { if (!specialItemIds.Contains(id)) specialItemIds.Add(id); }
+        if (text.Contains("bonus bClassChange,")) { if (!specialItemIds.Contains(id)) specialItemIds.Add(id); }
+        if (text.Contains("bonus bAddStealRate,")) { if (!specialItemIds.Contains(id)) specialItemIds.Add(id); }
+        if (text.Contains("bonus bNoMadoFuel;")) { if (!specialItemIds.Contains(id)) specialItemIds.Add(id); }
+        if (text.Contains("bonus bNoWalkDelay;")) { if (!specialItemIds.Contains(id)) specialItemIds.Add(id); }
+        // Cast
+        if (text.Contains("bonus bCastrate,")) { if (!castItemIds.Contains(id)) castItemIds.Add(id); }
+        if (text.Contains("bonus2 bCastrate,")) { if (!castItemIds.Contains(id)) castItemIds.Add(id); }
+        if (text.Contains("bonus bFixedCastrate,")) { if (!castItemIds.Contains(id)) castItemIds.Add(id); }
+        if (text.Contains("bonus2 bFixedCastrate,")) { if (!castItemIds.Contains(id)) castItemIds.Add(id); }
+        if (text.Contains("bonus bVariableCastrate,")) { if (!castItemIds.Contains(id)) castItemIds.Add(id); }
+        if (text.Contains("bonus2 bVariableCastrate,")) { if (!castItemIds.Contains(id)) castItemIds.Add(id); }
+        if (text.Contains("bonus bFixedCast,")) { if (!castItemIds.Contains(id)) castItemIds.Add(id); }
+        if (text.Contains("bonus2 bSkillFixedCast,")) { if (!castItemIds.Contains(id)) castItemIds.Add(id); }
+        if (text.Contains("bonus bVariableCast,")) { if (!castItemIds.Contains(id)) castItemIds.Add(id); }
+        if (text.Contains("bonus2 bSkillVariableCast,")) { if (!castItemIds.Contains(id)) castItemIds.Add(id); }
+        if (text.Contains("bonus bNoCastCancel;")) { if (!castItemIds.Contains(id)) castItemIds.Add(id); }
+        if (text.Contains("bonus bNoCastCancel2;")) { if (!castItemIds.Contains(id)) castItemIds.Add(id); }
+        if (text.Contains("bonus bDelayrate,")) { if (!castItemIds.Contains(id)) castItemIds.Add(id); }
+        if (text.Contains("bonus2 bSkillDelay,")) { if (!castItemIds.Contains(id)) castItemIds.Add(id); }
+        if (text.Contains("bonus2 bSkillCooldown,")) { if (!castItemIds.Contains(id)) castItemIds.Add(id); }
+        // Effect
+        if (text.Contains("bonus2 bAddEff,")) { if (!effectItemIds.Contains(id)) effectItemIds.Add(id); }
+        if (text.Contains("bonus2 bAddEff2,")) { if (!effectItemIds.Contains(id)) effectItemIds.Add(id); }
+        if (text.Contains("bonus2 bAddEffWhenHit,")) { if (!effectItemIds.Contains(id)) effectItemIds.Add(id); }
+        if (text.Contains("bonus2 bResEff,")) { if (!effectItemIds.Contains(id)) effectItemIds.Add(id); }
+        if (text.Contains("bonus3 bAddEff,")) { if (!effectItemIds.Contains(id)) effectItemIds.Add(id); }
+        if (text.Contains("bonus4 bAddEff,")) { if (!effectItemIds.Contains(id)) effectItemIds.Add(id); }
+        if (text.Contains("bonus3 bAddEffWhenHit,")) { if (!effectItemIds.Contains(id)) effectItemIds.Add(id); }
+        if (text.Contains("bonus4 bAddEffWhenHit,")) { if (!effectItemIds.Contains(id)) effectItemIds.Add(id); }
+        if (text.Contains("bonus3 bAddEffOnSkill,")) { if (!effectItemIds.Contains(id)) effectItemIds.Add(id); }
+        if (text.Contains("bonus4 bAddEffOnSkill,")) { if (!effectItemIds.Contains(id)) effectItemIds.Add(id); }
+        if (text.Contains("bonus5 bAddEffOnSkill,")) { if (!effectItemIds.Contains(id)) effectItemIds.Add(id); }
+        if (text.Contains("bonus2 bComaClass,")) { if (!effectItemIds.Contains(id)) effectItemIds.Add(id); }
+        if (text.Contains("bonus2 bComaRace,")) { if (!effectItemIds.Contains(id)) effectItemIds.Add(id); }
+        if (text.Contains("bonus2 bWeaponComaEle,")) { if (!effectItemIds.Contains(id)) effectItemIds.Add(id); }
+        if (text.Contains("bonus2 bWeaponComaClass,")) { if (!effectItemIds.Contains(id)) effectItemIds.Add(id); }
+        if (text.Contains("bonus2 bWeaponComaRace,")) { if (!effectItemIds.Contains(id)) effectItemIds.Add(id); }
+        // Autospell
+        if (text.Contains("bonus3 bAutoSpell,")) { if (!autoSpellItemIds.Contains(id)) autoSpellItemIds.Add(id); }
+        if (text.Contains("bonus3 bAutoSpellWhenHit,")) { if (!autoSpellItemIds.Contains(id)) autoSpellItemIds.Add(id); }
+        if (text.Contains("bonus4 bAutoSpell,")) { if (!autoSpellItemIds.Contains(id)) autoSpellItemIds.Add(id); }
+        if (text.Contains("bonus5 bAutoSpell,")) { if (!autoSpellItemIds.Contains(id)) autoSpellItemIds.Add(id); }
+        if (text.Contains("bonus4 bAutoSpellWhenHit,")) { if (!autoSpellItemIds.Contains(id)) autoSpellItemIds.Add(id); }
+        if (text.Contains("bonus5 bAutoSpellWhenHit,")) { if (!autoSpellItemIds.Contains(id)) autoSpellItemIds.Add(id); }
+        if (text.Contains("bonus4 bAutoSpellOnSkill,")) { if (!autoSpellItemIds.Contains(id)) autoSpellItemIds.Add(id); }
+        if (text.Contains("bonus5 bAutoSpellOnSkill,")) { if (!autoSpellItemIds.Contains(id)) autoSpellItemIds.Add(id); }
     }
 }
