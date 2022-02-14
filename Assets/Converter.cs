@@ -2653,13 +2653,15 @@ public class Converter : MonoBehaviour
         {
             var temp = text.Replace("bonus2 bSkillUseSP,", string.Empty);
             var temps = temp.Split(',');
-            text = string.Format("๐ SP ที่ต้องใช้กับ {0} +{1}", GetSkillName(RemoveQuote(temps[0])), TryParseInt(temps[1]));
+            text = string.Format("๐ SP ที่ต้องใช้กับ {0} -{1}", GetSkillName(RemoveQuote(temps[0])), TryParseInt(temps[1]));
+            text = text.Replace("--", "+");
         }
         if (text.Contains("bonus2 bSkillUseSPrate,"))
         {
             var temp = text.Replace("bonus2 bSkillUseSPrate,", string.Empty);
             var temps = temp.Split(',');
-            text = string.Format("๐ SP ที่ต้องใช้กับ {0} +{1}%", GetSkillName(RemoveQuote(temps[0])), TryParseInt(temps[1]));
+            text = string.Format("๐ SP ที่ต้องใช้กับ {0} -{1}%", GetSkillName(RemoveQuote(temps[0])), TryParseInt(temps[1]));
+            text = text.Replace("--", "+");
         }
         if (text.Contains("bonus2 bSkillAtk,"))
         {
