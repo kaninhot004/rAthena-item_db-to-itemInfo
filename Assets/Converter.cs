@@ -217,7 +217,7 @@ public class Converter : MonoBehaviour
                 builder.Append("\n-	shop	PetEgg" + shopNumber + "	-1,no,");
             }
 
-            builder.Append(petEggIds[i] + ":30000000,");
+            builder.Append(petEggIds[i] + ":33333,");
         }
 
         // Pet armors item id
