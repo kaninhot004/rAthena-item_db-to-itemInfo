@@ -1368,11 +1368,11 @@ public class Converter : MonoBehaviour
                 if (!string.IsNullOrEmpty(type))
                 {
                     if ((type.ToLower() == "petegg")
-                        && !petEggIds.Contains(type))
-                        petEggIds.Add(type);
+                        && !petEggIds.Contains(id))
+                        petEggIds.Add(id);
                     else if ((type.ToLower() == "petarmor")
-                        && !petArmorIds.Contains(type))
-                        petArmorIds.Add(type);
+                        && !petArmorIds.Contains(id))
+                        petArmorIds.Add(id);
                 }
             }
             // SubType
