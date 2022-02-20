@@ -254,7 +254,7 @@ public class Converter : MonoBehaviour
 
                 shopNumber++;
 
-                builder.Append("\n-	shop	FasionCostume" + shopNumber + "	-1,no,");
+                builder.Append("\n-	shop	FashionCostume" + shopNumber + "	-1,no,");
             }
 
             builder.Append(fashionCostumeIds[i] + ":50000000,");
