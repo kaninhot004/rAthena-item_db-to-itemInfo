@@ -260,6 +260,26 @@ public class Converter : MonoBehaviour
             builder.Append(fashionCostumeIds[i] + ":50000000,");
         }
 
+        // Buffs item id
+
+        shopNumber = 0;
+
+        for (int i = 0; i < buffItemIds.Count; i++)
+        {
+            if ((i == 0)
+                || (i % 100 == 0))
+            {
+                if (!string.IsNullOrEmpty(builder.ToString()))
+                    builder.Remove(builder.Length - 1, 1);
+
+                shopNumber++;
+
+                builder.Append("\n-	shop	BuffItem" + shopNumber + "	-1,no,");
+            }
+
+            builder.Append(buffItemIds[i] + ":90000,");
+        }
+
         File.WriteAllText("item_mall.txt", builder.ToString().Substring(0, builder.Length - 1), Encoding.UTF8);
 
         Debug.Log("Printed item mall.");
@@ -286,9 +306,12 @@ public class Converter : MonoBehaviour
     List<string> costumeIds = new List<string>();
     List<string> cardIds = new List<string>();
     List<string> enchantIds = new List<string>();
+
     List<string> petEggIds = new List<string>();
     List<string> petArmorIds = new List<string>();
     List<string> fashionCostumeIds = new List<string>();
+    List<string> buffItemIds = new List<string>();
+
     List<string> allItemIds = new List<string>();
 
     List<string> statsItemIds = new List<string>();
@@ -911,6 +934,7 @@ public class Converter : MonoBehaviour
         petEggIds = new List<string>();
         petArmorIds = new List<string>();
         fashionCostumeIds = new List<string>();
+        buffItemIds = new List<string>();
         allItemIds = new List<string>();
         IdNameData idNameData = new IdNameData();
         bool isArmor = false;
@@ -3389,6 +3413,8 @@ public class Converter : MonoBehaviour
             var temp = text.Replace("sc_start4 ", string.Empty);
             var temps = temp.Split(',');
             text = string.Format("๐ รับผล {0} เป็นเวลา {1} วินาที", RemoveQuote(temps[0]), TryParseInt(temps[1], 1000));
+
+            ParseStatusChangeStartIntoItemId();
         }
         // sc_start2
         if (text.Contains("sc_start2 "))
@@ -3396,6 +3422,8 @@ public class Converter : MonoBehaviour
             var temp = text.Replace("sc_start2 ", string.Empty);
             var temps = temp.Split(',');
             text = string.Format("๐ รับผล {0} เป็นเวลา {1} วินาที", RemoveQuote(temps[0]), TryParseInt(temps[1], 1000));
+
+            ParseStatusChangeStartIntoItemId();
         }
         // sc_start
         if (text.Contains("sc_start "))
@@ -3403,6 +3431,8 @@ public class Converter : MonoBehaviour
             var temp = text.Replace("sc_start ", string.Empty);
             var temps = temp.Split(',');
             text = string.Format("๐ รับผล {0} เป็นเวลา {1} วินาที", RemoveQuote(temps[0]), TryParseInt(temps[1], 1000));
+
+            ParseStatusChangeStartIntoItemId();
         }
         // sc_end
         if (text.Contains("sc_end "))
@@ -4528,5 +4558,18 @@ public class Converter : MonoBehaviour
         if (text.Contains("bonus5 bAutoSpellWhenHit,")) { if (!autoSpellItemIds.Contains(id)) autoSpellItemIds.Add(id); }
         if (text.Contains("bonus4 bAutoSpellOnSkill,")) { if (!autoSpellItemIds.Contains(id)) autoSpellItemIds.Add(id); }
         if (text.Contains("bonus5 bAutoSpellOnSkill,")) { if (!autoSpellItemIds.Contains(id)) autoSpellItemIds.Add(id); }
+    }
+
+    void ParseStatusChangeStartIntoItemId()
+    {
+        if (!string.IsNullOrEmpty(id)
+            && !string.IsNullOrEmpty(type))
+        {
+            if (!buffItemIds.Contains(id)
+                && ((type.ToLower() == "healing")
+                || (type.ToLower() == "usable")
+                || (type.ToLower() == "cash")))
+                buffItemIds.Add(id);
+        }
     }
 }
