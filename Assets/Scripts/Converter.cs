@@ -1802,7 +1802,6 @@ public class Converter : MonoBehaviour
                 builder.Append("		identifiedDescriptionName = {\n");
                 // Description here
                 var sumCombo = GetCombo(GetIdNameData(int.Parse(id)).aegisName);
-                //var sumCombo = string.Empty;
                 string hardcodeBonus = hardcodeItemScripts.GetHardcodeItemScript(int.Parse(id));
                 var sumBonus = !string.IsNullOrEmpty(hardcodeBonus) ? hardcodeBonus : !string.IsNullOrEmpty(script) ? script : string.Empty;
                 var sumEquipBonus = !string.IsNullOrEmpty(equipScript) ? "			\"^666478[เมื่อสวมใส่]^000000\",\n" + equipScript : string.Empty;

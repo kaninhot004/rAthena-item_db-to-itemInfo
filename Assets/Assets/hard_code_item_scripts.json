@@ -1,0 +1,144 @@
+﻿{
+    "datas": [
+        {
+            "itemId": 1599,
+            "itemScriptDescription": "ไม่มีคุณสมบัติพิเศษ"
+        },
+        {
+            "itemId": 2199,
+            "itemScriptDescription": "ไม่มีคุณสมบัติพิเศษ"
+        },
+        {
+            "itemId": 645,
+            "itemScriptDescription": "กดใช้เพื่อ ASPD +4% เป็นเวลา 30 นาที"
+        },
+        {
+            "itemId": 656,
+            "itemScriptDescription": "กดใช้เพื่อ ASPD +6% เป็นเวลา 30 นาที"
+        },
+        {
+            "itemId": 657,
+            "itemScriptDescription": "กดใช้เพื่อ ASPD +9% เป็นเวลา 30 นาที"
+        },
+        {
+            "itemId": 12214,
+            "itemScriptDescription": "กดใช้เพื่อ หาตำแหน่ง Boss ภายใน Map"
+        },
+        {
+            "itemId": 12114,
+            "itemScriptDescription": "กดใช้เพื่อ เคลือบธาตุ Fire ให้อาวุธชั่วคราว"
+        },
+        {
+            "itemId": 12115,
+            "itemScriptDescription": "กดใช้เพื่อ เคลือบธาตุ Water ให้อาวุธชั่วคราว"
+        },
+        {
+            "itemId": 12116,
+            "itemScriptDescription": "กดใช้เพื่อ เคลือบธาตุ Earth ให้อาวุธชั่วคราว"
+        },
+        {
+            "itemId": 12117,
+            "itemScriptDescription": "กดใช้เพื่อ เคลือบธาตุ Wind ให้อาวุธชั่วคราว"
+        },
+        {
+            "itemId": 12118,
+            "itemScriptDescription": "กดใช้เพื่อ เคลือบธาตุ Fire ให้ชุดเกราะชั่วคราว"
+        },
+        {
+            "itemId": 12119,
+            "itemScriptDescription": "กดใช้เพื่อ เคลือบธาตุ Water ให้ชุดเกราะชั่วคราว"
+        },
+        {
+            "itemId": 12120,
+            "itemScriptDescription": "กดใช้เพื่อ เคลือบธาตุ Earth ให้ชุดเกราะชั่วคราว"
+        },
+        {
+            "itemId": 12121,
+            "itemScriptDescription": "กดใช้เพื่อ เคลือบธาตุ Wind ให้ชุดเกราะชั่วคราว"
+        },
+        {
+            "itemId": 12020,
+            "itemScriptDescription": "กดใช้เพื่อ เคลือบธาตุ Dark ให้อาวุธชั่วคราว"
+        },
+        {
+            "itemId": 100452,
+            "itemScriptDescription": "เรียกคืน 1 POW"
+        },
+        {
+            "itemId": 100453,
+            "itemScriptDescription": "เรียกคืน 1 SPL"
+        },
+        {
+            "itemId": 100454,
+            "itemScriptDescription": "เรียกคืน 1 STA"
+        },
+        {
+            "itemId": 100455,
+            "itemScriptDescription": "เรียกคืน 1 WIS"
+        },
+        {
+            "itemId": 100456,
+            "itemScriptDescription": "เรียกคืน 1 CON"
+        },
+        {
+            "itemId": 100457,
+            "itemScriptDescription": "เรียกคืน 1 CRT"
+        },
+        {
+            "itemId": 610,
+            "itemScriptDescription": "กดใช้เพื่อ ฟื้นคืนชีพผู้เล่นอื่น"
+        },
+        {
+            "itemId": 12212,
+            "itemScriptDescription": "กดใช้เพื่อ เคลื่อนย้ายสุ่มภายใน Map (Party)"
+        },
+        {
+            "itemId": 601,
+            "itemScriptDescription": "กดใช้เพื่อ เคลื่อนย้ายสุ่มภายใน Map"
+        },
+        {
+            "itemId": 602,
+            "itemScriptDescription": "กดใช้เพื่อ กลับสู่เมือง"
+        },
+        {
+            "itemId": 100231,
+            "itemScriptDescription": "กดใช้เพื่อ กันสะท้อน +100% เป็นเวลา 30 วินาที"
+        },
+        {
+            "itemId": 12928,
+            "itemScriptDescription": "กดใช้เพื่อ เคลือบธาตุ Holy ให้อาวุธชั่วคราว"
+        },
+        {
+            "itemId": 12622,
+            "itemScriptDescription": "กดใช้เพื่อ ขี่พาหนะ"
+        },
+        {
+            "itemId": 12211,
+            "itemScriptDescription": "กดใช้เพื่อ เปิดคลังเก็บของ"
+        },
+        {
+            "itemId": 25793,
+            "itemScriptDescription": "ายได้มากสุด 100 ช่อง)(ขยายได้มากสุด 100 ช่อง)"
+        },
+        {
+            "itemId": 985,
+            "itemScriptDescription": "แร่ตีบวกชุดเกราะ"
+        },
+        {
+            "itemId": 984,
+            "itemScriptDescription": "แร่ตีบวกอาวุธ Level 3 ขึ้นไป"
+        },
+        {
+            "itemId": 1010,
+            "itemScriptDescription": "แร่ตีบวกอาวุธ Level 1"
+        },
+        {
+            "itemId": 1011,
+            "itemScriptDescription": "แร่ตีบวกอาวุธ Level 2"
+        },
+        {
+            "itemId": 100158,
+            "itemScriptDescription": "กดใช้เพื่อ สวมใส่ Mado Suit"
+        }
+    ]
+}
