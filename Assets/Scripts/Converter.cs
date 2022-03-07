@@ -3429,7 +3429,7 @@ public class Converter : MonoBehaviour
         {
             var temp = text.Replace("sc_start ", string.Empty);
             var temps = temp.Split(',');
-            text = string.Format("๐ รับผล {0} เป็นเวลา {1} วินาที", RemoveQuote(temps[0]), TryParseInt(temps[1], 1000));
+            text = string.Format("๐ รับผล {0} เป็นเวลา {1} วินาที", RemoveQuote(temps[0]), (temps.Length > 1) ? TryParseInt(temps[1], 1000) : "0");
 
             ParseStatusChangeStartIntoItemId();
         }
