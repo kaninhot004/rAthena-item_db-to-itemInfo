@@ -3463,6 +3463,10 @@ public class Converter : MonoBehaviour
         }
         text = text.Replace("sc_end_class", "๐ ลบ Buff ทุกอย่าง");
         text = text.Replace("setmounting()", "๐ ขึ้น/ลง พาหนะ");
+        text = text.Replace("laphine_upgrade()", "๐ เปิดหน้าต่าง Laphine Upgrade");
+        text = text.Replace("laphine_synthesis()", "๐ เปิดหน้าต่าง Laphine Synthesis");
+        text = text.Replace("openstylist()", "๐ เปิดหน้าต่าง Stylist");
+        text = text.Replace("refineui()", "๐ เปิดหน้าต่าง Refine");
 
         // All in one parse...
         text = AllInOneParse(text);
