@@ -95,102 +95,132 @@ public class ItemGenerator : MonoBehaviour
 
         for (int i = 0; i < (ITEM_PER_TIER * MAXIMUM_TIER) + 1; i++)
         {
-            int itemType = Random.Range(0, 100);
-            GenerateType genType = GenerateType.Weapon; // 45% (50~94)
-            if (itemType >= 95) // 5% (95~99)
-                genType = GenerateType.Shield;
-            else if (itemType <= 49) // 50% (0~49)
-                genType = GenerateType.Armor;
+            // Generate type
+            int typeRandomize = Random.Range(0, 100);
 
-            string subType = genType == GenerateType.Weapon ? _weaponSubTypes[Random.Range(0, _weaponSubTypes.Count)] : genType == GenerateType.Ammo ? _ammoSubType[Random.Range(0, _ammoSubType.Count)] : "";
-            string location = genType == GenerateType.Weapon ? _weaponLocations[Random.Range(0, _weaponLocations.Count)] + ": true" : genType == GenerateType.Shield ? _shieldLocations[Random.Range(0, _shieldLocations.Count)] + ": true" : genType == GenerateType.Armor ? _armorLocations[Random.Range(0, _armorLocations.Count)] + ": true" : genType == GenerateType.Ammo ? _ammoLocations[Random.Range(0, _ammoLocations.Count)] + ": true" : string.Empty;
+            GenerateType generateType = GenerateType.Weapon;
 
-            if (genType == GenerateType.Weapon)
+            if (typeRandomize >= 95)
+                generateType = GenerateType.Shield;
+            else if (typeRandomize <= 49)
+                generateType = GenerateType.Armor;
+
+            // Generate sub-type
+            string subType = (generateType == GenerateType.Weapon) ? _weaponSubTypes[Random.Range(0, _weaponSubTypes.Count)]
+                : (generateType == GenerateType.Ammo) ? _ammoSubType[Random.Range(0, _ammoSubType.Count)]
+                : string.Empty;
+
+            // Generate location
+            string location = (generateType == GenerateType.Weapon) ? _weaponLocations[Random.Range(0, _weaponLocations.Count)] + ": true"
+                : (generateType == GenerateType.Shield) ? _shieldLocations[Random.Range(0, _shieldLocations.Count)] + ": true"
+                : (generateType == GenerateType.Armor) ? _armorLocations[Random.Range(0, _armorLocations.Count)] + ": true"
+                : (generateType == GenerateType.Ammo) ? _ammoLocations[Random.Range(0, _ammoLocations.Count)] + ": true"
+                : string.Empty;
+
+            // Weapon sub-type
+            if (generateType == GenerateType.Weapon)
             {
-                if (subType == "2hSword" || subType == "2hSpear" || subType == "2hAxe" || subType == "Bow" || subType == "Katar" || subType == "Revolver" || subType == "Rifle" || subType == "Gatling" || subType == "Shotgun" || subType == "Grenade" || subType == "Huuma" || subType == "2hStaff")
+                if ((subType == "2hSword")
+                    || (subType == "2hSpear")
+                    || (subType == "2hAxe")
+                    || (subType == "2hMace")
+                    || (subType == "2hStaff")
+                    || (subType == "Bow")
+                    || (subType == "Katar")
+                    || (subType == "Revolver")
+                    || (subType == "Rifle")
+                    || (subType == "Gatling")
+                    || (subType == "Shotgun")
+                    || (subType == "Grenade")
+                    || (subType == "Huuma"))
                     location = "Both_Hand: true";
 
-                if (subType == "Dagger" || subType == "1hSword" || subType == "1hSpear" || subType == "1hAxe" || subType == "Mace" || subType == "Whip" || subType == "Book" || subType == "Musical" || subType == "Knuckle")
+                if ((subType == "Dagger")
+                    || (subType == "1hSword")
+                    || (subType == "1hSpear")
+                    || (subType == "1hAxe")
+                    || (subType == "Mace")
+                    || (subType == "Staff")
+                    || (subType == "Whip")
+                    || (subType == "Book")
+                    || (subType == "Musical")
+                    || (subType == "Knuckle"))
                     location = "Right_Hand: true";
             }
 
-            if (genType == GenerateType.Ammo)
+            if (generateType == GenerateType.Ammo)
                 builder.Append(string.Format("  - Id: {0}\n    AegisName: {1}\n    Name: {2}\n    Type: {3}\n    SubType: {4}\n    Weight: {5}\n    Attack: {6}\n    MagicAttack: {7}\n    Locations:\n        {11}\n    EquipLevelMin: {15}\n    Script: |\n{14}"
-                , (START_ID + i).ToString("f0") // ID
-                     , "aegis_" + (START_ID + i).ToString("f0") // Aegis Name
-                     , "\"[" + GetTierPrefix(START_ID + i) + "]" + GenerateRandomEnglishWord + "\"" // Name
-                     , "Ammo" // Type
-                     , subType // Sub Type
-                     , Random.Range(1, 100).ToString("f0") // Weight
-                     , GenerateAttack(START_ID + i) // Attack
-                     , GenerateAttack(START_ID + i) // Magic Attack
-                     , "0" // Defense
-                     , "0" // Range
-                     , "0" // Slots
-                     , location  // Locations
-                     , "0" // Weapon Level
-                     , "0" // View
-                     , GenerateBonuses(START_ID + i, location) // Script
-                     , GetLevelRequirement(START_ID + i) // Level Requirement
-                     ));
-            else if (genType == GenerateType.Armor)
+                    , (START_ID + i).ToString("f0")
+                    , "aegis_" + (START_ID + i).ToString("f0")
+                    , "\"[" + GetTierPrefix(START_ID + i) + "]" + GenerateRandomEnglishWord + "\""
+                    , "Ammo"
+                    , subType
+                    , Random.Range(1, 100).ToString("f0")
+                    , GenerateAttack(START_ID + i)
+                    , GenerateAttack(START_ID + i)
+                    , "0"
+                    , "0"
+                    , "0"
+                    , location
+                    , "0"
+                    , "0"
+                    , GenerateBonuses(START_ID + i, location)
+                    , GetLevelRequirement(START_ID + i)));
+            else if (generateType == GenerateType.Armor)
                 builder.Append(string.Format("  - Id: {0}\n    AegisName: {1}\n    Name: {2}\n    Type: {3}\n    Weight: {5}\n    Defense: {8}\n    Locations:\n        {11}\n    EquipLevelMin: {15}\n    View: {13}\n    Script: |\n{14}"
-                , (START_ID + i).ToString("f0") // ID
-                     , "aegis_" + (START_ID + i).ToString("f0") // Aegis Name
-                     , "\"[" + GetTierPrefix(START_ID + i) + "]" + GenerateRandomEnglishWord + "\"" // Name
-                     , "Armor" // Type
-                     , subType // Sub Type
-                     , Random.Range(10, 1000).ToString("f0") // Weight
-                     , "0" // Attack
-                     , "0" // Magic Attack
-                     , GenerateDefense(START_ID + i) // Defense
-                     , "0" // Range
-                     , "0" // Slots
-                     , location  // Locations
-                     , "0" // Weapon Level
-                     , GetArmorView(location).ToString("f0") // View
-                     , GenerateBonuses(START_ID + i, location) // Script
-                     , GetLevelRequirement(START_ID + i) // Level Requirement
-                     ));
-            else if (genType == GenerateType.Shield)
+                    , (START_ID + i).ToString("f0")
+                    , "aegis_" + (START_ID + i).ToString("f0")
+                    , "\"[" + GetTierPrefix(START_ID + i) + "]" + GenerateRandomEnglishWord + "\""
+                    , "Armor"
+                    , subType
+                    , Random.Range(10, 1000).ToString("f0")
+                    , "0"
+                    , "0"
+                    , GenerateDefense(START_ID + i)
+                    , "0"
+                    , "0"
+                    , location
+                    , "0"
+                    , GetArmorView(location).ToString("f0")
+                    , GenerateBonuses(START_ID + i, location)
+                    , GetLevelRequirement(START_ID + i)));
+            else if (generateType == GenerateType.Shield)
                 builder.Append(string.Format("  - Id: {0}\n    AegisName: {1}\n    Name: {2}\n    Type: {3}\n    Weight: {5}\n    Defense: {8}\n    Locations:\n        {11}\n    EquipLevelMin: {15}\n    View: {13}\n    Script: |\n{14}"
-                , (START_ID + i).ToString("f0") // ID
-                     , "aegis_" + (START_ID + i).ToString("f0") // Aegis Name
-                     , "\"[" + GetTierPrefix(START_ID + i) + "]" + GenerateRandomEnglishWord + "\"" // Name
-                     , "Armor" // Type
-                     , subType // Sub Type
-                     , Random.Range(10, 1000).ToString("f0") // Weight
-                     , "0" // Attack
-                     , "0" // Magic Attack
-                     , GenerateDefense(START_ID + i) // Defense
-                     , "0" // Range
-                     , "0" // Slots
-                     , location  // Locations
-                     , "0" // Weapon Level
-                     , _shieldViews[Random.Range(0, _shieldViews.Count)].ToString("f0") // View
-                     , GenerateBonuses(START_ID + i, location) // Script
-                     , GetLevelRequirement(START_ID + i) // Level Requirement
-                     ));
-            else if (genType == GenerateType.Weapon)
+                    , (START_ID + i).ToString("f0")
+                    , "aegis_" + (START_ID + i).ToString("f0")
+                    , "\"[" + GetTierPrefix(START_ID + i) + "]" + GenerateRandomEnglishWord + "\""
+                    , "Armor"
+                    , subType
+                    , Random.Range(10, 1000).ToString("f0")
+                    , "0"
+                    , "0"
+                    , GenerateDefense(START_ID + i)
+                    , "0"
+                    , "0"
+                    , location
+                    , "0"
+                    , _shieldViews[Random.Range(0, _shieldViews.Count)].ToString("f0")
+                    , GenerateBonuses(START_ID + i, location)
+                    , GetLevelRequirement(START_ID + i)));
+            else if (generateType == GenerateType.Weapon)
                 builder.Append(string.Format("  - Id: {0}\n    AegisName: {1}\n    Name: {2}\n    Type: {3}\n    SubType: {4}\n    Weight: {5}\n    Attack: {6}\n    MagicAttack: {7}\n    Defense: {8}\n    Range: {9}\n{16}    Locations:\n        {11}\n    WeaponLevel: {12}\n    EquipLevelMin: {15}\n    View: {13}\n    Script: |\n{14}"
-                , (START_ID + i).ToString("f0") // ID
-                     , "aegis_" + (START_ID + i).ToString("f0") // Aegis Name
-                     , "\"[" + GetTierPrefix(START_ID + i) + "]" + GenerateRandomEnglishWord + "\"" // Name
-                     , "Weapon" // Type
-                     , subType // Sub Type
-                     , Random.Range(10, 1000).ToString("f0") // Weight
-                     , GenerateAttack(START_ID + i) // Attack
-                     , GenerateAttack(START_ID + i) // Magic Attack
-                     , "0" // Defense
-                     , GenerateRange(START_ID + i) // Range
-                     , "0" // Slots
-                     , location  // Locations
-                     , Random.Range(1, 5).ToString("f0") // Weapon Level
-                     , GetWeaponView(subType).ToString("f0") // View
-                     , GenerateBonuses(START_ID + i, location) // Script
-                     , GetLevelRequirement(START_ID + i) // Level Requirement
-                     , (subType == "Musical") ? "    Gender: Male\n" : (subType == "Whip") ? "    Gender: Female\n" : string.Empty // Gender
-                     ));
+                    , (START_ID + i).ToString("f0")
+                    , "aegis_" + (START_ID + i).ToString("f0")
+                    , "\"[" + GetTierPrefix(START_ID + i) + "]" + GenerateRandomEnglishWord + "\""
+                    , "Weapon"
+                    , subType
+                    , Random.Range(10, 1000).ToString("f0")
+                    , GenerateAttack(START_ID + i)
+                    , GenerateAttack(START_ID + i)
+                    , "0"
+                    , GenerateRange(START_ID + i)
+                    , "0"
+                    , location
+                    , Random.Range(1, 5).ToString("f0")
+                    , GetWeaponView(subType).ToString("f0")
+                    , GenerateBonuses(START_ID + i, location)
+                    , GetLevelRequirement(START_ID + i)
+                    , (subType == "Musical") ? "    Gender: Male\n" : (subType == "Whip") ? "    Gender: Female\n" : string.Empty));
         }
 
         File.WriteAllText("generated_items.txt", builder.ToString(), Encoding.UTF8);
