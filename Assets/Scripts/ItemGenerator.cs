@@ -67,8 +67,11 @@ public class ItemGenerator : MonoBehaviour
     List<string> _classes = new List<string>() { "Class_Normal", "Class_Boss" };
     List<string> _sizes = new List<string>() { "Size_Small", "Size_Medium", "Size_Large" };
 
-    List<string> _allEnglishWord = new List<string>();
+    List<string> _englishWords = new List<string>();
 
+    /// <summary>
+    /// Generate item database
+    /// </summary>
     [Button]
     public void Generate()
     {
@@ -79,7 +82,7 @@ public class ItemGenerator : MonoBehaviour
         var englishWords = englishWordsFile.Split('\n');
 
         // Clean up
-        _allEnglishWord = new List<string>();
+        _englishWords = new List<string>();
 
         // Add english word to list (For randomize)
         for (int i = 0; i < englishWords.Length; i++)
@@ -88,7 +91,7 @@ public class ItemGenerator : MonoBehaviour
 
             if (!string.IsNullOrEmpty(text)
                 && !string.IsNullOrWhiteSpace(text))
-                _allEnglishWord.Add(Capitalize(text));
+                _englishWords.Add(Capitalize(text));
         }
 
         StringBuilder builder = new StringBuilder();
@@ -577,9 +580,9 @@ public class ItemGenerator : MonoBehaviour
             for (int i = 0; i < wordAmount; i++)
             {
                 if (i > 0)
-                    word += " " + _allEnglishWord[Random.Range(0, _allEnglishWord.Count)];
+                    word += " " + _englishWords[Random.Range(0, _englishWords.Count)];
                 else
-                    word += _allEnglishWord[Random.Range(0, _allEnglishWord.Count)];
+                    word += _englishWords[Random.Range(0, _englishWords.Count)];
             }
 
             return word;
