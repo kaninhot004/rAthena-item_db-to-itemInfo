@@ -3969,7 +3969,7 @@ public class Converter : MonoBehaviour
     {
         if (isRandomizeResourceNameCustomItemOnly)
         {
-            if (isRandomizeResourceName && id >= ItemGenerator.startId)
+            if (isRandomizeResourceName && id >= ItemGenerator.START_ID)
             {
                 if (subType.ToLower().Contains("dagger"))
                 {
