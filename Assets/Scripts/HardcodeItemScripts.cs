@@ -1,9 +1,7 @@
 using System;
 using System.IO;
-using System.Text;
 using System.Collections.Generic;
 using UnityEngine;
-using EasyButtons;
 
 public class HardcodeItemScripts : MonoBehaviour
 {
@@ -40,7 +38,6 @@ public class HardcodeItemScripts : MonoBehaviour
             return string.Empty;
     }
 
-    [Button()]
     public void ParseJson()
     {
         var path = Application.dataPath + "/Assets/hard_code_item_scripts.json";

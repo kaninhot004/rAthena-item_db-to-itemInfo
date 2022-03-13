@@ -48,7 +48,7 @@ public class Converter : MonoBehaviour
     /// <summary>
     /// Only read text asset from 'item_db_test.txt'
     /// </summary>
-    [SerializeField] bool _isUseTestTextAsset;
+    [SerializeField] bool _isOnlyUseTestTextAsset;
     /// <summary>
     /// Only read text asset from 'item_db_custom.txt'
     /// </summary>
@@ -60,7 +60,7 @@ public class Converter : MonoBehaviour
     /// <summary>
     /// Is only random resource name for custom item?
     /// </summary>
-    [SerializeField] bool _isOnlyRandomResourceNameForCustomTextAsset;
+    [SerializeField] bool _isRandomResourceNameForCustomTextAssetOnly;
 
     // Containers
 
@@ -127,6 +127,14 @@ public class Converter : MonoBehaviour
 
         _isFilesError = false;
 
+        _txtConvertProgression.text = "Starting now..";
+
+        Debug.Log(DateTime.Now);
+
+        Invoke("FetchingData", ONE_SECOND);
+    }
+    void FetchingData()
+    {
         _txtConvertProgression.text = "Fetching item..";
 
         FetchItem();
@@ -193,19 +201,29 @@ public class Converter : MonoBehaviour
             return;
         }
 
+        _txtConvertProgression.text = "Fetching resource name with type..";
+
+        FetchResourceNameWithType();
+
+        if (_isFilesError)
+        {
+            _txtConvertProgression.text = "<color=red>Error</color>: " + _errorLog;
+
+            return;
+        }
+
         _txtConvertProgression.text = "Please wait around 1~2 minutes..";
 
-        Debug.Log(DateTime.UtcNow);
+        Debug.Log(DateTime.Now);
 
         Invoke("Convert", ONE_SECOND);
     }
-
     // Exporting
 
     /// <summary>
     /// Export item lists that can be use in game
     /// </summary>
-    public void ExportItemLists()
+    void ExportItemLists()
     {
         StringBuilder builder = new StringBuilder();
 
@@ -248,7 +266,7 @@ public class Converter : MonoBehaviour
     /// <summary>
     /// Export all item to item mall (NPC) that can be use in game
     /// </summary>
-    public void ExportItemMall()
+    void ExportItemMall()
     {
         // All item id
 
@@ -368,8 +386,7 @@ public class Converter : MonoBehaviour
     /// <summary>
     /// Fetch resource name from all equipment (Split into list by equipment type)
     /// </summary>
-    [Button]
-    public void FetchResourceNameWithType()
+    void FetchResourceNameWithType()
     {
         var path = Application.dataPath + "/Assets/item_db_equip.yml";
 
@@ -443,7 +460,7 @@ public class Converter : MonoBehaviour
                 || text.Contains("    OnUnequip_Script:")
                 || string.IsNullOrEmpty(text)
                 || string.IsNullOrWhiteSpace(text))
-                continue;
+                text = string.Empty;
 
             // Id
             if (text.Contains("  - Id:"))
@@ -549,11 +566,10 @@ public class Converter : MonoBehaviour
             }
         }
     }
-
     /// <summary>
     /// Parse monster database file into converter (Only store ID, Name)
     /// </summary>
-    public void FetchMonster()
+    void FetchMonster()
     {
         var path = Application.dataPath + "/Assets/mob_db.yml";
 
@@ -606,7 +622,7 @@ public class Converter : MonoBehaviour
     /// <summary>
     /// Parse class number file into converter
     /// </summary>
-    public void FetchClassNumber()
+    void FetchClassNumber()
     {
         var path = Application.dataPath + "/Assets/classNum.txt";
 
@@ -697,7 +713,7 @@ public class Converter : MonoBehaviour
     /// <summary>
     /// Parse skill database file into converter (Only store ID, Name)
     /// </summary>
-    public void FetchSkill()
+    void FetchSkill()
     {
         var path = Application.dataPath + "/Assets/skill_db.yml";
 
@@ -754,7 +770,7 @@ public class Converter : MonoBehaviour
     /// <summary>
     /// Parse resource name file into converter
     /// </summary>
-    public void FetchResourceName()
+    void FetchResourceName()
     {
         var path = Application.dataPath + "/Assets/resourceName.txt";
 
@@ -803,7 +819,7 @@ public class Converter : MonoBehaviour
     /// <summary>
     /// Parse combo database file into converter
     /// </summary>
-    public void FetchCombo()
+    void FetchCombo()
     {
         var path = Application.dataPath + "/Assets/item_combos.yml";
 
@@ -876,7 +892,7 @@ public class Converter : MonoBehaviour
     /// <summary>
     /// Parse item database file into converter (Only store ID, Name), also parse into item list
     /// </summary>
-    public void FetchItem()
+    void FetchItem()
     {
         var path = Application.dataPath + "/Assets/item_db_equip.yml";
         var path2 = Application.dataPath + "/Assets/item_db_usable.yml";
@@ -992,7 +1008,7 @@ public class Converter : MonoBehaviour
                 || text.Contains("    Script:")
                 || text.Contains("    OnEquip_Script:")
                 || text.Contains("    OnUnequip_Script:"))
-                continue;
+                text = string.Empty;
 
             if (text.Contains("  - Id:"))
             {
@@ -1112,25 +1128,11 @@ public class Converter : MonoBehaviour
         Debug.Log("There are " + _itemListContainer.costumeIds.Count + " costume database.");
         Debug.Log("There are " + _itemListContainer.cardIds.Count + " card database.");
         Debug.Log("There are " + _itemListContainer.enchantIds.Count + " enchant database.");
-        Debug.Log("There are " + _itemListContainer.petEggIds.Count + " pet egg database.");
-        Debug.Log("There are " + _itemListContainer.petArmorIds.Count + " pet armor database.");
-        Debug.Log("There are " + _itemListContainer.fashionCostumeIds.Count + " fashion costume database.");
-        Debug.Log("There are " + _itemListContainer.buffItemIds.Count + " buff item database.");
-        Debug.Log("There are " + _itemListContainer.allItemIds.Count + " item database.");
-        Debug.Log("There are " + _itemListContainer.statsItemIds.Count + " status item database.");
-        Debug.Log("There are " + _itemListContainer.hpSpApItemIds.Count + " hp sp ap item database.");
-        Debug.Log("There are " + _itemListContainer.offensiveItemIds.Count + " offensive item database.");
-        Debug.Log("There are " + _itemListContainer.defensiveItemIds.Count + " defensive item database.");
-        Debug.Log("There are " + _itemListContainer.specialItemIds.Count + " special item database.");
-        Debug.Log("There are " + _itemListContainer.castItemIds.Count + " cast item database.");
-        Debug.Log("There are " + _itemListContainer.effectItemIds.Count + " effect item database.");
-        Debug.Log("There are " + _itemListContainer.autoSpellItemIds.Count + " auto spell item database.");
-        Debug.Log("There are " + _itemListContainer.comboItemIds.Count + " combo item database.");
     }
 
     // Converting
 
-    public void Convert()
+    void Convert()
     {
         var path = Application.dataPath + "/Assets/item_db_equip.yml";
         var path2 = Application.dataPath + "/Assets/item_db_usable.yml";
@@ -1143,7 +1145,7 @@ public class Converter : MonoBehaviour
             + File.ReadAllText(path3) + "\n"
             + File.ReadAllText(path4);
 
-        if (_isUseTestTextAsset
+        if (_isOnlyUseTestTextAsset
             && File.Exists(path5))
             itemDatabasesFile = File.ReadAllText(path5);
 
@@ -1248,7 +1250,7 @@ public class Converter : MonoBehaviour
                     _itemContainer.isUnequipScript = true;
                 }
 
-                continue;
+                text = string.Empty;
             }
 
             // Id
@@ -1660,7 +1662,10 @@ public class Converter : MonoBehaviour
             }
 
             // Write builder now
-            if (nextText.Contains("- Id:") && !string.IsNullOrEmpty(_itemContainer.id) && !string.IsNullOrWhiteSpace(_itemContainer.id) || (i + 1) >= itemDatabases.Length)
+            if (nextText.Contains("- Id:")
+                && !string.IsNullOrEmpty(_itemContainer.id)
+                && !string.IsNullOrWhiteSpace(_itemContainer.id)
+                || (i + 1) >= itemDatabases.Length)
             {
                 var resName = GetResourceNameFromId(int.Parse(_itemContainer.id), _itemContainer.type, _itemContainer.subType, !string.IsNullOrEmpty(_itemContainer.locations) ? _itemContainer.locations.Substring(0, _itemContainer.locations.Length - 2) : string.Empty);
                 // Id
@@ -1754,7 +1759,6 @@ public class Converter : MonoBehaviour
                 builder.Append(sumBonus);
                 if (!string.IsNullOrEmpty(sumBonus) && !string.IsNullOrWhiteSpace(sumBonus))
                     builder.Append("			\"————————————\",\n");
-                //builder.Append("			\"^58990F[สิ้นสุด Bonus]^000000\",\n");
                 builder.Append(sumCombo);
                 builder.Append(sumEquipBonus);
                 builder.Append(sumUnEquipBonus);
@@ -1846,7 +1850,11 @@ public class Converter : MonoBehaviour
 
         File.WriteAllText("itemInfo_Sak.lub", finalTexts, Encoding.UTF8);
 
-        Debug.Log(DateTime.UtcNow);
+        ExportItemLists();
+
+        ExportItemMall();
+
+        Debug.Log(DateTime.Now);
 
         _txtConvertProgression.text = "Done!! File name 'itemInfo_Sak.lub'";
     }
@@ -3848,7 +3856,7 @@ public class Converter : MonoBehaviour
 
     string GetResourceNameFromId(int id, string type, string subType, string location)
     {
-        if (_isOnlyRandomResourceNameForCustomTextAsset)
+        if (_isRandomResourceNameForCustomTextAssetOnly)
         {
             if (_isRandomResourceName && id >= ItemGenerator.START_ID)
             {
@@ -4154,7 +4162,7 @@ public class Converter : MonoBehaviour
         return "^FF0000" + text + "^000000";
     }
 
-    public ItemDatabase GetIdNameData(int id)
+    ItemDatabase GetIdNameData(int id)
     {
         for (int i = 0; i < _itemDatabases.Count; i++)
         {

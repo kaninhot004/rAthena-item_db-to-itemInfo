@@ -66,11 +66,11 @@
     <Compile Include="Assets\Scripts\Classes\ComboDatabase.cs" />
     <Compile Include="Assets\Scripts\Converter.cs" />
     <Compile Include="Assets\Scripts\Classes\ItemContainer.cs" />
+    <Compile Include="Assets\Scripts\Utilities\CommentRemover.cs" />
     <Compile Include="Assets\Scripts\ItemGenerator.cs" />
+    <Compile Include="Assets\Scripts\Utilities\LineEndingsRemover.cs" />
     <Compile Include="Assets\Scripts\Classes\MonsterDatabase.cs" />
     <Compile Include="Assets\Scripts\Classes\ItemListContainer.cs" />
-    <Compile Include="Assets\Scripts\Utilities\LineEndingsRemover.cs" />
-    <Compile Include="Assets\Scripts\Utilities\CommentRemover.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Assets\all_english_word.txt" />
