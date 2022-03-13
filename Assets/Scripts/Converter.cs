@@ -1628,7 +1628,7 @@ public class Converter : MonoBehaviour
                 _itemContainer.armorLevel = text.Replace("    ArmorLevel: ", string.Empty);
             // Equip Level Min
             else if (text.Contains("    EquipLevelMin:"))
-                _itemContainer.equipLevelMinmimum = text.Replace("    EquipLevelMin: ", string.Empty);
+                _itemContainer.equipLevelMinimum = text.Replace("    EquipLevelMin: ", string.Empty);
             // Equip Level Max
             else if (text.Contains("    EquipLevelMax:"))
                 _itemContainer.equipLevelMaximum = text.Replace("    EquipLevelMax: ", string.Empty);
@@ -1738,8 +1738,8 @@ public class Converter : MonoBehaviour
                     sumDesc += "			\"^3F28FFเลเวลชุดเกราะ:^000000 " + _itemContainer.armorLevel + "\",\n";
                 else if (_isZeroValuePrintable)
                     sumDesc += "			\"^3F28FFเลเวลชุดเกราะ:^000000 -\",\n";
-                if (!string.IsNullOrEmpty(_itemContainer.equipLevelMinmimum))
-                    sumDesc += "			\"^3F28FFเลเวลขั้นต่ำ:^000000 " + _itemContainer.equipLevelMinmimum + "\",\n";
+                if (!string.IsNullOrEmpty(_itemContainer.equipLevelMinimum))
+                    sumDesc += "			\"^3F28FFเลเวลขั้นต่ำ:^000000 " + _itemContainer.equipLevelMinimum + "\",\n";
                 else if (_isZeroValuePrintable)
                     sumDesc += "			\"^3F28FFเลเวลขั้นต่ำ:^000000 -\",\n";
                 if (!string.IsNullOrEmpty(_itemContainer.equipLevelMaximum))

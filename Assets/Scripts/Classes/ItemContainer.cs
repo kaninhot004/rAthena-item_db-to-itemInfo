@@ -22,7 +22,7 @@ public class ItemContainer
     public string locations = string.Empty;
     public string weaponLevel = string.Empty;
     public string armorLevel = string.Empty;
-    public string equipLevelMinmimum = string.Empty;
+    public string equipLevelMinimum = string.Empty;
     public string equipLevelMaximum = string.Empty;
     public string refinable = string.Empty;
     public string view = string.Empty;
