@@ -256,6 +256,8 @@ public class Converter : MonoBehaviour
     {
         builder.Append("setarray $" + listName + "[0],");
 
+        items.RemoveAll((item) => string.IsNullOrEmpty(item) || string.IsNullOrWhiteSpace(item) || (item == null));
+
         foreach (var item in items)
             builder.Append(item + ",");
 
