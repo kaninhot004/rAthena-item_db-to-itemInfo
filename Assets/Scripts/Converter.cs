@@ -1,5 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using System.IO;
@@ -9,174 +8,247 @@ using System.Text;
 
 public class Converter : MonoBehaviour
 {
-    bool isConvertError;
+    const string CREATOR_URL = "https://kanintemsrisukgames.wordpress.com/2019/04/05/support-kt-games/";
+    const float ONE_SECOND = 1;
 
-    [SerializeField] HardcodeItemScripts hardcodeItemScripts;
+    bool _isFilesError;
+    string _errorLog;
 
-    [SerializeField] int testItemComboId;
+    /// <summary>
+    /// Button to start convert
+    /// </summary>
+    [SerializeField] Button _btnConvert;
+    /// <summary>
+    /// Button to see creator
+    /// </summary>
+    [SerializeField] Button _btnCreator;
+    /// <summary>
+    /// Convert button gameObject
+    /// </summary>
+    [SerializeField] GameObject _objConvert;
+    /// <summary>
+    /// Progress gameObject
+    /// </summary>
+    [SerializeField] GameObject _objConvertProgression;
+    /// <summary>
+    /// Text convert progression
+    /// </summary>
+    [SerializeField] Text _txtConvertProgression;
+    /// <summary>
+    /// Hardcode item scripts description
+    /// </summary>
+    [SerializeField] HardcodeItemScripts _hardcodeItemScripts;
 
-    [SerializeField] bool isZeroValuePrintable;
-    [SerializeField] bool isUseTestTextAsset;
-    [SerializeField] bool isOnlyUseCustomTextAsset;
+    // Settings
 
-    string id;
-    string _name;
-    string type;
-    string subType;
-    string buy;
-    string weight;
-    string atk;
-    string mAtk;
-    string def;
-    string atkRange;
-    string slots;
-    bool isJob;
-    string jobs;
-    bool isClass;
-    string classes;
-    string gender;
-    string location;
-    string weaponLv;
-    string armorLv;
-    string equipLevelMin;
-    string equipLevelMax;
-    string refineable;
-    string view;
-    bool isScript;
-    string script;
-    bool isEquipScript;
-    string equipScript;
-    bool isUnEquipScript;
-    string unEquipScript;
+    /// <summary>
+    /// Is print out zero value? (Example: Attack: 0)
+    /// </summary>
+    [SerializeField] bool _isZeroValuePrintable;
+    /// <summary>
+    /// Only read text asset from 'item_db_test.txt'
+    /// </summary>
+    [SerializeField] bool _isUseTestTextAsset;
+    /// <summary>
+    /// Only read text asset from 'item_db_custom.txt'
+    /// </summary>
+    [SerializeField] bool _isOnlyUseCustomTextAsset;
+    /// <summary>
+    /// Is random resource name for all item?
+    /// </summary>
+    [SerializeField] bool _isRandomResourceName;
+    /// <summary>
+    /// Is only random resource name for custom item?
+    /// </summary>
+    [SerializeField] bool _isOnlyRandomResourceNameForCustomTextAsset;
 
-    void Clean()
+    // Containers
+
+    /// <summary>
+    /// Container for 1 item, use while parsing from item_db
+    /// </summary>
+    ItemContainer _itemContainer = new ItemContainer();
+    /// <summary>
+    /// Container that hold all item ids (Split by item type)
+    /// </summary>
+    ItemListContainer _itemListContainer = new ItemListContainer();
+    /// <summary>
+    /// Container that hold all resource names (Spilt by equipment type)
+    /// </summary>
+    ResourceContainer _resourceContainer = new ResourceContainer();
+    /// <summary>
+    /// Class numbers holder
+    /// </summary>
+    List<ClassNumberDatabase> _classNumberDatabases = new List<ClassNumberDatabase>();
+    /// <summary>
+    /// Combos holder
+    /// </summary>
+    List<ComboDatabase> _comboDatabases = new List<ComboDatabase>();
+    /// <summary>
+    /// Items holder
+    /// </summary>
+    List<ItemDatabase> _itemDatabases = new List<ItemDatabase>();
+    /// <summary>
+    /// Monsters holder
+    /// </summary>
+    List<MonsterDatabase> _monsterDatabases = new List<MonsterDatabase>();
+    /// <summary>
+    /// Resources holder
+    /// </summary>
+    List<ResourceDatabase> _resourceDatabases = new List<ResourceDatabase>();
+    /// <summary>
+    /// Skills holder
+    /// </summary>
+    List<SkillDatabase> _skillDatabases = new List<SkillDatabase>();
+
+    void Start()
     {
-        id = string.Empty;
-        _name = string.Empty;
-        type = string.Empty;
-        subType = string.Empty;
-        buy = string.Empty;
-        weight = string.Empty;
-        atk = string.Empty;
-        mAtk = string.Empty;
-        def = string.Empty;
-        atkRange = string.Empty;
-        slots = string.Empty;
-        isJob = false;
-        jobs = string.Empty;
-        isClass = false;
-        classes = string.Empty;
-        gender = string.Empty;
-        location = string.Empty;
-        weaponLv = string.Empty;
-        armorLv = string.Empty;
-        equipLevelMin = string.Empty;
-        equipLevelMax = string.Empty;
-        refineable = string.Empty;
-        view = string.Empty;
-        isScript = false;
-        script = string.Empty;
-        isEquipScript = false;
-        equipScript = string.Empty;
-        isUnEquipScript = false;
-        unEquipScript = string.Empty;
+        _btnConvert.onClick.AddListener(OnConvertButtonTap);
+        _btnCreator.onClick.AddListener(OnCreatorButtonTap);
+
+        _objConvertProgression.SetActive(false);
+        _objConvert.SetActive(true);
+    }
+    /// <summary>
+    /// Call when creator button has been tap
+    /// </summary>
+    void OnCreatorButtonTap()
+    {
+        Application.OpenURL(CREATOR_URL);
+    }
+    /// <summary>
+    /// Call when convert button has been tap
+    /// </summary>
+    void OnConvertButtonTap()
+    {
+        _objConvert.SetActive(false);
+
+        _objConvertProgression.SetActive(true);
+
+        _isFilesError = false;
+
+        _txtConvertProgression.text = "Fetching item..";
+
+        FetchItem();
+
+        if (_isFilesError)
+        {
+            _txtConvertProgression.text = "<color=red>Error</color>: " + _errorLog;
+
+            return;
+        }
+
+        _txtConvertProgression.text = "Fetching resource name..";
+
+        FetchResourceName();
+
+        if (_isFilesError)
+        {
+            _txtConvertProgression.text = "<color=red>Error</color>: " + _errorLog;
+
+            return;
+        }
+
+        _txtConvertProgression.text = "Fetching skill..";
+
+        FetchSkill();
+
+        if (_isFilesError)
+        {
+            _txtConvertProgression.text = "<color=red>Error</color>: " + _errorLog;
+
+            return;
+        }
+
+        _txtConvertProgression.text = "Fetching class number..";
+
+        FetchClassNumber();
+
+        if (_isFilesError)
+        {
+            _txtConvertProgression.text = "<color=red>Error</color>: " + _errorLog;
+
+            return;
+        }
+
+        _txtConvertProgression.text = "Fetching monster..";
+
+        FetchMonster();
+
+        if (_isFilesError)
+        {
+            _txtConvertProgression.text = "<color=red>Error</color>: " + _errorLog;
+
+            return;
+        }
+
+        _txtConvertProgression.text = "Fetching combo..";
+
+        FetchCombo();
+
+        if (_isFilesError)
+        {
+            _txtConvertProgression.text = "<color=red>Error</color>: " + _errorLog;
+
+            return;
+        }
+
+        _txtConvertProgression.text = "Please wait around 1~2 minutes..";
+
+        Debug.Log(DateTime.UtcNow);
+
+        Invoke("Convert", ONE_SECOND);
     }
 
-    [Button]
-    public void PrintAllItemTypeToArray()
+    // Exporting
+
+    /// <summary>
+    /// Export item lists that can be use in game
+    /// </summary>
+    public void ExportItemLists()
     {
-        string builder = string.Empty;
+        StringBuilder builder = new StringBuilder();
 
-        builder += "setarray $weaponIds[0],";
-        foreach (var item in weaponIds)
-            builder += item + ",";
-        builder = builder.Substring(0, builder.Length - 1);
-        builder += ";\n";
+        ExportingItemLists(builder, "weaponIds", _itemListContainer.weaponIds);
+        ExportingItemLists(builder, "equipmentIds", _itemListContainer.equipmentIds);
+        ExportingItemLists(builder, "costumeIds", _itemListContainer.costumeIds);
+        ExportingItemLists(builder, "cardIds", _itemListContainer.cardIds);
+        ExportingItemLists(builder, "enchantIds", _itemListContainer.enchantIds);
+        ExportingItemLists(builder, "statsItemIds", _itemListContainer.statsItemIds);
+        ExportingItemLists(builder, "hpSpApItemIds", _itemListContainer.hpSpApItemIds);
+        ExportingItemLists(builder, "offensiveItemIds", _itemListContainer.offensiveItemIds);
+        ExportingItemLists(builder, "defensiveItemIds", _itemListContainer.defensiveItemIds);
+        ExportingItemLists(builder, "specialItemIds", _itemListContainer.specialItemIds);
+        ExportingItemLists(builder, "castItemIds", _itemListContainer.castItemIds);
+        ExportingItemLists(builder, "effectItemIds", _itemListContainer.effectItemIds);
+        ExportingItemLists(builder, "autoSpellItemIds", _itemListContainer.autoSpellItemIds);
+        ExportingItemLists(builder, "comboItemIds", _itemListContainer.comboItemIds);
 
-        builder += "setarray $equipmentIds[0],";
-        foreach (var item in equipmentIds)
-            builder += item + ",";
-        builder = builder.Substring(0, builder.Length - 1);
-        builder += ";\n";
+        File.WriteAllText("global_item_ids.txt", builder.ToString(), Encoding.UTF8);
 
-        builder += "setarray $costumeIds[0],";
-        foreach (var item in costumeIds)
-            builder += item + ",";
-        builder = builder.Substring(0, builder.Length - 1);
-        builder += ";\n";
-
-        builder += "setarray $cardIds[0],";
-        foreach (var item in cardIds)
-            builder += item + ",";
-        builder = builder.Substring(0, builder.Length - 1);
-        builder += ";\n";
-
-        builder += "setarray $enchantIds[0],";
-        foreach (var item in enchantIds)
-            builder += item + ",";
-        builder = builder.Substring(0, builder.Length - 1);
-        builder += ";\n";
-
-        builder += "setarray $statsItemIds[0],";
-        foreach (var item in statsItemIds)
-            builder += item + ",";
-        builder = builder.Substring(0, builder.Length - 1);
-        builder += ";\n";
-
-        builder += "setarray $hpSpApItemIds[0],";
-        foreach (var item in hpSpApItemIds)
-            builder += item + ",";
-        builder = builder.Substring(0, builder.Length - 1);
-        builder += ";\n";
-
-        builder += "setarray $offensiveItemIds[0],";
-        foreach (var item in offensiveItemIds)
-            builder += item + ",";
-        builder = builder.Substring(0, builder.Length - 1);
-        builder += ";\n";
-
-        builder += "setarray $defensiveItemIds[0],";
-        foreach (var item in defensiveItemIds)
-            builder += item + ",";
-        builder = builder.Substring(0, builder.Length - 1);
-        builder += ";\n";
-
-        builder += "setarray $specialItemIds[0],";
-        foreach (var item in specialItemIds)
-            builder += item + ",";
-        builder = builder.Substring(0, builder.Length - 1);
-        builder += ";\n";
-
-        builder += "setarray $castItemIds[0],";
-        foreach (var item in castItemIds)
-            builder += item + ",";
-        builder = builder.Substring(0, builder.Length - 1);
-        builder += ";\n";
-
-        builder += "setarray $effectItemIds[0],";
-        foreach (var item in effectItemIds)
-            builder += item + ",";
-        builder = builder.Substring(0, builder.Length - 1);
-        builder += ";\n";
-
-        builder += "setarray $autoSpellItemIds[0],";
-        foreach (var item in autoSpellItemIds)
-            builder += item + ",";
-        builder = builder.Substring(0, builder.Length - 1);
-        builder += ";\n";
-
-        builder += "setarray $comboItemIds[0],";
-        foreach (var item in comboItemIds)
-            builder += item + ",";
-        builder = builder.Substring(0, builder.Length - 1);
-        builder += ";\n";
-
-        File.WriteAllText("global_item_ids.txt", builder, Encoding.UTF8);
-
-        Debug.Log("Printed all item type.");
+        Debug.Log("'global_item_ids.txt' has been successfully created.");
     }
-    [Button]
-    public void PrintAllItemIdToItemMall()
+    /// <summary>
+    /// Exporting item lists to StringBuilder
+    /// </summary>
+    /// <param name="builder"></param>
+    /// <param name="listName"></param>
+    /// <param name="items"></param>
+    void ExportingItemLists(StringBuilder builder, string listName, List<string> items)
+    {
+        builder.Append("setarray $" + listName + "[0],");
+
+        foreach (var item in items)
+            builder.Append(item + ",");
+
+        builder.Remove(builder.Length - 1, 1);
+
+        builder.Append(";\n");
+    }
+    /// <summary>
+    /// Export all item to item mall (NPC) that can be use in game
+    /// </summary>
+    public void ExportItemMall()
     {
         // All item id
 
@@ -184,10 +256,10 @@ public class Converter : MonoBehaviour
 
         StringBuilder builder = new StringBuilder();
 
-        for (int i = 0; i < allItemIds.Count; i++)
+        for (int i = 0; i < _itemListContainer.allItemIds.Count; i++)
         {
             if ((i == 0)
-                || (i % 100 == 0))
+                || ((i % 100) == 0))
             {
                 if (!string.IsNullOrEmpty(builder.ToString()))
                     builder.Remove(builder.Length - 1, 1);
@@ -197,14 +269,14 @@ public class Converter : MonoBehaviour
                 builder.Append("\n-	shop	ItemMall" + shopNumber + "	-1,no,");
             }
 
-            builder.Append(allItemIds[i] + ":1000000000,");
+            builder.Append(_itemListContainer.allItemIds[i] + ":1000000000,");
         }
 
         // Pet eggs item id
 
         shopNumber = 0;
 
-        for (int i = 0; i < petEggIds.Count; i++)
+        for (int i = 0; i < _itemListContainer.petEggIds.Count; i++)
         {
             if ((i == 0)
                 || (i % 100 == 0))
@@ -217,14 +289,14 @@ public class Converter : MonoBehaviour
                 builder.Append("\n-	shop	PetEgg" + shopNumber + "	-1,no,");
             }
 
-            builder.Append(petEggIds[i] + ":33333,");
+            builder.Append(_itemListContainer.petEggIds[i] + ":33333,");
         }
 
         // Pet armors item id
 
         shopNumber = 0;
 
-        for (int i = 0; i < petArmorIds.Count; i++)
+        for (int i = 0; i < _itemListContainer.petArmorIds.Count; i++)
         {
             if ((i == 0)
                 || (i % 100 == 0))
@@ -237,14 +309,14 @@ public class Converter : MonoBehaviour
                 builder.Append("\n-	shop	PetArmor" + shopNumber + "	-1,no,");
             }
 
-            builder.Append(petArmorIds[i] + ":10000000,");
+            builder.Append(_itemListContainer.petArmorIds[i] + ":10000000,");
         }
 
         // Fasion costumes item id
 
         shopNumber = 0;
 
-        for (int i = 0; i < fashionCostumeIds.Count; i++)
+        for (int i = 0; i < _itemListContainer.fashionCostumeIds.Count; i++)
         {
             if ((i == 0)
                 || (i % 100 == 0))
@@ -257,14 +329,14 @@ public class Converter : MonoBehaviour
                 builder.Append("\n-	shop	FashionCostume" + shopNumber + "	-1,no,");
             }
 
-            builder.Append(fashionCostumeIds[i] + ":50000000,");
+            builder.Append(_itemListContainer.fashionCostumeIds[i] + ":50000000,");
         }
 
         // Buffs item id
 
         shopNumber = 0;
 
-        for (int i = 0; i < buffItemIds.Count; i++)
+        for (int i = 0; i < _itemListContainer.buffItemIds.Count; i++)
         {
             if ((i == 0)
                 || (i % 100 == 0))
@@ -277,98 +349,59 @@ public class Converter : MonoBehaviour
                 builder.Append("\n-	shop	BuffItem" + shopNumber + "	-1,no,");
             }
 
-            builder.Append(buffItemIds[i] + ":90000,");
+            builder.Append(_itemListContainer.buffItemIds[i] + ":90000,");
         }
 
-        File.WriteAllText("item_mall.txt", builder.ToString().Substring(0, builder.Length - 1), Encoding.UTF8);
+        var builderDebug = builder.ToString();
 
-        Debug.Log("Printed item mall.");
-    }
-    [Button]
-    public void CheckAdditionalRequirement()
-    {
-        Debug.Log("resourceNameDatas.Count:" + resourceNameDatas.Count);
-        Debug.Log("comboDatas.Count:" + comboDatas.Count);
-        Debug.Log("idNameDatas.Count:" + idNameDatas.Count);
-        Debug.Log("skillDatas.Count:" + skillDatas.Count);
-        Debug.Log("classNumDatas.Count:" + classNumDatas.Count);
-        Debug.Log("weaponIds.Count:" + weaponIds.Count);
-        Debug.Log("equipmentIds.Count:" + equipmentIds.Count);
-        Debug.Log("costumeIds.Count:" + costumeIds.Count);
-        Debug.Log("cardIds.Count:" + cardIds.Count);
-        Debug.Log("enchantIds.Count:" + enchantIds.Count);
-        Debug.Log("allItemIds.Count:" + allItemIds.Count);
-        Debug.Log(GetCombo(GetIdNameData(testItemComboId).aegisName));
+        if (!string.IsNullOrEmpty(builderDebug)
+            && (builderDebug[builderDebug.Length - 1] == ','))
+            builder.Remove(builder.Length - 1, 1);
+
+        File.WriteAllText("item_mall.txt", builder.ToString(), Encoding.UTF8);
+
+        Debug.Log("'item_mall.txt' has been successfully created.");
     }
 
-    List<string> weaponIds = new List<string>();
-    List<string> equipmentIds = new List<string>();
-    List<string> costumeIds = new List<string>();
-    List<string> cardIds = new List<string>();
-    List<string> enchantIds = new List<string>();
+    // Parsing
 
-    List<string> petEggIds = new List<string>();
-    List<string> petArmorIds = new List<string>();
-    List<string> fashionCostumeIds = new List<string>();
-    List<string> buffItemIds = new List<string>();
-
-    List<string> allItemIds = new List<string>();
-
-    List<string> statsItemIds = new List<string>();
-    List<string> hpSpApItemIds = new List<string>();
-    List<string> offensiveItemIds = new List<string>();
-    List<string> defensiveItemIds = new List<string>();
-    List<string> specialItemIds = new List<string>();
-    List<string> castItemIds = new List<string>();
-    List<string> effectItemIds = new List<string>();
-    List<string> autoSpellItemIds = new List<string>();
-
-    List<string> comboItemIds = new List<string>();
-
+    /// <summary>
+    /// Fetch resource name from all equipment (Split into list by equipment type)
+    /// </summary>
     [Button]
     public void FetchResourceNameWithType()
     {
-        var allTextAsset = File.ReadAllText(Application.dataPath + "/Assets/item_db_equip.yml");
-        var lines = allTextAsset.Split('\n');
-        resNameDagger = new List<string>();
-        resName1hSword = new List<string>();
-        resName2hSword = new List<string>();
-        resName1hSpear = new List<string>();
-        resName2hSpear = new List<string>();
-        resName1hAxe = new List<string>();
-        resName2hAxe = new List<string>();
-        resNameMace = new List<string>();
-        resNameStaff = new List<string>();
-        resNameBow = new List<string>();
-        resNameKnuckle = new List<string>();
-        resNameMusical = new List<string>();
-        resNameWhip = new List<string>();
-        resNameBook = new List<string>();
-        resNameKatar = new List<string>();
-        resNameRevolver = new List<string>();
-        resNameRifle = new List<string>();
-        resNameGatling = new List<string>();
-        resNameShotgun = new List<string>();
-        resNameGrenade = new List<string>();
-        resNameHuuma = new List<string>();
-        //resName2hStaff = new List<string>();
-        resNameHead_Top = new List<string>();
-        resNameHead_Mid = new List<string>();
-        resNameHead_Low = new List<string>();
-        resNameArmor = new List<string>();
-        resNameGarment = new List<string>();
-        resNameShoes = new List<string>();
-        resNameAccessory = new List<string>();
+        var path = Application.dataPath + "/Assets/item_db_equip.yml";
+
+        // Is file exists?
+        if (!File.Exists(path))
+        {
+            _errorLog = path + " is not exists";
+
+            Debug.Log(_errorLog);
+
+            return;
+        }
+
+        var equipmentsFile = File.ReadAllText(path);
+
+        var equipments = equipmentsFile.Split('\n');
+
+        _resourceContainer = new ResourceContainer();
 
         string id = string.Empty;
+
         bool isArmor = false;
-        for (int i = 0; i < lines.Length; i++)
+
+        for (int i = 0; i < equipments.Length; i++)
         {
-            var text = lines[i];
+            var text = equipments[i];
 
-            text = RemoveCommentAndUnwantedWord(text); // Fetch resource name with type
+            text = CommentRemover.Fix(text);
 
-            // Skip these
+            text = LineEndingsRemover.Fix(text);
+
+            // Skip
             if (text.Contains("    Buy:")
                 || text.Contains("    Sell:")
                 || text.Contains("    Jobs:")
@@ -408,22 +441,30 @@ public class Converter : MonoBehaviour
                 || text.Contains("    Script:")
                 || text.Contains("    OnEquip_Script:")
                 || text.Contains("    OnUnequip_Script:")
-                )
-                text = string.Empty;
+                || string.IsNullOrEmpty(text)
+                || string.IsNullOrWhiteSpace(text))
+                continue;
 
             // Id
             if (text.Contains("  - Id:"))
             {
+                text = RemoveQuote(text);
+
                 text = RemoveSpace(text);
+
                 id = text.Replace("-Id:", string.Empty);
             }
             // Type
             else if (text.Contains("    Type:"))
             {
-                text = text.Replace("    Type: ", string.Empty);
                 text = RemoveQuote(text);
+
                 text = RemoveSpace(text);
-                if (text.ToLower() == "armor" || text.ToLower() == "shadowgear")
+
+                text = text.Replace("Type:", string.Empty);
+
+                if ((text.ToLower() == "armor")
+                    || (text.ToLower() == "shadowgear"))
                     isArmor = true;
                 else
                     isArmor = false;
@@ -432,519 +473,486 @@ public class Converter : MonoBehaviour
             else if (isArmor)
             {
                 text = RemoveQuote(text);
+
                 text = RemoveSpace(text);
-                if (text.ToLower().Contains("costume_head_top") || text.ToLower().Contains("head_top"))
-                    resNameHead_Top.Add(id);
-                else if (text.ToLower().Contains("costume_head_mid") || text.ToLower().Contains("head_mid"))
-                    resNameHead_Mid.Add(id);
-                else if (text.ToLower().Contains("costume_head_low") || text.ToLower().Contains("head_low"))
-                    resNameHead_Low.Add(id);
-                else if (text.ToLower().Contains("costume_garment") || text.ToLower().Contains("garment"))
-                    resNameGarment.Add(id);
-                else if (text.ToLower().Contains("shadow_armor") || text.ToLower().Contains("armor"))
-                    resNameArmor.Add(id);
-                else if (text.ToLower().Contains("shadow_weapon") || text.ToLower().Contains("shadow_shield"))
-                    resNameShield.Add(id);
-                else if (text.ToLower().Contains("shadow_shoes") || text.ToLower().Contains("shoes"))
-                    resNameShoes.Add(id);
-                else if (text.ToLower().Contains("shadow_right_accessory") || text.ToLower().Contains("shadow_left_accessory") || text.ToLower().Contains("right_accessory") || text.ToLower().Contains("left_accessory") || text.ToLower().Contains("both_accessory"))
-                    resNameAccessory.Add(id);
+
+                if (text.ToLower().Contains("head_top"))
+                    _resourceContainer.topHeadgears.Add(id);
+                else if (text.ToLower().Contains("head_mid"))
+                    _resourceContainer.middleHeadgears.Add(id);
+                else if (text.ToLower().Contains("head_low"))
+                    _resourceContainer.lowerHeadgears.Add(id);
+                else if (text.ToLower().Contains("garment"))
+                    _resourceContainer.garments.Add(id);
+                else if (text.ToLower().Contains("armor"))
+                    _resourceContainer.armors.Add(id);
+                else if (text.ToLower().Contains("shadow_weapon")
+                    || text.ToLower().Contains("shadow_shield"))
+                    _resourceContainer.shields.Add(id);
+                else if (text.ToLower().Contains("shoes"))
+                    _resourceContainer.shoes.Add(id);
+                else if (text.ToLower().Contains("accessory"))
+                    _resourceContainer.accessorys.Add(id);
             }
             else
             {
+                text = RemoveQuote(text);
+
+                text = RemoveSpace(text);
+
                 if (text.ToLower().Contains("dagger"))
-                    resNameDagger.Add(id);
+                    _resourceContainer.daggers.Add(id);
                 else if (text.ToLower().Contains("1hsword"))
-                    resName1hSword.Add(id);
+                    _resourceContainer.oneHandedSwords.Add(id);
                 else if (text.ToLower().Contains("2hsword"))
-                    resName2hSword.Add(id);
+                    _resourceContainer.twoHandedSwords.Add(id);
                 else if (text.ToLower().Contains("1hspear"))
-                    resName1hSpear.Add(id);
+                    _resourceContainer.oneHandedSpears.Add(id);
                 else if (text.ToLower().Contains("2hspear"))
-                    resName2hSpear.Add(id);
+                    _resourceContainer.twoHandedSpears.Add(id);
                 else if (text.ToLower().Contains("1haxe"))
-                    resName1hAxe.Add(id);
+                    _resourceContainer.oneHandedAxes.Add(id);
                 else if (text.ToLower().Contains("2haxe"))
-                    resName2hAxe.Add(id);
+                    _resourceContainer.twoHandedAxes.Add(id);
+                else if (text.ToLower().Contains("2hmace"))
+                    _resourceContainer.twoHandedMaces.Add(id);
                 else if (text.ToLower().Contains("mace"))
-                    resNameMace.Add(id);
+                    _resourceContainer.oneHandedMaces.Add(id);
+                else if (text.ToLower().Contains("2hstaff"))
+                    _resourceContainer.twoHandedStaffs.Add(id);
                 else if (text.ToLower().Contains("staff"))
-                    resNameStaff.Add(id);
+                    _resourceContainer.oneHandedStaffs.Add(id);
                 else if (text.ToLower().Contains("bow"))
-                    resNameBow.Add(id);
+                    _resourceContainer.bows.Add(id);
                 else if (text.ToLower().Contains("knuckle"))
-                    resNameKnuckle.Add(id);
+                    _resourceContainer.knuckles.Add(id);
                 else if (text.ToLower().Contains("musical"))
-                    resNameMusical.Add(id);
+                    _resourceContainer.musicals.Add(id);
                 else if (text.ToLower().Contains("whip"))
-                    resNameWhip.Add(id);
+                    _resourceContainer.whips.Add(id);
                 else if (text.ToLower().Contains("book"))
-                    resNameBook.Add(id);
+                    _resourceContainer.books.Add(id);
                 else if (text.ToLower().Contains("katar"))
-                    resNameKatar.Add(id);
+                    _resourceContainer.katars.Add(id);
                 else if (text.ToLower().Contains("revolver"))
-                    resNameRevolver.Add(id);
+                    _resourceContainer.revolvers.Add(id);
                 else if (text.ToLower().Contains("rifle"))
-                    resNameRifle.Add(id);
+                    _resourceContainer.rifles.Add(id);
                 else if (text.ToLower().Contains("gatling"))
-                    resNameGatling.Add(id);
+                    _resourceContainer.gatlings.Add(id);
                 else if (text.ToLower().Contains("shotgun"))
-                    resNameShotgun.Add(id);
+                    _resourceContainer.shotguns.Add(id);
                 else if (text.ToLower().Contains("grenade"))
-                    resNameGrenade.Add(id);
+                    _resourceContainer.grenades.Add(id);
                 else if (text.ToLower().Contains("huuma"))
-                    resNameHuuma.Add(id);
-                //else if (text.ToLower().Contains("2hstaff"))
-                //    resName2hStaff.Add(id);
+                    _resourceContainer.huumas.Add(id);
             }
         }
-        Debug.Log(resNameDagger.Count);
-        Debug.Log(resName1hSword.Count);
-        Debug.Log(resName2hSword.Count);
-        Debug.Log(resName1hSpear.Count);
-        Debug.Log(resName2hSpear.Count);
-        Debug.Log(resName1hAxe.Count);
-        Debug.Log(resName2hAxe.Count);
-        Debug.Log(resNameMace.Count);
-        Debug.Log(resNameStaff.Count);
-        Debug.Log(resNameBow.Count);
-        Debug.Log(resNameKnuckle.Count);
-        Debug.Log(resNameMusical.Count);
-        Debug.Log(resNameWhip.Count);
-        Debug.Log(resNameBook.Count);
-        Debug.Log(resNameKatar.Count);
-        Debug.Log(resNameRevolver.Count);
-        Debug.Log(resNameRifle.Count);
-        Debug.Log(resNameGatling.Count);
-        Debug.Log(resNameShotgun.Count);
-        Debug.Log(resNameGrenade.Count);
-        Debug.Log(resNameHuuma.Count);
-        //Debug.Log(resName2hStaff.Count);
-        Debug.Log(resNameHead_Top.Count);
-        Debug.Log(resNameHead_Mid.Count);
-        Debug.Log(resNameHead_Low.Count);
-        Debug.Log(resNameArmor.Count);
-        Debug.Log(resNameShield.Count);
-        Debug.Log(resNameGarment.Count);
-        Debug.Log(resNameShoes.Count);
-        Debug.Log(resNameAccessory.Count);
     }
 
-    List<string> resNameDagger = new List<string>();
-    List<string> resName1hSword = new List<string>();
-    List<string> resName2hSword = new List<string>();
-    List<string> resName1hSpear = new List<string>();
-    List<string> resName2hSpear = new List<string>();
-    List<string> resName1hAxe = new List<string>();
-    List<string> resName2hAxe = new List<string>();
-    List<string> resNameMace = new List<string>();
-    List<string> resNameStaff = new List<string>();
-    List<string> resNameBow = new List<string>();
-    List<string> resNameKnuckle = new List<string>();
-    List<string> resNameMusical = new List<string>();
-    List<string> resNameWhip = new List<string>();
-    List<string> resNameBook = new List<string>();
-    List<string> resNameKatar = new List<string>();
-    List<string> resNameRevolver = new List<string>();
-    List<string> resNameRifle = new List<string>();
-    List<string> resNameGatling = new List<string>();
-    List<string> resNameShotgun = new List<string>();
-    List<string> resNameGrenade = new List<string>();
-    List<string> resNameHuuma = new List<string>();
-    //List<string> resName2hStaff = new List<string>();
-    List<string> resNameHead_Top = new List<string>();
-    List<string> resNameHead_Mid = new List<string>();
-    List<string> resNameHead_Low = new List<string>();
-    List<string> resNameArmor = new List<string>();
-    List<string> resNameShield = new List<string>();
-    List<string> resNameGarment = new List<string>();
-    List<string> resNameShoes = new List<string>();
-    List<string> resNameAccessory = new List<string>();
-
-    [Button]
-    public void FetchMonsterName()
+    /// <summary>
+    /// Parse monster database file into converter (Only store ID, Name)
+    /// </summary>
+    public void FetchMonster()
     {
-        if (!File.Exists(Application.dataPath + "/Assets/mob_db.yml"))
+        var path = Application.dataPath + "/Assets/mob_db.yml";
+
+        // Is file exists?
+        if (!File.Exists(path))
         {
-            isConvertError = true;
+            _errorLog = path + " is not exists";
+
+            Debug.Log(_errorLog);
+
+            _isFilesError = true;
+
             return;
         }
-        var mobDb = File.ReadAllText(Application.dataPath + "/Assets/mob_db.yml");
-        var lines = mobDb.Split('\n');
-        monsterNameDatas = new List<MonsterNameData>();
-        MonsterNameData monsterNameData = new MonsterNameData();
-        for (int i = 0; i < lines.Length; i++)
-        {
-            var text = lines[i];
 
-            // Null
-            if (string.IsNullOrEmpty(text) || string.IsNullOrWhiteSpace(text))
+        var monsterDatabasesFile = File.ReadAllText(path);
+
+        var monsterDatabases = monsterDatabasesFile.Split('\n');
+
+        _monsterDatabases = new List<MonsterDatabase>();
+
+        MonsterDatabase monsterDatabase = new MonsterDatabase();
+
+        for (int i = 0; i < monsterDatabases.Length; i++)
+        {
+            var text = monsterDatabases[i];
+
+            if (string.IsNullOrEmpty(text)
+                || string.IsNullOrWhiteSpace(text))
                 continue;
 
-            text = RemoveCommentAndUnwantedWord(text); // Fetch mosnter name
+            text = CommentRemover.Fix(text);
 
-            // Id
+            text = LineEndingsRemover.Fix(text);
+
             if (text.Contains("  - Id:"))
-                monsterNameData.id = int.Parse(RemoveSpace(text).Replace("-Id:", string.Empty));
-            // Name
+                monsterDatabase.id = int.Parse(RemoveSpace(text).Replace("-Id:", string.Empty));
             else if (text.Contains("    Name:"))
             {
-                monsterNameData.monsterName = RemoveQuote(text.Replace("    Name: ", string.Empty));
-                monsterNameDatas.Add(monsterNameData);
-                monsterNameData = new MonsterNameData();
+                monsterDatabase.name = RemoveQuote(text.Replace("    Name: ", string.Empty));
+
+                _monsterDatabases.Add(monsterDatabase);
+
+                monsterDatabase = new MonsterDatabase();
             }
         }
-        Debug.Log("monsterNameDatas.Count:" + monsterNameDatas.Count);
+
+        Debug.Log("There are " + _monsterDatabases.Count + " monster database.");
     }
-
-    List<MonsterNameData> monsterNameDatas = new List<MonsterNameData>();
-
-    [Serializable]
-    public class MonsterNameData
+    /// <summary>
+    /// Parse class number file into converter
+    /// </summary>
+    public void FetchClassNumber()
     {
-        public int id;
-        public string monsterName;
-    }
+        var path = Application.dataPath + "/Assets/classNum.txt";
 
-    [Button]
-    public void FetchClassNum()
-    {
-        if (!File.Exists(Application.dataPath + "/Assets/classNum.txt"))
+        // Is file exists?
+        if (!File.Exists(path))
         {
-            isConvertError = true;
+            _errorLog = path + " is not exists";
+
+            Debug.Log(_errorLog);
+
+            _isFilesError = true;
+
             return;
         }
-        var classNum = File.ReadAllText(Application.dataPath + "/Assets/classNum.txt");
-        var lines = classNum.Split('\n');
-        classNumDatas = new List<ClassNumData>();
-        ClassNumData classNumData = new ClassNumData();
-        for (int i = 0; i < lines.Length; i++)
-        {
-            var text = lines[i];
 
-            // Null
-            if (string.IsNullOrEmpty(text) || string.IsNullOrWhiteSpace(text))
+        var classNumbersFile = File.ReadAllText(path);
+
+        var classNumbers = classNumbersFile.Split('\n');
+
+        _classNumberDatabases = new List<ClassNumberDatabase>();
+
+        ClassNumberDatabase classNumberDatabase = new ClassNumberDatabase();
+
+        for (int i = 0; i < classNumbers.Length; i++)
+        {
+            var text = classNumbers[i];
+
+            if (string.IsNullOrEmpty(text)
+                || string.IsNullOrWhiteSpace(text))
                 continue;
 
-            // Get Ids first
+            text = LineEndingsRemover.Fix(text);
+
             var texts = text.Split('=');
-            classNumData.id = int.Parse(texts[0]);
-            classNumData.classNum = texts[1].Replace("\r", string.Empty).Replace("/n", string.Empty);
-            classNumDatas.Add(classNumData);
-            classNumData = new ClassNumData();
+
+            classNumberDatabase.id = int.Parse(texts[0]);
+            classNumberDatabase.classNumber = texts[1];
+
+            _classNumberDatabases.Add(classNumberDatabase);
+
+            classNumberDatabase = new ClassNumberDatabase();
         }
-        Debug.Log("classNumDatas.Count:" + classNumDatas.Count);
 
-        if (!File.Exists(Application.dataPath + "/Assets/item_db_custom.txt"))
-            return;
+        path = Application.dataPath + "/Assets/item_db_custom.txt";
 
-        classNum = File.ReadAllText(Application.dataPath + "/Assets/item_db_custom.txt");
-        lines = classNum.Split('\n');
-        classNumData = new ClassNumData();
-        for (int i = 0; i < lines.Length; i++)
+        // Is file exists?
+        if (!File.Exists(path))
         {
-            var text = lines[i];
+            _errorLog = path + " is not exists";
 
-            // Null
-            if (string.IsNullOrEmpty(text) || string.IsNullOrWhiteSpace(text))
+            Debug.Log(_errorLog);
+
+            _isFilesError = true;
+
+            return;
+        }
+
+        classNumbersFile = File.ReadAllText(path);
+
+        classNumbers = classNumbersFile.Split('\n');
+
+        classNumberDatabase = new ClassNumberDatabase();
+
+        for (int i = 0; i < classNumbers.Length; i++)
+        {
+            var text = classNumbers[i];
+
+            if (string.IsNullOrEmpty(text)
+                || string.IsNullOrWhiteSpace(text))
                 continue;
 
-            // Id
+            text = LineEndingsRemover.Fix(text);
+
             if (text.Contains("- Id:"))
-                classNumData.id = int.Parse(RemoveSpace(text).Replace("-Id:", string.Empty));
-            // Name
+                classNumberDatabase.id = int.Parse(RemoveSpace(text).Replace("-Id:", string.Empty));
             else if (text.Contains("    View:"))
             {
-                classNumData.classNum = RemoveSpace(text).Replace("View:", string.Empty);
-                classNumDatas.Add(classNumData);
-                classNumData = new ClassNumData();
+                classNumberDatabase.classNumber = RemoveSpace(text).Replace("View:", string.Empty);
+
+                _classNumberDatabases.Add(classNumberDatabase);
+
+                classNumberDatabase = new ClassNumberDatabase();
             }
         }
-        Debug.Log("classNumDatas.Count:" + classNumDatas.Count);
+
+        Debug.Log("There are " + _classNumberDatabases.Count + " class number database.");
     }
-
-    List<ClassNumData> classNumDatas = new List<ClassNumData>();
-
-    [Serializable]
-    public class ClassNumData
-    {
-        public int id;
-        public string classNum;
-    }
-
-    [Button]
+    /// <summary>
+    /// Parse skill database file into converter (Only store ID, Name)
+    /// </summary>
     public void FetchSkill()
     {
-        if (!File.Exists(Application.dataPath + "/Assets/skill_db.yml"))
+        var path = Application.dataPath + "/Assets/skill_db.yml";
+
+        // Is file exists?
+        if (!File.Exists(path))
         {
-            isConvertError = true;
+            _errorLog = path + " is not exists";
+
+            Debug.Log(_errorLog);
+
+            _isFilesError = true;
+
             return;
         }
-        var skillDb = File.ReadAllText(Application.dataPath + "/Assets/skill_db.yml");
-        var lines = skillDb.Split('\n');
-        skillDatas = new List<SkillData>();
-        SkillData skillData = new SkillData();
-        for (int i = 0; i < lines.Length; i++)
-        {
-            var text = lines[i];
 
-            // Null
-            if (string.IsNullOrEmpty(text) || string.IsNullOrWhiteSpace(text))
+        var skillDatabasesFile = File.ReadAllText(path);
+
+        var skillDatabases = skillDatabasesFile.Split('\n');
+
+        _skillDatabases = new List<SkillDatabase>();
+
+        SkillDatabase skillDatabase = new SkillDatabase();
+
+        for (int i = 0; i < skillDatabases.Length; i++)
+        {
+            var text = skillDatabases[i];
+
+            if (string.IsNullOrEmpty(text)
+                || string.IsNullOrWhiteSpace(text))
                 continue;
 
-            text = RemoveCommentAndUnwantedWord(text); // Fetch skill
+            text = CommentRemover.Fix(text);
 
-            // Id
+            text = LineEndingsRemover.Fix(text);
+
             if (text.Contains("  - Id:"))
-                skillData.id = int.Parse(RemoveSpace(text).Replace("-Id:", string.Empty));
-            // Name
+                skillDatabase.id = int.Parse(RemoveSpace(text).Replace("-Id:", string.Empty));
             else if (text.Contains("    Name:"))
-                skillData.name = RemoveQuote(text.Replace("    Name: ", string.Empty));
-            // Description
+                skillDatabase.name = RemoveQuote(text.Replace("    Name: ", string.Empty));
             else if (text.Contains("    Description:"))
             {
-                skillData.description = RemoveQuote(text.Replace("    Description: ", string.Empty));
-                skillData.nameWithQuote = "\"" + skillData.name + "\"";
-                skillDatas.Add(skillData);
-                skillData = new SkillData();
+                skillDatabase.description = RemoveQuote(text.Replace("    Description: ", string.Empty));
+
+                skillDatabase.nameWithQuote = "\"" + skillDatabase.name + "\"";
+
+                _skillDatabases.Add(skillDatabase);
+
+                skillDatabase = new SkillDatabase();
             }
         }
-        Debug.Log("skillDatas.Count:" + skillDatas.Count);
+
+        Debug.Log("There are " + _skillDatabases.Count + " skill database.");
     }
-
-    List<SkillData> skillDatas = new List<SkillData>();
-
-    [Serializable]
-    public class SkillData
-    {
-        public int id;
-        public string name;
-        public string nameWithQuote;
-        public string description;
-    }
-
-    [Button]
+    /// <summary>
+    /// Parse resource name file into converter
+    /// </summary>
     public void FetchResourceName()
     {
-        if (!File.Exists(Application.dataPath + "/Assets/resourceName.txt"))
+        var path = Application.dataPath + "/Assets/resourceName.txt";
+
+        // Is file exists?
+        if (!File.Exists(path))
         {
-            isConvertError = true;
+            _errorLog = path + " is not exists";
+
+            Debug.Log(_errorLog);
+
+            _isFilesError = true;
+
             return;
         }
-        var resourceName = File.ReadAllText(Application.dataPath + "/Assets/resourceName.txt");
-        var lines = resourceName.Split('\n');
-        resourceNameDatas = new List<ResourceNameData>();
-        ResourceNameData resourceNameData = new ResourceNameData();
-        for (int i = 0; i < lines.Length; i++)
-        {
-            var text = lines[i];
 
-            // Null
-            if (string.IsNullOrEmpty(text) || string.IsNullOrWhiteSpace(text))
+        var resourceNamesFile = File.ReadAllText(path);
+
+        var resourceNames = resourceNamesFile.Split('\n');
+
+        _resourceDatabases = new List<ResourceDatabase>();
+
+        ResourceDatabase resourceNameData = new ResourceDatabase();
+
+        for (int i = 0; i < resourceNames.Length; i++)
+        {
+            var text = resourceNames[i];
+
+            if (string.IsNullOrEmpty(text)
+                || string.IsNullOrWhiteSpace(text))
                 continue;
 
-            // Get Ids first
-            //Debug.Log(text);
+            text = LineEndingsRemover.Fix(text);
+
             var texts = text.Split('=');
+
             resourceNameData.id = int.Parse(texts[0]);
-            resourceNameData.resourceName = texts[1].Replace("\r", string.Empty).Replace("/n", string.Empty);
-            resourceNameDatas.Add(resourceNameData);
-            resourceNameData = new ResourceNameData();
+            resourceNameData.name = texts[1];
+
+            _resourceDatabases.Add(resourceNameData);
+
+            resourceNameData = new ResourceDatabase();
         }
-        Debug.Log("resourceNameDatas.Count:" + resourceNameDatas.Count);
+
+        Debug.Log("There are " + _resourceDatabases.Count + " resource name database.");
     }
-
-    List<ResourceNameData> resourceNameDatas = new List<ResourceNameData>();
-
-    [Serializable]
-    public class ResourceNameData
-    {
-        public int id;
-        public string resourceName;
-    }
-
-    [Button]
+    /// <summary>
+    /// Parse combo database file into converter
+    /// </summary>
     public void FetchCombo()
     {
-        // Not found
-        if (!File.Exists(Application.dataPath + "/Assets/item_combos.yml"))
+        var path = Application.dataPath + "/Assets/item_combos.yml";
+
+        // Is file exists?
+        if (!File.Exists(path))
         {
-            isConvertError = true;
+            _errorLog = path + " is not exists";
+
+            Debug.Log(_errorLog);
+
+            _isFilesError = true;
+
             return;
         }
 
-        // Found
-        var itemComboDb = File.ReadAllText(Application.dataPath + "/Assets/item_combos.yml");
+        var comboDatabasesFile = File.ReadAllText(path);
 
-        // Custom text asset check
-        if (isOnlyUseCustomTextAsset)
-            itemComboDb = string.Empty;
+        var comboDatabases = comboDatabasesFile.Split('\n');
 
-        // Split
-        var lines = itemComboDb.Split('\n');
+        _comboDatabases = new List<ComboDatabase>();
 
-        // New combo data list
-        comboDatas = new List<ComboData>();
-
-        // New combo data
-        ComboData comboData = new ComboData();
+        ComboDatabase comboDatabase = new ComboDatabase();
 
         bool isScript = false;
 
         string script = string.Empty;
 
-        for (int i = 0; i < lines.Length; i++)
+        // Comment remover
+
+        // Nowaday rAthena use YAML for combo database, but it still had /* and */
+        // Then just keep these for unexpected error
+
+        for (int i = 0; i < comboDatabases.Length; i++)
         {
-            var text = lines[i];
-            //Debug.Log("Line:" + i + " >> text:" + text);
+            var text = CommentRemover.FixCommentSeperateLine(comboDatabases, i);
 
-            // Comment remover
-            if (text.Contains("//"))
-                text = string.Empty;
-
-            int retry = 30;
-
-            // Unexpected error
-            if (lines[i].Contains("/*") && !lines[i].Contains("*/"))
-            {
-                int retryUnexpected = 30;
-                while (retryUnexpected > 0)
-                {
-                    retryUnexpected--;
-
-                    int incrementCommentCheck = 1;
-                    if ((i + incrementCommentCheck < lines.Length)
-                        && lines[i + incrementCommentCheck].Contains("*/"))
-                    {
-                        while (incrementCommentCheck > 0)
-                        {
-                            lines[i + incrementCommentCheck] = string.Empty;
-                            incrementCommentCheck--;
-                        }
-                    }
-                    else
-                        incrementCommentCheck++;
-                }
-            }
-
-            while (text.Contains("/*"))
-            {
-                var copier = text;
-                if (!copier.Contains("*/"))
-                    text = copier.Substring(0, copier.IndexOf("/*"));
-                else
-                    text = copier.Substring(0, copier.IndexOf("/*")) + copier.Substring(copier.IndexOf("*/") + 2);
-                retry--;
-                if (retry <= 0)
-                    break;
-            }
-
-            retry = 30;
-            while (text.Contains("*/"))
-            {
-                text = text.Replace("*/", string.Empty);
-                retry--;
-                if (retry <= 0)
-                    break;
-            }
-
-            text = text.Replace("\\", string.Empty);
-            //Debug.Log(text);
-
-            text = RemoveCommentAndUnwantedWord(text); // Fetch combo
-
-            // New combo data
             if (text.Contains("- Combos:"))
             {
-                comboData = new ComboData();
-                comboDatas.Add(comboData);
+                comboDatabase = new ComboDatabase();
+
+                _comboDatabases.Add(comboDatabase);
+
                 isScript = false;
+
                 script = string.Empty;
             }
-            // New same combo data
             else if (text.Contains("- Combo:"))
-                comboData.sameComboDatas.Add(new ComboData.SameComboData());
-            // Name
+                comboDatabase.sameComboDatas.Add(new ComboDatabase.SameComboData());
             else if (text.Contains("          - "))
-                comboData.sameComboDatas[comboData.sameComboDatas.Count - 1].aegis_names.Add(RemoveSpace(RemoveQuote(text.Replace("          - ", string.Empty))));
-            // Description
+                comboDatabase.sameComboDatas[comboDatabase.sameComboDatas.Count - 1].aegisNames.Add(RemoveSpace(RemoveQuote(text.Replace("          - ", string.Empty))));
             else if (text.Contains("Script: |"))
                 isScript = true;
             else if (isScript)
             {
-                var sum = ConvertItemBonus(text);
-                if (!string.IsNullOrEmpty(sum))
-                    script += "			\"" + sum + "\",\n";
-                // Check if next line is new combo data or last line
-                if ((i + 1) >= lines.Length || lines[i + 1].Contains("- Combos:"))
-                    comboData.descriptions.Add(script);
+                var comboScript = ConvertItemBonus(text);
+
+                if (!string.IsNullOrEmpty(comboScript))
+                    script += "			\"" + comboScript + "\",\n";
+
+                // Is reach last line or next line is new combo database?
+                // Cutoff and add combo scripts now
+                if ((i + 1) >= comboDatabases.Length
+                    || comboDatabases[i + 1].Contains("- Combos:"))
+                    comboDatabase.descriptions.Add(script);
             }
         }
-        Debug.Log("comboDatas.Count:" + comboDatas.Count);
+
+        Debug.Log("There are " + _comboDatabases.Count + " combo database.");
     }
-
-    List<ComboData> comboDatas = new List<ComboData>();
-
-    [Serializable]
-    public class ComboData
+    /// <summary>
+    /// Parse item database file into converter (Only store ID, Name), also parse into item list
+    /// </summary>
+    public void FetchItem()
     {
-        [Serializable]
-        public class SameComboData
+        var path = Application.dataPath + "/Assets/item_db_equip.yml";
+        var path2 = Application.dataPath + "/Assets/item_db_usable.yml";
+        var path3 = Application.dataPath + "/Assets/item_db_etc.yml";
+        var path4 = Application.dataPath + "/Assets/item_db_custom.txt";
+
+        // Is file exists?
+        if (!File.Exists(path))
         {
-            public List<string> aegis_names = new List<string>();
+            _errorLog = path + " is not exists";
+
+            Debug.Log(_errorLog);
+
+            _isFilesError = true;
+
+            return;
         }
-
-        public List<SameComboData> sameComboDatas = new List<SameComboData>();
-
-        public List<string> descriptions = new List<string>();
-
-        public bool IsAegisNameContain(string aegis_name)
+        else if (!File.Exists(path2))
         {
-            for (int i = 0; i < sameComboDatas.Count; i++)
-            {
-                if (sameComboDatas[i].aegis_names.Contains(aegis_name))
-                    return true;
-            }
-            return false;
+            _errorLog = path2 + " is not exists";
+
+            Debug.Log(_errorLog);
+
+            _isFilesError = true;
+
+            return;
         }
-    }
-
-    [Button]
-    public void FetchIdName()
-    {
-        if (!File.Exists(Application.dataPath + "/Assets/item_db_equip.yml")
-            || !File.Exists(Application.dataPath + "/Assets/item_db_usable.yml")
-            || !File.Exists(Application.dataPath + "/Assets/item_db_etc.yml"))
+        else if (!File.Exists(path3))
         {
-            isConvertError = true;
+            _errorLog = path3 + " is not exists";
+
+            Debug.Log(_errorLog);
+
+            _isFilesError = true;
+
+            return;
+        }
+        else if (!File.Exists(path4))
+        {
+            _errorLog = path4 + " is not exists";
+
+            Debug.Log(_errorLog);
+
+            _isFilesError = true;
+
             return;
         }
 
-        var allTextAsset = File.ReadAllText(Application.dataPath + "/Assets/item_db_equip.yml") + "\n"
-            + File.ReadAllText(Application.dataPath + "/Assets/item_db_usable.yml") + "\n"
-            + File.ReadAllText(Application.dataPath + "/Assets/item_db_etc.yml") + "\n"
-            + (File.Exists(Application.dataPath + "/Assets/item_db_custom.txt") ? File.ReadAllText(Application.dataPath + "/Assets/item_db_custom.txt") : string.Empty);
-        var lines = allTextAsset.Split('\n');
-        idNameDatas = new List<IdNameData>();
-        weaponIds = new List<string>();
-        equipmentIds = new List<string>();
-        costumeIds = new List<string>();
-        cardIds = new List<string>();
-        enchantIds = new List<string>();
-        petEggIds = new List<string>();
-        petArmorIds = new List<string>();
-        fashionCostumeIds = new List<string>();
-        buffItemIds = new List<string>();
-        allItemIds = new List<string>();
-        IdNameData idNameData = new IdNameData();
+        var itemDatabasesFile = File.ReadAllText(path) + "\n"
+            + File.ReadAllText(path2) + "\n"
+            + File.ReadAllText(path3) + "\n"
+            + File.ReadAllText(path4);
+
+        var itemDatabases = itemDatabasesFile.Split('\n');
+
+        _itemDatabases = new List<ItemDatabase>();
+
+        _itemListContainer = new ItemListContainer();
+
+        ItemDatabase itemDatabase = new ItemDatabase();
+
+        string _id = string.Empty;
+
+        string _name = string.Empty;
+
         bool isArmor = false;
-        for (int i = 0; i < lines.Length; i++)
+
+        for (int i = 0; i < itemDatabases.Length; i++)
         {
-            var text = lines[i];
+            var text = itemDatabases[i];
 
-            text = RemoveCommentAndUnwantedWord(text); // Fetch id and name
+            text = CommentRemover.Fix(text);
 
-            // Skip these
+            text = LineEndingsRemover.Fix(text);
+
+            // Skip
             if (text.Contains("    Buy:")
                 || text.Contains("    Sell:")
                 || text.Contains("    Jobs:")
@@ -983,96 +991,67 @@ public class Converter : MonoBehaviour
                 || text.Contains("    NoAuction:")
                 || text.Contains("    Script:")
                 || text.Contains("    OnEquip_Script:")
-                || text.Contains("    OnUnequip_Script:")
-                )
-                text = string.Empty;
+                || text.Contains("    OnUnequip_Script:"))
+                continue;
 
-            // Id
             if (text.Contains("  - Id:"))
             {
                 text = RemoveSpace(text);
-                id = text.Replace("-Id:", string.Empty);
-                idNameData.id = int.Parse(id);
 
-                allItemIds.Add(id);
+                _id = text.Replace("-Id:", string.Empty);
+
+                itemDatabase.id = int.Parse(_id);
+
+                _itemListContainer.allItemIds.Add(_id);
             }
-            // Aegis Name
             else if (text.Contains("    AegisName:"))
             {
+                text = RemoveQuote(text);
+
                 _name = text.Replace("    AegisName: ", string.Empty);
-                _name = RemoveQuote(_name);
-                idNameData.aegisName = _name;
+
+                itemDatabase.aegisName = _name;
             }
-            // Name
             else if (text.Contains("    Name:"))
             {
+                text = RemoveQuote(text);
+
                 _name = text.Replace("    Name: ", string.Empty);
-                _name = RemoveQuote(_name);
-                idNameData._name = _name;
-                idNameDatas.Add(idNameData);
-                idNameData = new IdNameData();
+
+                itemDatabase.name = _name;
+
+                _itemDatabases.Add(itemDatabase);
+
+                itemDatabase = new ItemDatabase();
             }
-            // Type
             else if (text.Contains("    Type:"))
             {
-                text = text.Replace("    Type: ", string.Empty);
                 text = RemoveQuote(text);
+
                 text = RemoveSpace(text);
+
+                text = text.Replace("Type:", string.Empty);
+
                 isArmor = false;
+
                 if (text.ToLower() == "weapon")
-                    weaponIds.Add(id);
+                    _itemListContainer.weaponIds.Add(_id);
                 else if (text.ToLower() == "armor")
                     isArmor = true;
-                else if (text.ToLower() == "card" && _name.ToLower().Contains(" card"))
-                    cardIds.Add(id);
-                else if (text.ToLower() == "card" && !_name.ToLower().Contains(" card"))
-                    enchantIds.Add(id);
+                else if ((text.ToLower() == "card")
+                    && _name.ToLower().Contains(" card"))
+                    _itemListContainer.cardIds.Add(_id);
+                else if ((text.ToLower() == "card")
+                    && !_name.ToLower().Contains(" card"))
+                    _itemListContainer.enchantIds.Add(_id);
             }
             // Locations
             else if (isArmor)
             {
                 text = RemoveQuote(text);
-                text = RemoveSpace(text);
-                if (text.ToLower().Contains("costume_head_top")
-                   || text.ToLower().Contains("costume_head_mid")
-                   || text.ToLower().Contains("costume_head_low")
-                   || text.ToLower().Contains("costume_garment")
-                   || text.ToLower().Contains("shadow_armor")
-                   || text.ToLower().Contains("shadow_weapon")
-                   || text.ToLower().Contains("shadow_shield")
-                   || text.ToLower().Contains("shadow_shoes")
-                   || text.ToLower().Contains("shadow_right_accessory")
-                   || text.ToLower().Contains("shadow_left_accessory")
-                   )
-                {
-                    costumeIds.Add(id);
 
-                    // Always clear isArmor
-                    isArmor = false;
-                }
-                else if (text.ToLower().Contains("head_top")
-                   || text.ToLower().Contains("head_mid")
-                   || text.ToLower().Contains("head_low")
-                   || text.ToLower().Contains("armor")
-                   || text.ToLower().Contains("left_hand")
-                   || text.ToLower().Contains("garment")
-                   || text.ToLower().Contains("shoes")
-                   || text.ToLower().Contains("right_accessory")
-                   || text.ToLower().Contains("left_accessory")
-                   || text.ToLower().Contains("both_accessory")
-                   )
-                {
-                    equipmentIds.Add(id);
-
-                    // Always clear isArmor
-                    isArmor = false;
-                }
-            }
-            // Locations
-            else if (!isArmor)
-            {
-                text = RemoveQuote(text);
                 text = RemoveSpace(text);
+
                 if (text.ToLower().Contains("costume_head_top")
                     || text.ToLower().Contains("costume_head_mid")
                     || text.ToLower().Contains("costume_head_low")
@@ -1082,211 +1061,112 @@ public class Converter : MonoBehaviour
                     || text.ToLower().Contains("shadow_shield")
                     || text.ToLower().Contains("shadow_shoes")
                     || text.ToLower().Contains("shadow_right_accessory")
-                    || text.ToLower().Contains("shadow_left_accessory")
-                    )
+                    || text.ToLower().Contains("shadow_left_accessory"))
                 {
-                    costumeIds.Add(id);
+                    _itemListContainer.costumeIds.Add(_id);
+
+                    // Always clear isArmor
+                    isArmor = false;
+                }
+                else if (text.ToLower().Contains("head_top")
+                    || text.ToLower().Contains("head_mid")
+                    || text.ToLower().Contains("head_low")
+                    || text.ToLower().Contains("armor")
+                    || text.ToLower().Contains("left_hand")
+                    || text.ToLower().Contains("garment")
+                    || text.ToLower().Contains("shoes")
+                    || text.ToLower().Contains("right_accessory")
+                    || text.ToLower().Contains("left_accessory")
+                    || text.ToLower().Contains("both_accessory"))
+                {
+                    _itemListContainer.equipmentIds.Add(_id);
 
                     // Always clear isArmor
                     isArmor = false;
                 }
             }
+            // Locations
+            else
+            {
+                text = RemoveQuote(text);
+
+                text = RemoveSpace(text);
+
+                if (text.ToLower().Contains("costume_head_top")
+                    || text.ToLower().Contains("costume_head_mid")
+                    || text.ToLower().Contains("costume_head_low")
+                    || text.ToLower().Contains("costume_garment")
+                    || text.ToLower().Contains("shadow_armor")
+                    || text.ToLower().Contains("shadow_weapon")
+                    || text.ToLower().Contains("shadow_shield")
+                    || text.ToLower().Contains("shadow_shoes")
+                    || text.ToLower().Contains("shadow_right_accessory")
+                    || text.ToLower().Contains("shadow_left_accessory"))
+                    _itemListContainer.costumeIds.Add(_id);
+            }
         }
 
-        Debug.Log("idNameDatas.Count:" + idNameDatas.Count);
-        Debug.Log("weaponIds.Count:" + weaponIds.Count);
-        Debug.Log("equipmentIds.Count:" + equipmentIds.Count);
-        Debug.Log("costumeIds.Count:" + costumeIds.Count);
-        Debug.Log("cardIds.Count:" + cardIds.Count);
-        Debug.Log("enchantIds.Count:" + enchantIds.Count);
-        Debug.Log("allItemIds.Count:" + allItemIds.Count);
+        Debug.Log("There are " + _itemDatabases.Count + " item database.");
+        Debug.Log("There are " + _itemListContainer.weaponIds.Count + " weapon database.");
+        Debug.Log("There are " + _itemListContainer.equipmentIds.Count + " equipment database.");
+        Debug.Log("There are " + _itemListContainer.costumeIds.Count + " costume database.");
+        Debug.Log("There are " + _itemListContainer.cardIds.Count + " card database.");
+        Debug.Log("There are " + _itemListContainer.enchantIds.Count + " enchant database.");
+        Debug.Log("There are " + _itemListContainer.petEggIds.Count + " pet egg database.");
+        Debug.Log("There are " + _itemListContainer.petArmorIds.Count + " pet armor database.");
+        Debug.Log("There are " + _itemListContainer.fashionCostumeIds.Count + " fashion costume database.");
+        Debug.Log("There are " + _itemListContainer.buffItemIds.Count + " buff item database.");
+        Debug.Log("There are " + _itemListContainer.allItemIds.Count + " item database.");
+        Debug.Log("There are " + _itemListContainer.statsItemIds.Count + " status item database.");
+        Debug.Log("There are " + _itemListContainer.hpSpApItemIds.Count + " hp sp ap item database.");
+        Debug.Log("There are " + _itemListContainer.offensiveItemIds.Count + " offensive item database.");
+        Debug.Log("There are " + _itemListContainer.defensiveItemIds.Count + " defensive item database.");
+        Debug.Log("There are " + _itemListContainer.specialItemIds.Count + " special item database.");
+        Debug.Log("There are " + _itemListContainer.castItemIds.Count + " cast item database.");
+        Debug.Log("There are " + _itemListContainer.effectItemIds.Count + " effect item database.");
+        Debug.Log("There are " + _itemListContainer.autoSpellItemIds.Count + " auto spell item database.");
+        Debug.Log("There are " + _itemListContainer.comboItemIds.Count + " combo item database.");
     }
 
-    List<IdNameData> idNameDatas = new List<IdNameData>();
+    // Converting
 
-    [Serializable]
-    public class IdNameData
-    {
-        public int id;
-        public string aegisName;
-        public string _name;
-    }
-
-    [SerializeField] Text txtProgression;
-    [SerializeField] Button btnConvert;
-    [SerializeField] Button btnCredit;
-    void Start()
-    {
-        btnConvert.onClick.AddListener(OnConvertButtonTap);
-        btnCredit.onClick.AddListener(OnCreditButtonTap);
-    }
-    void OnCreditButtonTap()
-    {
-        Application.OpenURL("https://kanintemsrisukgames.wordpress.com/2019/04/05/support-kt-games/");
-    }
-    [SerializeField] GameObject objConvertBtn;
-    [SerializeField] GameObject objConvertProgression;
-    [SerializeField] Text txtConvertProgression;
-    void OnConvertButtonTap()
-    {
-        objConvertBtn.SetActive(false);
-
-        StartCoroutine(StandAloneConvert());
-    }
-    public IEnumerator StandAloneConvert()
-    {
-        objConvertProgression.SetActive(true);
-        txtConvertProgression.text = "Starting now...";
-
-        isConvertError = false;
-
-        yield return new WaitForSeconds(1);
-
-        txtConvertProgression.text = "Fetching id and name data...";
-        yield return null;
-        FetchIdName();
-        if (isConvertError)
-        {
-            txtConvertProgression.text = "<color=red>Error</color> - Fetching id and name data...";
-            yield break;
-        }
-
-        yield return new WaitForSeconds(1);
-
-        txtConvertProgression.text = "Fetching resource name data...";
-        yield return null;
-        FetchResourceName();
-        if (isConvertError)
-        {
-            txtConvertProgression.text = "<color=red>Error</color> - Fetching resource name data...";
-            yield break;
-        }
-
-        yield return new WaitForSeconds(1);
-
-        txtConvertProgression.text = "Fetching skill data...";
-        yield return null;
-        FetchSkill();
-        if (isConvertError)
-        {
-            txtConvertProgression.text = "<color=red>Error</color> - Fetching skill data...";
-            yield break;
-        }
-
-        yield return new WaitForSeconds(1);
-
-        txtConvertProgression.text = "Fetching class number data...";
-        yield return null;
-        FetchClassNum();
-        if (isConvertError)
-        {
-            txtConvertProgression.text = "<color=red>Error</color> - Fetching class number data...";
-            yield break;
-        }
-
-        yield return new WaitForSeconds(1);
-
-        txtConvertProgression.text = "Fetching monster name data...";
-        yield return null;
-        FetchMonsterName();
-        if (isConvertError)
-        {
-            txtConvertProgression.text = "<color=red>Error</color> - Fetching monster name data...";
-            yield break;
-        }
-
-        yield return new WaitForSeconds(1);
-
-        txtConvertProgression.text = "Fetching combo data...";
-        yield return null;
-        FetchCombo();
-        if (isConvertError)
-        {
-            txtConvertProgression.text = "<color=red>Error</color> - Fetching combo data...";
-            yield break;
-        }
-
-        yield return new WaitForSeconds(1);
-
-        txtConvertProgression.text = "Please wait around 1 minutes.";
-
-        yield return new WaitForSeconds(1);
-
-        Invoke("Convert", 1);
-    }
-
-    [SerializeField] bool isRandomizeResourceName;
-    [SerializeField] bool isRandomizeResourceNameCustomItemOnly;
-
-    void CleanTypeItemIds()
-    {
-        statsItemIds = new List<string>();
-        hpSpApItemIds = new List<string>();
-        offensiveItemIds = new List<string>();
-        defensiveItemIds = new List<string>();
-        specialItemIds = new List<string>();
-        castItemIds = new List<string>();
-        effectItemIds = new List<string>();
-        autoSpellItemIds = new List<string>();
-
-        comboItemIds = new List<string>();
-    }
-
-    [Button]
     public void Convert()
     {
-        Debug.Log(DateTime.UtcNow);
+        var path = Application.dataPath + "/Assets/item_db_equip.yml";
+        var path2 = Application.dataPath + "/Assets/item_db_usable.yml";
+        var path3 = Application.dataPath + "/Assets/item_db_etc.yml";
+        var path4 = Application.dataPath + "/Assets/item_db_custom.txt";
+        var path5 = Application.dataPath + "/Assets/item_db_test.txt";
 
-        CleanTypeItemIds();
+        var itemDatabasesFile = File.ReadAllText(path) + "\n"
+            + File.ReadAllText(path2) + "\n"
+            + File.ReadAllText(path3) + "\n"
+            + File.ReadAllText(path4);
 
-        Clean();
+        if (_isUseTestTextAsset
+            && File.Exists(path5))
+            itemDatabasesFile = File.ReadAllText(path5);
+
+        if (_isOnlyUseCustomTextAsset)
+            itemDatabasesFile = File.ReadAllText(path4);
+
+        var itemDatabases = itemDatabasesFile.Split('\n');
+
+        _itemContainer = new ItemContainer();
 
         StringBuilder builder = new StringBuilder();
-        var allTextAsset = File.ReadAllText(Application.dataPath + "/Assets/item_db_equip.yml") + "\n"
-            + File.ReadAllText(Application.dataPath + "/Assets/item_db_usable.yml") + "\n"
-            + File.ReadAllText(Application.dataPath + "/Assets/item_db_etc.yml") + "\n"
-            + (File.Exists(Application.dataPath + "/Assets/item_db_custom.txt") ? File.ReadAllText(Application.dataPath + "/Assets/item_db_custom.txt") : string.Empty);
-        if (isOnlyUseCustomTextAsset)
-            allTextAsset = File.ReadAllText(Application.dataPath + "/Assets/item_db_custom.txt");
-        var lines = allTextAsset.Split('\n');
-        if (isUseTestTextAsset)
-            lines = File.ReadAllText(Application.dataPath + "/Assets/item_db_test.txt").Split('\n');
-        for (int i = 0; i < lines.Length; i++)
+
+        for (int i = 0; i < itemDatabases.Length; i++)
         {
-            // Unexpected error
-            if (lines[i].Contains("/*") && !lines[i].Contains("*/"))
-            {
-                int retryUnexpected = 30;
-                while (retryUnexpected > 0)
-                {
-                    retryUnexpected--;
+            var text = CommentRemover.FixCommentSeperateLine(itemDatabases, i);
 
-                    int incrementCommentCheck = 1;
-                    if ((i + incrementCommentCheck < lines.Length)
-                        && lines[i + incrementCommentCheck].Contains("*/"))
-                    {
-                        while (incrementCommentCheck > 0)
-                        {
-                            lines[i + incrementCommentCheck] = string.Empty;
-                            incrementCommentCheck--;
-                        }
-                    }
-                    else
-                        incrementCommentCheck++;
-                }
-            }
+            var nextText = ((i + 1) < itemDatabases.Length) ? itemDatabases[i + 1] : string.Empty;
 
-            var text = lines[i];
-
-            text = RemoveCommentAndUnwantedWord(text); // Convert
-
-            var nextText = i + 1 < lines.Length ? lines[i + 1] : string.Empty;
-            var nextNextText = i + 2 < lines.Length ? lines[i + 2] : string.Empty;
+            var nextNextText = ((i + 2) < itemDatabases.Length) ? itemDatabases[i + 2] : string.Empty;
 
             #region Description
-            // Skip these
+            // Skip
             if (text.Contains("    AegisName:")
-                //|| text.Contains("    Buy:")
                 || text.Contains("    Sell:")
                 || text.Contains("    Jobs:")
                 || text.Contains("    Classes:")
@@ -1325,469 +1205,468 @@ public class Converter : MonoBehaviour
                 || text.Contains("    NoAuction:")
                 || text.Contains("    Script:")
                 || text.Contains("    OnEquip_Script:")
-                || text.Contains("    OnUnequip_Script:")
-                )
+                || text.Contains("    OnUnequip_Script:"))
             {
                 if (text.Contains("    Jobs:"))
                 {
-                    isJob = true;
-                    isClass = false;
-                    isScript = false;
-                    isEquipScript = false;
-                    isUnEquipScript = false;
+                    _itemContainer.isJob = true;
+                    _itemContainer.isClass = false;
+                    _itemContainer.isScript = false;
+                    _itemContainer.isEquipScript = false;
+                    _itemContainer.isUnequipScript = false;
                 }
                 if (text.Contains("    Classes:"))
                 {
-                    isJob = false;
-                    isClass = true;
-                    isScript = false;
-                    isEquipScript = false;
-                    isUnEquipScript = false;
+                    _itemContainer.isJob = false;
+                    _itemContainer.isClass = true;
+                    _itemContainer.isScript = false;
+                    _itemContainer.isEquipScript = false;
+                    _itemContainer.isUnequipScript = false;
                 }
                 if (text.Contains("    Script:"))
                 {
-                    isJob = false;
-                    isClass = false;
-                    isScript = true;
-                    isEquipScript = false;
-                    isUnEquipScript = false;
+                    _itemContainer.isJob = false;
+                    _itemContainer.isClass = false;
+                    _itemContainer.isScript = true;
+                    _itemContainer.isEquipScript = false;
+                    _itemContainer.isUnequipScript = false;
                 }
                 if (text.Contains("    OnEquip_Script:"))
                 {
-                    isJob = false;
-                    isClass = false;
-                    isScript = false;
-                    isEquipScript = true;
-                    isUnEquipScript = false;
+                    _itemContainer.isJob = false;
+                    _itemContainer.isClass = false;
+                    _itemContainer.isScript = false;
+                    _itemContainer.isEquipScript = true;
+                    _itemContainer.isUnequipScript = false;
                 }
                 if (text.Contains("    OnUnequip_Script:"))
                 {
-                    isJob = false;
-                    isClass = false;
-                    isScript = false;
-                    isEquipScript = false;
-                    isUnEquipScript = true;
+                    _itemContainer.isJob = false;
+                    _itemContainer.isClass = false;
+                    _itemContainer.isScript = false;
+                    _itemContainer.isEquipScript = false;
+                    _itemContainer.isUnequipScript = true;
                 }
 
-                text = string.Empty;
+                continue;
             }
 
             // Id
             if (text.Contains("  - Id:"))
             {
                 text = RemoveSpace(text);
-                id = text.Replace("-Id:", string.Empty);
+                _itemContainer.id = text.Replace("-Id:", string.Empty);
             }
             // Name
             else if (text.Contains("    Name:"))
             {
-                _name = text.Replace("    Name: ", string.Empty);
-                _name = RemoveQuote(_name);
+                _itemContainer.name = text.Replace("    Name: ", string.Empty);
+                _itemContainer.name = RemoveQuote(_itemContainer.name);
             }
             // Type
             else if (text.Contains("    Type:"))
             {
-                type = text.Replace("    Type: ", string.Empty);
+                _itemContainer.type = text.Replace("    Type: ", string.Empty);
 
-                if (!string.IsNullOrEmpty(type))
+                if (!string.IsNullOrEmpty(_itemContainer.type))
                 {
-                    if ((type.ToLower() == "petegg")
-                        && !petEggIds.Contains(id))
-                        petEggIds.Add(id);
-                    else if ((type.ToLower() == "petarmor")
-                        && !petArmorIds.Contains(id))
-                        petArmorIds.Add(id);
+                    if ((_itemContainer.type.ToLower() == "petegg")
+                        && !_itemListContainer.petEggIds.Contains(_itemContainer.id))
+                        _itemListContainer.petEggIds.Add(_itemContainer.id);
+                    else if ((_itemContainer.type.ToLower() == "petarmor")
+                        && !_itemListContainer.petArmorIds.Contains(_itemContainer.id))
+                        _itemListContainer.petArmorIds.Add(_itemContainer.id);
                 }
             }
             // SubType
             else if (text.Contains("    SubType:"))
-                subType = text.Replace("    SubType: ", string.Empty);
+                _itemContainer.subType = text.Replace("    SubType: ", string.Empty);
             // Buy
             else if (text.Contains("    Buy:"))
             {
                 text = text.Replace("    Buy: ", string.Empty);
                 int b = 0;
                 if (int.TryParse(text, out b))
-                    buy = b.ToString("n0");
+                    _itemContainer.buy = b.ToString("n0");
                 else
-                    buy = TryParseInt(text);
+                    _itemContainer.buy = TryParseInt(text);
             }
             // Weight
             else if (text.Contains("    Weight:"))
             {
                 text = text.Replace("    Weight: ", string.Empty);
-                weight = TryParseInt(text, 10);
+                _itemContainer.weight = TryParseInt(text, 10);
             }
             // Attack
             else if (text.Contains("    Attack:"))
-                atk = text.Replace("    Attack: ", string.Empty);
+                _itemContainer.attack = text.Replace("    Attack: ", string.Empty);
             // Magic Attack
             else if (text.Contains("    MagicAttack:"))
-                mAtk = text.Replace("    MagicAttack: ", string.Empty);
+                _itemContainer.magicAttack = text.Replace("    MagicAttack: ", string.Empty);
             // Defense
             else if (text.Contains("    Defense:"))
-                def = text.Replace("    Defense: ", string.Empty);
+                _itemContainer.defense = text.Replace("    Defense: ", string.Empty);
             // Range
             else if (text.Contains("    Range:"))
-                atkRange = text.Replace("    Range: ", string.Empty);
+                _itemContainer.range = text.Replace("    Range: ", string.Empty);
             // Slots
             else if (text.Contains("    Slots:"))
-                slots = text.Replace("    Slots: ", string.Empty);
+                _itemContainer.slots = text.Replace("    Slots: ", string.Empty);
             // Jobs
             #region Jobs
-            else if (isJob && text.Contains("      All: true"))
-                jobs += "ทุกอาชีพ, ";
-            else if (isJob && text.Contains("      All: false"))
-                jobs += "ทุกอาชีพ [x], ";
-            else if (isJob && text.Contains("      Acolyte: true"))
-                jobs += "Acolyte, ";
-            else if (isJob && text.Contains("      Acolyte: false"))
-                jobs += "Acolyte [x], ";
-            else if (isJob && text.Contains("      Alchemist: true"))
-                jobs += "Alchemist, ";
-            else if (isJob && text.Contains("      Alchemist: false"))
-                jobs += "Alchemist [x], ";
-            else if (isJob && text.Contains("      Archer: true"))
-                jobs += "Archer, ";
-            else if (isJob && text.Contains("      Archer: false"))
-                jobs += "Archer [x], ";
-            else if (isJob && text.Contains("      Assassin: true"))
-                jobs += "Assassin, ";
-            else if (isJob && text.Contains("      Assassin: false"))
-                jobs += "Assassin [x], ";
-            else if (isJob && text.Contains("      BardDancer: true"))
-                jobs += "Bard & Dancer, ";
-            else if (isJob && text.Contains("      BardDancer: false"))
-                jobs += "Bard & Dancer [x], ";
-            else if (isJob && text.Contains("      Blacksmith: true"))
-                jobs += "Blacksmith, ";
-            else if (isJob && text.Contains("      Blacksmith: false"))
-                jobs += "Blacksmith [x], ";
-            else if (isJob && text.Contains("      Crusader: true"))
-                jobs += "Crusader, ";
-            else if (isJob && text.Contains("      Crusader: false"))
-                jobs += "Crusader [x], ";
-            else if (isJob && text.Contains("      Gunslinger: true"))
-                jobs += "Gunslinger, ";
-            else if (isJob && text.Contains("      Gunslinger: false"))
-                jobs += "Gunslinger [x], ";
-            else if (isJob && text.Contains("      Hunter: true"))
-                jobs += "Hunter, ";
-            else if (isJob && text.Contains("      Hunter: false"))
-                jobs += "Hunter [x], ";
-            else if (isJob && text.Contains("      KagerouOboro: true"))
-                jobs += "Kagerou & Oboro, ";
-            else if (isJob && text.Contains("      KagerouOboro: false"))
-                jobs += "Kagerou & Oboro [x], ";
-            else if (isJob && text.Contains("      Knight: true"))
-                jobs += "Knight, ";
-            else if (isJob && text.Contains("      Knight: false"))
-                jobs += "Knight [x], ";
-            else if (isJob && text.Contains("      Mage: true"))
-                jobs += "Mage, ";
-            else if (isJob && text.Contains("      Mage: false"))
-                jobs += "Mage [x], ";
-            else if (isJob && text.Contains("      Merchant: true"))
-                jobs += "Merchant, ";
-            else if (isJob && text.Contains("      Merchant: false"))
-                jobs += "Merchant [x], ";
-            else if (isJob && text.Contains("      Monk: true"))
-                jobs += "Monk, ";
-            else if (isJob && text.Contains("      Monk: false"))
-                jobs += "Monk [x], ";
-            else if (isJob && text.Contains("      Ninja: true"))
-                jobs += "Ninja, ";
-            else if (isJob && text.Contains("      Ninja: false"))
-                jobs += "Ninja [x], ";
-            else if (isJob && text.Contains("      Novice: true"))
-                jobs += "Novice, ";
-            else if (isJob && text.Contains("      Novice: false"))
-                jobs += "Novice [x], ";
-            else if (isJob && text.Contains("      Priest: true"))
-                jobs += "Priest, ";
-            else if (isJob && text.Contains("      Priest: false"))
-                jobs += "Priest [x], ";
-            else if (isJob && text.Contains("      Rebellion: true"))
-                jobs += "Rebellion, ";
-            else if (isJob && text.Contains("      Rebellion: false"))
-                jobs += "Rebellion [x], ";
-            else if (isJob && text.Contains("      Rogue: true"))
-                jobs += "Rogue, ";
-            else if (isJob && text.Contains("      Rogue: false"))
-                jobs += "Rogue [x], ";
-            else if (isJob && text.Contains("      Sage: true"))
-                jobs += "Sage, ";
-            else if (isJob && text.Contains("      Sage: false"))
-                jobs += "Sage [x], ";
-            else if (isJob && text.Contains("      SoulLinker: true"))
-                jobs += "Soul Linker, ";
-            else if (isJob && text.Contains("      SoulLinker: false"))
-                jobs += "Soul Linker [x], ";
-            else if (isJob && text.Contains("      StarGladiator: true"))
-                jobs += "Star Gladiator, ";
-            else if (isJob && text.Contains("      StarGladiator: false"))
-                jobs += "Star Gladiator [x], ";
-            else if (isJob && text.Contains("      Summoner: true"))
-                jobs += "Summoner, ";
-            else if (isJob && text.Contains("      Summoner: false"))
-                jobs += "Summoner [x], ";
-            else if (isJob && text.Contains("      SuperNovice: true"))
-                jobs += "Super Novice, ";
-            else if (isJob && text.Contains("      SuperNovice: false"))
-                jobs += "Super Novice [x], ";
-            else if (isJob && text.Contains("      Swordman: true"))
-                jobs += "Swordman, ";
-            else if (isJob && text.Contains("      Swordman: false"))
-                jobs += "Swordman [x], ";
-            else if (isJob && text.Contains("      Taekwon: true"))
-                jobs += "Taekwon, ";
-            else if (isJob && text.Contains("      Taekwon: false"))
-                jobs += "Taekwon [x], ";
-            else if (isJob && text.Contains("      Thief: true"))
-                jobs += "Thief, ";
-            else if (isJob && text.Contains("      Thief: false"))
-                jobs += "Thief [x], ";
-            else if (isJob && text.Contains("      Wizard: true"))
-                jobs += "Wizard, ";
-            else if (isJob && text.Contains("      Wizard: false"))
-                jobs += "Wizard [x], ";
+            else if (_itemContainer.isJob && text.Contains("      All: true"))
+                _itemContainer.jobs += "ทุกอาชีพ, ";
+            else if (_itemContainer.isJob && text.Contains("      All: false"))
+                _itemContainer.jobs += "ทุกอาชีพ [x], ";
+            else if (_itemContainer.isJob && text.Contains("      Acolyte: true"))
+                _itemContainer.jobs += "Acolyte, ";
+            else if (_itemContainer.isJob && text.Contains("      Acolyte: false"))
+                _itemContainer.jobs += "Acolyte [x], ";
+            else if (_itemContainer.isJob && text.Contains("      Alchemist: true"))
+                _itemContainer.jobs += "Alchemist, ";
+            else if (_itemContainer.isJob && text.Contains("      Alchemist: false"))
+                _itemContainer.jobs += "Alchemist [x], ";
+            else if (_itemContainer.isJob && text.Contains("      Archer: true"))
+                _itemContainer.jobs += "Archer, ";
+            else if (_itemContainer.isJob && text.Contains("      Archer: false"))
+                _itemContainer.jobs += "Archer [x], ";
+            else if (_itemContainer.isJob && text.Contains("      Assassin: true"))
+                _itemContainer.jobs += "Assassin, ";
+            else if (_itemContainer.isJob && text.Contains("      Assassin: false"))
+                _itemContainer.jobs += "Assassin [x], ";
+            else if (_itemContainer.isJob && text.Contains("      BardDancer: true"))
+                _itemContainer.jobs += "Bard & Dancer, ";
+            else if (_itemContainer.isJob && text.Contains("      BardDancer: false"))
+                _itemContainer.jobs += "Bard & Dancer [x], ";
+            else if (_itemContainer.isJob && text.Contains("      Blacksmith: true"))
+                _itemContainer.jobs += "Blacksmith, ";
+            else if (_itemContainer.isJob && text.Contains("      Blacksmith: false"))
+                _itemContainer.jobs += "Blacksmith [x], ";
+            else if (_itemContainer.isJob && text.Contains("      Crusader: true"))
+                _itemContainer.jobs += "Crusader, ";
+            else if (_itemContainer.isJob && text.Contains("      Crusader: false"))
+                _itemContainer.jobs += "Crusader [x], ";
+            else if (_itemContainer.isJob && text.Contains("      Gunslinger: true"))
+                _itemContainer.jobs += "Gunslinger, ";
+            else if (_itemContainer.isJob && text.Contains("      Gunslinger: false"))
+                _itemContainer.jobs += "Gunslinger [x], ";
+            else if (_itemContainer.isJob && text.Contains("      Hunter: true"))
+                _itemContainer.jobs += "Hunter, ";
+            else if (_itemContainer.isJob && text.Contains("      Hunter: false"))
+                _itemContainer.jobs += "Hunter [x], ";
+            else if (_itemContainer.isJob && text.Contains("      KagerouOboro: true"))
+                _itemContainer.jobs += "Kagerou & Oboro, ";
+            else if (_itemContainer.isJob && text.Contains("      KagerouOboro: false"))
+                _itemContainer.jobs += "Kagerou & Oboro [x], ";
+            else if (_itemContainer.isJob && text.Contains("      Knight: true"))
+                _itemContainer.jobs += "Knight, ";
+            else if (_itemContainer.isJob && text.Contains("      Knight: false"))
+                _itemContainer.jobs += "Knight [x], ";
+            else if (_itemContainer.isJob && text.Contains("      Mage: true"))
+                _itemContainer.jobs += "Mage, ";
+            else if (_itemContainer.isJob && text.Contains("      Mage: false"))
+                _itemContainer.jobs += "Mage [x], ";
+            else if (_itemContainer.isJob && text.Contains("      Merchant: true"))
+                _itemContainer.jobs += "Merchant, ";
+            else if (_itemContainer.isJob && text.Contains("      Merchant: false"))
+                _itemContainer.jobs += "Merchant [x], ";
+            else if (_itemContainer.isJob && text.Contains("      Monk: true"))
+                _itemContainer.jobs += "Monk, ";
+            else if (_itemContainer.isJob && text.Contains("      Monk: false"))
+                _itemContainer.jobs += "Monk [x], ";
+            else if (_itemContainer.isJob && text.Contains("      Ninja: true"))
+                _itemContainer.jobs += "Ninja, ";
+            else if (_itemContainer.isJob && text.Contains("      Ninja: false"))
+                _itemContainer.jobs += "Ninja [x], ";
+            else if (_itemContainer.isJob && text.Contains("      Novice: true"))
+                _itemContainer.jobs += "Novice, ";
+            else if (_itemContainer.isJob && text.Contains("      Novice: false"))
+                _itemContainer.jobs += "Novice [x], ";
+            else if (_itemContainer.isJob && text.Contains("      Priest: true"))
+                _itemContainer.jobs += "Priest, ";
+            else if (_itemContainer.isJob && text.Contains("      Priest: false"))
+                _itemContainer.jobs += "Priest [x], ";
+            else if (_itemContainer.isJob && text.Contains("      Rebellion: true"))
+                _itemContainer.jobs += "Rebellion, ";
+            else if (_itemContainer.isJob && text.Contains("      Rebellion: false"))
+                _itemContainer.jobs += "Rebellion [x], ";
+            else if (_itemContainer.isJob && text.Contains("      Rogue: true"))
+                _itemContainer.jobs += "Rogue, ";
+            else if (_itemContainer.isJob && text.Contains("      Rogue: false"))
+                _itemContainer.jobs += "Rogue [x], ";
+            else if (_itemContainer.isJob && text.Contains("      Sage: true"))
+                _itemContainer.jobs += "Sage, ";
+            else if (_itemContainer.isJob && text.Contains("      Sage: false"))
+                _itemContainer.jobs += "Sage [x], ";
+            else if (_itemContainer.isJob && text.Contains("      SoulLinker: true"))
+                _itemContainer.jobs += "Soul Linker, ";
+            else if (_itemContainer.isJob && text.Contains("      SoulLinker: false"))
+                _itemContainer.jobs += "Soul Linker [x], ";
+            else if (_itemContainer.isJob && text.Contains("      StarGladiator: true"))
+                _itemContainer.jobs += "Star Gladiator, ";
+            else if (_itemContainer.isJob && text.Contains("      StarGladiator: false"))
+                _itemContainer.jobs += "Star Gladiator [x], ";
+            else if (_itemContainer.isJob && text.Contains("      Summoner: true"))
+                _itemContainer.jobs += "Summoner, ";
+            else if (_itemContainer.isJob && text.Contains("      Summoner: false"))
+                _itemContainer.jobs += "Summoner [x], ";
+            else if (_itemContainer.isJob && text.Contains("      SuperNovice: true"))
+                _itemContainer.jobs += "Super Novice, ";
+            else if (_itemContainer.isJob && text.Contains("      SuperNovice: false"))
+                _itemContainer.jobs += "Super Novice [x], ";
+            else if (_itemContainer.isJob && text.Contains("      Swordman: true"))
+                _itemContainer.jobs += "Swordman, ";
+            else if (_itemContainer.isJob && text.Contains("      Swordman: false"))
+                _itemContainer.jobs += "Swordman [x], ";
+            else if (_itemContainer.isJob && text.Contains("      Taekwon: true"))
+                _itemContainer.jobs += "Taekwon, ";
+            else if (_itemContainer.isJob && text.Contains("      Taekwon: false"))
+                _itemContainer.jobs += "Taekwon [x], ";
+            else if (_itemContainer.isJob && text.Contains("      Thief: true"))
+                _itemContainer.jobs += "Thief, ";
+            else if (_itemContainer.isJob && text.Contains("      Thief: false"))
+                _itemContainer.jobs += "Thief [x], ";
+            else if (_itemContainer.isJob && text.Contains("      Wizard: true"))
+                _itemContainer.jobs += "Wizard, ";
+            else if (_itemContainer.isJob && text.Contains("      Wizard: false"))
+                _itemContainer.jobs += "Wizard [x], ";
             #endregion
             // Classes
             #region Classes
-            else if (isClass && text.Contains("      All: true"))
-                classes += "ทุกคลาส, ";
-            else if (isClass && text.Contains("      All: false"))
-                classes += "ทุกคลาส [x], ";
-            else if (isClass && text.Contains("      Normal: true"))
-                classes += "คลาส 1, ";
-            else if (isClass && text.Contains("      Normal: false"))
-                classes += "คลาส 1 [x], ";
-            else if (isClass && text.Contains("      Upper: true"))
-                classes += "คลาส 2, ";
-            else if (isClass && text.Contains("      Upper: false"))
-                classes += "คลาส 2 [x], ";
-            else if (isClass && text.Contains("      Baby: true"))
-                classes += "คลาส 1 หรือ 2 Baby, ";
-            else if (isClass && text.Contains("      Baby: false"))
-                classes += "คลาส 1 หรือ 2 Baby [x], ";
-            else if (isClass && text.Contains("      Third: true"))
-                classes += "คลาส 3, ";
-            else if (isClass && text.Contains("      Third: false"))
-                classes += "คลาส 3 [x], ";
-            else if (isClass && text.Contains("      Third_Upper: true"))
-                classes += "คลาส 3 Trans, ";
-            else if (isClass && text.Contains("      Third_Upper: false"))
-                classes += "คลาส 3 Trans [x], ";
-            else if (isClass && text.Contains("      Third_Baby: true"))
-                classes += "คลาส 3 Baby, ";
-            else if (isClass && text.Contains("      Third_Baby: false"))
-                classes += "คลาส 3 Baby [x], ";
-            else if (isClass && text.Contains("      All_Upper: true"))
-                classes += "คลาส 2 หรือคลาส 3 Trans, ";
-            else if (isClass && text.Contains("      All_Upper: false"))
-                classes += "คลาส 2 หรือคลาส 3 Trans [x], ";
-            else if (isClass && text.Contains("      All_Baby: true"))
-                classes += "คลาส Baby, ";
-            else if (isClass && text.Contains("      All_Baby: false"))
-                classes += "คลาส Baby [x], ";
-            else if (isClass && text.Contains("      All_Third: true"))
-                classes += "คลาส 3, ";
-            else if (isClass && text.Contains("      All_Third: false"))
-                classes += "คลาส 3 [x], ";
-            else if (isClass && text.Contains("      Fourth: true"))
-                classes += "คลาส 4, ";
-            else if (isClass && text.Contains("      Fourth: false"))
-                classes += "คลาส 4 [x], ";
-            else if (isClass && text.Contains("      Fourth_Baby: true"))
-                classes += "คลาส 4 Baby, ";
-            else if (isClass && text.Contains("      Fourth_Baby: false"))
-                classes += "คลาส 4 Baby [x], ";
-            else if (isClass && text.Contains("      All_Fourth: true"))
-                classes += "คลาส 4, ";
-            else if (isClass && text.Contains("      All_Fourth: false"))
-                classes += "คลาส 4 [x], ";
+            else if (_itemContainer.isClass && text.Contains("      All: true"))
+                _itemContainer.classes += "ทุกคลาส, ";
+            else if (_itemContainer.isClass && text.Contains("      All: false"))
+                _itemContainer.classes += "ทุกคลาส [x], ";
+            else if (_itemContainer.isClass && text.Contains("      Normal: true"))
+                _itemContainer.classes += "คลาส 1, ";
+            else if (_itemContainer.isClass && text.Contains("      Normal: false"))
+                _itemContainer.classes += "คลาส 1 [x], ";
+            else if (_itemContainer.isClass && text.Contains("      Upper: true"))
+                _itemContainer.classes += "คลาส 2, ";
+            else if (_itemContainer.isClass && text.Contains("      Upper: false"))
+                _itemContainer.classes += "คลาส 2 [x], ";
+            else if (_itemContainer.isClass && text.Contains("      Baby: true"))
+                _itemContainer.classes += "คลาส 1 หรือ 2 Baby, ";
+            else if (_itemContainer.isClass && text.Contains("      Baby: false"))
+                _itemContainer.classes += "คลาส 1 หรือ 2 Baby [x], ";
+            else if (_itemContainer.isClass && text.Contains("      Third: true"))
+                _itemContainer.classes += "คลาส 3, ";
+            else if (_itemContainer.isClass && text.Contains("      Third: false"))
+                _itemContainer.classes += "คลาส 3 [x], ";
+            else if (_itemContainer.isClass && text.Contains("      Third_Upper: true"))
+                _itemContainer.classes += "คลาส 3 Trans, ";
+            else if (_itemContainer.isClass && text.Contains("      Third_Upper: false"))
+                _itemContainer.classes += "คลาส 3 Trans [x], ";
+            else if (_itemContainer.isClass && text.Contains("      Third_Baby: true"))
+                _itemContainer.classes += "คลาส 3 Baby, ";
+            else if (_itemContainer.isClass && text.Contains("      Third_Baby: false"))
+                _itemContainer.classes += "คลาส 3 Baby [x], ";
+            else if (_itemContainer.isClass && text.Contains("      All_Upper: true"))
+                _itemContainer.classes += "คลาส 2 หรือคลาส 3 Trans, ";
+            else if (_itemContainer.isClass && text.Contains("      All_Upper: false"))
+                _itemContainer.classes += "คลาส 2 หรือคลาส 3 Trans [x], ";
+            else if (_itemContainer.isClass && text.Contains("      All_Baby: true"))
+                _itemContainer.classes += "คลาส Baby, ";
+            else if (_itemContainer.isClass && text.Contains("      All_Baby: false"))
+                _itemContainer.classes += "คลาส Baby [x], ";
+            else if (_itemContainer.isClass && text.Contains("      All_Third: true"))
+                _itemContainer.classes += "คลาส 3, ";
+            else if (_itemContainer.isClass && text.Contains("      All_Third: false"))
+                _itemContainer.classes += "คลาส 3 [x], ";
+            else if (_itemContainer.isClass && text.Contains("      Fourth: true"))
+                _itemContainer.classes += "คลาส 4, ";
+            else if (_itemContainer.isClass && text.Contains("      Fourth: false"))
+                _itemContainer.classes += "คลาส 4 [x], ";
+            else if (_itemContainer.isClass && text.Contains("      Fourth_Baby: true"))
+                _itemContainer.classes += "คลาส 4 Baby, ";
+            else if (_itemContainer.isClass && text.Contains("      Fourth_Baby: false"))
+                _itemContainer.classes += "คลาส 4 Baby [x], ";
+            else if (_itemContainer.isClass && text.Contains("      All_Fourth: true"))
+                _itemContainer.classes += "คลาส 4, ";
+            else if (_itemContainer.isClass && text.Contains("      All_Fourth: false"))
+                _itemContainer.classes += "คลาส 4 [x], ";
             #endregion
             // Gender
             #region Gender
             else if (text.Contains("      Female: true"))
-                gender += "หญิง, ";
+                _itemContainer.gender += "หญิง, ";
             else if (text.Contains("      Female: false"))
-                gender += "หญิง [x], ";
+                _itemContainer.gender += "หญิง [x], ";
             else if (text.Contains("      Male: true"))
-                gender += "ชาย, ";
+                _itemContainer.gender += "ชาย, ";
             else if (text.Contains("      Male: false"))
-                gender += "ชาย [x], ";
+                _itemContainer.gender += "ชาย [x], ";
             else if (text.Contains("      Both: true"))
-                gender += "ทุกเพศ, ";
+                _itemContainer.gender += "ทุกเพศ, ";
             else if (text.Contains("      Both: false"))
-                gender += "ทุกเพศ [x], ";
+                _itemContainer.gender += "ทุกเพศ [x], ";
             #endregion
             // Location
             #region Location
             else if (text.Contains("      Head_Top: true"))
-                location += "หมวกส่วนบน, ";
+                _itemContainer.locations += "หมวกส่วนบน, ";
             else if (text.Contains("      Head_Top: false"))
-                location += "หมวกส่วนบน [x], ";
+                _itemContainer.locations += "หมวกส่วนบน [x], ";
             else if (text.Contains("      Head_Mid: true"))
-                location += "หมวกส่วนกลาง, ";
+                _itemContainer.locations += "หมวกส่วนกลาง, ";
             else if (text.Contains("      Head_Mid: false"))
-                location += "หมวกส่วนกลาง [x], ";
+                _itemContainer.locations += "หมวกส่วนกลาง [x], ";
             else if (text.Contains("      Head_Low: true"))
-                location += "หมวกส่วนล่าง, ";
+                _itemContainer.locations += "หมวกส่วนล่าง, ";
             else if (text.Contains("      Head_Low: false"))
-                location += "หมวกส่วนล่าง [x], ";
+                _itemContainer.locations += "หมวกส่วนล่าง [x], ";
             else if (text.Contains("      Armor: true"))
-                location += "ชุดเกราะ, ";
+                _itemContainer.locations += "ชุดเกราะ, ";
             else if (text.Contains("      Armor: false"))
-                location += "ชุดเกราะ [x], ";
+                _itemContainer.locations += "ชุดเกราะ [x], ";
             else if (text.Contains("      Right_Hand: true"))
-                location += "มือขวา, ";
+                _itemContainer.locations += "มือขวา, ";
             else if (text.Contains("      Right_Hand: false"))
-                location += "มือขวา [x], ";
+                _itemContainer.locations += "มือขวา [x], ";
             else if (text.Contains("      Left_Hand: true"))
-                location += "มือซ้าย, ";
+                _itemContainer.locations += "มือซ้าย, ";
             else if (text.Contains("      Left_Hand: false"))
-                location += "มือซ้าย [x], ";
+                _itemContainer.locations += "มือซ้าย [x], ";
             else if (text.Contains("      Garment: true"))
-                location += "ผ้าคลุม, ";
+                _itemContainer.locations += "ผ้าคลุม, ";
             else if (text.Contains("      Garment: false"))
-                location += "ผ้าคลุม [x], ";
+                _itemContainer.locations += "ผ้าคลุม [x], ";
             else if (text.Contains("      Shoes: true"))
-                location += "รองเท้า, ";
+                _itemContainer.locations += "รองเท้า, ";
             else if (text.Contains("      Shoes: false"))
-                location += "รองเท้า [x], ";
+                _itemContainer.locations += "รองเท้า [x], ";
             else if (text.Contains("      Right_Accessory: true"))
-                location += "ประดับข้างขวา, ";
+                _itemContainer.locations += "ประดับข้างขวา, ";
             else if (text.Contains("      Right_Accessory: false"))
-                location += "ประดับข้างขวา [x], ";
+                _itemContainer.locations += "ประดับข้างขวา [x], ";
             else if (text.Contains("      Left_Accessory: true"))
-                location += "ประดับข้างซ้าย, ";
+                _itemContainer.locations += "ประดับข้างซ้าย, ";
             else if (text.Contains("      Left_Accessory: false"))
-                location += "ประดับข้างซ้าย [x], ";
+                _itemContainer.locations += "ประดับข้างซ้าย [x], ";
             else if (text.Contains("      Costume_Head_Top: true"))
             {
-                location += "หมวกส่วนบน Costume, ";
+                _itemContainer.locations += "หมวกส่วนบน Costume, ";
 
-                if (!fashionCostumeIds.Contains(id))
-                    fashionCostumeIds.Add(id);
+                if (!_itemListContainer.fashionCostumeIds.Contains(_itemContainer.id))
+                    _itemListContainer.fashionCostumeIds.Add(_itemContainer.id);
             }
             else if (text.Contains("      Costume_Head_Top: false"))
-                location += "หมวกส่วนบน Costume [x], ";
+                _itemContainer.locations += "หมวกส่วนบน Costume [x], ";
             else if (text.Contains("      Costume_Head_Mid: true"))
             {
-                location += "หมวกส่วนกลาง Costume, ";
+                _itemContainer.locations += "หมวกส่วนกลาง Costume, ";
 
-                if (!fashionCostumeIds.Contains(id))
-                    fashionCostumeIds.Add(id);
+                if (!_itemListContainer.fashionCostumeIds.Contains(_itemContainer.id))
+                    _itemListContainer.fashionCostumeIds.Add(_itemContainer.id);
             }
             else if (text.Contains("      Costume_Head_Mid: false"))
-                location += "หมวกส่วนกลาง Costume [x], ";
+                _itemContainer.locations += "หมวกส่วนกลาง Costume [x], ";
             else if (text.Contains("      Costume_Head_Low: true"))
             {
-                location += "หมวกส่วนล่าง Costume, ";
+                _itemContainer.locations += "หมวกส่วนล่าง Costume, ";
 
-                if (!fashionCostumeIds.Contains(id))
-                    fashionCostumeIds.Add(id);
+                if (!_itemListContainer.fashionCostumeIds.Contains(_itemContainer.id))
+                    _itemListContainer.fashionCostumeIds.Add(_itemContainer.id);
             }
             else if (text.Contains("      Costume_Head_Low: false"))
-                location += "หมวกส่วนล่าง Costume [x], ";
+                _itemContainer.locations += "หมวกส่วนล่าง Costume [x], ";
             else if (text.Contains("      Costume_Garment: true"))
             {
-                location += "ผ้าคลุม Costume, ";
+                _itemContainer.locations += "ผ้าคลุม Costume, ";
 
-                if (!fashionCostumeIds.Contains(id))
-                    fashionCostumeIds.Add(id);
+                if (!_itemListContainer.fashionCostumeIds.Contains(_itemContainer.id))
+                    _itemListContainer.fashionCostumeIds.Add(_itemContainer.id);
             }
             else if (text.Contains("      Costume_Garment: false"))
-                location += "ผ้าคลุม Costume [x], ";
+                _itemContainer.locations += "ผ้าคลุม Costume [x], ";
             else if (text.Contains("      Ammo: true"))
-                location += "กระสุน, ";
+                _itemContainer.locations += "กระสุน, ";
             else if (text.Contains("      Ammo: false"))
-                location += "กระสุน [x], ";
+                _itemContainer.locations += "กระสุน [x], ";
             else if (text.Contains("      Shadow_Armor: true"))
-                location += "ชุดเกราะ Shadow, ";
+                _itemContainer.locations += "ชุดเกราะ Shadow, ";
             else if (text.Contains("      Shadow_Armor: false"))
-                location += "ชุดเกราะ Shadow [x], ";
+                _itemContainer.locations += "ชุดเกราะ Shadow [x], ";
             else if (text.Contains("      Shadow_Weapon: true"))
-                location += "อาวุธ Shadow, ";
+                _itemContainer.locations += "อาวุธ Shadow, ";
             else if (text.Contains("      Shadow_Weapon: false"))
-                location += "อาวุธ Shadow [x], ";
+                _itemContainer.locations += "อาวุธ Shadow [x], ";
             else if (text.Contains("      Shadow_Shield: true"))
-                location += "โล่ Shadow, ";
+                _itemContainer.locations += "โล่ Shadow, ";
             else if (text.Contains("      Shadow_Shield: false"))
-                location += "โล่ Shadow [x], ";
+                _itemContainer.locations += "โล่ Shadow [x], ";
             else if (text.Contains("      Shadow_Shoes: true"))
-                location += "รองเท้า Shadow, ";
+                _itemContainer.locations += "รองเท้า Shadow, ";
             else if (text.Contains("      Shadow_Shoes: false"))
-                location += "รองเท้า Shadow [x], ";
+                _itemContainer.locations += "รองเท้า Shadow [x], ";
             else if (text.Contains("      Shadow_Right_Accessory: true"))
-                location += "ประดับ Shadow ข้างขวา, ";
+                _itemContainer.locations += "ประดับ Shadow ข้างขวา, ";
             else if (text.Contains("      Shadow_Right_Accessory: false"))
-                location += "ประดับ Shadow ข้างขวา [x], ";
+                _itemContainer.locations += "ประดับ Shadow ข้างขวา [x], ";
             else if (text.Contains("      Shadow_Left_Accessory: true"))
-                location += "ประดับ Shadow ข้างซ้าย, ";
+                _itemContainer.locations += "ประดับ Shadow ข้างซ้าย, ";
             else if (text.Contains("      Shadow_Left_Accessory: false"))
-                location += "ประดับ Shadow ข้างซ้าย [x], ";
+                _itemContainer.locations += "ประดับ Shadow ข้างซ้าย [x], ";
             else if (text.Contains("      Both_Hand: true"))
-                location += "สองมือ, ";
+                _itemContainer.locations += "สองมือ, ";
             else if (text.Contains("      Both_Hand: false"))
-                location += "สองมือ [x], ";
+                _itemContainer.locations += "สองมือ [x], ";
             else if (text.Contains("      Both_Accessory: true"))
-                location += "ประดับสองข้าง, ";
+                _itemContainer.locations += "ประดับสองข้าง, ";
             else if (text.Contains("      Both_Accessory: false"))
-                location += "ประดับสองข้าง [x], ";
+                _itemContainer.locations += "ประดับสองข้าง [x], ";
             #endregion
             // Weapon Level
             else if (text.Contains("    WeaponLevel:"))
-                weaponLv = text.Replace("    WeaponLevel: ", string.Empty);
+                _itemContainer.weaponLevel = text.Replace("    WeaponLevel: ", string.Empty);
             // Armor Level
             else if (text.Contains("    ArmorLevel:"))
-                armorLv = text.Replace("    ArmorLevel: ", string.Empty);
+                _itemContainer.armorLevel = text.Replace("    ArmorLevel: ", string.Empty);
             // Equip Level Min
             else if (text.Contains("    EquipLevelMin:"))
-                equipLevelMin = text.Replace("    EquipLevelMin: ", string.Empty);
+                _itemContainer.equipLevelMinmimum = text.Replace("    EquipLevelMin: ", string.Empty);
             // Equip Level Max
             else if (text.Contains("    EquipLevelMax:"))
-                equipLevelMax = text.Replace("    EquipLevelMax: ", string.Empty);
+                _itemContainer.equipLevelMaximum = text.Replace("    EquipLevelMax: ", string.Empty);
             // Refineable
             else if (text.Contains("    Refineable: true"))
-                refineable = "ได้";
+                _itemContainer.refinable = "ได้";
             else if (text.Contains("    Refineable: false"))
-                refineable = "ไม่ได้";
+                _itemContainer.refinable = "ไม่ได้";
             // View
             else if (text.Contains("    View:"))
-                view = text.Replace("    View: ", string.Empty);
+                _itemContainer.view = text.Replace("    View: ", string.Empty);
             #endregion
             // Script
-            else if (isScript)
+            else if (_itemContainer.isScript)
             {
                 var sum = ConvertItemBonus(text);
                 if (!string.IsNullOrEmpty(sum))
-                    script += "			\"" + sum + "\",\n";
+                    _itemContainer.script += "			\"" + sum + "\",\n";
             }
             // Equip Script
-            else if (isEquipScript)
+            else if (_itemContainer.isEquipScript)
             {
                 var sum = ConvertItemBonus(text);
                 if (!string.IsNullOrEmpty(sum))
-                    equipScript += "			\"" + sum + "\",\n";
+                    _itemContainer.equipScript += "			\"" + sum + "\",\n";
             }
             // Unequip Script
-            else if (isUnEquipScript)
+            else if (_itemContainer.isUnequipScript)
             {
                 var sum = ConvertItemBonus(text);
                 if (!string.IsNullOrEmpty(sum))
-                    unEquipScript += "			\"" + sum + "\",\n";
+                    _itemContainer.unequipScript += "			\"" + sum + "\",\n";
             }
 
             // Write builder now
-            if (nextText.Contains("- Id:") && !string.IsNullOrEmpty(id) && !string.IsNullOrWhiteSpace(id) || (i + 1) >= lines.Length)
+            if (nextText.Contains("- Id:") && !string.IsNullOrEmpty(_itemContainer.id) && !string.IsNullOrWhiteSpace(_itemContainer.id) || (i + 1) >= itemDatabases.Length)
             {
-                var resName = GetResourceNameFromId(int.Parse(id), type, subType, !string.IsNullOrEmpty(location) ? location.Substring(0, location.Length - 2) : string.Empty);
+                var resName = GetResourceNameFromId(int.Parse(_itemContainer.id), _itemContainer.type, _itemContainer.subType, !string.IsNullOrEmpty(_itemContainer.locations) ? _itemContainer.locations.Substring(0, _itemContainer.locations.Length - 2) : string.Empty);
                 // Id
-                builder.Append("	[" + id + "] = {\n");
+                builder.Append("	[" + _itemContainer.id + "] = {\n");
                 // Unidentified display name
-                builder.Append("		unidentifiedDisplayName = \"" + _name + ((type.ToLower() == "weapon" || type.ToLower() == "armor" || type.ToLower() == "shadowgear") ? " [" + (!string.IsNullOrEmpty(slots) ? slots : "0") + "]" : string.Empty) + "\",\n");
+                builder.Append("		unidentifiedDisplayName = \"" + _itemContainer.name + ((_itemContainer.type.ToLower() == "weapon" || _itemContainer.type.ToLower() == "armor" || _itemContainer.type.ToLower() == "shadowgear") ? " [" + (!string.IsNullOrEmpty(_itemContainer.slots) ? _itemContainer.slots : "0") + "]" : string.Empty) + "\",\n");
                 // Unidentified resource name
                 builder.Append("		unidentifiedResourceName = " + resName + ",\n");
                 // Unidentified description
@@ -1795,82 +1674,82 @@ public class Converter : MonoBehaviour
                 builder.Append("			\"\"\n");
                 builder.Append("		},\n");
                 // Identified display name
-                builder.Append("		identifiedDisplayName = \"" + _name + "\",\n");
+                builder.Append("		identifiedDisplayName = \"" + _itemContainer.name + "\",\n");
                 // Identified resource name
                 builder.Append("		identifiedResourceName = " + resName + ",\n");
                 // Identified description
                 builder.Append("		identifiedDescriptionName = {\n");
                 // Description here
-                var sumCombo = GetCombo(GetIdNameData(int.Parse(id)).aegisName);
-                string hardcodeBonus = hardcodeItemScripts.GetHardcodeItemScript(int.Parse(id));
-                var sumBonus = !string.IsNullOrEmpty(hardcodeBonus) ? hardcodeBonus : !string.IsNullOrEmpty(script) ? script : string.Empty;
-                var sumEquipBonus = !string.IsNullOrEmpty(equipScript) ? "			\"^666478[เมื่อสวมใส่]^000000\",\n" + equipScript : string.Empty;
-                var sumUnEquipBonus = !string.IsNullOrEmpty(unEquipScript) ? "			\"^666478[เมื่อถอด]^000000\",\n" + unEquipScript : string.Empty;
-                var sumDesc = "			\"^3F28FFID:^000000 " + id + "\",\n"
-                    + "			\"^3F28FFประเภท:^000000 " + type + "\",\n";
-                if (!string.IsNullOrEmpty(subType))
-                    sumDesc += "			\"^3F28FFประเภทรอง:^000000 " + subType + "\",\n";
-                else if (isZeroValuePrintable)
+                var sumCombo = GetCombo(GetIdNameData(int.Parse(_itemContainer.id)).aegisName);
+                string hardcodeBonus = _hardcodeItemScripts.GetHardcodeItemScript(int.Parse(_itemContainer.id));
+                var sumBonus = !string.IsNullOrEmpty(hardcodeBonus) ? hardcodeBonus : !string.IsNullOrEmpty(_itemContainer.script) ? _itemContainer.script : string.Empty;
+                var sumEquipBonus = !string.IsNullOrEmpty(_itemContainer.equipScript) ? "			\"^666478[เมื่อสวมใส่]^000000\",\n" + _itemContainer.equipScript : string.Empty;
+                var sumUnEquipBonus = !string.IsNullOrEmpty(_itemContainer.unequipScript) ? "			\"^666478[เมื่อถอด]^000000\",\n" + _itemContainer.unequipScript : string.Empty;
+                var sumDesc = "			\"^3F28FFID:^000000 " + _itemContainer.id + "\",\n"
+                    + "			\"^3F28FFประเภท:^000000 " + _itemContainer.type + "\",\n";
+                if (!string.IsNullOrEmpty(_itemContainer.subType))
+                    sumDesc += "			\"^3F28FFประเภทรอง:^000000 " + _itemContainer.subType + "\",\n";
+                else if (_isZeroValuePrintable)
                     sumDesc += "			\"^3F28FFประเภทรอง:^000000 -\",\n";
-                if (!string.IsNullOrEmpty(location))
-                    sumDesc += "			\"^3F28FFตำแหน่ง:^000000 " + location.Substring(0, location.Length - 2) + "\",\n";
-                else if (isZeroValuePrintable)
+                if (!string.IsNullOrEmpty(_itemContainer.locations))
+                    sumDesc += "			\"^3F28FFตำแหน่ง:^000000 " + _itemContainer.locations.Substring(0, _itemContainer.locations.Length - 2) + "\",\n";
+                else if (_isZeroValuePrintable)
                     sumDesc += "			\"^3F28FFตำแหน่ง:^000000 -\",\n";
-                if (!string.IsNullOrEmpty(jobs))
-                    sumDesc += "			\"^3F28FFอาชีพ:^000000 " + jobs.Substring(0, jobs.Length - 2) + "\",\n";
-                else if (isZeroValuePrintable)
+                if (!string.IsNullOrEmpty(_itemContainer.jobs))
+                    sumDesc += "			\"^3F28FFอาชีพ:^000000 " + _itemContainer.jobs.Substring(0, _itemContainer.jobs.Length - 2) + "\",\n";
+                else if (_isZeroValuePrintable)
                     sumDesc += "			\"^3F28FFอาชีพ:^000000 -\",\n";
-                if (!string.IsNullOrEmpty(classes))
-                    sumDesc += "			\"^3F28FFคลาส:^000000 " + classes.Substring(0, classes.Length - 2) + "\",\n";
-                else if (isZeroValuePrintable)
+                if (!string.IsNullOrEmpty(_itemContainer.classes))
+                    sumDesc += "			\"^3F28FFคลาส:^000000 " + _itemContainer.classes.Substring(0, _itemContainer.classes.Length - 2) + "\",\n";
+                else if (_isZeroValuePrintable)
                     sumDesc += "			\"^3F28FFคลาส:^000000 -\",\n";
-                if (!string.IsNullOrEmpty(gender))
-                    sumDesc += "			\"^3F28FFเพศ:^000000 " + gender.Substring(0, gender.Length - 2) + "\",\n";
-                else if (isZeroValuePrintable)
+                if (!string.IsNullOrEmpty(_itemContainer.gender))
+                    sumDesc += "			\"^3F28FFเพศ:^000000 " + _itemContainer.gender.Substring(0, _itemContainer.gender.Length - 2) + "\",\n";
+                else if (_isZeroValuePrintable)
                     sumDesc += "			\"^3F28FFเพศ:^000000 -\",\n";
-                if (!string.IsNullOrEmpty(atk))
-                    sumDesc += "			\"^3F28FFโจมตี:^000000 " + atk + "\",\n";
-                else if (isZeroValuePrintable)
+                if (!string.IsNullOrEmpty(_itemContainer.attack))
+                    sumDesc += "			\"^3F28FFโจมตี:^000000 " + _itemContainer.attack + "\",\n";
+                else if (_isZeroValuePrintable)
                     sumDesc += "			\"^3F28FFโจมตี:^000000 -\",\n";
-                if (!string.IsNullOrEmpty(mAtk))
-                    sumDesc += "			\"^3F28FFโจมตีเวทย์:^000000 " + mAtk + "\",\n";
-                else if (isZeroValuePrintable)
+                if (!string.IsNullOrEmpty(_itemContainer.magicAttack))
+                    sumDesc += "			\"^3F28FFโจมตีเวทย์:^000000 " + _itemContainer.magicAttack + "\",\n";
+                else if (_isZeroValuePrintable)
                     sumDesc += "			\"^3F28FFโจมตีเวทย์:^000000 -\",\n";
-                if (!string.IsNullOrEmpty(def))
-                    sumDesc += "			\"^3F28FFป้องกัน:^000000 " + def + "\",\n";
-                else if (isZeroValuePrintable)
+                if (!string.IsNullOrEmpty(_itemContainer.defense))
+                    sumDesc += "			\"^3F28FFป้องกัน:^000000 " + _itemContainer.defense + "\",\n";
+                else if (_isZeroValuePrintable)
                     sumDesc += "			\"^3F28FFป้องกัน:^000000 -\",\n";
-                if (!string.IsNullOrEmpty(atkRange))
-                    sumDesc += "			\"^3F28FFระยะตี:^000000 " + atkRange + "\",\n";
-                else if (isZeroValuePrintable)
+                if (!string.IsNullOrEmpty(_itemContainer.range))
+                    sumDesc += "			\"^3F28FFระยะตี:^000000 " + _itemContainer.range + "\",\n";
+                else if (_isZeroValuePrintable)
                     sumDesc += "			\"^3F28FFระยะตี:^000000 -\",\n";
-                if (!string.IsNullOrEmpty(weaponLv))
-                    sumDesc += "			\"^3F28FFเลเวลอาวุธ:^000000 " + weaponLv + "\",\n";
-                else if (isZeroValuePrintable)
+                if (!string.IsNullOrEmpty(_itemContainer.weaponLevel))
+                    sumDesc += "			\"^3F28FFเลเวลอาวุธ:^000000 " + _itemContainer.weaponLevel + "\",\n";
+                else if (_isZeroValuePrintable)
                     sumDesc += "			\"^3F28FFเลเวลอาวุธ:^000000 -\",\n";
-                if (!string.IsNullOrEmpty(armorLv))
-                    sumDesc += "			\"^3F28FFเลเวลชุดเกราะ:^000000 " + armorLv + "\",\n";
-                else if (isZeroValuePrintable)
+                if (!string.IsNullOrEmpty(_itemContainer.armorLevel))
+                    sumDesc += "			\"^3F28FFเลเวลชุดเกราะ:^000000 " + _itemContainer.armorLevel + "\",\n";
+                else if (_isZeroValuePrintable)
                     sumDesc += "			\"^3F28FFเลเวลชุดเกราะ:^000000 -\",\n";
-                if (!string.IsNullOrEmpty(equipLevelMin))
-                    sumDesc += "			\"^3F28FFเลเวลขั้นต่ำ:^000000 " + equipLevelMin + "\",\n";
-                else if (isZeroValuePrintable)
+                if (!string.IsNullOrEmpty(_itemContainer.equipLevelMinmimum))
+                    sumDesc += "			\"^3F28FFเลเวลขั้นต่ำ:^000000 " + _itemContainer.equipLevelMinmimum + "\",\n";
+                else if (_isZeroValuePrintable)
                     sumDesc += "			\"^3F28FFเลเวลขั้นต่ำ:^000000 -\",\n";
-                if (!string.IsNullOrEmpty(equipLevelMax))
-                    sumDesc += "			\"^3F28FFเลเวลสูงสุด:^000000 " + equipLevelMax + "\",\n";
-                else if (isZeroValuePrintable)
+                if (!string.IsNullOrEmpty(_itemContainer.equipLevelMaximum))
+                    sumDesc += "			\"^3F28FFเลเวลสูงสุด:^000000 " + _itemContainer.equipLevelMaximum + "\",\n";
+                else if (_isZeroValuePrintable)
                     sumDesc += "			\"^3F28FFเลเวลสูงสุด:^000000 -\",\n";
-                if (!string.IsNullOrEmpty(refineable))
-                    sumDesc += "			\"^3F28FFตีบวก:^000000 " + refineable + "\",\n";
-                else if (isZeroValuePrintable)
+                if (!string.IsNullOrEmpty(_itemContainer.refinable))
+                    sumDesc += "			\"^3F28FFตีบวก:^000000 " + _itemContainer.refinable + "\",\n";
+                else if (_isZeroValuePrintable)
                     sumDesc += "			\"^3F28FFตีบวก:^000000 -\",\n";
-                if (!string.IsNullOrEmpty(weight))
-                    sumDesc += "			\"^3F28FFน้ำหนัก:^000000 " + weight + "\",\n";
-                else if (isZeroValuePrintable)
+                if (!string.IsNullOrEmpty(_itemContainer.weight))
+                    sumDesc += "			\"^3F28FFน้ำหนัก:^000000 " + _itemContainer.weight + "\",\n";
+                else if (_isZeroValuePrintable)
                     sumDesc += "			\"^3F28FFน้ำหนัก:^000000 -\",\n";
-                if (!string.IsNullOrEmpty(buy))
-                    sumDesc += "			\"^3F28FFราคา:^000000 " + buy + "\",\n";
-                else if (isZeroValuePrintable)
+                if (!string.IsNullOrEmpty(_itemContainer.buy))
+                    sumDesc += "			\"^3F28FFราคา:^000000 " + _itemContainer.buy + "\",\n";
+                else if (_isZeroValuePrintable)
                     sumDesc += "			\"^3F28FFราคา:^000000 -\",\n";
                 builder.Append(sumBonus);
                 if (!string.IsNullOrEmpty(sumBonus) && !string.IsNullOrWhiteSpace(sumBonus))
@@ -1883,12 +1762,12 @@ public class Converter : MonoBehaviour
                 builder.Append("			\"\"\n");
                 builder.Append("		},\n");
                 // Slot Count
-                if (!string.IsNullOrEmpty(slots))
-                    builder.Append("		slotCount = " + slots + ",\n");
+                if (!string.IsNullOrEmpty(_itemContainer.slots))
+                    builder.Append("		slotCount = " + _itemContainer.slots + ",\n");
                 else
                     builder.Append("		slotCount = 0,\n");
                 // View / Class Number
-                builder.Append("		ClassNum = " + GetClassNumFromId(int.Parse(id)) + ",\n");
+                builder.Append("		ClassNum = " + GetClassNumFromId(int.Parse(_itemContainer.id)) + ",\n");
                 // Costume
                 builder.Append("		costume = false\n");
                 if (string.IsNullOrEmpty(nextNextText) || string.IsNullOrWhiteSpace(nextNextText))
@@ -1896,7 +1775,7 @@ public class Converter : MonoBehaviour
                 else
                     builder.Append("	},\n");
 
-                Clean();
+                _itemContainer = new ItemContainer();
             }
         }
         #region prefix postfix
@@ -1969,7 +1848,7 @@ public class Converter : MonoBehaviour
 
         Debug.Log(DateTime.UtcNow);
 
-        txtConvertProgression.text = "Done!! File name 'itemInfo_Sak.lub'";
+        _txtConvertProgression.text = "Done!! File name 'itemInfo_Sak.lub'";
     }
 
     string ConvertItemBonus(string text)
@@ -3487,6 +3366,7 @@ public class Converter : MonoBehaviour
     {
         while (text.Contains(" "))
             text = text.Replace(" ", string.Empty);
+
         return text;
     }
 
@@ -3494,6 +3374,7 @@ public class Converter : MonoBehaviour
     {
         while (text.Contains("\""))
             text = text.Replace("\"", string.Empty);
+
         return text;
     }
 
@@ -3841,9 +3722,9 @@ public class Converter : MonoBehaviour
         StringBuilder builder = new StringBuilder();
 
         // Loop all combo data
-        for (int i = 0; i < comboDatas.Count; i++)
+        for (int i = 0; i < _comboDatabases.Count; i++)
         {
-            var currentComboData = comboDatas[i];
+            var currentComboData = _comboDatabases[i];
 
             // Found
             if (currentComboData.IsAegisNameContain(aegis_name))
@@ -3857,9 +3738,9 @@ public class Converter : MonoBehaviour
                     var currentSameComboData = currentComboData.sameComboDatas[j];
 
                     // Add item name
-                    for (int k = 0; k < currentSameComboData.aegis_names.Count; k++)
+                    for (int k = 0; k < currentSameComboData.aegisNames.Count; k++)
                     {
-                        if (currentSameComboData.aegis_names[k] == aegis_name)
+                        if (currentSameComboData.aegisNames[k] == aegis_name)
                             isFoundNow = true;
                     }
 
@@ -3869,9 +3750,9 @@ public class Converter : MonoBehaviour
                         var same_set_name_list = "			\"^666478หากสวมใส่ร่วมกับ";
 
                         // Add item name
-                        for (int k = 0; k < currentSameComboData.aegis_names.Count; k++)
+                        for (int k = 0; k < currentSameComboData.aegisNames.Count; k++)
                         {
-                            var currentAegisName = currentSameComboData.aegis_names[k];
+                            var currentAegisName = currentSameComboData.aegisNames[k];
 
                             // Should not add base item name
                             if (currentAegisName == aegis_name)
@@ -3880,8 +3761,8 @@ public class Converter : MonoBehaviour
                             {
                                 same_set_name_list += "[NEW_LINE]+ " + GetItemName(currentAegisName, true);
                                 var comboItemId = GetItemId(currentAegisName, true);
-                                if (!comboItemIds.Contains(comboItemId))
-                                    comboItemIds.Add(comboItemId);
+                                if (!_itemListContainer.comboItemIds.Contains(comboItemId))
+                                    _itemListContainer.comboItemIds.Add(comboItemId);
                                 same_set_name_list += "[NEW_LINE]+ (ID:" + comboItemId + ")";
                             }
                         }
@@ -3921,19 +3802,19 @@ public class Converter : MonoBehaviour
         if (!isForceAegisName && int.TryParse(text, out _int))
         {
             _int = int.Parse(text);
-            foreach (var item in idNameDatas)
+            foreach (var item in _itemDatabases)
             {
                 if (item.id == _int)
-                    return item._name;
+                    return item.name;
             }
         }
         else
         {
             text = RemoveSpace(text);
-            foreach (var item in idNameDatas)
+            foreach (var item in _itemDatabases)
             {
                 if (item.aegisName.ToLower() == text.ToLower())
-                    return item._name;
+                    return item.name;
             }
         }
 
@@ -3946,7 +3827,7 @@ public class Converter : MonoBehaviour
         if (!isForceAegisName && int.TryParse(text, out _int))
         {
             _int = int.Parse(text);
-            foreach (var item in idNameDatas)
+            foreach (var item in _itemDatabases)
             {
                 if (item.id == _int)
                     return item.id.ToString("f0");
@@ -3955,7 +3836,7 @@ public class Converter : MonoBehaviour
         else
         {
             text = RemoveSpace(text);
-            foreach (var item in idNameDatas)
+            foreach (var item in _itemDatabases)
             {
                 if (item.aegisName.ToLower() == text.ToLower())
                     return item.id.ToString("f0");
@@ -3967,236 +3848,244 @@ public class Converter : MonoBehaviour
 
     string GetResourceNameFromId(int id, string type, string subType, string location)
     {
-        if (isRandomizeResourceNameCustomItemOnly)
+        if (_isOnlyRandomResourceNameForCustomTextAsset)
         {
-            if (isRandomizeResourceName && id >= ItemGenerator.START_ID)
+            if (_isRandomResourceName && id >= ItemGenerator.START_ID)
             {
                 if (subType.ToLower().Contains("dagger"))
                 {
-                    var s = GetResourceNameFromId(int.Parse(resNameDagger[UnityEngine.Random.Range(0, resNameDagger.Count)]), null, null, null);
+                    var s = GetResourceNameFromId(int.Parse(_resourceContainer.daggers[UnityEngine.Random.Range(0, _resourceContainer.daggers.Count)]), null, null, null);
                     while (s == "\"Bio_Reseearch_Docu\"")
-                        s = GetResourceNameFromId(int.Parse(resNameDagger[UnityEngine.Random.Range(0, resNameDagger.Count)]), null, null, null);
+                        s = GetResourceNameFromId(int.Parse(_resourceContainer.daggers[UnityEngine.Random.Range(0, _resourceContainer.daggers.Count)]), null, null, null);
                     return s;
                 }
                 else if (subType.ToLower().Contains("1hsword"))
                 {
-                    var s = GetResourceNameFromId(int.Parse(resName1hSword[UnityEngine.Random.Range(0, resName1hSword.Count)]), null, null, null);
+                    var s = GetResourceNameFromId(int.Parse(_resourceContainer.oneHandedSwords[UnityEngine.Random.Range(0, _resourceContainer.oneHandedSwords.Count)]), null, null, null);
                     while (s == "\"Bio_Reseearch_Docu\"")
-                        s = GetResourceNameFromId(int.Parse(resName1hSword[UnityEngine.Random.Range(0, resName1hSword.Count)]), null, null, null);
+                        s = GetResourceNameFromId(int.Parse(_resourceContainer.oneHandedSwords[UnityEngine.Random.Range(0, _resourceContainer.oneHandedSwords.Count)]), null, null, null);
                     return s;
                 }
                 else if (subType.ToLower().Contains("2hsword"))
                 {
-                    var s = GetResourceNameFromId(int.Parse(resName2hSword[UnityEngine.Random.Range(0, resName2hSword.Count)]), null, null, null);
+                    var s = GetResourceNameFromId(int.Parse(_resourceContainer.twoHandedSwords[UnityEngine.Random.Range(0, _resourceContainer.twoHandedSwords.Count)]), null, null, null);
                     while (s == "\"Bio_Reseearch_Docu\"")
-                        s = GetResourceNameFromId(int.Parse(resName2hSword[UnityEngine.Random.Range(0, resName2hSword.Count)]), null, null, null);
+                        s = GetResourceNameFromId(int.Parse(_resourceContainer.twoHandedSwords[UnityEngine.Random.Range(0, _resourceContainer.twoHandedSwords.Count)]), null, null, null);
                     return s;
                 }
                 else if (subType.ToLower().Contains("1hspear"))
                 {
-                    var s = GetResourceNameFromId(int.Parse(resName1hSpear[UnityEngine.Random.Range(0, resName1hSpear.Count)]), null, null, null);
+                    var s = GetResourceNameFromId(int.Parse(_resourceContainer.oneHandedSpears[UnityEngine.Random.Range(0, _resourceContainer.oneHandedSpears.Count)]), null, null, null);
                     while (s == "\"Bio_Reseearch_Docu\"")
-                        s = GetResourceNameFromId(int.Parse(resName1hSpear[UnityEngine.Random.Range(0, resName1hSpear.Count)]), null, null, null);
+                        s = GetResourceNameFromId(int.Parse(_resourceContainer.oneHandedSpears[UnityEngine.Random.Range(0, _resourceContainer.oneHandedSpears.Count)]), null, null, null);
                     return s;
                 }
                 else if (subType.ToLower().Contains("2hspear"))
                 {
-                    var s = GetResourceNameFromId(int.Parse(resName2hSpear[UnityEngine.Random.Range(0, resName2hSpear.Count)]), null, null, null);
+                    var s = GetResourceNameFromId(int.Parse(_resourceContainer.twoHandedSpears[UnityEngine.Random.Range(0, _resourceContainer.twoHandedSpears.Count)]), null, null, null);
                     while (s == "\"Bio_Reseearch_Docu\"")
-                        s = GetResourceNameFromId(int.Parse(resName2hSpear[UnityEngine.Random.Range(0, resName2hSpear.Count)]), null, null, null);
+                        s = GetResourceNameFromId(int.Parse(_resourceContainer.twoHandedSpears[UnityEngine.Random.Range(0, _resourceContainer.twoHandedSpears.Count)]), null, null, null);
                     return s;
                 }
                 else if (subType.ToLower().Contains("1haxe"))
                 {
-                    var s = GetResourceNameFromId(int.Parse(resName1hAxe[UnityEngine.Random.Range(0, resName1hAxe.Count)]), null, null, null);
+                    var s = GetResourceNameFromId(int.Parse(_resourceContainer.oneHandedAxes[UnityEngine.Random.Range(0, _resourceContainer.oneHandedAxes.Count)]), null, null, null);
                     while (s == "\"Bio_Reseearch_Docu\"")
-                        s = GetResourceNameFromId(int.Parse(resName1hAxe[UnityEngine.Random.Range(0, resName1hAxe.Count)]), null, null, null);
+                        s = GetResourceNameFromId(int.Parse(_resourceContainer.oneHandedAxes[UnityEngine.Random.Range(0, _resourceContainer.oneHandedAxes.Count)]), null, null, null);
                     return s;
                 }
                 else if (subType.ToLower().Contains("2haxe"))
                 {
-                    var s = GetResourceNameFromId(int.Parse(resName2hAxe[UnityEngine.Random.Range(0, resName2hAxe.Count)]), null, null, null);
+                    var s = GetResourceNameFromId(int.Parse(_resourceContainer.twoHandedAxes[UnityEngine.Random.Range(0, _resourceContainer.twoHandedAxes.Count)]), null, null, null);
                     while (s == "\"Bio_Reseearch_Docu\"")
-                        s = GetResourceNameFromId(int.Parse(resName2hAxe[UnityEngine.Random.Range(0, resName2hAxe.Count)]), null, null, null);
+                        s = GetResourceNameFromId(int.Parse(_resourceContainer.twoHandedAxes[UnityEngine.Random.Range(0, _resourceContainer.twoHandedAxes.Count)]), null, null, null);
                     return s;
                 }
                 else if (subType.ToLower().Contains("mace"))
                 {
-                    var s = GetResourceNameFromId(int.Parse(resNameMace[UnityEngine.Random.Range(0, resNameMace.Count)]), null, null, null);
+                    var s = GetResourceNameFromId(int.Parse(_resourceContainer.oneHandedMaces[UnityEngine.Random.Range(0, _resourceContainer.oneHandedMaces.Count)]), null, null, null);
                     while (s == "\"Bio_Reseearch_Docu\"")
-                        s = GetResourceNameFromId(int.Parse(resNameMace[UnityEngine.Random.Range(0, resNameMace.Count)]), null, null, null);
+                        s = GetResourceNameFromId(int.Parse(_resourceContainer.oneHandedMaces[UnityEngine.Random.Range(0, _resourceContainer.oneHandedMaces.Count)]), null, null, null);
+                    return s;
+                }
+                else if (subType.ToLower().Contains("2hmace"))
+                {
+                    var s = GetResourceNameFromId(int.Parse(_resourceContainer.twoHandedMaces[UnityEngine.Random.Range(0, _resourceContainer.twoHandedMaces.Count)]), null, null, null);
+                    while (s == "\"Bio_Reseearch_Docu\"")
+                        s = GetResourceNameFromId(int.Parse(_resourceContainer.twoHandedMaces[UnityEngine.Random.Range(0, _resourceContainer.twoHandedMaces.Count)]), null, null, null);
                     return s;
                 }
                 else if (subType.ToLower().Contains("staff"))
                 {
-                    var s = GetResourceNameFromId(int.Parse(resNameStaff[UnityEngine.Random.Range(0, resNameStaff.Count)]), null, null, null);
+                    var s = GetResourceNameFromId(int.Parse(_resourceContainer.oneHandedStaffs[UnityEngine.Random.Range(0, _resourceContainer.oneHandedStaffs.Count)]), null, null, null);
                     while (s == "\"Bio_Reseearch_Docu\"")
-                        s = GetResourceNameFromId(int.Parse(resNameStaff[UnityEngine.Random.Range(0, resNameStaff.Count)]), null, null, null);
-                    return s;
-                }
-                else if (subType.ToLower().Contains("bow"))
-                {
-                    var s = GetResourceNameFromId(int.Parse(resNameBow[UnityEngine.Random.Range(0, resNameBow.Count)]), null, null, null);
-                    while (s == "\"Bio_Reseearch_Docu\"")
-                        s = GetResourceNameFromId(int.Parse(resNameBow[UnityEngine.Random.Range(0, resNameBow.Count)]), null, null, null);
-                    return s;
-                }
-                else if (subType.ToLower().Contains("knuckle"))
-                {
-                    var s = GetResourceNameFromId(int.Parse(resNameKnuckle[UnityEngine.Random.Range(0, resNameKnuckle.Count)]), null, null, null);
-                    while (s == "\"Bio_Reseearch_Docu\"")
-                        s = GetResourceNameFromId(int.Parse(resNameKnuckle[UnityEngine.Random.Range(0, resNameKnuckle.Count)]), null, null, null);
-                    return s;
-                }
-                else if (subType.ToLower().Contains("musical"))
-                {
-                    var s = GetResourceNameFromId(int.Parse(resNameMusical[UnityEngine.Random.Range(0, resNameMusical.Count)]), null, null, null);
-                    while (s == "\"Bio_Reseearch_Docu\"")
-                        s = GetResourceNameFromId(int.Parse(resNameMusical[UnityEngine.Random.Range(0, resNameMusical.Count)]), null, null, null);
-                    return s;
-                }
-                else if (subType.ToLower().Contains("whip"))
-                {
-                    var s = GetResourceNameFromId(int.Parse(resNameWhip[UnityEngine.Random.Range(0, resNameWhip.Count)]), null, null, null);
-                    while (s == "\"Bio_Reseearch_Docu\"")
-                        s = GetResourceNameFromId(int.Parse(resNameWhip[UnityEngine.Random.Range(0, resNameWhip.Count)]), null, null, null);
-                    return s;
-                }
-                else if (subType.ToLower().Contains("book"))
-                {
-                    var s = GetResourceNameFromId(int.Parse(resNameBook[UnityEngine.Random.Range(0, resNameBook.Count)]), null, null, null);
-                    while (s == "\"Bio_Reseearch_Docu\"")
-                        s = GetResourceNameFromId(int.Parse(resNameBook[UnityEngine.Random.Range(0, resNameBook.Count)]), null, null, null);
-                    return s;
-                }
-                else if (subType.ToLower().Contains("katar"))
-                {
-                    var s = GetResourceNameFromId(int.Parse(resNameKatar[UnityEngine.Random.Range(0, resNameKatar.Count)]), null, null, null);
-                    while (s == "\"Bio_Reseearch_Docu\"")
-                        s = GetResourceNameFromId(int.Parse(resNameKatar[UnityEngine.Random.Range(0, resNameKatar.Count)]), null, null, null);
-                    return s;
-                }
-                else if (subType.ToLower().Contains("revolver"))
-                {
-                    var s = GetResourceNameFromId(int.Parse(resNameRevolver[UnityEngine.Random.Range(0, resNameRevolver.Count)]), null, null, null);
-                    while (s == "\"Bio_Reseearch_Docu\"")
-                        s = GetResourceNameFromId(int.Parse(resNameRevolver[UnityEngine.Random.Range(0, resNameRevolver.Count)]), null, null, null);
-                    return s;
-                }
-                else if (subType.ToLower().Contains("rifle"))
-                {
-                    var s = GetResourceNameFromId(int.Parse(resNameRifle[UnityEngine.Random.Range(0, resNameRifle.Count)]), null, null, null);
-                    while (s == "\"Bio_Reseearch_Docu\"")
-                        s = GetResourceNameFromId(int.Parse(resNameRifle[UnityEngine.Random.Range(0, resNameRifle.Count)]), null, null, null);
-                    return s;
-                }
-                else if (subType.ToLower().Contains("gatling"))
-                {
-                    var s = GetResourceNameFromId(int.Parse(resNameGatling[UnityEngine.Random.Range(0, resNameGatling.Count)]), null, null, null);
-                    while (s == "\"Bio_Reseearch_Docu\"")
-                        s = GetResourceNameFromId(int.Parse(resNameGatling[UnityEngine.Random.Range(0, resNameGatling.Count)]), null, null, null);
-                    return s;
-                }
-                else if (subType.ToLower().Contains("shotgun"))
-                {
-                    var s = GetResourceNameFromId(int.Parse(resNameShotgun[UnityEngine.Random.Range(0, resNameShotgun.Count)]), null, null, null);
-                    while (s == "\"Bio_Reseearch_Docu\"")
-                        s = GetResourceNameFromId(int.Parse(resNameShotgun[UnityEngine.Random.Range(0, resNameShotgun.Count)]), null, null, null);
-                    return s;
-                }
-                else if (subType.ToLower().Contains("grenade"))
-                {
-                    var s = GetResourceNameFromId(int.Parse(resNameGrenade[UnityEngine.Random.Range(0, resNameGrenade.Count)]), null, null, null);
-                    while (s == "\"Bio_Reseearch_Docu\"")
-                        s = GetResourceNameFromId(int.Parse(resNameGrenade[UnityEngine.Random.Range(0, resNameGrenade.Count)]), null, null, null);
-                    return s;
-                }
-                else if (subType.ToLower().Contains("huuma"))
-                {
-                    var s = GetResourceNameFromId(int.Parse(resNameHuuma[UnityEngine.Random.Range(0, resNameHuuma.Count)]), null, null, null);
-                    while (s == "\"Bio_Reseearch_Docu\"")
-                        s = GetResourceNameFromId(int.Parse(resNameHuuma[UnityEngine.Random.Range(0, resNameHuuma.Count)]), null, null, null);
+                        s = GetResourceNameFromId(int.Parse(_resourceContainer.oneHandedStaffs[UnityEngine.Random.Range(0, _resourceContainer.oneHandedStaffs.Count)]), null, null, null);
                     return s;
                 }
                 else if (subType.ToLower().Contains("2hstaff"))
                 {
-                    var s = GetResourceNameFromId(int.Parse(resNameStaff[UnityEngine.Random.Range(0, resNameStaff.Count)]), null, null, null);
+                    var s = GetResourceNameFromId(int.Parse(_resourceContainer.twoHandedStaffs[UnityEngine.Random.Range(0, _resourceContainer.twoHandedStaffs.Count)]), null, null, null);
                     while (s == "\"Bio_Reseearch_Docu\"")
-                        s = GetResourceNameFromId(int.Parse(resNameStaff[UnityEngine.Random.Range(0, resNameStaff.Count)]), null, null, null);
+                        s = GetResourceNameFromId(int.Parse(_resourceContainer.twoHandedStaffs[UnityEngine.Random.Range(0, _resourceContainer.twoHandedStaffs.Count)]), null, null, null);
                     return s;
                 }
+                else if (subType.ToLower().Contains("bow"))
+                {
+                    var s = GetResourceNameFromId(int.Parse(_resourceContainer.bows[UnityEngine.Random.Range(0, _resourceContainer.bows.Count)]), null, null, null);
+                    while (s == "\"Bio_Reseearch_Docu\"")
+                        s = GetResourceNameFromId(int.Parse(_resourceContainer.bows[UnityEngine.Random.Range(0, _resourceContainer.bows.Count)]), null, null, null);
+                    return s;
+                }
+                else if (subType.ToLower().Contains("knuckle"))
+                {
+                    var s = GetResourceNameFromId(int.Parse(_resourceContainer.knuckles[UnityEngine.Random.Range(0, _resourceContainer.knuckles.Count)]), null, null, null);
+                    while (s == "\"Bio_Reseearch_Docu\"")
+                        s = GetResourceNameFromId(int.Parse(_resourceContainer.knuckles[UnityEngine.Random.Range(0, _resourceContainer.knuckles.Count)]), null, null, null);
+                    return s;
+                }
+                else if (subType.ToLower().Contains("musical"))
+                {
+                    var s = GetResourceNameFromId(int.Parse(_resourceContainer.musicals[UnityEngine.Random.Range(0, _resourceContainer.musicals.Count)]), null, null, null);
+                    while (s == "\"Bio_Reseearch_Docu\"")
+                        s = GetResourceNameFromId(int.Parse(_resourceContainer.musicals[UnityEngine.Random.Range(0, _resourceContainer.musicals.Count)]), null, null, null);
+                    return s;
+                }
+                else if (subType.ToLower().Contains("whip"))
+                {
+                    var s = GetResourceNameFromId(int.Parse(_resourceContainer.whips[UnityEngine.Random.Range(0, _resourceContainer.whips.Count)]), null, null, null);
+                    while (s == "\"Bio_Reseearch_Docu\"")
+                        s = GetResourceNameFromId(int.Parse(_resourceContainer.whips[UnityEngine.Random.Range(0, _resourceContainer.whips.Count)]), null, null, null);
+                    return s;
+                }
+                else if (subType.ToLower().Contains("book"))
+                {
+                    var s = GetResourceNameFromId(int.Parse(_resourceContainer.books[UnityEngine.Random.Range(0, _resourceContainer.books.Count)]), null, null, null);
+                    while (s == "\"Bio_Reseearch_Docu\"")
+                        s = GetResourceNameFromId(int.Parse(_resourceContainer.books[UnityEngine.Random.Range(0, _resourceContainer.books.Count)]), null, null, null);
+                    return s;
+                }
+                else if (subType.ToLower().Contains("katar"))
+                {
+                    var s = GetResourceNameFromId(int.Parse(_resourceContainer.katars[UnityEngine.Random.Range(0, _resourceContainer.katars.Count)]), null, null, null);
+                    while (s == "\"Bio_Reseearch_Docu\"")
+                        s = GetResourceNameFromId(int.Parse(_resourceContainer.katars[UnityEngine.Random.Range(0, _resourceContainer.katars.Count)]), null, null, null);
+                    return s;
+                }
+                else if (subType.ToLower().Contains("revolver"))
+                {
+                    var s = GetResourceNameFromId(int.Parse(_resourceContainer.revolvers[UnityEngine.Random.Range(0, _resourceContainer.revolvers.Count)]), null, null, null);
+                    while (s == "\"Bio_Reseearch_Docu\"")
+                        s = GetResourceNameFromId(int.Parse(_resourceContainer.revolvers[UnityEngine.Random.Range(0, _resourceContainer.revolvers.Count)]), null, null, null);
+                    return s;
+                }
+                else if (subType.ToLower().Contains("rifle"))
+                {
+                    var s = GetResourceNameFromId(int.Parse(_resourceContainer.rifles[UnityEngine.Random.Range(0, _resourceContainer.rifles.Count)]), null, null, null);
+                    while (s == "\"Bio_Reseearch_Docu\"")
+                        s = GetResourceNameFromId(int.Parse(_resourceContainer.rifles[UnityEngine.Random.Range(0, _resourceContainer.rifles.Count)]), null, null, null);
+                    return s;
+                }
+                else if (subType.ToLower().Contains("gatling"))
+                {
+                    var s = GetResourceNameFromId(int.Parse(_resourceContainer.gatlings[UnityEngine.Random.Range(0, _resourceContainer.gatlings.Count)]), null, null, null);
+                    while (s == "\"Bio_Reseearch_Docu\"")
+                        s = GetResourceNameFromId(int.Parse(_resourceContainer.gatlings[UnityEngine.Random.Range(0, _resourceContainer.gatlings.Count)]), null, null, null);
+                    return s;
+                }
+                else if (subType.ToLower().Contains("shotgun"))
+                {
+                    var s = GetResourceNameFromId(int.Parse(_resourceContainer.shotguns[UnityEngine.Random.Range(0, _resourceContainer.shotguns.Count)]), null, null, null);
+                    while (s == "\"Bio_Reseearch_Docu\"")
+                        s = GetResourceNameFromId(int.Parse(_resourceContainer.shotguns[UnityEngine.Random.Range(0, _resourceContainer.shotguns.Count)]), null, null, null);
+                    return s;
+                }
+                else if (subType.ToLower().Contains("grenade"))
+                {
+                    var s = GetResourceNameFromId(int.Parse(_resourceContainer.grenades[UnityEngine.Random.Range(0, _resourceContainer.grenades.Count)]), null, null, null);
+                    while (s == "\"Bio_Reseearch_Docu\"")
+                        s = GetResourceNameFromId(int.Parse(_resourceContainer.grenades[UnityEngine.Random.Range(0, _resourceContainer.grenades.Count)]), null, null, null);
+                    return s;
+                }
+                else if (subType.ToLower().Contains("huuma"))
+                {
+                    var s = GetResourceNameFromId(int.Parse(_resourceContainer.huumas[UnityEngine.Random.Range(0, _resourceContainer.huumas.Count)]), null, null, null);
+                    while (s == "\"Bio_Reseearch_Docu\"")
+                        s = GetResourceNameFromId(int.Parse(_resourceContainer.huumas[UnityEngine.Random.Range(0, _resourceContainer.huumas.Count)]), null, null, null);
+                    return s;
+                }
+
                 if (type.ToLower() == "armor")
                 {
                     if (location == "หมวกส่วนบน")
                     {
-                        var s = GetResourceNameFromId(int.Parse(resNameHead_Top[UnityEngine.Random.Range(0, resNameHead_Top.Count)]), null, null, null);
+                        var s = GetResourceNameFromId(int.Parse(_resourceContainer.topHeadgears[UnityEngine.Random.Range(0, _resourceContainer.topHeadgears.Count)]), null, null, null);
                         while (s == "\"Bio_Reseearch_Docu\"")
-                            s = GetResourceNameFromId(int.Parse(resNameHead_Top[UnityEngine.Random.Range(0, resNameHead_Top.Count)]), null, null, null);
+                            s = GetResourceNameFromId(int.Parse(_resourceContainer.topHeadgears[UnityEngine.Random.Range(0, _resourceContainer.topHeadgears.Count)]), null, null, null);
                         return s;
                     }
                     else if (location == "หมวกส่วนกลาง")
                     {
-                        var s = GetResourceNameFromId(int.Parse(resNameHead_Mid[UnityEngine.Random.Range(0, resNameHead_Mid.Count)]), null, null, null);
+                        var s = GetResourceNameFromId(int.Parse(_resourceContainer.middleHeadgears[UnityEngine.Random.Range(0, _resourceContainer.middleHeadgears.Count)]), null, null, null);
                         while (s == "\"Bio_Reseearch_Docu\"")
-                            s = GetResourceNameFromId(int.Parse(resNameHead_Mid[UnityEngine.Random.Range(0, resNameHead_Mid.Count)]), null, null, null);
+                            s = GetResourceNameFromId(int.Parse(_resourceContainer.middleHeadgears[UnityEngine.Random.Range(0, _resourceContainer.middleHeadgears.Count)]), null, null, null);
                         return s;
                     }
                     else if (location == "หมวกส่วนล่าง")
                     {
-                        var s = GetResourceNameFromId(int.Parse(resNameHead_Low[UnityEngine.Random.Range(0, resNameHead_Low.Count)]), null, null, null);
+                        var s = GetResourceNameFromId(int.Parse(_resourceContainer.lowerHeadgears[UnityEngine.Random.Range(0, _resourceContainer.lowerHeadgears.Count)]), null, null, null);
                         while (s == "\"Bio_Reseearch_Docu\"")
-                            s = GetResourceNameFromId(int.Parse(resNameHead_Low[UnityEngine.Random.Range(0, resNameHead_Low.Count)]), null, null, null);
+                            s = GetResourceNameFromId(int.Parse(_resourceContainer.lowerHeadgears[UnityEngine.Random.Range(0, _resourceContainer.lowerHeadgears.Count)]), null, null, null);
                         return s;
                     }
                     else if (location == "ชุดเกราะ")
                     {
-                        var s = GetResourceNameFromId(int.Parse(resNameArmor[UnityEngine.Random.Range(0, resNameArmor.Count)]), null, null, null);
+                        var s = GetResourceNameFromId(int.Parse(_resourceContainer.armors[UnityEngine.Random.Range(0, _resourceContainer.armors.Count)]), null, null, null);
                         while (s == "\"Bio_Reseearch_Docu\"")
-                            s = GetResourceNameFromId(int.Parse(resNameArmor[UnityEngine.Random.Range(0, resNameArmor.Count)]), null, null, null);
+                            s = GetResourceNameFromId(int.Parse(_resourceContainer.armors[UnityEngine.Random.Range(0, _resourceContainer.armors.Count)]), null, null, null);
                         return s;
                     }
                     else if (location == "ผ้าคลุม")
                     {
-                        var s = GetResourceNameFromId(int.Parse(resNameGarment[UnityEngine.Random.Range(0, resNameGarment.Count)]), null, null, null);
+                        var s = GetResourceNameFromId(int.Parse(_resourceContainer.garments[UnityEngine.Random.Range(0, _resourceContainer.garments.Count)]), null, null, null);
                         while (s == "\"Bio_Reseearch_Docu\"")
-                            s = GetResourceNameFromId(int.Parse(resNameGarment[UnityEngine.Random.Range(0, resNameGarment.Count)]), null, null, null);
+                            s = GetResourceNameFromId(int.Parse(_resourceContainer.garments[UnityEngine.Random.Range(0, _resourceContainer.garments.Count)]), null, null, null);
                         return s;
                     }
                     else if (location == "รองเท้า")
                     {
-                        var s = GetResourceNameFromId(int.Parse(resNameShoes[UnityEngine.Random.Range(0, resNameShoes.Count)]), null, null, null);
+                        var s = GetResourceNameFromId(int.Parse(_resourceContainer.shoes[UnityEngine.Random.Range(0, _resourceContainer.shoes.Count)]), null, null, null);
                         while (s == "\"Bio_Reseearch_Docu\"")
-                            s = GetResourceNameFromId(int.Parse(resNameShoes[UnityEngine.Random.Range(0, resNameShoes.Count)]), null, null, null);
+                            s = GetResourceNameFromId(int.Parse(_resourceContainer.shoes[UnityEngine.Random.Range(0, _resourceContainer.shoes.Count)]), null, null, null);
                         return s;
                     }
                     else if (location == "ประดับข้างซ้าย" || location == "ประดับข้างขวา" || location == "ประดับสองข้าง")
                     {
-                        var s = GetResourceNameFromId(int.Parse(resNameAccessory[UnityEngine.Random.Range(0, resNameAccessory.Count)]), null, null, null);
+                        var s = GetResourceNameFromId(int.Parse(_resourceContainer.accessorys[UnityEngine.Random.Range(0, _resourceContainer.accessorys.Count)]), null, null, null);
                         while (s == "\"Bio_Reseearch_Docu\"")
-                            s = GetResourceNameFromId(int.Parse(resNameAccessory[UnityEngine.Random.Range(0, resNameAccessory.Count)]), null, null, null);
+                            s = GetResourceNameFromId(int.Parse(_resourceContainer.accessorys[UnityEngine.Random.Range(0, _resourceContainer.accessorys.Count)]), null, null, null);
                         return s;
                     }
                     else if (location == "มือซ้าย")
                     {
-                        var s = GetResourceNameFromId(int.Parse(resNameShield[UnityEngine.Random.Range(0, resNameShield.Count)]), null, null, null);
+                        var s = GetResourceNameFromId(int.Parse(_resourceContainer.shields[UnityEngine.Random.Range(0, _resourceContainer.shields.Count)]), null, null, null);
                         while (s == "\"Bio_Reseearch_Docu\"")
-                            s = GetResourceNameFromId(int.Parse(resNameShield[UnityEngine.Random.Range(0, resNameShield.Count)]), null, null, null);
+                            s = GetResourceNameFromId(int.Parse(_resourceContainer.shields[UnityEngine.Random.Range(0, _resourceContainer.shields.Count)]), null, null, null);
                         return s;
                     }
                 }
-                return resourceNameDatas[UnityEngine.Random.Range(0, resourceNameDatas.Count)].resourceName;
+                return _resourceDatabases[UnityEngine.Random.Range(0, _resourceDatabases.Count)].name;
             }
         }
         else
         {
-            if (isRandomizeResourceName)
-                return resourceNameDatas[UnityEngine.Random.Range(0, resourceNameDatas.Count)].resourceName;
+            if (_isRandomResourceName)
+                return _resourceDatabases[UnityEngine.Random.Range(0, _resourceDatabases.Count)].name;
         }
 
-        foreach (var item in resourceNameDatas)
+        foreach (var item in _resourceDatabases)
         {
             if (item.id == id)
-                return item.resourceName;
+                return item.name;
         }
 
         return "\"Bio_Reseearch_Docu\"";
@@ -4208,7 +4097,7 @@ public class Converter : MonoBehaviour
         if (int.TryParse(text, out _int))
         {
             _int = int.Parse(text);
-            foreach (var item in skillDatas)
+            foreach (var item in _skillDatabases)
             {
                 if (item.id == _int)
                     return "^990B0B" + item.description + "^000000";
@@ -4217,7 +4106,7 @@ public class Converter : MonoBehaviour
         else
         {
             text = RemoveSpace(text);
-            foreach (var item in skillDatas)
+            foreach (var item in _skillDatabases)
             {
                 if (item.name.ToLower() == text.ToLower())
                     return "^990B0B" + item.description + "^000000";
@@ -4228,7 +4117,7 @@ public class Converter : MonoBehaviour
 
     string ParseSkillName(string text)
     {
-        foreach (var item in skillDatas)
+        foreach (var item in _skillDatabases)
         {
             if (text.Contains(item.nameWithQuote))
             {
@@ -4242,10 +4131,10 @@ public class Converter : MonoBehaviour
 
     string GetClassNumFromId(int id)
     {
-        foreach (var item in classNumDatas)
+        foreach (var item in _classNumberDatabases)
         {
             if (item.id == id)
-                return item.classNum;
+                return item.classNumber;
         }
         return "0";
     }
@@ -4256,39 +4145,21 @@ public class Converter : MonoBehaviour
         if (int.TryParse(text, out _int))
         {
             _int = int.Parse(text);
-            foreach (var item in monsterNameDatas)
+            foreach (var item in _monsterDatabases)
             {
                 if (item.id == _int)
-                    return "^FF0000" + item.monsterName + "^000000";
+                    return "^FF0000" + item.name + "^000000";
             }
         }
         return "^FF0000" + text + "^000000";
     }
 
-    public static string RemoveCommentAndUnwantedWord(string s)
+    public ItemDatabase GetIdNameData(int id)
     {
-        if (string.IsNullOrWhiteSpace(s) || string.IsNullOrEmpty(s))
-            return string.Empty;
-        else
+        for (int i = 0; i < _itemDatabases.Count; i++)
         {
-            s = s.Replace("    # !todo check english name", string.Empty);
-            s = s.Replace("   # unknown view", string.Empty);
-            if (s.Contains("#"))
-                s = s.Substring(0, s.IndexOf("#"));
-            s = s.Replace("Header:", string.Empty);
-            s = s.Replace("  Type: ITEM_DB", string.Empty);
-            if (s.Contains("  Version: "))
-                s = string.Empty;
-            return s;
-        }
-    }
-
-    public IdNameData GetIdNameData(int id)
-    {
-        for (int i = 0; i < idNameDatas.Count; i++)
-        {
-            if (idNameDatas[i].id == id)
-                return idNameDatas[i];
+            if (_itemDatabases[i].id == id)
+                return _itemDatabases[i];
         }
         return null;
     }
@@ -4296,283 +4167,283 @@ public class Converter : MonoBehaviour
     void ParseBonusIntoTypesItemId(string text)
     {
         // Stats
-        if (text.Contains("bonus bStr,")) { if (!statsItemIds.Contains(id)) statsItemIds.Add(id); }
-        if (text.Contains("bonus bAgi,")) { if (!statsItemIds.Contains(id)) statsItemIds.Add(id); }
-        if (text.Contains("bonus bVit,")) { if (!statsItemIds.Contains(id)) statsItemIds.Add(id); }
-        if (text.Contains("bonus bInt,")) { if (!statsItemIds.Contains(id)) statsItemIds.Add(id); }
-        if (text.Contains("bonus bDex,")) { if (!statsItemIds.Contains(id)) statsItemIds.Add(id); }
-        if (text.Contains("bonus bLuk,")) { if (!statsItemIds.Contains(id)) statsItemIds.Add(id); }
-        if (text.Contains("bonus bAllStats,")) { if (!statsItemIds.Contains(id)) statsItemIds.Add(id); }
-        if (text.Contains("bonus bAgiVit,")) { if (!statsItemIds.Contains(id)) statsItemIds.Add(id); }
-        if (text.Contains("bonus bAgiDexStr,")) { if (!statsItemIds.Contains(id)) statsItemIds.Add(id); }
-        if (text.Contains("bonus bPow,")) { if (!statsItemIds.Contains(id)) statsItemIds.Add(id); }
-        if (text.Contains("bonus bSta,")) { if (!statsItemIds.Contains(id)) statsItemIds.Add(id); }
-        if (text.Contains("bonus bWis,")) { if (!statsItemIds.Contains(id)) statsItemIds.Add(id); }
-        if (text.Contains("bonus bSpl,")) { if (!statsItemIds.Contains(id)) statsItemIds.Add(id); }
-        if (text.Contains("bonus bCon,")) { if (!statsItemIds.Contains(id)) statsItemIds.Add(id); }
-        if (text.Contains("bonus bCrt,")) { if (!statsItemIds.Contains(id)) statsItemIds.Add(id); }
-        if (text.Contains("bonus bAllTraitStats,")) { if (!statsItemIds.Contains(id)) statsItemIds.Add(id); }
+        if (text.Contains("bonus bStr,")) { if (!_itemListContainer.statsItemIds.Contains(_itemContainer.id)) _itemListContainer.statsItemIds.Add(_itemContainer.id); }
+        if (text.Contains("bonus bAgi,")) { if (!_itemListContainer.statsItemIds.Contains(_itemContainer.id)) _itemListContainer.statsItemIds.Add(_itemContainer.id); }
+        if (text.Contains("bonus bVit,")) { if (!_itemListContainer.statsItemIds.Contains(_itemContainer.id)) _itemListContainer.statsItemIds.Add(_itemContainer.id); }
+        if (text.Contains("bonus bInt,")) { if (!_itemListContainer.statsItemIds.Contains(_itemContainer.id)) _itemListContainer.statsItemIds.Add(_itemContainer.id); }
+        if (text.Contains("bonus bDex,")) { if (!_itemListContainer.statsItemIds.Contains(_itemContainer.id)) _itemListContainer.statsItemIds.Add(_itemContainer.id); }
+        if (text.Contains("bonus bLuk,")) { if (!_itemListContainer.statsItemIds.Contains(_itemContainer.id)) _itemListContainer.statsItemIds.Add(_itemContainer.id); }
+        if (text.Contains("bonus bAllStats,")) { if (!_itemListContainer.statsItemIds.Contains(_itemContainer.id)) _itemListContainer.statsItemIds.Add(_itemContainer.id); }
+        if (text.Contains("bonus bAgiVit,")) { if (!_itemListContainer.statsItemIds.Contains(_itemContainer.id)) _itemListContainer.statsItemIds.Add(_itemContainer.id); }
+        if (text.Contains("bonus bAgiDexStr,")) { if (!_itemListContainer.statsItemIds.Contains(_itemContainer.id)) _itemListContainer.statsItemIds.Add(_itemContainer.id); }
+        if (text.Contains("bonus bPow,")) { if (!_itemListContainer.statsItemIds.Contains(_itemContainer.id)) _itemListContainer.statsItemIds.Add(_itemContainer.id); }
+        if (text.Contains("bonus bSta,")) { if (!_itemListContainer.statsItemIds.Contains(_itemContainer.id)) _itemListContainer.statsItemIds.Add(_itemContainer.id); }
+        if (text.Contains("bonus bWis,")) { if (!_itemListContainer.statsItemIds.Contains(_itemContainer.id)) _itemListContainer.statsItemIds.Add(_itemContainer.id); }
+        if (text.Contains("bonus bSpl,")) { if (!_itemListContainer.statsItemIds.Contains(_itemContainer.id)) _itemListContainer.statsItemIds.Add(_itemContainer.id); }
+        if (text.Contains("bonus bCon,")) { if (!_itemListContainer.statsItemIds.Contains(_itemContainer.id)) _itemListContainer.statsItemIds.Add(_itemContainer.id); }
+        if (text.Contains("bonus bCrt,")) { if (!_itemListContainer.statsItemIds.Contains(_itemContainer.id)) _itemListContainer.statsItemIds.Add(_itemContainer.id); }
+        if (text.Contains("bonus bAllTraitStats,")) { if (!_itemListContainer.statsItemIds.Contains(_itemContainer.id)) _itemListContainer.statsItemIds.Add(_itemContainer.id); }
         // HP/SP/AP
-        if (text.Contains("bonus bMaxHP,")) { if (!hpSpApItemIds.Contains(id)) hpSpApItemIds.Add(id); }
-        if (text.Contains("bonus bMaxHPrate,")) { if (!hpSpApItemIds.Contains(id)) hpSpApItemIds.Add(id); }
-        if (text.Contains("bonus bMaxSP,")) { if (!hpSpApItemIds.Contains(id)) hpSpApItemIds.Add(id); }
-        if (text.Contains("bonus bMaxSPrate,")) { if (!hpSpApItemIds.Contains(id)) hpSpApItemIds.Add(id); }
-        if (text.Contains("bonus bMaxAP,")) { if (!hpSpApItemIds.Contains(id)) hpSpApItemIds.Add(id); }
-        if (text.Contains("bonus bMaxAPrate,")) { if (!hpSpApItemIds.Contains(id)) hpSpApItemIds.Add(id); }
-        if (text.Contains("bonus bHPrecovRate,")) { if (!hpSpApItemIds.Contains(id)) hpSpApItemIds.Add(id); }
-        if (text.Contains("bonus bSPrecovRate,")) { if (!hpSpApItemIds.Contains(id)) hpSpApItemIds.Add(id); }
-        if (text.Contains("bonus2 bHPRegenRate,")) { if (!hpSpApItemIds.Contains(id)) hpSpApItemIds.Add(id); }
-        if (text.Contains("bonus2 bHPLossRate,")) { if (!hpSpApItemIds.Contains(id)) hpSpApItemIds.Add(id); }
-        if (text.Contains("bonus2 bSPRegenRate,")) { if (!hpSpApItemIds.Contains(id)) hpSpApItemIds.Add(id); }
-        if (text.Contains("bonus2 bSPLossRate,")) { if (!hpSpApItemIds.Contains(id)) hpSpApItemIds.Add(id); }
-        if (text.Contains("bonus2 bRegenPercentHP,")) { if (!hpSpApItemIds.Contains(id)) hpSpApItemIds.Add(id); }
-        if (text.Contains("bonus2 bRegenPercentSP,")) { if (!hpSpApItemIds.Contains(id)) hpSpApItemIds.Add(id); }
-        if (text.Contains("bonus bNoRegen,")) { if (!hpSpApItemIds.Contains(id)) hpSpApItemIds.Add(id); }
-        if (text.Contains("bonus bUseSPrate,")) { if (!hpSpApItemIds.Contains(id)) hpSpApItemIds.Add(id); }
-        if (text.Contains("bonus2 bSkillUseSP,")) { if (!hpSpApItemIds.Contains(id)) hpSpApItemIds.Add(id); }
-        if (text.Contains("bonus2 bSkillUseSPrate,")) { if (!hpSpApItemIds.Contains(id)) hpSpApItemIds.Add(id); }
-        if (text.Contains("bonus bHealPower,")) { if (!hpSpApItemIds.Contains(id)) hpSpApItemIds.Add(id); }
-        if (text.Contains("bonus bHealPower2,")) { if (!hpSpApItemIds.Contains(id)) hpSpApItemIds.Add(id); }
-        if (text.Contains("bonus2 bSkillHeal,")) { if (!hpSpApItemIds.Contains(id)) hpSpApItemIds.Add(id); }
-        if (text.Contains("bonus2 bSkillHeal2,")) { if (!hpSpApItemIds.Contains(id)) hpSpApItemIds.Add(id); }
-        if (text.Contains("bonus bAddItemHealRate,")) { if (!hpSpApItemIds.Contains(id)) hpSpApItemIds.Add(id); }
-        if (text.Contains("bonus2 bAddItemHealRate,")) { if (!hpSpApItemIds.Contains(id)) hpSpApItemIds.Add(id); }
-        if (text.Contains("bonus2 bAddItemGroupHealRate,")) { if (!hpSpApItemIds.Contains(id)) hpSpApItemIds.Add(id); }
-        if (text.Contains("bonus bAddItemSPHealRate,")) { if (!hpSpApItemIds.Contains(id)) hpSpApItemIds.Add(id); }
-        if (text.Contains("bonus2 bAddItemSPHealRate,")) { if (!hpSpApItemIds.Contains(id)) hpSpApItemIds.Add(id); }
-        if (text.Contains("bonus2 bAddItemGroupSPHealRate,")) { if (!hpSpApItemIds.Contains(id)) hpSpApItemIds.Add(id); }
-        if (text.Contains("bonus bHPDrainValue,")) { if (!hpSpApItemIds.Contains(id)) hpSpApItemIds.Add(id); }
-        if (text.Contains("bonus2 bHPDrainValueRace,")) { if (!hpSpApItemIds.Contains(id)) hpSpApItemIds.Add(id); }
-        if (text.Contains("bonus2 bHpDrainValueClass,")) { if (!hpSpApItemIds.Contains(id)) hpSpApItemIds.Add(id); }
-        if (text.Contains("bonus bSPDrainValue,")) { if (!hpSpApItemIds.Contains(id)) hpSpApItemIds.Add(id); }
-        if (text.Contains("bonus2 bSPDrainValueRace,")) { if (!hpSpApItemIds.Contains(id)) hpSpApItemIds.Add(id); }
-        if (text.Contains("bonus2 bSpDrainValueClass,")) { if (!hpSpApItemIds.Contains(id)) hpSpApItemIds.Add(id); }
-        if (text.Contains("bonus2 bHPDrainRate,")) { if (!hpSpApItemIds.Contains(id)) hpSpApItemIds.Add(id); }
-        if (text.Contains("bonus2 bSPDrainRate,")) { if (!hpSpApItemIds.Contains(id)) hpSpApItemIds.Add(id); }
-        if (text.Contains("bonus bHPGainValue,")) { if (!hpSpApItemIds.Contains(id)) hpSpApItemIds.Add(id); }
-        if (text.Contains("bonus bSPGainValue,")) { if (!hpSpApItemIds.Contains(id)) hpSpApItemIds.Add(id); }
-        if (text.Contains("bonus2 bSPGainRace,")) { if (!hpSpApItemIds.Contains(id)) hpSpApItemIds.Add(id); }
-        if (text.Contains("bonus bLongHPGainValue,")) { if (!hpSpApItemIds.Contains(id)) hpSpApItemIds.Add(id); }
-        if (text.Contains("bonus bLongSPGainValue,")) { if (!hpSpApItemIds.Contains(id)) hpSpApItemIds.Add(id); }
-        if (text.Contains("bonus bMagicHPGainValue,")) { if (!hpSpApItemIds.Contains(id)) hpSpApItemIds.Add(id); }
-        if (text.Contains("bonus bMagicSPGainValue,")) { if (!hpSpApItemIds.Contains(id)) hpSpApItemIds.Add(id); }
+        if (text.Contains("bonus bMaxHP,")) { if (!_itemListContainer.hpSpApItemIds.Contains(_itemContainer.id)) _itemListContainer.hpSpApItemIds.Add(_itemContainer.id); }
+        if (text.Contains("bonus bMaxHPrate,")) { if (!_itemListContainer.hpSpApItemIds.Contains(_itemContainer.id)) _itemListContainer.hpSpApItemIds.Add(_itemContainer.id); }
+        if (text.Contains("bonus bMaxSP,")) { if (!_itemListContainer.hpSpApItemIds.Contains(_itemContainer.id)) _itemListContainer.hpSpApItemIds.Add(_itemContainer.id); }
+        if (text.Contains("bonus bMaxSPrate,")) { if (!_itemListContainer.hpSpApItemIds.Contains(_itemContainer.id)) _itemListContainer.hpSpApItemIds.Add(_itemContainer.id); }
+        if (text.Contains("bonus bMaxAP,")) { if (!_itemListContainer.hpSpApItemIds.Contains(_itemContainer.id)) _itemListContainer.hpSpApItemIds.Add(_itemContainer.id); }
+        if (text.Contains("bonus bMaxAPrate,")) { if (!_itemListContainer.hpSpApItemIds.Contains(_itemContainer.id)) _itemListContainer.hpSpApItemIds.Add(_itemContainer.id); }
+        if (text.Contains("bonus bHPrecovRate,")) { if (!_itemListContainer.hpSpApItemIds.Contains(_itemContainer.id)) _itemListContainer.hpSpApItemIds.Add(_itemContainer.id); }
+        if (text.Contains("bonus bSPrecovRate,")) { if (!_itemListContainer.hpSpApItemIds.Contains(_itemContainer.id)) _itemListContainer.hpSpApItemIds.Add(_itemContainer.id); }
+        if (text.Contains("bonus2 bHPRegenRate,")) { if (!_itemListContainer.hpSpApItemIds.Contains(_itemContainer.id)) _itemListContainer.hpSpApItemIds.Add(_itemContainer.id); }
+        if (text.Contains("bonus2 bHPLossRate,")) { if (!_itemListContainer.hpSpApItemIds.Contains(_itemContainer.id)) _itemListContainer.hpSpApItemIds.Add(_itemContainer.id); }
+        if (text.Contains("bonus2 bSPRegenRate,")) { if (!_itemListContainer.hpSpApItemIds.Contains(_itemContainer.id)) _itemListContainer.hpSpApItemIds.Add(_itemContainer.id); }
+        if (text.Contains("bonus2 bSPLossRate,")) { if (!_itemListContainer.hpSpApItemIds.Contains(_itemContainer.id)) _itemListContainer.hpSpApItemIds.Add(_itemContainer.id); }
+        if (text.Contains("bonus2 bRegenPercentHP,")) { if (!_itemListContainer.hpSpApItemIds.Contains(_itemContainer.id)) _itemListContainer.hpSpApItemIds.Add(_itemContainer.id); }
+        if (text.Contains("bonus2 bRegenPercentSP,")) { if (!_itemListContainer.hpSpApItemIds.Contains(_itemContainer.id)) _itemListContainer.hpSpApItemIds.Add(_itemContainer.id); }
+        if (text.Contains("bonus bNoRegen,")) { if (!_itemListContainer.hpSpApItemIds.Contains(_itemContainer.id)) _itemListContainer.hpSpApItemIds.Add(_itemContainer.id); }
+        if (text.Contains("bonus bUseSPrate,")) { if (!_itemListContainer.hpSpApItemIds.Contains(_itemContainer.id)) _itemListContainer.hpSpApItemIds.Add(_itemContainer.id); }
+        if (text.Contains("bonus2 bSkillUseSP,")) { if (!_itemListContainer.hpSpApItemIds.Contains(_itemContainer.id)) _itemListContainer.hpSpApItemIds.Add(_itemContainer.id); }
+        if (text.Contains("bonus2 bSkillUseSPrate,")) { if (!_itemListContainer.hpSpApItemIds.Contains(_itemContainer.id)) _itemListContainer.hpSpApItemIds.Add(_itemContainer.id); }
+        if (text.Contains("bonus bHealPower,")) { if (!_itemListContainer.hpSpApItemIds.Contains(_itemContainer.id)) _itemListContainer.hpSpApItemIds.Add(_itemContainer.id); }
+        if (text.Contains("bonus bHealPower2,")) { if (!_itemListContainer.hpSpApItemIds.Contains(_itemContainer.id)) _itemListContainer.hpSpApItemIds.Add(_itemContainer.id); }
+        if (text.Contains("bonus2 bSkillHeal,")) { if (!_itemListContainer.hpSpApItemIds.Contains(_itemContainer.id)) _itemListContainer.hpSpApItemIds.Add(_itemContainer.id); }
+        if (text.Contains("bonus2 bSkillHeal2,")) { if (!_itemListContainer.hpSpApItemIds.Contains(_itemContainer.id)) _itemListContainer.hpSpApItemIds.Add(_itemContainer.id); }
+        if (text.Contains("bonus bAddItemHealRate,")) { if (!_itemListContainer.hpSpApItemIds.Contains(_itemContainer.id)) _itemListContainer.hpSpApItemIds.Add(_itemContainer.id); }
+        if (text.Contains("bonus2 bAddItemHealRate,")) { if (!_itemListContainer.hpSpApItemIds.Contains(_itemContainer.id)) _itemListContainer.hpSpApItemIds.Add(_itemContainer.id); }
+        if (text.Contains("bonus2 bAddItemGroupHealRate,")) { if (!_itemListContainer.hpSpApItemIds.Contains(_itemContainer.id)) _itemListContainer.hpSpApItemIds.Add(_itemContainer.id); }
+        if (text.Contains("bonus bAddItemSPHealRate,")) { if (!_itemListContainer.hpSpApItemIds.Contains(_itemContainer.id)) _itemListContainer.hpSpApItemIds.Add(_itemContainer.id); }
+        if (text.Contains("bonus2 bAddItemSPHealRate,")) { if (!_itemListContainer.hpSpApItemIds.Contains(_itemContainer.id)) _itemListContainer.hpSpApItemIds.Add(_itemContainer.id); }
+        if (text.Contains("bonus2 bAddItemGroupSPHealRate,")) { if (!_itemListContainer.hpSpApItemIds.Contains(_itemContainer.id)) _itemListContainer.hpSpApItemIds.Add(_itemContainer.id); }
+        if (text.Contains("bonus bHPDrainValue,")) { if (!_itemListContainer.hpSpApItemIds.Contains(_itemContainer.id)) _itemListContainer.hpSpApItemIds.Add(_itemContainer.id); }
+        if (text.Contains("bonus2 bHPDrainValueRace,")) { if (!_itemListContainer.hpSpApItemIds.Contains(_itemContainer.id)) _itemListContainer.hpSpApItemIds.Add(_itemContainer.id); }
+        if (text.Contains("bonus2 bHpDrainValueClass,")) { if (!_itemListContainer.hpSpApItemIds.Contains(_itemContainer.id)) _itemListContainer.hpSpApItemIds.Add(_itemContainer.id); }
+        if (text.Contains("bonus bSPDrainValue,")) { if (!_itemListContainer.hpSpApItemIds.Contains(_itemContainer.id)) _itemListContainer.hpSpApItemIds.Add(_itemContainer.id); }
+        if (text.Contains("bonus2 bSPDrainValueRace,")) { if (!_itemListContainer.hpSpApItemIds.Contains(_itemContainer.id)) _itemListContainer.hpSpApItemIds.Add(_itemContainer.id); }
+        if (text.Contains("bonus2 bSpDrainValueClass,")) { if (!_itemListContainer.hpSpApItemIds.Contains(_itemContainer.id)) _itemListContainer.hpSpApItemIds.Add(_itemContainer.id); }
+        if (text.Contains("bonus2 bHPDrainRate,")) { if (!_itemListContainer.hpSpApItemIds.Contains(_itemContainer.id)) _itemListContainer.hpSpApItemIds.Add(_itemContainer.id); }
+        if (text.Contains("bonus2 bSPDrainRate,")) { if (!_itemListContainer.hpSpApItemIds.Contains(_itemContainer.id)) _itemListContainer.hpSpApItemIds.Add(_itemContainer.id); }
+        if (text.Contains("bonus bHPGainValue,")) { if (!_itemListContainer.hpSpApItemIds.Contains(_itemContainer.id)) _itemListContainer.hpSpApItemIds.Add(_itemContainer.id); }
+        if (text.Contains("bonus bSPGainValue,")) { if (!_itemListContainer.hpSpApItemIds.Contains(_itemContainer.id)) _itemListContainer.hpSpApItemIds.Add(_itemContainer.id); }
+        if (text.Contains("bonus2 bSPGainRace,")) { if (!_itemListContainer.hpSpApItemIds.Contains(_itemContainer.id)) _itemListContainer.hpSpApItemIds.Add(_itemContainer.id); }
+        if (text.Contains("bonus bLongHPGainValue,")) { if (!_itemListContainer.hpSpApItemIds.Contains(_itemContainer.id)) _itemListContainer.hpSpApItemIds.Add(_itemContainer.id); }
+        if (text.Contains("bonus bLongSPGainValue,")) { if (!_itemListContainer.hpSpApItemIds.Contains(_itemContainer.id)) _itemListContainer.hpSpApItemIds.Add(_itemContainer.id); }
+        if (text.Contains("bonus bMagicHPGainValue,")) { if (!_itemListContainer.hpSpApItemIds.Contains(_itemContainer.id)) _itemListContainer.hpSpApItemIds.Add(_itemContainer.id); }
+        if (text.Contains("bonus bMagicSPGainValue,")) { if (!_itemListContainer.hpSpApItemIds.Contains(_itemContainer.id)) _itemListContainer.hpSpApItemIds.Add(_itemContainer.id); }
         // Offensive
-        if (text.Contains("bonus bBaseAtk,")) { if (!offensiveItemIds.Contains(id)) offensiveItemIds.Add(id); }
-        if (text.Contains("bonus bAtk,")) { if (!offensiveItemIds.Contains(id)) offensiveItemIds.Add(id); }
-        if (text.Contains("bonus bAtk2,")) { if (!offensiveItemIds.Contains(id)) offensiveItemIds.Add(id); }
-        if (text.Contains("bonus bAtkRate,")) { if (!offensiveItemIds.Contains(id)) offensiveItemIds.Add(id); }
-        if (text.Contains("bonus bWeaponAtkRate,")) { if (!offensiveItemIds.Contains(id)) offensiveItemIds.Add(id); }
-        if (text.Contains("bonus bMatk,")) { if (!offensiveItemIds.Contains(id)) offensiveItemIds.Add(id); }
-        if (text.Contains("bonus bMatkRate,")) { if (!offensiveItemIds.Contains(id)) offensiveItemIds.Add(id); }
-        if (text.Contains("bonus bWeaponMatkRate,")) { if (!offensiveItemIds.Contains(id)) offensiveItemIds.Add(id); }
-        if (text.Contains("bonus2 bSkillAtk,")) { if (!offensiveItemIds.Contains(id)) offensiveItemIds.Add(id); }
-        if (text.Contains("bonus bShortAtkRate,")) { if (!offensiveItemIds.Contains(id)) offensiveItemIds.Add(id); }
-        if (text.Contains("bonus bLongAtkRate,")) { if (!offensiveItemIds.Contains(id)) offensiveItemIds.Add(id); }
-        if (text.Contains("bonus bCritAtkRate,")) { if (!offensiveItemIds.Contains(id)) offensiveItemIds.Add(id); }
-        if (text.Contains("bonus2 bWeaponAtk,")) { if (!offensiveItemIds.Contains(id)) offensiveItemIds.Add(id); }
-        if (text.Contains("bonus2 bWeaponDamageRate,")) { if (!offensiveItemIds.Contains(id)) offensiveItemIds.Add(id); }
-        if (text.Contains("bonus2 bAddEle,")) { if (!offensiveItemIds.Contains(id)) offensiveItemIds.Add(id); }
-        if (text.Contains("bonus3 bAddEle,")) { if (!offensiveItemIds.Contains(id)) offensiveItemIds.Add(id); }
-        if (text.Contains("bonus2 bMagicAddEle,")) { if (!offensiveItemIds.Contains(id)) offensiveItemIds.Add(id); }
-        if (text.Contains("bonus2 bAddRace,")) { if (!offensiveItemIds.Contains(id)) offensiveItemIds.Add(id); }
-        if (text.Contains("bonus2 bMagicAddRace,")) { if (!offensiveItemIds.Contains(id)) offensiveItemIds.Add(id); }
-        if (text.Contains("bonus2 bAddClass,")) { if (!offensiveItemIds.Contains(id)) offensiveItemIds.Add(id); }
-        if (text.Contains("bonus2 bMagicAddClass,")) { if (!offensiveItemIds.Contains(id)) offensiveItemIds.Add(id); }
-        if (text.Contains("bonus2 bAddSize,")) { if (!offensiveItemIds.Contains(id)) offensiveItemIds.Add(id); }
-        if (text.Contains("bonus2 bMagicAddSize,")) { if (!offensiveItemIds.Contains(id)) offensiveItemIds.Add(id); }
-        if (text.Contains("bonus bNoSizeFix;")) { if (!offensiveItemIds.Contains(id)) offensiveItemIds.Add(id); }
-        if (text.Contains("bonus2 bAddDamageClass,")) { if (!offensiveItemIds.Contains(id)) offensiveItemIds.Add(id); }
-        if (text.Contains("bonus2 bAddMagicDamageClass,")) { if (!offensiveItemIds.Contains(id)) offensiveItemIds.Add(id); }
-        if (text.Contains("bonus2 bAddRace2,")) { if (!offensiveItemIds.Contains(id)) offensiveItemIds.Add(id); }
-        if (text.Contains("bonus2 bMagicAddRace2,")) { if (!offensiveItemIds.Contains(id)) offensiveItemIds.Add(id); }
-        if (text.Contains("bonus bAtkEle,")) { if (!offensiveItemIds.Contains(id)) offensiveItemIds.Add(id); }
-        if (text.Contains("bonus2 bMagicAtkEle,")) { if (!offensiveItemIds.Contains(id)) offensiveItemIds.Add(id); }
-        if (text.Contains("bonus bDefRatioAtkRace,")) { if (!offensiveItemIds.Contains(id)) offensiveItemIds.Add(id); }
-        if (text.Contains("bonus bDefRatioAtkEle,")) { if (!offensiveItemIds.Contains(id)) offensiveItemIds.Add(id); }
-        if (text.Contains("bonus bDefRatioAtkClass,")) { if (!offensiveItemIds.Contains(id)) offensiveItemIds.Add(id); }
-        if (text.Contains("bonus4 bSetDefRace,")) { if (!offensiveItemIds.Contains(id)) offensiveItemIds.Add(id); }
-        if (text.Contains("bonus4 bSetMDefRace,")) { if (!offensiveItemIds.Contains(id)) offensiveItemIds.Add(id); }
-        if (text.Contains("bonus bIgnoreDefEle,")) { if (!offensiveItemIds.Contains(id)) offensiveItemIds.Add(id); }
-        if (text.Contains("bonus bIgnoreDefRace,")) { if (!offensiveItemIds.Contains(id)) offensiveItemIds.Add(id); }
-        if (text.Contains("bonus bIgnoreDefClass,")) { if (!offensiveItemIds.Contains(id)) offensiveItemIds.Add(id); }
-        if (text.Contains("bonus bIgnoreMDefRace,")) { if (!offensiveItemIds.Contains(id)) offensiveItemIds.Add(id); }
-        if (text.Contains("bonus2 bIgnoreDefRaceRate,")) { if (!offensiveItemIds.Contains(id)) offensiveItemIds.Add(id); }
-        if (text.Contains("bonus2 bIgnoreMdefRaceRate,")) { if (!offensiveItemIds.Contains(id)) offensiveItemIds.Add(id); }
-        if (text.Contains("bonus2 bIgnoreMdefRace2Rate,")) { if (!offensiveItemIds.Contains(id)) offensiveItemIds.Add(id); }
-        if (text.Contains("bonus bIgnoreMDefEle,")) { if (!offensiveItemIds.Contains(id)) offensiveItemIds.Add(id); }
-        if (text.Contains("bonus2 bIgnoreDefClassRate,")) { if (!offensiveItemIds.Contains(id)) offensiveItemIds.Add(id); }
-        if (text.Contains("bonus2 bIgnoreMdefClassRate,")) { if (!offensiveItemIds.Contains(id)) offensiveItemIds.Add(id); }
-        if (text.Contains("bonus2 bHPVanishRate,")) { if (!offensiveItemIds.Contains(id)) offensiveItemIds.Add(id); }
-        if (text.Contains("bonus3 bHPVanishRaceRate,")) { if (!offensiveItemIds.Contains(id)) offensiveItemIds.Add(id); }
-        if (text.Contains("bonus3 bHPVanishRate,")) { if (!offensiveItemIds.Contains(id)) offensiveItemIds.Add(id); }
-        if (text.Contains("bonus2 bSPVanishRate,")) { if (!offensiveItemIds.Contains(id)) offensiveItemIds.Add(id); }
-        if (text.Contains("bonus3 bSPVanishRaceRate,")) { if (!offensiveItemIds.Contains(id)) offensiveItemIds.Add(id); }
-        if (text.Contains("bonus3 bSPVanishRate,")) { if (!offensiveItemIds.Contains(id)) offensiveItemIds.Add(id); }
-        if (text.Contains("bonus3 bStateNoRecoverRace,")) { if (!offensiveItemIds.Contains(id)) offensiveItemIds.Add(id); }
-        if (text.Contains("bonus bBreakWeaponRate,")) { if (!offensiveItemIds.Contains(id)) offensiveItemIds.Add(id); }
-        if (text.Contains("bonus bBreakArmorRate,")) { if (!offensiveItemIds.Contains(id)) offensiveItemIds.Add(id); }
+        if (text.Contains("bonus bBaseAtk,")) { if (!_itemListContainer.offensiveItemIds.Contains(_itemContainer.id)) _itemListContainer.offensiveItemIds.Add(_itemContainer.id); }
+        if (text.Contains("bonus bAtk,")) { if (!_itemListContainer.offensiveItemIds.Contains(_itemContainer.id)) _itemListContainer.offensiveItemIds.Add(_itemContainer.id); }
+        if (text.Contains("bonus bAtk2,")) { if (!_itemListContainer.offensiveItemIds.Contains(_itemContainer.id)) _itemListContainer.offensiveItemIds.Add(_itemContainer.id); }
+        if (text.Contains("bonus bAtkRate,")) { if (!_itemListContainer.offensiveItemIds.Contains(_itemContainer.id)) _itemListContainer.offensiveItemIds.Add(_itemContainer.id); }
+        if (text.Contains("bonus bWeaponAtkRate,")) { if (!_itemListContainer.offensiveItemIds.Contains(_itemContainer.id)) _itemListContainer.offensiveItemIds.Add(_itemContainer.id); }
+        if (text.Contains("bonus bMatk,")) { if (!_itemListContainer.offensiveItemIds.Contains(_itemContainer.id)) _itemListContainer.offensiveItemIds.Add(_itemContainer.id); }
+        if (text.Contains("bonus bMatkRate,")) { if (!_itemListContainer.offensiveItemIds.Contains(_itemContainer.id)) _itemListContainer.offensiveItemIds.Add(_itemContainer.id); }
+        if (text.Contains("bonus bWeaponMatkRate,")) { if (!_itemListContainer.offensiveItemIds.Contains(_itemContainer.id)) _itemListContainer.offensiveItemIds.Add(_itemContainer.id); }
+        if (text.Contains("bonus2 bSkillAtk,")) { if (!_itemListContainer.offensiveItemIds.Contains(_itemContainer.id)) _itemListContainer.offensiveItemIds.Add(_itemContainer.id); }
+        if (text.Contains("bonus bShortAtkRate,")) { if (!_itemListContainer.offensiveItemIds.Contains(_itemContainer.id)) _itemListContainer.offensiveItemIds.Add(_itemContainer.id); }
+        if (text.Contains("bonus bLongAtkRate,")) { if (!_itemListContainer.offensiveItemIds.Contains(_itemContainer.id)) _itemListContainer.offensiveItemIds.Add(_itemContainer.id); }
+        if (text.Contains("bonus bCritAtkRate,")) { if (!_itemListContainer.offensiveItemIds.Contains(_itemContainer.id)) _itemListContainer.offensiveItemIds.Add(_itemContainer.id); }
+        if (text.Contains("bonus2 bWeaponAtk,")) { if (!_itemListContainer.offensiveItemIds.Contains(_itemContainer.id)) _itemListContainer.offensiveItemIds.Add(_itemContainer.id); }
+        if (text.Contains("bonus2 bWeaponDamageRate,")) { if (!_itemListContainer.offensiveItemIds.Contains(_itemContainer.id)) _itemListContainer.offensiveItemIds.Add(_itemContainer.id); }
+        if (text.Contains("bonus2 bAddEle,")) { if (!_itemListContainer.offensiveItemIds.Contains(_itemContainer.id)) _itemListContainer.offensiveItemIds.Add(_itemContainer.id); }
+        if (text.Contains("bonus3 bAddEle,")) { if (!_itemListContainer.offensiveItemIds.Contains(_itemContainer.id)) _itemListContainer.offensiveItemIds.Add(_itemContainer.id); }
+        if (text.Contains("bonus2 bMagicAddEle,")) { if (!_itemListContainer.offensiveItemIds.Contains(_itemContainer.id)) _itemListContainer.offensiveItemIds.Add(_itemContainer.id); }
+        if (text.Contains("bonus2 bAddRace,")) { if (!_itemListContainer.offensiveItemIds.Contains(_itemContainer.id)) _itemListContainer.offensiveItemIds.Add(_itemContainer.id); }
+        if (text.Contains("bonus2 bMagicAddRace,")) { if (!_itemListContainer.offensiveItemIds.Contains(_itemContainer.id)) _itemListContainer.offensiveItemIds.Add(_itemContainer.id); }
+        if (text.Contains("bonus2 bAddClass,")) { if (!_itemListContainer.offensiveItemIds.Contains(_itemContainer.id)) _itemListContainer.offensiveItemIds.Add(_itemContainer.id); }
+        if (text.Contains("bonus2 bMagicAddClass,")) { if (!_itemListContainer.offensiveItemIds.Contains(_itemContainer.id)) _itemListContainer.offensiveItemIds.Add(_itemContainer.id); }
+        if (text.Contains("bonus2 bAddSize,")) { if (!_itemListContainer.offensiveItemIds.Contains(_itemContainer.id)) _itemListContainer.offensiveItemIds.Add(_itemContainer.id); }
+        if (text.Contains("bonus2 bMagicAddSize,")) { if (!_itemListContainer.offensiveItemIds.Contains(_itemContainer.id)) _itemListContainer.offensiveItemIds.Add(_itemContainer.id); }
+        if (text.Contains("bonus bNoSizeFix;")) { if (!_itemListContainer.offensiveItemIds.Contains(_itemContainer.id)) _itemListContainer.offensiveItemIds.Add(_itemContainer.id); }
+        if (text.Contains("bonus2 bAddDamageClass,")) { if (!_itemListContainer.offensiveItemIds.Contains(_itemContainer.id)) _itemListContainer.offensiveItemIds.Add(_itemContainer.id); }
+        if (text.Contains("bonus2 bAddMagicDamageClass,")) { if (!_itemListContainer.offensiveItemIds.Contains(_itemContainer.id)) _itemListContainer.offensiveItemIds.Add(_itemContainer.id); }
+        if (text.Contains("bonus2 bAddRace2,")) { if (!_itemListContainer.offensiveItemIds.Contains(_itemContainer.id)) _itemListContainer.offensiveItemIds.Add(_itemContainer.id); }
+        if (text.Contains("bonus2 bMagicAddRace2,")) { if (!_itemListContainer.offensiveItemIds.Contains(_itemContainer.id)) _itemListContainer.offensiveItemIds.Add(_itemContainer.id); }
+        if (text.Contains("bonus bAtkEle,")) { if (!_itemListContainer.offensiveItemIds.Contains(_itemContainer.id)) _itemListContainer.offensiveItemIds.Add(_itemContainer.id); }
+        if (text.Contains("bonus2 bMagicAtkEle,")) { if (!_itemListContainer.offensiveItemIds.Contains(_itemContainer.id)) _itemListContainer.offensiveItemIds.Add(_itemContainer.id); }
+        if (text.Contains("bonus bDefRatioAtkRace,")) { if (!_itemListContainer.offensiveItemIds.Contains(_itemContainer.id)) _itemListContainer.offensiveItemIds.Add(_itemContainer.id); }
+        if (text.Contains("bonus bDefRatioAtkEle,")) { if (!_itemListContainer.offensiveItemIds.Contains(_itemContainer.id)) _itemListContainer.offensiveItemIds.Add(_itemContainer.id); }
+        if (text.Contains("bonus bDefRatioAtkClass,")) { if (!_itemListContainer.offensiveItemIds.Contains(_itemContainer.id)) _itemListContainer.offensiveItemIds.Add(_itemContainer.id); }
+        if (text.Contains("bonus4 bSetDefRace,")) { if (!_itemListContainer.offensiveItemIds.Contains(_itemContainer.id)) _itemListContainer.offensiveItemIds.Add(_itemContainer.id); }
+        if (text.Contains("bonus4 bSetMDefRace,")) { if (!_itemListContainer.offensiveItemIds.Contains(_itemContainer.id)) _itemListContainer.offensiveItemIds.Add(_itemContainer.id); }
+        if (text.Contains("bonus bIgnoreDefEle,")) { if (!_itemListContainer.offensiveItemIds.Contains(_itemContainer.id)) _itemListContainer.offensiveItemIds.Add(_itemContainer.id); }
+        if (text.Contains("bonus bIgnoreDefRace,")) { if (!_itemListContainer.offensiveItemIds.Contains(_itemContainer.id)) _itemListContainer.offensiveItemIds.Add(_itemContainer.id); }
+        if (text.Contains("bonus bIgnoreDefClass,")) { if (!_itemListContainer.offensiveItemIds.Contains(_itemContainer.id)) _itemListContainer.offensiveItemIds.Add(_itemContainer.id); }
+        if (text.Contains("bonus bIgnoreMDefRace,")) { if (!_itemListContainer.offensiveItemIds.Contains(_itemContainer.id)) _itemListContainer.offensiveItemIds.Add(_itemContainer.id); }
+        if (text.Contains("bonus2 bIgnoreDefRaceRate,")) { if (!_itemListContainer.offensiveItemIds.Contains(_itemContainer.id)) _itemListContainer.offensiveItemIds.Add(_itemContainer.id); }
+        if (text.Contains("bonus2 bIgnoreMdefRaceRate,")) { if (!_itemListContainer.offensiveItemIds.Contains(_itemContainer.id)) _itemListContainer.offensiveItemIds.Add(_itemContainer.id); }
+        if (text.Contains("bonus2 bIgnoreMdefRace2Rate,")) { if (!_itemListContainer.offensiveItemIds.Contains(_itemContainer.id)) _itemListContainer.offensiveItemIds.Add(_itemContainer.id); }
+        if (text.Contains("bonus bIgnoreMDefEle,")) { if (!_itemListContainer.offensiveItemIds.Contains(_itemContainer.id)) _itemListContainer.offensiveItemIds.Add(_itemContainer.id); }
+        if (text.Contains("bonus2 bIgnoreDefClassRate,")) { if (!_itemListContainer.offensiveItemIds.Contains(_itemContainer.id)) _itemListContainer.offensiveItemIds.Add(_itemContainer.id); }
+        if (text.Contains("bonus2 bIgnoreMdefClassRate,")) { if (!_itemListContainer.offensiveItemIds.Contains(_itemContainer.id)) _itemListContainer.offensiveItemIds.Add(_itemContainer.id); }
+        if (text.Contains("bonus2 bHPVanishRate,")) { if (!_itemListContainer.offensiveItemIds.Contains(_itemContainer.id)) _itemListContainer.offensiveItemIds.Add(_itemContainer.id); }
+        if (text.Contains("bonus3 bHPVanishRaceRate,")) { if (!_itemListContainer.offensiveItemIds.Contains(_itemContainer.id)) _itemListContainer.offensiveItemIds.Add(_itemContainer.id); }
+        if (text.Contains("bonus3 bHPVanishRate,")) { if (!_itemListContainer.offensiveItemIds.Contains(_itemContainer.id)) _itemListContainer.offensiveItemIds.Add(_itemContainer.id); }
+        if (text.Contains("bonus2 bSPVanishRate,")) { if (!_itemListContainer.offensiveItemIds.Contains(_itemContainer.id)) _itemListContainer.offensiveItemIds.Add(_itemContainer.id); }
+        if (text.Contains("bonus3 bSPVanishRaceRate,")) { if (!_itemListContainer.offensiveItemIds.Contains(_itemContainer.id)) _itemListContainer.offensiveItemIds.Add(_itemContainer.id); }
+        if (text.Contains("bonus3 bSPVanishRate,")) { if (!_itemListContainer.offensiveItemIds.Contains(_itemContainer.id)) _itemListContainer.offensiveItemIds.Add(_itemContainer.id); }
+        if (text.Contains("bonus3 bStateNoRecoverRace,")) { if (!_itemListContainer.offensiveItemIds.Contains(_itemContainer.id)) _itemListContainer.offensiveItemIds.Add(_itemContainer.id); }
+        if (text.Contains("bonus bBreakWeaponRate,")) { if (!_itemListContainer.offensiveItemIds.Contains(_itemContainer.id)) _itemListContainer.offensiveItemIds.Add(_itemContainer.id); }
+        if (text.Contains("bonus bBreakArmorRate,")) { if (!_itemListContainer.offensiveItemIds.Contains(_itemContainer.id)) _itemListContainer.offensiveItemIds.Add(_itemContainer.id); }
         // Defensive
-        if (text.Contains("bonus bDef,")) { if (!defensiveItemIds.Contains(id)) defensiveItemIds.Add(id); }
-        if (text.Contains("bonus bDefRate,")) { if (!defensiveItemIds.Contains(id)) defensiveItemIds.Add(id); }
-        if (text.Contains("bonus bDef2,")) { if (!defensiveItemIds.Contains(id)) defensiveItemIds.Add(id); }
-        if (text.Contains("bonus bDef2Rate,")) { if (!defensiveItemIds.Contains(id)) defensiveItemIds.Add(id); }
-        if (text.Contains("bonus bMdef,")) { if (!defensiveItemIds.Contains(id)) defensiveItemIds.Add(id); }
-        if (text.Contains("bonus bMdefRate,")) { if (!defensiveItemIds.Contains(id)) defensiveItemIds.Add(id); }
-        if (text.Contains("bonus bMdef2,")) { if (!defensiveItemIds.Contains(id)) defensiveItemIds.Add(id); }
-        if (text.Contains("bonus bMdef2Rate,")) { if (!defensiveItemIds.Contains(id)) defensiveItemIds.Add(id); }
-        if (text.Contains("bonus bCritDefRate,")) { if (!defensiveItemIds.Contains(id)) defensiveItemIds.Add(id); }
-        if (text.Contains("bonus bCriticalDef,")) { if (!defensiveItemIds.Contains(id)) defensiveItemIds.Add(id); }
-        if (text.Contains("bonus bNearAtkDef,")) { if (!defensiveItemIds.Contains(id)) defensiveItemIds.Add(id); }
-        if (text.Contains("bonus bLongAtkDef,")) { if (!defensiveItemIds.Contains(id)) defensiveItemIds.Add(id); }
-        if (text.Contains("bonus bMagicAtkDef,")) { if (!defensiveItemIds.Contains(id)) defensiveItemIds.Add(id); }
-        if (text.Contains("bonus bMiscAtkDef,")) { if (!defensiveItemIds.Contains(id)) defensiveItemIds.Add(id); }
-        if (text.Contains("bonus bNoWeaponDamage,")) { if (!defensiveItemIds.Contains(id)) defensiveItemIds.Add(id); }
-        if (text.Contains("bonus bNoMagicDamage,")) { if (!defensiveItemIds.Contains(id)) defensiveItemIds.Add(id); }
-        if (text.Contains("bonus bNoMiscDamage,")) { if (!defensiveItemIds.Contains(id)) defensiveItemIds.Add(id); }
-        if (text.Contains("bonus2 bSubEle,")) { if (!defensiveItemIds.Contains(id)) defensiveItemIds.Add(id); }
-        if (text.Contains("bonus3 bSubEle,")) { if (!defensiveItemIds.Contains(id)) defensiveItemIds.Add(id); }
-        if (text.Contains("bonus2 bSubDefEle,")) { if (!defensiveItemIds.Contains(id)) defensiveItemIds.Add(id); }
-        if (text.Contains("bonus2 bMagicSubDefEle,")) { if (!defensiveItemIds.Contains(id)) defensiveItemIds.Add(id); }
-        if (text.Contains("bonus2 bSubRace,")) { if (!defensiveItemIds.Contains(id)) defensiveItemIds.Add(id); }
-        if (text.Contains("bonus3 bSubRace,")) { if (!defensiveItemIds.Contains(id)) defensiveItemIds.Add(id); }
-        if (text.Contains("bonus2 bSubClass,")) { if (!defensiveItemIds.Contains(id)) defensiveItemIds.Add(id); }
-        if (text.Contains("bonus2 bSubSize,")) { if (!defensiveItemIds.Contains(id)) defensiveItemIds.Add(id); }
-        if (text.Contains("bonus2 bWeaponSubSize,")) { if (!defensiveItemIds.Contains(id)) defensiveItemIds.Add(id); }
-        if (text.Contains("bonus2 bMagicSubSize,")) { if (!defensiveItemIds.Contains(id)) defensiveItemIds.Add(id); }
-        if (text.Contains("bonus2 bAddDefMonster,")) { if (!defensiveItemIds.Contains(id)) defensiveItemIds.Add(id); }
-        if (text.Contains("bonus2 bAddMDefMonster,")) { if (!defensiveItemIds.Contains(id)) defensiveItemIds.Add(id); }
-        if (text.Contains("bonus2 bSubRace2,")) { if (!defensiveItemIds.Contains(id)) defensiveItemIds.Add(id); }
-        if (text.Contains("bonus2 bSubSkill,")) { if (!defensiveItemIds.Contains(id)) defensiveItemIds.Add(id); }
-        if (text.Contains("bonus bAbsorbDmgMaxHP,")) { if (!defensiveItemIds.Contains(id)) defensiveItemIds.Add(id); }
-        if (text.Contains("bonus bDefEle,")) { if (!defensiveItemIds.Contains(id)) defensiveItemIds.Add(id); }
-        if (text.Contains("bonus bShortWeaponDamageReturn,")) { if (!defensiveItemIds.Contains(id)) defensiveItemIds.Add(id); }
-        if (text.Contains("bonus bLongWeaponDamageReturn,")) { if (!defensiveItemIds.Contains(id)) defensiveItemIds.Add(id); }
-        if (text.Contains("bonus bMagicDamageReturn,")) { if (!defensiveItemIds.Contains(id)) defensiveItemIds.Add(id); }
-        if (text.Contains("bonus bReduceDamageReturn,")) { if (!defensiveItemIds.Contains(id)) defensiveItemIds.Add(id); }
-        if (text.Contains("bonus bUnstripableWeapon;")) { if (!defensiveItemIds.Contains(id)) defensiveItemIds.Add(id); }
-        if (text.Contains("bonus bUnstripableArmor;")) { if (!defensiveItemIds.Contains(id)) defensiveItemIds.Add(id); }
-        if (text.Contains("bonus bUnstripableHelm;")) { if (!defensiveItemIds.Contains(id)) defensiveItemIds.Add(id); }
-        if (text.Contains("bonus bUnstripableShield;")) { if (!defensiveItemIds.Contains(id)) defensiveItemIds.Add(id); }
-        if (text.Contains("bonus bUnstripable;")) { if (!defensiveItemIds.Contains(id)) defensiveItemIds.Add(id); }
-        if (text.Contains("bonus bUnbreakableGarment;")) { if (!defensiveItemIds.Contains(id)) defensiveItemIds.Add(id); }
-        if (text.Contains("bonus bUnbreakableWeapon;")) { if (!defensiveItemIds.Contains(id)) defensiveItemIds.Add(id); }
-        if (text.Contains("bonus bUnbreakableArmor;")) { if (!defensiveItemIds.Contains(id)) defensiveItemIds.Add(id); }
-        if (text.Contains("bonus bUnbreakableHelm;")) { if (!defensiveItemIds.Contains(id)) defensiveItemIds.Add(id); }
-        if (text.Contains("bonus bUnbreakableShield;")) { if (!defensiveItemIds.Contains(id)) defensiveItemIds.Add(id); }
-        if (text.Contains("bonus bUnbreakableShoes;")) { if (!defensiveItemIds.Contains(id)) defensiveItemIds.Add(id); }
-        if (text.Contains("bonus bUnbreakable,")) { if (!defensiveItemIds.Contains(id)) defensiveItemIds.Add(id); }
+        if (text.Contains("bonus bDef,")) { if (!_itemListContainer.defensiveItemIds.Contains(_itemContainer.id)) _itemListContainer.defensiveItemIds.Add(_itemContainer.id); }
+        if (text.Contains("bonus bDefRate,")) { if (!_itemListContainer.defensiveItemIds.Contains(_itemContainer.id)) _itemListContainer.defensiveItemIds.Add(_itemContainer.id); }
+        if (text.Contains("bonus bDef2,")) { if (!_itemListContainer.defensiveItemIds.Contains(_itemContainer.id)) _itemListContainer.defensiveItemIds.Add(_itemContainer.id); }
+        if (text.Contains("bonus bDef2Rate,")) { if (!_itemListContainer.defensiveItemIds.Contains(_itemContainer.id)) _itemListContainer.defensiveItemIds.Add(_itemContainer.id); }
+        if (text.Contains("bonus bMdef,")) { if (!_itemListContainer.defensiveItemIds.Contains(_itemContainer.id)) _itemListContainer.defensiveItemIds.Add(_itemContainer.id); }
+        if (text.Contains("bonus bMdefRate,")) { if (!_itemListContainer.defensiveItemIds.Contains(_itemContainer.id)) _itemListContainer.defensiveItemIds.Add(_itemContainer.id); }
+        if (text.Contains("bonus bMdef2,")) { if (!_itemListContainer.defensiveItemIds.Contains(_itemContainer.id)) _itemListContainer.defensiveItemIds.Add(_itemContainer.id); }
+        if (text.Contains("bonus bMdef2Rate,")) { if (!_itemListContainer.defensiveItemIds.Contains(_itemContainer.id)) _itemListContainer.defensiveItemIds.Add(_itemContainer.id); }
+        if (text.Contains("bonus bCritDefRate,")) { if (!_itemListContainer.defensiveItemIds.Contains(_itemContainer.id)) _itemListContainer.defensiveItemIds.Add(_itemContainer.id); }
+        if (text.Contains("bonus bCriticalDef,")) { if (!_itemListContainer.defensiveItemIds.Contains(_itemContainer.id)) _itemListContainer.defensiveItemIds.Add(_itemContainer.id); }
+        if (text.Contains("bonus bNearAtkDef,")) { if (!_itemListContainer.defensiveItemIds.Contains(_itemContainer.id)) _itemListContainer.defensiveItemIds.Add(_itemContainer.id); }
+        if (text.Contains("bonus bLongAtkDef,")) { if (!_itemListContainer.defensiveItemIds.Contains(_itemContainer.id)) _itemListContainer.defensiveItemIds.Add(_itemContainer.id); }
+        if (text.Contains("bonus bMagicAtkDef,")) { if (!_itemListContainer.defensiveItemIds.Contains(_itemContainer.id)) _itemListContainer.defensiveItemIds.Add(_itemContainer.id); }
+        if (text.Contains("bonus bMiscAtkDef,")) { if (!_itemListContainer.defensiveItemIds.Contains(_itemContainer.id)) _itemListContainer.defensiveItemIds.Add(_itemContainer.id); }
+        if (text.Contains("bonus bNoWeaponDamage,")) { if (!_itemListContainer.defensiveItemIds.Contains(_itemContainer.id)) _itemListContainer.defensiveItemIds.Add(_itemContainer.id); }
+        if (text.Contains("bonus bNoMagicDamage,")) { if (!_itemListContainer.defensiveItemIds.Contains(_itemContainer.id)) _itemListContainer.defensiveItemIds.Add(_itemContainer.id); }
+        if (text.Contains("bonus bNoMiscDamage,")) { if (!_itemListContainer.defensiveItemIds.Contains(_itemContainer.id)) _itemListContainer.defensiveItemIds.Add(_itemContainer.id); }
+        if (text.Contains("bonus2 bSubEle,")) { if (!_itemListContainer.defensiveItemIds.Contains(_itemContainer.id)) _itemListContainer.defensiveItemIds.Add(_itemContainer.id); }
+        if (text.Contains("bonus3 bSubEle,")) { if (!_itemListContainer.defensiveItemIds.Contains(_itemContainer.id)) _itemListContainer.defensiveItemIds.Add(_itemContainer.id); }
+        if (text.Contains("bonus2 bSubDefEle,")) { if (!_itemListContainer.defensiveItemIds.Contains(_itemContainer.id)) _itemListContainer.defensiveItemIds.Add(_itemContainer.id); }
+        if (text.Contains("bonus2 bMagicSubDefEle,")) { if (!_itemListContainer.defensiveItemIds.Contains(_itemContainer.id)) _itemListContainer.defensiveItemIds.Add(_itemContainer.id); }
+        if (text.Contains("bonus2 bSubRace,")) { if (!_itemListContainer.defensiveItemIds.Contains(_itemContainer.id)) _itemListContainer.defensiveItemIds.Add(_itemContainer.id); }
+        if (text.Contains("bonus3 bSubRace,")) { if (!_itemListContainer.defensiveItemIds.Contains(_itemContainer.id)) _itemListContainer.defensiveItemIds.Add(_itemContainer.id); }
+        if (text.Contains("bonus2 bSubClass,")) { if (!_itemListContainer.defensiveItemIds.Contains(_itemContainer.id)) _itemListContainer.defensiveItemIds.Add(_itemContainer.id); }
+        if (text.Contains("bonus2 bSubSize,")) { if (!_itemListContainer.defensiveItemIds.Contains(_itemContainer.id)) _itemListContainer.defensiveItemIds.Add(_itemContainer.id); }
+        if (text.Contains("bonus2 bWeaponSubSize,")) { if (!_itemListContainer.defensiveItemIds.Contains(_itemContainer.id)) _itemListContainer.defensiveItemIds.Add(_itemContainer.id); }
+        if (text.Contains("bonus2 bMagicSubSize,")) { if (!_itemListContainer.defensiveItemIds.Contains(_itemContainer.id)) _itemListContainer.defensiveItemIds.Add(_itemContainer.id); }
+        if (text.Contains("bonus2 bAddDefMonster,")) { if (!_itemListContainer.defensiveItemIds.Contains(_itemContainer.id)) _itemListContainer.defensiveItemIds.Add(_itemContainer.id); }
+        if (text.Contains("bonus2 bAddMDefMonster,")) { if (!_itemListContainer.defensiveItemIds.Contains(_itemContainer.id)) _itemListContainer.defensiveItemIds.Add(_itemContainer.id); }
+        if (text.Contains("bonus2 bSubRace2,")) { if (!_itemListContainer.defensiveItemIds.Contains(_itemContainer.id)) _itemListContainer.defensiveItemIds.Add(_itemContainer.id); }
+        if (text.Contains("bonus2 bSubSkill,")) { if (!_itemListContainer.defensiveItemIds.Contains(_itemContainer.id)) _itemListContainer.defensiveItemIds.Add(_itemContainer.id); }
+        if (text.Contains("bonus bAbsorbDmgMaxHP,")) { if (!_itemListContainer.defensiveItemIds.Contains(_itemContainer.id)) _itemListContainer.defensiveItemIds.Add(_itemContainer.id); }
+        if (text.Contains("bonus bDefEle,")) { if (!_itemListContainer.defensiveItemIds.Contains(_itemContainer.id)) _itemListContainer.defensiveItemIds.Add(_itemContainer.id); }
+        if (text.Contains("bonus bShortWeaponDamageReturn,")) { if (!_itemListContainer.defensiveItemIds.Contains(_itemContainer.id)) _itemListContainer.defensiveItemIds.Add(_itemContainer.id); }
+        if (text.Contains("bonus bLongWeaponDamageReturn,")) { if (!_itemListContainer.defensiveItemIds.Contains(_itemContainer.id)) _itemListContainer.defensiveItemIds.Add(_itemContainer.id); }
+        if (text.Contains("bonus bMagicDamageReturn,")) { if (!_itemListContainer.defensiveItemIds.Contains(_itemContainer.id)) _itemListContainer.defensiveItemIds.Add(_itemContainer.id); }
+        if (text.Contains("bonus bReduceDamageReturn,")) { if (!_itemListContainer.defensiveItemIds.Contains(_itemContainer.id)) _itemListContainer.defensiveItemIds.Add(_itemContainer.id); }
+        if (text.Contains("bonus bUnstripableWeapon;")) { if (!_itemListContainer.defensiveItemIds.Contains(_itemContainer.id)) _itemListContainer.defensiveItemIds.Add(_itemContainer.id); }
+        if (text.Contains("bonus bUnstripableArmor;")) { if (!_itemListContainer.defensiveItemIds.Contains(_itemContainer.id)) _itemListContainer.defensiveItemIds.Add(_itemContainer.id); }
+        if (text.Contains("bonus bUnstripableHelm;")) { if (!_itemListContainer.defensiveItemIds.Contains(_itemContainer.id)) _itemListContainer.defensiveItemIds.Add(_itemContainer.id); }
+        if (text.Contains("bonus bUnstripableShield;")) { if (!_itemListContainer.defensiveItemIds.Contains(_itemContainer.id)) _itemListContainer.defensiveItemIds.Add(_itemContainer.id); }
+        if (text.Contains("bonus bUnstripable;")) { if (!_itemListContainer.defensiveItemIds.Contains(_itemContainer.id)) _itemListContainer.defensiveItemIds.Add(_itemContainer.id); }
+        if (text.Contains("bonus bUnbreakableGarment;")) { if (!_itemListContainer.defensiveItemIds.Contains(_itemContainer.id)) _itemListContainer.defensiveItemIds.Add(_itemContainer.id); }
+        if (text.Contains("bonus bUnbreakableWeapon;")) { if (!_itemListContainer.defensiveItemIds.Contains(_itemContainer.id)) _itemListContainer.defensiveItemIds.Add(_itemContainer.id); }
+        if (text.Contains("bonus bUnbreakableArmor;")) { if (!_itemListContainer.defensiveItemIds.Contains(_itemContainer.id)) _itemListContainer.defensiveItemIds.Add(_itemContainer.id); }
+        if (text.Contains("bonus bUnbreakableHelm;")) { if (!_itemListContainer.defensiveItemIds.Contains(_itemContainer.id)) _itemListContainer.defensiveItemIds.Add(_itemContainer.id); }
+        if (text.Contains("bonus bUnbreakableShield;")) { if (!_itemListContainer.defensiveItemIds.Contains(_itemContainer.id)) _itemListContainer.defensiveItemIds.Add(_itemContainer.id); }
+        if (text.Contains("bonus bUnbreakableShoes;")) { if (!_itemListContainer.defensiveItemIds.Contains(_itemContainer.id)) _itemListContainer.defensiveItemIds.Add(_itemContainer.id); }
+        if (text.Contains("bonus bUnbreakable,")) { if (!_itemListContainer.defensiveItemIds.Contains(_itemContainer.id)) _itemListContainer.defensiveItemIds.Add(_itemContainer.id); }
         // Special
-        if (text.Contains("bonus bHit,")) { if (!specialItemIds.Contains(id)) specialItemIds.Add(id); }
-        if (text.Contains("bonus bHitRate,")) { if (!specialItemIds.Contains(id)) specialItemIds.Add(id); }
-        if (text.Contains("bonus bCritical,")) { if (!specialItemIds.Contains(id)) specialItemIds.Add(id); }
-        if (text.Contains("bonus bCriticalLong,")) { if (!specialItemIds.Contains(id)) specialItemIds.Add(id); }
-        if (text.Contains("bonus2 bCriticalAddRace,")) { if (!specialItemIds.Contains(id)) specialItemIds.Add(id); }
-        if (text.Contains("bonus bCriticalRate,")) { if (!specialItemIds.Contains(id)) specialItemIds.Add(id); }
-        if (text.Contains("bonus bFlee,")) { if (!specialItemIds.Contains(id)) specialItemIds.Add(id); }
-        if (text.Contains("bonus bFleeRate,")) { if (!specialItemIds.Contains(id)) specialItemIds.Add(id); }
-        if (text.Contains("bonus bFlee2,")) { if (!specialItemIds.Contains(id)) specialItemIds.Add(id); }
-        if (text.Contains("bonus bFlee2Rate,")) { if (!specialItemIds.Contains(id)) specialItemIds.Add(id); }
-        if (text.Contains("bonus bPerfectHitRate,")) { if (!specialItemIds.Contains(id)) specialItemIds.Add(id); }
-        if (text.Contains("bonus bPerfectHitAddRate,")) { if (!specialItemIds.Contains(id)) specialItemIds.Add(id); }
-        if (text.Contains("bonus bSpeedRate,")) { if (!specialItemIds.Contains(id)) specialItemIds.Add(id); }
-        if (text.Contains("bonus bSpeedAddRate,")) { if (!specialItemIds.Contains(id)) specialItemIds.Add(id); }
-        if (text.Contains("bonus bAspd,")) { if (!specialItemIds.Contains(id)) specialItemIds.Add(id); }
-        if (text.Contains("bonus bAspdRate,")) { if (!specialItemIds.Contains(id)) specialItemIds.Add(id); }
-        if (text.Contains("bonus bAtkRange,")) { if (!specialItemIds.Contains(id)) specialItemIds.Add(id); }
-        if (text.Contains("bonus bAddMaxWeight,")) { if (!specialItemIds.Contains(id)) specialItemIds.Add(id); }
-        if (text.Contains("bonus bPAtk,")) { if (!specialItemIds.Contains(id)) specialItemIds.Add(id); }
-        if (text.Contains("bonus bPAtkRate,")) { if (!specialItemIds.Contains(id)) specialItemIds.Add(id); }
-        if (text.Contains("bonus bSMatk,")) { if (!specialItemIds.Contains(id)) specialItemIds.Add(id); }
-        if (text.Contains("bonus bSMatkRate,")) { if (!specialItemIds.Contains(id)) specialItemIds.Add(id); }
-        if (text.Contains("bonus bRes,")) { if (!specialItemIds.Contains(id)) specialItemIds.Add(id); }
-        if (text.Contains("bonus bResRate,")) { if (!specialItemIds.Contains(id)) specialItemIds.Add(id); }
-        if (text.Contains("bonus bMRes,")) { if (!specialItemIds.Contains(id)) specialItemIds.Add(id); }
-        if (text.Contains("bonus bMResRate,")) { if (!specialItemIds.Contains(id)) specialItemIds.Add(id); }
-        if (text.Contains("bonus bHPlus,")) { if (!specialItemIds.Contains(id)) specialItemIds.Add(id); }
-        if (text.Contains("bonus bHPlusRate,")) { if (!specialItemIds.Contains(id)) specialItemIds.Add(id); }
-        if (text.Contains("bonus bCRate,")) { if (!specialItemIds.Contains(id)) specialItemIds.Add(id); }
-        if (text.Contains("bonus bCRateRate,")) { if (!specialItemIds.Contains(id)) specialItemIds.Add(id); }
-        if (text.Contains("bonus2 bExpAddRace,")) { if (!specialItemIds.Contains(id)) specialItemIds.Add(id); }
-        if (text.Contains("bonus2 bExpAddClass,")) { if (!specialItemIds.Contains(id)) specialItemIds.Add(id); }
-        if (text.Contains("bonus2 bDropAddRace,")) { if (!specialItemIds.Contains(id)) specialItemIds.Add(id); }
-        if (text.Contains("bonus2 bDropAddClass,")) { if (!specialItemIds.Contains(id)) specialItemIds.Add(id); }
-        if (text.Contains("bonus3 bAddMonsterIdDropItem,")) { if (!specialItemIds.Contains(id)) specialItemIds.Add(id); }
-        if (text.Contains("bonus2 bAddMonsterDropItem,")) { if (!specialItemIds.Contains(id)) specialItemIds.Add(id); }
-        if (text.Contains("bonus3 bAddMonsterDropItem,")) { if (!specialItemIds.Contains(id)) specialItemIds.Add(id); }
-        if (text.Contains("bonus3 bAddClassDropItem,")) { if (!specialItemIds.Contains(id)) specialItemIds.Add(id); }
-        if (text.Contains("bonus2 bAddMonsterDropItemGroup,")) { if (!specialItemIds.Contains(id)) specialItemIds.Add(id); }
-        if (text.Contains("bonus3 bAddMonsterDropItemGroup,")) { if (!specialItemIds.Contains(id)) specialItemIds.Add(id); }
-        if (text.Contains("bonus3 bAddClassDropItemGroup,")) { if (!specialItemIds.Contains(id)) specialItemIds.Add(id); }
-        if (text.Contains("bonus2 bGetZenyNum,")) { if (!specialItemIds.Contains(id)) specialItemIds.Add(id); }
-        if (text.Contains("bonus2 bAddGetZenyNum,")) { if (!specialItemIds.Contains(id)) specialItemIds.Add(id); }
-        if (text.Contains("bonus bDoubleRate,")) { if (!specialItemIds.Contains(id)) specialItemIds.Add(id); }
-        if (text.Contains("bonus bDoubleAddRate,")) { if (!specialItemIds.Contains(id)) specialItemIds.Add(id); }
-        if (text.Contains("bonus bSplashRange,")) { if (!specialItemIds.Contains(id)) specialItemIds.Add(id); }
-        if (text.Contains("bonus bSplashAddRange,")) { if (!specialItemIds.Contains(id)) specialItemIds.Add(id); }
-        if (text.Contains("bonus2 bAddSkillBlow,")) { if (!specialItemIds.Contains(id)) specialItemIds.Add(id); }
-        if (text.Contains("bonus bNoKnockback;")) { if (!specialItemIds.Contains(id)) specialItemIds.Add(id); }
-        if (text.Contains("bonus bNoGemStone;")) { if (!specialItemIds.Contains(id)) specialItemIds.Add(id); }
-        if (text.Contains("bonus bIntravision;")) { if (!specialItemIds.Contains(id)) specialItemIds.Add(id); }
-        if (text.Contains("bonus bPerfectHide;")) { if (!specialItemIds.Contains(id)) specialItemIds.Add(id); }
-        if (text.Contains("bonus bRestartFullRecover;")) { if (!specialItemIds.Contains(id)) specialItemIds.Add(id); }
-        if (text.Contains("bonus bClassChange,")) { if (!specialItemIds.Contains(id)) specialItemIds.Add(id); }
-        if (text.Contains("bonus bAddStealRate,")) { if (!specialItemIds.Contains(id)) specialItemIds.Add(id); }
-        if (text.Contains("bonus bNoMadoFuel;")) { if (!specialItemIds.Contains(id)) specialItemIds.Add(id); }
-        if (text.Contains("bonus bNoWalkDelay;")) { if (!specialItemIds.Contains(id)) specialItemIds.Add(id); }
+        if (text.Contains("bonus bHit,")) { if (!_itemListContainer.specialItemIds.Contains(_itemContainer.id)) _itemListContainer.specialItemIds.Add(_itemContainer.id); }
+        if (text.Contains("bonus bHitRate,")) { if (!_itemListContainer.specialItemIds.Contains(_itemContainer.id)) _itemListContainer.specialItemIds.Add(_itemContainer.id); }
+        if (text.Contains("bonus bCritical,")) { if (!_itemListContainer.specialItemIds.Contains(_itemContainer.id)) _itemListContainer.specialItemIds.Add(_itemContainer.id); }
+        if (text.Contains("bonus bCriticalLong,")) { if (!_itemListContainer.specialItemIds.Contains(_itemContainer.id)) _itemListContainer.specialItemIds.Add(_itemContainer.id); }
+        if (text.Contains("bonus2 bCriticalAddRace,")) { if (!_itemListContainer.specialItemIds.Contains(_itemContainer.id)) _itemListContainer.specialItemIds.Add(_itemContainer.id); }
+        if (text.Contains("bonus bCriticalRate,")) { if (!_itemListContainer.specialItemIds.Contains(_itemContainer.id)) _itemListContainer.specialItemIds.Add(_itemContainer.id); }
+        if (text.Contains("bonus bFlee,")) { if (!_itemListContainer.specialItemIds.Contains(_itemContainer.id)) _itemListContainer.specialItemIds.Add(_itemContainer.id); }
+        if (text.Contains("bonus bFleeRate,")) { if (!_itemListContainer.specialItemIds.Contains(_itemContainer.id)) _itemListContainer.specialItemIds.Add(_itemContainer.id); }
+        if (text.Contains("bonus bFlee2,")) { if (!_itemListContainer.specialItemIds.Contains(_itemContainer.id)) _itemListContainer.specialItemIds.Add(_itemContainer.id); }
+        if (text.Contains("bonus bFlee2Rate,")) { if (!_itemListContainer.specialItemIds.Contains(_itemContainer.id)) _itemListContainer.specialItemIds.Add(_itemContainer.id); }
+        if (text.Contains("bonus bPerfectHitRate,")) { if (!_itemListContainer.specialItemIds.Contains(_itemContainer.id)) _itemListContainer.specialItemIds.Add(_itemContainer.id); }
+        if (text.Contains("bonus bPerfectHitAddRate,")) { if (!_itemListContainer.specialItemIds.Contains(_itemContainer.id)) _itemListContainer.specialItemIds.Add(_itemContainer.id); }
+        if (text.Contains("bonus bSpeedRate,")) { if (!_itemListContainer.specialItemIds.Contains(_itemContainer.id)) _itemListContainer.specialItemIds.Add(_itemContainer.id); }
+        if (text.Contains("bonus bSpeedAddRate,")) { if (!_itemListContainer.specialItemIds.Contains(_itemContainer.id)) _itemListContainer.specialItemIds.Add(_itemContainer.id); }
+        if (text.Contains("bonus bAspd,")) { if (!_itemListContainer.specialItemIds.Contains(_itemContainer.id)) _itemListContainer.specialItemIds.Add(_itemContainer.id); }
+        if (text.Contains("bonus bAspdRate,")) { if (!_itemListContainer.specialItemIds.Contains(_itemContainer.id)) _itemListContainer.specialItemIds.Add(_itemContainer.id); }
+        if (text.Contains("bonus bAtkRange,")) { if (!_itemListContainer.specialItemIds.Contains(_itemContainer.id)) _itemListContainer.specialItemIds.Add(_itemContainer.id); }
+        if (text.Contains("bonus bAddMaxWeight,")) { if (!_itemListContainer.specialItemIds.Contains(_itemContainer.id)) _itemListContainer.specialItemIds.Add(_itemContainer.id); }
+        if (text.Contains("bonus bPAtk,")) { if (!_itemListContainer.specialItemIds.Contains(_itemContainer.id)) _itemListContainer.specialItemIds.Add(_itemContainer.id); }
+        if (text.Contains("bonus bPAtkRate,")) { if (!_itemListContainer.specialItemIds.Contains(_itemContainer.id)) _itemListContainer.specialItemIds.Add(_itemContainer.id); }
+        if (text.Contains("bonus bSMatk,")) { if (!_itemListContainer.specialItemIds.Contains(_itemContainer.id)) _itemListContainer.specialItemIds.Add(_itemContainer.id); }
+        if (text.Contains("bonus bSMatkRate,")) { if (!_itemListContainer.specialItemIds.Contains(_itemContainer.id)) _itemListContainer.specialItemIds.Add(_itemContainer.id); }
+        if (text.Contains("bonus bRes,")) { if (!_itemListContainer.specialItemIds.Contains(_itemContainer.id)) _itemListContainer.specialItemIds.Add(_itemContainer.id); }
+        if (text.Contains("bonus bResRate,")) { if (!_itemListContainer.specialItemIds.Contains(_itemContainer.id)) _itemListContainer.specialItemIds.Add(_itemContainer.id); }
+        if (text.Contains("bonus bMRes,")) { if (!_itemListContainer.specialItemIds.Contains(_itemContainer.id)) _itemListContainer.specialItemIds.Add(_itemContainer.id); }
+        if (text.Contains("bonus bMResRate,")) { if (!_itemListContainer.specialItemIds.Contains(_itemContainer.id)) _itemListContainer.specialItemIds.Add(_itemContainer.id); }
+        if (text.Contains("bonus bHPlus,")) { if (!_itemListContainer.specialItemIds.Contains(_itemContainer.id)) _itemListContainer.specialItemIds.Add(_itemContainer.id); }
+        if (text.Contains("bonus bHPlusRate,")) { if (!_itemListContainer.specialItemIds.Contains(_itemContainer.id)) _itemListContainer.specialItemIds.Add(_itemContainer.id); }
+        if (text.Contains("bonus bCRate,")) { if (!_itemListContainer.specialItemIds.Contains(_itemContainer.id)) _itemListContainer.specialItemIds.Add(_itemContainer.id); }
+        if (text.Contains("bonus bCRateRate,")) { if (!_itemListContainer.specialItemIds.Contains(_itemContainer.id)) _itemListContainer.specialItemIds.Add(_itemContainer.id); }
+        if (text.Contains("bonus2 bExpAddRace,")) { if (!_itemListContainer.specialItemIds.Contains(_itemContainer.id)) _itemListContainer.specialItemIds.Add(_itemContainer.id); }
+        if (text.Contains("bonus2 bExpAddClass,")) { if (!_itemListContainer.specialItemIds.Contains(_itemContainer.id)) _itemListContainer.specialItemIds.Add(_itemContainer.id); }
+        if (text.Contains("bonus2 bDropAddRace,")) { if (!_itemListContainer.specialItemIds.Contains(_itemContainer.id)) _itemListContainer.specialItemIds.Add(_itemContainer.id); }
+        if (text.Contains("bonus2 bDropAddClass,")) { if (!_itemListContainer.specialItemIds.Contains(_itemContainer.id)) _itemListContainer.specialItemIds.Add(_itemContainer.id); }
+        if (text.Contains("bonus3 bAddMonsterIdDropItem,")) { if (!_itemListContainer.specialItemIds.Contains(_itemContainer.id)) _itemListContainer.specialItemIds.Add(_itemContainer.id); }
+        if (text.Contains("bonus2 bAddMonsterDropItem,")) { if (!_itemListContainer.specialItemIds.Contains(_itemContainer.id)) _itemListContainer.specialItemIds.Add(_itemContainer.id); }
+        if (text.Contains("bonus3 bAddMonsterDropItem,")) { if (!_itemListContainer.specialItemIds.Contains(_itemContainer.id)) _itemListContainer.specialItemIds.Add(_itemContainer.id); }
+        if (text.Contains("bonus3 bAddClassDropItem,")) { if (!_itemListContainer.specialItemIds.Contains(_itemContainer.id)) _itemListContainer.specialItemIds.Add(_itemContainer.id); }
+        if (text.Contains("bonus2 bAddMonsterDropItemGroup,")) { if (!_itemListContainer.specialItemIds.Contains(_itemContainer.id)) _itemListContainer.specialItemIds.Add(_itemContainer.id); }
+        if (text.Contains("bonus3 bAddMonsterDropItemGroup,")) { if (!_itemListContainer.specialItemIds.Contains(_itemContainer.id)) _itemListContainer.specialItemIds.Add(_itemContainer.id); }
+        if (text.Contains("bonus3 bAddClassDropItemGroup,")) { if (!_itemListContainer.specialItemIds.Contains(_itemContainer.id)) _itemListContainer.specialItemIds.Add(_itemContainer.id); }
+        if (text.Contains("bonus2 bGetZenyNum,")) { if (!_itemListContainer.specialItemIds.Contains(_itemContainer.id)) _itemListContainer.specialItemIds.Add(_itemContainer.id); }
+        if (text.Contains("bonus2 bAddGetZenyNum,")) { if (!_itemListContainer.specialItemIds.Contains(_itemContainer.id)) _itemListContainer.specialItemIds.Add(_itemContainer.id); }
+        if (text.Contains("bonus bDoubleRate,")) { if (!_itemListContainer.specialItemIds.Contains(_itemContainer.id)) _itemListContainer.specialItemIds.Add(_itemContainer.id); }
+        if (text.Contains("bonus bDoubleAddRate,")) { if (!_itemListContainer.specialItemIds.Contains(_itemContainer.id)) _itemListContainer.specialItemIds.Add(_itemContainer.id); }
+        if (text.Contains("bonus bSplashRange,")) { if (!_itemListContainer.specialItemIds.Contains(_itemContainer.id)) _itemListContainer.specialItemIds.Add(_itemContainer.id); }
+        if (text.Contains("bonus bSplashAddRange,")) { if (!_itemListContainer.specialItemIds.Contains(_itemContainer.id)) _itemListContainer.specialItemIds.Add(_itemContainer.id); }
+        if (text.Contains("bonus2 bAddSkillBlow,")) { if (!_itemListContainer.specialItemIds.Contains(_itemContainer.id)) _itemListContainer.specialItemIds.Add(_itemContainer.id); }
+        if (text.Contains("bonus bNoKnockback;")) { if (!_itemListContainer.specialItemIds.Contains(_itemContainer.id)) _itemListContainer.specialItemIds.Add(_itemContainer.id); }
+        if (text.Contains("bonus bNoGemStone;")) { if (!_itemListContainer.specialItemIds.Contains(_itemContainer.id)) _itemListContainer.specialItemIds.Add(_itemContainer.id); }
+        if (text.Contains("bonus bIntravision;")) { if (!_itemListContainer.specialItemIds.Contains(_itemContainer.id)) _itemListContainer.specialItemIds.Add(_itemContainer.id); }
+        if (text.Contains("bonus bPerfectHide;")) { if (!_itemListContainer.specialItemIds.Contains(_itemContainer.id)) _itemListContainer.specialItemIds.Add(_itemContainer.id); }
+        if (text.Contains("bonus bRestartFullRecover;")) { if (!_itemListContainer.specialItemIds.Contains(_itemContainer.id)) _itemListContainer.specialItemIds.Add(_itemContainer.id); }
+        if (text.Contains("bonus bClassChange,")) { if (!_itemListContainer.specialItemIds.Contains(_itemContainer.id)) _itemListContainer.specialItemIds.Add(_itemContainer.id); }
+        if (text.Contains("bonus bAddStealRate,")) { if (!_itemListContainer.specialItemIds.Contains(_itemContainer.id)) _itemListContainer.specialItemIds.Add(_itemContainer.id); }
+        if (text.Contains("bonus bNoMadoFuel;")) { if (!_itemListContainer.specialItemIds.Contains(_itemContainer.id)) _itemListContainer.specialItemIds.Add(_itemContainer.id); }
+        if (text.Contains("bonus bNoWalkDelay;")) { if (!_itemListContainer.specialItemIds.Contains(_itemContainer.id)) _itemListContainer.specialItemIds.Add(_itemContainer.id); }
         // Cast
-        if (text.Contains("bonus bCastrate,")) { if (!castItemIds.Contains(id)) castItemIds.Add(id); }
-        if (text.Contains("bonus2 bCastrate,")) { if (!castItemIds.Contains(id)) castItemIds.Add(id); }
-        if (text.Contains("bonus bFixedCastrate,")) { if (!castItemIds.Contains(id)) castItemIds.Add(id); }
-        if (text.Contains("bonus2 bFixedCastrate,")) { if (!castItemIds.Contains(id)) castItemIds.Add(id); }
-        if (text.Contains("bonus bVariableCastrate,")) { if (!castItemIds.Contains(id)) castItemIds.Add(id); }
-        if (text.Contains("bonus2 bVariableCastrate,")) { if (!castItemIds.Contains(id)) castItemIds.Add(id); }
-        if (text.Contains("bonus bFixedCast,")) { if (!castItemIds.Contains(id)) castItemIds.Add(id); }
-        if (text.Contains("bonus2 bSkillFixedCast,")) { if (!castItemIds.Contains(id)) castItemIds.Add(id); }
-        if (text.Contains("bonus bVariableCast,")) { if (!castItemIds.Contains(id)) castItemIds.Add(id); }
-        if (text.Contains("bonus2 bSkillVariableCast,")) { if (!castItemIds.Contains(id)) castItemIds.Add(id); }
-        if (text.Contains("bonus bNoCastCancel;")) { if (!castItemIds.Contains(id)) castItemIds.Add(id); }
-        if (text.Contains("bonus bNoCastCancel2;")) { if (!castItemIds.Contains(id)) castItemIds.Add(id); }
-        if (text.Contains("bonus bDelayrate,")) { if (!castItemIds.Contains(id)) castItemIds.Add(id); }
-        if (text.Contains("bonus2 bSkillDelay,")) { if (!castItemIds.Contains(id)) castItemIds.Add(id); }
-        if (text.Contains("bonus2 bSkillCooldown,")) { if (!castItemIds.Contains(id)) castItemIds.Add(id); }
+        if (text.Contains("bonus bCastrate,")) { if (!_itemListContainer.castItemIds.Contains(_itemContainer.id)) _itemListContainer.castItemIds.Add(_itemContainer.id); }
+        if (text.Contains("bonus2 bCastrate,")) { if (!_itemListContainer.castItemIds.Contains(_itemContainer.id)) _itemListContainer.castItemIds.Add(_itemContainer.id); }
+        if (text.Contains("bonus bFixedCastrate,")) { if (!_itemListContainer.castItemIds.Contains(_itemContainer.id)) _itemListContainer.castItemIds.Add(_itemContainer.id); }
+        if (text.Contains("bonus2 bFixedCastrate,")) { if (!_itemListContainer.castItemIds.Contains(_itemContainer.id)) _itemListContainer.castItemIds.Add(_itemContainer.id); }
+        if (text.Contains("bonus bVariableCastrate,")) { if (!_itemListContainer.castItemIds.Contains(_itemContainer.id)) _itemListContainer.castItemIds.Add(_itemContainer.id); }
+        if (text.Contains("bonus2 bVariableCastrate,")) { if (!_itemListContainer.castItemIds.Contains(_itemContainer.id)) _itemListContainer.castItemIds.Add(_itemContainer.id); }
+        if (text.Contains("bonus bFixedCast,")) { if (!_itemListContainer.castItemIds.Contains(_itemContainer.id)) _itemListContainer.castItemIds.Add(_itemContainer.id); }
+        if (text.Contains("bonus2 bSkillFixedCast,")) { if (!_itemListContainer.castItemIds.Contains(_itemContainer.id)) _itemListContainer.castItemIds.Add(_itemContainer.id); }
+        if (text.Contains("bonus bVariableCast,")) { if (!_itemListContainer.castItemIds.Contains(_itemContainer.id)) _itemListContainer.castItemIds.Add(_itemContainer.id); }
+        if (text.Contains("bonus2 bSkillVariableCast,")) { if (!_itemListContainer.castItemIds.Contains(_itemContainer.id)) _itemListContainer.castItemIds.Add(_itemContainer.id); }
+        if (text.Contains("bonus bNoCastCancel;")) { if (!_itemListContainer.castItemIds.Contains(_itemContainer.id)) _itemListContainer.castItemIds.Add(_itemContainer.id); }
+        if (text.Contains("bonus bNoCastCancel2;")) { if (!_itemListContainer.castItemIds.Contains(_itemContainer.id)) _itemListContainer.castItemIds.Add(_itemContainer.id); }
+        if (text.Contains("bonus bDelayrate,")) { if (!_itemListContainer.castItemIds.Contains(_itemContainer.id)) _itemListContainer.castItemIds.Add(_itemContainer.id); }
+        if (text.Contains("bonus2 bSkillDelay,")) { if (!_itemListContainer.castItemIds.Contains(_itemContainer.id)) _itemListContainer.castItemIds.Add(_itemContainer.id); }
+        if (text.Contains("bonus2 bSkillCooldown,")) { if (!_itemListContainer.castItemIds.Contains(_itemContainer.id)) _itemListContainer.castItemIds.Add(_itemContainer.id); }
         // Effect
-        if (text.Contains("bonus2 bAddEff,")) { if (!effectItemIds.Contains(id)) effectItemIds.Add(id); }
-        if (text.Contains("bonus2 bAddEff2,")) { if (!effectItemIds.Contains(id)) effectItemIds.Add(id); }
-        if (text.Contains("bonus2 bAddEffWhenHit,")) { if (!effectItemIds.Contains(id)) effectItemIds.Add(id); }
-        if (text.Contains("bonus2 bResEff,")) { if (!effectItemIds.Contains(id)) effectItemIds.Add(id); }
-        if (text.Contains("bonus3 bAddEff,")) { if (!effectItemIds.Contains(id)) effectItemIds.Add(id); }
-        if (text.Contains("bonus4 bAddEff,")) { if (!effectItemIds.Contains(id)) effectItemIds.Add(id); }
-        if (text.Contains("bonus3 bAddEffWhenHit,")) { if (!effectItemIds.Contains(id)) effectItemIds.Add(id); }
-        if (text.Contains("bonus4 bAddEffWhenHit,")) { if (!effectItemIds.Contains(id)) effectItemIds.Add(id); }
-        if (text.Contains("bonus3 bAddEffOnSkill,")) { if (!effectItemIds.Contains(id)) effectItemIds.Add(id); }
-        if (text.Contains("bonus4 bAddEffOnSkill,")) { if (!effectItemIds.Contains(id)) effectItemIds.Add(id); }
-        if (text.Contains("bonus5 bAddEffOnSkill,")) { if (!effectItemIds.Contains(id)) effectItemIds.Add(id); }
-        if (text.Contains("bonus2 bComaClass,")) { if (!effectItemIds.Contains(id)) effectItemIds.Add(id); }
-        if (text.Contains("bonus2 bComaRace,")) { if (!effectItemIds.Contains(id)) effectItemIds.Add(id); }
-        if (text.Contains("bonus2 bWeaponComaEle,")) { if (!effectItemIds.Contains(id)) effectItemIds.Add(id); }
-        if (text.Contains("bonus2 bWeaponComaClass,")) { if (!effectItemIds.Contains(id)) effectItemIds.Add(id); }
-        if (text.Contains("bonus2 bWeaponComaRace,")) { if (!effectItemIds.Contains(id)) effectItemIds.Add(id); }
+        if (text.Contains("bonus2 bAddEff,")) { if (!_itemListContainer.effectItemIds.Contains(_itemContainer.id)) _itemListContainer.effectItemIds.Add(_itemContainer.id); }
+        if (text.Contains("bonus2 bAddEff2,")) { if (!_itemListContainer.effectItemIds.Contains(_itemContainer.id)) _itemListContainer.effectItemIds.Add(_itemContainer.id); }
+        if (text.Contains("bonus2 bAddEffWhenHit,")) { if (!_itemListContainer.effectItemIds.Contains(_itemContainer.id)) _itemListContainer.effectItemIds.Add(_itemContainer.id); }
+        if (text.Contains("bonus2 bResEff,")) { if (!_itemListContainer.effectItemIds.Contains(_itemContainer.id)) _itemListContainer.effectItemIds.Add(_itemContainer.id); }
+        if (text.Contains("bonus3 bAddEff,")) { if (!_itemListContainer.effectItemIds.Contains(_itemContainer.id)) _itemListContainer.effectItemIds.Add(_itemContainer.id); }
+        if (text.Contains("bonus4 bAddEff,")) { if (!_itemListContainer.effectItemIds.Contains(_itemContainer.id)) _itemListContainer.effectItemIds.Add(_itemContainer.id); }
+        if (text.Contains("bonus3 bAddEffWhenHit,")) { if (!_itemListContainer.effectItemIds.Contains(_itemContainer.id)) _itemListContainer.effectItemIds.Add(_itemContainer.id); }
+        if (text.Contains("bonus4 bAddEffWhenHit,")) { if (!_itemListContainer.effectItemIds.Contains(_itemContainer.id)) _itemListContainer.effectItemIds.Add(_itemContainer.id); }
+        if (text.Contains("bonus3 bAddEffOnSkill,")) { if (!_itemListContainer.effectItemIds.Contains(_itemContainer.id)) _itemListContainer.effectItemIds.Add(_itemContainer.id); }
+        if (text.Contains("bonus4 bAddEffOnSkill,")) { if (!_itemListContainer.effectItemIds.Contains(_itemContainer.id)) _itemListContainer.effectItemIds.Add(_itemContainer.id); }
+        if (text.Contains("bonus5 bAddEffOnSkill,")) { if (!_itemListContainer.effectItemIds.Contains(_itemContainer.id)) _itemListContainer.effectItemIds.Add(_itemContainer.id); }
+        if (text.Contains("bonus2 bComaClass,")) { if (!_itemListContainer.effectItemIds.Contains(_itemContainer.id)) _itemListContainer.effectItemIds.Add(_itemContainer.id); }
+        if (text.Contains("bonus2 bComaRace,")) { if (!_itemListContainer.effectItemIds.Contains(_itemContainer.id)) _itemListContainer.effectItemIds.Add(_itemContainer.id); }
+        if (text.Contains("bonus2 bWeaponComaEle,")) { if (!_itemListContainer.effectItemIds.Contains(_itemContainer.id)) _itemListContainer.effectItemIds.Add(_itemContainer.id); }
+        if (text.Contains("bonus2 bWeaponComaClass,")) { if (!_itemListContainer.effectItemIds.Contains(_itemContainer.id)) _itemListContainer.effectItemIds.Add(_itemContainer.id); }
+        if (text.Contains("bonus2 bWeaponComaRace,")) { if (!_itemListContainer.effectItemIds.Contains(_itemContainer.id)) _itemListContainer.effectItemIds.Add(_itemContainer.id); }
         // Autospell
-        if (text.Contains("bonus3 bAutoSpell,")) { if (!autoSpellItemIds.Contains(id)) autoSpellItemIds.Add(id); }
-        if (text.Contains("bonus3 bAutoSpellWhenHit,")) { if (!autoSpellItemIds.Contains(id)) autoSpellItemIds.Add(id); }
-        if (text.Contains("bonus4 bAutoSpell,")) { if (!autoSpellItemIds.Contains(id)) autoSpellItemIds.Add(id); }
-        if (text.Contains("bonus5 bAutoSpell,")) { if (!autoSpellItemIds.Contains(id)) autoSpellItemIds.Add(id); }
-        if (text.Contains("bonus4 bAutoSpellWhenHit,")) { if (!autoSpellItemIds.Contains(id)) autoSpellItemIds.Add(id); }
-        if (text.Contains("bonus5 bAutoSpellWhenHit,")) { if (!autoSpellItemIds.Contains(id)) autoSpellItemIds.Add(id); }
-        if (text.Contains("bonus4 bAutoSpellOnSkill,")) { if (!autoSpellItemIds.Contains(id)) autoSpellItemIds.Add(id); }
-        if (text.Contains("bonus5 bAutoSpellOnSkill,")) { if (!autoSpellItemIds.Contains(id)) autoSpellItemIds.Add(id); }
+        if (text.Contains("bonus3 bAutoSpell,")) { if (!_itemListContainer.autoSpellItemIds.Contains(_itemContainer.id)) _itemListContainer.autoSpellItemIds.Add(_itemContainer.id); }
+        if (text.Contains("bonus3 bAutoSpellWhenHit,")) { if (!_itemListContainer.autoSpellItemIds.Contains(_itemContainer.id)) _itemListContainer.autoSpellItemIds.Add(_itemContainer.id); }
+        if (text.Contains("bonus4 bAutoSpell,")) { if (!_itemListContainer.autoSpellItemIds.Contains(_itemContainer.id)) _itemListContainer.autoSpellItemIds.Add(_itemContainer.id); }
+        if (text.Contains("bonus5 bAutoSpell,")) { if (!_itemListContainer.autoSpellItemIds.Contains(_itemContainer.id)) _itemListContainer.autoSpellItemIds.Add(_itemContainer.id); }
+        if (text.Contains("bonus4 bAutoSpellWhenHit,")) { if (!_itemListContainer.autoSpellItemIds.Contains(_itemContainer.id)) _itemListContainer.autoSpellItemIds.Add(_itemContainer.id); }
+        if (text.Contains("bonus5 bAutoSpellWhenHit,")) { if (!_itemListContainer.autoSpellItemIds.Contains(_itemContainer.id)) _itemListContainer.autoSpellItemIds.Add(_itemContainer.id); }
+        if (text.Contains("bonus4 bAutoSpellOnSkill,")) { if (!_itemListContainer.autoSpellItemIds.Contains(_itemContainer.id)) _itemListContainer.autoSpellItemIds.Add(_itemContainer.id); }
+        if (text.Contains("bonus5 bAutoSpellOnSkill,")) { if (!_itemListContainer.autoSpellItemIds.Contains(_itemContainer.id)) _itemListContainer.autoSpellItemIds.Add(_itemContainer.id); }
     }
 
     void ParseStatusChangeStartIntoItemId()
     {
-        if (!string.IsNullOrEmpty(id)
-            && !string.IsNullOrEmpty(type))
+        if (!string.IsNullOrEmpty(_itemContainer.id)
+            && !string.IsNullOrEmpty(_itemContainer.type))
         {
-            if (!buffItemIds.Contains(id)
-                && ((type.ToLower() == "healing")
-                || (type.ToLower() == "usable")
-                || (type.ToLower() == "cash")))
-                buffItemIds.Add(id);
+            if (!_itemListContainer.buffItemIds.Contains(_itemContainer.id)
+                && ((_itemContainer.type.ToLower() == "healing")
+                || (_itemContainer.type.ToLower() == "usable")
+                || (_itemContainer.type.ToLower() == "cash")))
+                _itemListContainer.buffItemIds.Add(_itemContainer.id);
         }
     }
 }

@@ -75,8 +75,18 @@ public class ItemGenerator : MonoBehaviour
     [Button]
     public void Generate()
     {
+        var path = Application.dataPath + "/Assets/all_english_word.txt";
+
+        // Is file exists?
+        if (!File.Exists(path))
+        {
+            Debug.Log(path + " is not exists");
+
+            return;
+        }
+
         // Fetch English word file
-        var englishWordsFile = File.ReadAllText(Application.dataPath + "/Assets/all_english_word.txt");
+        var englishWordsFile = File.ReadAllText(path);
 
         // Split text to array
         var englishWords = englishWordsFile.Split('\n');
