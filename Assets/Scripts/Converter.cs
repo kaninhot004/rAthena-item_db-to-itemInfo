@@ -1852,13 +1852,15 @@ public class Converter : MonoBehaviour
 
         File.WriteAllText("itemInfo_Sak.lub", finalTexts, Encoding.UTF8);
 
+        Debug.Log("'itemInfo_Sak.lub' has been successfully created.");
+
         ExportItemLists();
 
         ExportItemMall();
 
         Debug.Log(DateTime.Now);
 
-        _txtConvertProgression.text = "Done!! File name 'itemInfo_Sak.lub'";
+        _txtConvertProgression.text = "Done!!";
     }
 
     string ConvertItemBonus(string text)
