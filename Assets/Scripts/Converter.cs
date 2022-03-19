@@ -1168,7 +1168,6 @@ public class Converter : MonoBehaviour
 
             var nextNextText = ((i + 2) < itemDatabases.Length) ? itemDatabases[i + 2] : string.Empty;
 
-            #region Description
             // Skip
             if (text.Contains("    AegisName:")
                 || text.Contains("    Sell:")
@@ -1219,7 +1218,7 @@ public class Converter : MonoBehaviour
                     _itemContainer.isEquipScript = false;
                     _itemContainer.isUnequipScript = false;
                 }
-                if (text.Contains("    Classes:"))
+                else if (text.Contains("    Classes:"))
                 {
                     _itemContainer.isJob = false;
                     _itemContainer.isClass = true;
@@ -1227,7 +1226,7 @@ public class Converter : MonoBehaviour
                     _itemContainer.isEquipScript = false;
                     _itemContainer.isUnequipScript = false;
                 }
-                if (text.Contains("    Script:"))
+                else if (text.Contains("    Script:"))
                 {
                     _itemContainer.isJob = false;
                     _itemContainer.isClass = false;
@@ -1235,7 +1234,7 @@ public class Converter : MonoBehaviour
                     _itemContainer.isEquipScript = false;
                     _itemContainer.isUnequipScript = false;
                 }
-                if (text.Contains("    OnEquip_Script:"))
+                else if (text.Contains("    OnEquip_Script:"))
                 {
                     _itemContainer.isJob = false;
                     _itemContainer.isClass = false;
@@ -1243,7 +1242,7 @@ public class Converter : MonoBehaviour
                     _itemContainer.isEquipScript = true;
                     _itemContainer.isUnequipScript = false;
                 }
-                if (text.Contains("    OnUnequip_Script:"))
+                else if (text.Contains("    OnUnequip_Script:"))
                 {
                     _itemContainer.isJob = false;
                     _itemContainer.isClass = false;
@@ -1259,12 +1258,14 @@ public class Converter : MonoBehaviour
             if (text.Contains("  - Id:"))
             {
                 text = RemoveSpace(text);
+
                 _itemContainer.id = text.Replace("-Id:", string.Empty);
             }
             // Name
             else if (text.Contains("    Name:"))
             {
                 _itemContainer.name = text.Replace("    Name: ", string.Empty);
+
                 _itemContainer.name = RemoveQuote(_itemContainer.name);
             }
             // Type
@@ -1289,9 +1290,11 @@ public class Converter : MonoBehaviour
             else if (text.Contains("    Buy:"))
             {
                 text = text.Replace("    Buy: ", string.Empty);
-                int b = 0;
-                if (int.TryParse(text, out b))
-                    _itemContainer.buy = b.ToString("n0");
+
+                int buy = 0;
+
+                if (int.TryParse(text, out buy))
+                    _itemContainer.buy = buy.ToString("n0");
                 else
                     _itemContainer.buy = TryParseInt(text);
             }
@@ -1299,6 +1302,7 @@ public class Converter : MonoBehaviour
             else if (text.Contains("    Weight:"))
             {
                 text = text.Replace("    Weight: ", string.Empty);
+
                 _itemContainer.weight = TryParseInt(text, 10);
             }
             // Attack
@@ -1317,7 +1321,6 @@ public class Converter : MonoBehaviour
             else if (text.Contains("    Slots:"))
                 _itemContainer.slots = text.Replace("    Slots: ", string.Empty);
             // Jobs
-            #region Jobs
             else if (_itemContainer.isJob && text.Contains("      All: true"))
                 _itemContainer.jobs += "ทุกอาชีพ, ";
             else if (_itemContainer.isJob && text.Contains("      All: false"))
@@ -1434,9 +1437,7 @@ public class Converter : MonoBehaviour
                 _itemContainer.jobs += "Wizard, ";
             else if (_itemContainer.isJob && text.Contains("      Wizard: false"))
                 _itemContainer.jobs += "Wizard [x], ";
-            #endregion
             // Classes
-            #region Classes
             else if (_itemContainer.isClass && text.Contains("      All: true"))
                 _itemContainer.classes += "ทุกคลาส, ";
             else if (_itemContainer.isClass && text.Contains("      All: false"))
@@ -1489,9 +1490,7 @@ public class Converter : MonoBehaviour
                 _itemContainer.classes += "คลาส 4, ";
             else if (_itemContainer.isClass && text.Contains("      All_Fourth: false"))
                 _itemContainer.classes += "คลาส 4 [x], ";
-            #endregion
             // Gender
-            #region Gender
             else if (text.Contains("      Female: true"))
                 _itemContainer.gender += "หญิง, ";
             else if (text.Contains("      Female: false"))
@@ -1504,9 +1503,7 @@ public class Converter : MonoBehaviour
                 _itemContainer.gender += "ทุกเพศ, ";
             else if (text.Contains("      Both: false"))
                 _itemContainer.gender += "ทุกเพศ [x], ";
-            #endregion
             // Location
-            #region Location
             else if (text.Contains("      Head_Top: true"))
                 _itemContainer.locations += "หมวกส่วนบน, ";
             else if (text.Contains("      Head_Top: false"))
@@ -1619,7 +1616,6 @@ public class Converter : MonoBehaviour
                 _itemContainer.locations += "ประดับสองข้าง, ";
             else if (text.Contains("      Both_Accessory: false"))
                 _itemContainer.locations += "ประดับสองข้าง [x], ";
-            #endregion
             // Weapon Level
             else if (text.Contains("    WeaponLevel:"))
                 _itemContainer.weaponLevel = text.Replace("    WeaponLevel: ", string.Empty);
@@ -1640,42 +1636,54 @@ public class Converter : MonoBehaviour
             // View
             else if (text.Contains("    View:"))
                 _itemContainer.view = text.Replace("    View: ", string.Empty);
-            #endregion
             // Script
             else if (_itemContainer.isScript)
             {
-                var sum = ConvertItemBonus(text);
-                if (!string.IsNullOrEmpty(sum))
-                    _itemContainer.script += "			\"" + sum + "\",\n";
+                var script = ConvertItemBonus(text);
+
+                if (!string.IsNullOrEmpty(script))
+                    _itemContainer.script += "			\"" + script + "\",\n";
             }
             // Equip Script
             else if (_itemContainer.isEquipScript)
             {
-                var sum = ConvertItemBonus(text);
-                if (!string.IsNullOrEmpty(sum))
-                    _itemContainer.equipScript += "			\"" + sum + "\",\n";
+                var equipScript = ConvertItemBonus(text);
+
+                if (!string.IsNullOrEmpty(equipScript))
+                    _itemContainer.equipScript += "			\"" + equipScript + "\",\n";
             }
             // Unequip Script
             else if (_itemContainer.isUnequipScript)
             {
-                var sum = ConvertItemBonus(text);
-                if (!string.IsNullOrEmpty(sum))
-                    _itemContainer.unequipScript += "			\"" + sum + "\",\n";
+                var unequipScript = ConvertItemBonus(text);
+
+                if (!string.IsNullOrEmpty(unequipScript))
+                    _itemContainer.unequipScript += "			\"" + unequipScript + "\",\n";
             }
 
             // Write builder now
             if (nextText.Contains("- Id:")
                 && !string.IsNullOrEmpty(_itemContainer.id)
                 && !string.IsNullOrWhiteSpace(_itemContainer.id)
-                || (i + 1) >= itemDatabases.Length)
+                || ((i + 1) >= itemDatabases.Length))
             {
-                var resName = GetResourceNameFromId(int.Parse(_itemContainer.id), _itemContainer.type, _itemContainer.subType, !string.IsNullOrEmpty(_itemContainer.locations) ? _itemContainer.locations.Substring(0, _itemContainer.locations.Length - 2) : string.Empty);
+                var resourceName = GetResourceNameFromId(int.Parse(_itemContainer.id)
+                    , _itemContainer.type
+                    , _itemContainer.subType
+                    , !string.IsNullOrEmpty(_itemContainer.locations) ? _itemContainer.locations.Substring(0, _itemContainer.locations.Length - 2) : string.Empty);
+
                 // Id
                 builder.Append("	[" + _itemContainer.id + "] = {\n");
                 // Unidentified display name
-                builder.Append("		unidentifiedDisplayName = \"" + _itemContainer.name + ((_itemContainer.type.ToLower() == "weapon" || _itemContainer.type.ToLower() == "armor" || _itemContainer.type.ToLower() == "shadowgear") ? " [" + (!string.IsNullOrEmpty(_itemContainer.slots) ? _itemContainer.slots : "0") + "]" : string.Empty) + "\",\n");
+                builder.Append("		unidentifiedDisplayName = \"" + _itemContainer.name
+                    +
+                    (((_itemContainer.type.ToLower() == "weapon")
+                    || (_itemContainer.type.ToLower() == "armor")
+                    || (_itemContainer.type.ToLower() == "shadowgear"))
+                    ? " [" + (!string.IsNullOrEmpty(_itemContainer.slots) ? _itemContainer.slots : "0") + "]"
+                    : string.Empty) + "\",\n");
                 // Unidentified resource name
-                builder.Append("		unidentifiedResourceName = " + resName + ",\n");
+                builder.Append("		unidentifiedResourceName = " + resourceName + ",\n");
                 // Unidentified description
                 builder.Append("		unidentifiedDescriptionName = {\n");
                 builder.Append("			\"\"\n");
@@ -1683,100 +1691,145 @@ public class Converter : MonoBehaviour
                 // Identified display name
                 builder.Append("		identifiedDisplayName = \"" + _itemContainer.name + "\",\n");
                 // Identified resource name
-                builder.Append("		identifiedResourceName = " + resName + ",\n");
+                builder.Append("		identifiedResourceName = " + resourceName + ",\n");
                 // Identified description
                 builder.Append("		identifiedDescriptionName = {\n");
-                // Description here
-                var sumCombo = GetCombo(GetIdNameData(int.Parse(_itemContainer.id)).aegisName);
-                string hardcodeBonus = _hardcodeItemScripts.GetHardcodeItemScript(int.Parse(_itemContainer.id));
-                var sumBonus = !string.IsNullOrEmpty(hardcodeBonus) ? hardcodeBonus : !string.IsNullOrEmpty(_itemContainer.script) ? _itemContainer.script : string.Empty;
-                var sumEquipBonus = !string.IsNullOrEmpty(_itemContainer.equipScript) ? "			\"^666478[เมื่อสวมใส่]^000000\",\n" + _itemContainer.equipScript : string.Empty;
-                var sumUnEquipBonus = !string.IsNullOrEmpty(_itemContainer.unequipScript) ? "			\"^666478[เมื่อถอด]^000000\",\n" + _itemContainer.unequipScript : string.Empty;
-                var sumDesc = "			\"^3F28FFID:^000000 " + _itemContainer.id + "\",\n"
+                // Description
+                var comboBonuses = GetCombo(GetIdNameData(int.Parse(_itemContainer.id)).aegisName);
+
+                string hardcodeBonuses = _hardcodeItemScripts.GetHardcodeItemScript(int.Parse(_itemContainer.id));
+
+                var bonuses = !string.IsNullOrEmpty(hardcodeBonuses)
+                    ? hardcodeBonuses
+                    : !string.IsNullOrEmpty(_itemContainer.script)
+                    ? _itemContainer.script
+                    : string.Empty;
+
+                var equipBonuses = !string.IsNullOrEmpty(_itemContainer.equipScript)
+                    ? "			\"^666478[เมื่อสวมใส่]^000000\",\n"
+                    + _itemContainer.equipScript
+                    : string.Empty;
+
+                var unequipBonuses = !string.IsNullOrEmpty(_itemContainer.unequipScript)
+                    ? "			\"^666478[เมื่อถอด]^000000\",\n"
+                    + _itemContainer.unequipScript
+                    : string.Empty;
+
+                var description = "			\"^3F28FFID:^000000 " + _itemContainer.id + "\",\n"
                     + "			\"^3F28FFประเภท:^000000 " + _itemContainer.type + "\",\n";
+
                 if (!string.IsNullOrEmpty(_itemContainer.subType))
-                    sumDesc += "			\"^3F28FFประเภทรอง:^000000 " + _itemContainer.subType + "\",\n";
+                    description += "			\"^3F28FFประเภทรอง:^000000 " + _itemContainer.subType + "\",\n";
                 else if (_isZeroValuePrintable)
-                    sumDesc += "			\"^3F28FFประเภทรอง:^000000 -\",\n";
+                    description += "			\"^3F28FFประเภทรอง:^000000 -\",\n";
+
                 if (!string.IsNullOrEmpty(_itemContainer.locations))
-                    sumDesc += "			\"^3F28FFตำแหน่ง:^000000 " + _itemContainer.locations.Substring(0, _itemContainer.locations.Length - 2) + "\",\n";
+                    description += "			\"^3F28FFตำแหน่ง:^000000 " + _itemContainer.locations.Substring(0, _itemContainer.locations.Length - 2) + "\",\n";
                 else if (_isZeroValuePrintable)
-                    sumDesc += "			\"^3F28FFตำแหน่ง:^000000 -\",\n";
+                    description += "			\"^3F28FFตำแหน่ง:^000000 -\",\n";
+
                 if (!string.IsNullOrEmpty(_itemContainer.jobs))
-                    sumDesc += "			\"^3F28FFอาชีพ:^000000 " + _itemContainer.jobs.Substring(0, _itemContainer.jobs.Length - 2) + "\",\n";
+                    description += "			\"^3F28FFอาชีพ:^000000 " + _itemContainer.jobs.Substring(0, _itemContainer.jobs.Length - 2) + "\",\n";
                 else if (_isZeroValuePrintable)
-                    sumDesc += "			\"^3F28FFอาชีพ:^000000 -\",\n";
+                    description += "			\"^3F28FFอาชีพ:^000000 -\",\n";
+
                 if (!string.IsNullOrEmpty(_itemContainer.classes))
-                    sumDesc += "			\"^3F28FFคลาส:^000000 " + _itemContainer.classes.Substring(0, _itemContainer.classes.Length - 2) + "\",\n";
+                    description += "			\"^3F28FFคลาส:^000000 " + _itemContainer.classes.Substring(0, _itemContainer.classes.Length - 2) + "\",\n";
                 else if (_isZeroValuePrintable)
-                    sumDesc += "			\"^3F28FFคลาส:^000000 -\",\n";
+                    description += "			\"^3F28FFคลาส:^000000 -\",\n";
+
                 if (!string.IsNullOrEmpty(_itemContainer.gender))
-                    sumDesc += "			\"^3F28FFเพศ:^000000 " + _itemContainer.gender.Substring(0, _itemContainer.gender.Length - 2) + "\",\n";
+                    description += "			\"^3F28FFเพศ:^000000 " + _itemContainer.gender.Substring(0, _itemContainer.gender.Length - 2) + "\",\n";
                 else if (_isZeroValuePrintable)
-                    sumDesc += "			\"^3F28FFเพศ:^000000 -\",\n";
+                    description += "			\"^3F28FFเพศ:^000000 -\",\n";
+
                 if (!string.IsNullOrEmpty(_itemContainer.attack))
-                    sumDesc += "			\"^3F28FFโจมตี:^000000 " + _itemContainer.attack + "\",\n";
+                    description += "			\"^3F28FFโจมตี:^000000 " + _itemContainer.attack + "\",\n";
                 else if (_isZeroValuePrintable)
-                    sumDesc += "			\"^3F28FFโจมตี:^000000 -\",\n";
+                    description += "			\"^3F28FFโจมตี:^000000 -\",\n";
+
                 if (!string.IsNullOrEmpty(_itemContainer.magicAttack))
-                    sumDesc += "			\"^3F28FFโจมตีเวทย์:^000000 " + _itemContainer.magicAttack + "\",\n";
+                    description += "			\"^3F28FFโจมตีเวทย์:^000000 " + _itemContainer.magicAttack + "\",\n";
                 else if (_isZeroValuePrintable)
-                    sumDesc += "			\"^3F28FFโจมตีเวทย์:^000000 -\",\n";
+                    description += "			\"^3F28FFโจมตีเวทย์:^000000 -\",\n";
+
                 if (!string.IsNullOrEmpty(_itemContainer.defense))
-                    sumDesc += "			\"^3F28FFป้องกัน:^000000 " + _itemContainer.defense + "\",\n";
+                    description += "			\"^3F28FFป้องกัน:^000000 " + _itemContainer.defense + "\",\n";
                 else if (_isZeroValuePrintable)
-                    sumDesc += "			\"^3F28FFป้องกัน:^000000 -\",\n";
+                    description += "			\"^3F28FFป้องกัน:^000000 -\",\n";
+
                 if (!string.IsNullOrEmpty(_itemContainer.range))
-                    sumDesc += "			\"^3F28FFระยะตี:^000000 " + _itemContainer.range + "\",\n";
+                    description += "			\"^3F28FFระยะตี:^000000 " + _itemContainer.range + "\",\n";
                 else if (_isZeroValuePrintable)
-                    sumDesc += "			\"^3F28FFระยะตี:^000000 -\",\n";
+                    description += "			\"^3F28FFระยะตี:^000000 -\",\n";
+
                 if (!string.IsNullOrEmpty(_itemContainer.weaponLevel))
-                    sumDesc += "			\"^3F28FFเลเวลอาวุธ:^000000 " + _itemContainer.weaponLevel + "\",\n";
+                    description += "			\"^3F28FFเลเวลอาวุธ:^000000 " + _itemContainer.weaponLevel + "\",\n";
                 else if (_isZeroValuePrintable)
-                    sumDesc += "			\"^3F28FFเลเวลอาวุธ:^000000 -\",\n";
+                    description += "			\"^3F28FFเลเวลอาวุธ:^000000 -\",\n";
+
                 if (!string.IsNullOrEmpty(_itemContainer.armorLevel))
-                    sumDesc += "			\"^3F28FFเลเวลชุดเกราะ:^000000 " + _itemContainer.armorLevel + "\",\n";
+                    description += "			\"^3F28FFเลเวลชุดเกราะ:^000000 " + _itemContainer.armorLevel + "\",\n";
                 else if (_isZeroValuePrintable)
-                    sumDesc += "			\"^3F28FFเลเวลชุดเกราะ:^000000 -\",\n";
+                    description += "			\"^3F28FFเลเวลชุดเกราะ:^000000 -\",\n";
+
                 if (!string.IsNullOrEmpty(_itemContainer.equipLevelMinimum))
-                    sumDesc += "			\"^3F28FFเลเวลขั้นต่ำ:^000000 " + _itemContainer.equipLevelMinimum + "\",\n";
+                    description += "			\"^3F28FFเลเวลขั้นต่ำ:^000000 " + _itemContainer.equipLevelMinimum + "\",\n";
                 else if (_isZeroValuePrintable)
-                    sumDesc += "			\"^3F28FFเลเวลขั้นต่ำ:^000000 -\",\n";
+                    description += "			\"^3F28FFเลเวลขั้นต่ำ:^000000 -\",\n";
+
                 if (!string.IsNullOrEmpty(_itemContainer.equipLevelMaximum))
-                    sumDesc += "			\"^3F28FFเลเวลสูงสุด:^000000 " + _itemContainer.equipLevelMaximum + "\",\n";
+                    description += "			\"^3F28FFเลเวลสูงสุด:^000000 " + _itemContainer.equipLevelMaximum + "\",\n";
                 else if (_isZeroValuePrintable)
-                    sumDesc += "			\"^3F28FFเลเวลสูงสุด:^000000 -\",\n";
+                    description += "			\"^3F28FFเลเวลสูงสุด:^000000 -\",\n";
+
                 if (!string.IsNullOrEmpty(_itemContainer.refinable))
-                    sumDesc += "			\"^3F28FFตีบวก:^000000 " + _itemContainer.refinable + "\",\n";
+                    description += "			\"^3F28FFตีบวก:^000000 " + _itemContainer.refinable + "\",\n";
                 else if (_isZeroValuePrintable)
-                    sumDesc += "			\"^3F28FFตีบวก:^000000 -\",\n";
+                    description += "			\"^3F28FFตีบวก:^000000 -\",\n";
+
                 if (!string.IsNullOrEmpty(_itemContainer.weight))
-                    sumDesc += "			\"^3F28FFน้ำหนัก:^000000 " + _itemContainer.weight + "\",\n";
+                    description += "			\"^3F28FFน้ำหนัก:^000000 " + _itemContainer.weight + "\",\n";
                 else if (_isZeroValuePrintable)
-                    sumDesc += "			\"^3F28FFน้ำหนัก:^000000 -\",\n";
+                    description += "			\"^3F28FFน้ำหนัก:^000000 -\",\n";
+
                 if (!string.IsNullOrEmpty(_itemContainer.buy))
-                    sumDesc += "			\"^3F28FFราคา:^000000 " + _itemContainer.buy + "\",\n";
+                    description += "			\"^3F28FFราคา:^000000 " + _itemContainer.buy + "\",\n";
                 else if (_isZeroValuePrintable)
-                    sumDesc += "			\"^3F28FFราคา:^000000 -\",\n";
-                builder.Append(sumBonus);
-                if (!string.IsNullOrEmpty(sumBonus) && !string.IsNullOrWhiteSpace(sumBonus))
+                    description += "			\"^3F28FFราคา:^000000 -\",\n";
+
+                builder.Append(bonuses);
+
+                if (!string.IsNullOrEmpty(bonuses)
+                    && !string.IsNullOrWhiteSpace(bonuses))
                     builder.Append("			\"————————————\",\n");
-                builder.Append(sumCombo);
-                builder.Append(sumEquipBonus);
-                builder.Append(sumUnEquipBonus);
-                builder.Append(sumDesc);
+
+                builder.Append(comboBonuses);
+
+                builder.Append(equipBonuses);
+
+                builder.Append(unequipBonuses);
+
+                builder.Append(description);
+
                 builder.Append("			\"\"\n");
+
                 builder.Append("		},\n");
+
                 // Slot Count
                 if (!string.IsNullOrEmpty(_itemContainer.slots))
                     builder.Append("		slotCount = " + _itemContainer.slots + ",\n");
                 else
                     builder.Append("		slotCount = 0,\n");
+
                 // View / Class Number
                 builder.Append("		ClassNum = " + GetClassNumFromId(int.Parse(_itemContainer.id)) + ",\n");
+
                 // Costume
                 builder.Append("		costume = false\n");
-                if (string.IsNullOrEmpty(nextNextText) || string.IsNullOrWhiteSpace(nextNextText))
+
+                if (string.IsNullOrEmpty(nextNextText)
+                    || string.IsNullOrWhiteSpace(nextNextText))
                     builder.Append("	}\n");
                 else
                     builder.Append("	},\n");
@@ -1784,7 +1837,7 @@ public class Converter : MonoBehaviour
                 _itemContainer = new ItemContainer();
             }
         }
-        #region prefix postfix
+
         var prefix = "tbl = {\n";
         var postfix = "}\n\n" +
             "-- Function #0\n" +
@@ -1834,23 +1887,29 @@ public class Converter : MonoBehaviour
             "	end\n" +
             "	return true, \"good\"\n" +
             "end\n";
-        #endregion
 
-        string finalTexts = prefix + builder.ToString() + postfix;
-        finalTexts = finalTexts.Replace("[NEW_LINE]", "\",\n			\"");
-        finalTexts = finalTexts.Replace("กับ 11)", "ประเภท)");
-        finalTexts = finalTexts.Replace("กับ 11 )", "ประเภท)");
-        finalTexts = finalTexts.Replace("กับ II_VIEW)", "ประเภท)");
-        finalTexts = finalTexts.Replace("กับ II_VIEW )", "ประเภท)");
-        finalTexts = finalTexts.Replace("กับ ITEMINFO_VIEW)", "ประเภท)");
-        finalTexts = finalTexts.Replace("กับ ITEMINFO_VIEW )", "ประเภท)");
-        finalTexts = finalTexts.Replace("     ๐", "๐");
-        finalTexts = finalTexts.Replace("    ๐", "๐");
-        finalTexts = finalTexts.Replace("   ๐", "๐");
-        finalTexts = finalTexts.Replace("  ๐", "๐");
-        finalTexts = finalTexts.Replace(" ๐", "๐");
+        string finalize = prefix + builder.ToString() + postfix;
 
-        File.WriteAllText("itemInfo_Sak.lub", finalTexts, Encoding.UTF8);
+        // New line
+        finalize = finalize.Replace("[NEW_LINE]", "\",\n			\"");
+
+        // TODO: Fix it properly
+        finalize = finalize.Replace("กับ 11)", "ประเภท)");
+        finalize = finalize.Replace("กับ 11 )", "ประเภท)");
+        finalize = finalize.Replace("กับ II_VIEW)", "ประเภท)");
+        finalize = finalize.Replace("กับ II_VIEW )", "ประเภท)");
+        finalize = finalize.Replace("กับ ITEMINFO_VIEW)", "ประเภท)");
+        finalize = finalize.Replace("กับ ITEMINFO_VIEW )", "ประเภท)");
+
+        // Spacing fix
+        finalize = finalize.Replace("     ๐", "๐");
+        finalize = finalize.Replace("    ๐", "๐");
+        finalize = finalize.Replace("   ๐", "๐");
+        finalize = finalize.Replace("  ๐", "๐");
+        finalize = finalize.Replace(" ๐", "๐");
+
+        // Write it out
+        File.WriteAllText("itemInfo_Sak.lub", finalize, Encoding.UTF8);
 
         Debug.Log("'itemInfo_Sak.lub' has been successfully created.");
 
@@ -3374,6 +3433,11 @@ public class Converter : MonoBehaviour
         return text;
     }
 
+    /// <summary>
+    /// Remove all space
+    /// </summary>
+    /// <param name="text"></param>
+    /// <returns></returns>
     string RemoveSpace(string text)
     {
         while (text.Contains(" "))
@@ -3382,6 +3446,11 @@ public class Converter : MonoBehaviour
         return text;
     }
 
+    /// <summary>
+    /// Remove all "
+    /// </summary>
+    /// <param name="text"></param>
+    /// <returns></returns>
     string RemoveQuote(string text)
     {
         while (text.Contains("\""))
