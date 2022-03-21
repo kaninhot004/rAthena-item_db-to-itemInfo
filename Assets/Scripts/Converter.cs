@@ -2133,6 +2133,8 @@ public class Converter : MonoBehaviour
             }
             else
                 text = string.Empty;
+
+            ParseStatusChangeStartIntoItemId();
         }
 
         text = text.Replace(";", string.Empty);
