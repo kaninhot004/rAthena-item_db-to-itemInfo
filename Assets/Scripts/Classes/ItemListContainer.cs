@@ -16,15 +16,4 @@ public class ItemListContainer
     public List<string> petArmorIds = new List<string>();
     public List<string> fashionCostumeIds = new List<string>();
     public List<string> buffItemIds = new List<string>();
-
-    public List<string> statsItemIds = new List<string>();
-    public List<string> hpSpApItemIds = new List<string>();
-    public List<string> offensiveItemIds = new List<string>();
-    public List<string> defensiveItemIds = new List<string>();
-    public List<string> specialItemIds = new List<string>();
-    public List<string> castItemIds = new List<string>();
-    public List<string> effectItemIds = new List<string>();
-    public List<string> autoSpellItemIds = new List<string>();
-
-    public List<string> comboItemIds = new List<string>();
 }

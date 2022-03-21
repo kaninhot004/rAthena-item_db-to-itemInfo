@@ -232,15 +232,6 @@ public class Converter : MonoBehaviour
         ExportingItemLists(builder, "costumeIds", _itemListContainer.costumeIds);
         ExportingItemLists(builder, "cardIds", _itemListContainer.cardIds);
         ExportingItemLists(builder, "enchantIds", _itemListContainer.enchantIds);
-        ExportingItemLists(builder, "statsItemIds", _itemListContainer.statsItemIds);
-        ExportingItemLists(builder, "hpSpApItemIds", _itemListContainer.hpSpApItemIds);
-        ExportingItemLists(builder, "offensiveItemIds", _itemListContainer.offensiveItemIds);
-        ExportingItemLists(builder, "defensiveItemIds", _itemListContainer.defensiveItemIds);
-        ExportingItemLists(builder, "specialItemIds", _itemListContainer.specialItemIds);
-        ExportingItemLists(builder, "castItemIds", _itemListContainer.castItemIds);
-        ExportingItemLists(builder, "effectItemIds", _itemListContainer.effectItemIds);
-        ExportingItemLists(builder, "autoSpellItemIds", _itemListContainer.autoSpellItemIds);
-        ExportingItemLists(builder, "comboItemIds", _itemListContainer.comboItemIds);
 
         File.WriteAllText("global_item_ids.txt", builder.ToString(), Encoding.UTF8);
 
@@ -467,18 +458,18 @@ public class Converter : MonoBehaviour
             // Id
             if (text.Contains("  - Id:"))
             {
-                text = RemoveQuote(text);
+                text = QuoteRemover.Remove(text);
 
-                text = RemoveSpace(text);
+                text = SpacingRemover.Remove(text);
 
                 id = text.Replace("-Id:", string.Empty);
             }
             // Type
             else if (text.Contains("    Type:"))
             {
-                text = RemoveQuote(text);
+                text = QuoteRemover.Remove(text);
 
-                text = RemoveSpace(text);
+                text = SpacingRemover.Remove(text);
 
                 text = text.Replace("Type:", string.Empty);
 
@@ -491,9 +482,9 @@ public class Converter : MonoBehaviour
             // Locations
             else if (isArmor)
             {
-                text = RemoveQuote(text);
+                text = QuoteRemover.Remove(text);
 
-                text = RemoveSpace(text);
+                text = SpacingRemover.Remove(text);
 
                 if (text.ToLower().Contains("head_top"))
                     _resourceContainer.topHeadgears.Add(id);
@@ -515,9 +506,9 @@ public class Converter : MonoBehaviour
             }
             else
             {
-                text = RemoveQuote(text);
+                text = QuoteRemover.Remove(text);
 
-                text = RemoveSpace(text);
+                text = SpacingRemover.Remove(text);
 
                 if (text.ToLower().Contains("dagger"))
                     _resourceContainer.daggers.Add(id);
@@ -608,10 +599,10 @@ public class Converter : MonoBehaviour
             text = LineEndingsRemover.Fix(text);
 
             if (text.Contains("  - Id:"))
-                monsterDatabase.id = int.Parse(RemoveSpace(text).Replace("-Id:", string.Empty));
+                monsterDatabase.id = int.Parse(SpacingRemover.Remove(text).Replace("-Id:", string.Empty));
             else if (text.Contains("    Name:"))
             {
-                monsterDatabase.name = RemoveQuote(text.Replace("    Name: ", string.Empty));
+                monsterDatabase.name = QuoteRemover.Remove(text.Replace("    Name: ", string.Empty));
 
                 _monsterDatabases.Add(monsterDatabase);
 
@@ -699,10 +690,10 @@ public class Converter : MonoBehaviour
             text = LineEndingsRemover.Fix(text);
 
             if (text.Contains("- Id:"))
-                classNumberDatabase.id = int.Parse(RemoveSpace(text).Replace("-Id:", string.Empty));
+                classNumberDatabase.id = int.Parse(SpacingRemover.Remove(text).Replace("-Id:", string.Empty));
             else if (text.Contains("    View:"))
             {
-                classNumberDatabase.classNumber = RemoveSpace(text).Replace("View:", string.Empty);
+                classNumberDatabase.classNumber = SpacingRemover.Remove(text).Replace("View:", string.Empty);
 
                 _classNumberDatabases.Add(classNumberDatabase);
 
@@ -752,12 +743,12 @@ public class Converter : MonoBehaviour
             text = LineEndingsRemover.Fix(text);
 
             if (text.Contains("  - Id:"))
-                skillDatabase.id = int.Parse(RemoveSpace(text).Replace("-Id:", string.Empty));
+                skillDatabase.id = int.Parse(SpacingRemover.Remove(text).Replace("-Id:", string.Empty));
             else if (text.Contains("    Name:"))
-                skillDatabase.name = RemoveQuote(text.Replace("    Name: ", string.Empty));
+                skillDatabase.name = QuoteRemover.Remove(text.Replace("    Name: ", string.Empty));
             else if (text.Contains("    Description:"))
             {
-                skillDatabase.description = RemoveQuote(text.Replace("    Description: ", string.Empty));
+                skillDatabase.description = QuoteRemover.Remove(text.Replace("    Description: ", string.Empty));
 
                 skillDatabase.nameWithQuote = "\"" + skillDatabase.name + "\"";
 
@@ -871,7 +862,7 @@ public class Converter : MonoBehaviour
             else if (text.Contains("- Combo:"))
                 comboDatabase.sameComboDatas.Add(new ComboDatabase.SameComboData());
             else if (text.Contains("          - "))
-                comboDatabase.sameComboDatas[comboDatabase.sameComboDatas.Count - 1].aegisNames.Add(RemoveSpace(RemoveQuote(text.Replace("          - ", string.Empty))));
+                comboDatabase.sameComboDatas[comboDatabase.sameComboDatas.Count - 1].aegisNames.Add(SpacingRemover.Remove(QuoteRemover.Remove(text.Replace("          - ", string.Empty))));
             else if (text.Contains("Script: |"))
                 isScript = true;
             else if (isScript)
@@ -1014,7 +1005,7 @@ public class Converter : MonoBehaviour
 
             if (text.Contains("  - Id:"))
             {
-                text = RemoveSpace(text);
+                text = SpacingRemover.Remove(text);
 
                 _id = text.Replace("-Id:", string.Empty);
 
@@ -1024,7 +1015,7 @@ public class Converter : MonoBehaviour
             }
             else if (text.Contains("    AegisName:"))
             {
-                text = RemoveQuote(text);
+                text = QuoteRemover.Remove(text);
 
                 _name = text.Replace("    AegisName: ", string.Empty);
 
@@ -1032,7 +1023,7 @@ public class Converter : MonoBehaviour
             }
             else if (text.Contains("    Name:"))
             {
-                text = RemoveQuote(text);
+                text = QuoteRemover.Remove(text);
 
                 _name = text.Replace("    Name: ", string.Empty);
 
@@ -1044,9 +1035,9 @@ public class Converter : MonoBehaviour
             }
             else if (text.Contains("    Type:"))
             {
-                text = RemoveQuote(text);
+                text = QuoteRemover.Remove(text);
 
-                text = RemoveSpace(text);
+                text = SpacingRemover.Remove(text);
 
                 text = text.Replace("Type:", string.Empty);
 
@@ -1066,9 +1057,9 @@ public class Converter : MonoBehaviour
             // Locations
             else if (isArmor)
             {
-                text = RemoveQuote(text);
+                text = QuoteRemover.Remove(text);
 
-                text = RemoveSpace(text);
+                text = SpacingRemover.Remove(text);
 
                 if (text.ToLower().Contains("costume_head_top")
                     || text.ToLower().Contains("costume_head_mid")
@@ -1106,9 +1097,9 @@ public class Converter : MonoBehaviour
             // Locations
             else
             {
-                text = RemoveQuote(text);
+                text = QuoteRemover.Remove(text);
 
-                text = RemoveSpace(text);
+                text = SpacingRemover.Remove(text);
 
                 if (text.ToLower().Contains("costume_head_top")
                     || text.ToLower().Contains("costume_head_mid")
@@ -1257,7 +1248,7 @@ public class Converter : MonoBehaviour
             // Id
             if (text.Contains("  - Id:"))
             {
-                text = RemoveSpace(text);
+                text = SpacingRemover.Remove(text);
 
                 _itemContainer.id = text.Replace("-Id:", string.Empty);
             }
@@ -1266,7 +1257,7 @@ public class Converter : MonoBehaviour
             {
                 _itemContainer.name = text.Replace("    Name: ", string.Empty);
 
-                _itemContainer.name = RemoveQuote(_itemContainer.name);
+                _itemContainer.name = QuoteRemover.Remove(_itemContainer.name);
 
                 // Hotfix for →
                 _itemContainer.name = _itemContainer.name.Replace("→", " to ");
@@ -2035,7 +2026,7 @@ public class Converter : MonoBehaviour
                 if (retry <= 0)
                     break;
             }
-            var skillName = RemoveQuote(duplicates.Length >= 4 ? duplicates[3] : string.Empty);
+            var skillName = QuoteRemover.Remove(duplicates.Length >= 4 ? duplicates[3] : string.Empty);
             if (!string.IsNullOrEmpty(bonuses) || !string.IsNullOrWhiteSpace(bonuses))
             {
                 bonuses = bonuses.Replace("๐", "[NEW_LINE]๐");
@@ -2105,8 +2096,6 @@ public class Converter : MonoBehaviour
             else
                 text = string.Empty;
         }
-
-        ParseBonusIntoTypesItemId(text);
 
         text = text.Replace(";", string.Empty);
 
@@ -2386,21 +2375,21 @@ public class Converter : MonoBehaviour
         {
             var temp = text.Replace("bonus2 bSkillUseSP,", string.Empty);
             var temps = temp.Split(',');
-            text = string.Format("๐ SP ที่ต้องใช้กับ {0} -{1}", GetSkillName(RemoveQuote(temps[0])), TryParseInt(temps[1]));
+            text = string.Format("๐ SP ที่ต้องใช้กับ {0} -{1}", GetSkillName(QuoteRemover.Remove(temps[0])), TryParseInt(temps[1]));
             text = text.Replace("--", "+");
         }
         if (text.Contains("bonus2 bSkillUseSPrate,"))
         {
             var temp = text.Replace("bonus2 bSkillUseSPrate,", string.Empty);
             var temps = temp.Split(',');
-            text = string.Format("๐ SP ที่ต้องใช้กับ {0} -{1}%", GetSkillName(RemoveQuote(temps[0])), TryParseInt(temps[1]));
+            text = string.Format("๐ SP ที่ต้องใช้กับ {0} -{1}%", GetSkillName(QuoteRemover.Remove(temps[0])), TryParseInt(temps[1]));
             text = text.Replace("--", "+");
         }
         if (text.Contains("bonus2 bSkillAtk,"))
         {
             var temp = text.Replace("bonus2 bSkillAtk,", string.Empty);
             var temps = temp.Split(',');
-            text = string.Format("๐ {0} แรงขึ้น +{1}%", GetSkillName(RemoveQuote(temps[0])), TryParseInt(temps[1]));
+            text = string.Format("๐ {0} แรงขึ้น +{1}%", GetSkillName(QuoteRemover.Remove(temps[0])), TryParseInt(temps[1]));
         }
         if (text.Contains("bonus bShortAtkRate,"))
         {
@@ -2436,13 +2425,13 @@ public class Converter : MonoBehaviour
         {
             var temp = text.Replace("bonus2 bWeaponAtk,", string.Empty);
             var temps = temp.Split(',');
-            text = string.Format("๐ ถ้าสวมใส่ {0} Atk อาวุธ +{1}", RemoveQuote(temps[0]), TryParseInt(temps[1]));
+            text = string.Format("๐ ถ้าสวมใส่ {0} Atk อาวุธ +{1}", QuoteRemover.Remove(temps[0]), TryParseInt(temps[1]));
         }
         if (text.Contains("bonus2 bWeaponDamageRate,"))
         {
             var temp = text.Replace("bonus2 bWeaponDamageRate,", string.Empty);
             var temps = temp.Split(',');
-            text = string.Format("๐ ถ้าสวมใส่ {0} ตีกายภาพ +{1}%", RemoveQuote(temps[0]), TryParseInt(temps[1]));
+            text = string.Format("๐ ถ้าสวมใส่ {0} ตีกายภาพ +{1}%", QuoteRemover.Remove(temps[0]), TryParseInt(temps[1]));
         }
         if (text.Contains("bonus bNearAtkDef,"))
         {
@@ -2502,13 +2491,13 @@ public class Converter : MonoBehaviour
         {
             var temp = text.Replace("bonus2 bSkillHeal,", string.Empty);
             var temps = temp.Split(',');
-            text = string.Format("๐ {0} Heal แรงขึ้น +{1}%", GetSkillName(RemoveQuote(temps[0])), TryParseInt(temps[1]));
+            text = string.Format("๐ {0} Heal แรงขึ้น +{1}%", GetSkillName(QuoteRemover.Remove(temps[0])), TryParseInt(temps[1]));
         }
         if (text.Contains("bonus2 bSkillHeal2,"))
         {
             var temp = text.Replace("bonus2 bSkillHeal2,", string.Empty);
             var temps = temp.Split(',');
-            text = string.Format("๐ โดน {0} Heal แรงขึ้น +{1}%", GetSkillName(RemoveQuote(temps[0])), TryParseInt(temps[1]));
+            text = string.Format("๐ โดน {0} Heal แรงขึ้น +{1}%", GetSkillName(QuoteRemover.Remove(temps[0])), TryParseInt(temps[1]));
         }
         if (text.Contains("bonus bAddItemHealRate,"))
         {
@@ -2520,13 +2509,13 @@ public class Converter : MonoBehaviour
         {
             var temp = text.Replace("bonus2 bAddItemHealRate,", string.Empty);
             var temps = temp.Split(',');
-            text = string.Format("๐ {0} Heal HP แรงขึ้น +{1}%", GetItemName(RemoveQuote(temps[0])), TryParseInt(temps[1]));
+            text = string.Format("๐ {0} Heal HP แรงขึ้น +{1}%", GetItemName(QuoteRemover.Remove(temps[0])), TryParseInt(temps[1]));
         }
         if (text.Contains("bonus2 bAddItemGroupHealRate,"))
         {
             var temp = text.Replace("bonus2 bAddItemGroupHealRate,", string.Empty);
             var temps = temp.Split(',');
-            text = string.Format("๐ Item กลุ่ม {0} Heal HP แรงขึ้น +{1}%", RemoveQuote(temps[0]), TryParseInt(temps[1]));
+            text = string.Format("๐ Item กลุ่ม {0} Heal HP แรงขึ้น +{1}%", QuoteRemover.Remove(temps[0]), TryParseInt(temps[1]));
         }
         if (text.Contains("bonus bAddItemSPHealRate,"))
         {
@@ -2538,13 +2527,13 @@ public class Converter : MonoBehaviour
         {
             var temp = text.Replace("bonus2 bAddItemSPHealRate,", string.Empty);
             var temps = temp.Split(',');
-            text = string.Format("๐ {0} Heal SP แรงขึ้น +{1}%", GetItemName(RemoveQuote(temps[0])), TryParseInt(temps[1]));
+            text = string.Format("๐ {0} Heal SP แรงขึ้น +{1}%", GetItemName(QuoteRemover.Remove(temps[0])), TryParseInt(temps[1]));
         }
         if (text.Contains("bonus2 bAddItemGroupSPHealRate,"))
         {
             var temp = text.Replace("bonus2 bAddItemGroupSPHealRate,", string.Empty);
             var temps = temp.Split(',');
-            text = string.Format("๐ Item กลุ่ม {0} Heal SP แรงขึ้น +{1}%", RemoveQuote(temps[0]), TryParseInt(temps[1]));
+            text = string.Format("๐ Item กลุ่ม {0} Heal SP แรงขึ้น +{1}%", QuoteRemover.Remove(temps[0]), TryParseInt(temps[1]));
         }
         if (text.Contains("bonus bCastrate,"))
         {
@@ -2556,7 +2545,7 @@ public class Converter : MonoBehaviour
         {
             var temp = text.Replace("bonus2 bCastrate,", string.Empty);
             var temps = temp.Split(',');
-            text = string.Format("๐ ร่าย V. {0} +{1}%", GetSkillName(RemoveQuote(temps[0])), TryParseInt(temps[1]));
+            text = string.Format("๐ ร่าย V. {0} +{1}%", GetSkillName(QuoteRemover.Remove(temps[0])), TryParseInt(temps[1]));
         }
         if (text.Contains("bonus bFixedCastrate,"))
         {
@@ -2568,7 +2557,7 @@ public class Converter : MonoBehaviour
         {
             var temp = text.Replace("bonus2 bFixedCastrate,", string.Empty);
             var temps = temp.Split(',');
-            text = string.Format("๐ ร่าย F. {0} +{1}%", GetSkillName(RemoveQuote(temps[0])), TryParseInt(temps[1]));
+            text = string.Format("๐ ร่าย F. {0} +{1}%", GetSkillName(QuoteRemover.Remove(temps[0])), TryParseInt(temps[1]));
         }
         if (text.Contains("bonus bVariableCastrate,"))
         {
@@ -2580,7 +2569,7 @@ public class Converter : MonoBehaviour
         {
             var temp = text.Replace("bonus2 bVariableCastrate,", string.Empty);
             var temps = temp.Split(',');
-            text = string.Format("๐ ร่าย V. {0} +{1}%", GetSkillName(RemoveQuote(temps[0])), TryParseInt(temps[1]));
+            text = string.Format("๐ ร่าย V. {0} +{1}%", GetSkillName(QuoteRemover.Remove(temps[0])), TryParseInt(temps[1]));
         }
         if (text.Contains("bonus bFixedCast,"))
         {
@@ -2592,7 +2581,7 @@ public class Converter : MonoBehaviour
         {
             var temp = text.Replace("bonus2 bSkillFixedCast,", string.Empty);
             var temps = temp.Split(',');
-            text = string.Format("๐ ร่าย F. {0} +{1} วินาที", GetSkillName(RemoveQuote(temps[0])), TryParseInt(temps[1], 1000));
+            text = string.Format("๐ ร่าย F. {0} +{1} วินาที", GetSkillName(QuoteRemover.Remove(temps[0])), TryParseInt(temps[1], 1000));
         }
         if (text.Contains("bonus bVariableCast,"))
         {
@@ -2604,7 +2593,7 @@ public class Converter : MonoBehaviour
         {
             var temp = text.Replace("bonus2 bSkillVariableCast,", string.Empty);
             var temps = temp.Split(',');
-            text = string.Format("๐ ร่าย V. {0} +{1} วินาที", GetSkillName(RemoveQuote(temps[0])), TryParseInt(temps[1], 1000));
+            text = string.Format("๐ ร่าย V. {0} +{1} วินาที", GetSkillName(QuoteRemover.Remove(temps[0])), TryParseInt(temps[1], 1000));
         }
         text = text.Replace("bonus bNoCastCancel2", "๐ การร่ายไม่ถูกหยุด");
         text = text.Replace("bonus bNoCastCancel", "๐ การร่ายไม่ถูกหยุด (ใช้ไม่ได้ใน GvG)");
@@ -2624,13 +2613,13 @@ public class Converter : MonoBehaviour
         {
             var temp = text.Replace("bonus2 bSkillDelay,", string.Empty);
             var temps = temp.Split(',');
-            text = string.Format("๐ Delay หลังร่าย {0} +{1} วินาที", GetSkillName(RemoveQuote(temps[0])), TryParseInt(temps[1], 1000));
+            text = string.Format("๐ Delay หลังร่าย {0} +{1} วินาที", GetSkillName(QuoteRemover.Remove(temps[0])), TryParseInt(temps[1], 1000));
         }
         if (text.Contains("bonus2 bSkillCooldown,"))
         {
             var temp = text.Replace("bonus2 bSkillCooldown,", string.Empty);
             var temps = temp.Split(',');
-            text = string.Format("๐ Cooldown {0} +{1} วินาที", GetSkillName(RemoveQuote(temps[0])), TryParseInt(temps[1], 1000));
+            text = string.Format("๐ Cooldown {0} +{1} วินาที", GetSkillName(QuoteRemover.Remove(temps[0])), TryParseInt(temps[1], 1000));
         }
         if (text.Contains("bonus2 bAddEle,"))
         {
@@ -2793,7 +2782,7 @@ public class Converter : MonoBehaviour
         {
             var temp = text.Replace("bonus2 bSubSkill,", string.Empty);
             var temps = temp.Split(',');
-            text = string.Format("๐ กัน {0} +{1}%", GetSkillName(RemoveQuote(temps[0])), TryParseInt(temps[1]));
+            text = string.Format("๐ กัน {0} +{1}%", GetSkillName(QuoteRemover.Remove(temps[0])), TryParseInt(temps[1]));
         }
         if (text.Contains("bonus bAbsorbDmgMaxHP,"))
         {
@@ -2973,19 +2962,19 @@ public class Converter : MonoBehaviour
         {
             var temp = text.Replace("bonus3 bAddEffOnSkill,", string.Empty);
             var temps = temp.Split(',');
-            text = string.Format("๐ เมื่อร่าย {0} มีโอกาส {2}% ที่จะเกิด {1} กับเป้าหมาย", GetSkillName(RemoveQuote(temps[0])), ParseEffect(temps[1]), TryParseInt(temps[2], 100));
+            text = string.Format("๐ เมื่อร่าย {0} มีโอกาส {2}% ที่จะเกิด {1} กับเป้าหมาย", GetSkillName(QuoteRemover.Remove(temps[0])), ParseEffect(temps[1]), TryParseInt(temps[2], 100));
         }
         if (text.Contains("bonus4 bAddEffOnSkill,"))
         {
             var temp = text.Replace("bonus4 bAddEffOnSkill,", string.Empty);
             var temps = temp.Split(',');
-            text = string.Format("๐ เมื่อร่าย {0} กับ {3} มีโอกาส {2}% ที่จะเกิด {1} กับเป้าหมาย", GetSkillName(RemoveQuote(temps[0])), ParseEffect(temps[1]), TryParseInt(temps[2], 100), ParseAtf(temps[3]));
+            text = string.Format("๐ เมื่อร่าย {0} กับ {3} มีโอกาส {2}% ที่จะเกิด {1} กับเป้าหมาย", GetSkillName(QuoteRemover.Remove(temps[0])), ParseEffect(temps[1]), TryParseInt(temps[2], 100), ParseAtf(temps[3]));
         }
         if (text.Contains("bonus5 bAddEffOnSkill,"))
         {
             var temp = text.Replace("bonus5 bAddEffOnSkill,", string.Empty);
             var temps = temp.Split(',');
-            text = string.Format("๐ เมื่อร่าย {0} กับ {3} มีโอกาส {2}% ที่จะเกิด {1} กับเป้าหมาย {4} วินาที", GetSkillName(RemoveQuote(temps[0])), ParseEffect(temps[1]), TryParseInt(temps[2], 100), ParseAtf(temps[3]), TryParseInt(temps[4], 1000));
+            text = string.Format("๐ เมื่อร่าย {0} กับ {3} มีโอกาส {2}% ที่จะเกิด {1} กับเป้าหมาย {4} วินาที", GetSkillName(QuoteRemover.Remove(temps[0])), ParseEffect(temps[1]), TryParseInt(temps[2], 100), ParseAtf(temps[3]), TryParseInt(temps[4], 1000));
         }
         if (text.Contains("bonus2 bComaClass,"))
         {
@@ -3021,49 +3010,49 @@ public class Converter : MonoBehaviour
         {
             var temp = text.Replace("bonus3 bAutoSpell,", string.Empty);
             var temps = temp.Split(',');
-            text = string.Format("๐ เมื่อตีกายภาพมีโอกาส {2}% ร่าย Lv.{1} {0}", GetSkillName(RemoveQuote(temps[0])), TryParseInt(temps[1]), TryParseInt(temps[2], 10));
+            text = string.Format("๐ เมื่อตีกายภาพมีโอกาส {2}% ร่าย Lv.{1} {0}", GetSkillName(QuoteRemover.Remove(temps[0])), TryParseInt(temps[1]), TryParseInt(temps[2], 10));
         }
         if (text.Contains("bonus3 bAutoSpellWhenHit,"))
         {
             var temp = text.Replace("bonus3 bAutoSpellWhenHit,", string.Empty);
             var temps = temp.Split(',');
-            text = string.Format("๐ เมื่อโดนตีกายภาพมีโอกาส {2}% ร่าย Lv.{1} {0}", GetSkillName(RemoveQuote(temps[0])), TryParseInt(temps[1]), TryParseInt(temps[2], 10));
+            text = string.Format("๐ เมื่อโดนตีกายภาพมีโอกาส {2}% ร่าย Lv.{1} {0}", GetSkillName(QuoteRemover.Remove(temps[0])), TryParseInt(temps[1]), TryParseInt(temps[2], 10));
         }
         if (text.Contains("bonus4 bAutoSpell,"))
         {
             var temp = text.Replace("bonus4 bAutoSpell,", string.Empty);
             var temps = temp.Split(',');
-            text = string.Format("๐ เมื่อตีกายภาพมีโอกาส {2}% ร่าย Lv.{1} {0} ใส่ {3}", GetSkillName(RemoveQuote(temps[0])), TryParseInt(temps[1]), TryParseInt(temps[2], 10), ParseI(temps[3]));
+            text = string.Format("๐ เมื่อตีกายภาพมีโอกาส {2}% ร่าย Lv.{1} {0} ใส่ {3}", GetSkillName(QuoteRemover.Remove(temps[0])), TryParseInt(temps[1]), TryParseInt(temps[2], 10), ParseI(temps[3]));
         }
         if (text.Contains("bonus5 bAutoSpell,"))
         {
             var temp = text.Replace("bonus5 bAutoSpell,", string.Empty);
             var temps = temp.Split(',');
-            text = string.Format("๐ เมื่อตีกายภาพโดย {3} มีโอกาส {2}% ร่าย Lv.{1} {0} ใส่ {4}", GetSkillName(RemoveQuote(temps[0])), TryParseInt(temps[1]), TryParseInt(temps[2], 10), ParseAtf(temps[3]), ParseI(temps[4]));
+            text = string.Format("๐ เมื่อตีกายภาพโดย {3} มีโอกาส {2}% ร่าย Lv.{1} {0} ใส่ {4}", GetSkillName(QuoteRemover.Remove(temps[0])), TryParseInt(temps[1]), TryParseInt(temps[2], 10), ParseAtf(temps[3]), ParseI(temps[4]));
         }
         if (text.Contains("bonus4 bAutoSpellWhenHit,"))
         {
             var temp = text.Replace("bonus4 bAutoSpellWhenHit,", string.Empty);
             var temps = temp.Split(',');
-            text = string.Format("๐ เมื่อโดนตีกายภาพมีโอกาส {2}% ร่าย Lv.{1} {0} ใส่ {3}", GetSkillName(RemoveQuote(temps[0])), TryParseInt(temps[1]), TryParseInt(temps[2], 10), ParseI(temps[3]));
+            text = string.Format("๐ เมื่อโดนตีกายภาพมีโอกาส {2}% ร่าย Lv.{1} {0} ใส่ {3}", GetSkillName(QuoteRemover.Remove(temps[0])), TryParseInt(temps[1]), TryParseInt(temps[2], 10), ParseI(temps[3]));
         }
         if (text.Contains("bonus5 bAutoSpellWhenHit,"))
         {
             var temp = text.Replace("bonus5 bAutoSpellWhenHit,", string.Empty);
             var temps = temp.Split(',');
-            text = string.Format("๐ เมื่อโดนตีกายภาพโดย {3} มีโอกาส {2}% ร่าย Lv.{1} {0} ใส่ {4}", GetSkillName(RemoveQuote(temps[0])), TryParseInt(temps[1]), TryParseInt(temps[2], 10), ParseAtf(temps[3]), ParseI(temps[4]));
+            text = string.Format("๐ เมื่อโดนตีกายภาพโดย {3} มีโอกาส {2}% ร่าย Lv.{1} {0} ใส่ {4}", GetSkillName(QuoteRemover.Remove(temps[0])), TryParseInt(temps[1]), TryParseInt(temps[2], 10), ParseAtf(temps[3]), ParseI(temps[4]));
         }
         if (text.Contains("bonus4 bAutoSpellOnSkill,"))
         {
             var temp = text.Replace("bonus4 bAutoSpellOnSkill,", string.Empty);
             var temps = temp.Split(',');
-            text = string.Format("๐ เมื่อร่าย {0} มีโอกาส {3}% ร่าย Lv.{2} {1}", GetSkillName(RemoveQuote(temps[0])), GetSkillName(RemoveQuote(temps[1])), TryParseInt(temps[2]), TryParseInt(temps[3], 10));
+            text = string.Format("๐ เมื่อร่าย {0} มีโอกาส {3}% ร่าย Lv.{2} {1}", GetSkillName(QuoteRemover.Remove(temps[0])), GetSkillName(QuoteRemover.Remove(temps[1])), TryParseInt(temps[2]), TryParseInt(temps[3], 10));
         }
         if (text.Contains("bonus5 bAutoSpellOnSkill,"))
         {
             var temp = text.Replace("bonus5 bAutoSpellOnSkill,", string.Empty);
             var temps = temp.Split(',');
-            text = string.Format("๐ เมื่อร่าย {0} มีโอกาส {3}% ร่าย Lv.{2} {1} ใส่ {4}", GetSkillName(RemoveQuote(temps[0])), GetSkillName(RemoveQuote(temps[1])), TryParseInt(temps[2]), TryParseInt(temps[3], 10), ParseI(temps[4]));
+            text = string.Format("๐ เมื่อร่าย {0} มีโอกาส {3}% ร่าย Lv.{2} {1} ใส่ {4}", GetSkillName(QuoteRemover.Remove(temps[0])), GetSkillName(QuoteRemover.Remove(temps[1])), TryParseInt(temps[2]), TryParseInt(temps[3], 10), ParseI(temps[4]));
         }
         text = text.Replace("bonus bHPDrainValue,", "๐ เมื่อตีกายภาพ HP +");
         if (text.Contains("bonus2 bHPDrainValueRace,"))
@@ -3226,43 +3215,43 @@ public class Converter : MonoBehaviour
         {
             var temp = text.Replace("bonus3 bAddMonsterIdDropItem,", string.Empty);
             var temps = temp.Split(',');
-            text = string.Format("๐ เมื่อกำจัด {1} มีโอกาส {2}% ที่จะ Drop {0}", GetItemName(RemoveQuote(temps[0])), TryParseInt(temps[1]), TryParseInt(temps[2], 100));
+            text = string.Format("๐ เมื่อกำจัด {1} มีโอกาส {2}% ที่จะ Drop {0}", GetItemName(QuoteRemover.Remove(temps[0])), TryParseInt(temps[1]), TryParseInt(temps[2], 100));
         }
         if (text.Contains("bonus2 bAddMonsterDropItem,"))
         {
             var temp = text.Replace("bonus2 bAddMonsterDropItem,", string.Empty);
             var temps = temp.Split(',');
-            text = string.Format("๐ มีโอกาส {1}% ที่จะ Drop {0}", GetItemName(RemoveQuote(temps[0])), TryParseInt(temps[1], 100));
+            text = string.Format("๐ มีโอกาส {1}% ที่จะ Drop {0}", GetItemName(QuoteRemover.Remove(temps[0])), TryParseInt(temps[1], 100));
         }
         if (text.Contains("bonus3 bAddMonsterDropItem,"))
         {
             var temp = text.Replace("bonus3 bAddMonsterDropItem,", string.Empty);
             var temps = temp.Split(',');
-            text = string.Format("๐ มีโอกาส {2}% ที่จะ Drop {0} {1}", GetItemName(RemoveQuote(temps[0])), ParseRace(temps[1]), TryParseInt(temps[2], 100));
+            text = string.Format("๐ มีโอกาส {2}% ที่จะ Drop {0} {1}", GetItemName(QuoteRemover.Remove(temps[0])), ParseRace(temps[1]), TryParseInt(temps[2], 100));
         }
         if (text.Contains("bonus3 bAddClassDropItem,"))
         {
             var temp = text.Replace("bonus3 bAddClassDropItem,", string.Empty);
             var temps = temp.Split(',');
-            text = string.Format("๐ มีโอกาส {2}% ที่จะ Drop {0} {1}", GetItemName(RemoveQuote(temps[0])), ParseClass(temps[1]), TryParseInt(temps[2], 100));
+            text = string.Format("๐ มีโอกาส {2}% ที่จะ Drop {0} {1}", GetItemName(QuoteRemover.Remove(temps[0])), ParseClass(temps[1]), TryParseInt(temps[2], 100));
         }
         if (text.Contains("bonus2 bAddMonsterDropItemGroup,"))
         {
             var temp = text.Replace("bonus2 bAddMonsterDropItemGroup,", string.Empty);
             var temps = temp.Split(',');
-            text = string.Format("๐ มีโอกาส {1}% ที่จะ Drop Item กลุ่ม {0}", RemoveQuote(temps[0]), TryParseInt(temps[1], 100));
+            text = string.Format("๐ มีโอกาส {1}% ที่จะ Drop Item กลุ่ม {0}", QuoteRemover.Remove(temps[0]), TryParseInt(temps[1], 100));
         }
         if (text.Contains("bonus3 bAddMonsterDropItemGroup,"))
         {
             var temp = text.Replace("bonus3 bAddMonsterDropItemGroup,", string.Empty);
             var temps = temp.Split(',');
-            text = string.Format("๐ มีโอกาส {2}% ที่จะ Drop Item กลุ่ม {0} {1}", RemoveQuote(temps[0]), ParseRace(temps[1]), TryParseInt(temps[2], 100));
+            text = string.Format("๐ มีโอกาส {2}% ที่จะ Drop Item กลุ่ม {0} {1}", QuoteRemover.Remove(temps[0]), ParseRace(temps[1]), TryParseInt(temps[2], 100));
         }
         if (text.Contains("bonus3 bAddClassDropItemGroup,"))
         {
             var temp = text.Replace("bonus3 bAddClassDropItemGroup,", string.Empty);
             var temps = temp.Split(',');
-            text = string.Format("๐ มีโอกาส {2}% ที่จะ Drop Item กลุ่ม {0} {1}", RemoveQuote(temps[0]), ParseClass(temps[1]), TryParseInt(temps[2], 100));
+            text = string.Format("๐ มีโอกาส {2}% ที่จะ Drop Item กลุ่ม {0} {1}", QuoteRemover.Remove(temps[0]), ParseClass(temps[1]), TryParseInt(temps[2], 100));
         }
         if (text.Contains("bonus2 bGetZenyNum,"))
         {
@@ -3294,7 +3283,7 @@ public class Converter : MonoBehaviour
         {
             var temp = text.Replace("bonus2 bAddSkillBlow,", string.Empty);
             var temps = temp.Split(',');
-            text = string.Format("๐ เมื่อใช้ {0} จะพลักเป้าหมาย {1} ช่อง", GetSkillName(RemoveQuote(temps[0])), TryParseInt(temps[1]));
+            text = string.Format("๐ เมื่อใช้ {0} จะพลักเป้าหมาย {1} ช่อง", GetSkillName(QuoteRemover.Remove(temps[0])), TryParseInt(temps[1]));
         }
         text = text.Replace("bonus bNoKnockback", "๐ กันการพลัก");
         text = text.Replace("bonus bNoGemStone", "๐ ไม่ต้องใช้ Gemstone ในการร่าย");
@@ -3322,21 +3311,21 @@ public class Converter : MonoBehaviour
         {
             var temp = text.Replace("unitskilluseid ", string.Empty);
             var temps = temp.Split(',');
-            text = string.Format("๐ สามารถใช้ Lv.{2} {1}", RemoveQuote(temps[0]), GetSkillName(RemoveQuote(temps[1])), TryParseInt(temps[2]));
+            text = string.Format("๐ สามารถใช้ Lv.{2} {1}", QuoteRemover.Remove(temps[0]), GetSkillName(QuoteRemover.Remove(temps[1])), TryParseInt(temps[2]));
         }
         // Item Skill
         if (text.Contains("itemskill "))
         {
             var temp = text.Replace("itemskill ", string.Empty);
             var temps = temp.Split(',');
-            text = string.Format("๐ สามารถใช้ Lv.{1} {0}", GetSkillName(RemoveQuote(temps[0])), TryParseInt(temps[1]));
+            text = string.Format("๐ สามารถใช้ Lv.{1} {0}", GetSkillName(QuoteRemover.Remove(temps[0])), TryParseInt(temps[1]));
         }
         // Skill
         if (text.Contains("skill "))
         {
             var temp = text.Replace("skill ", string.Empty);
             var temps = temp.Split(',');
-            text = string.Format("๐ สามารถใช้ Lv.{1} {0}", GetSkillName(RemoveQuote(temps[0])), TryParseInt(temps[1]));
+            text = string.Format("๐ สามารถใช้ Lv.{1} {0}", GetSkillName(QuoteRemover.Remove(temps[0])), TryParseInt(temps[1]));
         }
         // itemheal
         if (text.Contains("percentheal "))
@@ -3364,7 +3353,7 @@ public class Converter : MonoBehaviour
         {
             var temp = text.Replace("sc_start4 ", string.Empty);
             var temps = temp.Split(',');
-            text = string.Format("๐ รับผล {0} เป็นเวลา {1} วินาที", RemoveQuote(temps[0]), TryParseInt(temps[1], 1000));
+            text = string.Format("๐ รับผล {0} เป็นเวลา {1} วินาที", QuoteRemover.Remove(temps[0]), TryParseInt(temps[1], 1000));
 
             ParseStatusChangeStartIntoItemId();
         }
@@ -3373,7 +3362,7 @@ public class Converter : MonoBehaviour
         {
             var temp = text.Replace("sc_start2 ", string.Empty);
             var temps = temp.Split(',');
-            text = string.Format("๐ รับผล {0} เป็นเวลา {1} วินาที", RemoveQuote(temps[0]), TryParseInt(temps[1], 1000));
+            text = string.Format("๐ รับผล {0} เป็นเวลา {1} วินาที", QuoteRemover.Remove(temps[0]), TryParseInt(temps[1], 1000));
 
             ParseStatusChangeStartIntoItemId();
         }
@@ -3382,7 +3371,7 @@ public class Converter : MonoBehaviour
         {
             var temp = text.Replace("sc_start ", string.Empty);
             var temps = temp.Split(',');
-            text = string.Format("๐ รับผล {0} เป็นเวลา {1} วินาที", RemoveQuote(temps[0]), (temps.Length > 1) ? TryParseInt(temps[1], 1000) : "0");
+            text = string.Format("๐ รับผล {0} เป็นเวลา {1} วินาที", QuoteRemover.Remove(temps[0]), (temps.Length > 1) ? TryParseInt(temps[1], 1000) : "0");
 
             ParseStatusChangeStartIntoItemId();
         }
@@ -3391,28 +3380,28 @@ public class Converter : MonoBehaviour
         {
             var temp = text.Replace("sc_end ", string.Empty);
             var temps = temp.Split(',');
-            text = string.Format("๐ ลบผล {0}", RemoveQuote(temps[0]));
+            text = string.Format("๐ ลบผล {0}", QuoteRemover.Remove(temps[0]));
         }
         // active_transform
         if (text.Contains("active_transform "))
         {
             var temp = text.Replace("active_transform ", string.Empty);
             var temps = temp.Split(',');
-            text = string.Format("๐ แปลงร่างเป็น {0} เป็นเวลา {1} วินาที", RemoveQuote(temps[0]), TryParseInt(temps[1], 1000));
+            text = string.Format("๐ แปลงร่างเป็น {0} เป็นเวลา {1} วินาที", QuoteRemover.Remove(temps[0]), TryParseInt(temps[1], 1000));
         }
         // getitem
         if (text.Contains("getitem "))
         {
             var temp = text.Replace("getitem ", string.Empty);
             var temps = temp.Split(',');
-            text = string.Format("๐ รับ {0} {1} ชิ้น", GetItemName(RemoveQuote(temps[0])), TryParseInt(temps[1]));
+            text = string.Format("๐ รับ {0} {1} ชิ้น", GetItemName(QuoteRemover.Remove(temps[0])), TryParseInt(temps[1]));
         }
         // pet
         if (text.Contains("pet "))
         {
             var temp = text.Replace("pet ", string.Empty);
             var temps = temp.Split(',');
-            text = string.Format("๐ สำหรับจับ {0}", GetMonsterNameFromId(RemoveQuote(temps[0])));
+            text = string.Format("๐ สำหรับจับ {0}", GetMonsterNameFromId(QuoteRemover.Remove(temps[0])));
         }
         text = text.Replace("sc_end_class", "๐ ลบ Buff ทุกอย่าง");
         text = text.Replace("setmounting()", "๐ ขึ้น/ลง พาหนะ");
@@ -3432,32 +3421,6 @@ public class Converter : MonoBehaviour
         text = text.Replace("   ", " ");
         text = text.Replace("  ", " ");
         text = text.Replace("\\", string.Empty);
-
-        return text;
-    }
-
-    /// <summary>
-    /// Remove all space
-    /// </summary>
-    /// <param name="text"></param>
-    /// <returns></returns>
-    string RemoveSpace(string text)
-    {
-        while (text.Contains(" "))
-            text = text.Replace(" ", string.Empty);
-
-        return text;
-    }
-
-    /// <summary>
-    /// Remove all "
-    /// </summary>
-    /// <param name="text"></param>
-    /// <returns></returns>
-    string RemoveQuote(string text)
-    {
-        while (text.Contains("\""))
-            text = text.Replace("\"", string.Empty);
 
         return text;
     }
@@ -3769,7 +3732,7 @@ public class Converter : MonoBehaviour
         bool isHadQuote = text.Contains("\"");
         if (isHadQuote)
             text = ParseSkillName(text);
-        text = RemoveQuote(text);
+        text = QuoteRemover.Remove(text);
 
         return text;
     }
@@ -3844,10 +3807,7 @@ public class Converter : MonoBehaviour
                             else
                             {
                                 same_set_name_list += "[NEW_LINE]+ " + GetItemName(currentAegisName, true);
-                                var comboItemId = GetItemId(currentAegisName, true);
-                                if (!_itemListContainer.comboItemIds.Contains(comboItemId))
-                                    _itemListContainer.comboItemIds.Add(comboItemId);
-                                same_set_name_list += "[NEW_LINE]+ (ID:" + comboItemId + ")";
+                                same_set_name_list += "[NEW_LINE]+ (ID:" + GetItemId(currentAegisName, true) + ")";
                             }
                         }
 
@@ -3894,7 +3854,7 @@ public class Converter : MonoBehaviour
         }
         else
         {
-            text = RemoveSpace(text);
+            text = SpacingRemover.Remove(text);
             foreach (var item in _itemDatabases)
             {
                 if (item.aegisName.ToLower() == text.ToLower())
@@ -3919,7 +3879,7 @@ public class Converter : MonoBehaviour
         }
         else
         {
-            text = RemoveSpace(text);
+            text = SpacingRemover.Remove(text);
             foreach (var item in _itemDatabases)
             {
                 if (item.aegisName.ToLower() == text.ToLower())
@@ -4189,7 +4149,7 @@ public class Converter : MonoBehaviour
         }
         else
         {
-            text = RemoveSpace(text);
+            text = SpacingRemover.Remove(text);
             foreach (var item in _skillDatabases)
             {
                 if (item.name.ToLower() == text.ToLower())
@@ -4246,276 +4206,6 @@ public class Converter : MonoBehaviour
                 return _itemDatabases[i];
         }
         return null;
-    }
-
-    void ParseBonusIntoTypesItemId(string text)
-    {
-        // Stats
-        if (text.Contains("bonus bStr,")) { if (!_itemListContainer.statsItemIds.Contains(_itemContainer.id)) _itemListContainer.statsItemIds.Add(_itemContainer.id); }
-        if (text.Contains("bonus bAgi,")) { if (!_itemListContainer.statsItemIds.Contains(_itemContainer.id)) _itemListContainer.statsItemIds.Add(_itemContainer.id); }
-        if (text.Contains("bonus bVit,")) { if (!_itemListContainer.statsItemIds.Contains(_itemContainer.id)) _itemListContainer.statsItemIds.Add(_itemContainer.id); }
-        if (text.Contains("bonus bInt,")) { if (!_itemListContainer.statsItemIds.Contains(_itemContainer.id)) _itemListContainer.statsItemIds.Add(_itemContainer.id); }
-        if (text.Contains("bonus bDex,")) { if (!_itemListContainer.statsItemIds.Contains(_itemContainer.id)) _itemListContainer.statsItemIds.Add(_itemContainer.id); }
-        if (text.Contains("bonus bLuk,")) { if (!_itemListContainer.statsItemIds.Contains(_itemContainer.id)) _itemListContainer.statsItemIds.Add(_itemContainer.id); }
-        if (text.Contains("bonus bAllStats,")) { if (!_itemListContainer.statsItemIds.Contains(_itemContainer.id)) _itemListContainer.statsItemIds.Add(_itemContainer.id); }
-        if (text.Contains("bonus bAgiVit,")) { if (!_itemListContainer.statsItemIds.Contains(_itemContainer.id)) _itemListContainer.statsItemIds.Add(_itemContainer.id); }
-        if (text.Contains("bonus bAgiDexStr,")) { if (!_itemListContainer.statsItemIds.Contains(_itemContainer.id)) _itemListContainer.statsItemIds.Add(_itemContainer.id); }
-        if (text.Contains("bonus bPow,")) { if (!_itemListContainer.statsItemIds.Contains(_itemContainer.id)) _itemListContainer.statsItemIds.Add(_itemContainer.id); }
-        if (text.Contains("bonus bSta,")) { if (!_itemListContainer.statsItemIds.Contains(_itemContainer.id)) _itemListContainer.statsItemIds.Add(_itemContainer.id); }
-        if (text.Contains("bonus bWis,")) { if (!_itemListContainer.statsItemIds.Contains(_itemContainer.id)) _itemListContainer.statsItemIds.Add(_itemContainer.id); }
-        if (text.Contains("bonus bSpl,")) { if (!_itemListContainer.statsItemIds.Contains(_itemContainer.id)) _itemListContainer.statsItemIds.Add(_itemContainer.id); }
-        if (text.Contains("bonus bCon,")) { if (!_itemListContainer.statsItemIds.Contains(_itemContainer.id)) _itemListContainer.statsItemIds.Add(_itemContainer.id); }
-        if (text.Contains("bonus bCrt,")) { if (!_itemListContainer.statsItemIds.Contains(_itemContainer.id)) _itemListContainer.statsItemIds.Add(_itemContainer.id); }
-        if (text.Contains("bonus bAllTraitStats,")) { if (!_itemListContainer.statsItemIds.Contains(_itemContainer.id)) _itemListContainer.statsItemIds.Add(_itemContainer.id); }
-        // HP/SP/AP
-        if (text.Contains("bonus bMaxHP,")) { if (!_itemListContainer.hpSpApItemIds.Contains(_itemContainer.id)) _itemListContainer.hpSpApItemIds.Add(_itemContainer.id); }
-        if (text.Contains("bonus bMaxHPrate,")) { if (!_itemListContainer.hpSpApItemIds.Contains(_itemContainer.id)) _itemListContainer.hpSpApItemIds.Add(_itemContainer.id); }
-        if (text.Contains("bonus bMaxSP,")) { if (!_itemListContainer.hpSpApItemIds.Contains(_itemContainer.id)) _itemListContainer.hpSpApItemIds.Add(_itemContainer.id); }
-        if (text.Contains("bonus bMaxSPrate,")) { if (!_itemListContainer.hpSpApItemIds.Contains(_itemContainer.id)) _itemListContainer.hpSpApItemIds.Add(_itemContainer.id); }
-        if (text.Contains("bonus bMaxAP,")) { if (!_itemListContainer.hpSpApItemIds.Contains(_itemContainer.id)) _itemListContainer.hpSpApItemIds.Add(_itemContainer.id); }
-        if (text.Contains("bonus bMaxAPrate,")) { if (!_itemListContainer.hpSpApItemIds.Contains(_itemContainer.id)) _itemListContainer.hpSpApItemIds.Add(_itemContainer.id); }
-        if (text.Contains("bonus bHPrecovRate,")) { if (!_itemListContainer.hpSpApItemIds.Contains(_itemContainer.id)) _itemListContainer.hpSpApItemIds.Add(_itemContainer.id); }
-        if (text.Contains("bonus bSPrecovRate,")) { if (!_itemListContainer.hpSpApItemIds.Contains(_itemContainer.id)) _itemListContainer.hpSpApItemIds.Add(_itemContainer.id); }
-        if (text.Contains("bonus2 bHPRegenRate,")) { if (!_itemListContainer.hpSpApItemIds.Contains(_itemContainer.id)) _itemListContainer.hpSpApItemIds.Add(_itemContainer.id); }
-        if (text.Contains("bonus2 bHPLossRate,")) { if (!_itemListContainer.hpSpApItemIds.Contains(_itemContainer.id)) _itemListContainer.hpSpApItemIds.Add(_itemContainer.id); }
-        if (text.Contains("bonus2 bSPRegenRate,")) { if (!_itemListContainer.hpSpApItemIds.Contains(_itemContainer.id)) _itemListContainer.hpSpApItemIds.Add(_itemContainer.id); }
-        if (text.Contains("bonus2 bSPLossRate,")) { if (!_itemListContainer.hpSpApItemIds.Contains(_itemContainer.id)) _itemListContainer.hpSpApItemIds.Add(_itemContainer.id); }
-        if (text.Contains("bonus2 bRegenPercentHP,")) { if (!_itemListContainer.hpSpApItemIds.Contains(_itemContainer.id)) _itemListContainer.hpSpApItemIds.Add(_itemContainer.id); }
-        if (text.Contains("bonus2 bRegenPercentSP,")) { if (!_itemListContainer.hpSpApItemIds.Contains(_itemContainer.id)) _itemListContainer.hpSpApItemIds.Add(_itemContainer.id); }
-        if (text.Contains("bonus bNoRegen,")) { if (!_itemListContainer.hpSpApItemIds.Contains(_itemContainer.id)) _itemListContainer.hpSpApItemIds.Add(_itemContainer.id); }
-        if (text.Contains("bonus bUseSPrate,")) { if (!_itemListContainer.hpSpApItemIds.Contains(_itemContainer.id)) _itemListContainer.hpSpApItemIds.Add(_itemContainer.id); }
-        if (text.Contains("bonus2 bSkillUseSP,")) { if (!_itemListContainer.hpSpApItemIds.Contains(_itemContainer.id)) _itemListContainer.hpSpApItemIds.Add(_itemContainer.id); }
-        if (text.Contains("bonus2 bSkillUseSPrate,")) { if (!_itemListContainer.hpSpApItemIds.Contains(_itemContainer.id)) _itemListContainer.hpSpApItemIds.Add(_itemContainer.id); }
-        if (text.Contains("bonus bHealPower,")) { if (!_itemListContainer.hpSpApItemIds.Contains(_itemContainer.id)) _itemListContainer.hpSpApItemIds.Add(_itemContainer.id); }
-        if (text.Contains("bonus bHealPower2,")) { if (!_itemListContainer.hpSpApItemIds.Contains(_itemContainer.id)) _itemListContainer.hpSpApItemIds.Add(_itemContainer.id); }
-        if (text.Contains("bonus2 bSkillHeal,")) { if (!_itemListContainer.hpSpApItemIds.Contains(_itemContainer.id)) _itemListContainer.hpSpApItemIds.Add(_itemContainer.id); }
-        if (text.Contains("bonus2 bSkillHeal2,")) { if (!_itemListContainer.hpSpApItemIds.Contains(_itemContainer.id)) _itemListContainer.hpSpApItemIds.Add(_itemContainer.id); }
-        if (text.Contains("bonus bAddItemHealRate,")) { if (!_itemListContainer.hpSpApItemIds.Contains(_itemContainer.id)) _itemListContainer.hpSpApItemIds.Add(_itemContainer.id); }
-        if (text.Contains("bonus2 bAddItemHealRate,")) { if (!_itemListContainer.hpSpApItemIds.Contains(_itemContainer.id)) _itemListContainer.hpSpApItemIds.Add(_itemContainer.id); }
-        if (text.Contains("bonus2 bAddItemGroupHealRate,")) { if (!_itemListContainer.hpSpApItemIds.Contains(_itemContainer.id)) _itemListContainer.hpSpApItemIds.Add(_itemContainer.id); }
-        if (text.Contains("bonus bAddItemSPHealRate,")) { if (!_itemListContainer.hpSpApItemIds.Contains(_itemContainer.id)) _itemListContainer.hpSpApItemIds.Add(_itemContainer.id); }
-        if (text.Contains("bonus2 bAddItemSPHealRate,")) { if (!_itemListContainer.hpSpApItemIds.Contains(_itemContainer.id)) _itemListContainer.hpSpApItemIds.Add(_itemContainer.id); }
-        if (text.Contains("bonus2 bAddItemGroupSPHealRate,")) { if (!_itemListContainer.hpSpApItemIds.Contains(_itemContainer.id)) _itemListContainer.hpSpApItemIds.Add(_itemContainer.id); }
-        if (text.Contains("bonus bHPDrainValue,")) { if (!_itemListContainer.hpSpApItemIds.Contains(_itemContainer.id)) _itemListContainer.hpSpApItemIds.Add(_itemContainer.id); }
-        if (text.Contains("bonus2 bHPDrainValueRace,")) { if (!_itemListContainer.hpSpApItemIds.Contains(_itemContainer.id)) _itemListContainer.hpSpApItemIds.Add(_itemContainer.id); }
-        if (text.Contains("bonus2 bHpDrainValueClass,")) { if (!_itemListContainer.hpSpApItemIds.Contains(_itemContainer.id)) _itemListContainer.hpSpApItemIds.Add(_itemContainer.id); }
-        if (text.Contains("bonus bSPDrainValue,")) { if (!_itemListContainer.hpSpApItemIds.Contains(_itemContainer.id)) _itemListContainer.hpSpApItemIds.Add(_itemContainer.id); }
-        if (text.Contains("bonus2 bSPDrainValueRace,")) { if (!_itemListContainer.hpSpApItemIds.Contains(_itemContainer.id)) _itemListContainer.hpSpApItemIds.Add(_itemContainer.id); }
-        if (text.Contains("bonus2 bSpDrainValueClass,")) { if (!_itemListContainer.hpSpApItemIds.Contains(_itemContainer.id)) _itemListContainer.hpSpApItemIds.Add(_itemContainer.id); }
-        if (text.Contains("bonus2 bHPDrainRate,")) { if (!_itemListContainer.hpSpApItemIds.Contains(_itemContainer.id)) _itemListContainer.hpSpApItemIds.Add(_itemContainer.id); }
-        if (text.Contains("bonus2 bSPDrainRate,")) { if (!_itemListContainer.hpSpApItemIds.Contains(_itemContainer.id)) _itemListContainer.hpSpApItemIds.Add(_itemContainer.id); }
-        if (text.Contains("bonus bHPGainValue,")) { if (!_itemListContainer.hpSpApItemIds.Contains(_itemContainer.id)) _itemListContainer.hpSpApItemIds.Add(_itemContainer.id); }
-        if (text.Contains("bonus bSPGainValue,")) { if (!_itemListContainer.hpSpApItemIds.Contains(_itemContainer.id)) _itemListContainer.hpSpApItemIds.Add(_itemContainer.id); }
-        if (text.Contains("bonus2 bSPGainRace,")) { if (!_itemListContainer.hpSpApItemIds.Contains(_itemContainer.id)) _itemListContainer.hpSpApItemIds.Add(_itemContainer.id); }
-        if (text.Contains("bonus bLongHPGainValue,")) { if (!_itemListContainer.hpSpApItemIds.Contains(_itemContainer.id)) _itemListContainer.hpSpApItemIds.Add(_itemContainer.id); }
-        if (text.Contains("bonus bLongSPGainValue,")) { if (!_itemListContainer.hpSpApItemIds.Contains(_itemContainer.id)) _itemListContainer.hpSpApItemIds.Add(_itemContainer.id); }
-        if (text.Contains("bonus bMagicHPGainValue,")) { if (!_itemListContainer.hpSpApItemIds.Contains(_itemContainer.id)) _itemListContainer.hpSpApItemIds.Add(_itemContainer.id); }
-        if (text.Contains("bonus bMagicSPGainValue,")) { if (!_itemListContainer.hpSpApItemIds.Contains(_itemContainer.id)) _itemListContainer.hpSpApItemIds.Add(_itemContainer.id); }
-        // Offensive
-        if (text.Contains("bonus bBaseAtk,")) { if (!_itemListContainer.offensiveItemIds.Contains(_itemContainer.id)) _itemListContainer.offensiveItemIds.Add(_itemContainer.id); }
-        if (text.Contains("bonus bAtk,")) { if (!_itemListContainer.offensiveItemIds.Contains(_itemContainer.id)) _itemListContainer.offensiveItemIds.Add(_itemContainer.id); }
-        if (text.Contains("bonus bAtk2,")) { if (!_itemListContainer.offensiveItemIds.Contains(_itemContainer.id)) _itemListContainer.offensiveItemIds.Add(_itemContainer.id); }
-        if (text.Contains("bonus bAtkRate,")) { if (!_itemListContainer.offensiveItemIds.Contains(_itemContainer.id)) _itemListContainer.offensiveItemIds.Add(_itemContainer.id); }
-        if (text.Contains("bonus bWeaponAtkRate,")) { if (!_itemListContainer.offensiveItemIds.Contains(_itemContainer.id)) _itemListContainer.offensiveItemIds.Add(_itemContainer.id); }
-        if (text.Contains("bonus bMatk,")) { if (!_itemListContainer.offensiveItemIds.Contains(_itemContainer.id)) _itemListContainer.offensiveItemIds.Add(_itemContainer.id); }
-        if (text.Contains("bonus bMatkRate,")) { if (!_itemListContainer.offensiveItemIds.Contains(_itemContainer.id)) _itemListContainer.offensiveItemIds.Add(_itemContainer.id); }
-        if (text.Contains("bonus bWeaponMatkRate,")) { if (!_itemListContainer.offensiveItemIds.Contains(_itemContainer.id)) _itemListContainer.offensiveItemIds.Add(_itemContainer.id); }
-        if (text.Contains("bonus2 bSkillAtk,")) { if (!_itemListContainer.offensiveItemIds.Contains(_itemContainer.id)) _itemListContainer.offensiveItemIds.Add(_itemContainer.id); }
-        if (text.Contains("bonus bShortAtkRate,")) { if (!_itemListContainer.offensiveItemIds.Contains(_itemContainer.id)) _itemListContainer.offensiveItemIds.Add(_itemContainer.id); }
-        if (text.Contains("bonus bLongAtkRate,")) { if (!_itemListContainer.offensiveItemIds.Contains(_itemContainer.id)) _itemListContainer.offensiveItemIds.Add(_itemContainer.id); }
-        if (text.Contains("bonus bCritAtkRate,")) { if (!_itemListContainer.offensiveItemIds.Contains(_itemContainer.id)) _itemListContainer.offensiveItemIds.Add(_itemContainer.id); }
-        if (text.Contains("bonus2 bWeaponAtk,")) { if (!_itemListContainer.offensiveItemIds.Contains(_itemContainer.id)) _itemListContainer.offensiveItemIds.Add(_itemContainer.id); }
-        if (text.Contains("bonus2 bWeaponDamageRate,")) { if (!_itemListContainer.offensiveItemIds.Contains(_itemContainer.id)) _itemListContainer.offensiveItemIds.Add(_itemContainer.id); }
-        if (text.Contains("bonus2 bAddEle,")) { if (!_itemListContainer.offensiveItemIds.Contains(_itemContainer.id)) _itemListContainer.offensiveItemIds.Add(_itemContainer.id); }
-        if (text.Contains("bonus3 bAddEle,")) { if (!_itemListContainer.offensiveItemIds.Contains(_itemContainer.id)) _itemListContainer.offensiveItemIds.Add(_itemContainer.id); }
-        if (text.Contains("bonus2 bMagicAddEle,")) { if (!_itemListContainer.offensiveItemIds.Contains(_itemContainer.id)) _itemListContainer.offensiveItemIds.Add(_itemContainer.id); }
-        if (text.Contains("bonus2 bAddRace,")) { if (!_itemListContainer.offensiveItemIds.Contains(_itemContainer.id)) _itemListContainer.offensiveItemIds.Add(_itemContainer.id); }
-        if (text.Contains("bonus2 bMagicAddRace,")) { if (!_itemListContainer.offensiveItemIds.Contains(_itemContainer.id)) _itemListContainer.offensiveItemIds.Add(_itemContainer.id); }
-        if (text.Contains("bonus2 bAddClass,")) { if (!_itemListContainer.offensiveItemIds.Contains(_itemContainer.id)) _itemListContainer.offensiveItemIds.Add(_itemContainer.id); }
-        if (text.Contains("bonus2 bMagicAddClass,")) { if (!_itemListContainer.offensiveItemIds.Contains(_itemContainer.id)) _itemListContainer.offensiveItemIds.Add(_itemContainer.id); }
-        if (text.Contains("bonus2 bAddSize,")) { if (!_itemListContainer.offensiveItemIds.Contains(_itemContainer.id)) _itemListContainer.offensiveItemIds.Add(_itemContainer.id); }
-        if (text.Contains("bonus2 bMagicAddSize,")) { if (!_itemListContainer.offensiveItemIds.Contains(_itemContainer.id)) _itemListContainer.offensiveItemIds.Add(_itemContainer.id); }
-        if (text.Contains("bonus bNoSizeFix;")) { if (!_itemListContainer.offensiveItemIds.Contains(_itemContainer.id)) _itemListContainer.offensiveItemIds.Add(_itemContainer.id); }
-        if (text.Contains("bonus2 bAddDamageClass,")) { if (!_itemListContainer.offensiveItemIds.Contains(_itemContainer.id)) _itemListContainer.offensiveItemIds.Add(_itemContainer.id); }
-        if (text.Contains("bonus2 bAddMagicDamageClass,")) { if (!_itemListContainer.offensiveItemIds.Contains(_itemContainer.id)) _itemListContainer.offensiveItemIds.Add(_itemContainer.id); }
-        if (text.Contains("bonus2 bAddRace2,")) { if (!_itemListContainer.offensiveItemIds.Contains(_itemContainer.id)) _itemListContainer.offensiveItemIds.Add(_itemContainer.id); }
-        if (text.Contains("bonus2 bMagicAddRace2,")) { if (!_itemListContainer.offensiveItemIds.Contains(_itemContainer.id)) _itemListContainer.offensiveItemIds.Add(_itemContainer.id); }
-        if (text.Contains("bonus bAtkEle,")) { if (!_itemListContainer.offensiveItemIds.Contains(_itemContainer.id)) _itemListContainer.offensiveItemIds.Add(_itemContainer.id); }
-        if (text.Contains("bonus2 bMagicAtkEle,")) { if (!_itemListContainer.offensiveItemIds.Contains(_itemContainer.id)) _itemListContainer.offensiveItemIds.Add(_itemContainer.id); }
-        if (text.Contains("bonus bDefRatioAtkRace,")) { if (!_itemListContainer.offensiveItemIds.Contains(_itemContainer.id)) _itemListContainer.offensiveItemIds.Add(_itemContainer.id); }
-        if (text.Contains("bonus bDefRatioAtkEle,")) { if (!_itemListContainer.offensiveItemIds.Contains(_itemContainer.id)) _itemListContainer.offensiveItemIds.Add(_itemContainer.id); }
-        if (text.Contains("bonus bDefRatioAtkClass,")) { if (!_itemListContainer.offensiveItemIds.Contains(_itemContainer.id)) _itemListContainer.offensiveItemIds.Add(_itemContainer.id); }
-        if (text.Contains("bonus4 bSetDefRace,")) { if (!_itemListContainer.offensiveItemIds.Contains(_itemContainer.id)) _itemListContainer.offensiveItemIds.Add(_itemContainer.id); }
-        if (text.Contains("bonus4 bSetMDefRace,")) { if (!_itemListContainer.offensiveItemIds.Contains(_itemContainer.id)) _itemListContainer.offensiveItemIds.Add(_itemContainer.id); }
-        if (text.Contains("bonus bIgnoreDefEle,")) { if (!_itemListContainer.offensiveItemIds.Contains(_itemContainer.id)) _itemListContainer.offensiveItemIds.Add(_itemContainer.id); }
-        if (text.Contains("bonus bIgnoreDefRace,")) { if (!_itemListContainer.offensiveItemIds.Contains(_itemContainer.id)) _itemListContainer.offensiveItemIds.Add(_itemContainer.id); }
-        if (text.Contains("bonus bIgnoreDefClass,")) { if (!_itemListContainer.offensiveItemIds.Contains(_itemContainer.id)) _itemListContainer.offensiveItemIds.Add(_itemContainer.id); }
-        if (text.Contains("bonus bIgnoreMDefRace,")) { if (!_itemListContainer.offensiveItemIds.Contains(_itemContainer.id)) _itemListContainer.offensiveItemIds.Add(_itemContainer.id); }
-        if (text.Contains("bonus2 bIgnoreDefRaceRate,")) { if (!_itemListContainer.offensiveItemIds.Contains(_itemContainer.id)) _itemListContainer.offensiveItemIds.Add(_itemContainer.id); }
-        if (text.Contains("bonus2 bIgnoreMdefRaceRate,")) { if (!_itemListContainer.offensiveItemIds.Contains(_itemContainer.id)) _itemListContainer.offensiveItemIds.Add(_itemContainer.id); }
-        if (text.Contains("bonus2 bIgnoreMdefRace2Rate,")) { if (!_itemListContainer.offensiveItemIds.Contains(_itemContainer.id)) _itemListContainer.offensiveItemIds.Add(_itemContainer.id); }
-        if (text.Contains("bonus bIgnoreMDefEle,")) { if (!_itemListContainer.offensiveItemIds.Contains(_itemContainer.id)) _itemListContainer.offensiveItemIds.Add(_itemContainer.id); }
-        if (text.Contains("bonus2 bIgnoreDefClassRate,")) { if (!_itemListContainer.offensiveItemIds.Contains(_itemContainer.id)) _itemListContainer.offensiveItemIds.Add(_itemContainer.id); }
-        if (text.Contains("bonus2 bIgnoreMdefClassRate,")) { if (!_itemListContainer.offensiveItemIds.Contains(_itemContainer.id)) _itemListContainer.offensiveItemIds.Add(_itemContainer.id); }
-        if (text.Contains("bonus2 bHPVanishRate,")) { if (!_itemListContainer.offensiveItemIds.Contains(_itemContainer.id)) _itemListContainer.offensiveItemIds.Add(_itemContainer.id); }
-        if (text.Contains("bonus3 bHPVanishRaceRate,")) { if (!_itemListContainer.offensiveItemIds.Contains(_itemContainer.id)) _itemListContainer.offensiveItemIds.Add(_itemContainer.id); }
-        if (text.Contains("bonus3 bHPVanishRate,")) { if (!_itemListContainer.offensiveItemIds.Contains(_itemContainer.id)) _itemListContainer.offensiveItemIds.Add(_itemContainer.id); }
-        if (text.Contains("bonus2 bSPVanishRate,")) { if (!_itemListContainer.offensiveItemIds.Contains(_itemContainer.id)) _itemListContainer.offensiveItemIds.Add(_itemContainer.id); }
-        if (text.Contains("bonus3 bSPVanishRaceRate,")) { if (!_itemListContainer.offensiveItemIds.Contains(_itemContainer.id)) _itemListContainer.offensiveItemIds.Add(_itemContainer.id); }
-        if (text.Contains("bonus3 bSPVanishRate,")) { if (!_itemListContainer.offensiveItemIds.Contains(_itemContainer.id)) _itemListContainer.offensiveItemIds.Add(_itemContainer.id); }
-        if (text.Contains("bonus3 bStateNoRecoverRace,")) { if (!_itemListContainer.offensiveItemIds.Contains(_itemContainer.id)) _itemListContainer.offensiveItemIds.Add(_itemContainer.id); }
-        if (text.Contains("bonus bBreakWeaponRate,")) { if (!_itemListContainer.offensiveItemIds.Contains(_itemContainer.id)) _itemListContainer.offensiveItemIds.Add(_itemContainer.id); }
-        if (text.Contains("bonus bBreakArmorRate,")) { if (!_itemListContainer.offensiveItemIds.Contains(_itemContainer.id)) _itemListContainer.offensiveItemIds.Add(_itemContainer.id); }
-        // Defensive
-        if (text.Contains("bonus bDef,")) { if (!_itemListContainer.defensiveItemIds.Contains(_itemContainer.id)) _itemListContainer.defensiveItemIds.Add(_itemContainer.id); }
-        if (text.Contains("bonus bDefRate,")) { if (!_itemListContainer.defensiveItemIds.Contains(_itemContainer.id)) _itemListContainer.defensiveItemIds.Add(_itemContainer.id); }
-        if (text.Contains("bonus bDef2,")) { if (!_itemListContainer.defensiveItemIds.Contains(_itemContainer.id)) _itemListContainer.defensiveItemIds.Add(_itemContainer.id); }
-        if (text.Contains("bonus bDef2Rate,")) { if (!_itemListContainer.defensiveItemIds.Contains(_itemContainer.id)) _itemListContainer.defensiveItemIds.Add(_itemContainer.id); }
-        if (text.Contains("bonus bMdef,")) { if (!_itemListContainer.defensiveItemIds.Contains(_itemContainer.id)) _itemListContainer.defensiveItemIds.Add(_itemContainer.id); }
-        if (text.Contains("bonus bMdefRate,")) { if (!_itemListContainer.defensiveItemIds.Contains(_itemContainer.id)) _itemListContainer.defensiveItemIds.Add(_itemContainer.id); }
-        if (text.Contains("bonus bMdef2,")) { if (!_itemListContainer.defensiveItemIds.Contains(_itemContainer.id)) _itemListContainer.defensiveItemIds.Add(_itemContainer.id); }
-        if (text.Contains("bonus bMdef2Rate,")) { if (!_itemListContainer.defensiveItemIds.Contains(_itemContainer.id)) _itemListContainer.defensiveItemIds.Add(_itemContainer.id); }
-        if (text.Contains("bonus bCritDefRate,")) { if (!_itemListContainer.defensiveItemIds.Contains(_itemContainer.id)) _itemListContainer.defensiveItemIds.Add(_itemContainer.id); }
-        if (text.Contains("bonus bCriticalDef,")) { if (!_itemListContainer.defensiveItemIds.Contains(_itemContainer.id)) _itemListContainer.defensiveItemIds.Add(_itemContainer.id); }
-        if (text.Contains("bonus bNearAtkDef,")) { if (!_itemListContainer.defensiveItemIds.Contains(_itemContainer.id)) _itemListContainer.defensiveItemIds.Add(_itemContainer.id); }
-        if (text.Contains("bonus bLongAtkDef,")) { if (!_itemListContainer.defensiveItemIds.Contains(_itemContainer.id)) _itemListContainer.defensiveItemIds.Add(_itemContainer.id); }
-        if (text.Contains("bonus bMagicAtkDef,")) { if (!_itemListContainer.defensiveItemIds.Contains(_itemContainer.id)) _itemListContainer.defensiveItemIds.Add(_itemContainer.id); }
-        if (text.Contains("bonus bMiscAtkDef,")) { if (!_itemListContainer.defensiveItemIds.Contains(_itemContainer.id)) _itemListContainer.defensiveItemIds.Add(_itemContainer.id); }
-        if (text.Contains("bonus bNoWeaponDamage,")) { if (!_itemListContainer.defensiveItemIds.Contains(_itemContainer.id)) _itemListContainer.defensiveItemIds.Add(_itemContainer.id); }
-        if (text.Contains("bonus bNoMagicDamage,")) { if (!_itemListContainer.defensiveItemIds.Contains(_itemContainer.id)) _itemListContainer.defensiveItemIds.Add(_itemContainer.id); }
-        if (text.Contains("bonus bNoMiscDamage,")) { if (!_itemListContainer.defensiveItemIds.Contains(_itemContainer.id)) _itemListContainer.defensiveItemIds.Add(_itemContainer.id); }
-        if (text.Contains("bonus2 bSubEle,")) { if (!_itemListContainer.defensiveItemIds.Contains(_itemContainer.id)) _itemListContainer.defensiveItemIds.Add(_itemContainer.id); }
-        if (text.Contains("bonus3 bSubEle,")) { if (!_itemListContainer.defensiveItemIds.Contains(_itemContainer.id)) _itemListContainer.defensiveItemIds.Add(_itemContainer.id); }
-        if (text.Contains("bonus2 bSubDefEle,")) { if (!_itemListContainer.defensiveItemIds.Contains(_itemContainer.id)) _itemListContainer.defensiveItemIds.Add(_itemContainer.id); }
-        if (text.Contains("bonus2 bMagicSubDefEle,")) { if (!_itemListContainer.defensiveItemIds.Contains(_itemContainer.id)) _itemListContainer.defensiveItemIds.Add(_itemContainer.id); }
-        if (text.Contains("bonus2 bSubRace,")) { if (!_itemListContainer.defensiveItemIds.Contains(_itemContainer.id)) _itemListContainer.defensiveItemIds.Add(_itemContainer.id); }
-        if (text.Contains("bonus3 bSubRace,")) { if (!_itemListContainer.defensiveItemIds.Contains(_itemContainer.id)) _itemListContainer.defensiveItemIds.Add(_itemContainer.id); }
-        if (text.Contains("bonus2 bSubClass,")) { if (!_itemListContainer.defensiveItemIds.Contains(_itemContainer.id)) _itemListContainer.defensiveItemIds.Add(_itemContainer.id); }
-        if (text.Contains("bonus2 bSubSize,")) { if (!_itemListContainer.defensiveItemIds.Contains(_itemContainer.id)) _itemListContainer.defensiveItemIds.Add(_itemContainer.id); }
-        if (text.Contains("bonus2 bWeaponSubSize,")) { if (!_itemListContainer.defensiveItemIds.Contains(_itemContainer.id)) _itemListContainer.defensiveItemIds.Add(_itemContainer.id); }
-        if (text.Contains("bonus2 bMagicSubSize,")) { if (!_itemListContainer.defensiveItemIds.Contains(_itemContainer.id)) _itemListContainer.defensiveItemIds.Add(_itemContainer.id); }
-        if (text.Contains("bonus2 bAddDefMonster,")) { if (!_itemListContainer.defensiveItemIds.Contains(_itemContainer.id)) _itemListContainer.defensiveItemIds.Add(_itemContainer.id); }
-        if (text.Contains("bonus2 bAddMDefMonster,")) { if (!_itemListContainer.defensiveItemIds.Contains(_itemContainer.id)) _itemListContainer.defensiveItemIds.Add(_itemContainer.id); }
-        if (text.Contains("bonus2 bSubRace2,")) { if (!_itemListContainer.defensiveItemIds.Contains(_itemContainer.id)) _itemListContainer.defensiveItemIds.Add(_itemContainer.id); }
-        if (text.Contains("bonus2 bSubSkill,")) { if (!_itemListContainer.defensiveItemIds.Contains(_itemContainer.id)) _itemListContainer.defensiveItemIds.Add(_itemContainer.id); }
-        if (text.Contains("bonus bAbsorbDmgMaxHP,")) { if (!_itemListContainer.defensiveItemIds.Contains(_itemContainer.id)) _itemListContainer.defensiveItemIds.Add(_itemContainer.id); }
-        if (text.Contains("bonus bDefEle,")) { if (!_itemListContainer.defensiveItemIds.Contains(_itemContainer.id)) _itemListContainer.defensiveItemIds.Add(_itemContainer.id); }
-        if (text.Contains("bonus bShortWeaponDamageReturn,")) { if (!_itemListContainer.defensiveItemIds.Contains(_itemContainer.id)) _itemListContainer.defensiveItemIds.Add(_itemContainer.id); }
-        if (text.Contains("bonus bLongWeaponDamageReturn,")) { if (!_itemListContainer.defensiveItemIds.Contains(_itemContainer.id)) _itemListContainer.defensiveItemIds.Add(_itemContainer.id); }
-        if (text.Contains("bonus bMagicDamageReturn,")) { if (!_itemListContainer.defensiveItemIds.Contains(_itemContainer.id)) _itemListContainer.defensiveItemIds.Add(_itemContainer.id); }
-        if (text.Contains("bonus bReduceDamageReturn,")) { if (!_itemListContainer.defensiveItemIds.Contains(_itemContainer.id)) _itemListContainer.defensiveItemIds.Add(_itemContainer.id); }
-        if (text.Contains("bonus bUnstripableWeapon;")) { if (!_itemListContainer.defensiveItemIds.Contains(_itemContainer.id)) _itemListContainer.defensiveItemIds.Add(_itemContainer.id); }
-        if (text.Contains("bonus bUnstripableArmor;")) { if (!_itemListContainer.defensiveItemIds.Contains(_itemContainer.id)) _itemListContainer.defensiveItemIds.Add(_itemContainer.id); }
-        if (text.Contains("bonus bUnstripableHelm;")) { if (!_itemListContainer.defensiveItemIds.Contains(_itemContainer.id)) _itemListContainer.defensiveItemIds.Add(_itemContainer.id); }
-        if (text.Contains("bonus bUnstripableShield;")) { if (!_itemListContainer.defensiveItemIds.Contains(_itemContainer.id)) _itemListContainer.defensiveItemIds.Add(_itemContainer.id); }
-        if (text.Contains("bonus bUnstripable;")) { if (!_itemListContainer.defensiveItemIds.Contains(_itemContainer.id)) _itemListContainer.defensiveItemIds.Add(_itemContainer.id); }
-        if (text.Contains("bonus bUnbreakableGarment;")) { if (!_itemListContainer.defensiveItemIds.Contains(_itemContainer.id)) _itemListContainer.defensiveItemIds.Add(_itemContainer.id); }
-        if (text.Contains("bonus bUnbreakableWeapon;")) { if (!_itemListContainer.defensiveItemIds.Contains(_itemContainer.id)) _itemListContainer.defensiveItemIds.Add(_itemContainer.id); }
-        if (text.Contains("bonus bUnbreakableArmor;")) { if (!_itemListContainer.defensiveItemIds.Contains(_itemContainer.id)) _itemListContainer.defensiveItemIds.Add(_itemContainer.id); }
-        if (text.Contains("bonus bUnbreakableHelm;")) { if (!_itemListContainer.defensiveItemIds.Contains(_itemContainer.id)) _itemListContainer.defensiveItemIds.Add(_itemContainer.id); }
-        if (text.Contains("bonus bUnbreakableShield;")) { if (!_itemListContainer.defensiveItemIds.Contains(_itemContainer.id)) _itemListContainer.defensiveItemIds.Add(_itemContainer.id); }
-        if (text.Contains("bonus bUnbreakableShoes;")) { if (!_itemListContainer.defensiveItemIds.Contains(_itemContainer.id)) _itemListContainer.defensiveItemIds.Add(_itemContainer.id); }
-        if (text.Contains("bonus bUnbreakable,")) { if (!_itemListContainer.defensiveItemIds.Contains(_itemContainer.id)) _itemListContainer.defensiveItemIds.Add(_itemContainer.id); }
-        // Special
-        if (text.Contains("bonus bHit,")) { if (!_itemListContainer.specialItemIds.Contains(_itemContainer.id)) _itemListContainer.specialItemIds.Add(_itemContainer.id); }
-        if (text.Contains("bonus bHitRate,")) { if (!_itemListContainer.specialItemIds.Contains(_itemContainer.id)) _itemListContainer.specialItemIds.Add(_itemContainer.id); }
-        if (text.Contains("bonus bCritical,")) { if (!_itemListContainer.specialItemIds.Contains(_itemContainer.id)) _itemListContainer.specialItemIds.Add(_itemContainer.id); }
-        if (text.Contains("bonus bCriticalLong,")) { if (!_itemListContainer.specialItemIds.Contains(_itemContainer.id)) _itemListContainer.specialItemIds.Add(_itemContainer.id); }
-        if (text.Contains("bonus2 bCriticalAddRace,")) { if (!_itemListContainer.specialItemIds.Contains(_itemContainer.id)) _itemListContainer.specialItemIds.Add(_itemContainer.id); }
-        if (text.Contains("bonus bCriticalRate,")) { if (!_itemListContainer.specialItemIds.Contains(_itemContainer.id)) _itemListContainer.specialItemIds.Add(_itemContainer.id); }
-        if (text.Contains("bonus bFlee,")) { if (!_itemListContainer.specialItemIds.Contains(_itemContainer.id)) _itemListContainer.specialItemIds.Add(_itemContainer.id); }
-        if (text.Contains("bonus bFleeRate,")) { if (!_itemListContainer.specialItemIds.Contains(_itemContainer.id)) _itemListContainer.specialItemIds.Add(_itemContainer.id); }
-        if (text.Contains("bonus bFlee2,")) { if (!_itemListContainer.specialItemIds.Contains(_itemContainer.id)) _itemListContainer.specialItemIds.Add(_itemContainer.id); }
-        if (text.Contains("bonus bFlee2Rate,")) { if (!_itemListContainer.specialItemIds.Contains(_itemContainer.id)) _itemListContainer.specialItemIds.Add(_itemContainer.id); }
-        if (text.Contains("bonus bPerfectHitRate,")) { if (!_itemListContainer.specialItemIds.Contains(_itemContainer.id)) _itemListContainer.specialItemIds.Add(_itemContainer.id); }
-        if (text.Contains("bonus bPerfectHitAddRate,")) { if (!_itemListContainer.specialItemIds.Contains(_itemContainer.id)) _itemListContainer.specialItemIds.Add(_itemContainer.id); }
-        if (text.Contains("bonus bSpeedRate,")) { if (!_itemListContainer.specialItemIds.Contains(_itemContainer.id)) _itemListContainer.specialItemIds.Add(_itemContainer.id); }
-        if (text.Contains("bonus bSpeedAddRate,")) { if (!_itemListContainer.specialItemIds.Contains(_itemContainer.id)) _itemListContainer.specialItemIds.Add(_itemContainer.id); }
-        if (text.Contains("bonus bAspd,")) { if (!_itemListContainer.specialItemIds.Contains(_itemContainer.id)) _itemListContainer.specialItemIds.Add(_itemContainer.id); }
-        if (text.Contains("bonus bAspdRate,")) { if (!_itemListContainer.specialItemIds.Contains(_itemContainer.id)) _itemListContainer.specialItemIds.Add(_itemContainer.id); }
-        if (text.Contains("bonus bAtkRange,")) { if (!_itemListContainer.specialItemIds.Contains(_itemContainer.id)) _itemListContainer.specialItemIds.Add(_itemContainer.id); }
-        if (text.Contains("bonus bAddMaxWeight,")) { if (!_itemListContainer.specialItemIds.Contains(_itemContainer.id)) _itemListContainer.specialItemIds.Add(_itemContainer.id); }
-        if (text.Contains("bonus bPAtk,")) { if (!_itemListContainer.specialItemIds.Contains(_itemContainer.id)) _itemListContainer.specialItemIds.Add(_itemContainer.id); }
-        if (text.Contains("bonus bPAtkRate,")) { if (!_itemListContainer.specialItemIds.Contains(_itemContainer.id)) _itemListContainer.specialItemIds.Add(_itemContainer.id); }
-        if (text.Contains("bonus bSMatk,")) { if (!_itemListContainer.specialItemIds.Contains(_itemContainer.id)) _itemListContainer.specialItemIds.Add(_itemContainer.id); }
-        if (text.Contains("bonus bSMatkRate,")) { if (!_itemListContainer.specialItemIds.Contains(_itemContainer.id)) _itemListContainer.specialItemIds.Add(_itemContainer.id); }
-        if (text.Contains("bonus bRes,")) { if (!_itemListContainer.specialItemIds.Contains(_itemContainer.id)) _itemListContainer.specialItemIds.Add(_itemContainer.id); }
-        if (text.Contains("bonus bResRate,")) { if (!_itemListContainer.specialItemIds.Contains(_itemContainer.id)) _itemListContainer.specialItemIds.Add(_itemContainer.id); }
-        if (text.Contains("bonus bMRes,")) { if (!_itemListContainer.specialItemIds.Contains(_itemContainer.id)) _itemListContainer.specialItemIds.Add(_itemContainer.id); }
-        if (text.Contains("bonus bMResRate,")) { if (!_itemListContainer.specialItemIds.Contains(_itemContainer.id)) _itemListContainer.specialItemIds.Add(_itemContainer.id); }
-        if (text.Contains("bonus bHPlus,")) { if (!_itemListContainer.specialItemIds.Contains(_itemContainer.id)) _itemListContainer.specialItemIds.Add(_itemContainer.id); }
-        if (text.Contains("bonus bHPlusRate,")) { if (!_itemListContainer.specialItemIds.Contains(_itemContainer.id)) _itemListContainer.specialItemIds.Add(_itemContainer.id); }
-        if (text.Contains("bonus bCRate,")) { if (!_itemListContainer.specialItemIds.Contains(_itemContainer.id)) _itemListContainer.specialItemIds.Add(_itemContainer.id); }
-        if (text.Contains("bonus bCRateRate,")) { if (!_itemListContainer.specialItemIds.Contains(_itemContainer.id)) _itemListContainer.specialItemIds.Add(_itemContainer.id); }
-        if (text.Contains("bonus2 bExpAddRace,")) { if (!_itemListContainer.specialItemIds.Contains(_itemContainer.id)) _itemListContainer.specialItemIds.Add(_itemContainer.id); }
-        if (text.Contains("bonus2 bExpAddClass,")) { if (!_itemListContainer.specialItemIds.Contains(_itemContainer.id)) _itemListContainer.specialItemIds.Add(_itemContainer.id); }
-        if (text.Contains("bonus2 bDropAddRace,")) { if (!_itemListContainer.specialItemIds.Contains(_itemContainer.id)) _itemListContainer.specialItemIds.Add(_itemContainer.id); }
-        if (text.Contains("bonus2 bDropAddClass,")) { if (!_itemListContainer.specialItemIds.Contains(_itemContainer.id)) _itemListContainer.specialItemIds.Add(_itemContainer.id); }
-        if (text.Contains("bonus3 bAddMonsterIdDropItem,")) { if (!_itemListContainer.specialItemIds.Contains(_itemContainer.id)) _itemListContainer.specialItemIds.Add(_itemContainer.id); }
-        if (text.Contains("bonus2 bAddMonsterDropItem,")) { if (!_itemListContainer.specialItemIds.Contains(_itemContainer.id)) _itemListContainer.specialItemIds.Add(_itemContainer.id); }
-        if (text.Contains("bonus3 bAddMonsterDropItem,")) { if (!_itemListContainer.specialItemIds.Contains(_itemContainer.id)) _itemListContainer.specialItemIds.Add(_itemContainer.id); }
-        if (text.Contains("bonus3 bAddClassDropItem,")) { if (!_itemListContainer.specialItemIds.Contains(_itemContainer.id)) _itemListContainer.specialItemIds.Add(_itemContainer.id); }
-        if (text.Contains("bonus2 bAddMonsterDropItemGroup,")) { if (!_itemListContainer.specialItemIds.Contains(_itemContainer.id)) _itemListContainer.specialItemIds.Add(_itemContainer.id); }
-        if (text.Contains("bonus3 bAddMonsterDropItemGroup,")) { if (!_itemListContainer.specialItemIds.Contains(_itemContainer.id)) _itemListContainer.specialItemIds.Add(_itemContainer.id); }
-        if (text.Contains("bonus3 bAddClassDropItemGroup,")) { if (!_itemListContainer.specialItemIds.Contains(_itemContainer.id)) _itemListContainer.specialItemIds.Add(_itemContainer.id); }
-        if (text.Contains("bonus2 bGetZenyNum,")) { if (!_itemListContainer.specialItemIds.Contains(_itemContainer.id)) _itemListContainer.specialItemIds.Add(_itemContainer.id); }
-        if (text.Contains("bonus2 bAddGetZenyNum,")) { if (!_itemListContainer.specialItemIds.Contains(_itemContainer.id)) _itemListContainer.specialItemIds.Add(_itemContainer.id); }
-        if (text.Contains("bonus bDoubleRate,")) { if (!_itemListContainer.specialItemIds.Contains(_itemContainer.id)) _itemListContainer.specialItemIds.Add(_itemContainer.id); }
-        if (text.Contains("bonus bDoubleAddRate,")) { if (!_itemListContainer.specialItemIds.Contains(_itemContainer.id)) _itemListContainer.specialItemIds.Add(_itemContainer.id); }
-        if (text.Contains("bonus bSplashRange,")) { if (!_itemListContainer.specialItemIds.Contains(_itemContainer.id)) _itemListContainer.specialItemIds.Add(_itemContainer.id); }
-        if (text.Contains("bonus bSplashAddRange,")) { if (!_itemListContainer.specialItemIds.Contains(_itemContainer.id)) _itemListContainer.specialItemIds.Add(_itemContainer.id); }
-        if (text.Contains("bonus2 bAddSkillBlow,")) { if (!_itemListContainer.specialItemIds.Contains(_itemContainer.id)) _itemListContainer.specialItemIds.Add(_itemContainer.id); }
-        if (text.Contains("bonus bNoKnockback;")) { if (!_itemListContainer.specialItemIds.Contains(_itemContainer.id)) _itemListContainer.specialItemIds.Add(_itemContainer.id); }
-        if (text.Contains("bonus bNoGemStone;")) { if (!_itemListContainer.specialItemIds.Contains(_itemContainer.id)) _itemListContainer.specialItemIds.Add(_itemContainer.id); }
-        if (text.Contains("bonus bIntravision;")) { if (!_itemListContainer.specialItemIds.Contains(_itemContainer.id)) _itemListContainer.specialItemIds.Add(_itemContainer.id); }
-        if (text.Contains("bonus bPerfectHide;")) { if (!_itemListContainer.specialItemIds.Contains(_itemContainer.id)) _itemListContainer.specialItemIds.Add(_itemContainer.id); }
-        if (text.Contains("bonus bRestartFullRecover;")) { if (!_itemListContainer.specialItemIds.Contains(_itemContainer.id)) _itemListContainer.specialItemIds.Add(_itemContainer.id); }
-        if (text.Contains("bonus bClassChange,")) { if (!_itemListContainer.specialItemIds.Contains(_itemContainer.id)) _itemListContainer.specialItemIds.Add(_itemContainer.id); }
-        if (text.Contains("bonus bAddStealRate,")) { if (!_itemListContainer.specialItemIds.Contains(_itemContainer.id)) _itemListContainer.specialItemIds.Add(_itemContainer.id); }
-        if (text.Contains("bonus bNoMadoFuel;")) { if (!_itemListContainer.specialItemIds.Contains(_itemContainer.id)) _itemListContainer.specialItemIds.Add(_itemContainer.id); }
-        if (text.Contains("bonus bNoWalkDelay;")) { if (!_itemListContainer.specialItemIds.Contains(_itemContainer.id)) _itemListContainer.specialItemIds.Add(_itemContainer.id); }
-        // Cast
-        if (text.Contains("bonus bCastrate,")) { if (!_itemListContainer.castItemIds.Contains(_itemContainer.id)) _itemListContainer.castItemIds.Add(_itemContainer.id); }
-        if (text.Contains("bonus2 bCastrate,")) { if (!_itemListContainer.castItemIds.Contains(_itemContainer.id)) _itemListContainer.castItemIds.Add(_itemContainer.id); }
-        if (text.Contains("bonus bFixedCastrate,")) { if (!_itemListContainer.castItemIds.Contains(_itemContainer.id)) _itemListContainer.castItemIds.Add(_itemContainer.id); }
-        if (text.Contains("bonus2 bFixedCastrate,")) { if (!_itemListContainer.castItemIds.Contains(_itemContainer.id)) _itemListContainer.castItemIds.Add(_itemContainer.id); }
-        if (text.Contains("bonus bVariableCastrate,")) { if (!_itemListContainer.castItemIds.Contains(_itemContainer.id)) _itemListContainer.castItemIds.Add(_itemContainer.id); }
-        if (text.Contains("bonus2 bVariableCastrate,")) { if (!_itemListContainer.castItemIds.Contains(_itemContainer.id)) _itemListContainer.castItemIds.Add(_itemContainer.id); }
-        if (text.Contains("bonus bFixedCast,")) { if (!_itemListContainer.castItemIds.Contains(_itemContainer.id)) _itemListContainer.castItemIds.Add(_itemContainer.id); }
-        if (text.Contains("bonus2 bSkillFixedCast,")) { if (!_itemListContainer.castItemIds.Contains(_itemContainer.id)) _itemListContainer.castItemIds.Add(_itemContainer.id); }
-        if (text.Contains("bonus bVariableCast,")) { if (!_itemListContainer.castItemIds.Contains(_itemContainer.id)) _itemListContainer.castItemIds.Add(_itemContainer.id); }
-        if (text.Contains("bonus2 bSkillVariableCast,")) { if (!_itemListContainer.castItemIds.Contains(_itemContainer.id)) _itemListContainer.castItemIds.Add(_itemContainer.id); }
-        if (text.Contains("bonus bNoCastCancel;")) { if (!_itemListContainer.castItemIds.Contains(_itemContainer.id)) _itemListContainer.castItemIds.Add(_itemContainer.id); }
-        if (text.Contains("bonus bNoCastCancel2;")) { if (!_itemListContainer.castItemIds.Contains(_itemContainer.id)) _itemListContainer.castItemIds.Add(_itemContainer.id); }
-        if (text.Contains("bonus bDelayrate,")) { if (!_itemListContainer.castItemIds.Contains(_itemContainer.id)) _itemListContainer.castItemIds.Add(_itemContainer.id); }
-        if (text.Contains("bonus2 bSkillDelay,")) { if (!_itemListContainer.castItemIds.Contains(_itemContainer.id)) _itemListContainer.castItemIds.Add(_itemContainer.id); }
-        if (text.Contains("bonus2 bSkillCooldown,")) { if (!_itemListContainer.castItemIds.Contains(_itemContainer.id)) _itemListContainer.castItemIds.Add(_itemContainer.id); }
-        // Effect
-        if (text.Contains("bonus2 bAddEff,")) { if (!_itemListContainer.effectItemIds.Contains(_itemContainer.id)) _itemListContainer.effectItemIds.Add(_itemContainer.id); }
-        if (text.Contains("bonus2 bAddEff2,")) { if (!_itemListContainer.effectItemIds.Contains(_itemContainer.id)) _itemListContainer.effectItemIds.Add(_itemContainer.id); }
-        if (text.Contains("bonus2 bAddEffWhenHit,")) { if (!_itemListContainer.effectItemIds.Contains(_itemContainer.id)) _itemListContainer.effectItemIds.Add(_itemContainer.id); }
-        if (text.Contains("bonus2 bResEff,")) { if (!_itemListContainer.effectItemIds.Contains(_itemContainer.id)) _itemListContainer.effectItemIds.Add(_itemContainer.id); }
-        if (text.Contains("bonus3 bAddEff,")) { if (!_itemListContainer.effectItemIds.Contains(_itemContainer.id)) _itemListContainer.effectItemIds.Add(_itemContainer.id); }
-        if (text.Contains("bonus4 bAddEff,")) { if (!_itemListContainer.effectItemIds.Contains(_itemContainer.id)) _itemListContainer.effectItemIds.Add(_itemContainer.id); }
-        if (text.Contains("bonus3 bAddEffWhenHit,")) { if (!_itemListContainer.effectItemIds.Contains(_itemContainer.id)) _itemListContainer.effectItemIds.Add(_itemContainer.id); }
-        if (text.Contains("bonus4 bAddEffWhenHit,")) { if (!_itemListContainer.effectItemIds.Contains(_itemContainer.id)) _itemListContainer.effectItemIds.Add(_itemContainer.id); }
-        if (text.Contains("bonus3 bAddEffOnSkill,")) { if (!_itemListContainer.effectItemIds.Contains(_itemContainer.id)) _itemListContainer.effectItemIds.Add(_itemContainer.id); }
-        if (text.Contains("bonus4 bAddEffOnSkill,")) { if (!_itemListContainer.effectItemIds.Contains(_itemContainer.id)) _itemListContainer.effectItemIds.Add(_itemContainer.id); }
-        if (text.Contains("bonus5 bAddEffOnSkill,")) { if (!_itemListContainer.effectItemIds.Contains(_itemContainer.id)) _itemListContainer.effectItemIds.Add(_itemContainer.id); }
-        if (text.Contains("bonus2 bComaClass,")) { if (!_itemListContainer.effectItemIds.Contains(_itemContainer.id)) _itemListContainer.effectItemIds.Add(_itemContainer.id); }
-        if (text.Contains("bonus2 bComaRace,")) { if (!_itemListContainer.effectItemIds.Contains(_itemContainer.id)) _itemListContainer.effectItemIds.Add(_itemContainer.id); }
-        if (text.Contains("bonus2 bWeaponComaEle,")) { if (!_itemListContainer.effectItemIds.Contains(_itemContainer.id)) _itemListContainer.effectItemIds.Add(_itemContainer.id); }
-        if (text.Contains("bonus2 bWeaponComaClass,")) { if (!_itemListContainer.effectItemIds.Contains(_itemContainer.id)) _itemListContainer.effectItemIds.Add(_itemContainer.id); }
-        if (text.Contains("bonus2 bWeaponComaRace,")) { if (!_itemListContainer.effectItemIds.Contains(_itemContainer.id)) _itemListContainer.effectItemIds.Add(_itemContainer.id); }
-        // Autospell
-        if (text.Contains("bonus3 bAutoSpell,")) { if (!_itemListContainer.autoSpellItemIds.Contains(_itemContainer.id)) _itemListContainer.autoSpellItemIds.Add(_itemContainer.id); }
-        if (text.Contains("bonus3 bAutoSpellWhenHit,")) { if (!_itemListContainer.autoSpellItemIds.Contains(_itemContainer.id)) _itemListContainer.autoSpellItemIds.Add(_itemContainer.id); }
-        if (text.Contains("bonus4 bAutoSpell,")) { if (!_itemListContainer.autoSpellItemIds.Contains(_itemContainer.id)) _itemListContainer.autoSpellItemIds.Add(_itemContainer.id); }
-        if (text.Contains("bonus5 bAutoSpell,")) { if (!_itemListContainer.autoSpellItemIds.Contains(_itemContainer.id)) _itemListContainer.autoSpellItemIds.Add(_itemContainer.id); }
-        if (text.Contains("bonus4 bAutoSpellWhenHit,")) { if (!_itemListContainer.autoSpellItemIds.Contains(_itemContainer.id)) _itemListContainer.autoSpellItemIds.Add(_itemContainer.id); }
-        if (text.Contains("bonus5 bAutoSpellWhenHit,")) { if (!_itemListContainer.autoSpellItemIds.Contains(_itemContainer.id)) _itemListContainer.autoSpellItemIds.Add(_itemContainer.id); }
-        if (text.Contains("bonus4 bAutoSpellOnSkill,")) { if (!_itemListContainer.autoSpellItemIds.Contains(_itemContainer.id)) _itemListContainer.autoSpellItemIds.Add(_itemContainer.id); }
-        if (text.Contains("bonus5 bAutoSpellOnSkill,")) { if (!_itemListContainer.autoSpellItemIds.Contains(_itemContainer.id)) _itemListContainer.autoSpellItemIds.Add(_itemContainer.id); }
     }
 
     void ParseStatusChangeStartIntoItemId()
