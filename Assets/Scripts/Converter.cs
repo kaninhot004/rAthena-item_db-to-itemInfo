@@ -867,7 +867,7 @@ public class Converter : MonoBehaviour
                 isScript = true;
             else if (isScript)
             {
-                var comboScript = ConvertItemBonus(text);
+                var comboScript = ConvertItemScripts(text);
 
                 if (!string.IsNullOrEmpty(comboScript))
                     script += "			\"" + comboScript + "\",\n";
@@ -1125,6 +1125,9 @@ public class Converter : MonoBehaviour
 
     // Converting
 
+    /// <summary>
+    /// Start converting process
+    /// </summary>
     void Convert()
     {
         var path = Application.dataPath + "/Assets/item_db_equip.yml";
@@ -1633,7 +1636,7 @@ public class Converter : MonoBehaviour
             // Script
             else if (_itemContainer.isScript)
             {
-                var script = ConvertItemBonus(text);
+                var script = ConvertItemScripts(text);
 
                 if (!string.IsNullOrEmpty(script))
                     _itemContainer.script += "			\"" + script + "\",\n";
@@ -1641,7 +1644,7 @@ public class Converter : MonoBehaviour
             // Equip Script
             else if (_itemContainer.isEquipScript)
             {
-                var equipScript = ConvertItemBonus(text);
+                var equipScript = ConvertItemScripts(text);
 
                 if (!string.IsNullOrEmpty(equipScript))
                     _itemContainer.equipScript += "			\"" + equipScript + "\",\n";
@@ -1649,7 +1652,7 @@ public class Converter : MonoBehaviour
             // Unequip Script
             else if (_itemContainer.isUnequipScript)
             {
-                var unequipScript = ConvertItemBonus(text);
+                var unequipScript = ConvertItemScripts(text);
 
                 if (!string.IsNullOrEmpty(unequipScript))
                     _itemContainer.unequipScript += "			\"" + unequipScript + "\",\n";
@@ -1689,7 +1692,7 @@ public class Converter : MonoBehaviour
                 // Identified description
                 builder.Append("		identifiedDescriptionName = {\n");
                 // Description
-                var comboBonuses = GetCombo(GetIdNameData(int.Parse(_itemContainer.id)).aegisName);
+                var comboBonuses = GetCombo(GetItemDatabase(int.Parse(_itemContainer.id)).aegisName);
 
                 string hardcodeBonuses = _hardcodeItemScripts.GetHardcodeItemScript(int.Parse(_itemContainer.id));
 
@@ -1916,7 +1919,12 @@ public class Converter : MonoBehaviour
         _txtConvertProgression.text = "Done!!";
     }
 
-    string ConvertItemBonus(string text)
+    /// <summary>
+    /// Convert item scripts
+    /// </summary>
+    /// <param name="text"></param>
+    /// <returns></returns>
+    string ConvertItemScripts(string text)
     {
         // Comment fix
         int commentFixRetry = 300;
@@ -1952,6 +1960,7 @@ public class Converter : MonoBehaviour
         text = text.Replace("bVariableCastRate", "bVariableCastrate");
         text = text.Replace("bMaxHPRate", "bMaxHPrate");
         text = text.Replace("bMaxSPRate", "bMaxSPrate");
+        text = text.Replace("bHPRecovRate", "bHPrecovRate");
         text = text.Replace("Baselevel", "BaseLevel");
         // End wrong wording fix
 
@@ -2017,7 +2026,7 @@ public class Converter : MonoBehaviour
             while (temp.Contains("bonus"))
             {
                 var sumBonus = temp.Substring(0, temp.IndexOf(';'));
-                bonuses += ConvertItemBonus(sumBonus);
+                bonuses += ConvertItemScripts(sumBonus);
                 if (temp.Length > temp.IndexOf(';') + 1)
                     temp = temp.Substring(temp.IndexOf(';') + 1);
                 else
@@ -2048,7 +2057,7 @@ public class Converter : MonoBehaviour
             while (temp.Contains("bonus"))
             {
                 var sumBonus = temp.Substring(0, temp.IndexOf(';'));
-                bonuses += ConvertItemBonus(sumBonus);
+                bonuses += ConvertItemScripts(sumBonus);
                 if (temp.Length > temp.IndexOf(';') + 1)
                     temp = temp.Substring(temp.IndexOf(';') + 1);
                 else
@@ -2078,7 +2087,7 @@ public class Converter : MonoBehaviour
             while (temp.Contains("bonus"))
             {
                 var sumBonus = temp.Substring(0, temp.IndexOf(';'));
-                bonuses += ConvertItemBonus(sumBonus);
+                bonuses += ConvertItemScripts(sumBonus);
                 if (temp.Length > temp.IndexOf(';') + 1)
                     temp = temp.Substring(temp.IndexOf(';') + 1);
                 else
@@ -2092,6 +2101,35 @@ public class Converter : MonoBehaviour
                 bonuses = bonuses.Replace("๐", "[NEW_LINE]๐");
                 bonuses = bonuses.Replace("^FF2525", "[NEW_LINE]^FF2525");
                 text = string.Format("เมื่อ" + flag + " มีโอกาสเล็กน้อย ที่จะ {0} ชั่วคราว", bonuses);
+            }
+            else
+                text = string.Empty;
+        }
+        // bonus_script
+        if (text.Contains("bonus_script \"{"))
+        {
+            var temp = text.Replace("bonus_script \"{", string.Empty);
+            if (temp.IndexOf("}\"") > 0)
+                temp = temp.Substring(0, temp.IndexOf("}\""));
+            var bonuses = string.Empty;
+            int retry = 30;
+            while (temp.Contains("bonus"))
+            {
+                var sumBonus = temp.Substring(0, temp.IndexOf(';'));
+                bonuses += ConvertItemScripts(sumBonus);
+                if (temp.Length > temp.IndexOf(';') + 1)
+                    temp = temp.Substring(temp.IndexOf(';') + 1);
+                else
+                    temp = string.Empty;
+                retry--;
+                if (retry <= 0)
+                    break;
+            }
+            if (!string.IsNullOrEmpty(bonuses) || !string.IsNullOrWhiteSpace(bonuses))
+            {
+                bonuses = bonuses.Replace("๐", "[NEW_LINE]๐");
+                bonuses = bonuses.Replace("^FF2525", "[NEW_LINE]^FF2525");
+                text = string.Format("มีผล {0} ชั่วคราว", bonuses);
             }
             else
                 text = string.Empty;
@@ -2752,13 +2790,15 @@ public class Converter : MonoBehaviour
         {
             var temp = text.Replace("bonus2 bAddDefMonster,", string.Empty);
             var temps = temp.Split(',');
-            text = string.Format("๐ กันกายภาพจาก {0} +{1}%", GetMonsterNameFromId(TryParseInt(temps[0])), TryParseInt(temps[1]));
+            var monsterDatabase = GetMonsterDatabase(TryParseInt(temps[0]));
+            text = string.Format("๐ กันกายภาพจาก {0} +{1}%", (monsterDatabase != null) ? "^FF0000" + monsterDatabase.name + "^000000" : temps[0], TryParseInt(temps[1]));
         }
         if (text.Contains("bonus2 bAddMDefMonster,"))
         {
             var temp = text.Replace("bonus2 bAddMDefMonster,", string.Empty);
             var temps = temp.Split(',');
-            text = string.Format("๐ กันเวทย์จาก {0} +{1}%", GetMonsterNameFromId(TryParseInt(temps[0])), TryParseInt(temps[1]));
+            var monsterDatabase = GetMonsterDatabase(TryParseInt(temps[0]));
+            text = string.Format("๐ กันเวทย์จาก {0} +{1}%", (monsterDatabase != null) ? "^FF0000" + monsterDatabase.name + "^000000" : temps[0], TryParseInt(temps[1]));
         }
         if (text.Contains("bonus2 bAddRace2,"))
         {
@@ -3401,7 +3441,8 @@ public class Converter : MonoBehaviour
         {
             var temp = text.Replace("pet ", string.Empty);
             var temps = temp.Split(',');
-            text = string.Format("๐ สำหรับจับ {0}", GetMonsterNameFromId(QuoteRemover.Remove(temps[0])));
+            var monsterDatabase = GetMonsterDatabase(QuoteRemover.Remove(temps[0]));
+            text = string.Format("๐ สำหรับจับ {0}", (monsterDatabase != null) ? "^FF0000" + monsterDatabase.name + "^000000" : temps[0]);
         }
         text = text.Replace("sc_end_class", "๐ ลบ Buff ทุกอย่าง");
         text = text.Replace("setmounting()", "๐ ขึ้น/ลง พาหนะ");
@@ -4183,31 +4224,48 @@ public class Converter : MonoBehaviour
         return "0";
     }
 
-    string GetMonsterNameFromId(string text)
+    /// <summary>
+    /// Get monster database by ID
+    /// </summary>
+    /// <param name="text"></param>
+    /// <returns></returns>
+    MonsterDatabase GetMonsterDatabase(string text)
     {
-        int _int = 0;
-        if (int.TryParse(text, out _int))
+        int id = 0;
+
+        if (int.TryParse(text, out id))
         {
-            _int = int.Parse(text);
-            foreach (var item in _monsterDatabases)
+            id = int.Parse(text);
+
+            foreach (var monster in _monsterDatabases)
             {
-                if (item.id == _int)
-                    return "^FF0000" + item.name + "^000000";
+                if (monster.id == id)
+                    return monster;
             }
         }
-        return "^FF0000" + text + "^000000";
+
+        return null;
     }
 
-    ItemDatabase GetIdNameData(int id)
+    /// <summary>
+    /// Get item {name, aegis name} database by ID
+    /// </summary>
+    /// <param name="id"></param>
+    /// <returns></returns>
+    ItemDatabase GetItemDatabase(int id)
     {
         for (int i = 0; i < _itemDatabases.Count; i++)
         {
             if (_itemDatabases[i].id == id)
                 return _itemDatabases[i];
         }
+
         return null;
     }
 
+    /// <summary>
+    /// Parse usable items that contains sc_start bonuses into item list
+    /// </summary>
     void ParseStatusChangeStartIntoItemId()
     {
         if (!string.IsNullOrEmpty(_itemContainer.id)
