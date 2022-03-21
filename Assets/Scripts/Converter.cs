@@ -1267,6 +1267,9 @@ public class Converter : MonoBehaviour
                 _itemContainer.name = text.Replace("    Name: ", string.Empty);
 
                 _itemContainer.name = RemoveQuote(_itemContainer.name);
+
+                // Hotfix for →
+                _itemContainer.name = _itemContainer.name.Replace("→", " to ");
             }
             // Type
             else if (text.Contains("    Type:"))
