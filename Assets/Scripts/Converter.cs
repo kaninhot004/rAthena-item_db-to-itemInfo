@@ -95,7 +95,7 @@ public class Converter : MonoBehaviour
     /// <summary>
     /// Monsters holder
     /// </summary>
-    List<MonsterDatabase> _monsterDatabases = new List<MonsterDatabase>();
+    Dictionary<int, MonsterDatabase> _monsterDatabases = new Dictionary<int, MonsterDatabase>();
     /// <summary>
     /// Resources holder
     /// </summary>
@@ -216,7 +216,7 @@ public class Converter : MonoBehaviour
             return;
         }
 
-        _txtConvertProgression.text = "Please wait around 1~2 minutes..";
+        _txtConvertProgression.text = "Please wait around 10 seconds";
 
         Debug.Log(DateTime.Now);
 
@@ -586,7 +586,7 @@ public class Converter : MonoBehaviour
 
         var monsterDatabases = monsterDatabasesFile.Split('\n');
 
-        _monsterDatabases = new List<MonsterDatabase>();
+        _monsterDatabases = new Dictionary<int, MonsterDatabase>();
 
         MonsterDatabase monsterDatabase = new MonsterDatabase();
 
@@ -608,7 +608,10 @@ public class Converter : MonoBehaviour
             {
                 monsterDatabase.name = QuoteRemover.Remove(text.Replace("    Name: ", string.Empty));
 
-                _monsterDatabases.Add(monsterDatabase);
+                if (_monsterDatabases.ContainsKey(monsterDatabase.id))
+                    Debug.LogWarning("Found duplicated monster ID: " + monsterDatabase.id + "! Please tell rAthena about this.");
+                else
+                    _monsterDatabases.Add(monsterDatabase.id, monsterDatabase);
 
                 monsterDatabase = new MonsterDatabase();
             }
@@ -1035,12 +1038,12 @@ public class Converter : MonoBehaviour
                 itemDatabase.name = _name;
 
                 if (_itemDatabases.ContainsKey(itemDatabase.id))
-                    Debug.LogWarning(itemDatabase.id + " already had! Please tell rAthena about this.");
+                    Debug.LogWarning("Found duplicated item ID: " + itemDatabase.id + "! Please tell rAthena about this.");
                 else
                     _itemDatabases.Add(itemDatabase.id, itemDatabase);
 
                 if (_aegisNameDatabases.ContainsKey(itemDatabase.aegisName))
-                    Debug.LogWarning(itemDatabase.aegisName + " already had! Please tell rAthena about this.");
+                    Debug.LogWarning("Found duplicated item aegis name: " + itemDatabase.aegisName + "! Please tell rAthena about this.");
                 else
                     _aegisNameDatabases.Add(itemDatabase.aegisName, itemDatabase.id);
 
@@ -4242,11 +4245,8 @@ public class Converter : MonoBehaviour
         {
             id = int.Parse(text);
 
-            foreach (var monster in _monsterDatabases)
-            {
-                if (monster.id == id)
-                    return monster;
-            }
+            if (_monsterDatabases.ContainsKey(id))
+                return _monsterDatabases[id];
         }
 
         return null;
