@@ -79,7 +79,7 @@ public class Converter : MonoBehaviour
     /// <summary>
     /// Class numbers holder
     /// </summary>
-    List<ClassNumberDatabase> _classNumberDatabases = new List<ClassNumberDatabase>();
+    Dictionary<int, string> _classNumberDatabases = new Dictionary<int, string>();
     /// <summary>
     /// Combos holder
     /// </summary>
@@ -635,9 +635,10 @@ public class Converter : MonoBehaviour
 
         var classNumbers = classNumbersFile.Split('\n');
 
-        _classNumberDatabases = new List<ClassNumberDatabase>();
+        _classNumberDatabases = new Dictionary<int, string>();
 
-        ClassNumberDatabase classNumberDatabase = new ClassNumberDatabase();
+        var id = 0;
+        var classNumber = string.Empty;
 
         for (int i = 0; i < classNumbers.Length; i++)
         {
@@ -651,12 +652,11 @@ public class Converter : MonoBehaviour
 
             var texts = text.Split('=');
 
-            classNumberDatabase.id = int.Parse(texts[0]);
-            classNumberDatabase.classNumber = texts[1];
+            id = int.Parse(texts[0]);
+            classNumber = texts[1];
 
-            _classNumberDatabases.Add(classNumberDatabase);
-
-            classNumberDatabase = new ClassNumberDatabase();
+            if (!_classNumberDatabases.ContainsKey(id))
+                _classNumberDatabases.Add(id, classNumber);
         }
 
         path = Application.dataPath + "/Assets/item_db_custom.txt";
@@ -677,8 +677,6 @@ public class Converter : MonoBehaviour
 
         classNumbers = classNumbersFile.Split('\n');
 
-        classNumberDatabase = new ClassNumberDatabase();
-
         for (int i = 0; i < classNumbers.Length; i++)
         {
             var text = classNumbers[i];
@@ -690,14 +688,13 @@ public class Converter : MonoBehaviour
             text = LineEndingsRemover.Fix(text);
 
             if (text.Contains("- Id:"))
-                classNumberDatabase.id = int.Parse(SpacingRemover.Remove(text).Replace("-Id:", string.Empty));
+                id = int.Parse(SpacingRemover.Remove(text).Replace("-Id:", string.Empty));
             else if (text.Contains("    View:"))
             {
-                classNumberDatabase.classNumber = SpacingRemover.Remove(text).Replace("View:", string.Empty);
+                classNumber = SpacingRemover.Remove(text).Replace("View:", string.Empty);
 
-                _classNumberDatabases.Add(classNumberDatabase);
-
-                classNumberDatabase = new ClassNumberDatabase();
+                if (!_classNumberDatabases.ContainsKey(id))
+                    _classNumberDatabases.Add(id, classNumber);
             }
         }
 
@@ -4218,12 +4215,10 @@ public class Converter : MonoBehaviour
 
     string GetClassNumFromId(int id)
     {
-        foreach (var item in _classNumberDatabases)
-        {
-            if (item.id == id)
-                return item.classNumber;
-        }
-        return "0";
+        if (_classNumberDatabases.ContainsKey(id))
+            return _classNumberDatabases[id];
+        else
+            return "0";
     }
 
     /// <summary>
