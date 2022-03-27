@@ -99,7 +99,7 @@ public class Converter : MonoBehaviour
     /// <summary>
     /// Resources holder
     /// </summary>
-    List<ResourceDatabase> _resourceDatabases = new List<ResourceDatabase>();
+    Dictionary<int, string> _resourceDatabases = new Dictionary<int, string>();
     /// <summary>
     /// Skills holder
     /// </summary>
@@ -787,9 +787,7 @@ public class Converter : MonoBehaviour
 
         var resourceNames = resourceNamesFile.Split('\n');
 
-        _resourceDatabases = new List<ResourceDatabase>();
-
-        ResourceDatabase resourceNameData = new ResourceDatabase();
+        _resourceDatabases = new Dictionary<int, string>();
 
         for (int i = 0; i < resourceNames.Length; i++)
         {
@@ -803,12 +801,13 @@ public class Converter : MonoBehaviour
 
             var texts = text.Split('=');
 
-            resourceNameData.id = int.Parse(texts[0]);
-            resourceNameData.name = texts[1];
+            var id = int.Parse(texts[0]);
+            var name = texts[1];
 
-            _resourceDatabases.Add(resourceNameData);
-
-            resourceNameData = new ResourceDatabase();
+            if (_resourceDatabases.ContainsKey(id))
+                Debug.LogWarning("Found duplicated resource name ID: " + id + "! (Old: " + _resourceDatabases[id] + " vs New: " + name + ")");
+            else
+                _resourceDatabases.Add(id, name);
         }
 
         Debug.Log("There are " + _resourceDatabases.Count + " resource name database.");
@@ -4168,20 +4167,21 @@ public class Converter : MonoBehaviour
                         return s;
                     }
                 }
-                return _resourceDatabases[UnityEngine.Random.Range(0, _resourceDatabases.Count)].name;
+                List<int> keys = new List<int>(_resourceDatabases.Keys);
+                return _resourceDatabases[keys[UnityEngine.Random.Range(0, keys.Count)]];
             }
         }
         else
         {
             if (_isRandomResourceName)
-                return _resourceDatabases[UnityEngine.Random.Range(0, _resourceDatabases.Count)].name;
+            {
+                List<int> keys = new List<int>(_resourceDatabases.Keys);
+                return _resourceDatabases[keys[UnityEngine.Random.Range(0, keys.Count)]];
+            }
         }
 
-        foreach (var item in _resourceDatabases)
-        {
-            if (item.id == id)
-                return item.name;
-        }
+        if (_resourceDatabases.ContainsKey(id))
+            return _resourceDatabases[id];
 
         return "\"Bio_Reseearch_Docu\"";
     }
