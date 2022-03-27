@@ -14,11 +14,11 @@ public class ComboDatabase
 
     public List<string> descriptions = new List<string>();
 
-    public bool IsAegisNameContain(string aegis_name)
+    public bool IsAegisNameContain(string aegisName)
     {
         for (int i = 0; i < sameComboDatas.Count; i++)
         {
-            if (sameComboDatas[i].aegisNames.Contains(aegis_name))
+            if (sameComboDatas[i].aegisNames.Contains(aegisName))
                 return true;
         }
 

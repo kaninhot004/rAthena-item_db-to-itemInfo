@@ -87,7 +87,11 @@ public class Converter : MonoBehaviour
     /// <summary>
     /// Items holder
     /// </summary>
-    List<ItemDatabase> _itemDatabases = new List<ItemDatabase>();
+    Dictionary<int, ItemDatabase> _itemDatabases = new Dictionary<int, ItemDatabase>();
+    /// <summary>
+    /// Aegis name holder
+    /// </summary>
+    Dictionary<string, int> _aegisNameDatabases = new Dictionary<string, int>();
     /// <summary>
     /// Monsters holder
     /// </summary>
@@ -938,7 +942,8 @@ public class Converter : MonoBehaviour
 
         var itemDatabases = itemDatabasesFile.Split('\n');
 
-        _itemDatabases = new List<ItemDatabase>();
+        _itemDatabases = new Dictionary<int, ItemDatabase>();
+        _aegisNameDatabases = new Dictionary<string, int>();
 
         _itemListContainer = new ItemListContainer();
 
@@ -1016,6 +1021,9 @@ public class Converter : MonoBehaviour
 
                 _name = text.Replace("    AegisName: ", string.Empty);
 
+                // To prevent some aegis name that had double spacebar format
+                _name = SpacingRemover.Remove(_name);
+
                 itemDatabase.aegisName = _name;
             }
             else if (text.Contains("    Name:"))
@@ -1026,7 +1034,15 @@ public class Converter : MonoBehaviour
 
                 itemDatabase.name = _name;
 
-                _itemDatabases.Add(itemDatabase);
+                if (_itemDatabases.ContainsKey(itemDatabase.id))
+                    Debug.LogWarning(itemDatabase.id + " already had! Please tell rAthena about this.");
+                else
+                    _itemDatabases.Add(itemDatabase.id, itemDatabase);
+
+                if (_aegisNameDatabases.ContainsKey(itemDatabase.aegisName))
+                    Debug.LogWarning(itemDatabase.aegisName + " already had! Please tell rAthena about this.");
+                else
+                    _aegisNameDatabases.Add(itemDatabase.aegisName, itemDatabase.id);
 
                 itemDatabase = new ItemDatabase();
             }
@@ -3804,7 +3820,7 @@ public class Converter : MonoBehaviour
             return (sum / divider).ToString("f0");
     }
 
-    string GetCombo(string aegis_name)
+    string GetCombo(string aegisName)
     {
         StringBuilder builder = new StringBuilder();
 
@@ -3814,7 +3830,7 @@ public class Converter : MonoBehaviour
             var currentComboData = _comboDatabases[i];
 
             // Found
-            if (currentComboData.IsAegisNameContain(aegis_name))
+            if (currentComboData.IsAegisNameContain(aegisName))
             {
                 StringBuilder sum = new StringBuilder();
 
@@ -3827,7 +3843,7 @@ public class Converter : MonoBehaviour
                     // Add item name
                     for (int k = 0; k < currentSameComboData.aegisNames.Count; k++)
                     {
-                        if (currentSameComboData.aegisNames[k] == aegis_name)
+                        if (currentSameComboData.aegisNames[k] == aegisName)
                             isFoundNow = true;
                     }
 
@@ -3842,12 +3858,14 @@ public class Converter : MonoBehaviour
                             var currentAegisName = currentSameComboData.aegisNames[k];
 
                             // Should not add base item name
-                            if (currentAegisName == aegis_name)
+                            if (currentAegisName == aegisName)
                                 continue;
                             else
                             {
-                                same_set_name_list += "[NEW_LINE]+ " + GetItemName(currentAegisName, true);
-                                same_set_name_list += "[NEW_LINE]+ (ID:" + GetItemId(currentAegisName, true) + ")";
+                                var itemId = GetItemIdFromAegisName(currentAegisName);
+
+                                same_set_name_list += "[NEW_LINE]+ " + GetItemName(itemId.ToString("f0"));
+                                same_set_name_list += "[NEW_LINE]+ (ID:" + itemId + ")";
                             }
                         }
 
@@ -3880,54 +3898,44 @@ public class Converter : MonoBehaviour
         return builder.ToString();
     }
 
-    string GetItemName(string text, bool isForceAegisName = false)
+    string GetItemName(string text)
     {
         int _int = 0;
-        if (!isForceAegisName && int.TryParse(text, out _int))
+
+        if (int.TryParse(text, out _int))
         {
             _int = int.Parse(text);
-            foreach (var item in _itemDatabases)
-            {
-                if (item.id == _int)
-                    return item.name;
-            }
+
+            if (_itemDatabases.ContainsKey(_int))
+                return _itemDatabases[_int].name;
         }
         else
         {
-            text = SpacingRemover.Remove(text);
-            foreach (var item in _itemDatabases)
+            var itemId = 0;
+            if (_aegisNameDatabases.ContainsKey(text))
             {
-                if (item.aegisName.ToLower() == text.ToLower())
-                    return item.name;
+                itemId = _aegisNameDatabases[text];
+
+                if (_itemDatabases.ContainsKey(itemId))
+                    return _itemDatabases[itemId].name;
             }
         }
 
         return text;
     }
 
-    string GetItemId(string text, bool isForceAegisName = false)
+    int GetItemIdFromAegisName(string text)
     {
-        int _int = 0;
-        if (!isForceAegisName && int.TryParse(text, out _int))
-        {
-            _int = int.Parse(text);
-            foreach (var item in _itemDatabases)
-            {
-                if (item.id == _int)
-                    return item.id.ToString("f0");
-            }
-        }
+        text = SpacingRemover.Remove(text);
+
+        if (_aegisNameDatabases.ContainsKey(text))
+            return _aegisNameDatabases[text];
         else
         {
-            text = SpacingRemover.Remove(text);
-            foreach (var item in _itemDatabases)
-            {
-                if (item.aegisName.ToLower() == text.ToLower())
-                    return item.id.ToString("f0");
-            }
-        }
+            Debug.LogWarning(text + " not found in aegisNameDatabases");
 
-        return text;
+            return 0;
+        }
     }
 
     string GetResourceNameFromId(int id, string type, string subType, string location)
@@ -4251,13 +4259,10 @@ public class Converter : MonoBehaviour
     /// <returns></returns>
     ItemDatabase GetItemDatabase(int id)
     {
-        for (int i = 0; i < _itemDatabases.Count; i++)
-        {
-            if (_itemDatabases[i].id == id)
-                return _itemDatabases[i];
-        }
-
-        return null;
+        if (_itemDatabases.ContainsKey(id))
+            return _itemDatabases[id];
+        else
+            return null;
     }
 
     /// <summary>
