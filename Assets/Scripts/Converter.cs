@@ -103,7 +103,11 @@ public class Converter : MonoBehaviour
     /// <summary>
     /// Skills holder
     /// </summary>
-    List<SkillDatabase> _skillDatabases = new List<SkillDatabase>();
+    Dictionary<int, SkillDatabase> _skillDatabases = new Dictionary<int, SkillDatabase>();
+    /// <summary>
+    /// Skill name holder
+    /// </summary>
+    Dictionary<string, int> _skillNameDatabases = new Dictionary<string, int>();
 
     void Start()
     {
@@ -730,7 +734,8 @@ public class Converter : MonoBehaviour
 
         var skillDatabases = skillDatabasesFile.Split('\n');
 
-        _skillDatabases = new List<SkillDatabase>();
+        _skillDatabases = new Dictionary<int, SkillDatabase>();
+        _skillNameDatabases = new Dictionary<string, int>();
 
         SkillDatabase skillDatabase = new SkillDatabase();
 
@@ -756,7 +761,15 @@ public class Converter : MonoBehaviour
 
                 skillDatabase.nameWithQuote = "\"" + skillDatabase.name + "\"";
 
-                _skillDatabases.Add(skillDatabase);
+                if (_skillDatabases.ContainsKey(skillDatabase.id))
+                    Debug.LogWarning("Found duplicated skill ID: " + skillDatabase.id + "! (Old: " + _skillDatabases[skillDatabase.id] + " vs New: " + skillDatabase.id + ")");
+                else
+                    _skillDatabases.Add(skillDatabase.id, skillDatabase);
+
+                if (_skillNameDatabases.ContainsKey(skillDatabase.name))
+                    Debug.LogWarning("Found duplicated skill name: " + skillDatabase.name + "! (Old: " + _skillNameDatabases[skillDatabase.name] + " vs New: " + skillDatabase.name + ")");
+                else
+                    _skillNameDatabases.Add(skillDatabase.name, skillDatabase.id);
 
                 skillDatabase = new SkillDatabase();
             }
@@ -3787,9 +3800,40 @@ public class Converter : MonoBehaviour
 
         text = ParseWeaponType(text);
         text = ParseEQI(text);
-        bool isHadQuote = text.Contains("\"");
-        if (isHadQuote)
-            text = ParseSkillName(text);
+
+        // Some normal function contains skill name, let's try parse them
+        while (text.Contains("\""))
+        {
+            // Try to find first "
+            var firstQuoteIndex = text.IndexOf("\"");
+
+            if ((firstQuoteIndex > 0)
+                && (text.Length > (firstQuoteIndex + 1)))
+            {
+                // Substract text
+                var subText = text.Substring(firstQuoteIndex + 1);
+
+                // Try to find second "
+                var secondQuoteIndex = subText.IndexOf("\"");
+
+                // Good! Found 2 quote
+                if (secondQuoteIndex > 0)
+                {
+                    var finalSubText = text.Substring(firstQuoteIndex + 1, secondQuoteIndex);
+
+                    var skillName = GetSkillName(finalSubText, true, true);
+
+                    text = text.Replace("\"" + finalSubText + "\"", skillName);
+                }
+                // Unexpected error (Had 1 quote)
+                else
+                    break;
+            }
+            // Unexpected error (Maybe " stay on last index of string and had 1 quote?)
+            else
+                break;
+        }
+
         text = QuoteRemover.Remove(text);
 
         return text;
@@ -4186,41 +4230,30 @@ public class Converter : MonoBehaviour
         return "\"Bio_Reseearch_Docu\"";
     }
 
-    string GetSkillName(string text)
+    string GetSkillName(string text, bool isKeepSpacebar = false, bool isOnlyString = false)
     {
         int _int = 0;
-        if (int.TryParse(text, out _int))
+
+        if (int.TryParse(text, out _int)
+            && !isOnlyString)
         {
             _int = int.Parse(text);
-            foreach (var item in _skillDatabases)
-            {
-                if (item.id == _int)
-                    return "^990B0B" + item.description + "^000000";
-            }
+
+            if (_skillDatabases.ContainsKey(_int))
+                return "^990B0B" + _skillDatabases[_int].description + "^000000";
         }
         else
         {
-            text = SpacingRemover.Remove(text);
-            foreach (var item in _skillDatabases)
+            if (!isKeepSpacebar)
+                text = SpacingRemover.Remove(text);
+
+            if (_skillNameDatabases.ContainsKey(text))
             {
-                if (item.name.ToLower() == text.ToLower())
-                    return "^990B0B" + item.description + "^000000";
+                if (_skillDatabases.ContainsKey(_skillNameDatabases[text]))
+                    return "^990B0B" + _skillDatabases[_skillNameDatabases[text]].description + "^000000";
             }
         }
-        return text;
-    }
 
-    string ParseSkillName(string text)
-    {
-        foreach (var item in _skillDatabases)
-        {
-            if (text.Contains(item.nameWithQuote))
-            {
-                text = text.Replace(item.name, "^990B0B" + item.description + "^000000");
-
-                break;
-            }
-        }
         return text;
     }
 
