@@ -2858,7 +2858,7 @@ public class Converter : MonoBehaviour
         {
             var temp = text.Replace("bonus bAbsorbDmgMaxHP,", string.Empty);
             var temps = temp.Split(',');
-            text = string.Format("๐ หากโดน Damage แรงกว่า MaxHP จะโดนแค่ Damage - {0}% MaxHP (ทับไม่ได้)", TryParseInt(temps[0]));
+            text = string.Format("๐ หากโดน Damage แรงกว่า {0}% จาก MaxHP การคำนวณจะเป็น Damage - {0}% MaxHP (ทับไม่ได้)", TryParseInt(temps[0]));
         }
         if (text.Contains("bonus bAbsorbDmgMaxHP2,"))
         {
