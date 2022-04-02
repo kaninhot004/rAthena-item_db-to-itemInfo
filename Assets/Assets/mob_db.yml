@@ -54132,7 +54132,6 @@ Body:
     Element: Neutral
     ElementLevel: 1
     WalkSpeed: 200
-    DamageTaken: 10
     Class: Boss
     Modes:
       NoRandomWalk: true
@@ -54149,7 +54148,6 @@ Body:
     Element: Neutral
     ElementLevel: 1
     WalkSpeed: 200
-    DamageTaken: 10
     Class: Boss
     Modes:
       NoRandomWalk: true
@@ -54166,7 +54164,6 @@ Body:
     Element: Neutral
     ElementLevel: 1
     WalkSpeed: 200
-    DamageTaken: 10
     Class: Boss
     Modes:
       NoRandomWalk: true
