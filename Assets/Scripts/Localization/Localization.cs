@@ -6,10 +6,22 @@ using System.IO;
 
 public class Localization : MonoBehaviour
 {
-    public const string THAI = "thai";
-    public const string ENGLISH = "english";
+    public const string THAI = "THAI";
+    public const string ENGLISH = "ENGLISH";
 
-    public const string AUTO_BONUS_3 = "autobonus3";
+    public const string ERROR = "ERROR";
+
+    public const string CONVERT_PROGRESSION_START = "CONVERT_PROGRESSION_START";
+    public const string CONVERT_PROGRESSION_FETCHING_ITEM = "CONVERT_PROGRESSION_FETCHING_ITEM";
+    public const string CONVERT_PROGRESSION_FETCHING_RESOURCE_NAME = "CONVERT_PROGRESSION_FETCHING_RESOURCE_NAME";
+    public const string CONVERT_PROGRESSION_FETCHING_SKILL = "CONVERT_PROGRESSION_FETCHING_SKILL";
+    public const string CONVERT_PROGRESSION_FETCHING_CLASS_NUMBER = "CONVERT_PROGRESSION_FETCHING_CLASS_NUMBER";
+    public const string CONVERT_PROGRESSION_FETCHING_CLASS_MONSTER = "CONVERT_PROGRESSION_FETCHING_CLASS_MONSTER";
+    public const string CONVERT_PROGRESSION_FETCHING_ITEM_COMBO = "CONVERT_PROGRESSION_FETCHING_ITEM_COMBO";
+    public const string CONVERT_PROGRESSION_FETCHING_RESOURCE_NAME_WITH_TYPE = "CONVERT_PROGRESSION_FETCHING_RESOURCE_NAME_WITH_TYPE";
+    public const string CONVERT_PROGRESSION_FETCHING_PLEASE_WAIT = "CONVERT_PROGRESSION_FETCHING_PLEASE_WAIT";
+
+    public const string AUTO_BONUS_3 = "AUTO_BONUS_3";
 
     [Serializable]
     public class JsonData

@@ -56,6 +56,7 @@
     <Analyzer Include="C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\Common7\IDE\Extensions\Microsoft\Visual Studio Tools for Unity\Analyzers\Microsoft.Unity.Analyzers.dll" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\Scripts\Localization\Localization.cs" />
     <Compile Include="Assets\Scripts\Utilities\QuoteRemover.cs" />
     <Compile Include="Assets\Scripts\Classes\ResourceContainer.cs" />
     <Compile Include="Assets\Scripts\HardcodeItemScripts.cs" />
@@ -63,6 +64,7 @@
     <Compile Include="Assets\Scripts\AutoTitle.cs" />
     <Compile Include="Assets\Scripts\Utilities\SpacingRemover.cs" />
     <Compile Include="Assets\Scripts\Classes\SkillDatabase.cs" />
+    <Compile Include="Assets\Scripts\Classes\LocalizationDatabase.cs" />
     <Compile Include="Assets\Scripts\Classes\ComboDatabase.cs" />
     <Compile Include="Assets\Scripts\Converter.cs" />
     <Compile Include="Assets\Scripts\Classes\ItemContainer.cs" />
@@ -71,8 +73,6 @@
     <Compile Include="Assets\Scripts\Utilities\LineEndingsRemover.cs" />
     <Compile Include="Assets\Scripts\Classes\MonsterDatabase.cs" />
     <Compile Include="Assets\Scripts\Classes\ItemListContainer.cs" />
-    <Compile Include="Assets\Scripts\Localization\Localization.cs" />
-    <Compile Include="Assets\Scripts\Classes\LocalizationDatabase.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Assets\all_english_word.txt" />

@@ -1,15 +1,45 @@
 {
     "datas": [{
-            "language": "thai",
+            "language": "THAI",
             "keyDatas": [{
-                    "key": "autobonus3",
+                    "key": "ERROR",
+                    "texts": "Error"
+                }, {
+                    "key": "CONVERT_PROGRESSION_START",
+                    "texts": "Starting now"
+                }, {
+                    "key": "CONVERT_PROGRESSION_FETCHING_ITEM",
+                    "texts": "Fetching item"
+                },{
+                    "key": "CONVERT_PROGRESSION_FETCHING_RESOURCE_NAME",
+                    "texts": "Fetching resource name"
+                },{
+                    "key": "CONVERT_PROGRESSION_FETCHING_SKILL",
+                    "texts": "Fetching skill"
+                },{
+                    "key": "CONVERT_PROGRESSION_FETCHING_CLASS_NUMBER",
+                    "texts": "Fetching class number"
+                },{
+                    "key": "CONVERT_PROGRESSION_FETCHING_CLASS_MONSTER",
+                    "texts": "Fetching monster"
+                }, {
+                    "key": "CONVERT_PROGRESSION_FETCHING_ITEM_COMBO",
+                    "texts": "Fetching item combo"
+                },{
+                    "key": "CONVERT_PROGRESSION_FETCHING_RESOURCE_NAME_WITH_TYPE",
+                    "texts": "Fetching resource name with type"
+                }, {
+                    "key": "CONVERT_PROGRESSION_FETCHING_PLEASE_WAIT",
+                    "texts": "Please wait"
+                }, {
+                    "key": "AUTO_BONUS_3",
                     "texts": "เมื่อใช้ {1} มีโอกาสเล็กน้อย ที่จะ {0} ชั่วคราว"
                 }
             ]
         }, {
-            "language": "english",
+            "language": "ENGLISH",
             "keyDatas": [{
-                    "key": "autobonus3",
+                    "key": "AUTO_BONUS_3",
                     "texts": "Had a small chance to {0} temporary, when using {1}"
                 }
             ]

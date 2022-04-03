@@ -139,7 +139,7 @@ public class Converter : MonoBehaviour
 
         _isFilesError = false;
 
-        _txtConvertProgression.text = "Starting now..";
+        _txtConvertProgression.text = _localization.GetTexts(Localization.CONVERT_PROGRESSION_START) + "..";
 
         Debug.Log(DateTime.Now);
 
@@ -147,84 +147,84 @@ public class Converter : MonoBehaviour
     }
     void FetchingData()
     {
-        _txtConvertProgression.text = "Fetching item..";
+        _txtConvertProgression.text = _localization.GetTexts(Localization.CONVERT_PROGRESSION_FETCHING_ITEM) + "..";
 
         FetchItem();
 
         if (_isFilesError)
         {
-            _txtConvertProgression.text = "<color=red>Error</color>: " + _errorLog;
+            _txtConvertProgression.text = "<color=red>" + _localization.GetTexts(Localization.ERROR) + "</color>: " + _errorLog;
 
             return;
         }
 
-        _txtConvertProgression.text = "Fetching resource name..";
+        _txtConvertProgression.text = _localization.GetTexts(Localization.CONVERT_PROGRESSION_FETCHING_RESOURCE_NAME) + "..";
 
         FetchResourceName();
 
         if (_isFilesError)
         {
-            _txtConvertProgression.text = "<color=red>Error</color>: " + _errorLog;
+            _txtConvertProgression.text = "<color=red>" + _localization.GetTexts(Localization.ERROR) + "</color>: " + _errorLog;
 
             return;
         }
 
-        _txtConvertProgression.text = "Fetching skill..";
+        _txtConvertProgression.text = _localization.GetTexts(Localization.CONVERT_PROGRESSION_FETCHING_SKILL) + "..";
 
         FetchSkill();
 
         if (_isFilesError)
         {
-            _txtConvertProgression.text = "<color=red>Error</color>: " + _errorLog;
+            _txtConvertProgression.text = "<color=red>" + _localization.GetTexts(Localization.ERROR) + "</color>: " + _errorLog;
 
             return;
         }
 
-        _txtConvertProgression.text = "Fetching class number..";
+        _txtConvertProgression.text = _localization.GetTexts(Localization.CONVERT_PROGRESSION_FETCHING_CLASS_NUMBER) + "..";
 
         FetchClassNumber();
 
         if (_isFilesError)
         {
-            _txtConvertProgression.text = "<color=red>Error</color>: " + _errorLog;
+            _txtConvertProgression.text = "<color=red>" + _localization.GetTexts(Localization.ERROR) + "</color>: " + _errorLog;
 
             return;
         }
 
-        _txtConvertProgression.text = "Fetching monster..";
+        _txtConvertProgression.text = _localization.GetTexts(Localization.CONVERT_PROGRESSION_FETCHING_CLASS_MONSTER) + "..";
 
         FetchMonster();
 
         if (_isFilesError)
         {
-            _txtConvertProgression.text = "<color=red>Error</color>: " + _errorLog;
+            _txtConvertProgression.text = "<color=red>" + _localization.GetTexts(Localization.ERROR) + "</color>: " + _errorLog;
 
             return;
         }
 
-        _txtConvertProgression.text = "Fetching combo..";
+        _txtConvertProgression.text = _localization.GetTexts(Localization.CONVERT_PROGRESSION_FETCHING_ITEM_COMBO) + "..";
 
         FetchCombo();
 
         if (_isFilesError)
         {
-            _txtConvertProgression.text = "<color=red>Error</color>: " + _errorLog;
+            _txtConvertProgression.text = "<color=red>" + _localization.GetTexts(Localization.ERROR) + "</color>: " + _errorLog;
 
             return;
         }
 
-        _txtConvertProgression.text = "Fetching resource name with type..";
+        _txtConvertProgression.text = _localization.GetTexts(Localization.CONVERT_PROGRESSION_FETCHING_RESOURCE_NAME_WITH_TYPE) + "..";
 
         FetchResourceNameWithType();
 
         if (_isFilesError)
         {
-            _txtConvertProgression.text = "<color=red>Error</color>: " + _errorLog;
+            _txtConvertProgression.text = "<color=red>" + _localization.GetTexts(Localization.ERROR) + "</color>: " + _errorLog;
 
             return;
         }
 
-        _txtConvertProgression.text = "Please wait around 10 seconds";
+        _txtConvertProgression.text = _localization.GetTexts(Localization.CONVERT_PROGRESSION_FETCHING_PLEASE_WAIT) + "..";
 
         Debug.Log(DateTime.Now);
 
