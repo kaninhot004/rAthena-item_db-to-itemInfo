@@ -1,0 +1,18 @@
+{
+    "datas": [{
+            "language": "thai",
+            "keyDatas": [{
+                    "key": "autobonus3",
+                    "texts": "เมื่อใช้ {1} มีโอกาสเล็กน้อย ที่จะ {0} ชั่วคราว"
+                }
+            ]
+        }, {
+            "language": "english",
+            "keyDatas": [{
+                    "key": "autobonus3",
+                    "texts": "Had a small chance to {0} temporary, when using {1}"
+                }
+            ]
+        }
+    ]
+}

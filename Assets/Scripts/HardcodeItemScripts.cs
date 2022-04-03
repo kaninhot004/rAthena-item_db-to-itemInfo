@@ -38,7 +38,7 @@ public class HardcodeItemScripts : MonoBehaviour
             return string.Empty;
     }
 
-    public void ParseJson()
+    void ParseJson()
     {
         var path = Application.dataPath + "/Assets/hard_code_item_scripts.json";
 

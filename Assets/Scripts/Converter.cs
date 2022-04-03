@@ -38,6 +38,10 @@ public class Converter : MonoBehaviour
     /// Hardcode item scripts description
     /// </summary>
     [SerializeField] HardcodeItemScripts _hardcodeItemScripts;
+    /// <summary>
+    /// Localization
+    /// </summary>
+    [SerializeField] Localization _localization;
 
     // Settings
 
@@ -2068,7 +2072,7 @@ public class Converter : MonoBehaviour
             {
                 bonuses = bonuses.Replace("๐", "[NEW_LINE]๐");
                 bonuses = bonuses.Replace("^FF2525", "[NEW_LINE]^FF2525");
-                text = string.Format("เมื่อใช้ {1} มีโอกาสเล็กน้อย ที่จะ {0} ชั่วคราว", bonuses, GetSkillName(skillName));
+                text = string.Format(_localization.GetTexts(Localization.AUTO_BONUS_3), bonuses, GetSkillName(skillName));
             }
             else
                 text = string.Empty;
