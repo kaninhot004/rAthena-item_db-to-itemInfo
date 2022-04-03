@@ -398,7 +398,7 @@ public class Converter : MonoBehaviour
         // Is file exists?
         if (!File.Exists(path))
         {
-            _errorLog = path + " is not exists";
+            _errorLog = path + " " + _localization.GetTexts(Localization.NOT_FOUND);
 
             Debug.Log(_errorLog);
 
@@ -581,7 +581,7 @@ public class Converter : MonoBehaviour
         // Is file exists?
         if (!File.Exists(path))
         {
-            _errorLog = path + " is not exists";
+            _errorLog = path + " " + _localization.GetTexts(Localization.NOT_FOUND);
 
             Debug.Log(_errorLog);
 
@@ -637,7 +637,7 @@ public class Converter : MonoBehaviour
         // Is file exists?
         if (!File.Exists(path))
         {
-            _errorLog = path + " is not exists";
+            _errorLog = path + " " + _localization.GetTexts(Localization.NOT_FOUND);
 
             Debug.Log(_errorLog);
 
@@ -679,7 +679,7 @@ public class Converter : MonoBehaviour
         // Is file exists?
         if (!File.Exists(path))
         {
-            _errorLog = path + " is not exists";
+            _errorLog = path + " " + _localization.GetTexts(Localization.NOT_FOUND);
 
             Debug.Log(_errorLog);
 
@@ -725,7 +725,7 @@ public class Converter : MonoBehaviour
         // Is file exists?
         if (!File.Exists(path))
         {
-            _errorLog = path + " is not exists";
+            _errorLog = path + " " + _localization.GetTexts(Localization.NOT_FOUND);
 
             Debug.Log(_errorLog);
 
@@ -791,7 +791,7 @@ public class Converter : MonoBehaviour
         // Is file exists?
         if (!File.Exists(path))
         {
-            _errorLog = path + " is not exists";
+            _errorLog = path + " " + _localization.GetTexts(Localization.NOT_FOUND);
 
             Debug.Log(_errorLog);
 
@@ -839,7 +839,7 @@ public class Converter : MonoBehaviour
         // Is file exists?
         if (!File.Exists(path))
         {
-            _errorLog = path + " is not exists";
+            _errorLog = path + " " + _localization.GetTexts(Localization.NOT_FOUND);
 
             Debug.Log(_errorLog);
 
@@ -915,7 +915,7 @@ public class Converter : MonoBehaviour
         // Is file exists?
         if (!File.Exists(path))
         {
-            _errorLog = path + " is not exists";
+            _errorLog = path + " " + _localization.GetTexts(Localization.NOT_FOUND);
 
             Debug.Log(_errorLog);
 
@@ -925,7 +925,7 @@ public class Converter : MonoBehaviour
         }
         else if (!File.Exists(path2))
         {
-            _errorLog = path2 + " is not exists";
+            _errorLog = path2 + " " + _localization.GetTexts(Localization.NOT_FOUND);
 
             Debug.Log(_errorLog);
 
@@ -935,7 +935,7 @@ public class Converter : MonoBehaviour
         }
         else if (!File.Exists(path3))
         {
-            _errorLog = path3 + " is not exists";
+            _errorLog = path3 + " " + _localization.GetTexts(Localization.NOT_FOUND);
 
             Debug.Log(_errorLog);
 
@@ -945,7 +945,7 @@ public class Converter : MonoBehaviour
         }
         else if (!File.Exists(path4))
         {
-            _errorLog = path4 + " is not exists";
+            _errorLog = path4 + " " + _localization.GetTexts(Localization.NOT_FOUND);
 
             Debug.Log(_errorLog);
 
@@ -1351,9 +1351,9 @@ public class Converter : MonoBehaviour
                 _itemContainer.slots = text.Replace("    Slots: ", string.Empty);
             // Jobs
             else if (_itemContainer.isJob && text.Contains("      All: true"))
-                _itemContainer.jobs += "ทุกอาชีพ, ";
+                _itemContainer.jobs += _localization.GetTexts(Localization.JOBS_ALL_JOB) + ", ";
             else if (_itemContainer.isJob && text.Contains("      All: false"))
-                _itemContainer.jobs += "ทุกอาชีพ [x], ";
+                _itemContainer.jobs += _localization.GetTexts(Localization.JOBS_ALL_JOB) + " [x], ";
             else if (_itemContainer.isJob && text.Contains("      Acolyte: true"))
                 _itemContainer.jobs += "Acolyte, ";
             else if (_itemContainer.isJob && text.Contains("      Acolyte: false"))
@@ -1468,57 +1468,57 @@ public class Converter : MonoBehaviour
                 _itemContainer.jobs += "Wizard [x], ";
             // Classes
             else if (_itemContainer.isClass && text.Contains("      All: true"))
-                _itemContainer.classes += "ทุกคลาส, ";
+                _itemContainer.classes += _localization.GetTexts(Localization.CLASSES_ALL_CLASS) + ", ";
             else if (_itemContainer.isClass && text.Contains("      All: false"))
-                _itemContainer.classes += "ทุกคลาส [x], ";
+                _itemContainer.classes += _localization.GetTexts(Localization.CLASSES_ALL_CLASS) + " [x], ";
             else if (_itemContainer.isClass && text.Contains("      Normal: true"))
-                _itemContainer.classes += "คลาส 1, ";
+                _itemContainer.classes += _localization.GetTexts(Localization.CLASSES_CLASS) + " 1, ";
             else if (_itemContainer.isClass && text.Contains("      Normal: false"))
-                _itemContainer.classes += "คลาส 1 [x], ";
+                _itemContainer.classes += _localization.GetTexts(Localization.CLASSES_CLASS) + " 1 [x], ";
             else if (_itemContainer.isClass && text.Contains("      Upper: true"))
-                _itemContainer.classes += "คลาส 2, ";
+                _itemContainer.classes += _localization.GetTexts(Localization.CLASSES_CLASS) + " 2, ";
             else if (_itemContainer.isClass && text.Contains("      Upper: false"))
-                _itemContainer.classes += "คลาส 2 [x], ";
+                _itemContainer.classes += _localization.GetTexts(Localization.CLASSES_CLASS) + " 2 [x], ";
             else if (_itemContainer.isClass && text.Contains("      Baby: true"))
-                _itemContainer.classes += "คลาส 1 หรือ 2 Baby, ";
+                _itemContainer.classes += _localization.GetTexts(Localization.CLASSES_CLASS) + " 1 " + _localization.GetTexts(Localization.OR) + " 2 " + _localization.GetTexts(Localization.CLASSES_BABY) + ", ";
             else if (_itemContainer.isClass && text.Contains("      Baby: false"))
-                _itemContainer.classes += "คลาส 1 หรือ 2 Baby [x], ";
+                _itemContainer.classes += _localization.GetTexts(Localization.CLASSES_CLASS) + " 1 " + _localization.GetTexts(Localization.OR) + " 2 " + _localization.GetTexts(Localization.CLASSES_BABY) + " [x], ";
             else if (_itemContainer.isClass && text.Contains("      Third: true"))
-                _itemContainer.classes += "คลาส 3, ";
+                _itemContainer.classes += _localization.GetTexts(Localization.CLASSES_CLASS) + " 3, ";
             else if (_itemContainer.isClass && text.Contains("      Third: false"))
-                _itemContainer.classes += "คลาส 3 [x], ";
+                _itemContainer.classes += _localization.GetTexts(Localization.CLASSES_CLASS) + " 3 [x], ";
             else if (_itemContainer.isClass && text.Contains("      Third_Upper: true"))
-                _itemContainer.classes += "คลาส 3 Trans, ";
+                _itemContainer.classes += _localization.GetTexts(Localization.CLASSES_CLASS) + " 3 " + _localization.GetTexts(Localization.CLASSES_TRANS) + ", ";
             else if (_itemContainer.isClass && text.Contains("      Third_Upper: false"))
-                _itemContainer.classes += "คลาส 3 Trans [x], ";
+                _itemContainer.classes += _localization.GetTexts(Localization.CLASSES_CLASS) + " 3 " + _localization.GetTexts(Localization.CLASSES_TRANS) + " [x], ";
             else if (_itemContainer.isClass && text.Contains("      Third_Baby: true"))
-                _itemContainer.classes += "คลาส 3 Baby, ";
+                _itemContainer.classes += _localization.GetTexts(Localization.CLASSES_CLASS) + " 3 " + _localization.GetTexts(Localization.CLASSES_BABY) + ", ";
             else if (_itemContainer.isClass && text.Contains("      Third_Baby: false"))
-                _itemContainer.classes += "คลาส 3 Baby [x], ";
+                _itemContainer.classes += _localization.GetTexts(Localization.CLASSES_CLASS) + " 3 " + _localization.GetTexts(Localization.CLASSES_BABY) + " [x], ";
             else if (_itemContainer.isClass && text.Contains("      All_Upper: true"))
-                _itemContainer.classes += "คลาส 2 หรือคลาส 3 Trans, ";
+                _itemContainer.classes += _localization.GetTexts(Localization.CLASSES_CLASS) + " 2 " + _localization.GetTexts(Localization.OR) + _localization.GetTexts(Localization.CLASSES_CLASS) + " 3 " + _localization.GetTexts(Localization.CLASSES_TRANS) + ", ";
             else if (_itemContainer.isClass && text.Contains("      All_Upper: false"))
-                _itemContainer.classes += "คลาส 2 หรือคลาส 3 Trans [x], ";
+                _itemContainer.classes += _localization.GetTexts(Localization.CLASSES_CLASS) + " 2 " + _localization.GetTexts(Localization.OR) + _localization.GetTexts(Localization.CLASSES_CLASS) + " 3 " + _localization.GetTexts(Localization.CLASSES_TRANS) + " [x], ";
             else if (_itemContainer.isClass && text.Contains("      All_Baby: true"))
-                _itemContainer.classes += "คลาส Baby, ";
+                _itemContainer.classes += _localization.GetTexts(Localization.CLASSES_CLASS) + " " + _localization.GetTexts(Localization.CLASSES_BABY) + ", ";
             else if (_itemContainer.isClass && text.Contains("      All_Baby: false"))
-                _itemContainer.classes += "คลาส Baby [x], ";
+                _itemContainer.classes += _localization.GetTexts(Localization.CLASSES_CLASS) + " " + _localization.GetTexts(Localization.CLASSES_BABY) + " [x], ";
             else if (_itemContainer.isClass && text.Contains("      All_Third: true"))
-                _itemContainer.classes += "คลาส 3, ";
+                _itemContainer.classes += _localization.GetTexts(Localization.CLASSES_CLASS) + " 3, ";
             else if (_itemContainer.isClass && text.Contains("      All_Third: false"))
-                _itemContainer.classes += "คลาส 3 [x], ";
+                _itemContainer.classes += _localization.GetTexts(Localization.CLASSES_CLASS) + " 3 [x], ";
             else if (_itemContainer.isClass && text.Contains("      Fourth: true"))
-                _itemContainer.classes += "คลาส 4, ";
+                _itemContainer.classes += _localization.GetTexts(Localization.CLASSES_CLASS) + " 4, ";
             else if (_itemContainer.isClass && text.Contains("      Fourth: false"))
-                _itemContainer.classes += "คลาส 4 [x], ";
+                _itemContainer.classes += _localization.GetTexts(Localization.CLASSES_CLASS) + " 4 [x], ";
             else if (_itemContainer.isClass && text.Contains("      Fourth_Baby: true"))
-                _itemContainer.classes += "คลาส 4 Baby, ";
+                _itemContainer.classes += _localization.GetTexts(Localization.CLASSES_CLASS) + " 4 " + _localization.GetTexts(Localization.CLASSES_BABY) + ", ";
             else if (_itemContainer.isClass && text.Contains("      Fourth_Baby: false"))
-                _itemContainer.classes += "คลาส 4 Baby [x], ";
+                _itemContainer.classes += _localization.GetTexts(Localization.CLASSES_CLASS) + " 4 " + _localization.GetTexts(Localization.CLASSES_BABY) + " [x], ";
             else if (_itemContainer.isClass && text.Contains("      All_Fourth: true"))
-                _itemContainer.classes += "คลาส 4, ";
+                _itemContainer.classes += _localization.GetTexts(Localization.CLASSES_CLASS) + " 4, ";
             else if (_itemContainer.isClass && text.Contains("      All_Fourth: false"))
-                _itemContainer.classes += "คลาส 4 [x], ";
+                _itemContainer.classes += _localization.GetTexts(Localization.CLASSES_CLASS) + " 4 [x], ";
             // Gender
             else if (text.Contains("      Female: true"))
                 _itemContainer.gender += "หญิง, ";

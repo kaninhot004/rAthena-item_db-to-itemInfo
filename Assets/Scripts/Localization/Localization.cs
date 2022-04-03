@@ -10,6 +10,9 @@ public class Localization : MonoBehaviour
     public const string ENGLISH = "ENGLISH";
 
     public const string ERROR = "ERROR";
+    public const string NOT_FOUND = "NOT_FOUND";
+
+    public const string OR = "OR";
 
     public const string CONVERT_PROGRESSION_START = "CONVERT_PROGRESSION_START";
     public const string CONVERT_PROGRESSION_FETCHING_ITEM = "CONVERT_PROGRESSION_FETCHING_ITEM";
@@ -20,6 +23,12 @@ public class Localization : MonoBehaviour
     public const string CONVERT_PROGRESSION_FETCHING_ITEM_COMBO = "CONVERT_PROGRESSION_FETCHING_ITEM_COMBO";
     public const string CONVERT_PROGRESSION_FETCHING_RESOURCE_NAME_WITH_TYPE = "CONVERT_PROGRESSION_FETCHING_RESOURCE_NAME_WITH_TYPE";
     public const string CONVERT_PROGRESSION_FETCHING_PLEASE_WAIT = "CONVERT_PROGRESSION_FETCHING_PLEASE_WAIT";
+
+    public const string JOBS_ALL_JOB = "JOBS_ALL_JOB";
+    public const string CLASSES_ALL_CLASS = "CLASSES_ALL_CLASS";
+    public const string CLASSES_CLASS = "CLASSES_CLASS";
+    public const string CLASSES_BABY = "CLASSES_BABY";
+    public const string CLASSES_TRANS = "CLASSES_TRANS";
 
     public const string AUTO_BONUS_3 = "AUTO_BONUS_3";
 

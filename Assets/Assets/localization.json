@@ -5,6 +5,12 @@
                     "key": "ERROR",
                     "texts": "Error"
                 }, {
+                    "key": "NOT_FOUND",
+                    "texts": "not found"
+                },{
+                    "key": "OR",
+                    "texts": "หรือ"
+                }, {
                     "key": "CONVERT_PROGRESSION_START",
                     "texts": "Starting now"
                 }, {
@@ -28,6 +34,21 @@
                 },{
                     "key": "CONVERT_PROGRESSION_FETCHING_RESOURCE_NAME_WITH_TYPE",
                     "texts": "Fetching resource name with type"
+                }, {
+                    "key": "JOBS_ALL_JOB",
+                    "texts": "ทุกอาชีพ"
+                },{
+                    "key": "CLASSES_ALL_CLASS",
+                    "texts": "ทุกคลาส"
+                },{
+                    "key": "CLASSES_CLASS",
+                    "texts": "คลาส"
+                }, {
+                    "key": "CLASSES_BABY",
+                    "texts": "Baby"
+                },{
+                    "key": "CLASSES_TRANS",
+                    "texts": "Trans"
                 }, {
                     "key": "CONVERT_PROGRESSION_FETCHING_PLEASE_WAIT",
                     "texts": "Please wait"
