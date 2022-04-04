@@ -1735,27 +1735,27 @@ public class Converter : MonoBehaviour
                     : string.Empty;
 
                 var equipBonuses = !string.IsNullOrEmpty(_itemContainer.equipScript)
-                    ? "			\"^666478[เมื่อสวมใส่]^000000\",\n"
+                    ? "			\"^666478[" + _localization.GetTexts(Localization.WHEN_EQUIP) + "]^000000\",\n"
                     + _itemContainer.equipScript
                     : string.Empty;
 
                 var unequipBonuses = !string.IsNullOrEmpty(_itemContainer.unequipScript)
-                    ? "			\"^666478[เมื่อถอด]^000000\",\n"
+                    ? "			\"^666478[" + _localization.GetTexts(Localization.WHEN_UNEQUIP) + "]^000000\",\n"
                     + _itemContainer.unequipScript
                     : string.Empty;
 
                 var description = "			\"^3F28FFID:^000000 " + _itemContainer.id + "\",\n"
-                    + "			\"^3F28FFประเภท:^000000 " + _itemContainer.type + "\",\n";
+                    + "			\"^3F28FF" + _localization.GetTexts(Localization.TYPE) + ":^000000 " + _itemContainer.type + "\",\n";
 
                 if (!string.IsNullOrEmpty(_itemContainer.subType))
-                    description += "			\"^3F28FFประเภทรอง:^000000 " + _itemContainer.subType + "\",\n";
+                    description += "			\"^3F28FF" + _localization.GetTexts(Localization.SUB_TYPE) + ":^000000 " + _itemContainer.subType + "\",\n";
                 else if (_isZeroValuePrintable)
-                    description += "			\"^3F28FFประเภทรอง:^000000 -\",\n";
+                    description += "			\"^3F28FF" + _localization.GetTexts(Localization.SUB_TYPE) + ":^000000 -\",\n";
 
                 if (!string.IsNullOrEmpty(_itemContainer.locations))
-                    description += "			\"^3F28FFตำแหน่ง:^000000 " + _itemContainer.locations.Substring(0, _itemContainer.locations.Length - 2) + "\",\n";
+                    description += "			\"^3F28FF" + _localization.GetTexts(Localization.LOCATION) + ":^000000 " + _itemContainer.locations.Substring(0, _itemContainer.locations.Length - 2) + "\",\n";
                 else if (_isZeroValuePrintable)
-                    description += "			\"^3F28FFตำแหน่ง:^000000 -\",\n";
+                    description += "			\"^3F28FF" + _localization.GetTexts(Localization.LOCATION) + ":^000000 -\",\n";
 
                 if (!string.IsNullOrEmpty(_itemContainer.jobs))
                     description += "			\"^3F28FFอาชีพ:^000000 " + _itemContainer.jobs.Substring(0, _itemContainer.jobs.Length - 2) + "\",\n";

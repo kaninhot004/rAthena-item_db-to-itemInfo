@@ -137,6 +137,21 @@
                     "key": "LOCATION_BOTH_ACCESSORY",
                     "texts": "ประดับสองข้าง"
                 }, {
+                    "key": "WHEN_EQUIP",
+                    "texts": "เมื่อสวมใส่"
+                }, {
+                    "key": "WHEN_UNEQUIP",
+                    "texts": "เมื่อถอด"
+                }, {
+                    "key": "TYPE",
+                    "texts": "ประเภท"
+                }, {
+                    "key": "SUB_TYPE",
+                    "texts": "ประเภทรอง"
+                }, {
+                    "key": "LOCATION",
+                    "texts": "ตำแหน่ง"
+                }, {
                     "key": "AUTO_BONUS_3",
                     "texts": "เมื่อใช้ {1} มีโอกาสเล็กน้อย ที่จะ {0} ชั่วคราว"
                 }

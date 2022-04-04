@@ -58,6 +58,12 @@ public class Localization : MonoBehaviour
     public const string LOCATION_BOTH_HAND = "LOCATION_BOTH_HAND";
     public const string LOCATION_BOTH_ACCESSORY = "LOCATION_BOTH_ACCESSORY";
 
+    public const string WHEN_EQUIP = "WHEN_EQUIP";
+    public const string WHEN_UNEQUIP = "WHEN_UNEQUIP";
+    public const string TYPE = "TYPE";
+    public const string SUB_TYPE = "SUB_TYPE";
+    public const string LOCATION = "LOCATION";
+
     public const string AUTO_BONUS_3 = "AUTO_BONUS_3";
 
     [Serializable]
