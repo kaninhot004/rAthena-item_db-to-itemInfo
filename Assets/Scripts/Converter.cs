@@ -1472,53 +1472,53 @@ public class Converter : MonoBehaviour
             else if (_itemContainer.isClass && text.Contains("      All: false"))
                 _itemContainer.classes += _localization.GetTexts(Localization.CLASSES_ALL_CLASS) + " [x], ";
             else if (_itemContainer.isClass && text.Contains("      Normal: true"))
-                _itemContainer.classes += _localization.GetTexts(Localization.CLASSES_CLASS) + " 1, ";
+                _itemContainer.classes += _localization.GetTexts(Localization.CLASS) + " 1, ";
             else if (_itemContainer.isClass && text.Contains("      Normal: false"))
-                _itemContainer.classes += _localization.GetTexts(Localization.CLASSES_CLASS) + " 1 [x], ";
+                _itemContainer.classes += _localization.GetTexts(Localization.CLASS) + " 1 [x], ";
             else if (_itemContainer.isClass && text.Contains("      Upper: true"))
-                _itemContainer.classes += _localization.GetTexts(Localization.CLASSES_CLASS) + " 2, ";
+                _itemContainer.classes += _localization.GetTexts(Localization.CLASS) + " 2, ";
             else if (_itemContainer.isClass && text.Contains("      Upper: false"))
-                _itemContainer.classes += _localization.GetTexts(Localization.CLASSES_CLASS) + " 2 [x], ";
+                _itemContainer.classes += _localization.GetTexts(Localization.CLASS) + " 2 [x], ";
             else if (_itemContainer.isClass && text.Contains("      Baby: true"))
-                _itemContainer.classes += _localization.GetTexts(Localization.CLASSES_CLASS) + " 1 " + _localization.GetTexts(Localization.OR) + " 2 " + _localization.GetTexts(Localization.CLASSES_BABY) + ", ";
+                _itemContainer.classes += _localization.GetTexts(Localization.CLASS) + " 1 " + _localization.GetTexts(Localization.OR) + " 2 " + _localization.GetTexts(Localization.CLASSES_BABY) + ", ";
             else if (_itemContainer.isClass && text.Contains("      Baby: false"))
-                _itemContainer.classes += _localization.GetTexts(Localization.CLASSES_CLASS) + " 1 " + _localization.GetTexts(Localization.OR) + " 2 " + _localization.GetTexts(Localization.CLASSES_BABY) + " [x], ";
+                _itemContainer.classes += _localization.GetTexts(Localization.CLASS) + " 1 " + _localization.GetTexts(Localization.OR) + " 2 " + _localization.GetTexts(Localization.CLASSES_BABY) + " [x], ";
             else if (_itemContainer.isClass && text.Contains("      Third: true"))
-                _itemContainer.classes += _localization.GetTexts(Localization.CLASSES_CLASS) + " 3, ";
+                _itemContainer.classes += _localization.GetTexts(Localization.CLASS) + " 3, ";
             else if (_itemContainer.isClass && text.Contains("      Third: false"))
-                _itemContainer.classes += _localization.GetTexts(Localization.CLASSES_CLASS) + " 3 [x], ";
+                _itemContainer.classes += _localization.GetTexts(Localization.CLASS) + " 3 [x], ";
             else if (_itemContainer.isClass && text.Contains("      Third_Upper: true"))
-                _itemContainer.classes += _localization.GetTexts(Localization.CLASSES_CLASS) + " 3 " + _localization.GetTexts(Localization.CLASSES_TRANS) + ", ";
+                _itemContainer.classes += _localization.GetTexts(Localization.CLASS) + " 3 " + _localization.GetTexts(Localization.CLASSES_TRANS) + ", ";
             else if (_itemContainer.isClass && text.Contains("      Third_Upper: false"))
-                _itemContainer.classes += _localization.GetTexts(Localization.CLASSES_CLASS) + " 3 " + _localization.GetTexts(Localization.CLASSES_TRANS) + " [x], ";
+                _itemContainer.classes += _localization.GetTexts(Localization.CLASS) + " 3 " + _localization.GetTexts(Localization.CLASSES_TRANS) + " [x], ";
             else if (_itemContainer.isClass && text.Contains("      Third_Baby: true"))
-                _itemContainer.classes += _localization.GetTexts(Localization.CLASSES_CLASS) + " 3 " + _localization.GetTexts(Localization.CLASSES_BABY) + ", ";
+                _itemContainer.classes += _localization.GetTexts(Localization.CLASS) + " 3 " + _localization.GetTexts(Localization.CLASSES_BABY) + ", ";
             else if (_itemContainer.isClass && text.Contains("      Third_Baby: false"))
-                _itemContainer.classes += _localization.GetTexts(Localization.CLASSES_CLASS) + " 3 " + _localization.GetTexts(Localization.CLASSES_BABY) + " [x], ";
+                _itemContainer.classes += _localization.GetTexts(Localization.CLASS) + " 3 " + _localization.GetTexts(Localization.CLASSES_BABY) + " [x], ";
             else if (_itemContainer.isClass && text.Contains("      All_Upper: true"))
-                _itemContainer.classes += _localization.GetTexts(Localization.CLASSES_CLASS) + " 2 " + _localization.GetTexts(Localization.OR) + _localization.GetTexts(Localization.CLASSES_CLASS) + " 3 " + _localization.GetTexts(Localization.CLASSES_TRANS) + ", ";
+                _itemContainer.classes += _localization.GetTexts(Localization.CLASS) + " 2 " + _localization.GetTexts(Localization.OR) + _localization.GetTexts(Localization.CLASS) + " 3 " + _localization.GetTexts(Localization.CLASSES_TRANS) + ", ";
             else if (_itemContainer.isClass && text.Contains("      All_Upper: false"))
-                _itemContainer.classes += _localization.GetTexts(Localization.CLASSES_CLASS) + " 2 " + _localization.GetTexts(Localization.OR) + _localization.GetTexts(Localization.CLASSES_CLASS) + " 3 " + _localization.GetTexts(Localization.CLASSES_TRANS) + " [x], ";
+                _itemContainer.classes += _localization.GetTexts(Localization.CLASS) + " 2 " + _localization.GetTexts(Localization.OR) + _localization.GetTexts(Localization.CLASS) + " 3 " + _localization.GetTexts(Localization.CLASSES_TRANS) + " [x], ";
             else if (_itemContainer.isClass && text.Contains("      All_Baby: true"))
-                _itemContainer.classes += _localization.GetTexts(Localization.CLASSES_CLASS) + " " + _localization.GetTexts(Localization.CLASSES_BABY) + ", ";
+                _itemContainer.classes += _localization.GetTexts(Localization.CLASS) + " " + _localization.GetTexts(Localization.CLASSES_BABY) + ", ";
             else if (_itemContainer.isClass && text.Contains("      All_Baby: false"))
-                _itemContainer.classes += _localization.GetTexts(Localization.CLASSES_CLASS) + " " + _localization.GetTexts(Localization.CLASSES_BABY) + " [x], ";
+                _itemContainer.classes += _localization.GetTexts(Localization.CLASS) + " " + _localization.GetTexts(Localization.CLASSES_BABY) + " [x], ";
             else if (_itemContainer.isClass && text.Contains("      All_Third: true"))
-                _itemContainer.classes += _localization.GetTexts(Localization.CLASSES_CLASS) + " 3, ";
+                _itemContainer.classes += _localization.GetTexts(Localization.CLASS) + " 3, ";
             else if (_itemContainer.isClass && text.Contains("      All_Third: false"))
-                _itemContainer.classes += _localization.GetTexts(Localization.CLASSES_CLASS) + " 3 [x], ";
+                _itemContainer.classes += _localization.GetTexts(Localization.CLASS) + " 3 [x], ";
             else if (_itemContainer.isClass && text.Contains("      Fourth: true"))
-                _itemContainer.classes += _localization.GetTexts(Localization.CLASSES_CLASS) + " 4, ";
+                _itemContainer.classes += _localization.GetTexts(Localization.CLASS) + " 4, ";
             else if (_itemContainer.isClass && text.Contains("      Fourth: false"))
-                _itemContainer.classes += _localization.GetTexts(Localization.CLASSES_CLASS) + " 4 [x], ";
+                _itemContainer.classes += _localization.GetTexts(Localization.CLASS) + " 4 [x], ";
             else if (_itemContainer.isClass && text.Contains("      Fourth_Baby: true"))
-                _itemContainer.classes += _localization.GetTexts(Localization.CLASSES_CLASS) + " 4 " + _localization.GetTexts(Localization.CLASSES_BABY) + ", ";
+                _itemContainer.classes += _localization.GetTexts(Localization.CLASS) + " 4 " + _localization.GetTexts(Localization.CLASSES_BABY) + ", ";
             else if (_itemContainer.isClass && text.Contains("      Fourth_Baby: false"))
-                _itemContainer.classes += _localization.GetTexts(Localization.CLASSES_CLASS) + " 4 " + _localization.GetTexts(Localization.CLASSES_BABY) + " [x], ";
+                _itemContainer.classes += _localization.GetTexts(Localization.CLASS) + " 4 " + _localization.GetTexts(Localization.CLASSES_BABY) + " [x], ";
             else if (_itemContainer.isClass && text.Contains("      All_Fourth: true"))
-                _itemContainer.classes += _localization.GetTexts(Localization.CLASSES_CLASS) + " 4, ";
+                _itemContainer.classes += _localization.GetTexts(Localization.CLASS) + " 4, ";
             else if (_itemContainer.isClass && text.Contains("      All_Fourth: false"))
-                _itemContainer.classes += _localization.GetTexts(Localization.CLASSES_CLASS) + " 4 [x], ";
+                _itemContainer.classes += _localization.GetTexts(Localization.CLASS) + " 4 [x], ";
             // Gender
             else if (text.Contains("      Female: true"))
                 _itemContainer.gender += _localization.GetTexts(Localization.GENDER_FEMALE) + ", ";
@@ -1758,49 +1758,49 @@ public class Converter : MonoBehaviour
                     description += "			\"^3F28FF" + _localization.GetTexts(Localization.LOCATION) + ":^000000 -\",\n";
 
                 if (!string.IsNullOrEmpty(_itemContainer.jobs))
-                    description += "			\"^3F28FFอาชีพ:^000000 " + _itemContainer.jobs.Substring(0, _itemContainer.jobs.Length - 2) + "\",\n";
+                    description += "			\"^3F28FF" + _localization.GetTexts(Localization.JOB) + ":^000000 " + _itemContainer.jobs.Substring(0, _itemContainer.jobs.Length - 2) + "\",\n";
                 else if (_isZeroValuePrintable)
-                    description += "			\"^3F28FFอาชีพ:^000000 -\",\n";
+                    description += "			\"^3F28FF" + _localization.GetTexts(Localization.JOB) + ":^000000 -\",\n";
 
                 if (!string.IsNullOrEmpty(_itemContainer.classes))
-                    description += "			\"^3F28FFคลาส:^000000 " + _itemContainer.classes.Substring(0, _itemContainer.classes.Length - 2) + "\",\n";
+                    description += "			\"^3F28FF" + _localization.GetTexts(Localization.CLASS) + ":^000000 " + _itemContainer.classes.Substring(0, _itemContainer.classes.Length - 2) + "\",\n";
                 else if (_isZeroValuePrintable)
-                    description += "			\"^3F28FFคลาส:^000000 -\",\n";
+                    description += "			\"^3F28FF" + _localization.GetTexts(Localization.CLASS) + ":^000000 -\",\n";
 
                 if (!string.IsNullOrEmpty(_itemContainer.gender))
-                    description += "			\"^3F28FFเพศ:^000000 " + _itemContainer.gender.Substring(0, _itemContainer.gender.Length - 2) + "\",\n";
+                    description += "			\"^3F28FF" + _localization.GetTexts(Localization.GENDER) + ":^000000 " + _itemContainer.gender.Substring(0, _itemContainer.gender.Length - 2) + "\",\n";
                 else if (_isZeroValuePrintable)
-                    description += "			\"^3F28FFเพศ:^000000 -\",\n";
+                    description += "			\"^3F28FF" + _localization.GetTexts(Localization.GENDER) + ":^000000 -\",\n";
 
                 if (!string.IsNullOrEmpty(_itemContainer.attack))
-                    description += "			\"^3F28FFโจมตี:^000000 " + _itemContainer.attack + "\",\n";
+                    description += "			\"^3F28FF" + _localization.GetTexts(Localization.ATTACK) + ":^000000 " + _itemContainer.attack + "\",\n";
                 else if (_isZeroValuePrintable)
-                    description += "			\"^3F28FFโจมตี:^000000 -\",\n";
+                    description += "			\"^3F28FF" + _localization.GetTexts(Localization.ATTACK) + ":^000000 -\",\n";
 
                 if (!string.IsNullOrEmpty(_itemContainer.magicAttack))
-                    description += "			\"^3F28FFโจมตีเวทย์:^000000 " + _itemContainer.magicAttack + "\",\n";
+                    description += "			\"^3F28FF" + _localization.GetTexts(Localization.MAGIC_ATTACK) + ":^000000 " + _itemContainer.magicAttack + "\",\n";
                 else if (_isZeroValuePrintable)
-                    description += "			\"^3F28FFโจมตีเวทย์:^000000 -\",\n";
+                    description += "			\"^3F28FF" + _localization.GetTexts(Localization.MAGIC_ATTACK) + ":^000000 -\",\n";
 
                 if (!string.IsNullOrEmpty(_itemContainer.defense))
-                    description += "			\"^3F28FFป้องกัน:^000000 " + _itemContainer.defense + "\",\n";
+                    description += "			\"^3F28FF" + _localization.GetTexts(Localization.DEFENSE) + ":^000000 " + _itemContainer.defense + "\",\n";
                 else if (_isZeroValuePrintable)
-                    description += "			\"^3F28FFป้องกัน:^000000 -\",\n";
+                    description += "			\"^3F28FF" + _localization.GetTexts(Localization.DEFENSE) + ":^000000 -\",\n";
 
                 if (!string.IsNullOrEmpty(_itemContainer.range))
-                    description += "			\"^3F28FFระยะตี:^000000 " + _itemContainer.range + "\",\n";
+                    description += "			\"^3F28FF" + _localization.GetTexts(Localization.RANGE) + ":^000000 " + _itemContainer.range + "\",\n";
                 else if (_isZeroValuePrintable)
-                    description += "			\"^3F28FFระยะตี:^000000 -\",\n";
+                    description += "			\"^3F28FF" + _localization.GetTexts(Localization.RANGE) + ":^000000 -\",\n";
 
                 if (!string.IsNullOrEmpty(_itemContainer.weaponLevel))
-                    description += "			\"^3F28FFเลเวลอาวุธ:^000000 " + _itemContainer.weaponLevel + "\",\n";
+                    description += "			\"^3F28FF" + _localization.GetTexts(Localization.WEAPON_LEVEL) + ":^000000 " + _itemContainer.weaponLevel + "\",\n";
                 else if (_isZeroValuePrintable)
-                    description += "			\"^3F28FFเลเวลอาวุธ:^000000 -\",\n";
+                    description += "			\"^3F28FF" + _localization.GetTexts(Localization.WEAPON_LEVEL) + ":^000000 -\",\n";
 
                 if (!string.IsNullOrEmpty(_itemContainer.armorLevel))
-                    description += "			\"^3F28FFเลเวลชุดเกราะ:^000000 " + _itemContainer.armorLevel + "\",\n";
+                    description += "			\"^3F28FF" + _localization.GetTexts(Localization.ARMOR_LEVEL) + ":^000000 " + _itemContainer.armorLevel + "\",\n";
                 else if (_isZeroValuePrintable)
-                    description += "			\"^3F28FFเลเวลชุดเกราะ:^000000 -\",\n";
+                    description += "			\"^3F28FF" + _localization.GetTexts(Localization.ARMOR_LEVEL) + ":^000000 -\",\n";
 
                 if (!string.IsNullOrEmpty(_itemContainer.equipLevelMinimum))
                     description += "			\"^3F28FFเลเวลขั้นต่ำ:^000000 " + _itemContainer.equipLevelMinimum + "\",\n";

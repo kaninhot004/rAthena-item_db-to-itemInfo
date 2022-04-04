@@ -28,7 +28,6 @@ public class Localization : MonoBehaviour
 
     public const string JOBS_ALL_JOB = "JOBS_ALL_JOB";
     public const string CLASSES_ALL_CLASS = "CLASSES_ALL_CLASS";
-    public const string CLASSES_CLASS = "CLASSES_CLASS";
     public const string CLASSES_BABY = "CLASSES_BABY";
     public const string CLASSES_TRANS = "CLASSES_TRANS";
     public const string GENDER_FEMALE = "GENDER_FEMALE";
@@ -63,6 +62,15 @@ public class Localization : MonoBehaviour
     public const string TYPE = "TYPE";
     public const string SUB_TYPE = "SUB_TYPE";
     public const string LOCATION = "LOCATION";
+    public const string JOB = "JOB";
+    public const string CLASS = "CLASS";
+    public const string GENDER = "GENDER";
+    public const string ATTACK = "ATTACK";
+    public const string MAGIC_ATTACK = "MAGIC_ATTACK";
+    public const string DEFENSE = "DEFENSE";
+    public const string RANGE = "RANGE";
+    public const string WEAPON_LEVEL = "WEAPON_LEVEL";
+    public const string ARMOR_LEVEL = "ARMOR_LEVEL";
 
     public const string AUTO_BONUS_3 = "AUTO_BONUS_3";
 

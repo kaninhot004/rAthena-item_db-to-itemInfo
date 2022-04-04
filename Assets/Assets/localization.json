@@ -50,9 +50,6 @@
                     "key": "CLASSES_ALL_CLASS",
                     "texts": "ทุกคลาส"
                 }, {
-                    "key": "CLASSES_CLASS",
-                    "texts": "คลาส"
-                }, {
                     "key": "CLASSES_BABY",
                     "texts": "Baby"
                 }, {
@@ -151,6 +148,33 @@
                 }, {
                     "key": "LOCATION",
                     "texts": "ตำแหน่ง"
+                }, {
+                    "key": "JOB",
+                    "texts": "อาชีพ"
+                }, {
+                    "key": "CLASS",
+                    "texts": "คลาส"
+                }, {
+                    "key": "GENDER",
+                    "texts": "เพศ"
+                }, {
+                    "key": "ATTACK",
+                    "texts": "โจมตี"
+                }, {
+                    "key": "MAGIC_ATTACK",
+                    "texts": "โจมตีเวทย์"
+                }, {
+                    "key": "DEFENSE",
+                    "texts": "ป้องกัน"
+                }, {
+                    "key": "RANGE",
+                    "texts": "ระยะตี"
+                }, {
+                    "key": "WEAPON_LEVEL",
+                    "texts": "เลเวลอาวุธ"
+                }, {
+                    "key": "ARMOR_LEVEL",
+                    "texts": "เลเวลชุดเกราะ"
                 }, {
                     "key": "AUTO_BONUS_3",
                     "texts": "เมื่อใช้ {1} มีโอกาสเล็กน้อย ที่จะ {0} ชั่วคราว"
