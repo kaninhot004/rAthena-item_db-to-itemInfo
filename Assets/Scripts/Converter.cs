@@ -1803,29 +1803,29 @@ public class Converter : MonoBehaviour
                     description += "			\"^3F28FF" + _localization.GetTexts(Localization.ARMOR_LEVEL) + ":^000000 -\",\n";
 
                 if (!string.IsNullOrEmpty(_itemContainer.equipLevelMinimum))
-                    description += "			\"^3F28FFเลเวลขั้นต่ำ:^000000 " + _itemContainer.equipLevelMinimum + "\",\n";
+                    description += "			\"^3F28FF" + _localization.GetTexts(Localization.MINIMUM_EQUIP_LEVEL) + ":^000000 " + _itemContainer.equipLevelMinimum + "\",\n";
                 else if (_isZeroValuePrintable)
-                    description += "			\"^3F28FFเลเวลขั้นต่ำ:^000000 -\",\n";
+                    description += "			\"^3F28FF" + _localization.GetTexts(Localization.MINIMUM_EQUIP_LEVEL) + ":^000000 -\",\n";
 
                 if (!string.IsNullOrEmpty(_itemContainer.equipLevelMaximum))
-                    description += "			\"^3F28FFเลเวลสูงสุด:^000000 " + _itemContainer.equipLevelMaximum + "\",\n";
+                    description += "			\"^3F28FF" + _localization.GetTexts(Localization.MAXIMUM_EQUIP_LEVEL) + ":^000000 " + _itemContainer.equipLevelMaximum + "\",\n";
                 else if (_isZeroValuePrintable)
-                    description += "			\"^3F28FFเลเวลสูงสุด:^000000 -\",\n";
+                    description += "			\"^3F28FF" + _localization.GetTexts(Localization.MAXIMUM_EQUIP_LEVEL) + ":^000000 -\",\n";
 
                 if (!string.IsNullOrEmpty(_itemContainer.refinable))
-                    description += "			\"^3F28FFตีบวก:^000000 " + _itemContainer.refinable + "\",\n";
+                    description += "			\"^3F28FF" + _localization.GetTexts(Localization.REFINABLE) + ":^000000 " + _itemContainer.refinable + "\",\n";
                 else if (_isZeroValuePrintable)
-                    description += "			\"^3F28FFตีบวก:^000000 -\",\n";
+                    description += "			\"^3F28FF" + _localization.GetTexts(Localization.REFINABLE) + ":^000000 -\",\n";
 
                 if (!string.IsNullOrEmpty(_itemContainer.weight))
-                    description += "			\"^3F28FFน้ำหนัก:^000000 " + _itemContainer.weight + "\",\n";
+                    description += "			\"^3F28FF" + _localization.GetTexts(Localization.WEIGHT) + ":^000000 " + _itemContainer.weight + "\",\n";
                 else if (_isZeroValuePrintable)
-                    description += "			\"^3F28FFน้ำหนัก:^000000 -\",\n";
+                    description += "			\"^3F28FF" + _localization.GetTexts(Localization.WEIGHT) + ":^000000 -\",\n";
 
                 if (!string.IsNullOrEmpty(_itemContainer.buy))
-                    description += "			\"^3F28FFราคา:^000000 " + _itemContainer.buy + "\",\n";
+                    description += "			\"^3F28FF" + _localization.GetTexts(Localization.PRICE) + ":^000000 " + _itemContainer.buy + "\",\n";
                 else if (_isZeroValuePrintable)
-                    description += "			\"^3F28FFราคา:^000000 -\",\n";
+                    description += "			\"^3F28FF" + _localization.GetTexts(Localization.PRICE) + ":^000000 -\",\n";
 
                 builder.Append(bonuses);
 

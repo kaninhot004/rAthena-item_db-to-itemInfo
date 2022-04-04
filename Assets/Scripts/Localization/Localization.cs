@@ -71,6 +71,11 @@ public class Localization : MonoBehaviour
     public const string RANGE = "RANGE";
     public const string WEAPON_LEVEL = "WEAPON_LEVEL";
     public const string ARMOR_LEVEL = "ARMOR_LEVEL";
+    public const string MINIMUM_EQUIP_LEVEL = "MINIMUM_EQUIP_LEVEL";
+    public const string MAXIMUM_EQUIP_LEVEL = "MAXIMUM_EQUIP_LEVEL";
+    public const string REFINABLE = "REFINABLE";
+    public const string WEIGHT = "WEIGHT";
+    public const string PRICE = "PRICE";
 
     public const string AUTO_BONUS_3 = "AUTO_BONUS_3";
 

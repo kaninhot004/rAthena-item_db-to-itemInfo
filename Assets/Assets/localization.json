@@ -176,6 +176,21 @@
                     "key": "ARMOR_LEVEL",
                     "texts": "เลเวลชุดเกราะ"
                 }, {
+                    "key": "MINIMUM_EQUIP_LEVEL",
+                    "texts": "เลเวลขั้นต่ำ"
+                },{
+                    "key": "MAXIMUM_EQUIP_LEVEL",
+                    "texts": "เลเวลสูงสุด"
+                },{
+                    "key": "REFINABLE",
+                    "texts": "ตีบวก"
+                }, {
+                    "key": "WEIGHT",
+                    "texts": "น้ำหนัก"
+                }, {
+                    "key": "PRICE",
+                    "texts": "ราคา"
+                }, {
                     "key": "AUTO_BONUS_3",
                     "texts": "เมื่อใช้ {1} มีโอกาสเล็กน้อย ที่จะ {0} ชั่วคราว"
                 }
