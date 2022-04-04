@@ -1521,130 +1521,130 @@ public class Converter : MonoBehaviour
                 _itemContainer.classes += _localization.GetTexts(Localization.CLASSES_CLASS) + " 4 [x], ";
             // Gender
             else if (text.Contains("      Female: true"))
-                _itemContainer.gender += "หญิง, ";
+                _itemContainer.gender += _localization.GetTexts(Localization.GENDER_FEMALE) + ", ";
             else if (text.Contains("      Female: false"))
-                _itemContainer.gender += "หญิง [x], ";
+                _itemContainer.gender += _localization.GetTexts(Localization.GENDER_FEMALE) + " [x], ";
             else if (text.Contains("      Male: true"))
-                _itemContainer.gender += "ชาย, ";
+                _itemContainer.gender += _localization.GetTexts(Localization.GENDER_MALE) + ", ";
             else if (text.Contains("      Male: false"))
-                _itemContainer.gender += "ชาย [x], ";
+                _itemContainer.gender += _localization.GetTexts(Localization.GENDER_MALE) + " [x], ";
             else if (text.Contains("      Both: true"))
-                _itemContainer.gender += "ทุกเพศ, ";
+                _itemContainer.gender += _localization.GetTexts(Localization.GENDER_ALL) + ", ";
             else if (text.Contains("      Both: false"))
-                _itemContainer.gender += "ทุกเพศ [x], ";
+                _itemContainer.gender += _localization.GetTexts(Localization.GENDER_ALL) + " [x], ";
             // Location
             else if (text.Contains("      Head_Top: true"))
-                _itemContainer.locations += "หมวกส่วนบน, ";
+                _itemContainer.locations += _localization.GetTexts(Localization.LOCATION_HEAD_TOP) + ", ";
             else if (text.Contains("      Head_Top: false"))
-                _itemContainer.locations += "หมวกส่วนบน [x], ";
+                _itemContainer.locations += _localization.GetTexts(Localization.LOCATION_HEAD_TOP) + " [x], ";
             else if (text.Contains("      Head_Mid: true"))
-                _itemContainer.locations += "หมวกส่วนกลาง, ";
+                _itemContainer.locations += _localization.GetTexts(Localization.LOCATION_HEAD_MID) + ", ";
             else if (text.Contains("      Head_Mid: false"))
-                _itemContainer.locations += "หมวกส่วนกลาง [x], ";
+                _itemContainer.locations += _localization.GetTexts(Localization.LOCATION_HEAD_MID) + " [x], ";
             else if (text.Contains("      Head_Low: true"))
-                _itemContainer.locations += "หมวกส่วนล่าง, ";
+                _itemContainer.locations += _localization.GetTexts(Localization.LOCATION_HEAD_LOW) + ", ";
             else if (text.Contains("      Head_Low: false"))
-                _itemContainer.locations += "หมวกส่วนล่าง [x], ";
+                _itemContainer.locations += _localization.GetTexts(Localization.LOCATION_HEAD_LOW) + " [x], ";
             else if (text.Contains("      Armor: true"))
-                _itemContainer.locations += "ชุดเกราะ, ";
+                _itemContainer.locations += _localization.GetTexts(Localization.LOCATION_ARMOR) + ", ";
             else if (text.Contains("      Armor: false"))
-                _itemContainer.locations += "ชุดเกราะ [x], ";
+                _itemContainer.locations += _localization.GetTexts(Localization.LOCATION_ARMOR) + " [x], ";
             else if (text.Contains("      Right_Hand: true"))
-                _itemContainer.locations += "มือขวา, ";
+                _itemContainer.locations += _localization.GetTexts(Localization.LOCATION_RIGHT_HAND) + ", ";
             else if (text.Contains("      Right_Hand: false"))
-                _itemContainer.locations += "มือขวา [x], ";
+                _itemContainer.locations += _localization.GetTexts(Localization.LOCATION_RIGHT_HAND) + " [x], ";
             else if (text.Contains("      Left_Hand: true"))
-                _itemContainer.locations += "มือซ้าย, ";
+                _itemContainer.locations += _localization.GetTexts(Localization.LOCATION_LEFT_HAND) + ", ";
             else if (text.Contains("      Left_Hand: false"))
-                _itemContainer.locations += "มือซ้าย [x], ";
+                _itemContainer.locations += _localization.GetTexts(Localization.LOCATION_LEFT_HAND) + " [x], ";
             else if (text.Contains("      Garment: true"))
-                _itemContainer.locations += "ผ้าคลุม, ";
+                _itemContainer.locations += _localization.GetTexts(Localization.LOCATION_GARMENT) + ", ";
             else if (text.Contains("      Garment: false"))
-                _itemContainer.locations += "ผ้าคลุม [x], ";
+                _itemContainer.locations += _localization.GetTexts(Localization.LOCATION_GARMENT) + " [x], ";
             else if (text.Contains("      Shoes: true"))
-                _itemContainer.locations += "รองเท้า, ";
+                _itemContainer.locations += _localization.GetTexts(Localization.LOCATION_SHOES) + ", ";
             else if (text.Contains("      Shoes: false"))
-                _itemContainer.locations += "รองเท้า [x], ";
+                _itemContainer.locations += _localization.GetTexts(Localization.LOCATION_SHOES) + " [x], ";
             else if (text.Contains("      Right_Accessory: true"))
-                _itemContainer.locations += "ประดับข้างขวา, ";
+                _itemContainer.locations += _localization.GetTexts(Localization.LOCATION_RIGHT_ACCESSORY) + ", ";
             else if (text.Contains("      Right_Accessory: false"))
-                _itemContainer.locations += "ประดับข้างขวา [x], ";
+                _itemContainer.locations += _localization.GetTexts(Localization.LOCATION_RIGHT_ACCESSORY) + " [x], ";
             else if (text.Contains("      Left_Accessory: true"))
-                _itemContainer.locations += "ประดับข้างซ้าย, ";
+                _itemContainer.locations += _localization.GetTexts(Localization.LOCATION_LEFT_ACCESSORY) + ", ";
             else if (text.Contains("      Left_Accessory: false"))
-                _itemContainer.locations += "ประดับข้างซ้าย [x], ";
+                _itemContainer.locations += _localization.GetTexts(Localization.LOCATION_LEFT_ACCESSORY) + " [x], ";
             else if (text.Contains("      Costume_Head_Top: true"))
             {
-                _itemContainer.locations += "หมวกส่วนบน Costume, ";
+                _itemContainer.locations += _localization.GetTexts(Localization.LOCATION_COSTUME_HEAD_TOP) + ", ";
 
                 if (!_itemListContainer.fashionCostumeIds.Contains(_itemContainer.id))
                     _itemListContainer.fashionCostumeIds.Add(_itemContainer.id);
             }
             else if (text.Contains("      Costume_Head_Top: false"))
-                _itemContainer.locations += "หมวกส่วนบน Costume [x], ";
+                _itemContainer.locations += _localization.GetTexts(Localization.LOCATION_COSTUME_HEAD_TOP) + " [x], ";
             else if (text.Contains("      Costume_Head_Mid: true"))
             {
-                _itemContainer.locations += "หมวกส่วนกลาง Costume, ";
+                _itemContainer.locations += _localization.GetTexts(Localization.LOCATION_COSTUME_HEAD_MID) + ", ";
 
                 if (!_itemListContainer.fashionCostumeIds.Contains(_itemContainer.id))
                     _itemListContainer.fashionCostumeIds.Add(_itemContainer.id);
             }
             else if (text.Contains("      Costume_Head_Mid: false"))
-                _itemContainer.locations += "หมวกส่วนกลาง Costume [x], ";
+                _itemContainer.locations += _localization.GetTexts(Localization.LOCATION_COSTUME_HEAD_MID) + " [x], ";
             else if (text.Contains("      Costume_Head_Low: true"))
             {
-                _itemContainer.locations += "หมวกส่วนล่าง Costume, ";
+                _itemContainer.locations += _localization.GetTexts(Localization.LOCATION_COSTUME_HEAD_LOW) + ", ";
 
                 if (!_itemListContainer.fashionCostumeIds.Contains(_itemContainer.id))
                     _itemListContainer.fashionCostumeIds.Add(_itemContainer.id);
             }
             else if (text.Contains("      Costume_Head_Low: false"))
-                _itemContainer.locations += "หมวกส่วนล่าง Costume [x], ";
+                _itemContainer.locations += _localization.GetTexts(Localization.LOCATION_COSTUME_HEAD_LOW) + " [x], ";
             else if (text.Contains("      Costume_Garment: true"))
             {
-                _itemContainer.locations += "ผ้าคลุม Costume, ";
+                _itemContainer.locations += _localization.GetTexts(Localization.LOCATION_COSTUME_GARMENT) + ", ";
 
                 if (!_itemListContainer.fashionCostumeIds.Contains(_itemContainer.id))
                     _itemListContainer.fashionCostumeIds.Add(_itemContainer.id);
             }
             else if (text.Contains("      Costume_Garment: false"))
-                _itemContainer.locations += "ผ้าคลุม Costume [x], ";
+                _itemContainer.locations += _localization.GetTexts(Localization.LOCATION_COSTUME_GARMENT) + " [x], ";
             else if (text.Contains("      Ammo: true"))
-                _itemContainer.locations += "กระสุน, ";
+                _itemContainer.locations += _localization.GetTexts(Localization.LOCATION_AMMO) + ", ";
             else if (text.Contains("      Ammo: false"))
-                _itemContainer.locations += "กระสุน [x], ";
+                _itemContainer.locations += _localization.GetTexts(Localization.LOCATION_AMMO) + " [x], ";
             else if (text.Contains("      Shadow_Armor: true"))
-                _itemContainer.locations += "ชุดเกราะ Shadow, ";
+                _itemContainer.locations += _localization.GetTexts(Localization.LOCATION_SHADOW_ARMOR) + ", ";
             else if (text.Contains("      Shadow_Armor: false"))
-                _itemContainer.locations += "ชุดเกราะ Shadow [x], ";
+                _itemContainer.locations += _localization.GetTexts(Localization.LOCATION_SHADOW_ARMOR) + " [x], ";
             else if (text.Contains("      Shadow_Weapon: true"))
-                _itemContainer.locations += "อาวุธ Shadow, ";
+                _itemContainer.locations += _localization.GetTexts(Localization.LOCATION_SHADOW_WEAPON) + ", ";
             else if (text.Contains("      Shadow_Weapon: false"))
-                _itemContainer.locations += "อาวุธ Shadow [x], ";
+                _itemContainer.locations += _localization.GetTexts(Localization.LOCATION_SHADOW_WEAPON) + " [x], ";
             else if (text.Contains("      Shadow_Shield: true"))
-                _itemContainer.locations += "โล่ Shadow, ";
+                _itemContainer.locations += _localization.GetTexts(Localization.LOCATION_SHADOW_SHIELD) + ", ";
             else if (text.Contains("      Shadow_Shield: false"))
-                _itemContainer.locations += "โล่ Shadow [x], ";
+                _itemContainer.locations += _localization.GetTexts(Localization.LOCATION_SHADOW_SHIELD) + " [x], ";
             else if (text.Contains("      Shadow_Shoes: true"))
-                _itemContainer.locations += "รองเท้า Shadow, ";
+                _itemContainer.locations += _localization.GetTexts(Localization.LOCATION_SHADOW_SHOES) + ", ";
             else if (text.Contains("      Shadow_Shoes: false"))
-                _itemContainer.locations += "รองเท้า Shadow [x], ";
+                _itemContainer.locations += _localization.GetTexts(Localization.LOCATION_SHADOW_SHOES) + " [x], ";
             else if (text.Contains("      Shadow_Right_Accessory: true"))
-                _itemContainer.locations += "ประดับ Shadow ข้างขวา, ";
+                _itemContainer.locations += _localization.GetTexts(Localization.LOCATION_SHADOW_RIGHT_ACCESSORY) + ", ";
             else if (text.Contains("      Shadow_Right_Accessory: false"))
-                _itemContainer.locations += "ประดับ Shadow ข้างขวา [x], ";
+                _itemContainer.locations += _localization.GetTexts(Localization.LOCATION_SHADOW_RIGHT_ACCESSORY) + " [x], ";
             else if (text.Contains("      Shadow_Left_Accessory: true"))
-                _itemContainer.locations += "ประดับ Shadow ข้างซ้าย, ";
+                _itemContainer.locations += _localization.GetTexts(Localization.LOCATION_SHADOW_LEFT_ACCESSORY) + ", ";
             else if (text.Contains("      Shadow_Left_Accessory: false"))
-                _itemContainer.locations += "ประดับ Shadow ข้างซ้าย [x], ";
+                _itemContainer.locations += _localization.GetTexts(Localization.LOCATION_SHADOW_LEFT_ACCESSORY) + " [x], ";
             else if (text.Contains("      Both_Hand: true"))
-                _itemContainer.locations += "สองมือ, ";
+                _itemContainer.locations += _localization.GetTexts(Localization.LOCATION_BOTH_HAND) + ", ";
             else if (text.Contains("      Both_Hand: false"))
-                _itemContainer.locations += "สองมือ [x], ";
+                _itemContainer.locations += _localization.GetTexts(Localization.LOCATION_BOTH_HAND) + " [x], ";
             else if (text.Contains("      Both_Accessory: true"))
-                _itemContainer.locations += "ประดับสองข้าง, ";
+                _itemContainer.locations += _localization.GetTexts(Localization.LOCATION_BOTH_ACCESSORY) + ", ";
             else if (text.Contains("      Both_Accessory: false"))
-                _itemContainer.locations += "ประดับสองข้าง [x], ";
+                _itemContainer.locations += _localization.GetTexts(Localization.LOCATION_BOTH_ACCESSORY) + " [x], ";
             // Weapon Level
             else if (text.Contains("    WeaponLevel:"))
                 _itemContainer.weaponLevel = text.Replace("    WeaponLevel: ", string.Empty);

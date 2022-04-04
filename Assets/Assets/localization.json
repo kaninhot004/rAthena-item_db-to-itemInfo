@@ -49,6 +49,84 @@
                 },{
                     "key": "CLASSES_TRANS",
                     "texts": "Trans"
+                },{
+                    "key": "GENDER_FEMALE",
+                    "texts": "หญิง"
+                },{
+                    "key": "GENDER_MALE",
+                    "texts": "ชาย"
+                },{
+                    "key": "GENDER_ALL",
+                    "texts": "ทุกเพศ"
+                },{
+                    "key": "LOCATION_HEAD_TOP",
+                    "texts": "หมวกส่วนบน"
+                }, {
+                    "key": "LOCATION_HEAD_MID",
+                    "texts": "หมวกส่วนกลาง"
+                }, {
+                    "key": "LOCATION_HEAD_LOW",
+                    "texts": "หมวกส่วนล่าง"
+                },{
+                    "key": "LOCATION_ARMOR",
+                    "texts": "ชุดเกราะ"
+                }, {
+                    "key": "LOCATION_RIGHT_HAND",
+                    "texts": "มือขวา"
+                }, {
+                    "key": "LOCATION_LEFT_HAND",
+                    "texts": "มือซ้าย"
+                }, {
+                    "key": "LOCATION_GARMENT",
+                    "texts": "ผ้าคลุม"
+                },  {
+                    "key": "LOCATION_SHOES",
+                    "texts": "รองเท้า"
+                }, {
+                    "key": "LOCATION_RIGHT_ACCESSORY",
+                    "texts": "ประดับข้างขวา"
+                },  {
+                    "key": "LOCATION_LEFT_ACCESSORY",
+                    "texts": "ประดับข้างซ้าย"
+                },  {
+                    "key": "LOCATION_COSTUME_HEAD_TOP",
+                    "texts": "หมวกส่วนบน Costume"
+                },{
+                    "key": "LOCATION_COSTUME_HEAD_MID",
+                    "texts": "หมวกส่วนกลาง Costume"
+                }, {
+                    "key": "LOCATION_COSTUME_HEAD_LOW",
+                    "texts": "หมวกส่วนล่าง Costume"
+                }, {
+                    "key": "LOCATION_COSTUME_GARMENT",
+                    "texts": "ผ้าคลุม Costume"
+                },{
+                    "key": "LOCATION_AMMO",
+                    "texts": "กระสุน"
+                }, {
+                    "key": "LOCATION_SHADOW_ARMOR",
+                    "texts": "ชุดเกราะ Shadow"
+                },{
+                    "key": "LOCATION_SHADOW_WEAPON",
+                    "texts": "อาวุธ Shadow"
+                }, {
+                    "key": "LOCATION_SHADOW_SHIELD",
+                    "texts": "โล่ Shadow"
+                },{
+                    "key": "LOCATION_SHADOW_SHOES",
+                    "texts": "รองเท้า Shadow"
+                },{
+                    "key": "LOCATION_SHADOW_RIGHT_ACCESSORY",
+                    "texts": "ประดับ Shadow ข้างขวา"
+                }, {
+                    "key": "LOCATION_SHADOW_LEFT_ACCESSORY",
+                    "texts": "ประดับ Shadow ข้างซ้าย"
+                },{
+                    "key": "LOCATION_BOTH_HAND",
+                    "texts": "สองมือ"
+                }, {
+                    "key": "LOCATION_BOTH_ACCESSORY",
+                    "texts": "ประดับสองข้าง"
                 }, {
                     "key": "CONVERT_PROGRESSION_FETCHING_PLEASE_WAIT",
                     "texts": "Please wait"

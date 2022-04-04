@@ -29,6 +29,32 @@ public class Localization : MonoBehaviour
     public const string CLASSES_CLASS = "CLASSES_CLASS";
     public const string CLASSES_BABY = "CLASSES_BABY";
     public const string CLASSES_TRANS = "CLASSES_TRANS";
+    public const string GENDER_FEMALE = "GENDER_FEMALE";
+    public const string GENDER_MALE = "GENDER_MALE";
+    public const string GENDER_ALL = "GENDER_ALL";
+    public const string LOCATION_HEAD_TOP = "LOCATION_HEAD_TOP";
+    public const string LOCATION_HEAD_MID = "LOCATION_HEAD_MID";
+    public const string LOCATION_HEAD_LOW = "LOCATION_HEAD_LOW";
+    public const string LOCATION_ARMOR = "LOCATION_ARMOR";
+    public const string LOCATION_RIGHT_HAND = "LOCATION_RIGHT_HAND";
+    public const string LOCATION_LEFT_HAND = "LOCATION_LEFT_HAND";
+    public const string LOCATION_GARMENT = "LOCATION_GARMENT";
+    public const string LOCATION_SHOES = "LOCATION_SHOES";
+    public const string LOCATION_RIGHT_ACCESSORY = "LOCATION_RIGHT_ACCESSORY";
+    public const string LOCATION_LEFT_ACCESSORY = "LOCATION_LEFT_ACCESSORY";
+    public const string LOCATION_COSTUME_HEAD_TOP = "LOCATION_COSTUME_HEAD_TOP";
+    public const string LOCATION_COSTUME_HEAD_MID = "LOCATION_COSTUME_HEAD_MID";
+    public const string LOCATION_COSTUME_HEAD_LOW = "LOCATION_COSTUME_HEAD_LOW";
+    public const string LOCATION_COSTUME_GARMENT = "LOCATION_COSTUME_GARMENT";
+    public const string LOCATION_AMMO = "LOCATION_AMMO";
+    public const string LOCATION_SHADOW_ARMOR = "LOCATION_SHADOW_ARMOR";
+    public const string LOCATION_SHADOW_WEAPON = "LOCATION_SHADOW_WEAPON";
+    public const string LOCATION_SHADOW_SHIELD = "LOCATION_SHADOW_SHIELD";
+    public const string LOCATION_SHADOW_SHOES = "LOCATION_SHADOW_SHOES";
+    public const string LOCATION_SHADOW_RIGHT_ACCESSORY = "LOCATION_SHADOW_RIGHT_ACCESSORY";
+    public const string LOCATION_SHADOW_LEFT_ACCESSORY = "LOCATION_SHADOW_LEFT_ACCESSORY";
+    public const string LOCATION_BOTH_HAND = "LOCATION_BOTH_HAND";
+    public const string LOCATION_BOTH_ACCESSORY = "LOCATION_BOTH_ACCESSORY";
 
     public const string AUTO_BONUS_3 = "AUTO_BONUS_3";
 
