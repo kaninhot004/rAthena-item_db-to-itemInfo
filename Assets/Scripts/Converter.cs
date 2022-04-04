@@ -617,7 +617,7 @@ public class Converter : MonoBehaviour
                 monsterDatabase.name = QuoteRemover.Remove(text.Replace("    Name: ", string.Empty));
 
                 if (_monsterDatabases.ContainsKey(monsterDatabase.id))
-                    Debug.LogWarning("Found duplicated monster ID: " + monsterDatabase.id + "! Please tell rAthena about this.");
+                    Debug.LogWarning("Found duplicated monster ID: " + monsterDatabase.id + " Please tell rAthena about this.");
                 else
                     _monsterDatabases.Add(monsterDatabase.id, monsterDatabase);
 
@@ -766,12 +766,12 @@ public class Converter : MonoBehaviour
                 skillDatabase.nameWithQuote = "\"" + skillDatabase.name + "\"";
 
                 if (_skillDatabases.ContainsKey(skillDatabase.id))
-                    Debug.LogWarning("Found duplicated skill ID: " + skillDatabase.id + "! (Old: " + _skillDatabases[skillDatabase.id] + " vs New: " + skillDatabase.id + ")");
+                    Debug.LogWarning("Found duplicated skill ID: " + skillDatabase.id + " (Old: " + _skillDatabases[skillDatabase.id] + " vs New: " + skillDatabase.id + ")");
                 else
                     _skillDatabases.Add(skillDatabase.id, skillDatabase);
 
                 if (_skillNameDatabases.ContainsKey(skillDatabase.name))
-                    Debug.LogWarning("Found duplicated skill name: " + skillDatabase.name + "! (Old: " + _skillNameDatabases[skillDatabase.name] + " vs New: " + skillDatabase.name + ")");
+                    Debug.LogWarning("Found duplicated skill name: " + skillDatabase.name + " (Old: " + _skillNameDatabases[skillDatabase.name] + " vs New: " + skillDatabase.name + ")");
                 else
                     _skillNameDatabases.Add(skillDatabase.name, skillDatabase.id);
 
@@ -822,7 +822,7 @@ public class Converter : MonoBehaviour
             var name = texts[1];
 
             if (_resourceDatabases.ContainsKey(id))
-                Debug.LogWarning("Found duplicated resource name ID: " + id + "! (Old: " + _resourceDatabases[id] + " vs New: " + name + ")");
+                Debug.LogWarning("Found duplicated resource name ID: " + id + " (Old: " + _resourceDatabases[id] + " vs New: " + name + ")");
             else
                 _resourceDatabases.Add(id, name);
         }
@@ -1054,12 +1054,12 @@ public class Converter : MonoBehaviour
                 itemDatabase.name = _name;
 
                 if (_itemDatabases.ContainsKey(itemDatabase.id))
-                    Debug.LogWarning("Found duplicated item ID: " + itemDatabase.id + "! Please tell rAthena about this.");
+                    Debug.LogWarning("Found duplicated item ID: " + itemDatabase.id + " Please tell rAthena about this.");
                 else
                     _itemDatabases.Add(itemDatabase.id, itemDatabase);
 
                 if (_aegisNameDatabases.ContainsKey(itemDatabase.aegisName))
-                    Debug.LogWarning("Found duplicated item aegis name: " + itemDatabase.aegisName + "! Please tell rAthena about this.");
+                    Debug.LogWarning("Found duplicated item aegis name: " + itemDatabase.aegisName + " Please tell rAthena about this.");
                 else
                     _aegisNameDatabases.Add(itemDatabase.aegisName, itemDatabase.id);
 
