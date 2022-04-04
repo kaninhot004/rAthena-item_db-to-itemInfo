@@ -1659,9 +1659,9 @@ public class Converter : MonoBehaviour
                 _itemContainer.equipLevelMaximum = text.Replace("    EquipLevelMax: ", string.Empty);
             // Refineable
             else if (text.Contains("    Refineable: true"))
-                _itemContainer.refinable = "ได้";
+                _itemContainer.refinable = _localization.GetTexts(Localization.CAN);
             else if (text.Contains("    Refineable: false"))
-                _itemContainer.refinable = "ไม่ได้";
+                _itemContainer.refinable = _localization.GetTexts(Localization.CANNOT);
             // View
             else if (text.Contains("    View:"))
                 _itemContainer.view = text.Replace("    View: ", string.Empty);

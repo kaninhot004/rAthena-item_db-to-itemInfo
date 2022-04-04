@@ -13,6 +13,8 @@ public class Localization : MonoBehaviour
     public const string NOT_FOUND = "NOT_FOUND";
 
     public const string OR = "OR";
+    public const string CAN = "CAN";
+    public const string CANNOT = "CANNOT";
 
     public const string CONVERT_PROGRESSION_START = "CONVERT_PROGRESSION_START";
     public const string CONVERT_PROGRESSION_FETCHING_ITEM = "CONVERT_PROGRESSION_FETCHING_ITEM";

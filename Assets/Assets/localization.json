@@ -7,58 +7,67 @@
                 }, {
                     "key": "NOT_FOUND",
                     "texts": "not found"
-                },{
+                }, {
                     "key": "OR",
                     "texts": "หรือ"
+                }, {
+                    "key": "CAN",
+                    "texts": "ได้"
+                }, {
+                    "key": "CANNOT",
+                    "texts": "ไม่ได้"
                 }, {
                     "key": "CONVERT_PROGRESSION_START",
                     "texts": "Starting now"
                 }, {
                     "key": "CONVERT_PROGRESSION_FETCHING_ITEM",
                     "texts": "Fetching item"
-                },{
+                }, {
                     "key": "CONVERT_PROGRESSION_FETCHING_RESOURCE_NAME",
                     "texts": "Fetching resource name"
-                },{
+                }, {
                     "key": "CONVERT_PROGRESSION_FETCHING_SKILL",
                     "texts": "Fetching skill"
-                },{
+                }, {
                     "key": "CONVERT_PROGRESSION_FETCHING_CLASS_NUMBER",
                     "texts": "Fetching class number"
-                },{
+                }, {
                     "key": "CONVERT_PROGRESSION_FETCHING_CLASS_MONSTER",
                     "texts": "Fetching monster"
                 }, {
                     "key": "CONVERT_PROGRESSION_FETCHING_ITEM_COMBO",
                     "texts": "Fetching item combo"
-                },{
+                }, {
                     "key": "CONVERT_PROGRESSION_FETCHING_RESOURCE_NAME_WITH_TYPE",
                     "texts": "Fetching resource name with type"
                 }, {
+                    "key": "CONVERT_PROGRESSION_FETCHING_PLEASE_WAIT",
+                    "texts": "Please wait"
+                }, {
                     "key": "JOBS_ALL_JOB",
                     "texts": "ทุกอาชีพ"
-                },{
+                }, {
                     "key": "CLASSES_ALL_CLASS",
                     "texts": "ทุกคลาส"
-                },{
+                }, {
                     "key": "CLASSES_CLASS",
                     "texts": "คลาส"
                 }, {
                     "key": "CLASSES_BABY",
                     "texts": "Baby"
-                },{
+                }, {
                     "key": "CLASSES_TRANS",
                     "texts": "Trans"
-                },{
+                }, {
                     "key": "GENDER_FEMALE",
                     "texts": "หญิง"
-                },{
+                }, {
                     "key": "GENDER_MALE",
                     "texts": "ชาย"
-                },{
+                }, {
                     "key": "GENDER_ALL",
                     "texts": "ทุกเพศ"
-                },{
+                }, {
                     "key": "LOCATION_HEAD_TOP",
                     "texts": "หมวกส่วนบน"
                 }, {
@@ -67,7 +76,7 @@
                 }, {
                     "key": "LOCATION_HEAD_LOW",
                     "texts": "หมวกส่วนล่าง"
-                },{
+                }, {
                     "key": "LOCATION_ARMOR",
                     "texts": "ชุดเกราะ"
                 }, {
@@ -79,19 +88,19 @@
                 }, {
                     "key": "LOCATION_GARMENT",
                     "texts": "ผ้าคลุม"
-                },  {
+                }, {
                     "key": "LOCATION_SHOES",
                     "texts": "รองเท้า"
                 }, {
                     "key": "LOCATION_RIGHT_ACCESSORY",
                     "texts": "ประดับข้างขวา"
-                },  {
+                }, {
                     "key": "LOCATION_LEFT_ACCESSORY",
                     "texts": "ประดับข้างซ้าย"
-                },  {
+                }, {
                     "key": "LOCATION_COSTUME_HEAD_TOP",
                     "texts": "หมวกส่วนบน Costume"
-                },{
+                }, {
                     "key": "LOCATION_COSTUME_HEAD_MID",
                     "texts": "หมวกส่วนกลาง Costume"
                 }, {
@@ -100,36 +109,33 @@
                 }, {
                     "key": "LOCATION_COSTUME_GARMENT",
                     "texts": "ผ้าคลุม Costume"
-                },{
+                }, {
                     "key": "LOCATION_AMMO",
                     "texts": "กระสุน"
                 }, {
                     "key": "LOCATION_SHADOW_ARMOR",
                     "texts": "ชุดเกราะ Shadow"
-                },{
+                }, {
                     "key": "LOCATION_SHADOW_WEAPON",
                     "texts": "อาวุธ Shadow"
                 }, {
                     "key": "LOCATION_SHADOW_SHIELD",
                     "texts": "โล่ Shadow"
-                },{
+                }, {
                     "key": "LOCATION_SHADOW_SHOES",
                     "texts": "รองเท้า Shadow"
-                },{
+                }, {
                     "key": "LOCATION_SHADOW_RIGHT_ACCESSORY",
                     "texts": "ประดับ Shadow ข้างขวา"
                 }, {
                     "key": "LOCATION_SHADOW_LEFT_ACCESSORY",
                     "texts": "ประดับ Shadow ข้างซ้าย"
-                },{
+                }, {
                     "key": "LOCATION_BOTH_HAND",
                     "texts": "สองมือ"
                 }, {
                     "key": "LOCATION_BOTH_ACCESSORY",
                     "texts": "ประดับสองข้าง"
-                }, {
-                    "key": "CONVERT_PROGRESSION_FETCHING_PLEASE_WAIT",
-                    "texts": "Please wait"
                 }, {
                     "key": "AUTO_BONUS_3",
                     "texts": "เมื่อใช้ {1} มีโอกาสเล็กน้อย ที่จะ {0} ชั่วคราว"
