@@ -224,7 +224,7 @@ public class Converter : MonoBehaviour
             return;
         }
 
-        _txtConvertProgression.text = _localization.GetTexts(Localization.CONVERT_PROGRESSION_FETCHING_PLEASE_WAIT) + "..";
+        _txtConvertProgression.text = _localization.GetTexts(Localization.CONVERT_PROGRESSION_PLEASE_WAIT) + "..";
 
         Debug.Log(DateTime.Now);
 
@@ -1923,12 +1923,12 @@ public class Converter : MonoBehaviour
         finalize = finalize.Replace("[NEW_LINE]", "\",\n			\"");
 
         // TODO: Fix it properly
-        finalize = finalize.Replace("กับ 11)", "ประเภท)");
-        finalize = finalize.Replace("กับ 11 )", "ประเภท)");
-        finalize = finalize.Replace("กับ II_VIEW)", "ประเภท)");
-        finalize = finalize.Replace("กับ II_VIEW )", "ประเภท)");
-        finalize = finalize.Replace("กับ ITEMINFO_VIEW)", "ประเภท)");
-        finalize = finalize.Replace("กับ ITEMINFO_VIEW )", "ประเภท)");
+        finalize = finalize.Replace("กับ 11)", _localization.GetTexts(Localization.TYPE) + ")");
+        finalize = finalize.Replace("กับ 11 )", _localization.GetTexts(Localization.TYPE) + ")");
+        finalize = finalize.Replace("กับ II_VIEW)", _localization.GetTexts(Localization.TYPE) + ")");
+        finalize = finalize.Replace("กับ II_VIEW )", _localization.GetTexts(Localization.TYPE) + ")");
+        finalize = finalize.Replace("กับ ITEMINFO_VIEW)", _localization.GetTexts(Localization.TYPE) + ")");
+        finalize = finalize.Replace("กับ ITEMINFO_VIEW )", _localization.GetTexts(Localization.TYPE) + ")");
 
         // Spacing fix
         finalize = finalize.Replace("     ๐", "๐");
@@ -1948,7 +1948,7 @@ public class Converter : MonoBehaviour
 
         Debug.Log(DateTime.Now);
 
-        _txtConvertProgression.text = "Done!!";
+        _txtConvertProgression.text = _localization.GetTexts(Localization.CONVERT_PROGRESSION_DONE) + "!!";
     }
 
     /// <summary>

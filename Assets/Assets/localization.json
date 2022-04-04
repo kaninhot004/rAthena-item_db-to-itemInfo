@@ -41,8 +41,11 @@
                     "key": "CONVERT_PROGRESSION_FETCHING_RESOURCE_NAME_WITH_TYPE",
                     "texts": "Fetching resource name with type"
                 }, {
-                    "key": "CONVERT_PROGRESSION_FETCHING_PLEASE_WAIT",
+                    "key": "CONVERT_PROGRESSION_PLEASE_WAIT",
                     "texts": "Please wait"
+                }, {
+                    "key": "CONVERT_PROGRESSION_DONE",
+                    "texts": "Done"
                 }, {
                     "key": "JOBS_ALL_JOB",
                     "texts": "ทุกอาชีพ"
@@ -178,10 +181,10 @@
                 }, {
                     "key": "MINIMUM_EQUIP_LEVEL",
                     "texts": "เลเวลขั้นต่ำ"
-                },{
+                }, {
                     "key": "MAXIMUM_EQUIP_LEVEL",
                     "texts": "เลเวลสูงสุด"
-                },{
+                }, {
                     "key": "REFINABLE",
                     "texts": "ตีบวก"
                 }, {
