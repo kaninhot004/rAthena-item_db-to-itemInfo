@@ -2067,11 +2067,43 @@ public class Converter : MonoBehaviour
                 if (retry <= 0)
                     break;
             }
-            var skillName = QuoteRemover.Remove(duplicates.Length >= 4 ? duplicates[3] : string.Empty);
+
+            // Find first "{ for other script
+            if (duplicate.IndexOf("\"{") > 0)
+            {
+                duplicate = duplicate.Substring(duplicate.IndexOf("\"{") + 2);
+                temp = duplicate.Substring(0, duplicate.IndexOf("}\""));
+
+                while (!string.IsNullOrEmpty(temp))
+                {
+                    if (temp.IndexOf(';') > 0)
+                    {
+                        var sumBonus = temp.Substring(0, temp.IndexOf(';'));
+                        bonuses += ConvertItemScripts(sumBonus);
+                        if (temp.Length > temp.IndexOf(';') + 1)
+                            temp = temp.Substring(temp.IndexOf(';') + 1);
+                        else
+                            temp = string.Empty;
+                    }
+                    else
+                        temp = string.Empty;
+                }
+            }
+
             if (!string.IsNullOrEmpty(bonuses) || !string.IsNullOrWhiteSpace(bonuses))
             {
                 bonuses = bonuses.Replace("๐", "[NEW_LINE]๐");
                 bonuses = bonuses.Replace("^FF2525", "[NEW_LINE]^FF2525");
+
+                int number = 1;
+                while (bonuses.Contains("๐"))
+                {
+                    bonuses = ReplaceOneTime.ReplaceNow(bonuses, "๐", number.ToString("f0") + ".)");
+
+                    number++;
+                }
+
+                var skillName = QuoteRemover.Remove(duplicates.Length >= 4 ? duplicates[3] : string.Empty);
                 text = string.Format(_localization.GetTexts(Localization.AUTO_BONUS_3), bonuses, GetSkillName(skillName));
             }
             else
@@ -2080,10 +2112,16 @@ public class Converter : MonoBehaviour
         // autobonus2
         if (text.Contains("autobonus2 \"{"))
         {
+            var duplicate = string.Empty;
+
             var temp = text.Replace("autobonus2 \"{", string.Empty);
             var flag = GetAllAtf(temp);
             if (temp.IndexOf("}\"") > 0)
+            {
                 temp = temp.Substring(0, temp.IndexOf("}\""));
+
+                duplicate = temp.Substring(temp.IndexOf("}\"") + 2);
+            }
             var bonuses = string.Empty;
             int retry = 30;
             while (temp.Contains("bonus"))
@@ -2098,11 +2136,43 @@ public class Converter : MonoBehaviour
                 if (retry <= 0)
                     break;
             }
+
+            // Find first "{ for other script
+            if (duplicate.IndexOf("\"{") > 0)
+            {
+                duplicate = duplicate.Substring(duplicate.IndexOf("\"{") + 2);
+                temp = duplicate.Substring(0, duplicate.IndexOf("}\""));
+
+                while (!string.IsNullOrEmpty(temp))
+                {
+                    if (temp.IndexOf(';') > 0)
+                    {
+                        var sumBonus = temp.Substring(0, temp.IndexOf(';'));
+                        bonuses += ConvertItemScripts(sumBonus);
+                        if (temp.Length > temp.IndexOf(';') + 1)
+                            temp = temp.Substring(temp.IndexOf(';') + 1);
+                        else
+                            temp = string.Empty;
+                    }
+                    else
+                        temp = string.Empty;
+                }
+            }
+
             if (!string.IsNullOrEmpty(bonuses) || !string.IsNullOrWhiteSpace(bonuses))
             {
                 bonuses = bonuses.Replace("๐", "[NEW_LINE]๐");
                 bonuses = bonuses.Replace("^FF2525", "[NEW_LINE]^FF2525");
-                text = string.Format("เมื่อโดน" + flag + " มีโอกาสเล็กน้อย ที่จะ {0} ชั่วคราว", bonuses);
+
+                int number = 1;
+                while (bonuses.Contains("๐"))
+                {
+                    bonuses = ReplaceOneTime.ReplaceNow(bonuses, "๐", number.ToString("f0") + ".)");
+
+                    number++;
+                }
+
+                text = string.Format("๐ เมื่อโดน" + flag + " มีโอกาสเล็กน้อย ที่จะ {0}[NEW_LINE]^FF2525(ชั่วคราว)^000000", bonuses);
             }
             else
                 text = string.Empty;
@@ -2110,10 +2180,16 @@ public class Converter : MonoBehaviour
         // autobonus
         if (text.Contains("autobonus \"{"))
         {
+            var duplicate = string.Empty;
+
             var temp = text.Replace("autobonus \"{", string.Empty);
             var flag = GetAllAtf(temp);
             if (temp.IndexOf("}\"") > 0)
+            {
                 temp = temp.Substring(0, temp.IndexOf("}\""));
+
+                duplicate = temp.Substring(temp.IndexOf("}\"") + 2);
+            }
             var bonuses = string.Empty;
             int retry = 30;
             while (temp.Contains("bonus"))
@@ -2128,11 +2204,43 @@ public class Converter : MonoBehaviour
                 if (retry <= 0)
                     break;
             }
+
+            // Find first "{ for other script
+            if (duplicate.IndexOf("\"{") > 0)
+            {
+                duplicate = duplicate.Substring(duplicate.IndexOf("\"{") + 2);
+                temp = duplicate.Substring(0, duplicate.IndexOf("}\""));
+
+                while (!string.IsNullOrEmpty(temp))
+                {
+                    if (temp.IndexOf(';') > 0)
+                    {
+                        var sumBonus = temp.Substring(0, temp.IndexOf(';'));
+                        bonuses += ConvertItemScripts(sumBonus);
+                        if (temp.Length > temp.IndexOf(';') + 1)
+                            temp = temp.Substring(temp.IndexOf(';') + 1);
+                        else
+                            temp = string.Empty;
+                    }
+                    else
+                        temp = string.Empty;
+                }
+            }
+
             if (!string.IsNullOrEmpty(bonuses) || !string.IsNullOrWhiteSpace(bonuses))
             {
                 bonuses = bonuses.Replace("๐", "[NEW_LINE]๐");
                 bonuses = bonuses.Replace("^FF2525", "[NEW_LINE]^FF2525");
-                text = string.Format("เมื่อ" + flag + " มีโอกาสเล็กน้อย ที่จะ {0} ชั่วคราว", bonuses);
+
+                int number = 1;
+                while (bonuses.Contains("๐"))
+                {
+                    bonuses = ReplaceOneTime.ReplaceNow(bonuses, "๐", number.ToString("f0") + ".)");
+
+                    number++;
+                }
+
+                text = string.Format("๐ เมื่อ" + flag + " มีโอกาสเล็กน้อย ที่จะ {0}[NEW_LINE]^FF2525(ชั่วคราว)^000000", bonuses);
             }
             else
                 text = string.Empty;
@@ -2161,7 +2269,16 @@ public class Converter : MonoBehaviour
             {
                 bonuses = bonuses.Replace("๐", "[NEW_LINE]๐");
                 bonuses = bonuses.Replace("^FF2525", "[NEW_LINE]^FF2525");
-                text = string.Format("มีผล {0} ชั่วคราว", bonuses);
+
+                int number = 1;
+                while (bonuses.Contains("๐"))
+                {
+                    bonuses = ReplaceOneTime.ReplaceNow(bonuses, "๐", number.ToString("f0") + ".)");
+
+                    number++;
+                }
+
+                text = string.Format("๐ มีผล {0}[NEW_LINE]^FF2525(ชั่วคราว)^000000", bonuses);
             }
             else
                 text = string.Empty;
@@ -2807,7 +2924,7 @@ public class Converter : MonoBehaviour
             var temps = temp.Split(',');
             text = string.Format("๐ กันเวทย์ {0} +{1}%", ParseSize(temps[0]), TryParseInt(temps[1]));
         }
-        text = text.Replace("bonus bNoSizeFix", "ไม่สนใจขนาดในการคำนวณ");
+        text = text.Replace("bonus bNoSizeFix", "๐ ไม่สนใจขนาดในการคำนวณ");
         if (text.Contains("bonus2 bAddDamageClass,"))
         {
             var temp = text.Replace("bonus2 bAddDamageClass,", string.Empty);
