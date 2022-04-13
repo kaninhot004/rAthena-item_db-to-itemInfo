@@ -1,26 +1,18 @@
-  - Id: 490193
-    AegisName: aegis_490193
-    Name: Traveler Ring    # !todo check english name
+  - Id: 2198
+    AegisName: Lapine_Shield
+    Name: Lapine Shield
     Type: Armor
-    Weight: 300
+    Weight: 1000
+    Defense: 25
     Slots: 1
     Locations:
-      Both_Accessory: true
+      Left_Hand: true
     ArmorLevel: 1
     EquipLevelMin: 100
+    Refineable: true
+    View: 3
     Script: |
-      bonus bAgi,7;
-      bonus2 bAddClass,Class_All,10 + (getskilllv("WM_SEVERE_RAINSTORM")/3);
-      if (getskilllv("WM_UNLIMITED_HUMMING_VOICE") >= 5) {
-         bonus bHPGainValue,100;
-         bonus bSPGainValue,10;
+      bonus bMdef,10;
+      if (getrefine() > 7) {
+         bonus bMatk,20;
       }
-      if (getskilllv("WM_SEVERE_RAINSTORM") >= 5)
-         bonus2 bAddClass,Class_Boss,15;
-      if (getskilllv("WM_FRIGG_SONG") >= 5)
-         bonus bMaxHPrate,25;
-      if (getskilllv("WM_GLOOMYDAY") >= 5)
-         bonus bPerfectHitAddRate,15;
-    UnEquipScript: |
-      if ((eaclass()&EAJ_THIRDMASK)==EAJ_MINSTRELWANDERER)
-         sc_end SC_UNLIMIT;

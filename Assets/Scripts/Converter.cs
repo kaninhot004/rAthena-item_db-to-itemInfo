@@ -3613,6 +3613,10 @@ public class Converter : MonoBehaviour
 
         // Negative value
         text = text.Replace("+-", "-");
+        // Positive value
+        text = text.Replace(" ++", " +");
+        // autobonus string fix
+        text = text.Replace("+%", "%");
 
         // Whitespace
         text = text.Replace("    ", " ");
@@ -3972,25 +3976,34 @@ public class Converter : MonoBehaviour
             return "ถาวร";
 
         float sum = -1;
+
         if (float.TryParse(text, out sum))
             sum = float.Parse(text);
         else if (divider == 1)
         {
-            if (string.IsNullOrEmpty(text) || string.IsNullOrWhiteSpace(text))
+            if (string.IsNullOrEmpty(text)
+                || string.IsNullOrWhiteSpace(text))
                 return "0";
             else
                 return text;
         }
         else
             return text + " หาร " + divider.ToString("f0");
-        if ((sum / divider) == 0)
-            return (sum / divider).ToString("f0");
-        else if ((sum / divider) > -0.1f && (sum / divider) < 0.1f)
-            return (sum / divider).ToString("f2");
-        else if (((sum / divider) % 1) != 0)
-            return (sum / divider).ToString("f1");
+
+        return ParseNumberDecimal(sum, divider);
+    }
+
+    string ParseNumberDecimal(float number, float divider)
+    {
+        if ((number / divider) == 0)
+            return (number / divider).ToString("f0");
+        else if (((number / divider) > -0.1f)
+            && ((number / divider) < 0.1f))
+            return (number / divider).ToString("f2");
+        else if (((number / divider) % 1) != 0)
+            return (number / divider).ToString("f1");
         else
-            return (sum / divider).ToString("f0");
+            return (number / divider).ToString("f0");
     }
 
     string GetCombo(string aegisName)
