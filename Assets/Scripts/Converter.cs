@@ -3988,7 +3988,7 @@ public class Converter : MonoBehaviour
                 return text;
         }
         else
-            return text + " หาร " + divider.ToString("f0");
+            return text + " ^FF0000หาร " + divider.ToString("f0") + "^000000";
 
         return ParseNumberDecimal(sum, divider);
     }
