@@ -88,21 +88,18 @@ public class Localization : MonoBehaviour
         [Serializable]
         public class Data
         {
-            public string language;
-
             public List<KeyData> keyDatas = new List<KeyData>();
 
             [Serializable]
             public class KeyData
             {
                 public string key;
-                public string texts;
+                public string thai;
+                public string english;
             }
         }
 
     }
-
-    List<LocalizationDatabase> _localizationDatabases = new List<LocalizationDatabase>();
 
     string _currentLanguage;
     LocalizationDatabase _currentLocalizationDatabase = new LocalizationDatabase();
@@ -137,20 +134,20 @@ public class Localization : MonoBehaviour
 
                 if (jsonData != null)
                 {
-                    _localizationDatabases = new List<LocalizationDatabase>();
-
                     for (int i = 0; i < jsonData.datas.Count; i++)
                     {
-                        LocalizationDatabase localizationDatabase = new LocalizationDatabase();
+                        _currentLocalizationDatabase = new LocalizationDatabase();
 
-                        localizationDatabase.language = jsonData.datas[i].language;
-
-                        localizationDatabase.datas = new Dictionary<string, string>();
+                        _currentLocalizationDatabase.datas = new Dictionary<string, LocalizationDatabase.Data>();
 
                         for (int j = 0; j < jsonData.datas[i].keyDatas.Count; j++)
-                            localizationDatabase.datas.Add(jsonData.datas[i].keyDatas[j].key, jsonData.datas[i].keyDatas[j].texts);
+                        {
+                            LocalizationDatabase.Data data = new LocalizationDatabase.Data();
+                            data.thai = jsonData.datas[i].keyDatas[j].thai;
+                            data.english = jsonData.datas[i].keyDatas[j].english;
 
-                        _localizationDatabases.Add(localizationDatabase);
+                            _currentLocalizationDatabase.datas.Add(jsonData.datas[i].keyDatas[j].key, data);
+                        }
                     }
                 }
             }
@@ -165,7 +162,14 @@ public class Localization : MonoBehaviour
     public string GetTexts(string key)
     {
         if (_currentLocalizationDatabase.datas.ContainsKey(key))
-            return _currentLocalizationDatabase.datas[key];
+        {
+            if (_currentLanguage == THAI)
+                return _currentLocalizationDatabase.datas[key].thai;
+            else if (_currentLanguage == ENGLISH)
+                return _currentLocalizationDatabase.datas[key].english;
+            else
+                return string.Empty;
+        }
         else
             return string.Empty;
     }
@@ -177,17 +181,5 @@ public class Localization : MonoBehaviour
     public void SetupLanguage(string language)
     {
         _currentLanguage = language;
-
-        _currentLocalizationDatabase = new LocalizationDatabase();
-
-        for (int i = 0; i < _localizationDatabases.Count; i++)
-        {
-            if (_localizationDatabases[i].language == _currentLanguage)
-            {
-                _currentLocalizationDatabase = _localizationDatabases[i];
-
-                break;
-            }
-        }
     }
 }

@@ -4,7 +4,11 @@ using System.Collections.Generic;
 [Serializable]
 public class LocalizationDatabase
 {
-    public string language;
+    public class Data
+    {
+        public string thai;
+        public string english;
+    }
 
-    public Dictionary<string, string> datas = new Dictionary<string, string>();
+    public Dictionary<string, Data> datas = new Dictionary<string, Data>();
 }
