@@ -94,6 +94,11 @@ public class Localization : MonoBehaviour
     public const string BONUS_MDEF2_RATE = "BONUS_MDEF2_RATE";
     public const string BONUS_CRITICAL_LONG = "BONUS_CRITICAL_LONG";
     public const string BONUS2_CRITICAL_ADD_RACE = "BONUS2_CRITICAL_ADD_RACE";
+    public const string BONUS_PERFECT_HIT_RATE = "BONUS_PERFECT_HIT_RATE";
+    public const string BONUS_SPEED_RATE = "BONUS_SPEED_RATE";
+    public const string BONUS_SPEED_ADD_RATE = "BONUS_SPEED_ADD_RATE";
+    public const string BONUS_ATK_RANGE = "BONUS_ATK_RANGE";
+    public const string BONUS_ADD_MAX_WEIGHT = "BONUS_ADD_MAX_WEIGHT";
 
     [Serializable]
     public class JsonData

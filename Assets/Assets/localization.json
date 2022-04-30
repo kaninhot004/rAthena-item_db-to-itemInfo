@@ -316,6 +316,26 @@
                     "key": "BONUS2_CRITICAL_ADD_RACE",
                     "thai": "๐ Critical กับ {0} +{1}",
                     "english": ""
+                }, {
+                    "key": "BONUS_PERFECT_HIT_RATE",
+                    "thai": "๐ Perfect Hit +{0}% (ทับไม่ได้)",
+                    "english": ""
+                }, {
+                    "key": "BONUS_SPEED_RATE",
+                    "thai": "๐ เดินเร็ว +{0}% (ทับไม่ได้)",
+                    "english": ""
+                }, {
+                    "key": "BONUS_SPEED_ADD_RATE",
+                    "thai": "๐ เดินเร็ว +{0}%",
+                    "english": ""
+                }, {
+                    "key": "BONUS_ATK_RANGE",
+                    "thai": "๐ ระยะตี +",
+                    "english": ""
+                }, {
+                    "key": "BONUS_ADD_MAX_WEIGHT",
+                    "thai": "๐ แบกของได้หนักขึ้น +{0}",
+                    "english": ""
                 }
             ]
         }

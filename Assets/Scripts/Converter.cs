@@ -2426,7 +2426,7 @@ public class Converter : MonoBehaviour
         {
             var temp = text.Replace("bonus bPerfectHitRate,", string.Empty);
             var temps = temp.Split(',');
-            text = string.Format("๐ Perfect Hit +{0}% (ทับไม่ได้)", TryParseInt(temps[0]));
+            text = string.Format(_localization.GetTexts(Localization.BONUS_PERFECT_HIT_RATE), TryParseInt(temps[0]));
         }
         if (text.Contains("bonus bPerfectHitAddRate,"))
         {
@@ -2438,13 +2438,13 @@ public class Converter : MonoBehaviour
         {
             var temp = text.Replace("bonus bSpeedRate,", string.Empty);
             var temps = temp.Split(',');
-            text = string.Format("๐ เดินเร็ว +{0}% (ทับไม่ได้)", TryParseInt(temps[0]));
+            text = string.Format(_localization.GetTexts(Localization.BONUS_SPEED_RATE), TryParseInt(temps[0]));
         }
         if (text.Contains("bonus bSpeedAddRate,"))
         {
             var temp = text.Replace("bonus bSpeedAddRate,", string.Empty);
             var temps = temp.Split(',');
-            text = string.Format("๐ เดินเร็ว +{0}%", TryParseInt(temps[0]));
+            text = string.Format(_localization.GetTexts(Localization.BONUS_SPEED_ADD_RATE), TryParseInt(temps[0]));
         }
         text = text.Replace("bonus bAspd,", "๐ ASPD +");
         if (text.Contains("bonus bAspdRate,"))
@@ -2453,12 +2453,12 @@ public class Converter : MonoBehaviour
             var temps = temp.Split(',');
             text = string.Format("๐ ASPD +{0}%", TryParseInt(temps[0]));
         }
-        text = text.Replace("bonus bAtkRange,", "๐ ระยะตี +");
+        text = text.Replace("bonus bAtkRange,", _localization.GetTexts(Localization.BONUS_ATK_RANGE));
         if (text.Contains("bonus bAddMaxWeight,"))
         {
             var temp = text.Replace("bonus bAddMaxWeight,", string.Empty);
             var temps = temp.Split(',');
-            text = string.Format("๐ แบกของได้หนักขึ้น +{0}", TryParseInt(temps[0], 10));
+            text = string.Format(_localization.GetTexts(Localization.BONUS_ADD_MAX_WEIGHT), TryParseInt(temps[0], 10));
         }
 
         text = text.Replace("bonus bPatk,", "๐ P.Atk +");
