@@ -3427,14 +3427,14 @@ public class Converter : MonoBehaviour
             var temp = text.Replace("bonus3 bAddMonsterDropItem,", string.Empty);
             var temps = temp.Split(',');
             var itemId = QuoteRemover.Remove(temps[0]);
-            text = string.Format("๐ มีโอกาส {2}% ที่จะ Drop {0} (ID⁞ {3}) {1}", GetItemName(itemId), ParseRace(temps[1]), TryParseInt(temps[2], 100), itemId);
+            text = string.Format("๐ มีโอกาส {2}% ที่ {1} จะ Drop {0} (ID⁞ {3})", GetItemName(itemId), ParseRace(temps[1]), TryParseInt(temps[2], 100), itemId);
         }
         if (text.Contains("bonus3 bAddClassDropItem,"))
         {
             var temp = text.Replace("bonus3 bAddClassDropItem,", string.Empty);
             var temps = temp.Split(',');
             var itemId = QuoteRemover.Remove(temps[0]);
-            text = string.Format("๐ มีโอกาส {2}% ที่จะ Drop {0} (ID⁞ {3}) {1}", GetItemName(itemId), ParseClass(temps[1]), TryParseInt(temps[2], 100), itemId);
+            text = string.Format("๐ มีโอกาส {2}% ที่ {1} จะ Drop {0} (ID⁞ {3})", GetItemName(itemId), ParseClass(temps[1]), TryParseInt(temps[2], 100), itemId);
         }
         if (text.Contains("bonus2 bAddMonsterDropItemGroup,"))
         {
