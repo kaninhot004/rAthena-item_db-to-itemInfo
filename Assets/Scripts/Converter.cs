@@ -2929,31 +2929,15 @@ public class Converter : MonoBehaviour
         {
             var temp = text.Replace("bonus2 bAddDamageClass,", string.Empty);
             var temps = temp.Split(',');
-            var midString = TryParseInt(temps[0]);
-            int mid = 0;
-            if (int.TryParse(midString, out mid))
-            {
-                mid = int.Parse(midString);
-
-                text = string.Format("๐ ตีกายภาพกับ {0} +{1}%", _monsterDatabases[mid].name, TryParseInt(temps[1]));
-            }
-            else
-                text = string.Format("๐ ตีกายภาพกับ {0} +{1}%", TryParseInt(temps[0]), TryParseInt(temps[1]));
+            var monsterDatabase = GetMonsterDatabase(TryParseInt(temps[0]));
+            text = string.Format("๐ ตีกายภาพกับ {0} +{1}%", (monsterDatabase != null) ? "^FF0000" + monsterDatabase.name + "^000000" : temps[0], TryParseInt(temps[1]));
         }
         if (text.Contains("bonus2 bAddMagicDamageClass,"))
         {
             var temp = text.Replace("bonus2 bAddMagicDamageClass,", string.Empty);
             var temps = temp.Split(',');
-            var midString = TryParseInt(temps[0]);
-            int mid = 0;
-            if (int.TryParse(midString, out mid))
-            {
-                mid = int.Parse(midString);
-
-                text = string.Format("๐ ตีเวทย์กับ {0} +{1}%", _monsterDatabases[mid].name, TryParseInt(temps[1]));
-            }
-            else
-                text = string.Format("๐ ตีเวทย์กับ {0} +{1}%", TryParseInt(temps[0]), TryParseInt(temps[1]));
+            var monsterDatabase = GetMonsterDatabase(TryParseInt(temps[0]));
+            text = string.Format("๐ ตีเวทย์กับ {0} +{1}%", (monsterDatabase != null) ? "^FF0000" + monsterDatabase.name + "^000000" : temps[0], TryParseInt(temps[1]));
         }
         if (text.Contains("bonus2 bAddDefMonster,"))
         {
