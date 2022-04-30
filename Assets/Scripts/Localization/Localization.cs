@@ -12,6 +12,8 @@ public class Localization : MonoBehaviour
     public const string ERROR = "ERROR";
     public const string NOT_FOUND = "NOT_FOUND";
 
+    public const string AND = "AND";
+    public const string WITH = "WITH";
     public const string OR = "OR";
     public const string CAN = "CAN";
     public const string CANNOT = "CANNOT";

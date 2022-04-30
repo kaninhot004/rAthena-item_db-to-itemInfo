@@ -1923,12 +1923,12 @@ public class Converter : MonoBehaviour
         finalize = finalize.Replace("[NEW_LINE]", "\",\n			\"");
 
         // TODO: Fix it properly
-        finalize = finalize.Replace("กับ 11)", _localization.GetTexts(Localization.TYPE) + ")");
-        finalize = finalize.Replace("กับ 11 )", _localization.GetTexts(Localization.TYPE) + ")");
-        finalize = finalize.Replace("กับ II_VIEW)", _localization.GetTexts(Localization.TYPE) + ")");
-        finalize = finalize.Replace("กับ II_VIEW )", _localization.GetTexts(Localization.TYPE) + ")");
-        finalize = finalize.Replace("กับ ITEMINFO_VIEW)", _localization.GetTexts(Localization.TYPE) + ")");
-        finalize = finalize.Replace("กับ ITEMINFO_VIEW )", _localization.GetTexts(Localization.TYPE) + ")");
+        finalize = finalize.Replace(_localization.GetTexts(Localization.WITH) + " 11)", _localization.GetTexts(Localization.TYPE) + ")");
+        finalize = finalize.Replace(_localization.GetTexts(Localization.WITH) + " 11 )", _localization.GetTexts(Localization.TYPE) + ")");
+        finalize = finalize.Replace(_localization.GetTexts(Localization.WITH) + " II_VIEW)", _localization.GetTexts(Localization.TYPE) + ")");
+        finalize = finalize.Replace(_localization.GetTexts(Localization.WITH) + " II_VIEW )", _localization.GetTexts(Localization.TYPE) + ")");
+        finalize = finalize.Replace(_localization.GetTexts(Localization.WITH) + " ITEMINFO_VIEW)", _localization.GetTexts(Localization.TYPE) + ")");
+        finalize = finalize.Replace(_localization.GetTexts(Localization.WITH) + " ITEMINFO_VIEW )", _localization.GetTexts(Localization.TYPE) + ")");
 
         // Spacing fix
         finalize = finalize.Replace("     ๐", "๐");
@@ -2022,7 +2022,7 @@ public class Converter : MonoBehaviour
                         var testCommaFixer2 = text.Substring(currentCommaFixerStartIndex, i - currentCommaFixerStartIndex + 1);
                         testCommaFixer2 = testCommaFixer2.Replace('(', '†');
                         testCommaFixer2 = testCommaFixer2.Replace(')', '‡');
-                        testCommaFixer2 = testCommaFixer2.Replace(",", " กับ ");
+                        testCommaFixer2 = testCommaFixer2.Replace(",", " " + _localization.GetTexts(Localization.WITH) + " ");
                         text = text.Replace(testCommaFixer, testCommaFixer2);
 
                         break;

@@ -9,6 +9,14 @@
                     "thai": "not found",
                     "english": ""
                 }, {
+                    "key": "AND",
+                    "thai": "และ",
+                    "english": "and"
+                }, {
+                    "key": "WITH",
+                    "thai": "กับ",
+                    "english": "with"
+                }, {
                     "key": "OR",
                     "thai": "หรือ",
                     "english": ""
