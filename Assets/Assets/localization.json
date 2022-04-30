@@ -308,6 +308,14 @@
                     "key": "BONUS_MDEF2_RATE",
                     "thai": "๐ ฐาน MDef +{0}%",
                     "english": ""
+                }, {
+                    "key": "BONUS_CRITICAL_LONG",
+                    "thai": "๐ Critical ตีไกล +",
+                    "english": ""
+                }, {
+                    "key": "BONUS2_CRITICAL_ADD_RACE",
+                    "thai": "๐ Critical กับ {0} +{1}",
+                    "english": ""
                 }
             ]
         }

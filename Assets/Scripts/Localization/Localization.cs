@@ -92,6 +92,8 @@ public class Localization : MonoBehaviour
     public const string BONUS_DEF2_RATE = "BONUS_DEF2_RATE";
     public const string BONUS_MDEF2 = "BONUS_MDEF2";
     public const string BONUS_MDEF2_RATE = "BONUS_MDEF2_RATE";
+    public const string BONUS_CRITICAL_LONG = "BONUS_CRITICAL_LONG";
+    public const string BONUS2_CRITICAL_ADD_RACE = "BONUS2_CRITICAL_ADD_RACE";
 
     [Serializable]
     public class JsonData

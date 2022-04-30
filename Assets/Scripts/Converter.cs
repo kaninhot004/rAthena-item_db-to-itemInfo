@@ -2395,12 +2395,12 @@ public class Converter : MonoBehaviour
             text = string.Format("๐ Hit +{0}%", TryParseInt(temps[0]));
         }
         text = text.Replace("bonus bCritical,", "๐ Critical +");
-        text = text.Replace("bonus bCriticalLong,", "๐ Critical ตีไกล +");
+        text = text.Replace("bonus bCriticalLong,", _localization.GetTexts(Localization.BONUS_CRITICAL_LONG));
         if (text.Contains("bonus2 bCriticalAddRace,"))
         {
             var temp = text.Replace("bonus2 bCriticalAddRace,", string.Empty);
             var temps = temp.Split(',');
-            text = string.Format("๐ Critical กับ {0} +{1}", ParseRace(temps[0]), TryParseInt(temps[1]));
+            text = string.Format(_localization.GetTexts(Localization.BONUS2_CRITICAL_ADD_RACE), ParseRace(temps[0]), TryParseInt(temps[1]));
         }
         if (text.Contains("bonus bCriticalRate,"))
         {
