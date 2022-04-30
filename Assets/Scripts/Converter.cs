@@ -2331,7 +2331,7 @@ public class Converter : MonoBehaviour
             text = string.Format("๐ MaxAP +{0}%", TryParseInt(temps[0]));
         }
 
-        text = text.Replace("bonus bBaseAtk,", "๐ ฐาน Atk +");
+        text = text.Replace("bonus bBaseAtk,", _localization.GetTexts(Localization.BONUS_BASE_ATK));
         text = text.Replace("bonus bAtk,", "๐ Atk +");
         text = text.Replace("bonus bAtk2,", "๐ Atk +");
         if (text.Contains("bonus bAtkRate,"))
@@ -2344,7 +2344,7 @@ public class Converter : MonoBehaviour
         {
             var temp = text.Replace("bonus bWeaponAtkRate,", string.Empty);
             var temps = temp.Split(',');
-            text = string.Format("๐ Atk อาวุธ +{0}%", TryParseInt(temps[0]));
+            text = string.Format(_localization.GetTexts(Localization.BONUS_WEAPON_ATK_RATE), TryParseInt(temps[0]));
         }
         text = text.Replace("bonus bMatk,", "๐ MAtk +");
         if (text.Contains("bonus bMatkRate,"))
@@ -2357,7 +2357,7 @@ public class Converter : MonoBehaviour
         {
             var temp = text.Replace("bonus bWeaponMatkRate,", string.Empty);
             var temps = temp.Split(',');
-            text = string.Format("๐ MAtk อาวุธ +{0}%", TryParseInt(temps[0]));
+            text = string.Format(_localization.GetTexts(Localization.BONUS_WEAPON_MATK_RATE), TryParseInt(temps[0]));
         }
         text = text.Replace("bonus bDef,", "๐ Def +");
         if (text.Contains("bonus bDefRate,"))

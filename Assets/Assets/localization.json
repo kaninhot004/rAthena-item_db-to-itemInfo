@@ -280,6 +280,18 @@
                     "key": "BONUS_SCRIPT",
                     "thai": "๐ มีผล {0}[NEW_LINE]^FF2525(ชั่วคราว)^000000",
                     "english": ""
+                }, {
+                    "key": "BONUS_BASE_ATK",
+                    "thai": "๐ ฐาน Atk +",
+                    "english": ""
+                }, {
+                    "key": "BONUS_WEAPON_ATK_RATE",
+                    "thai": "๐ Atk อาวุธ +{0}%",
+                    "english": ""
+                }, {
+                    "key": "BONUS_WEAPON_MATK_RATE",
+                    "thai": "๐ MAtk อาวุธ +{0}%",
+                    "english": ""
                 }
             ]
         }

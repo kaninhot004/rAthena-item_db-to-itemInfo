@@ -85,6 +85,10 @@ public class Localization : MonoBehaviour
     public const string AUTO_BONUS_1 = "AUTO_BONUS_1";
     public const string BONUS_SCRIPT = "BONUS_SCRIPT";
 
+    public const string BONUS_BASE_ATK = "BONUS_BASE_ATK";
+    public const string BONUS_WEAPON_ATK_RATE = "BONUS_WEAPON_ATK_RATE";
+    public const string BONUS_WEAPON_MATK_RATE = "BONUS_WEAPON_MATK_RATE";
+
     [Serializable]
     public class JsonData
     {
