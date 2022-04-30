@@ -270,11 +270,11 @@
                     "english": "Had a small chance to {0} temporary, when using {1}"
                 }, {
                     "key": "AUTO_BONUS_2",
-                    "thai": "๐ เมื่อโดน {1} มีโอกาสเล็กน้อย ที่จะ {0}[NEW_LINE]^FF2525(ชั่วคราว)^000000",
+                    "thai": "๐ เมื่อโดน{1} มีโอกาสเล็กน้อย ที่จะ {0}[NEW_LINE]^FF2525(ชั่วคราว)^000000",
                     "english": ""
                 }, {
                     "key": "AUTO_BONUS_1",
-                    "thai": "๐ เมื่อ {1} มีโอกาสเล็กน้อย ที่จะ {0}[NEW_LINE]^FF2525(ชั่วคราว)^000000",
+                    "thai": "๐ เมื่อ{1} มีโอกาสเล็กน้อย ที่จะ {0}[NEW_LINE]^FF2525(ชั่วคราว)^000000",
                     "english": ""
                 }, {
                     "key": "BONUS_SCRIPT",
