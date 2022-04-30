@@ -2172,7 +2172,7 @@ public class Converter : MonoBehaviour
                     number++;
                 }
 
-                text = string.Format("๐ เมื่อโดน" + flag + " มีโอกาสเล็กน้อย ที่จะ {0}[NEW_LINE]^FF2525(ชั่วคราว)^000000", bonuses);
+                text = string.Format(_localization.GetTexts(Localization.AUTO_BONUS_2), bonuses, flag);
             }
             else
                 text = string.Empty;
@@ -2240,7 +2240,7 @@ public class Converter : MonoBehaviour
                     number++;
                 }
 
-                text = string.Format("๐ เมื่อ" + flag + " มีโอกาสเล็กน้อย ที่จะ {0}[NEW_LINE]^FF2525(ชั่วคราว)^000000", bonuses);
+                text = string.Format(_localization.GetTexts(Localization.AUTO_BONUS_1), bonuses, flag);
             }
             else
                 text = string.Empty;
@@ -2278,7 +2278,7 @@ public class Converter : MonoBehaviour
                     number++;
                 }
 
-                text = string.Format("๐ มีผล {0}[NEW_LINE]^FF2525(ชั่วคราว)^000000", bonuses);
+                text = string.Format(_localization.GetTexts(Localization.BONUS_SCRIPT), bonuses);
             }
             else
                 text = string.Empty;
@@ -2288,8 +2288,8 @@ public class Converter : MonoBehaviour
 
         text = text.Replace(";", string.Empty);
 
-        text = text.Replace("UnEquipScript: |", "^666478[เมื่อถอด]^000000");
-        text = text.Replace("EquipScript: |", "^666478[เมื่อสวมใส่]^000000");
+        text = text.Replace("UnEquipScript: |", "^666478[" + _localization.GetTexts(Localization.WHEN_UNEQUIP) + "]^000000");
+        text = text.Replace("EquipScript: |", "^666478[" + _localization.GetTexts(Localization.WHEN_EQUIP) + "]^000000");
 
         text = text.Replace("bonus bStr,", "๐ Str +");
         text = text.Replace("bonus bAgi,", "๐ Agi +");
@@ -3412,25 +3412,29 @@ public class Converter : MonoBehaviour
         {
             var temp = text.Replace("bonus3 bAddMonsterIdDropItem,", string.Empty);
             var temps = temp.Split(',');
-            text = string.Format("๐ เมื่อกำจัด {1} มีโอกาส {2}% ที่จะ Drop {0}", GetItemName(QuoteRemover.Remove(temps[0])), TryParseInt(temps[1]), TryParseInt(temps[2], 100));
+            var itemId = QuoteRemover.Remove(temps[0]);
+            text = string.Format("๐ เมื่อกำจัด {1} มีโอกาส {2}% ที่จะ Drop {0} (ID⁞ {3})", GetItemName(itemId), TryParseInt(temps[1]), TryParseInt(temps[2], 100), itemId);
         }
         if (text.Contains("bonus2 bAddMonsterDropItem,"))
         {
             var temp = text.Replace("bonus2 bAddMonsterDropItem,", string.Empty);
             var temps = temp.Split(',');
-            text = string.Format("๐ มีโอกาส {1}% ที่จะ Drop {0}", GetItemName(QuoteRemover.Remove(temps[0])), TryParseInt(temps[1], 100));
+            var itemId = QuoteRemover.Remove(temps[0]);
+            text = string.Format("๐ มีโอกาส {1}% ที่จะ Drop {0} (ID⁞ {2})", GetItemName(itemId), TryParseInt(temps[1], 100), itemId);
         }
         if (text.Contains("bonus3 bAddMonsterDropItem,"))
         {
             var temp = text.Replace("bonus3 bAddMonsterDropItem,", string.Empty);
             var temps = temp.Split(',');
-            text = string.Format("๐ มีโอกาส {2}% ที่จะ Drop {0} {1}", GetItemName(QuoteRemover.Remove(temps[0])), ParseRace(temps[1]), TryParseInt(temps[2], 100));
+            var itemId = QuoteRemover.Remove(temps[0]);
+            text = string.Format("๐ มีโอกาส {2}% ที่จะ Drop {0} (ID⁞ {3}) {1}", GetItemName(itemId), ParseRace(temps[1]), TryParseInt(temps[2], 100), itemId);
         }
         if (text.Contains("bonus3 bAddClassDropItem,"))
         {
             var temp = text.Replace("bonus3 bAddClassDropItem,", string.Empty);
             var temps = temp.Split(',');
-            text = string.Format("๐ มีโอกาส {2}% ที่จะ Drop {0} {1}", GetItemName(QuoteRemover.Remove(temps[0])), ParseClass(temps[1]), TryParseInt(temps[2], 100));
+            var itemId = QuoteRemover.Remove(temps[0]);
+            text = string.Format("๐ มีโอกาส {2}% ที่จะ Drop {0} (ID⁞ {3}) {1}", GetItemName(itemId), ParseClass(temps[1]), TryParseInt(temps[2], 100), itemId);
         }
         if (text.Contains("bonus2 bAddMonsterDropItemGroup,"))
         {
@@ -3617,6 +3621,7 @@ public class Converter : MonoBehaviour
         text = text.Replace(" ++", " +");
         // autobonus string fix
         text = text.Replace("+%", "%");
+        text = text.Replace("⁞", ":");
 
         // Whitespace
         text = text.Replace("    ", " ");

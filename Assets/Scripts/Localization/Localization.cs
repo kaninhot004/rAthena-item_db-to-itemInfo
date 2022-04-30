@@ -81,6 +81,9 @@ public class Localization : MonoBehaviour
     public const string PRICE = "PRICE";
 
     public const string AUTO_BONUS_3 = "AUTO_BONUS_3";
+    public const string AUTO_BONUS_2 = "AUTO_BONUS_2";
+    public const string AUTO_BONUS_1 = "AUTO_BONUS_1";
+    public const string BONUS_SCRIPT = "BONUS_SCRIPT";
 
     [Serializable]
     public class JsonData
