@@ -292,6 +292,22 @@
                     "key": "BONUS_WEAPON_MATK_RATE",
                     "thai": "๐ MAtk อาวุธ +{0}%",
                     "english": ""
+                }, {
+                    "key": "BONUS_DEF2",
+                    "thai": "๐ ฐาน Def +",
+                    "english": ""
+                }, {
+                    "key": "BONUS_DEF2_RATE",
+                    "thai": "๐ ฐาน Def +{0}%",
+                    "english": ""
+                }, {
+                    "key": "BONUS_MDEF2",
+                    "thai": "๐ ฐาน MDef +",
+                    "english": ""
+                }, {
+                    "key": "BONUS_MDEF2_RATE",
+                    "thai": "๐ ฐาน MDef +{0}%",
+                    "english": ""
                 }
             ]
         }

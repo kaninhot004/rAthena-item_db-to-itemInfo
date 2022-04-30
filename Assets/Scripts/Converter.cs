@@ -2366,12 +2366,12 @@ public class Converter : MonoBehaviour
             var temps = temp.Split(',');
             text = string.Format("๐ Def +{0}%", TryParseInt(temps[0]));
         }
-        text = text.Replace("bonus bDef2,", "๐ ฐาน Def +");
+        text = text.Replace("bonus bDef2,", _localization.GetTexts(Localization.BONUS_DEF2));
         if (text.Contains("bonus bDef2Rate,"))
         {
             var temp = text.Replace("bonus bDef2Rate,", string.Empty);
             var temps = temp.Split(',');
-            text = string.Format("๐ ฐาน Def +{0}%", TryParseInt(temps[0]));
+            text = string.Format(_localization.GetTexts(Localization.BONUS_DEF2_RATE), TryParseInt(temps[0]));
         }
         text = text.Replace("bonus bMdef,", "๐ MDef +");
         if (text.Contains("bonus bMdefRate,"))
@@ -2380,12 +2380,12 @@ public class Converter : MonoBehaviour
             var temps = temp.Split(',');
             text = string.Format("๐ MDef +{0}%", TryParseInt(temps[0]));
         }
-        text = text.Replace("bonus bMdef2,", "๐ ฐาน MDef +");
+        text = text.Replace("bonus bMdef2,", _localization.GetTexts(Localization.BONUS_MDEF2));
         if (text.Contains("bonus bMdef2Rate,"))
         {
             var temp = text.Replace("bonus bMdef2Rate,", string.Empty);
             var temps = temp.Split(',');
-            text = string.Format("๐ ฐาน MDef +{0}%", TryParseInt(temps[0]));
+            text = string.Format(_localization.GetTexts(Localization.BONUS_MDEF2_RATE), TryParseInt(temps[0]));
         }
         text = text.Replace("bonus bHit,", "๐ Hit +");
         if (text.Contains("bonus bHitRate,"))
