@@ -2503,24 +2503,23 @@ public class Converter : MonoBehaviour
             var temps = temp.Split(',');
             text = string.Format("๐ C.Rate +{0}%", TryParseInt(temps[0]));
         }
-
         if (text.Contains("bonus bHPrecovRate,"))
         {
             var temp = text.Replace("bonus bHPrecovRate,", string.Empty);
             var temps = temp.Split(',');
-            text = string.Format("๐ การฟื้นฟู HP ปกติ +{0}%", TryParseInt(temps[0]));
+            text = string.Format(_localization.GetTexts(Localization.BONUS_HP_RECOV_RATE), TryParseInt(temps[0]));
         }
         if (text.Contains("bonus bSPrecovRate,"))
         {
             var temp = text.Replace("bonus bSPrecovRate,", string.Empty);
             var temps = temp.Split(',');
-            text = string.Format("๐ การฟื้นฟู SP ปกติ +{0}%", TryParseInt(temps[0]));
+            text = string.Format(_localization.GetTexts(Localization.BONUS_SP_RECOV_RATE), TryParseInt(temps[0]));
         }
         if (text.Contains("bonus2 bHPRegenRate,"))
         {
             var temp = text.Replace("bonus2 bHPRegenRate,", string.Empty);
             var temps = temp.Split(',');
-            text = string.Format("๐ ฟื้นฟู HP +{0} ทุก ๆ {1} วินาที", TryParseInt(temps[0]), TryParseInt(temps[1], 1000));
+            text = string.Format(_localization.GetTexts(Localization.BONUS2_HP_REGEN_RATE), TryParseInt(temps[0]), TryParseInt(temps[1], 1000));
         }
         if (text.Contains("bonus2 bHPLossRate,"))
         {

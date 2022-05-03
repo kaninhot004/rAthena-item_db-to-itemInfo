@@ -99,6 +99,9 @@ public class Localization : MonoBehaviour
     public const string BONUS_SPEED_ADD_RATE = "BONUS_SPEED_ADD_RATE";
     public const string BONUS_ATK_RANGE = "BONUS_ATK_RANGE";
     public const string BONUS_ADD_MAX_WEIGHT = "BONUS_ADD_MAX_WEIGHT";
+    public const string BONUS_HP_RECOV_RATE = "BONUS_HP_RECOV_RATE";
+    public const string BONUS_SP_RECOV_RATE = "BONUS_SP_RECOV_RATE";
+    public const string BONUS2_HP_REGEN_RATE = "BONUS2_HP_REGEN_RATE";
 
     [Serializable]
     public class JsonData
