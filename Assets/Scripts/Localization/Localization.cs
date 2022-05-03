@@ -102,6 +102,9 @@ public class Localization : MonoBehaviour
     public const string BONUS_HP_RECOV_RATE = "BONUS_HP_RECOV_RATE";
     public const string BONUS_SP_RECOV_RATE = "BONUS_SP_RECOV_RATE";
     public const string BONUS2_HP_REGEN_RATE = "BONUS2_HP_REGEN_RATE";
+    public const string BONUS2_HP_LOSS_RATE = "BONUS2_HP_LOSS_RATE";
+    public const string BONUS2_SP_REGEN_RATE = "BONUS2_SP_REGEN_RATE";
+    public const string BONUS2_SP_LOSS_RATE = "BONUS2_SP_LOSS_RATE";
 
     [Serializable]
     public class JsonData
