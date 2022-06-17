@@ -1394,6 +1394,14 @@ public class Converter : MonoBehaviour
                 _itemContainer.jobs += "Kagerou & Oboro, ";
             else if (_itemContainer.isJob && text.Contains("      KagerouOboro: false"))
                 _itemContainer.jobs += "Kagerou & Oboro [x], ";
+            else if (_itemContainer.isJob && text.Contains("      Shinkiro: true"))
+                _itemContainer.jobs += "Shinkiro, ";
+            else if (_itemContainer.isJob && text.Contains("      Shinkiro: false"))
+                _itemContainer.jobs += "Shinkiro [x], ";
+            else if (_itemContainer.isJob && text.Contains("      Shiranui: true"))
+                _itemContainer.jobs += "Shiranui, ";
+            else if (_itemContainer.isJob && text.Contains("      Shiranui: false"))
+                _itemContainer.jobs += "Shiranui [x], ";
             else if (_itemContainer.isJob && text.Contains("      Knight: true"))
                 _itemContainer.jobs += "Knight, ";
             else if (_itemContainer.isJob && text.Contains("      Knight: false"))
@@ -1426,6 +1434,10 @@ public class Converter : MonoBehaviour
                 _itemContainer.jobs += "Rebellion, ";
             else if (_itemContainer.isJob && text.Contains("      Rebellion: false"))
                 _itemContainer.jobs += "Rebellion [x], ";
+            else if (_itemContainer.isJob && text.Contains("      Night_Watch: true"))
+                _itemContainer.jobs += "Night Watch, ";
+            else if (_itemContainer.isJob && text.Contains("      Night_Watch: false"))
+                _itemContainer.jobs += "Night Watch [x], ";
             else if (_itemContainer.isJob && text.Contains("      Rogue: true"))
                 _itemContainer.jobs += "Rogue, ";
             else if (_itemContainer.isJob && text.Contains("      Rogue: false"))
@@ -1438,18 +1450,34 @@ public class Converter : MonoBehaviour
                 _itemContainer.jobs += "Soul Linker, ";
             else if (_itemContainer.isJob && text.Contains("      SoulLinker: false"))
                 _itemContainer.jobs += "Soul Linker [x], ";
+            else if (_itemContainer.isJob && text.Contains("      Soul_Ascetic: true"))
+                _itemContainer.jobs += "Soul Ascetic, ";
+            else if (_itemContainer.isJob && text.Contains("      Soul_Ascetic: false"))
+                _itemContainer.jobs += "Soul Ascetic [x], ";
             else if (_itemContainer.isJob && text.Contains("      StarGladiator: true"))
                 _itemContainer.jobs += "Star Gladiator, ";
             else if (_itemContainer.isJob && text.Contains("      StarGladiator: false"))
                 _itemContainer.jobs += "Star Gladiator [x], ";
+            else if (_itemContainer.isJob && text.Contains("      Sky_Emperor: true"))
+                _itemContainer.jobs += "Sky Emperor, ";
+            else if (_itemContainer.isJob && text.Contains("      Sky_Emperor: false"))
+                _itemContainer.jobs += "Sky Emperor [x], ";
             else if (_itemContainer.isJob && text.Contains("      Summoner: true"))
                 _itemContainer.jobs += "Summoner, ";
             else if (_itemContainer.isJob && text.Contains("      Summoner: false"))
                 _itemContainer.jobs += "Summoner [x], ";
+            else if (_itemContainer.isJob && text.Contains("      Spirit_Handler: true"))
+                _itemContainer.jobs += "Spirit Handler, ";
+            else if (_itemContainer.isJob && text.Contains("      Spirit_Handler: false"))
+                _itemContainer.jobs += "Spirit Handler [x], ";
             else if (_itemContainer.isJob && text.Contains("      SuperNovice: true"))
                 _itemContainer.jobs += "Super Novice, ";
             else if (_itemContainer.isJob && text.Contains("      SuperNovice: false"))
                 _itemContainer.jobs += "Super Novice [x], ";
+            else if (_itemContainer.isJob && text.Contains("      Hyper_Novice: true"))
+                _itemContainer.jobs += "Hyper Novice, ";
+            else if (_itemContainer.isJob && text.Contains("      Hyper_Novice: false"))
+                _itemContainer.jobs += "Hyper Novice [x], ";
             else if (_itemContainer.isJob && text.Contains("      Swordman: true"))
                 _itemContainer.jobs += "Swordman, ";
             else if (_itemContainer.isJob && text.Contains("      Swordman: false"))
