@@ -1887,7 +1887,7 @@ public class Converter : MonoBehaviour
                     builder.Append("		slotCount = 0,\n");
 
                 // View / Class Number
-                builder.Append("		ClassNum = " + GetClassNumFromId(int.Parse(_itemContainer.id)) + ",\n");
+                builder.Append("		ClassNum = " + GetClassNumFromId(_itemContainer) + ",\n");
 
                 // Costume
                 builder.Append("		costume = false\n");
@@ -4445,10 +4445,67 @@ public class Converter : MonoBehaviour
         return text;
     }
 
-    string GetClassNumFromId(int id)
+    string GetClassNumFromId(ItemContainer itemContainer)
     {
-        if (_classNumberDatabases.ContainsKey(id))
-            return _classNumberDatabases[id];
+        if (_classNumberDatabases.ContainsKey(int.Parse(itemContainer.id)))
+            return _classNumberDatabases[int.Parse(itemContainer.id)];
+        // Default view for weapons
+        else if (!string.IsNullOrEmpty(itemContainer.subType))
+        {
+            if (itemContainer.subType == "Fist")
+                return "0";
+            else if (itemContainer.subType == "Dagger")
+                return "1";
+            else if (itemContainer.subType == "1hSword")
+                return "2";
+            else if (itemContainer.subType == "2hSword")
+                return "3";
+            else if (itemContainer.subType == "1hSpear")
+                return "4";
+            else if (itemContainer.subType == "2hSpear")
+                return "5";
+            else if (itemContainer.subType == "1hAxe")
+                return "6";
+            else if (itemContainer.subType == "2hAxe")
+                return "7";
+            else if (itemContainer.subType == "Mace")
+                return "8";
+            else if (itemContainer.subType == "Staff")
+                return "10";
+            else if (itemContainer.subType == "Bow")
+                return "11";
+            else if (itemContainer.subType == "Knuckle")
+                return "12";
+            else if (itemContainer.subType == "Musical")
+                return "13";
+            else if (itemContainer.subType == "Whip")
+                return "14";
+            else if (itemContainer.subType == "Book")
+                return "15";
+            else if (itemContainer.subType == "Katar")
+                return "16";
+            else if (itemContainer.subType == "Revolver")
+                return "17";
+            else if (itemContainer.subType == "Rifle")
+                return "18";
+            else if (itemContainer.subType == "Gatling")
+                return "19";
+            else if (itemContainer.subType == "Shotgun")
+                return "20";
+            else if (itemContainer.subType == "Grenade")
+                return "21";
+            else if (itemContainer.subType == "Huuma")
+                return "22";
+            else if (itemContainer.subType == "2hStaff")
+                return "23";
+            else
+                return "0";
+        }
+        // Default view for shields
+        else if (!string.IsNullOrEmpty(itemContainer.type)
+            && string.IsNullOrEmpty(itemContainer.locations)
+            && (itemContainer.locations == _localization.GetTexts(Localization.LOCATION_LEFT_HAND)))
+            return "1";
         else
             return "0";
     }

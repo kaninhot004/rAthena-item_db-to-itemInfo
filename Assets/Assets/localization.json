@@ -360,6 +360,10 @@
                     "key": "BONUS2_SP_LOSS_RATE",
                     "thai": "๐ เสีย SP +{0} ทุก ๆ {1} วินาที",
                     "english": ""
+                }, {
+                    "key": "BONUS2_REGEN_PERCENT_HP",
+                    "thai": "๐ ฟื้นฟู HP +{0}% ทุก ๆ {1} วินาที",
+                    "english": ""
                 }
             ]
         }
