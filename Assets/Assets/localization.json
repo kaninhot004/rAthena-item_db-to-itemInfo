@@ -364,6 +364,78 @@
                     "key": "BONUS2_REGEN_PERCENT_HP",
                     "thai": "๐ ฟื้นฟู HP +{0}% ทุก ๆ {1} วินาที",
                     "english": ""
+                }, {
+                    "key": "BONUS2_REGEN_PERCENT_SP",
+                    "thai": "๐ ฟื้นฟู SP +{0}% ทุก ๆ {1} วินาที",
+                    "english": ""
+                }, {
+                    "key": "BONUS_STOP_HP_REGEN",
+                    "thai": "๐ หยุดการฟื้นฟู HP ปกติ",
+                    "english": ""
+                }, {
+                    "key": "BONUS_STOP_SP_REGEN",
+                    "thai": "๐ หยุดการฟื้นฟู SP ปกติ",
+                    "english": ""
+                }, {
+                    "key": "BONUS_USE_SP_RATE",
+                    "thai": "๐ SP ที่ต้องใช้ +{0}%",
+                    "english": ""
+                }, {
+                    "key": "BONUS2_SKILL_USE_SP",
+                    "thai": "๐ SP ที่ต้องใช้กับ {0} -{1}",
+                    "english": ""
+                }, {
+                    "key": "BONUS2_SKILL_USE_SP_RATE",
+                    "thai": "๐ SP ที่ต้องใช้กับ {0} -{1}%",
+                    "english": ""
+                }, {
+                    "key": "BONUS2_SKILL_ATK",
+                    "thai": "๐ {0} แรงขึ้น +{1}%",
+                    "english": ""
+                }, {
+                    "key": "BONUS_SHORT_ATK_RATE",
+                    "thai": "๐ ตีกายภาพใกล้ +{0}%",
+                    "english": ""
+                }, {
+                    "key": "BONUS_LONG_ATK_RATE",
+                    "thai": "๐ ตีกายภาพไกล +{0}%",
+                    "english": ""
+                }, {
+                    "key": "BONUS_CRIT_ATK_RATE",
+                    "thai": "๐ Critical แรงขึ้น +{0}%",
+                    "english": ""
+                }, {
+                    "key": "BONUS_CRIT_DEF_RATE",
+                    "thai": "๐ กัน Critical +{0}%",
+                    "english": ""
+                }, {
+                    "key": "BONUS_CRITICAL_DEF",
+                    "thai": "๐ หลบ Critical +{0}%",
+                    "english": ""
+                }, {
+                    "key": "BONUS2_WEAPON_ATK",
+                    "thai": "๐ ถ้าสวมใส่ {0} Atk อาวุธ +{1}",
+                    "english": ""
+                }, {
+                    "key": "BONUS2_WEAPON_DAMAGE_RATE",
+                    "thai": "๐ ถ้าสวมใส่ {0} ตีกายภาพ +{1}%",
+                    "english": ""
+                }, {
+                    "key": "BONUS_NEAR_ATK_DEF",
+                    "thai": "๐ กันกายภาพใกล้ +{0}%",
+                    "english": ""
+                }, {
+                    "key": "BONUS_LONG_ATK_DEF",
+                    "thai": "๐ กันกายภาพไกล +{0}%",
+                    "english": ""
+                }, {
+                    "key": "BONUS_MAGIC_ATK_DEF",
+                    "thai": "๐ กันเวทย์ +{0}%",
+                    "english": ""
+                }, {
+                    "key": "BONUS_MISC_ATK_DEF",
+                    "thai": "๐ กันอื่น ๆ +{0}%",
+                    "english": ""
                 }
             ]
         }

@@ -2578,107 +2578,107 @@ public class Converter : MonoBehaviour
         {
             var temp = text.Replace("bonus2 bRegenPercentHP,", string.Empty);
             var temps = temp.Split(',');
-            text = string.Format("๐ ฟื้นฟู HP +{0}% ทุก ๆ {1} วินาที", TryParseInt(temps[0]), TryParseInt(temps[1], 1000));
+            text = string.Format(_localization.GetTexts(Localization.BONUS2_REGEN_PERCENT_HP), TryParseInt(temps[0]), TryParseInt(temps[1], 1000));
         }
         if (text.Contains("bonus2 bRegenPercentSP,"))
         {
             var temp = text.Replace("bonus2 bRegenPercentSP,", string.Empty);
             var temps = temp.Split(',');
-            text = string.Format("๐ ฟื้นฟู SP +{0}% ทุก ๆ {1} วินาที", TryParseInt(temps[0]), TryParseInt(temps[1], 1000));
+            text = string.Format(_localization.GetTexts(Localization.BONUS2_REGEN_PERCENT_SP), TryParseInt(temps[0]), TryParseInt(temps[1], 1000));
         }
-        text = text.Replace("bonus bNoRegen,1", "๐ หยุดการฟื้นฟู HP ปกติ");
-        text = text.Replace("bonus bNoRegen,2", "๐ หยุดการฟื้นฟู SP ปกติ");
+        text = text.Replace("bonus bNoRegen,1", _localization.GetTexts(Localization.BONUS_STOP_HP_REGEN));
+        text = text.Replace("bonus bNoRegen,2", _localization.GetTexts(Localization.BONUS_STOP_SP_REGEN));
         if (text.Contains("bonus bUseSPrate,"))
         {
             var temp = text.Replace("bonus bUseSPrate,", string.Empty);
             var temps = temp.Split(',');
-            text = string.Format("๐ SP ที่ต้องใช้ +{0}%", TryParseInt(temps[0]));
+            text = string.Format(_localization.GetTexts(Localization.BONUS_USE_SP_RATE), TryParseInt(temps[0]));
         }
         if (text.Contains("bonus2 bSkillUseSP,"))
         {
             var temp = text.Replace("bonus2 bSkillUseSP,", string.Empty);
             var temps = temp.Split(',');
-            text = string.Format("๐ SP ที่ต้องใช้กับ {0} -{1}", GetSkillName(QuoteRemover.Remove(temps[0])), TryParseInt(temps[1]));
+            text = string.Format(_localization.GetTexts(Localization.BONUS2_SKILL_USE_SP), GetSkillName(QuoteRemover.Remove(temps[0])), TryParseInt(temps[1]));
             text = text.Replace("--", "+");
         }
         if (text.Contains("bonus2 bSkillUseSPrate,"))
         {
             var temp = text.Replace("bonus2 bSkillUseSPrate,", string.Empty);
             var temps = temp.Split(',');
-            text = string.Format("๐ SP ที่ต้องใช้กับ {0} -{1}%", GetSkillName(QuoteRemover.Remove(temps[0])), TryParseInt(temps[1]));
+            text = string.Format(_localization.GetTexts(Localization.BONUS2_SKILL_USE_SP_RATE), GetSkillName(QuoteRemover.Remove(temps[0])), TryParseInt(temps[1]));
             text = text.Replace("--", "+");
         }
         if (text.Contains("bonus2 bSkillAtk,"))
         {
             var temp = text.Replace("bonus2 bSkillAtk,", string.Empty);
             var temps = temp.Split(',');
-            text = string.Format("๐ {0} แรงขึ้น +{1}%", GetSkillName(QuoteRemover.Remove(temps[0])), TryParseInt(temps[1]));
+            text = string.Format(_localization.GetTexts(Localization.BONUS2_SKILL_ATK), GetSkillName(QuoteRemover.Remove(temps[0])), TryParseInt(temps[1]));
         }
         if (text.Contains("bonus bShortAtkRate,"))
         {
             var temp = text.Replace("bonus bShortAtkRate,", string.Empty);
             var temps = temp.Split(',');
-            text = string.Format("๐ ตีกายภาพใกล้ +{0}%", TryParseInt(temps[0]));
+            text = string.Format(_localization.GetTexts(Localization.BONUS_SHORT_ATK_RATE), TryParseInt(temps[0]));
         }
         if (text.Contains("bonus bLongAtkRate,"))
         {
             var temp = text.Replace("bonus bLongAtkRate,", string.Empty);
             var temps = temp.Split(',');
-            text = string.Format("๐ ตีกายภาพไกล +{0}%", TryParseInt(temps[0]));
+            text = string.Format(_localization.GetTexts(Localization.BONUS_LONG_ATK_RATE), TryParseInt(temps[0]));
         }
         if (text.Contains("bonus bCritAtkRate,"))
         {
             var temp = text.Replace("bonus bCritAtkRate,", string.Empty);
             var temps = temp.Split(',');
-            text = string.Format("๐ Critical แรงขึ้น +{0}%", TryParseInt(temps[0]));
+            text = string.Format(_localization.GetTexts(Localization.BONUS_CRIT_ATK_RATE), TryParseInt(temps[0]));
         }
         if (text.Contains("bonus bCritDefRate,"))
         {
             var temp = text.Replace("bonus bCritDefRate,", string.Empty);
             var temps = temp.Split(',');
-            text = string.Format("๐ กัน Critical +{0}%", TryParseInt(temps[0]));
+            text = string.Format(_localization.GetTexts(Localization.BONUS_CRIT_DEF_RATE), TryParseInt(temps[0]));
         }
         if (text.Contains("bonus bCriticalDef,"))
         {
             var temp = text.Replace("bonus bCriticalDef,", string.Empty);
             var temps = temp.Split(',');
-            text = string.Format("๐ หลบ Critical +{0}%", TryParseInt(temps[0]));
+            text = string.Format(_localization.GetTexts(Localization.BONUS_CRITICAL_DEF), TryParseInt(temps[0]));
         }
         if (text.Contains("bonus2 bWeaponAtk,"))
         {
             var temp = text.Replace("bonus2 bWeaponAtk,", string.Empty);
             var temps = temp.Split(',');
-            text = string.Format("๐ ถ้าสวมใส่ {0} Atk อาวุธ +{1}", QuoteRemover.Remove(temps[0]), TryParseInt(temps[1]));
+            text = string.Format(_localization.GetTexts(Localization.BONUS2_WEAPON_ATK), QuoteRemover.Remove(temps[0]), TryParseInt(temps[1]));
         }
         if (text.Contains("bonus2 bWeaponDamageRate,"))
         {
             var temp = text.Replace("bonus2 bWeaponDamageRate,", string.Empty);
             var temps = temp.Split(',');
-            text = string.Format("๐ ถ้าสวมใส่ {0} ตีกายภาพ +{1}%", QuoteRemover.Remove(temps[0]), TryParseInt(temps[1]));
+            text = string.Format(_localization.GetTexts(Localization.BONUS2_WEAPON_DAMAGE_RATE), QuoteRemover.Remove(temps[0]), TryParseInt(temps[1]));
         }
         if (text.Contains("bonus bNearAtkDef,"))
         {
             var temp = text.Replace("bonus bNearAtkDef,", string.Empty);
             var temps = temp.Split(',');
-            text = string.Format("๐ กันกายภาพใกล้ +{0}%", TryParseInt(temps[0]));
+            text = string.Format(_localization.GetTexts(Localization.BONUS_NEAR_ATK_DEF), TryParseInt(temps[0]));
         }
         if (text.Contains("bonus bLongAtkDef,"))
         {
             var temp = text.Replace("bonus bLongAtkDef,", string.Empty);
             var temps = temp.Split(',');
-            text = string.Format("๐ กันกายภาพไกล +{0}%", TryParseInt(temps[0]));
+            text = string.Format(_localization.GetTexts(Localization.BONUS_LONG_ATK_DEF), TryParseInt(temps[0]));
         }
         if (text.Contains("bonus bMagicAtkDef,"))
         {
             var temp = text.Replace("bonus bMagicAtkDef,", string.Empty);
             var temps = temp.Split(',');
-            text = string.Format("๐ กันเวทย์ +{0}%", TryParseInt(temps[0]));
+            text = string.Format(_localization.GetTexts(Localization.BONUS_MAGIC_ATK_DEF), TryParseInt(temps[0]));
         }
         if (text.Contains("bonus bMiscAtkDef,"))
         {
             var temp = text.Replace("bonus bMiscAtkDef,", string.Empty);
             var temps = temp.Split(',');
-            text = string.Format("๐ กันอื่น ๆ +{0}%", TryParseInt(temps[0]));
+            text = string.Format(_localization.GetTexts(Localization.BONUS_MISC_ATK_DEF), TryParseInt(temps[0]));
         }
         if (text.Contains("bonus bNoWeaponDamage,"))
         {

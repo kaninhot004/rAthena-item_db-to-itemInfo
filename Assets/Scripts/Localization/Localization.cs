@@ -105,6 +105,25 @@ public class Localization : MonoBehaviour
     public const string BONUS2_HP_LOSS_RATE = "BONUS2_HP_LOSS_RATE";
     public const string BONUS2_SP_REGEN_RATE = "BONUS2_SP_REGEN_RATE";
     public const string BONUS2_SP_LOSS_RATE = "BONUS2_SP_LOSS_RATE";
+    public const string BONUS2_REGEN_PERCENT_HP = "BONUS2_REGEN_PERCENT_HP";
+    public const string BONUS2_REGEN_PERCENT_SP = "BONUS2_REGEN_PERCENT_SP";
+    public const string BONUS_STOP_HP_REGEN = "BONUS_STOP_HP_REGEN";
+    public const string BONUS_STOP_SP_REGEN = "BONUS_STOP_SP_REGEN";
+    public const string BONUS_USE_SP_RATE = "BONUS_USE_SP_RATE";
+    public const string BONUS2_SKILL_USE_SP = "BONUS2_SKILL_USE_SP";
+    public const string BONUS2_SKILL_USE_SP_RATE = "BONUS2_SKILL_USE_SP_RATE";
+    public const string BONUS2_SKILL_ATK = "BONUS2_SKILL_ATK";
+    public const string BONUS_SHORT_ATK_RATE = "BONUS_SHORT_ATK_RATE";
+    public const string BONUS_LONG_ATK_RATE = "BONUS_LONG_ATK_RATE";
+    public const string BONUS_CRIT_ATK_RATE = "BONUS_CRIT_ATK_RATE";
+    public const string BONUS_CRIT_DEF_RATE = "BONUS_CRIT_DEF_RATE";
+    public const string BONUS_CRITICAL_DEF = "BONUS_CRITICAL_DEF";
+    public const string BONUS2_WEAPON_ATK = "BONUS2_WEAPON_ATK";
+    public const string BONUS2_WEAPON_DAMAGE_RATE = "BONUS2_WEAPON_DAMAGE_RATE";
+    public const string BONUS_NEAR_ATK_DEF = "BONUS_NEAR_ATK_DEF";
+    public const string BONUS_LONG_ATK_DEF = "BONUS_LONG_ATK_DEF";
+    public const string BONUS_MAGIC_ATK_DEF = "BONUS_MAGIC_ATK_DEF";
+    public const string BONUS_MISC_ATK_DEF = "BONUS_MISC_ATK_DEF";
 
     [Serializable]
     public class JsonData
