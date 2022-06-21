@@ -1692,7 +1692,14 @@ public class Converter : MonoBehaviour
                 _itemContainer.refinable = _localization.GetTexts(Localization.CANNOT);
             // View
             else if (text.Contains("    View:"))
+            {
                 _itemContainer.view = text.Replace("    View: ", string.Empty);
+
+                if (!_classNumberDatabases.ContainsKey(int.Parse(_itemContainer.id)))
+                    _classNumberDatabases.Add(int.Parse(_itemContainer.id), _itemContainer.view);
+                else
+                    _classNumberDatabases[int.Parse(_itemContainer.id)] = _itemContainer.view;
+            }
             // Script
             else if (_itemContainer.isScript)
             {
