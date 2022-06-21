@@ -3626,6 +3626,13 @@ public class Converter : MonoBehaviour
             var temps = temp.Split(',');
             text = string.Format("๐ รับ {0} {1} ชิ้น", GetItemName(QuoteRemover.Remove(temps[0])), TryParseInt(temps[1]));
         }
+        // getgroupitem
+        if (text.Contains("getgroupitem"))
+        {
+            var temp = text.Replace("getgroupitem", string.Empty);
+            var temps = temp.Split(',');
+            text = string.Format("๐ รับ Item กลุ่ม {0} {1} ชิ้น", QuoteRemover.Remove(temps[0]).Replace("IG_", string.Empty), TryParseInt((temps.Length > 1) ? temps[1] : null, 1, 1));
+        }
         // pet
         if (text.Contains("pet "))
         {
@@ -4004,7 +4011,7 @@ public class Converter : MonoBehaviour
         return text;
     }
 
-    string TryParseInt(string text, float divider = 1)
+    string TryParseInt(string text, float divider = 1, int defaultValue = 0)
     {
         if (text == "INFINITE_TICK")
             return "ถาวร";
@@ -4017,7 +4024,7 @@ public class Converter : MonoBehaviour
         {
             if (string.IsNullOrEmpty(text)
                 || string.IsNullOrWhiteSpace(text))
-                return "0";
+                return defaultValue.ToString("f0");
             else
                 return text;
         }
