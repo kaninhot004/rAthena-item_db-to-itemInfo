@@ -247,11 +247,11 @@
                 }, {
                     "key": "MINIMUM_EQUIP_LEVEL",
                     "thai": "เลเวลขั้นต่ำ",
-                    "english": "Minimum Equip Level"
+                    "english": "Min. Equip Level"
                 }, {
                     "key": "MAXIMUM_EQUIP_LEVEL",
                     "thai": "เลเวลสูงสุด",
-                    "english": "Maximum Equip Level"
+                    "english": "Max. Equip Level"
                 }, {
                     "key": "REFINABLE",
                     "thai": "ตีบวก",
@@ -335,7 +335,7 @@
                 }, {
                     "key": "BONUS_ADD_MAX_WEIGHT",
                     "thai": "๐ แบกของได้หนักขึ้น +{0}",
-                    "english": "๐ Maximum Carry Weight +{0}"
+                    "english": "๐ Max. Carry Weight +{0}"
                 }, {
                     "key": "BONUS_HP_RECOV_RATE",
                     "thai": "๐ การฟื้นฟู HP ปกติ +{0}%",
@@ -362,12 +362,12 @@
                     "english": "๐ Lose +{0} SP every {1}s"
                 }, {
                     "key": "BONUS2_REGEN_PERCENT_HP",
-                    "thai": "๐ ฟื้นฟู HP +{0}% ทุก ๆ {1} วินาที",
-                    "english": ""
+                    "thai": "๐ ฟื้นฟู +{0}% จาก MaxHP ทุก ๆ {1} วินาที",
+                    "english": "๐ Heal +{0}% from MaxHP every {1}s"
                 }, {
                     "key": "BONUS2_REGEN_PERCENT_SP",
-                    "thai": "๐ ฟื้นฟู SP +{0}% ทุก ๆ {1} วินาที",
-                    "english": ""
+                    "thai": "๐ ฟื้นฟู +{0}% จาก MaxSP ทุก ๆ {1} วินาที",
+                    "english": "๐ Heal +{0}% from MaxSP every {1}s"
                 }, {
                     "key": "BONUS_STOP_HP_REGEN",
                     "thai": "๐ หยุดการฟื้นฟู HP ปกติ",
