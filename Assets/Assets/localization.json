@@ -467,43 +467,43 @@
                 }, {
                     "key": "BONUS_ADD_ITEM_HEAL_RATE",
                     "thai": "๐ Item Heal HP แรงขึ้น +{0}%",
-                    "english": ""
+                    "english": "๐ HP Heal Power (Item) +{0}%"
                 }, {
                     "key": "BONUS2_ADD_ITEM_HEAL_RATE",
                     "thai": "๐ {0} Heal HP แรงขึ้น +{1}%",
-                    "english": ""
+                    "english": "๐ {0} HP Heal Power +{1}%"
                 }, {
                     "key": "BONUS2_ADD_ITEM_GROUP_HEAL_RATE",
                     "thai": "๐ Item กลุ่ม {0} Heal HP แรงขึ้น +{1}%",
-                    "english": ""
+                    "english": "๐ Item Group {0} HP Heal Power +{1}%"
                 }, {
                     "key": "BONUS_ADD_ITEM_SP_HEAL_RATE",
                     "thai": "๐ Item Heal SP แรงขึ้น +{0}%",
-                    "english": ""
+                    "english": "๐ SP Heal Power (Item) +{0}%"
                 }, {
                     "key": "BONUS2_ADD_ITEM_SP_HEAL_RATE",
                     "thai": "๐ {0} Heal SP แรงขึ้น +{1}%",
-                    "english": ""
+                    "english": "๐ {0} SP Heal Power +{1}%"
                 }, {
                     "key": "BONUS2_ADD_ITEM_GROUP_SP_HEAL_RATE",
                     "thai": "๐ Item กลุ่ม {0} Heal SP แรงขึ้น +{1}%",
-                    "english": ""
+                    "english": "๐ Item Group {0} SP Heal Power +{1}%"
                 }, {
                     "key": "BONUS_CAST_RATE",
                     "thai": "๐ ร่าย V. +{0}%",
-                    "english": ""
+                    "english": "๐ Variable Cast +{0}%"
                 }, {
                     "key": "BONUS2_CAST_RATE",
                     "thai": "๐ ร่าย V. {0} +{1}%",
-                    "english": ""
+                    "english": "๐ Variable Cast for {0} +{1}%"
                 }, {
                     "key": "BONUS_FIXED_CAST_RATE",
                     "thai": "๐ ร่าย F. +{0}%",
-                    "english": ""
+                    "english": "๐ Fixed Cast +{0}%"
                 }, {
                     "key": "BONUS2_FIXED_CAST_RATE",
                     "thai": "๐ ร่าย F. {0} +{1}%",
-                    "english": ""
+                    "english": "๐ Fixed Cast for {0} +{1}%"
                 }, {
                     "key": "BONUS_VARIABLE_CAST_RATE",
                     "thai": "๐ ร่าย V. +{0}%",
