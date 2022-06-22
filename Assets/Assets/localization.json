@@ -607,59 +607,59 @@
                 }, {
                     "key": "BONUS2_ADD_SIZE",
                     "thai": "๐ ตีกายภาพ {0} +{1}%",
-                    "english": ""
+                    "english": "๐ Physical Damage {0} +{1}%"
                 }, {
                     "key": "BONUS2_MAGIC_ADD_SIZE",
                     "thai": "๐ ตีเวทย์ {0} +{1}%",
-                    "english": ""
+                    "english": "๐ Magical Damage {0} +{1}%"
                 }, {
                     "key": "BONUS2_SUB_SIZE",
                     "thai": "๐ กันกายภาพ {0} +{1}%",
-                    "english": ""
+                    "english": "๐ Physical Defense {0} +{1}%"
                 }, {
                     "key": "BONUS2_WEAPON_SUB_SIZE",
                     "thai": "๐ กันกายภาพ {0} +{1}%",
-                    "english": ""
+                    "english": "๐ Physical Defense {0} +{1}%"
                 }, {
                     "key": "BONUS2_MAGIC_SUB_SIZE",
                     "thai": "๐ กันเวทย์ {0} +{1}%",
-                    "english": ""
+                    "english": "๐ Magical Defense {0} +{1}%"
                 }, {
                     "key": "BONUS_NO_SIZE_FIX",
                     "thai": "๐ ไม่สนใจขนาดในการคำนวณ",
-                    "english": ""
+                    "english": "๐ Deal full damage to any target size"
                 }, {
                     "key": "BONUS2_ADD_DAMAGE_CLASS",
                     "thai": "๐ ตีกายภาพกับ {0} +{1}%",
-                    "english": ""
+                    "english": "๐ Physical Damage with {0} +{1}%"
                 }, {
                     "key": "BONUS2_ADD_MAGIC_DAMAGE_CLASS",
                     "thai": "๐ ตีเวทย์กับ {0} +{1}%",
-                    "english": ""
+                    "english": "๐ Magical Damage with {0} +{1}%"
                 }, {
                     "key": "BONUS2_ADD_DEF_MONSTER",
                     "thai": "๐ กันกายภาพจาก {0} +{1}%",
-                    "english": ""
+                    "english": "๐ Physical Defense from {0} +{1}%"
                 }, {
                     "key": "BONUS2_ADD_MDEF_MONSTER",
                     "thai": "๐ กันเวทย์จาก {0} +{1}%",
-                    "english": ""
+                    "english": "๐ Magical Defense from {0} +{1}%"
                 }, {
                     "key": "BONUS2_ADD_RACE_2",
                     "thai": "๐ ตีกายภาพ {0} +{1}%",
-                    "english": ""
+                    "english": "๐ Physical Damage {0} +{1}%"
                 }, {
                     "key": "BONUS2_SUB_RACE_2",
                     "thai": "๐ กัน {0} +{1}%",
-                    "english": ""
+                    "english": "๐ Defense {0} +{1}%"
                 }, {
                     "key": "BONUS2_MAGIC_ADD_RACE_2",
                     "thai": "๐ ตีเวทย์ {0} +{1}%",
-                    "english": ""
+                    "english": "๐ Magical Damage {0} +{1}%"
                 }, {
                     "key": "BONUS2_SUB_SKILL",
                     "thai": "๐ กัน {0} +{1}%",
-                    "english": ""
+                    "english": "๐ Defense {0} +{1}%"
                 }, {
                     "key": "BONUS_ABSORB_DMG_MAX_HP",
                     "thai": "๐ หากโดน Damage แรงกว่า {0}% จาก MaxHP การคำนวณจะเป็น Damage - {0}% MaxHP (ทับไม่ได้)",
