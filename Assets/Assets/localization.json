@@ -371,99 +371,99 @@
                 }, {
                     "key": "BONUS_STOP_HP_REGEN",
                     "thai": "๐ หยุดการฟื้นฟู HP ปกติ",
-                    "english": ""
+                    "english": "๐ Stop neutral HP recovery"
                 }, {
                     "key": "BONUS_STOP_SP_REGEN",
                     "thai": "๐ หยุดการฟื้นฟู SP ปกติ",
-                    "english": ""
+                    "english": "๐ Stop neutral SP recovery"
                 }, {
                     "key": "BONUS_USE_SP_RATE",
                     "thai": "๐ SP ที่ต้องใช้ +{0}%",
-                    "english": ""
+                    "english": "๐ SP Consumption +{0}%"
                 }, {
                     "key": "BONUS2_SKILL_USE_SP",
                     "thai": "๐ SP ที่ต้องใช้กับ {0} -{1}",
-                    "english": ""
+                    "english": "๐ {0} SP Consumption -{1}"
                 }, {
                     "key": "BONUS2_SKILL_USE_SP_RATE",
                     "thai": "๐ SP ที่ต้องใช้กับ {0} -{1}%",
-                    "english": ""
+                    "english": "๐ {0} SP Consumption -{1}%"
                 }, {
                     "key": "BONUS2_SKILL_ATK",
                     "thai": "๐ {0} แรงขึ้น +{1}%",
-                    "english": ""
+                    "english": "๐ {0} Damage +{1}%"
                 }, {
                     "key": "BONUS_SHORT_ATK_RATE",
                     "thai": "๐ ตีกายภาพใกล้ +{0}%",
-                    "english": ""
+                    "english": "๐ Physical Damage (Short) +{0}%"
                 }, {
                     "key": "BONUS_LONG_ATK_RATE",
                     "thai": "๐ ตีกายภาพไกล +{0}%",
-                    "english": ""
+                    "english": "๐ Physical Damage (Long) +{0}%"
                 }, {
                     "key": "BONUS_CRIT_ATK_RATE",
                     "thai": "๐ Critical แรงขึ้น +{0}%",
-                    "english": ""
+                    "english": "๐ Critical Damage +{0}%"
                 }, {
                     "key": "BONUS_CRIT_DEF_RATE",
                     "thai": "๐ กัน Critical +{0}%",
-                    "english": ""
+                    "english": "๐ Critical Defense +{0}%"
                 }, {
                     "key": "BONUS_CRITICAL_DEF",
                     "thai": "๐ หลบ Critical +{0}%",
-                    "english": ""
+                    "english": "๐ Critical Evasion +{0}%"
                 }, {
                     "key": "BONUS2_WEAPON_ATK",
                     "thai": "๐ ถ้าสวมใส่ {0} Atk อาวุธ +{1}",
-                    "english": ""
+                    "english": "๐ Equip {0} to gain Weapon Attack +{1}"
                 }, {
                     "key": "BONUS2_WEAPON_DAMAGE_RATE",
                     "thai": "๐ ถ้าสวมใส่ {0} ตีกายภาพ +{1}%",
-                    "english": ""
+                    "english": "๐ Equip {0} to gain Physical Damage +{1}%"
                 }, {
                     "key": "BONUS_NEAR_ATK_DEF",
                     "thai": "๐ กันกายภาพใกล้ +{0}%",
-                    "english": ""
+                    "english": "๐ Physical Defense (Short) +{1}%"
                 }, {
                     "key": "BONUS_LONG_ATK_DEF",
                     "thai": "๐ กันกายภาพไกล +{0}%",
-                    "english": ""
+                    "english": "๐ Physical Defense (Long) +{0}%"
                 }, {
                     "key": "BONUS_MAGIC_ATK_DEF",
                     "thai": "๐ กันเวทย์ +{0}%",
-                    "english": ""
+                    "english": "๐ Magical Defense +{0}%"
                 }, {
                     "key": "BONUS_MISC_ATK_DEF",
                     "thai": "๐ กันอื่น ๆ +{0}%",
-                    "english": ""
+                    "english": "๐ Miscellany Defense +{0}%"
                 }, {
                     "key": "BONUS_NO_WEAPON_DAMAGE",
                     "thai": "๐ กันกายภาพ +{0}%",
-                    "english": ""
+                    "english": "๐ Physical Defense +{0}%"
                 }, {
                     "key": "BONUS_NO_MAGIC_DAMAGE",
                     "thai": "๐ กันเวทย์ +{0}%",
-                    "english": ""
+                    "english": "๐ Magical Defense +{0}%"
                 }, {
                     "key": "BONUS_NO_MISC_DAMAGE",
                     "thai": "๐ กันอื่น ๆ +{0}%",
-                    "english": ""
+                    "english": "๐ Miscellany Defense +{0}%"
                 }, {
                     "key": "BONUS_HEAL_POWER",
                     "thai": "๐ Heal แรงขึ้น +{0}%",
-                    "english": ""
+                    "english": "๐ Heal Power +{0}%"
                 }, {
                     "key": "BONUS_HEAL_POWER_2",
                     "thai": "๐ โดน Heal แรงขึ้น +{0}%",
-                    "english": ""
+                    "english": "๐ Receive more Heal Power +{0}%"
                 }, {
                     "key": "BONUS2_SKILL_HEAL",
                     "thai": "๐ {0} Heal แรงขึ้น +{1}%",
-                    "english": ""
+                    "english": "๐ {0} Heal Power +{1}%"
                 }, {
                     "key": "BONUS2_SKILL_HEAL_2",
                     "thai": "๐ โดน {0} Heal แรงขึ้น +{1}%",
-                    "english": ""
+                    "english": "๐ Receive more Heal Power from {0} +{1}%"
                 }, {
                     "key": "BONUS_ADD_ITEM_HEAL_RATE",
                     "thai": "๐ Item Heal HP แรงขึ้น +{0}%",
