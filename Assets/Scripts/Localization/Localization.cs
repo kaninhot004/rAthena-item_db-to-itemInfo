@@ -2,10 +2,12 @@ using System.Collections;
 using System;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using System.IO;
 
 public class Localization : MonoBehaviour
 {
+    #region Constant
     public const string THAI = "THAI";
     public const string ENGLISH = "ENGLISH";
 
@@ -313,6 +315,7 @@ public class Localization : MonoBehaviour
     public const string LAPHINE_SYNTHESIS = "LAPHINE_SYNTHESIS";
     public const string OPEN_STYLIST = "OPEN_STYLIST";
     public const string REFINE_UI = "REFINE_UI";
+    #endregion
 
     [Serializable]
     public class JsonData
@@ -335,6 +338,8 @@ public class Localization : MonoBehaviour
 
     }
 
+    [SerializeField] Dropdown _languageDropdown;
+
     string _currentLanguage;
     LocalizationDatabase _currentLocalizationDatabase = new LocalizationDatabase();
 
@@ -342,7 +347,7 @@ public class Localization : MonoBehaviour
     {
         ParseJson();
 
-        SetupLanguage(THAI);
+        DropdownSetup();
     }
 
     void ParseJson()
@@ -415,5 +420,32 @@ public class Localization : MonoBehaviour
     public void SetupLanguage(string language)
     {
         _currentLanguage = language;
+    }
+
+    void DropdownSetup()
+    {
+        List<Dropdown.OptionData> dropdownList = new List<Dropdown.OptionData>();
+
+        Dropdown.OptionData thaiDropdownOption = new Dropdown.OptionData();
+        thaiDropdownOption.text = "Thai";
+        dropdownList.Add(thaiDropdownOption);
+
+        Dropdown.OptionData englishDropdownOption = new Dropdown.OptionData();
+        englishDropdownOption.text = "English";
+        dropdownList.Add(englishDropdownOption);
+
+        _languageDropdown.AddOptions(dropdownList);
+
+        _languageDropdown.value = 0;
+        SetupLanguage(THAI);
+
+        _languageDropdown.onValueChanged.AddListener(OnLanguageChanged);
+    }
+    void OnLanguageChanged(int option)
+    {
+        if (option == 0)
+            SetupLanguage(THAI);
+        else if (option == 1)
+            SetupLanguage(ENGLISH);
     }
 }

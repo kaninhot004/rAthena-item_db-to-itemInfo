@@ -25,7 +25,7 @@ public class Converter : MonoBehaviour
     /// <summary>
     /// Convert button gameObject
     /// </summary>
-    [SerializeField] GameObject _objConvert;
+    [SerializeField] GameObject[] _objectsToHideWhenConverterStart;
     /// <summary>
     /// Progress gameObject
     /// </summary>
@@ -119,7 +119,8 @@ public class Converter : MonoBehaviour
         _btnCreator.onClick.AddListener(OnCreatorButtonTap);
 
         _objConvertProgression.SetActive(false);
-        _objConvert.SetActive(true);
+        for (int i = 0; i < _objectsToHideWhenConverterStart.Length; i++)
+            _objectsToHideWhenConverterStart[i].SetActive(true);
     }
     /// <summary>
     /// Call when creator button has been tap
@@ -133,7 +134,8 @@ public class Converter : MonoBehaviour
     /// </summary>
     void OnConvertButtonTap()
     {
-        _objConvert.SetActive(false);
+        for (int i = 0; i < _objectsToHideWhenConverterStart.Length; i++)
+            _objectsToHideWhenConverterStart[i].SetActive(false);
 
         _objConvertProgression.SetActive(true);
 
