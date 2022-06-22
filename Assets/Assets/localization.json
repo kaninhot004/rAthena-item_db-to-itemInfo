@@ -275,63 +275,63 @@
                 }, {
                     "key": "AUTO_BONUS_1",
                     "thai": "๐ เมื่อ{1} มีโอกาสเล็กน้อย ที่จะ {0}[NEW_LINE]^FF2525(ชั่วคราว)^000000",
-                    "english": ""
+                    "english": "๐ When{1} had a small chance to {0}[NEW_LINE]^FF2525(Temporary)^000000"
                 }, {
                     "key": "BONUS_SCRIPT",
                     "thai": "๐ มีผล {0}[NEW_LINE]^FF2525(ชั่วคราว)^000000",
-                    "english": ""
+                    "english": "๐ Grant {0}[NEW_LINE]^FF2525(Temporary)^000000"
                 }, {
                     "key": "BONUS_BASE_ATK",
                     "thai": "๐ ฐาน Atk +",
-                    "english": ""
+                    "english": "๐ Base Atk +"
                 }, {
                     "key": "BONUS_WEAPON_ATK_RATE",
                     "thai": "๐ Atk อาวุธ +{0}%",
-                    "english": ""
+                    "english": "๐ Weapon Atk +{0}%"
                 }, {
                     "key": "BONUS_WEAPON_MATK_RATE",
                     "thai": "๐ MAtk อาวุธ +{0}%",
-                    "english": ""
+                    "english": "๐ Weapon MAtk +{0}%"
                 }, {
                     "key": "BONUS_DEF2",
                     "thai": "๐ ฐาน Def +",
-                    "english": ""
+                    "english": "๐ Base Def +"
                 }, {
                     "key": "BONUS_DEF2_RATE",
                     "thai": "๐ ฐาน Def +{0}%",
-                    "english": ""
+                    "english": "๐ Base Def +{0}%"
                 }, {
                     "key": "BONUS_MDEF2",
                     "thai": "๐ ฐาน MDef +",
-                    "english": ""
+                    "english": "๐ Base MDef +"
                 }, {
                     "key": "BONUS_MDEF2_RATE",
                     "thai": "๐ ฐาน MDef +{0}%",
-                    "english": ""
+                    "english": "๐ Base MDef +{0}%"
                 }, {
                     "key": "BONUS_CRITICAL_LONG",
                     "thai": "๐ Critical ตีไกล +",
-                    "english": ""
+                    "english": "๐ Critical (Long) +"
                 }, {
                     "key": "BONUS2_CRITICAL_ADD_RACE",
                     "thai": "๐ Critical กับ {0} +{1}",
-                    "english": ""
+                    "english": "๐ Critical with {0} +{1}"
                 }, {
                     "key": "BONUS_PERFECT_HIT_RATE",
                     "thai": "๐ Perfect Hit +{0}% (ทับไม่ได้)",
-                    "english": ""
+                    "english": "๐ Perfect Hit +{0}% (Cannot stack)"
                 }, {
                     "key": "BONUS_SPEED_RATE",
                     "thai": "๐ เดินเร็ว +{0}% (ทับไม่ได้)",
-                    "english": ""
+                    "english": "๐ Movement Speed +{0}% (Cannot stack)"
                 }, {
                     "key": "BONUS_SPEED_ADD_RATE",
                     "thai": "๐ เดินเร็ว +{0}%",
-                    "english": ""
+                    "english": "๐ Movement Speed +{0}%"
                 }, {
                     "key": "BONUS_ATK_RANGE",
                     "thai": "๐ ระยะตี +",
-                    "english": ""
+                    "english": "๐ Attack Range +"
                 }, {
                     "key": "BONUS_ADD_MAX_WEIGHT",
                     "thai": "๐ แบกของได้หนักขึ้น +{0}",
