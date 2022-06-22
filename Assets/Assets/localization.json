@@ -779,39 +779,39 @@
                 }, {
                     "key": "BONUS4_ADD_EFF_WHEN_HIT",
                     "thai": "๐ เมื่อโดนตีโดย {2} มีโอกาส {1}% ที่จะเกิด {0} กับเป้าหมาย {3} วินาที",
-                    "english": ""
+                    "english": "๐ When received damage by {2} had {1}% chance to {0} to target for {3}s"
                 }, {
                     "key": "BONUS3_ADD_EFF_ON_SKILL",
                     "thai": "๐ เมื่อร่าย {0} มีโอกาส {2}% ที่จะเกิด {1} กับเป้าหมาย",
-                    "english": ""
+                    "english": "๐ When cast {0} had {2}% chance to {1} to target"
                 }, {
                     "key": "BONUS4_ADD_EFF_ON_SKILL",
                     "thai": "๐ เมื่อร่าย {0} กับ {3} มีโอกาส {2}% ที่จะเกิด {1} กับเป้าหมาย",
-                    "english": ""
+                    "english": "๐ When cast {0} with {3} had {2}% chance to {1} to target"
                 }, {
                     "key": "BONUS5_ADD_EFF_ON_SKILL",
                     "thai": "๐ เมื่อร่าย {0} กับ {3} มีโอกาส {2}% ที่จะเกิด {1} กับเป้าหมาย {4} วินาที",
-                    "english": ""
+                    "english": "๐ When cast {0} with {3} had {2}% chance to {1} to target for {4}s"
                 }, {
                     "key": "BONUS2_COMA_CLASS",
                     "thai": "๐ เมื่อตี {0} มีโอกาส {1}% ที่จะเกิด Coma",
-                    "english": ""
+                    "english": "๐ When deal damage to {0} had {1}% chance to Coma target"
                 }, {
                     "key": "BONUS2_COMA_RACE",
                     "thai": "๐ เมื่อตี {0} มีโอกาส {1}% ที่จะเกิด Coma",
-                    "english": ""
+                    "english": "๐ When deal damage to {0} had {1}% chance to Coma target"
                 }, {
                     "key": "BONUS2_WEAPON_COMA_ELE",
                     "thai": "๐ เมื่อตีกายภาพ {0} มีโอกาส {1}% ที่จะเกิด Coma",
-                    "english": ""
+                    "english": "๐ When deal Physical Damage to {0} had {1}% chance to Coma target"
                 }, {
                     "key": "BONUS2_WEAPON_COMA_CLASS",
                     "thai": "๐ เมื่อตีกายภาพ {0} มีโอกาส {1}% ที่จะเกิด Coma",
-                    "english": ""
+                    "english": "๐ When deal Physical Damage to {0} had {1}% chance to Coma target"
                 }, {
                     "key": "BONUS2_WEAPON_COMA_RACE",
                     "thai": "๐ เมื่อตีกายภาพ {0} มีโอกาส {1}% ที่จะเกิด Coma",
-                    "english": ""
+                    "english": "๐ When deal Physical Damage to {0} had {1}% chance to Coma target"
                 }, {
                     "key": "BONUS3_AUTO_SPELL",
                     "thai": "๐ เมื่อตีกายภาพมีโอกาส {2}% ร่าย Lv.{1} {0}",
