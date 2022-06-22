@@ -815,15 +815,15 @@
                 }, {
                     "key": "BONUS3_AUTO_SPELL",
                     "thai": "๐ เมื่อตีกายภาพมีโอกาส {2}% ร่าย Lv.{1} {0}",
-                    "english": ""
+                    "english": "๐ When deal Physical Damage had {2}% chance to cast Lv.{1} {0}"
                 }, {
                     "key": "BONUS3_AUTO_SPELL_WHEN_HIT",
                     "thai": "๐ เมื่อโดนตีกายภาพมีโอกาส {2}% ร่าย Lv.{1} {0}",
-                    "english": ""
+                    "english": "๐ When received Physical Damage had {2}% chance to cast Lv.{1} {0}"
                 }, {
                     "key": "BONUS4_AUTO_SPELL",
                     "thai": "๐ เมื่อตีกายภาพมีโอกาส {2}% ร่าย Lv.{1} {0} ใส่ {3}",
-                    "english": ""
+                    "english": "๐ When deal Physical Damage had {2}% chance to cast Lv.{1} {0} to {3}"
                 }, {
                     "key": "BONUS5_AUTO_SPELL",
                     "thai": "๐ เมื่อตีกายภาพโดย {3} มีโอกาส {2}% ร่าย Lv.{1} {0} ใส่ {4}",
