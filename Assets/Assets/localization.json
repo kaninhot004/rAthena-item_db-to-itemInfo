@@ -3,11 +3,11 @@
             "keyDatas": [{
                     "key": "ERROR",
                     "thai": "Error",
-                    "english": ""
+                    "english": "Error"
                 }, {
                     "key": "NOT_FOUND",
                     "thai": "not found",
-                    "english": ""
+                    "english": "not found"
                 }, {
                     "key": "AND",
                     "thai": "และ",
@@ -19,259 +19,259 @@
                 }, {
                     "key": "OR",
                     "thai": "หรือ",
-                    "english": ""
+                    "english": "or"
                 }, {
                     "key": "CAN",
                     "thai": "ได้",
-                    "english": ""
+                    "english": "Yes"
                 }, {
                     "key": "CANNOT",
                     "thai": "ไม่ได้",
-                    "english": ""
+                    "english": "No"
                 }, {
                     "key": "CONVERT_PROGRESSION_START",
                     "thai": "Starting now",
-                    "english": ""
+                    "english": "Starting now"
                 }, {
                     "key": "CONVERT_PROGRESSION_FETCHING_ITEM",
                     "thai": "Fetching item",
-                    "english": ""
+                    "english": "Fetching item"
                 }, {
                     "key": "CONVERT_PROGRESSION_FETCHING_RESOURCE_NAME",
                     "thai": "Fetching resource name",
-                    "english": ""
+                    "english": "Fetching resource name"
                 }, {
                     "key": "CONVERT_PROGRESSION_FETCHING_SKILL",
                     "thai": "Fetching skill",
-                    "english": ""
+                    "english": "Fetching skill"
                 }, {
                     "key": "CONVERT_PROGRESSION_FETCHING_CLASS_NUMBER",
                     "thai": "Fetching class number",
-                    "english": ""
+                    "english": "Fetching class number"
                 }, {
                     "key": "CONVERT_PROGRESSION_FETCHING_CLASS_MONSTER",
                     "thai": "Fetching monster",
-                    "english": ""
+                    "english": "Fetching monster"
                 }, {
                     "key": "CONVERT_PROGRESSION_FETCHING_ITEM_COMBO",
                     "thai": "Fetching item combo",
-                    "english": ""
+                    "english": "Fetching item combo"
                 }, {
                     "key": "CONVERT_PROGRESSION_FETCHING_RESOURCE_NAME_WITH_TYPE",
                     "thai": "Fetching resource name with type",
-                    "english": ""
+                    "english": "Fetching resource name with type"
                 }, {
                     "key": "CONVERT_PROGRESSION_PLEASE_WAIT",
                     "thai": "Please wait",
-                    "english": ""
+                    "english": "Please wait"
                 }, {
                     "key": "CONVERT_PROGRESSION_DONE",
                     "thai": "Done",
-                    "english": ""
+                    "english": "Done"
                 }, {
                     "key": "JOBS_ALL_JOB",
                     "thai": "ทุกอาชีพ",
-                    "english": ""
+                    "english": "All job"
                 }, {
                     "key": "CLASSES_ALL_CLASS",
                     "thai": "ทุกคลาส",
-                    "english": ""
+                    "english": "All class"
                 }, {
                     "key": "CLASSES_BABY",
                     "thai": "Baby",
-                    "english": ""
+                    "english": "Baby"
                 }, {
                     "key": "CLASSES_TRANS",
                     "thai": "Trans",
-                    "english": ""
+                    "english": "Trans"
                 }, {
                     "key": "GENDER_FEMALE",
                     "thai": "หญิง",
-                    "english": ""
+                    "english": "Female"
                 }, {
                     "key": "GENDER_MALE",
                     "thai": "ชาย",
-                    "english": ""
+                    "english": "Male"
                 }, {
                     "key": "GENDER_ALL",
                     "thai": "ทุกเพศ",
-                    "english": ""
+                    "english": "All gender"
                 }, {
                     "key": "LOCATION_HEAD_TOP",
                     "thai": "หมวกส่วนบน",
-                    "english": ""
+                    "english": "Head-Top"
                 }, {
                     "key": "LOCATION_HEAD_MID",
                     "thai": "หมวกส่วนกลาง",
-                    "english": ""
+                    "english": "Head-Middle"
                 }, {
                     "key": "LOCATION_HEAD_LOW",
                     "thai": "หมวกส่วนล่าง",
-                    "english": ""
+                    "english": "Head-Lower"
                 }, {
                     "key": "LOCATION_ARMOR",
                     "thai": "ชุดเกราะ",
-                    "english": ""
+                    "english": "Armor"
                 }, {
                     "key": "LOCATION_RIGHT_HAND",
                     "thai": "มือขวา",
-                    "english": ""
+                    "english": "Right-Handed"
                 }, {
                     "key": "LOCATION_LEFT_HAND",
                     "thai": "มือซ้าย",
-                    "english": ""
+                    "english": "Left-Handed"
                 }, {
                     "key": "LOCATION_GARMENT",
                     "thai": "ผ้าคลุม",
-                    "english": ""
+                    "english": "Garment"
                 }, {
                     "key": "LOCATION_SHOES",
                     "thai": "รองเท้า",
-                    "english": ""
+                    "english": "Shoes"
                 }, {
                     "key": "LOCATION_RIGHT_ACCESSORY",
                     "thai": "ประดับข้างขวา",
-                    "english": ""
+                    "english": "Right-Accessory"
                 }, {
                     "key": "LOCATION_LEFT_ACCESSORY",
                     "thai": "ประดับข้างซ้าย",
-                    "english": ""
+                    "english": "Left-Accessory"
                 }, {
                     "key": "LOCATION_COSTUME_HEAD_TOP",
                     "thai": "หมวกส่วนบน Costume",
-                    "english": ""
+                    "english": "Costume Head-Top"
                 }, {
                     "key": "LOCATION_COSTUME_HEAD_MID",
                     "thai": "หมวกส่วนกลาง Costume",
-                    "english": ""
+                    "english": "Costume Head-Middle"
                 }, {
                     "key": "LOCATION_COSTUME_HEAD_LOW",
                     "thai": "หมวกส่วนล่าง Costume",
-                    "english": ""
+                    "english": "Costume Head-Lower"
                 }, {
                     "key": "LOCATION_COSTUME_GARMENT",
                     "thai": "ผ้าคลุม Costume",
-                    "english": ""
+                    "english": "Costume Garment"
                 }, {
                     "key": "LOCATION_AMMO",
                     "thai": "กระสุน",
-                    "english": ""
+                    "english": "Ammo"
                 }, {
                     "key": "LOCATION_SHADOW_ARMOR",
                     "thai": "ชุดเกราะ Shadow",
-                    "english": ""
+                    "english": "Shadow Armor"
                 }, {
                     "key": "LOCATION_SHADOW_WEAPON",
                     "thai": "อาวุธ Shadow",
-                    "english": ""
+                    "english": "Shadow Weapon"
                 }, {
                     "key": "LOCATION_SHADOW_SHIELD",
                     "thai": "โล่ Shadow",
-                    "english": ""
+                    "english": "Shadow Shield"
                 }, {
                     "key": "LOCATION_SHADOW_SHOES",
                     "thai": "รองเท้า Shadow",
-                    "english": ""
+                    "english": "Shadow Shoes"
                 }, {
                     "key": "LOCATION_SHADOW_RIGHT_ACCESSORY",
                     "thai": "ประดับ Shadow ข้างขวา",
-                    "english": ""
+                    "english": "Shadow Right-Accessory"
                 }, {
                     "key": "LOCATION_SHADOW_LEFT_ACCESSORY",
                     "thai": "ประดับ Shadow ข้างซ้าย",
-                    "english": ""
+                    "english": "Shadow Left-Accessory"
                 }, {
                     "key": "LOCATION_BOTH_HAND",
                     "thai": "สองมือ",
-                    "english": ""
+                    "english": "Both hand"
                 }, {
                     "key": "LOCATION_BOTH_ACCESSORY",
                     "thai": "ประดับสองข้าง",
-                    "english": ""
+                    "english": "Both accessory"
                 }, {
                     "key": "WHEN_EQUIP",
                     "thai": "เมื่อสวมใส่",
-                    "english": ""
+                    "english": "When equipped"
                 }, {
                     "key": "WHEN_UNEQUIP",
                     "thai": "เมื่อถอด",
-                    "english": ""
+                    "english": "When unequipped"
                 }, {
                     "key": "TYPE",
                     "thai": "ประเภท",
-                    "english": ""
+                    "english": "Type"
                 }, {
                     "key": "SUB_TYPE",
                     "thai": "ประเภทรอง",
-                    "english": ""
+                    "english": "Sub-Type"
                 }, {
                     "key": "LOCATION",
                     "thai": "ตำแหน่ง",
-                    "english": ""
+                    "english": "Location"
                 }, {
                     "key": "JOB",
                     "thai": "อาชีพ",
-                    "english": ""
+                    "english": "Job"
                 }, {
                     "key": "CLASS",
                     "thai": "คลาส",
-                    "english": ""
+                    "english": "Class"
                 }, {
                     "key": "GENDER",
                     "thai": "เพศ",
-                    "english": ""
+                    "english": "Gender"
                 }, {
                     "key": "ATTACK",
                     "thai": "โจมตี",
-                    "english": ""
+                    "english": "Attack"
                 }, {
                     "key": "MAGIC_ATTACK",
                     "thai": "โจมตีเวทย์",
-                    "english": ""
+                    "english": "Magic Attack"
                 }, {
                     "key": "DEFENSE",
                     "thai": "ป้องกัน",
-                    "english": ""
+                    "english": "Defense"
                 }, {
                     "key": "RANGE",
                     "thai": "ระยะตี",
-                    "english": ""
+                    "english": "Range"
                 }, {
                     "key": "WEAPON_LEVEL",
                     "thai": "เลเวลอาวุธ",
-                    "english": ""
+                    "english": "Weapon Level"
                 }, {
                     "key": "ARMOR_LEVEL",
                     "thai": "เลเวลชุดเกราะ",
-                    "english": ""
+                    "english": "Armor Level"
                 }, {
                     "key": "MINIMUM_EQUIP_LEVEL",
                     "thai": "เลเวลขั้นต่ำ",
-                    "english": ""
+                    "english": "Minimum Equip Level"
                 }, {
                     "key": "MAXIMUM_EQUIP_LEVEL",
                     "thai": "เลเวลสูงสุด",
-                    "english": ""
+                    "english": "Maximum Equip Level"
                 }, {
                     "key": "REFINABLE",
                     "thai": "ตีบวก",
-                    "english": ""
+                    "english": "Refinable"
                 }, {
                     "key": "WEIGHT",
                     "thai": "น้ำหนัก",
-                    "english": ""
+                    "english": "Weight"
                 }, {
                     "key": "PRICE",
                     "thai": "ราคา",
-                    "english": ""
+                    "english": "Price"
                 }, {
                     "key": "AUTO_BONUS_3",
                     "thai": "๐ เมื่อใช้ {1} มีโอกาสเล็กน้อย ที่จะ {0}[NEW_LINE]^FF2525(ชั่วคราว)^000000",
-                    "english": "Had a small chance to {0} temporary, when using {1}"
+                    "english": "๐ When using {1} had a small chance to {0}[NEW_LINE]^FF2525(Temporary)^000000"
                 }, {
                     "key": "AUTO_BONUS_2",
                     "thai": "๐ เมื่อโดน{1} มีโอกาสเล็กน้อย ที่จะ {0}[NEW_LINE]^FF2525(ชั่วคราว)^000000",
-                    "english": ""
+                    "english": "๐ When hit by{1} had a small chance to {0}[NEW_LINE]^FF2525(Temporary)^000000"
                 }, {
                     "key": "AUTO_BONUS_1",
                     "thai": "๐ เมื่อ{1} มีโอกาสเล็กน้อย ที่จะ {0}[NEW_LINE]^FF2525(ชั่วคราว)^000000",
