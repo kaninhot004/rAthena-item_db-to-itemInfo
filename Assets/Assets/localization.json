@@ -335,31 +335,31 @@
                 }, {
                     "key": "BONUS_ADD_MAX_WEIGHT",
                     "thai": "๐ แบกของได้หนักขึ้น +{0}",
-                    "english": ""
+                    "english": "๐ Maximum Carry Weight +{0}"
                 }, {
                     "key": "BONUS_HP_RECOV_RATE",
                     "thai": "๐ การฟื้นฟู HP ปกติ +{0}%",
-                    "english": ""
+                    "english": "๐ Neutral HP Recovery +{0}%"
                 }, {
                     "key": "BONUS_SP_RECOV_RATE",
                     "thai": "๐ การฟื้นฟู SP ปกติ +{0}%",
-                    "english": ""
+                    "english": "๐ Neutral SP Recovery +{0}%"
                 }, {
                     "key": "BONUS2_HP_REGEN_RATE",
                     "thai": "๐ ฟื้นฟู HP +{0} ทุก ๆ {1} วินาที",
-                    "english": ""
+                    "english": "๐ Heal +{0} HP every {1}s"
                 }, {
                     "key": "BONUS2_HP_LOSS_RATE",
                     "thai": "๐ เสีย HP +{0} ทุก ๆ {1} วินาที",
-                    "english": ""
+                    "english": "๐ Lose +{0} HP every {1}s"
                 }, {
                     "key": "BONUS2_SP_REGEN_RATE",
                     "thai": "๐ ฟื้นฟู SP +{0} ทุก ๆ {1} วินาที",
-                    "english": ""
+                    "english": "๐ Heal +{0} SP every {1}s"
                 }, {
                     "key": "BONUS2_SP_LOSS_RATE",
                     "thai": "๐ เสีย SP +{0} ทุก ๆ {1} วินาที",
-                    "english": ""
+                    "english": "๐ Lose +{0} SP every {1}s"
                 }, {
                     "key": "BONUS2_REGEN_PERCENT_HP",
                     "thai": "๐ ฟื้นฟู HP +{0}% ทุก ๆ {1} วินาที",
