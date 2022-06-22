@@ -495,7 +495,7 @@
                 }, {
                     "key": "BONUS2_CAST_RATE",
                     "thai": "๐ ร่าย V. {0} +{1}%",
-                    "english": "๐ Variable Cast for {0} +{1}%"
+                    "english": "๐ {0} Variable Cast +{1}%"
                 }, {
                     "key": "BONUS_FIXED_CAST_RATE",
                     "thai": "๐ ร่าย F. +{0}%",
@@ -503,51 +503,51 @@
                 }, {
                     "key": "BONUS2_FIXED_CAST_RATE",
                     "thai": "๐ ร่าย F. {0} +{1}%",
-                    "english": "๐ Fixed Cast for {0} +{1}%"
+                    "english": "๐ {0} Fixed Cast +{1}%"
                 }, {
                     "key": "BONUS_VARIABLE_CAST_RATE",
                     "thai": "๐ ร่าย V. +{0}%",
-                    "english": ""
+                    "english": "๐ Variable Cast +{0}%"
                 }, {
                     "key": "BONUS2_VARIABLE_CAST_RATE",
                     "thai": "๐ ร่าย V. {0} +{1}%",
-                    "english": ""
+                    "english": "๐ {0} Variable Cast +{1}%"
                 }, {
                     "key": "BONUS_FIXED_CAST",
                     "thai": "๐ ร่าย F. +{0} วินาที",
-                    "english": ""
+                    "english": "๐ Fixed Cast +{0}s"
                 }, {
                     "key": "BONUS2_SKILL_FIXED_CAST",
                     "thai": "๐ ร่าย F. {0} +{1} วินาที",
-                    "english": ""
+                    "english": "๐ {0} Fixed Cast +{1}s"
                 }, {
                     "key": "BONUS_VARIABLE_CAST",
                     "thai": "๐ ร่าย V. +{0} วินาที",
-                    "english": ""
+                    "english": "๐ Variable Cast +{0}s"
                 }, {
                     "key": "BONUS2_SKILL_VARIABLE_CAST",
                     "thai": "๐ ร่าย V. {0} +{1} วินาที",
-                    "english": ""
+                    "english": "๐ {0} Variable Cast +{1}s"
                 }, {
                     "key": "BONUS_NO_CAST_CANCEL_2",
                     "thai": "๐ การร่ายไม่ถูกหยุด",
-                    "english": ""
+                    "english": "๐ Non-Interrupted Cast"
                 }, {
                     "key": "BONUS_NO_CAST_CANCEL",
                     "thai": "๐ การร่ายไม่ถูกหยุด (ใช้ไม่ได้ใน GvG)",
-                    "english": ""
+                    "english": "๐ Non-Interrupted Cast (Cannot using on GvG)"
                 }, {
                     "key": "BONUS_DELAY_RATE",
                     "thai": "๐ Delay หลังร่าย +{0}%",
-                    "english": ""
+                    "english": "๐ Delay after cast +{0}%"
                 }, {
                     "key": "BONUS2_SKILL_DELAY",
                     "thai": "๐ Delay หลังร่าย {0} +{1} วินาที",
-                    "english": ""
+                    "english": "๐ {0} Delay after cast +{1}s"
                 }, {
                     "key": "BONUS2_SKILL_COOLDOWN",
                     "thai": "๐ Cooldown {0} +{1} วินาที",
-                    "english": ""
+                    "english": "๐ {0} Cooldown +{1}s"
                 }, {
                     "key": "BONUS2_ADD_ELE",
                     "thai": "๐ ตีกายภาพ {0} +{1}%",
