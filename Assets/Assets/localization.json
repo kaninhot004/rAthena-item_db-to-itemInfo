@@ -423,7 +423,7 @@
                 }, {
                     "key": "BONUS_NEAR_ATK_DEF",
                     "thai": "๐ กันกายภาพใกล้ +{0}%",
-                    "english": "๐ Physical Defense (Short) +{1}%"
+                    "english": "๐ Physical Defense (Short) +{0}%"
                 }, {
                     "key": "BONUS_LONG_ATK_DEF",
                     "thai": "๐ กันกายภาพไกล +{0}%",
@@ -587,11 +587,11 @@
                 }, {
                     "key": "BONUS2_SUB_RACE",
                     "thai": "๐ กัน {0} +{1}%",
-                    "english": "๐ Defense {0} +{1}%"
+                    "english": "๐ Reduce damage from {0} +{1}%"
                 }, {
                     "key": "BONUS3_SUB_RACE",
                     "thai": "๐ กัน {0} โดย {2} +{1}%",
-                    "english": "๐ Defense {0} by {2} +{1}%"
+                    "english": "๐ Reduce damage from {0} by {2} +{1}%"
                 }, {
                     "key": "BONUS2_ADD_CLASS",
                     "thai": "๐ ตีกายภาพ {0} +{1}%",
@@ -603,7 +603,7 @@
                 }, {
                     "key": "BONUS2_SUB_CLASS",
                     "thai": "๐ กัน {0} +{1}%",
-                    "english": "๐ Defense {0} +{1}%"
+                    "english": "๐ Reduce damage from {0} +{1}%"
                 }, {
                     "key": "BONUS2_ADD_SIZE",
                     "thai": "๐ ตีกายภาพ {0} +{1}%",
@@ -651,7 +651,7 @@
                 }, {
                     "key": "BONUS2_SUB_RACE_2",
                     "thai": "๐ กัน {0} +{1}%",
-                    "english": "๐ Defense {0} +{1}%"
+                    "english": "๐ Reduce damage from {0} +{1}%"
                 }, {
                     "key": "BONUS2_MAGIC_ADD_RACE_2",
                     "thai": "๐ ตีเวทย์ {0} +{1}%",
@@ -659,123 +659,123 @@
                 }, {
                     "key": "BONUS2_SUB_SKILL",
                     "thai": "๐ กัน {0} +{1}%",
-                    "english": "๐ Defense {0} +{1}%"
+                    "english": "๐ Reduce damage from {0} +{1}%"
                 }, {
                     "key": "BONUS_ABSORB_DMG_MAX_HP",
                     "thai": "๐ หากโดน Damage แรงกว่า {0}% จาก MaxHP การคำนวณจะเป็น Damage - {0}% MaxHP (ทับไม่ได้)",
-                    "english": ""
+                    "english": "๐ If take damage higher than {0}% of MaxHP, damage will be (Damage - {0}% MaxHP) (Cannot stack)"
                 }, {
                     "key": "BONUS_ABSORB_DMG_MAX_HP_2",
                     "thai": "๐ หากโดน Damage แรงกว่า {0}% จาก MaxHP จะโดนแค่ {0}% จาก MaxHP (ทับไม่ได้)",
-                    "english": ""
+                    "english": "๐ If take damage higher than {0}% of MaxHP, will take only {0}% from MaxHP (Cannot stack)"
                 }, {
                     "key": "BONUS_ATK_ELE",
                     "thai": "๐ เคลือบอาวุธธาตุ {0}",
-                    "english": ""
+                    "english": "๐ Coated weapon with {0}"
                 }, {
                     "key": "BONUS_DEF_ELE",
                     "thai": "๐ เคลือบชุดเกราะธาตุ {0}",
-                    "english": ""
+                    "english": "๐ Coated armor with {0}"
                 }, {
                     "key": "BONUS2_MAGIC_ATK_ELE",
                     "thai": "๐ ตีเวทย์ {0} +{1}%",
-                    "english": ""
+                    "english": "๐ Magical Damage {0} +{1}%"
                 }, {
                     "key": "BONUS_DEF_RATIO_ATK_RACE",
                     "thai": "๐ ตีแรงขึ้นตาม DEF {0}",
-                    "english": ""
+                    "english": "๐ Deal more damage by target Defense {0}"
                 }, {
                     "key": "BONUS_DEF_RATIO_ATK_ELE",
                     "thai": "๐ ตีแรงขึ้นตาม DEF {0}",
-                    "english": ""
+                    "english": "๐ Deal more damage by target Defense {0}"
                 }, {
                     "key": "BONUS_DEF_RATIO_ATK_CLASS",
                     "thai": "๐ ตีแรงขึ้นตาม DEF {0}",
-                    "english": ""
+                    "english": "๐ Deal more damage by target Defense {0}"
                 }, {
                     "key": "BONUS4_SET_DEF_RACE",
                     "thai": "๐ มีโอกาส {1}% ลด DEF เหลือ {3} กับ {0} {2} วินาที",
-                    "english": ""
+                    "english": "๐ Had {1}% chance to decrease target Defense to {3} with {0} for {2}s"
                 }, {
                     "key": "BONUS4_SET_MDEF_RACE",
                     "thai": "๐ มีโอกาส {1}% ลด MDEF เหลือ {3} กับ {0} {2} วินาที",
-                    "english": ""
+                    "english": "๐ Had {1}% chance to decrease target Magical Defense to {3} with {0} for {2}s"
                 }, {
                     "key": "BONUS_IGNORE_DEF_ELE",
                     "thai": "๐ ไม่สนใจ DEF {0}",
-                    "english": ""
+                    "english": "๐ Ignore Defense {0}"
                 }, {
                     "key": "BONUS_IGNORE_DEF_RACE",
                     "thai": "๐ ไม่สนใจ DEF {0}",
-                    "english": ""
+                    "english": "๐ Ignore Defense {0}"
                 }, {
                     "key": "BONUS_IGNORE_DEF_CLASS",
                     "thai": "๐ ไม่สนใจ DEF {0}",
-                    "english": ""
+                    "english": "๐ Ignore Defense {0}"
                 }, {
                     "key": "BONUS_IGNORE_MDEF_RACE",
                     "thai": "๐ ไม่สนใจ MDEF {0}",
-                    "english": ""
+                    "english": "๐ Ignore Magical Defense {0}"
                 }, {
                     "key": "BONUS2_IGNORE_DEF_RACE_RATE",
                     "thai": "๐ ไม่สนใจ DEF {1}% {0}",
-                    "english": ""
+                    "english": "๐ Ignore Defense {1}% {0}"
                 }, {
                     "key": "BONUS2_IGNORE_MDEF_RACE_RATE",
                     "thai": "๐ ไม่สนใจ MDEF {1}% {0}",
-                    "english": ""
+                    "english": "๐ Ignore Magical Defense {1}% {0}"
                 }, {
                     "key": "BONUS2_IGNORE_MDEF_RACE_2_RATE",
                     "thai": "๐ ไม่สนใจ MDEF {1}% {0}",
-                    "english": ""
+                    "english": "๐ Ignore Magical Defense {1}% {0}"
                 }, {
                     "key": "BONUS_IGNORE_MDEF_ELE",
                     "thai": "๐ ไม่สนใจ MDEF {0}",
-                    "english": ""
+                    "english": "๐ Ignore Magical Defense {0}"
                 }, {
                     "key": "BONUS2_IGNORE_DEF_CLASS_RATE",
                     "thai": "๐ ไม่สนใจ DEF {1}% {0}",
-                    "english": ""
+                    "english": "๐ Ignore Defense {1}% {0}"
                 }, {
                     "key": "BONUS2_IGNORE_MDEF_CLASS_RATE",
                     "thai": "๐ ไม่สนใจ MDEF {1}% {0}",
-                    "english": ""
+                    "english": "๐ Ignore Magical Defense {1}% {0}"
                 }, {
                     "key": "BONUS2_EXP_ADD_RACE",
                     "thai": "๐ EXP +{1}% {0}",
-                    "english": ""
+                    "english": "๐ EXP +{1}% {0}"
                 }, {
                     "key": "BONUS2_EXP_ADD_CLASS",
                     "thai": "๐ EXP +{1}% {0}",
-                    "english": ""
+                    "english": "๐ EXP +{1}% {0}"
                 }, {
                     "key": "BONUS2_ADD_EFF",
                     "thai": "๐ เมื่อตีกายภาพมีโอกาส {1}% ที่จะเกิด {0} กับเป้าหมาย",
-                    "english": ""
+                    "english": "๐ When deal Physical Damage had {1}% chance to {0} to target"
                 }, {
                     "key": "BONUS2_ADD_EFF_2",
                     "thai": "๐ เมื่อตีกายภาพมีโอกาส {1}% ที่จะเกิด {0} กับตนเอง",
-                    "english": ""
+                    "english": "๐ When deal Physical Damage had {1}% chance to {0} to yourself"
                 }, {
                     "key": "BONUS2_ADD_EFF_WHEN_HIT",
                     "thai": "๐ เมื่อโดนตีกายภาพมีโอกาส {1}% ที่จะเกิด {0} กับเป้าหมาย",
-                    "english": ""
+                    "english": "๐ When received Physical Damage had {1}% chance to {0} to target"
                 }, {
                     "key": "BONUS2_RES_EFF",
                     "thai": "๐ มีโอกาส {1}% ที่จะกัน {0}",
-                    "english": ""
+                    "english": "๐ Had {1}% chance to tolerance {0}"
                 }, {
                     "key": "BONUS3_ADD_EFF",
                     "thai": "๐ เมื่อตีโดย {2} มีโอกาส {1}% ที่จะเกิด {0} กับเป้าหมาย",
-                    "english": ""
+                    "english": "๐ When deal damage by {2} had {1}% chance to {0} to target"
                 }, {
                     "key": "BONUS4_ADD_EFF",
                     "thai": "๐ เมื่อตีโดย {2} มีโอกาส {1}% ที่จะเกิด {0} กับเป้าหมาย {3} วินาที",
-                    "english": ""
+                    "english": "๐ When deal damage by {2} had {1}% chance to {0} to target for {3}s"
                 }, {
                     "key": "BONUS3_ADD_EFF_WHEN_HIT",
                     "thai": "๐ เมื่อโดนตีโดย {2} มีโอกาส {1}% ที่จะเกิด {0} กับเป้าหมาย",
-                    "english": ""
+                    "english": "๐ When received damage by {2} had {1}% chance to {0} to target"
                 }, {
                     "key": "BONUS4_ADD_EFF_WHEN_HIT",
                     "thai": "๐ เมื่อโดนตีโดย {2} มีโอกาส {1}% ที่จะเกิด {0} กับเป้าหมาย {3} วินาที",
