@@ -943,59 +943,59 @@
                 }, {
                     "key": "BONUS_MAGIC_DAMAGE_RETURN",
                     "thai": "๐ สะท้อนเวทย์ +{0}%",
-                    "english": ""
+                    "english": "๐ Reflect Magical Damage +{0}%"
                 }, {
                     "key": "BONUS_REDUCE_DAMAGE_RETURN",
                     "thai": "๐ กันการสะท้อน +{0}%",
-                    "english": ""
+                    "english": "๐ Reduce damage return +{0}%"
                 }, {
                     "key": "BONUS_UNSTRIPABLE_WEAPON",
                     "thai": "๐ กันปลดอาวุธ",
-                    "english": ""
+                    "english": "๐ Unstripable Weapon"
                 }, {
                     "key": "BONUS_UNSTRIPABLE_ARMOR",
                     "thai": "๐ กันปลดชุดเกราะ",
-                    "english": ""
+                    "english": "๐ Unstripable Armor"
                 }, {
                     "key": "BONUS_UNSTRIPABLE_HELM",
                     "thai": "๐ กันปลดหมวก",
-                    "english": ""
+                    "english": "๐ Unstripable Helm"
                 }, {
                     "key": "BONUS_UNSTRIPABLE_SHIELD",
                     "thai": "๐ กันปลดโล่",
-                    "english": ""
+                    "english": "๐ Unstripable Shield"
                 }, {
                     "key": "BONUS_UNSTRIPABLE",
                     "thai": "๐ กันปลดทุกอย่าง",
-                    "english": ""
+                    "english": "๐ Unstripable"
                 }, {
                     "key": "BONUS_UNBREAKABLE_GARMENT",
                     "thai": "๐ ผ้าคลุมจะไม่พัง",
-                    "english": ""
+                    "english": "๐ Unbreakable Garment"
                 }, {
                     "key": "BONUS_UNBREAKABLE_WEAPON",
                     "thai": "๐ อาวุธจะไม่พัง",
-                    "english": ""
+                    "english": "๐ Unbreakable Weapon"
                 }, {
                     "key": "BONUS_UNBREAKABLE_ARMOR",
                     "thai": "๐ ชุดเกราะจะไม่พัง",
-                    "english": ""
+                    "english": "๐ Unbreakable Armor"
                 }, {
                     "key": "BONUS_UNBREAKABLE_HELM",
                     "thai": "๐ หมวกจะไม่พัง",
-                    "english": ""
+                    "english": "๐ Unbreakable Helm"
                 }, {
                     "key": "BONUS_UNBREAKABLE_SHIELD",
                     "thai": "๐ โล่จะไม่พัง",
-                    "english": ""
+                    "english": "๐ Unbreakable Shield"
                 }, {
                     "key": "BONUS_UNBREAKABLE_SHOES",
                     "thai": "๐ รองเท้าจะไม่พัง",
-                    "english": ""
+                    "english": "๐ Unbreakable Shoes"
                 }, {
                     "key": "BONUS_UNBREAKABLE",
                     "thai": "๐ กันอุปกรณ์สวมใส่ ทุกชนิดพัง +{0}%",
-                    "english": ""
+                    "english": "๐ Unbreakable (All) +{0}%"
                 }, {
                     "key": "BONUS_BREAK_WEAPON_RATE",
                     "thai": "๐ เมื่อตีมีโอกาส {0}% ที่จะพังอาวุธเป้าหมาย",
