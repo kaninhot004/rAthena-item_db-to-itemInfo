@@ -671,11 +671,11 @@
                 }, {
                     "key": "BONUS_ATK_ELE",
                     "thai": "๐ เคลือบอาวุธธาตุ {0}",
-                    "english": "๐ Coated weapon with {0}"
+                    "english": "๐ Coated Weapon with {0}"
                 }, {
                     "key": "BONUS_DEF_ELE",
                     "thai": "๐ เคลือบชุดเกราะธาตุ {0}",
-                    "english": "๐ Coated armor with {0}"
+                    "english": "๐ Coated Armor with {0}"
                 }, {
                     "key": "BONUS2_MAGIC_ATK_ELE",
                     "thai": "๐ ตีเวทย์ {0} +{1}%",
@@ -999,35 +999,35 @@
                 }, {
                     "key": "BONUS_BREAK_WEAPON_RATE",
                     "thai": "๐ เมื่อตีมีโอกาส {0}% ที่จะพังอาวุธเป้าหมาย",
-                    "english": ""
+                    "english": "๐ When deal damage had {0}% chance to break target Weapon"
                 }, {
                     "key": "BONUS_BREAK_ARMOR_RATE",
                     "thai": "๐ เมื่อตีมีโอกาส {0}% ที่จะพังชุดเกราะเป้าหมาย",
-                    "english": ""
+                    "english": "๐ When deal damage had {0}% chance to break target Armor"
                 }, {
                     "key": "BONUS2_DROP_ADD_RACE",
                     "thai": "๐ Drop +{1}% {0}",
-                    "english": ""
+                    "english": "๐ Drop +{1}% {0}"
                 }, {
                     "key": "BONUS2_DROP_ADD_CLASS",
                     "thai": "๐ Drop +{1}% {0}",
-                    "english": ""
+                    "english": "๐ Drop +{1}% {0}"
                 }, {
                     "key": "BONUS3_ADD_MONSTER_ID_DROP_ITEM",
                     "thai": "๐ เมื่อกำจัด {1} มีโอกาส {2}% ที่จะ Drop {0} (ID⁞ {3})",
-                    "english": ""
+                    "english": "๐ When killed {1} had {2}% chance to drop {0} (ID⁞ {3})"
                 }, {
                     "key": "BONUS2_ADD_MONSTER_DROP_ITEM",
                     "thai": "๐ มีโอกาส {1}% ที่จะ Drop {0} (ID⁞ {2})",
-                    "english": ""
+                    "english": "๐ Had {1}% chance to drop {0} (ID⁞ {2})"
                 }, {
                     "key": "BONUS3_ADD_MONSTER_DROP_ITEM",
                     "thai": "๐ มีโอกาส {2}% ที่ {1} จะ Drop {0} (ID⁞ {3})",
-                    "english": ""
+                    "english": "๐ Had {2}% chance to make {1} drop {0} (ID⁞ {3})"
                 }, {
                     "key": "BONUS3_ADD_CLASS_DROP_ITEM",
                     "thai": "๐ มีโอกาส {2}% ที่ {1} จะ Drop {0} (ID⁞ {3})",
-                    "english": ""
+                    "english": "๐ Had {2}% chance to make {1} drop {0} (ID⁞ {3})"
                 }, {
                     "key": "BONUS2_ADD_MONSTER_DROP_ITEM_GROUP",
                     "thai": "๐ มีโอกาส {1}% ที่จะ Drop Item กลุ่ม {0}",
