@@ -341,6 +341,28 @@ public class Localization : MonoBehaviour
     public const string IF_NOT = "IF_NOT";
     public const string INFINITE = "INFINITE";
     public const string DIVIDE = "DIVIDE";
+    public const string ALL_RACE = "ALL_RACE";
+    public const string ALL_CLASS = "ALL_CLASS";
+    public const string SIZE_SMALL = "SIZE_SMALL";
+    public const string SIZE_MEDIUM = "SIZE_MEDIUM";
+    public const string SIZE_LARGE = "SIZE_LARGE";
+    public const string ALL_SIZE = "ALL_SIZE";
+    public const string ALL_ELEMENT = "ALL_ELEMENT";
+    public const string ATF_SELF = "ATF_SELF";
+    public const string ATF_TARGET = "ATF_TARGET";
+    public const string ATF_SHORT = "ATF_SHORT";
+    public const string BF_SHORT = "BF_SHORT";
+    public const string ATF_LONG = "ATF_LONG";
+    public const string BF_LONG = "BF_LONG";
+    public const string ATF_SKILL = "ATF_SKILL";
+    public const string ATF_WEAPON = "ATF_WEAPON";
+    public const string BF_WEAPON = "BF_WEAPON";
+    public const string ATF_MAGIC = "ATF_MAGIC";
+    public const string BF_MAGIC = "BF_MAGIC";
+    public const string BF_SKILL = "BF_SKILL";
+    public const string ATF_MISC = "ATF_MISC";
+    public const string BF_MISC = "BF_MISC";
+    public const string BF_NORMAL = "BF_NORMAL";
     #endregion
 
     [Serializable]

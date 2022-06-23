@@ -1292,6 +1292,94 @@
                     "key": "DIVIDE",
                     "thai": "หาร",
                     "english": "divide"
+                }, {
+                    "key": "ALL_RACE",
+                    "thai": "ทุกเผ่า",
+                    "english": "All Race"
+                }, {
+                    "key": "ALL_CLASS",
+                    "thai": "ทุกประเภท",
+                    "english": "All Class"
+                }, {
+                    "key": "SIZE_SMALL",
+                    "thai": "ขนาดเล็ก",
+                    "english": "Small Size"
+                }, {
+                    "key": "SIZE_MEDIUM",
+                    "thai": "ขนาดกลาง",
+                    "english": "Medium Size"
+                }, {
+                    "key": "SIZE_LARGE",
+                    "thai": "ขนาดใหญ่",
+                    "english": "Large Size"
+                }, {
+                    "key": "ALL_SIZE",
+                    "thai": "ทุกขนาด",
+                    "english": "All Size"
+                }, {
+                    "key": "ALL_ELEMENT",
+                    "thai": "ทุกธาตุ",
+                    "english": "All Element"
+                }, {
+                    "key": "ATF_SELF",
+                    "thai": "ตนเอง",
+                    "english": "Self"
+                }, {
+                    "key": "ATF_TARGET",
+                    "thai": "เป้าหมาย",
+                    "english": "Target"
+                }, {
+                    "key": "ATF_SHORT",
+                    "thai": "ตีกายภาพ ใกล้",
+                    "english": "Physical Damage (Short)"
+                }, {
+                    "key": "BF_SHORT",
+                    "thai": "ตีกายภาพ ใกล้",
+                    "english": "Physical Damage (Short)"
+                }, {
+                    "key": "ATF_LONG",
+                    "thai": "ตีกายภาพ ไกล",
+                    "english": "Physical Damage (Long)"
+                }, {
+                    "key": "BF_LONG",
+                    "thai": "ตีกายภาพ ไกล",
+                    "english": "Physical Damage (Long)"
+                }, {
+                    "key": "ATF_SKILL",
+                    "thai": "ใช้ Skill",
+                    "english": "Use Skill"
+                }, {
+                    "key": "ATF_WEAPON",
+                    "thai": "ตี",
+                    "english": "Deal Physical Damage"
+                }, {
+                    "key": "BF_WEAPON",
+                    "thai": "ตี",
+                    "english": "Deal Physical Damage"
+                }, {
+                    "key": "ATF_MAGIC",
+                    "thai": "ใช้ Skill",
+                    "english": "Use Skill"
+                }, {
+                    "key": "BF_MAGIC",
+                    "thai": "ใช้ Skill",
+                    "english": "Use Skill"
+                }, {
+                    "key": "BF_SKILL",
+                    "thai": "ใช้ Skill",
+                    "english": "Use Skill"
+                }, {
+                    "key": "ATF_MISC",
+                    "thai": "ใช้ Skill อื่น ๆ",
+                    "english": "Use Miscellany Skill"
+                }, {
+                    "key": "BF_MISC",
+                    "thai": "ใช้ Skill อื่น ๆ",
+                    "english": "Use Miscellany Skill"
+                }, {
+                    "key": "BF_NORMAL",
+                    "thai": "ตีกายภาพ",
+                    "english": "Deal Physical Damage"
                 }
             ]
         }

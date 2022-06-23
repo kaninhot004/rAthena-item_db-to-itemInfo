@@ -3691,7 +3691,7 @@ public class Converter : MonoBehaviour
         text = text.Replace("RC_Player_Human", "^AC6523(Human)^000000");
         text = text.Replace("RC_Player_Doram", "^AC6523(Doram)^000000");
         text = text.Replace("RC_Undead", "^AC6523(Undead)^000000");
-        text = text.Replace("RC_All", "^AC6523(ทุกเผ่า)^000000");
+        text = text.Replace("RC_All", "^AC6523(" + _localization.GetTexts(Localization.ALL_RACE) + ")^000000");
         return text;
     }
 
@@ -3717,16 +3717,16 @@ public class Converter : MonoBehaviour
         text = text.Replace("Class_Normal", "^0040B6(Normal)^000000");
         text = text.Replace("Class_Boss", "^0040B6(Boss)^000000");
         text = text.Replace("Class_Guardian", "^0040B6(Guardian)^000000");
-        text = text.Replace("Class_All", "^0040B6(ทุกประเภท)^000000");
+        text = text.Replace("Class_All", "^0040B6(" + _localization.GetTexts(Localization.ALL_CLASS) + ")^000000");
         return text;
     }
 
     string ParseSize(string text)
     {
-        text = text.Replace("Size_Small", "^FF26F5(ขนาดเล็ก)^000000");
-        text = text.Replace("Size_Medium", "^FF26F5(ขนาดกลาง)^000000");
-        text = text.Replace("Size_Large", "^FF26F5(ขนาดใหญ่)^000000");
-        text = text.Replace("Size_All", "^FF26F5(ทุกขนาด)^000000");
+        text = text.Replace("Size_Small", "^FF26F5(" + _localization.GetTexts(Localization.SIZE_SMALL) + ")^000000");
+        text = text.Replace("Size_Medium", "^FF26F5(" + _localization.GetTexts(Localization.SIZE_MEDIUM) + ")^000000");
+        text = text.Replace("Size_Large", "^FF26F5(" + _localization.GetTexts(Localization.SIZE_LARGE) + ")^000000");
+        text = text.Replace("Size_All", "^FF26F5(" + _localization.GetTexts(Localization.ALL_SIZE) + ")^000000");
         return text;
     }
 
@@ -3742,7 +3742,7 @@ public class Converter : MonoBehaviour
         text = text.Replace("Ele_Undead", "^C426FF(Undead)^000000");
         text = text.Replace("Ele_Water", "^C426FF(Water)^000000");
         text = text.Replace("Ele_Wind", "^C426FF(Wind)^000000");
-        text = text.Replace("Ele_All", "^C426FF(ทุกธาตุ)^000000");
+        text = text.Replace("Ele_All", "^C426FF(" + _localization.GetTexts(Localization.ALL_ELEMENT) + ")^000000");
         return text;
     }
 
@@ -3768,21 +3768,21 @@ public class Converter : MonoBehaviour
 
     string ParseAtf(string text)
     {
-        text = text.Replace("ATF_SELF", "ตนเอง");
-        text = text.Replace("ATF_TARGET", "เป้าหมาย");
-        text = text.Replace("ATF_SHORT", "ตีกายภาพ ใกล้");
-        text = text.Replace("BF_SHORT", "ตีกายภาพ ใกล้");
-        text = text.Replace("ATF_LONG", "ตีกายภาพ ไกล");
-        text = text.Replace("BF_LONG", "ตีกายภาพ ไกล");
-        text = text.Replace("ATF_SKILL", "ใช้ Skill");
-        text = text.Replace("ATF_WEAPON", "ตี");
-        text = text.Replace("BF_WEAPON", "ตี");
-        text = text.Replace("ATF_MAGIC", "ใช้ Skill");
-        text = text.Replace("BF_MAGIC", "ใช้ Skill");
-        text = text.Replace("BF_SKILL", "ใช้ Skill");
-        text = text.Replace("ATF_MISC", "ใช้ Skill อื่น ๆ");
-        text = text.Replace("BF_MISC", "ใช้ Skill อื่น ๆ");
-        text = text.Replace("BF_NORMAL", "ตีกายภาพ");
+        text = text.Replace("ATF_SELF", _localization.GetTexts(Localization.ATF_SELF));
+        text = text.Replace("ATF_TARGET", _localization.GetTexts(Localization.ATF_TARGET));
+        text = text.Replace("ATF_SHORT", _localization.GetTexts(Localization.ATF_SHORT));
+        text = text.Replace("BF_SHORT", _localization.GetTexts(Localization.BF_SHORT));
+        text = text.Replace("ATF_LONG", _localization.GetTexts(Localization.ATF_LONG));
+        text = text.Replace("BF_LONG", _localization.GetTexts(Localization.BF_LONG));
+        text = text.Replace("ATF_SKILL", _localization.GetTexts(Localization.ATF_SKILL));
+        text = text.Replace("ATF_WEAPON", _localization.GetTexts(Localization.ATF_WEAPON));
+        text = text.Replace("BF_WEAPON", _localization.GetTexts(Localization.BF_WEAPON));
+        text = text.Replace("ATF_MAGIC", _localization.GetTexts(Localization.ATF_MAGIC));
+        text = text.Replace("BF_MAGIC", _localization.GetTexts(Localization.BF_MAGIC));
+        text = text.Replace("BF_SKILL", _localization.GetTexts(Localization.BF_SKILL));
+        text = text.Replace("ATF_MISC", _localization.GetTexts(Localization.ATF_MISC));
+        text = text.Replace("BF_MISC", _localization.GetTexts(Localization.BF_MISC));
+        text = text.Replace("BF_NORMAL", _localization.GetTexts(Localization.BF_NORMAL));
         return text;
     }
 
