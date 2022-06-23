@@ -827,79 +827,79 @@
                 }, {
                     "key": "BONUS5_AUTO_SPELL",
                     "thai": "๐ เมื่อตีกายภาพโดย {3} มีโอกาส {2}% ร่าย Lv.{1} {0} ใส่ {4}",
-                    "english": ""
+                    "english": "๐ When deal Physical Damage by {3} had {2}% chance to cast Lv.{1} {0} to {4}"
                 }, {
                     "key": "BONUS4_AUTO_SPELL_WHEN_HIT",
                     "thai": "๐ เมื่อโดนตีกายภาพมีโอกาส {2}% ร่าย Lv.{1} {0} ใส่ {3}",
-                    "english": ""
+                    "english": "๐ When received Physical Damage had {2}% chance to cast Lv.{1} {0} to {3}"
                 }, {
                     "key": "BONUS5_AUTO_SPELL_WHEN_HIT",
                     "thai": "๐ เมื่อโดนตีกายภาพโดย {3} มีโอกาส {2}% ร่าย Lv.{1} {0} ใส่ {4}",
-                    "english": ""
+                    "english": "๐ When received Physical Damage by {3} had {2}% chance to cast Lv.{1} {0} to {4}"
                 }, {
                     "key": "BONUS4_AUTO_SPELL_ON_SKILL",
                     "thai": "๐ เมื่อร่าย {0} มีโอกาส {3}% ร่าย Lv.{2} {1}",
-                    "english": ""
+                    "english": "๐ When cast {0} had {3}% chance to cast Lv.{2} {1}"
                 }, {
                     "key": "BONUS5_AUTO_SPELL_ON_SKILL",
                     "thai": "๐ เมื่อร่าย {0} มีโอกาส {3}% ร่าย Lv.{2} {1} ใส่ {4}",
-                    "english": ""
+                    "english": "๐ When cast {0} had {3}% chance to cast Lv.{2} {1} to {4}"
                 }, {
                     "key": "BONUS_HP_DRAIN_VALUE",
                     "thai": "๐ เมื่อตีกายภาพ HP +",
-                    "english": ""
+                    "english": "๐ When deal Physical Damage HP +"
                 }, {
                     "key": "BONUS2_HP_DRAIN_VALUE_RACE",
                     "thai": "๐ เมื่อตีกายภาพ {0} HP +{1}",
-                    "english": ""
+                    "english": "๐ When deal Physical Damage {0} HP +{1}"
                 }, {
                     "key": "BONUS2_HP_DRAIN_VALUE_CLASS",
                     "thai": "๐ เมื่อตีกายภาพ {0} HP +{1}",
-                    "english": ""
+                    "english": "๐ When deal Physical Damage {0} HP +{1}"
                 }, {
                     "key": "BONUS_SP_DRAIN_VALUE",
                     "thai": "๐ เมื่อตีกายภาพ SP +",
-                    "english": ""
+                    "english": "๐ When deal Physical Damage SP +"
                 }, {
                     "key": "BONUS2_SP_DRAIN_VALUE_RACE",
                     "thai": "๐ เมื่อตีกายภาพ {0} SP +{1}",
-                    "english": ""
+                    "english": "๐ When deal Physical Damage {0} SP +{1}"
                 }, {
                     "key": "BONUS2_SP_DRAIN_VALUE_CLASS",
                     "thai": "๐ เมื่อตีกายภาพ {0} SP +{1}",
-                    "english": ""
+                    "english": "๐ When deal Physical Damage {0} SP +{1}"
                 }, {
                     "key": "BONUS2_HP_DRAIN_RATE",
                     "thai": "๐ เมื่อตีกาพภาพมีโอกาส {0}% HP +{1}%",
-                    "english": ""
+                    "english": "๐ When deal Physical Damage had {0}% chance to HP +{1}%"
                 }, {
                     "key": "BONUS2_SP_DRAIN_RATE",
                     "thai": "๐ เมื่อตีกาพภาพมีโอกาส {0}% SP +{1}%",
-                    "english": ""
+                    "english": "๐ When deal Physical Damage had {0}% chance to SP +{1}%"
                 }, {
                     "key": "BONUS2_HP_VANISH_RATE",
                     "thai": "๐ เมื่อตีกายภาพมีโอกาส {0}% ลด HP ศัตรู {1}%",
-                    "english": ""
+                    "english": "๐ When deal Physical Damage had {0}% chance to vanish target HP by {1}%"
                 }, {
                     "key": "BONUS3_HP_VANISH_RACE_RATE",
                     "thai": "๐ เมื่อตีกายภาพเผ่า {0} มีโอกาส {1}% ลด HP ศัตรู {2}%",
-                    "english": ""
+                    "english": "๐ When deal Physical Damage to race {0} had {1}% chance to vanish target HP by {2}%"
                 }, {
                     "key": "BONUS3_HP_VANISH_RATE",
                     "thai": "๐ เมื่อตีโดย {2} มีโอกาส {0}% ลด HP ศัตรู {1}%",
-                    "english": ""
+                    "english": "๐ When deal damage by {2} had {0}% chance to vanish target HP by {1}%"
                 }, {
                     "key": "BONUS2_SP_VANISH_RATE",
                     "thai": "๐ เมื่อตีกายภาพมีโอกาส {0}% ลด SP ศัตรู {1}%",
-                    "english": ""
+                    "english": "๐ When deal Physical Damage had {0}% chance to vanish target SP by {1}%"
                 }, {
                     "key": "BONUS3_SP_VANISH_RACE_RATE",
                     "thai": "๐ เมื่อตีกายภาพ {0} มีโอกาส {1}% ลด SP ศัตรู {2}%",
-                    "english": ""
+                    "english": "๐ When deal Physical Damage to race {0} had {1}% chance to vanish target SP by {2}%"
                 }, {
                     "key": "BONUS3_SP_VANISH_RATE",
                     "thai": "๐ เมื่อตีโดย {2} มีโอกาส {0}% ลด SP ศัตรู {1}%",
-                    "english": ""
+                    "english": "๐ When deal damage by {2} had {0}% chance to vanish target SP by {1}%"
                 }, {
                     "key": "BONUS3_STATE_NO_RECOVER_RACE",
                     "thai": "๐ เมื่อตีกายภาพ {0} มีโอกาส {1}% ที่จะหยุดการฟื้นฟูทุกอย่าง กับเป้าหมาย {2} วินาที",
