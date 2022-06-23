@@ -1031,167 +1031,167 @@
                 }, {
                     "key": "BONUS2_ADD_MONSTER_DROP_ITEM_GROUP",
                     "thai": "๐ มีโอกาส {1}% ที่จะ Drop Item กลุ่ม {0}",
-                    "english": ""
+                    "english": "๐ Had {1}% chance to drop item group {0}"
                 }, {
                     "key": "BONUS3_ADD_MONSTER_DROP_ITEM_GROUP",
                     "thai": "๐ มีโอกาส {2}% ที่จะ Drop Item กลุ่ม {0} {1}",
-                    "english": ""
+                    "english": "๐ Had {2}% chance to drop item group {0} {1}"
                 }, {
                     "key": "BONUS3_ADD_CLASS_DROP_ITEM_GROUP",
                     "thai": "๐ มีโอกาส {2}% ที่จะ Drop Item กลุ่ม {0} {1}",
-                    "english": ""
+                    "english": "๐ Had {2}% chance to drop item group {0} {1}"
                 }, {
                     "key": "BONUS2_GET_ZENY_NUM",
                     "thai": "๐ เมื่อกำจัด Monster มีโอกาส {1}% ที่จะได้รับ 1~{0} Zeny (ทับไม่ได้)",
-                    "english": ""
+                    "english": "๐ When killed monster had {1}% chance to get 1~{0} Zeny (Cannot stack)"
                 }, {
                     "key": "BONUS2_ADD_GET_ZENY_NUM",
                     "thai": "๐ เมื่อกำจัด Monster มีโอกาส {1}% ที่จะได้รับ 1~{0} Zeny",
-                    "english": ""
+                    "english": "๐ When killed monster had {1}% chance to get 1~{0} Zeny"
                 }, {
                     "key": "BONUS_DOUBLE_RATE",
                     "thai": "๐ มีโอกาส ตีกายภาพสองครั้ง +{0}% (ทับไม่ได้)",
-                    "english": ""
+                    "english": "๐ Chance to double attack +{0}% (Cannot stack)"
                 }, {
                     "key": "BONUS_DOUBLE_ADD_RATE",
                     "thai": "๐ มีโอกาส ตีกายภาพสองครั้ง +{0}%",
-                    "english": ""
+                    "english": "๐ Chance to double attack +{0}%"
                 }, {
                     "key": "BONUS_SPLASH_RANGE",
                     "thai": "๐ ตีกระจาย (ทับไม่ได้) +",
-                    "english": ""
+                    "english": "๐ Splash Damage Range (Cannot stack) +"
                 }, {
                     "key": "BONUS_SPLASH_ADD_RANGE",
                     "thai": "๐ ตีกระจาย +",
-                    "english": ""
+                    "english": "๐ Splash Damage Range +"
                 }, {
                     "key": "BONUS2_ADD_SKILL_BLOW",
                     "thai": "๐ เมื่อใช้ {0} จะพลักเป้าหมาย {1} ช่อง",
-                    "english": ""
+                    "english": "๐ When using {0} will push target {1} cell"
                 }, {
                     "key": "BONUS_NO_KNOCKBACK",
                     "thai": "๐ กันการพลัก",
-                    "english": ""
+                    "english": "๐ Knockback protection"
                 }, {
                     "key": "BONUS_NO_GEM_STONE",
                     "thai": "๐ ไม่ต้องใช้ Gemstone ในการร่าย",
-                    "english": ""
+                    "english": "๐ Bypass Gemstone when casting spells"
                 }, {
                     "key": "BONUS_INTRAVISION",
                     "thai": "๐ มองเห็นการหายตัว",
-                    "english": ""
+                    "english": "๐ Grant Intravision"
                 }, {
                     "key": "BONUS_PERFECT_HIDE",
                     "thai": "๐ หายตัวโดยที่ MvP มองไม่เห็น",
-                    "english": ""
+                    "english": "๐ MvP cannot detect you while hiding"
                 }, {
                     "key": "BONUS_RESTART_FULL_RECOVER",
                     "thai": "๐ HP และ SP เต็ม เมื่อพ้นจากการหมดสติ",
-                    "english": ""
+                    "english": "๐ Full restore HP and SP when respawned"
                 }, {
                     "key": "BONUS_CLASS_CHANGE",
                     "thai": "๐ มีโอกาสเปลี่ยนแปลง รูปแบบเป้าหมาย +{0}%",
-                    "english": ""
+                    "english": "๐ Chance to change target class +{0}%"
                 }, {
                     "key": "BONUS_ADD_STEAL_RATE",
                     "thai": "๐ เพิ่มโอกาสขโมยของ +{0}%",
-                    "english": ""
+                    "english": "๐ Steal rate +{0}%"
                 }, {
                     "key": "BONUS_NO_MADO_FUEL",
                     "thai": "๐ ไม่ต้องใช้ Mado Fuel ในการร่าย",
-                    "english": ""
+                    "english": "๐ Bypass Mado Fuel when casting spells"
                 }, {
                     "key": "BONUS_NO_WALK_DELAY",
                     "thai": "๐ เมื่อโดนตีจะไม่ชะงัก",
-                    "english": ""
+                    "english": "๐ Grant Endure status permanently"
                 }, {
                     "key": "SPECIAL_EFFECT_2",
                     "thai": "๐ แสดง Effect",
-                    "english": ""
+                    "english": "๐ Show effect"
                 }, {
                     "key": "SPECIAL_EFFECT",
                     "thai": "๐ แสดง Effect",
-                    "english": ""
+                    "english": "๐ Show effect"
                 }, {
                     "key": "UNIT_SKILL_USE_ID",
                     "thai": "๐ สามารถใช้ Lv.{2} {1}",
-                    "english": ""
+                    "english": "๐ Grant Lv.{2} {1}"
                 }, {
                     "key": "ITEM_SKILL",
                     "thai": "๐ สามารถใช้ Lv.{1} {0}",
-                    "english": ""
+                    "english": "๐ Grant Lv.{1} {0}"
                 }, {
                     "key": "SKILL",
                     "thai": "๐ สามารถใช้ Lv.{1} {0}",
-                    "english": ""
+                    "english": "๐ Grant Lv.{1} {0}"
                 }, {
                     "key": "PERCENT_HEAL",
                     "thai": "๐ ฟื้นฟู HP {0}% และ SP {1}%",
-                    "english": ""
+                    "english": "๐ Heal HP {0}% and SP {1}%"
                 }, {
                     "key": "ITEM_HEAL",
                     "thai": "๐ ฟื้นฟู {0} HP และ {1} SP",
-                    "english": ""
+                    "english": "๐ Heal {0} HP and {1} SP"
                 }, {
                     "key": "HEAL",
                     "thai": "๐ ฟื้นฟู {0} HP และ {1} SP",
-                    "english": ""
+                    "english": "๐ Heal {0} HP and {1} SP"
                 }, {
                     "key": "SC_START_4",
                     "thai": "๐ รับผล {0} เป็นเวลา {1} วินาที",
-                    "english": ""
+                    "english": "๐ Grant {0} for {1}s"
                 }, {
                     "key": "SC_START_2",
                     "thai": "๐ รับผล {0} เป็นเวลา {1} วินาที",
-                    "english": ""
+                    "english": "๐ Grant {0} for {1}s"
                 }, {
                     "key": "SC_START",
                     "thai": "๐ รับผล {0} เป็นเวลา {1} วินาที",
-                    "english": ""
+                    "english": "๐ Grant {0} for {1}s"
                 }, {
                     "key": "SC_END",
                     "thai": "๐ ลบผล {0}",
-                    "english": ""
+                    "english": "๐ Remove {0}"
                 }, {
                     "key": "ACTIVE_TRANSFORM",
                     "thai": "๐ แปลงร่างเป็น {0} เป็นเวลา {1} วินาที",
-                    "english": ""
+                    "english": "๐ Transform to {0} for {1}s"
                 }, {
                     "key": "GET_ITEM",
                     "thai": "๐ รับ {0} {1} ชิ้น",
-                    "english": ""
+                    "english": "๐ Grant {0} {1}ea"
                 }, {
                     "key": "GET_GROUP_ITEM",
                     "thai": "๐ รับ Item กลุ่ม {0} {1} ชิ้น",
-                    "english": ""
+                    "english": "๐ Grant item group {0} {1}ea"
                 }, {
                     "key": "PET",
                     "thai": "๐ สำหรับจับ {0}",
-                    "english": ""
+                    "english": "๐ Catch {0}"
                 }, {
                     "key": "SC_END_CLASS",
                     "thai": "๐ ลบ Buff ทุกอย่าง",
-                    "english": ""
+                    "english": "๐ Remove all buff and debuff"
                 }, {
                     "key": "SET_MOUNTING",
                     "thai": "๐ ขึ้น/ลง พาหนะ",
-                    "english": ""
+                    "english": "๐ Mount/Unmount riding"
                 }, {
                     "key": "LAPHINE_UPGRADE",
                     "thai": "๐ เปิดหน้าต่าง Laphine Upgrade",
-                    "english": ""
+                    "english": "๐ Open Laphine Upgrade window"
                 }, {
                     "key": "LAPHINE_SYNTHESIS",
                     "thai": "๐ เปิดหน้าต่าง Laphine Synthesis",
-                    "english": ""
+                    "english": "๐ Open Laphine Synthesis window"
                 }, {
                     "key": "OPEN_STYLIST",
                     "thai": "๐ เปิดหน้าต่าง Stylist",
-                    "english": ""
+                    "english": "๐ Open Stylist window"
                 }, {
                     "key": "REFINE_UI",
                     "thai": "๐ เปิดหน้าต่าง Refine",
-                    "english": ""
+                    "english": "๐ Open Refine window"
                 }
             ]
         }
