@@ -903,43 +903,43 @@
                 }, {
                     "key": "BONUS3_STATE_NO_RECOVER_RACE",
                     "thai": "๐ เมื่อตีกายภาพ {0} มีโอกาส {1}% ที่จะหยุดการฟื้นฟูทุกอย่าง กับเป้าหมาย {2} วินาที",
-                    "english": ""
+                    "english": "๐ When deal Physical Damage {0} had {1}% chance to stop target neutral recovery for {2}s"
                 }, {
                     "key": "BONUS_HP_GAIN_VALUE",
                     "thai": "๐ ฆ่าด้วยตีกายภาพใกล้ HP +",
-                    "english": ""
+                    "english": "๐ When killed target by Physical Damage (Short) HP +"
                 }, {
                     "key": "BONUS_SP_GAIN_VALUE",
                     "thai": "๐ ฆ่าด้วยตีกายภาพใกล้ SP +",
-                    "english": ""
+                    "english": "๐ When killed target by Physical Damage (Short) SP +"
                 }, {
                     "key": "BONUS2_SP_GAIN_RACE",
                     "thai": "๐ ฆ่า {0} ด้วยตีกายภาพใกล้ HP +{1}",
-                    "english": ""
+                    "english": "๐ When killed target {0} by Physical Damage (Short) HP +{1}"
                 }, {
                     "key": "BONUS_LONG_HP_GAIN_VALUE",
                     "thai": "๐ ฆ่าด้วยตีกายภาพไกล HP +",
-                    "english": ""
+                    "english": "๐ When killed target by Physical Damage (Long) HP +"
                 }, {
                     "key": "BONUS_LONG_SP_GAIN_VALUE",
                     "thai": "๐ ฆ่าด้วยตีกายภาพไกล SP +",
-                    "english": ""
+                    "english": "๐ When killed target by Physical Damage (Long) SP +"
                 }, {
                     "key": "BONUS_MAGIC_HP_GAIN_VALUE",
                     "thai": "๐ ฆ่าด้วยตีเวทย์ HP +",
-                    "english": ""
+                    "english": "๐ When killed target by Magical Damage HP +"
                 }, {
                     "key": "BONUS_MAGIC_SP_GAIN_VALUE",
                     "thai": "๐ ฆ่าด้วยตีเวทย์ SP +",
-                    "english": ""
+                    "english": "๐ When killed target by Magical Damage SP +"
                 }, {
                     "key": "BONUS_SHORT_WEAPON_DAMAGE_RETURN",
                     "thai": "๐ สะท้อนกายภาพใกล้ +{0}%",
-                    "english": ""
+                    "english": "๐ Reflect Physical Damage (Short) +{0}%"
                 }, {
                     "key": "BONUS_LONG_WEAPON_DAMAGE_RETURN",
                     "thai": "๐ สะท้อนกายภาพไกล +{0}%",
-                    "english": ""
+                    "english": "๐ Reflect Physical Damage (Long) +{0}%"
                 }, {
                     "key": "BONUS_MAGIC_DAMAGE_RETURN",
                     "thai": "๐ สะท้อนเวทย์ +{0}%",
