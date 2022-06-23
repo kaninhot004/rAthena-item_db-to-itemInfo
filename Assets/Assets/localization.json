@@ -1192,6 +1192,106 @@
                     "key": "REFINE_UI",
                     "thai": "๐ เปิดหน้าต่าง Refine",
                     "english": "๐ Open Refine window"
+                }, {
+                    "key": "CONDITION_NOT_MET",
+                    "thai": "หากไม่ผ่านเงื่อนไข",
+                    "english": "If condition not met"
+                }, {
+                    "key": "IF",
+                    "thai": "ถ้า",
+                    "english": "If"
+                }, {
+                    "key": "EQUIP_WITH",
+                    "thai": "หากสวมใส่ร่วมกับ",
+                    "english": "If equip with"
+                }, {
+                    "key": "IF_MOUNTING",
+                    "thai": "หากขี่หาหนะ",
+                    "english": "If mounting"
+                }, {
+                    "key": "WAS",
+                    "thai": "คือ",
+                    "english": " was "
+                }, {
+                    "key": "BASE_JOB",
+                    "thai": "ฐานอาชีพ",
+                    "english": "Base Job"
+                }, {
+                    "key": "BASE_CLASS",
+                    "thai": "ฐานอาชีพ",
+                    "english": "Base Class"
+                }, {
+                    "key": "READ_PARAM",
+                    "thai": "ค่า",
+                    "english": "Value"
+                }, {
+                    "key": "HI_CLASS",
+                    "thai": "ไฮคลาส",
+                    "english": "Hi Class"
+                }, {
+                    "key": "PET_INFO_INTIMATE",
+                    "thai": "ความสนิท Pet",
+                    "english": "Pet Intimate"
+                }, {
+                    "key": "PET_INTIMATE_LOYAL",
+                    "thai": "สนิทสนม",
+                    "english": "Loyalty"
+                }, {
+                    "key": "REFINE_COUNT",
+                    "thai": "ตีบวก",
+                    "english": "Refine"
+                }, {
+                    "key": "GRADE_COUNT",
+                    "thai": "เกรด",
+                    "english": "Grade"
+                }, {
+                    "key": "GET_WEAPON_LEVEL",
+                    "thai": "Lv. อาวุธ",
+                    "english": "Weapon Level"
+                }, {
+                    "key": "GET_EQUIPMENT_LEVEL",
+                    "thai": "Lv. อุปกรณ์สวมใส่",
+                    "english": "Equipment Level"
+                }, {
+                    "key": "POW",
+                    "thai": "ยกกำลัง",
+                    "english": "pow"
+                }, {
+                    "key": "MIN",
+                    "thai": "ใช้ค่าน้อยสุด",
+                    "english": "min"
+                }, {
+                    "key": "MAX",
+                    "thai": "ใช้ค่ามากสุด",
+                    "english": "max"
+                }, {
+                    "key": "RAND",
+                    "thai": "สุ่ม",
+                    "english": "rand"
+                }, {
+                    "key": "EQUAL",
+                    "thai": "คือ",
+                    "english": "equal"
+                }, {
+                    "key": "NOT_EQUAL",
+                    "thai": "ไม่ใช่",
+                    "english": "not equal"
+                }, {
+                    "key": "WILL_BE",
+                    "thai": "เป็น",
+                    "english": "will be"
+                }, {
+                    "key": "IF_NOT",
+                    "thai": "ถ้าไม่ใช่",
+                    "english": "if not"
+                }, {
+                    "key": "INFINITE",
+                    "thai": "ถาวร",
+                    "english": "Infinite"
+                }, {
+                    "key": "DIVIDE",
+                    "thai": "หาร",
+                    "english": "divide"
                 }
             ]
         }

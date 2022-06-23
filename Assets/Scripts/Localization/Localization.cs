@@ -315,6 +315,32 @@ public class Localization : MonoBehaviour
     public const string LAPHINE_SYNTHESIS = "LAPHINE_SYNTHESIS";
     public const string OPEN_STYLIST = "OPEN_STYLIST";
     public const string REFINE_UI = "REFINE_UI";
+
+    public const string CONDITION_NOT_MET = "CONDITION_NOT_MET";
+    public const string IF = "IF";
+    public const string EQUIP_WITH = "EQUIP_WITH";
+    public const string IF_MOUNTING = "IF_MOUNTING";
+    public const string WAS = "WAS";
+    public const string BASE_JOB = "BASE_JOB";
+    public const string BASE_CLASS = "BASE_CLASS";
+    public const string READ_PARAM = "READ_PARAM";
+    public const string HI_CLASS = "HI_CLASS";
+    public const string PET_INFO_INTIMATE = "PET_INFO_INTIMATE";
+    public const string PET_INTIMATE_LOYAL = "PET_INTIMATE_LOYAL";
+    public const string REFINE_COUNT = "REFINE_COUNT";
+    public const string GRADE_COUNT = "GRADE_COUNT";
+    public const string GET_WEAPON_LEVEL = "GET_WEAPON_LEVEL";
+    public const string GET_EQUIPMENT_LEVEL = "GET_EQUIPMENT_LEVEL";
+    public const string POW = "POW";
+    public const string MIN = "MIN";
+    public const string MAX = "MAX";
+    public const string RAND = "RAND";
+    public const string EQUAL = "EQUAL";
+    public const string NOT_EQUAL = "NOT_EQUAL";
+    public const string WILL_BE = "WILL_BE";
+    public const string IF_NOT = "IF_NOT";
+    public const string INFINITE = "INFINITE";
+    public const string DIVIDE = "DIVIDE";
     #endregion
 
     [Serializable]

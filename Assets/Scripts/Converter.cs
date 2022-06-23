@@ -3904,20 +3904,20 @@ public class Converter : MonoBehaviour
 
     string AllInOneParse(string text)
     {
-        text = text.Replace("else if (", "^FF2525หากไม่ผ่านเงื่อนไข^000000(");
-        text = text.Replace("else if(", "^FF2525หากไม่ผ่านเงื่อนไข^000000(");
-        text = text.Replace("if (", "^FF2525ถ้า^000000(");
-        text = text.Replace("else (", "^FF2525หากไม่ผ่านเงื่อนไข^000000(");
-        text = text.Replace("if(", "^FF2525ถ้า^000000(");
-        text = text.Replace("else(", "^FF2525หากไม่ผ่านเงื่อนไข^000000(");
-        text = text.Replace("||", "หรือ");
-        text = text.Replace("&&", "และ");
-        text = text.Replace("&", " คือ ");
+        text = text.Replace("else if (", "^FF2525" + _localization.GetTexts(Localization.CONDITION_NOT_MET) + "^000000(");
+        text = text.Replace("else if(", "^FF2525" + _localization.GetTexts(Localization.CONDITION_NOT_MET) + "^000000(");
+        text = text.Replace("if (", "^FF2525" + _localization.GetTexts(Localization.IF) + "^000000(");
+        text = text.Replace("else (", "^FF2525" + _localization.GetTexts(Localization.CONDITION_NOT_MET) + "^000000(");
+        text = text.Replace("if(", "^FF2525" + _localization.GetTexts(Localization.IF) + "^000000(");
+        text = text.Replace("else(", "^FF2525" + _localization.GetTexts(Localization.CONDITION_NOT_MET) + "^000000(");
+        text = text.Replace("||", _localization.GetTexts(Localization.OR));
+        text = text.Replace("&&", _localization.GetTexts(Localization.AND));
+        text = text.Replace("&", " " + _localization.GetTexts(Localization.WAS) + " ");
         text = text.Replace("BaseLevel", "Level");
-        text = text.Replace("BaseJob", "ฐานอาชีพ");
-        text = text.Replace("BaseClass", "ฐานอาชีพ");
+        text = text.Replace("BaseJob", _localization.GetTexts(Localization.BASE_JOB));
+        text = text.Replace("BaseClass", _localization.GetTexts(Localization.BASE_CLASS));
         text = text.Replace("JobLevel", "Job Level");
-        text = text.Replace("readparam", "ค่า");
+        text = text.Replace("readparam", _localization.GetTexts(Localization.READ_PARAM));
         text = text.Replace("bSTR", "STR");
         text = text.Replace("bStr", "STR");
         text = text.Replace("bAGI", "AGI");
@@ -3931,41 +3931,41 @@ public class Converter : MonoBehaviour
         text = text.Replace("bLUK", "LUK");
         text = text.Replace("bLuk", "LUK");
         text = text.Replace("eaclass()", "Class");
-        text = text.Replace("EAJL_2_1", "คลาส 2-1");
-        text = text.Replace("EAJL_2_2", "คลาส 2-2");
-        text = text.Replace("EAJL_2", "คลาส 2");
-        text = text.Replace("EAJL_UPPER", "ไฮคลาส");
-        text = text.Replace("EAJL_BABY", "คลาส Baby");
-        text = text.Replace("EAJL_THIRD", "คลาส 3");
-        text = text.Replace("EAJ_BASEMASK", "คลาส 1");
-        text = text.Replace("EAJ_UPPERMASK", "ไฮคลาส");
-        text = text.Replace("EAJ_THIRDMASK", "คลาส 3");
+        text = text.Replace("EAJL_2_1", _localization.GetTexts(Localization.CLASS) + " 2-1");
+        text = text.Replace("EAJL_2_2", _localization.GetTexts(Localization.CLASS) + " 2-2");
+        text = text.Replace("EAJL_2", _localization.GetTexts(Localization.CLASS) + " 2");
+        text = text.Replace("EAJL_UPPER", _localization.GetTexts(Localization.HI_CLASS));
+        text = text.Replace("EAJL_BABY", _localization.GetTexts(Localization.CLASS) + " Baby");
+        text = text.Replace("EAJL_THIRD", _localization.GetTexts(Localization.CLASS) + " 3");
+        text = text.Replace("EAJ_BASEMASK", _localization.GetTexts(Localization.CLASS) + " 1");
+        text = text.Replace("EAJ_UPPERMASK", _localization.GetTexts(Localization.HI_CLASS));
+        text = text.Replace("EAJ_THIRDMASK", _localization.GetTexts(Localization.CLASS) + " 3");
         text = text.Replace("PETINFO_ID", "Pet");
-        text = text.Replace("PETINFO_INTIMATE", "ความสนิท Pet");
-        text = text.Replace("PET_INTIMATE_LOYAL", "สนิทสนม");
+        text = text.Replace("PETINFO_INTIMATE", _localization.GetTexts(Localization.PET_INFO_INTIMATE));
+        text = text.Replace("PET_INTIMATE_LOYAL", _localization.GetTexts(Localization.PET_INTIMATE_LOYAL));
         text = text.Replace("getpetinfo(", "(");
         text = text.Replace("getiteminfo(", "(");
         text = text.Replace("getequipid(", " Item ");
-        text = text.Replace("getequiprefinerycnt", "ตีบวก");
-        text = text.Replace("getenchantgrade()", "เกรด");
-        text = text.Replace("getenchantgrade", "เกรด");
-        text = text.Replace("getrefine()", "ตีบวก");
-        text = text.Replace("getequipweaponlv()", "Lv. อาวุธ");
-        text = text.Replace("getequipweaponlv", "Lv. อาวุธ");
-        text = text.Replace("getequiparmorlv()", "Lv. อุปกรณ์สวมใส่");
-        text = text.Replace("getequiparmorlv", "Lv. อุปกรณ์สวมใส่");
-        text = text.Replace("ismounting()", "หากขี่หาหนะ");
+        text = text.Replace("getequiprefinerycnt", _localization.GetTexts(Localization.REFINE_COUNT));
+        text = text.Replace("getenchantgrade()", _localization.GetTexts(Localization.GRADE_COUNT));
+        text = text.Replace("getenchantgrade", _localization.GetTexts(Localization.GRADE_COUNT));
+        text = text.Replace("getrefine()", _localization.GetTexts(Localization.REFINE_COUNT));
+        text = text.Replace("getequipweaponlv()", _localization.GetTexts(Localization.GET_WEAPON_LEVEL));
+        text = text.Replace("getequipweaponlv", _localization.GetTexts(Localization.GET_WEAPON_LEVEL));
+        text = text.Replace("getequiparmorlv()", _localization.GetTexts(Localization.GET_EQUIPMENT_LEVEL));
+        text = text.Replace("getequiparmorlv", _localization.GetTexts(Localization.GET_EQUIPMENT_LEVEL));
+        text = text.Replace("ismounting()", _localization.GetTexts(Localization.IF_MOUNTING));
         text = text.Replace("getskilllv", "Lv. Skill");
-        text = text.Replace("pow (", "ยกกำลัง(");
-        text = text.Replace("pow(", "ยกกำลัง(");
-        text = text.Replace("min (", "ใช้ค่าน้อยสุด(");
-        text = text.Replace("min(", "ใช้ค่าน้อยสุด(");
-        text = text.Replace("max (", "ใช้ค่ามากสุด(");
-        text = text.Replace("max(", "ใช้ค่ามากสุด(");
-        text = text.Replace("rand (", "สุ่ม(");
-        text = text.Replace("rand(", "สุ่ม(");
-        text = text.Replace("==", "คือ");
-        text = text.Replace("!=", " ไม่ใช่ ");
+        text = text.Replace("pow (", _localization.GetTexts(Localization.POW) + "(");
+        text = text.Replace("pow(", _localization.GetTexts(Localization.POW) + "(");
+        text = text.Replace("min (", _localization.GetTexts(Localization.MIN) + "(");
+        text = text.Replace("min(", _localization.GetTexts(Localization.MIN) + "(");
+        text = text.Replace("max (", _localization.GetTexts(Localization.MAX) + "(");
+        text = text.Replace("max(", _localization.GetTexts(Localization.MAX) + "(");
+        text = text.Replace("rand (", _localization.GetTexts(Localization.RAND) + "(");
+        text = text.Replace("rand(", _localization.GetTexts(Localization.RAND) + "(");
+        text = text.Replace("==", _localization.GetTexts(Localization.EQUAL));
+        text = text.Replace("!=", " " + _localization.GetTexts(Localization.NOT_EQUAL) + " ");
         text = text.Replace("JOB_", string.Empty);
         text = text.Replace("Job_", string.Empty);
         text = text.Replace("job_", string.Empty);
@@ -3973,11 +3973,11 @@ public class Converter : MonoBehaviour
         text = text.Replace("eaj_", string.Empty);
         text = text.Replace("SC_", string.Empty);
         text = text.Replace("sc_", string.Empty);
-        text = text.Replace("else", "^FF2525หากไม่ผ่านเงื่อนไข^000000");
-        text = text.Replace(" ? ", " เป็น ");
-        text = text.Replace("?", " เป็น ");
-        text = text.Replace(" : ", " ถ้าไม่ใช่ ");
-        text = text.Replace(":", " ถ้าไม่ใช่ ");
+        text = text.Replace("else", "^FF2525" + _localization.GetTexts(Localization.CONDITION_NOT_MET) + "^000000");
+        text = text.Replace(" ? ", " " + _localization.GetTexts(Localization.WILL_BE) + " ");
+        text = text.Replace("?", " " + _localization.GetTexts(Localization.WILL_BE) + " ");
+        text = text.Replace(" : ", " " + _localization.GetTexts(Localization.IF_NOT) + " ");
+        text = text.Replace(":", " " + _localization.GetTexts(Localization.IF_NOT) + " ");
 
         text = ParseWeaponType(text);
         text = ParseEQI(text);
@@ -4023,7 +4023,7 @@ public class Converter : MonoBehaviour
     string TryParseInt(string text, float divider = 1, int defaultValue = 0)
     {
         if (text == "INFINITE_TICK")
-            return "ถาวร";
+            return _localization.GetTexts(Localization.INFINITE);
 
         float sum = -1;
 
@@ -4038,7 +4038,7 @@ public class Converter : MonoBehaviour
                 return text;
         }
         else
-            return text + " ^FF0000หาร " + divider.ToString("f0") + "^000000";
+            return text + " ^FF0000" + _localization.GetTexts(Localization.DIVIDE) + " " + divider.ToString("f0") + "^000000";
 
         return ParseNumberDecimal(sum, divider);
     }
@@ -4086,7 +4086,7 @@ public class Converter : MonoBehaviour
                     if (isFoundNow)
                     {
                         // Declare header
-                        var same_set_name_list = "			\"^666478หากสวมใส่ร่วมกับ";
+                        var same_set_name_list = "			\"^666478" + _localization.GetTexts(Localization.EQUIP_WITH);
 
                         // Add item name
                         for (int k = 0; k < currentSameComboData.aegisNames.Count; k++)
@@ -4344,56 +4344,56 @@ public class Converter : MonoBehaviour
 
                 if (type.ToLower() == "armor")
                 {
-                    if (location == "หมวกส่วนบน")
+                    if (location == _localization.GetTexts(Localization.LOCATION_HEAD_TOP))
                     {
                         var s = GetResourceNameFromId(int.Parse(_resourceContainer.topHeadgears[UnityEngine.Random.Range(0, _resourceContainer.topHeadgears.Count)]), null, null, null);
                         while (s == "\"Bio_Reseearch_Docu\"")
                             s = GetResourceNameFromId(int.Parse(_resourceContainer.topHeadgears[UnityEngine.Random.Range(0, _resourceContainer.topHeadgears.Count)]), null, null, null);
                         return s;
                     }
-                    else if (location == "หมวกส่วนกลาง")
+                    else if (location == _localization.GetTexts(Localization.LOCATION_HEAD_MID))
                     {
                         var s = GetResourceNameFromId(int.Parse(_resourceContainer.middleHeadgears[UnityEngine.Random.Range(0, _resourceContainer.middleHeadgears.Count)]), null, null, null);
                         while (s == "\"Bio_Reseearch_Docu\"")
                             s = GetResourceNameFromId(int.Parse(_resourceContainer.middleHeadgears[UnityEngine.Random.Range(0, _resourceContainer.middleHeadgears.Count)]), null, null, null);
                         return s;
                     }
-                    else if (location == "หมวกส่วนล่าง")
+                    else if (location == _localization.GetTexts(Localization.LOCATION_HEAD_LOW))
                     {
                         var s = GetResourceNameFromId(int.Parse(_resourceContainer.lowerHeadgears[UnityEngine.Random.Range(0, _resourceContainer.lowerHeadgears.Count)]), null, null, null);
                         while (s == "\"Bio_Reseearch_Docu\"")
                             s = GetResourceNameFromId(int.Parse(_resourceContainer.lowerHeadgears[UnityEngine.Random.Range(0, _resourceContainer.lowerHeadgears.Count)]), null, null, null);
                         return s;
                     }
-                    else if (location == "ชุดเกราะ")
+                    else if (location == _localization.GetTexts(Localization.LOCATION_ARMOR))
                     {
                         var s = GetResourceNameFromId(int.Parse(_resourceContainer.armors[UnityEngine.Random.Range(0, _resourceContainer.armors.Count)]), null, null, null);
                         while (s == "\"Bio_Reseearch_Docu\"")
                             s = GetResourceNameFromId(int.Parse(_resourceContainer.armors[UnityEngine.Random.Range(0, _resourceContainer.armors.Count)]), null, null, null);
                         return s;
                     }
-                    else if (location == "ผ้าคลุม")
+                    else if (location == _localization.GetTexts(Localization.LOCATION_GARMENT))
                     {
                         var s = GetResourceNameFromId(int.Parse(_resourceContainer.garments[UnityEngine.Random.Range(0, _resourceContainer.garments.Count)]), null, null, null);
                         while (s == "\"Bio_Reseearch_Docu\"")
                             s = GetResourceNameFromId(int.Parse(_resourceContainer.garments[UnityEngine.Random.Range(0, _resourceContainer.garments.Count)]), null, null, null);
                         return s;
                     }
-                    else if (location == "รองเท้า")
+                    else if (location == _localization.GetTexts(Localization.LOCATION_SHOES))
                     {
                         var s = GetResourceNameFromId(int.Parse(_resourceContainer.shoes[UnityEngine.Random.Range(0, _resourceContainer.shoes.Count)]), null, null, null);
                         while (s == "\"Bio_Reseearch_Docu\"")
                             s = GetResourceNameFromId(int.Parse(_resourceContainer.shoes[UnityEngine.Random.Range(0, _resourceContainer.shoes.Count)]), null, null, null);
                         return s;
                     }
-                    else if (location == "ประดับข้างซ้าย" || location == "ประดับข้างขวา" || location == "ประดับสองข้าง")
+                    else if (location == _localization.GetTexts(Localization.LOCATION_LEFT_ACCESSORY) || location == _localization.GetTexts(Localization.LOCATION_RIGHT_ACCESSORY) || location == _localization.GetTexts(Localization.LOCATION_BOTH_ACCESSORY))
                     {
                         var s = GetResourceNameFromId(int.Parse(_resourceContainer.accessorys[UnityEngine.Random.Range(0, _resourceContainer.accessorys.Count)]), null, null, null);
                         while (s == "\"Bio_Reseearch_Docu\"")
                             s = GetResourceNameFromId(int.Parse(_resourceContainer.accessorys[UnityEngine.Random.Range(0, _resourceContainer.accessorys.Count)]), null, null, null);
                         return s;
                     }
-                    else if (location == "มือซ้าย")
+                    else if (location == _localization.GetTexts(Localization.LOCATION_LEFT_HAND))
                     {
                         var s = GetResourceNameFromId(int.Parse(_resourceContainer.shields[UnityEngine.Random.Range(0, _resourceContainer.shields.Count)]), null, null, null);
                         while (s == "\"Bio_Reseearch_Docu\"")
