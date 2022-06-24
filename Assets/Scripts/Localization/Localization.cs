@@ -383,6 +383,9 @@ public class Localization : MonoBehaviour
     public const string AUTOSPELL_I_TARGET = "AUTOSPELL_I_TARGET";
     public const string AUTOSPELL_I_SKILL = "AUTOSPELL_I_SKILL";
     public const string AUTOSPELL_I_SKILL_TO_TARGET = "AUTOSPELL_I_SKILL_TO_TARGET";
+    public const string EQUIP_COMPOUND_ON = "EQUIP_COMPOUND_ON";
+    public const string FIST = "FIST";
+    public const string SHIELD = "SHIELD";
     #endregion
 
     [Serializable]

@@ -3841,34 +3841,34 @@ public class Converter : MonoBehaviour
 
     string ParseEQI(string text)
     {
-        text = text.Replace("EQI_COMPOUND_ON", "อุปกรณ์ที่สวมใส่อยู่");
-        text = text.Replace("EQI_ACC_L", "ประดับข้างซ้าย");
-        text = text.Replace("EQI_ACC_R", "ประดับข้างขวา");
-        text = text.Replace("EQI_SHOES", "รองเท้า");
-        text = text.Replace("EQI_GARMENT", "ผ้าคลุม");
-        text = text.Replace("EQI_HEAD_LOW", "หมวกส่วนล่าง");
-        text = text.Replace("EQI_HEAD_MID", "หมวกส่วนกลาง");
-        text = text.Replace("EQI_HEAD_TOP", "หมวกส่วนบน");
-        text = text.Replace("EQI_ARMOR", "ชุดเกราะ");
-        text = text.Replace("EQI_HAND_L", "มือซ้าย");
-        text = text.Replace("EQI_HAND_R", "มือขวา");
-        text = text.Replace("EQI_COSTUME_HEAD_TOP", "หมวกส่วนบน Costume");
-        text = text.Replace("EQI_COSTUME_HEAD_MID", "หมวกส่วนกลาง Costume");
-        text = text.Replace("EQI_COSTUME_HEAD_LOW", "หมวกส่วนล่าง Costume");
-        text = text.Replace("EQI_COSTUME_GARMENT", "ผ้าคลุม Costume");
-        text = text.Replace("EQI_AMMO", "กระสุน");
-        text = text.Replace("EQI_SHADOW_ARMOR", "ชุดเกราะ Shadow");
-        text = text.Replace("EQI_SHADOW_WEAPON", "อาวุธ Shadow");
-        text = text.Replace("EQI_SHADOW_SHIELD", "โล่ Shadow");
-        text = text.Replace("EQI_SHADOW_SHOES", "รองเท้า Shadow");
-        text = text.Replace("EQI_SHADOW_ACC_R", "ประดับ Shadow ข้างขวา");
-        text = text.Replace("EQI_SHADOW_ACC_L", "ประดับ Shadow ข้างซ้าย");
+        text = text.Replace("EQI_COMPOUND_ON", _localization.GetTexts(Localization.EQUIP_COMPOUND_ON));
+        text = text.Replace("EQI_ACC_L", _localization.GetTexts(Localization.LOCATION_LEFT_ACCESSORY));
+        text = text.Replace("EQI_ACC_R", _localization.GetTexts(Localization.LOCATION_RIGHT_ACCESSORY));
+        text = text.Replace("EQI_SHOES", _localization.GetTexts(Localization.LOCATION_SHOES));
+        text = text.Replace("EQI_GARMENT", _localization.GetTexts(Localization.LOCATION_GARMENT));
+        text = text.Replace("EQI_HEAD_LOW", _localization.GetTexts(Localization.LOCATION_HEAD_LOW));
+        text = text.Replace("EQI_HEAD_MID", _localization.GetTexts(Localization.LOCATION_HEAD_MID));
+        text = text.Replace("EQI_HEAD_TOP", _localization.GetTexts(Localization.LOCATION_HEAD_TOP));
+        text = text.Replace("EQI_ARMOR", _localization.GetTexts(Localization.LOCATION_ARMOR));
+        text = text.Replace("EQI_HAND_L", _localization.GetTexts(Localization.LOCATION_LEFT_HAND));
+        text = text.Replace("EQI_HAND_R", _localization.GetTexts(Localization.LOCATION_RIGHT_HAND));
+        text = text.Replace("EQI_COSTUME_HEAD_TOP", _localization.GetTexts(Localization.LOCATION_COSTUME_HEAD_TOP));
+        text = text.Replace("EQI_COSTUME_HEAD_MID", _localization.GetTexts(Localization.LOCATION_COSTUME_HEAD_MID));
+        text = text.Replace("EQI_COSTUME_HEAD_LOW", _localization.GetTexts(Localization.LOCATION_COSTUME_HEAD_LOW));
+        text = text.Replace("EQI_COSTUME_GARMENT", _localization.GetTexts(Localization.LOCATION_COSTUME_GARMENT));
+        text = text.Replace("EQI_AMMO", _localization.GetTexts(Localization.LOCATION_AMMO));
+        text = text.Replace("EQI_SHADOW_ARMOR", _localization.GetTexts(Localization.LOCATION_SHADOW_ARMOR));
+        text = text.Replace("EQI_SHADOW_WEAPON", _localization.GetTexts(Localization.LOCATION_SHADOW_WEAPON));
+        text = text.Replace("EQI_SHADOW_SHIELD", _localization.GetTexts(Localization.LOCATION_SHADOW_SHIELD));
+        text = text.Replace("EQI_SHADOW_SHOES", _localization.GetTexts(Localization.LOCATION_SHADOW_SHOES));
+        text = text.Replace("EQI_SHADOW_ACC_R", _localization.GetTexts(Localization.LOCATION_SHADOW_RIGHT_ACCESSORY));
+        text = text.Replace("EQI_SHADOW_ACC_L", _localization.GetTexts(Localization.LOCATION_SHADOW_LEFT_ACCESSORY));
         return text;
     }
 
     string ParseWeaponType(string text)
     {
-        text = text.Replace("W_FIST", "มือเปล่า");
+        text = text.Replace("W_FIST", _localization.GetTexts(Localization.FIST));
         text = text.Replace("W_DAGGER", "Dagger");
         text = text.Replace("W_1HSWORD", "One-handed Sword");
         text = text.Replace("W_2HSWORD", "Two-handed Sword");
@@ -3898,7 +3898,7 @@ public class Converter : MonoBehaviour
         text = text.Replace("W_DOUBLE_DS,", "Dagger + Sword");
         text = text.Replace("W_DOUBLE_DA,", "Dagger + Axe");
         text = text.Replace("W_DOUBLE_SA,", "Sword + Axe");
-        text = text.Replace("W_SHIELD", "โล่");
+        text = text.Replace("W_SHIELD", _localization.GetTexts(Localization.SHIELD));
         return text;
     }
 
