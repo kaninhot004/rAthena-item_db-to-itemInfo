@@ -363,6 +363,26 @@ public class Localization : MonoBehaviour
     public const string ATF_MISC = "ATF_MISC";
     public const string BF_MISC = "BF_MISC";
     public const string BF_NORMAL = "BF_NORMAL";
+    public const string AUTO_BONUS_ATF_SELF = "AUTO_BONUS_ATF_SELF";
+    public const string AUTO_BONUS_ATF_TARGET = "AUTO_BONUS_ATF_TARGET";
+    public const string AUTO_BONUS_ATF_SHORT = "AUTO_BONUS_ATF_SHORT";
+    public const string AUTO_BONUS_BF_SHORT = "AUTO_BONUS_BF_SHORT";
+    public const string AUTO_BONUS_ATF_LONG = "AUTO_BONUS_ATF_LONG";
+    public const string AUTO_BONUS_BF_LONG = "AUTO_BONUS_BF_LONG";
+    public const string AUTO_BONUS_ATF_SKILL = "AUTO_BONUS_ATF_SKILL";
+    public const string AUTO_BONUS_ATF_WEAPON = "AUTO_BONUS_ATF_WEAPON";
+    public const string AUTO_BONUS_BF_WEAPON = "AUTO_BONUS_BF_WEAPON";
+    public const string AUTO_BONUS_ATF_MAGIC = "AUTO_BONUS_ATF_MAGIC";
+    public const string AUTO_BONUS_BF_MAGIC = "AUTO_BONUS_BF_MAGIC";
+    public const string AUTO_BONUS_BF_SKILL = "AUTO_BONUS_BF_SKILL";
+    public const string AUTO_BONUS_ATF_MISC = "AUTO_BONUS_ATF_MISC";
+    public const string AUTO_BONUS_BF_MISC = "AUTO_BONUS_BF_MISC";
+    public const string AUTO_BONUS_BF_NORMAL = "AUTO_BONUS_BF_NORMAL";
+    public const string PHYSICAL_DAMAGE = "PHYSICAL_DAMAGE";
+    public const string AUTOSPELL_I_SELF = "AUTOSPELL_I_SELF";
+    public const string AUTOSPELL_I_TARGET = "AUTOSPELL_I_TARGET";
+    public const string AUTOSPELL_I_SKILL = "AUTOSPELL_I_SKILL";
+    public const string AUTOSPELL_I_SKILL_TO_TARGET = "AUTOSPELL_I_SKILL_TO_TARGET";
     #endregion
 
     [Serializable]

@@ -3791,51 +3791,51 @@ public class Converter : MonoBehaviour
         string atf = string.Empty;
 
         if (text.Contains("ATF_SELF"))
-            atf += "ตีตนเอง, ";
+            atf += _localization.GetTexts(Localization.AUTO_BONUS_ATF_SELF) + ", ";
         if (text.Contains("ATF_TARGET"))
-            atf += "ตีศัตรู, ";
+            atf += _localization.GetTexts(Localization.AUTO_BONUS_ATF_TARGET) + ", ";
         if (text.Contains("ATF_SHORT"))
-            atf += "ตีใกล้, ";
+            atf += _localization.GetTexts(Localization.AUTO_BONUS_ATF_SHORT) + ", ";
         if (text.Contains("BF_SHORT"))
-            atf += "ตีใกล้, ";
+            atf += _localization.GetTexts(Localization.AUTO_BONUS_BF_SHORT) + ", ";
         if (text.Contains("ATF_LONG"))
-            atf += "ตีไกล, ";
+            atf += _localization.GetTexts(Localization.AUTO_BONUS_ATF_LONG) + ", ";
         if (text.Contains("BF_LONG"))
-            atf += "ตีไกล, ";
+            atf += _localization.GetTexts(Localization.AUTO_BONUS_BF_LONG) + ", ";
         if (text.Contains("ATF_SKILL"))
-            atf += "ใช้ Skill, ";
+            atf += _localization.GetTexts(Localization.AUTO_BONUS_ATF_SKILL) + ", ";
         if (text.Contains("ATF_WEAPON"))
-            atf += "ตีกายภาพ, ";
+            atf += _localization.GetTexts(Localization.AUTO_BONUS_ATF_WEAPON) + ", ";
         if (text.Contains("BF_WEAPON"))
-            atf += "ตีกายภาพ, ";
+            atf += _localization.GetTexts(Localization.AUTO_BONUS_BF_WEAPON) + ", ";
         if (text.Contains("ATF_MAGIC"))
-            atf += "ใช้ Skill, ";
+            atf += _localization.GetTexts(Localization.AUTO_BONUS_ATF_MAGIC) + ", ";
         if (text.Contains("BF_MAGIC"))
-            atf += "ใช้ Skill, ";
+            atf += _localization.GetTexts(Localization.AUTO_BONUS_BF_MAGIC) + ", ";
         if (text.Contains("BF_SKILL"))
-            atf += "ใช้ Skill, ";
+            atf += _localization.GetTexts(Localization.AUTO_BONUS_BF_SKILL) + ", ";
         if (text.Contains("ATF_MISC"))
-            atf += "ใช้ Skill อื่น ๆ, ";
+            atf += _localization.GetTexts(Localization.AUTO_BONUS_ATF_MISC) + ", ";
         if (text.Contains("BF_MISC"))
-            atf += "ใช้ Skill อื่น ๆ, ";
+            atf += _localization.GetTexts(Localization.AUTO_BONUS_BF_MISC) + ", ";
         if (text.Contains("BF_NORMAL"))
-            atf += "ตีกายภาพ, ";
+            atf += _localization.GetTexts(Localization.AUTO_BONUS_BF_NORMAL) + ", ";
 
         // Remove leftover ,
         if (!string.IsNullOrEmpty(atf))
             atf = atf.Substring(0, atf.Length - 2);
         else
-            atf = "ตีกายภาพ";
+            atf = _localization.GetTexts(Localization.PHYSICAL_DAMAGE);
 
         return atf;
     }
 
     string ParseI(string text)
     {
-        text = text.Replace("0", "ตนเอง");
-        text = text.Replace("1", "เป้าหมาย");
-        text = text.Replace("2", "สุ่ม Lv. Skill");
-        text = text.Replace("3", "สุ่ม Lv. Skill ใส่เป้าหมาย");
+        text = text.Replace("0", _localization.GetTexts(Localization.AUTOSPELL_I_SELF));
+        text = text.Replace("1", _localization.GetTexts(Localization.AUTOSPELL_I_TARGET));
+        text = text.Replace("2", _localization.GetTexts(Localization.AUTOSPELL_I_SKILL));
+        text = text.Replace("3", _localization.GetTexts(Localization.AUTOSPELL_I_SKILL_TO_TARGET));
         return text;
     }
 

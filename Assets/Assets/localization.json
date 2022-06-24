@@ -1380,6 +1380,86 @@
                     "key": "BF_NORMAL",
                     "thai": "ตีกายภาพ",
                     "english": "Deal Physical Damage"
+                }, {
+                    "key": "AUTO_BONUS_ATF_SELF",
+                    "thai": "ตนเอง",
+                    "english": "Self"
+                }, {
+                    "key": "AUTO_BONUS_ATF_TARGET",
+                    "thai": "ศัตรู",
+                    "english": "Target"
+                }, {
+                    "key": "AUTO_BONUS_ATF_SHORT",
+                    "thai": "ตีใกล้",
+                    "english": "Damage (Short)"
+                }, {
+                    "key": "AUTO_BONUS_BF_SHORT",
+                    "thai": "ตีใกล้",
+                    "english": "Damage (Short)"
+                }, {
+                    "key": "AUTO_BONUS_ATF_LONG",
+                    "thai": "ตีไกล",
+                    "english": "Damage (Long)"
+                }, {
+                    "key": "AUTO_BONUS_BF_LONG",
+                    "thai": "ตีไกล",
+                    "english": "Damage (Long)"
+                }, {
+                    "key": "AUTO_BONUS_ATF_SKILL",
+                    "thai": "ใช้ Skill",
+                    "english": "Cast Skill"
+                }, {
+                    "key": "AUTO_BONUS_ATF_WEAPON",
+                    "thai": "ตีกายภาพ",
+                    "english": "Deal Physical Damage"
+                }, {
+                    "key": "AUTO_BONUS_BF_WEAPON",
+                    "thai": "ตีกายภาพ",
+                    "english": "Deal Physical Damage"
+                }, {
+                    "key": "AUTO_BONUS_ATF_MAGIC",
+                    "thai": "ใช้ Skill",
+                    "english": "Cast Skill"
+                }, {
+                    "key": "AUTO_BONUS_BF_MAGIC",
+                    "thai": "ใช้ Skill",
+                    "english": "Cast Skill"
+                }, {
+                    "key": "AUTO_BONUS_BF_SKILL",
+                    "thai": "ใช้ Skill",
+                    "english": "Cast Skill"
+                }, {
+                    "key": "AUTO_BONUS_ATF_MISC",
+                    "thai": "ใช้ Skill อื่น ๆ",
+                    "english": "Cast Miscellany Skill"
+                }, {
+                    "key": "AUTO_BONUS_BF_MISC",
+                    "thai": "ใช้ Skill อื่น ๆ",
+                    "english": "Cast Miscellany Skill"
+                }, {
+                    "key": "AUTO_BONUS_BF_NORMAL",
+                    "thai": "ตีกายภาพ",
+                    "english": "Deal Physical Damage"
+                }, {
+                    "key": "PHYSICAL_DAMAGE",
+                    "thai": "ตีกายภาพ",
+                    "english": "Deal Physical Damage"
+                }, {
+                    "key": "AUTOSPELL_I_SELF",
+                    "thai": "ตนเอง",
+                    "english": "Self"
+                }, {
+                    "key": "AUTOSPELL_I_TARGET",
+                    "thai": "เป้าหมาย",
+                    "english": "Target"
+                }, {
+                    "key": "AUTOSPELL_I_SKILL",
+                    "thai": "สุ่ม Lv. Skill",
+                    "english": "Random Skill Level"
+                }, {
+                    "key": "AUTOSPELL_I_SKILL_TO_TARGET",
+                    "thai": "สุ่ม Lv. Skill ใส่เป้าหมาย",
+                    "english": "Random Skill Level to target"
                 }
             ]
         }
