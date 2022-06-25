@@ -81,6 +81,7 @@
     <None Include="Assets\Assets\resourceName.txt" />
     <None Include="Assets\Assets\classNum.txt" />
     <None Include="Assets\Assets\item_db_test.txt" />
+    <None Include="Assets\Assets\resourceNameANSI.txt" />
     <None Include="Assets\Assets\item_db_custom.txt" />
   </ItemGroup>
   <ItemGroup>

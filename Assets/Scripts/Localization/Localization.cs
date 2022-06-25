@@ -8,6 +8,9 @@ using System.IO;
 public class Localization : MonoBehaviour
 {
     #region Constant
+    public const int UTF8 = 0;
+    public const int ANSI = 1;
+
     public const string THAI = "THAI";
     public const string ENGLISH = "ENGLISH";
 
@@ -409,16 +412,22 @@ public class Localization : MonoBehaviour
 
     }
 
+    [SerializeField] Dropdown _encodingDropdown;
     [SerializeField] Dropdown _languageDropdown;
 
     string _currentLanguage;
     LocalizationDatabase _currentLocalizationDatabase = new LocalizationDatabase();
 
+    int _currentEncoding;
+    public bool IsUsingUtf8 { get { return _currentEncoding == UTF8; } }
+
     void Start()
     {
         ParseJson();
 
-        DropdownSetup();
+        EncodingDropdownSetup();
+
+        LanguageDropdownSetup();
     }
 
     void ParseJson()
@@ -493,17 +502,17 @@ public class Localization : MonoBehaviour
         _currentLanguage = language;
     }
 
-    void DropdownSetup()
+    void LanguageDropdownSetup()
     {
         List<Dropdown.OptionData> dropdownList = new List<Dropdown.OptionData>();
 
-        Dropdown.OptionData thaiDropdownOption = new Dropdown.OptionData();
-        thaiDropdownOption.text = "Thai";
-        dropdownList.Add(thaiDropdownOption);
+        Dropdown.OptionData dropdownOption1 = new Dropdown.OptionData();
+        dropdownOption1.text = "Thai";
+        dropdownList.Add(dropdownOption1);
 
-        Dropdown.OptionData englishDropdownOption = new Dropdown.OptionData();
-        englishDropdownOption.text = "English";
-        dropdownList.Add(englishDropdownOption);
+        Dropdown.OptionData dropdownOption2 = new Dropdown.OptionData();
+        dropdownOption2.text = "English";
+        dropdownList.Add(dropdownOption2);
 
         _languageDropdown.AddOptions(dropdownList);
 
@@ -518,5 +527,28 @@ public class Localization : MonoBehaviour
             SetupLanguage(THAI);
         else if (option == 1)
             SetupLanguage(ENGLISH);
+    }
+    void EncodingDropdownSetup()
+    {
+        List<Dropdown.OptionData> dropdownList = new List<Dropdown.OptionData>();
+
+        Dropdown.OptionData dropdownOption1 = new Dropdown.OptionData();
+        dropdownOption1.text = "UTF8";
+        dropdownList.Add(dropdownOption1);
+
+        Dropdown.OptionData dropdownOption2 = new Dropdown.OptionData();
+        dropdownOption2.text = "ANSI";
+        dropdownList.Add(dropdownOption2);
+
+        _encodingDropdown.AddOptions(dropdownList);
+
+        _encodingDropdown.value = 0;
+        _currentEncoding = 0;
+
+        _encodingDropdown.onValueChanged.AddListener(OnEncodingChanged);
+    }
+    void OnEncodingChanged(int option)
+    {
+        _currentEncoding = option;
     }
 }

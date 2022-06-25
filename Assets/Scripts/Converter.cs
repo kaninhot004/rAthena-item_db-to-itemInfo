@@ -788,7 +788,7 @@ public class Converter : MonoBehaviour
     /// </summary>
     void FetchResourceName()
     {
-        var path = Application.dataPath + "/Assets/resourceName.txt";
+        var path = Application.dataPath + "/Assets/resourceName" + (!_localization.IsUsingUtf8 ? "ANSI" : string.Empty) + ".txt";
 
         // Is file exists?
         if (!File.Exists(path))
@@ -802,7 +802,7 @@ public class Converter : MonoBehaviour
             return;
         }
 
-        var resourceNamesFile = File.ReadAllText(path);
+        var resourceNamesFile = File.ReadAllText(path, !_localization.IsUsingUtf8 ? Encoding.GetEncoding(51949) : Encoding.UTF8);
 
         var resourceNames = resourceNamesFile.Split('\n');
 
@@ -1164,6 +1164,9 @@ public class Converter : MonoBehaviour
     /// </summary>
     void Convert()
     {
+        if (File.Exists("itemInfo_Sak.lub"))
+            File.Delete("itemInfo_Sak.lub");
+
         var path = Application.dataPath + "/Assets/item_db_equip.yml";
         var path2 = Application.dataPath + "/Assets/item_db_usable.yml";
         var path3 = Application.dataPath + "/Assets/item_db_etc.yml";
@@ -1974,8 +1977,14 @@ public class Converter : MonoBehaviour
         finalize = finalize.Replace("  ๐", "๐");
         finalize = finalize.Replace(" ๐", "๐");
 
+        if (!_localization.IsUsingUtf8)
+        {
+            finalize = finalize.Replace("๐", "^5D2799::^000000");
+            finalize = finalize.Replace("—", "_");
+        }
+
         // Write it out
-        File.WriteAllText("itemInfo_Sak.lub", finalize, Encoding.UTF8);
+        File.WriteAllText("itemInfo_Sak.lub", finalize, !_localization.IsUsingUtf8 ? Encoding.GetEncoding(51949) : Encoding.UTF8);
 
         Debug.Log("'itemInfo_Sak.lub' has been successfully created.");
 

@@ -15,7 +15,7 @@
                 }, {
                     "key": "WITH",
                     "thai": "กับ",
-                    "english": "with"
+                    "english": ","
                 }, {
                     "key": "OR",
                     "thai": "หรือ",
@@ -1279,11 +1279,11 @@
                 }, {
                     "key": "WILL_BE",
                     "thai": "เป็น",
-                    "english": "will be"
+                    "english": "?"
                 }, {
                     "key": "IF_NOT",
                     "thai": "ถ้าไม่ใช่",
-                    "english": "if not"
+                    "english": ":"
                 }, {
                     "key": "INFINITE",
                     "thai": "ถาวร",
