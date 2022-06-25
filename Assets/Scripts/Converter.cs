@@ -702,6 +702,8 @@ public class Converter : MonoBehaviour
                 || string.IsNullOrWhiteSpace(text))
                 continue;
 
+            text = CommentRemover.Fix(text);
+
             text = LineEndingsRemover.Fix(text);
 
             if (text.Contains("- Id:"))
