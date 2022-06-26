@@ -1980,10 +1980,9 @@ public class Converter : MonoBehaviour
         finalize = finalize.Replace(" ๐", "๐");
 
         if (_localization.IsUsingANSI)
-        {
             finalize = finalize.Replace("๐", "^5D2799-^000000");
-            finalize = finalize.Replace("—", "_");
-        }
+        if (!_localization.IsUsingUTF8)
+            finalize = finalize.Replace("—", "-");
 
         // Write it out
         File.WriteAllText("itemInfo_Sak.lub", finalize, _localization.GetCurrentEncoding);
