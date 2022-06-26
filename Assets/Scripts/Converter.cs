@@ -46,6 +46,11 @@ public class Converter : MonoBehaviour
     // Settings
 
     /// <summary>
+    /// Is seperate item bonus by new line?
+    /// </summary>
+    [SerializeField] bool _isSeperateItemBonusByNewLineToggle;
+    public bool IsSeperateItemBonusByNewLineToggle { get { return _isSeperateItemBonusByNewLineToggle; } set { _isSeperateItemBonusByNewLineToggle = value; } }
+    /// <summary>
     /// Is print out zero value? (Example: Attack: 0)
     /// </summary>
     [SerializeField] bool _isZeroValuePrintable;
@@ -1983,6 +1988,18 @@ public class Converter : MonoBehaviour
         {
             finalize = finalize.Replace("๐", "^5D2799::^000000");
             finalize = finalize.Replace("—", "_");
+        }
+
+        if (IsSeperateItemBonusByNewLineToggle)
+        {
+            finalize = finalize.Replace("๐", "————————————[NEW_LINE]");
+            finalize = finalize.Replace("^5D2799::^000000", "————————————[NEW_LINE]");
+
+            if (!_localization.IsUsingUtf8)
+                finalize = finalize.Replace("—", "_");
+
+            // New line
+            finalize = finalize.Replace("[NEW_LINE]", "\",\n			\"");
         }
 
         // Write it out
