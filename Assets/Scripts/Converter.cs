@@ -1986,14 +1986,14 @@ public class Converter : MonoBehaviour
 
         if (!_localization.IsUsingUtf8)
         {
-            finalize = finalize.Replace("๐", "^5D2799::^000000");
+            finalize = finalize.Replace("๐", "^5D2799-^000000");
             finalize = finalize.Replace("—", "_");
         }
 
         if (IsSeperateItemBonusByNewLineToggle)
         {
-            finalize = finalize.Replace("๐", "————————————[NEW_LINE]");
-            finalize = finalize.Replace("^5D2799::^000000", "————————————[NEW_LINE]");
+            finalize = finalize.Replace(" ๐", "————————————[NEW_LINE]");
+            finalize = finalize.Replace(" ^5D2799-^000000", "————————————[NEW_LINE]");
 
             if (!_localization.IsUsingUtf8)
                 finalize = finalize.Replace("—", "_");
