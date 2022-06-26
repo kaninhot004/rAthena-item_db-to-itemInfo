@@ -804,7 +804,7 @@ public class Converter : MonoBehaviour
             return;
         }
 
-        var resourceNamesFile = File.ReadAllText(path, _localization.GetCurrentEncoding);
+        var resourceNamesFile = File.ReadAllText(path, _localization.IsUsingANSI ? Encoding.GetEncoding(51949) : Encoding.UTF8);
 
         var resourceNames = resourceNamesFile.Split('\n');
 

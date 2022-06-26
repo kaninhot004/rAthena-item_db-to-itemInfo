@@ -9,8 +9,9 @@ using System.IO;
 public class Localization : MonoBehaviour
 {
     #region Constant
-    public const int UTF8 = 0;
+    public const int TIS620 = 0;
     public const int ANSI = 1;
+    public const int UTF8 = 2;
 
     public const string THAI = "THAI";
     public const string ENGLISH = "ENGLISH";
@@ -420,8 +421,9 @@ public class Localization : MonoBehaviour
     LocalizationDatabase _currentLocalizationDatabase = new LocalizationDatabase();
 
     int _currentEncoding;
-    public bool IsUsingUTF8 { get { return _currentEncoding == UTF8; } }
+    public bool IsUsingTIS620 { get { return _currentEncoding == TIS620; } }
     public bool IsUsingANSI { get { return _currentEncoding == ANSI; } }
+    public bool IsUsingUTF8 { get { return _currentEncoding == UTF8; } }
 
     void Start()
     {
@@ -535,12 +537,16 @@ public class Localization : MonoBehaviour
         List<Dropdown.OptionData> dropdownList = new List<Dropdown.OptionData>();
 
         Dropdown.OptionData dropdownOption1 = new Dropdown.OptionData();
-        dropdownOption1.text = "UTF8";
+        dropdownOption1.text = "tis-620 (Best for TH)";
         dropdownList.Add(dropdownOption1);
 
         Dropdown.OptionData dropdownOption2 = new Dropdown.OptionData();
-        dropdownOption2.text = "ANSI";
+        dropdownOption2.text = "ANSI (Best for EN)";
         dropdownList.Add(dropdownOption2);
+
+        Dropdown.OptionData dropdownOption3 = new Dropdown.OptionData();
+        dropdownOption3.text = "UTF8";
+        dropdownList.Add(dropdownOption3);
 
         _encodingDropdown.AddOptions(dropdownList);
 
@@ -558,9 +564,11 @@ public class Localization : MonoBehaviour
     {
         get
         {
-            return IsUsingANSI
+            return IsUsingTIS620
+                ? Encoding.GetEncoding("tis-620")
+                : IsUsingANSI
                 ? Encoding.GetEncoding(51949)
-                : Encoding.UTF8;
+                : Encoding.Default;
         }
     }
 }

@@ -67,6 +67,7 @@
     <Compile Include="Assets\Scripts\Classes\SkillDatabase.cs" />
     <Compile Include="Assets\Scripts\Classes\LocalizationDatabase.cs" />
     <Compile Include="Assets\Scripts\Classes\ComboDatabase.cs" />
+    <Compile Include="Assets\Scripts\Settings.cs" />
     <Compile Include="Assets\Scripts\Converter.cs" />
     <Compile Include="Assets\Scripts\Classes\ItemContainer.cs" />
     <Compile Include="Assets\Scripts\Utilities\CommentRemover.cs" />
@@ -75,7 +76,6 @@
     <Compile Include="Assets\Scripts\Classes\MonsterDatabase.cs" />
     <Compile Include="Assets\Scripts\Utilities\IsCharNumber.cs" />
     <Compile Include="Assets\Scripts\Classes\ItemListContainer.cs" />
-    <Compile Include="Assets\Scripts\Settings.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\DLL\I18N.CJK.dll" />
