@@ -1066,11 +1066,11 @@
                     "english": "๐ Splash Damage Range +"
                 }, {
                     "key": "BONUS2_ADD_SKILL_BLOW",
-                    "thai": "๐ เมื่อใช้ {0} จะพลักเป้าหมาย {1} ช่อง",
+                    "thai": "๐ เมื่อใช้ {0} จะผลักเป้าหมาย {1} ช่อง",
                     "english": "๐ When using {0} will push target {1} cell"
                 }, {
                     "key": "BONUS_NO_KNOCKBACK",
-                    "thai": "๐ กันการพลัก",
+                    "thai": "๐ กันการผลัก",
                     "english": "๐ Knockback protection"
                 }, {
                     "key": "BONUS_NO_GEM_STONE",
