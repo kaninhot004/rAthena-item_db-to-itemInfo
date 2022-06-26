@@ -9,7 +9,7 @@ public class Settings : MonoBehaviour
     [SerializeField] GameObject _settingCanvasObject;
     [SerializeField] Button _closeSettingButton;
 
-    [SerializeField] Toggle _seperateItemBonusByNewLineToggle;
+    //[SerializeField] Toggle _seperateItemBonusByNewLineToggle;
 
     [SerializeField] Converter _converter;
 
@@ -18,11 +18,11 @@ public class Settings : MonoBehaviour
         _openSettingButton.onClick.AddListener(OnOpenSettingButtonTap);
         _settingCanvasObject.SetActive(false);
         _closeSettingButton.onClick.AddListener(OnCloseSettingButtonTap);
-        _seperateItemBonusByNewLineToggle.onValueChanged.AddListener(OnSeperateItemBonusByNewLinePressed);
+        //_seperateItemBonusByNewLineToggle.onValueChanged.AddListener(OnSeperateItemBonusByNewLinePressed);
     }
     void OnSeperateItemBonusByNewLinePressed(bool isOn)
     {
-        _converter.IsSeperateItemBonusByNewLineToggle = isOn;
+        //_converter.IsSeperateItemBonusByNewLineToggle = isOn;
     }
 
     void OnOpenSettingButtonTap()

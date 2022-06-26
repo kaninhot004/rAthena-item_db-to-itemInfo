@@ -46,11 +46,6 @@ public class Converter : MonoBehaviour
     // Settings
 
     /// <summary>
-    /// Is seperate item bonus by new line?
-    /// </summary>
-    [SerializeField] bool _isSeperateItemBonusByNewLineToggle;
-    public bool IsSeperateItemBonusByNewLineToggle { get { return _isSeperateItemBonusByNewLineToggle; } set { _isSeperateItemBonusByNewLineToggle = value; } }
-    /// <summary>
     /// Is print out zero value? (Example: Attack: 0)
     /// </summary>
     [SerializeField] bool _isZeroValuePrintable;
@@ -795,7 +790,7 @@ public class Converter : MonoBehaviour
     /// </summary>
     void FetchResourceName()
     {
-        var path = Application.dataPath + "/Assets/resourceName" + (!_localization.IsUsingUtf8 ? "ANSI" : string.Empty) + ".txt";
+        var path = Application.dataPath + "/Assets/resourceName" + (_localization.IsUsingANSI ? "ANSI" : string.Empty) + ".txt";
 
         // Is file exists?
         if (!File.Exists(path))
@@ -809,7 +804,7 @@ public class Converter : MonoBehaviour
             return;
         }
 
-        var resourceNamesFile = File.ReadAllText(path, !_localization.IsUsingUtf8 ? Encoding.GetEncoding(51949) : Encoding.UTF8);
+        var resourceNamesFile = File.ReadAllText(path, _localization.GetCurrentEncoding);
 
         var resourceNames = resourceNamesFile.Split('\n');
 
@@ -1984,26 +1979,14 @@ public class Converter : MonoBehaviour
         finalize = finalize.Replace("  ๐", "๐");
         finalize = finalize.Replace(" ๐", "๐");
 
-        if (!_localization.IsUsingUtf8)
+        if (_localization.IsUsingANSI)
         {
             finalize = finalize.Replace("๐", "^5D2799-^000000");
             finalize = finalize.Replace("—", "_");
         }
 
-        if (IsSeperateItemBonusByNewLineToggle)
-        {
-            finalize = finalize.Replace(" ๐", "————————————[NEW_LINE]");
-            finalize = finalize.Replace(" ^5D2799-^000000", "————————————[NEW_LINE]");
-
-            if (!_localization.IsUsingUtf8)
-                finalize = finalize.Replace("—", "_");
-
-            // New line
-            finalize = finalize.Replace("[NEW_LINE]", "\",\n			\"");
-        }
-
         // Write it out
-        File.WriteAllText("itemInfo_Sak.lub", finalize, !_localization.IsUsingUtf8 ? Encoding.GetEncoding(51949) : Encoding.UTF8);
+        File.WriteAllText("itemInfo_Sak.lub", finalize, _localization.GetCurrentEncoding);
 
         Debug.Log("'itemInfo_Sak.lub' has been successfully created.");
 

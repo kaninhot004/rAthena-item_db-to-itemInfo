@@ -1,5 +1,6 @@
 using System.Collections;
 using System;
+using System.Text;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -419,7 +420,8 @@ public class Localization : MonoBehaviour
     LocalizationDatabase _currentLocalizationDatabase = new LocalizationDatabase();
 
     int _currentEncoding;
-    public bool IsUsingUtf8 { get { return _currentEncoding == UTF8; } }
+    public bool IsUsingUTF8 { get { return _currentEncoding == UTF8; } }
+    public bool IsUsingANSI { get { return _currentEncoding == ANSI; } }
 
     void Start()
     {
@@ -550,5 +552,15 @@ public class Localization : MonoBehaviour
     void OnEncodingChanged(int option)
     {
         _currentEncoding = option;
+    }
+
+    public Encoding GetCurrentEncoding
+    {
+        get
+        {
+            return IsUsingANSI
+                ? Encoding.GetEncoding(51949)
+                : Encoding.UTF8;
+        }
     }
 }
