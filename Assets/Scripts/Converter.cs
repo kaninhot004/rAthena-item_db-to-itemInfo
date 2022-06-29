@@ -1897,7 +1897,7 @@ public class Converter : MonoBehaviour
                 builder.Append("		ClassNum = " + GetClassNumFromId(_itemContainer) + ",\n");
 
                 // Costume
-                builder.Append("		costume = false\n");
+                builder.Append("		costume = " + IsCostumeFromId(_itemContainer) + "\n");
 
                 if (string.IsNullOrEmpty(nextNextText)
                     || string.IsNullOrWhiteSpace(nextNextText))
@@ -4520,6 +4520,23 @@ public class Converter : MonoBehaviour
             return "1";
         else
             return "0";
+    }
+
+    string IsCostumeFromId(ItemContainer itemContainer)
+    {
+        if ((itemContainer.locations == _localization.GetTexts(Localization.LOCATION_COSTUME_HEAD_TOP))
+            || (itemContainer.locations == _localization.GetTexts(Localization.LOCATION_COSTUME_HEAD_MID))
+            || (itemContainer.locations == _localization.GetTexts(Localization.LOCATION_COSTUME_HEAD_LOW))
+            || (itemContainer.locations == _localization.GetTexts(Localization.LOCATION_SHADOW_ARMOR))
+            || (itemContainer.locations == _localization.GetTexts(Localization.LOCATION_SHADOW_WEAPON))
+            || (itemContainer.locations == _localization.GetTexts(Localization.LOCATION_SHADOW_SHIELD))
+            || (itemContainer.locations == _localization.GetTexts(Localization.LOCATION_COSTUME_GARMENT))
+            || (itemContainer.locations == _localization.GetTexts(Localization.LOCATION_SHADOW_SHOES))
+            || (itemContainer.locations == _localization.GetTexts(Localization.LOCATION_SHADOW_LEFT_ACCESSORY))
+            || (itemContainer.locations == _localization.GetTexts(Localization.LOCATION_SHADOW_RIGHT_ACCESSORY)))
+            return "true";
+        else
+            return "false";
     }
 
     /// <summary>
