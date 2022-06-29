@@ -4524,16 +4524,16 @@ public class Converter : MonoBehaviour
 
     string IsCostumeFromId(ItemContainer itemContainer)
     {
-        if ((itemContainer.locations == _localization.GetTexts(Localization.LOCATION_COSTUME_HEAD_TOP))
-            || (itemContainer.locations == _localization.GetTexts(Localization.LOCATION_COSTUME_HEAD_MID))
-            || (itemContainer.locations == _localization.GetTexts(Localization.LOCATION_COSTUME_HEAD_LOW))
-            || (itemContainer.locations == _localization.GetTexts(Localization.LOCATION_SHADOW_ARMOR))
-            || (itemContainer.locations == _localization.GetTexts(Localization.LOCATION_SHADOW_WEAPON))
-            || (itemContainer.locations == _localization.GetTexts(Localization.LOCATION_SHADOW_SHIELD))
-            || (itemContainer.locations == _localization.GetTexts(Localization.LOCATION_COSTUME_GARMENT))
-            || (itemContainer.locations == _localization.GetTexts(Localization.LOCATION_SHADOW_SHOES))
-            || (itemContainer.locations == _localization.GetTexts(Localization.LOCATION_SHADOW_LEFT_ACCESSORY))
-            || (itemContainer.locations == _localization.GetTexts(Localization.LOCATION_SHADOW_RIGHT_ACCESSORY)))
+        if (itemContainer.locations.Contains(_localization.GetTexts(Localization.LOCATION_COSTUME_HEAD_TOP))
+            || itemContainer.locations.Contains(_localization.GetTexts(Localization.LOCATION_COSTUME_HEAD_MID))
+            || itemContainer.locations.Contains(_localization.GetTexts(Localization.LOCATION_COSTUME_HEAD_LOW))
+            || itemContainer.locations.Contains(_localization.GetTexts(Localization.LOCATION_SHADOW_ARMOR))
+            || itemContainer.locations.Contains(_localization.GetTexts(Localization.LOCATION_SHADOW_WEAPON))
+            || itemContainer.locations.Contains(_localization.GetTexts(Localization.LOCATION_SHADOW_SHIELD))
+            || itemContainer.locations.Contains(_localization.GetTexts(Localization.LOCATION_COSTUME_GARMENT))
+            || itemContainer.locations.Contains(_localization.GetTexts(Localization.LOCATION_SHADOW_SHOES))
+            || itemContainer.locations.Contains(_localization.GetTexts(Localization.LOCATION_SHADOW_LEFT_ACCESSORY))
+            || itemContainer.locations.Contains(_localization.GetTexts(Localization.LOCATION_SHADOW_RIGHT_ACCESSORY)))
             return "true";
         else
             return "false";
