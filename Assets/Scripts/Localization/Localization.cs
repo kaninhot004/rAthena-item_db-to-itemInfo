@@ -9,9 +9,9 @@ using System.IO;
 public class Localization : MonoBehaviour
 {
     #region Constant
-    public const int TIS620 = 0;
+    public const int UTF8 = 0;
     public const int ANSI = 1;
-    public const int UTF8 = 2;
+    public const int TIS620 = 2;
 
     public const string THAI = "THAI";
     public const string ENGLISH = "ENGLISH";
@@ -537,15 +537,15 @@ public class Localization : MonoBehaviour
         List<Dropdown.OptionData> dropdownList = new List<Dropdown.OptionData>();
 
         Dropdown.OptionData dropdownOption1 = new Dropdown.OptionData();
-        dropdownOption1.text = "tis-620 (Best for TH)";
+        dropdownOption1.text = "UTF8 (Best)";
         dropdownList.Add(dropdownOption1);
 
         Dropdown.OptionData dropdownOption2 = new Dropdown.OptionData();
-        dropdownOption2.text = "ANSI (Best for EN)";
+        dropdownOption2.text = "ANSI";
         dropdownList.Add(dropdownOption2);
 
         Dropdown.OptionData dropdownOption3 = new Dropdown.OptionData();
-        dropdownOption3.text = "UTF8";
+        dropdownOption3.text = "tis-620";
         dropdownList.Add(dropdownOption3);
 
         _encodingDropdown.AddOptions(dropdownList);
