@@ -9,6 +9,11 @@ Simple rAthena item_db converter
 
 ---
 
+# Donate
+- Donate: https://kanintemsrisukgames.wordpress.com/2019/04/05/support-kt-games/
+
+---
+
 # Credit
 - Resource Name Finder & Bug Reporter: [@KingarteR](https://github.com/KingarteR)
 - Bug Reporter: [@EditorFC](https://github.com/EditorFc)
