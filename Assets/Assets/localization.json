@@ -266,20 +266,20 @@
                     "english": "Price"
                 }, {
                     "key": "AUTO_BONUS_3",
-                    "thai": "๐ เมื่อใช้ {1} มีโอกาสเล็กน้อย ที่จะ {0}[NEW_LINE]^FF2525(ชั่วคราว)^000000",
-                    "english": "๐ When using {1} had a small chance to {0}[NEW_LINE]^FF2525(Temporary)^000000"
+                    "thai": "๐ เมื่อใช้ {1} มีโอกาส {2}% ที่จะ {0}[NEW_LINE]^FF2525(เป็นเวลา {3} วินาที)^000000",
+                    "english": "๐ When using {1} had {2}% chance to {0}[NEW_LINE]^FF2525(For {3}s)^000000"
                 }, {
                     "key": "AUTO_BONUS_2",
-                    "thai": "๐ เมื่อโดน{1} มีโอกาสเล็กน้อย ที่จะ {0}[NEW_LINE]^FF2525(ชั่วคราว)^000000",
-                    "english": "๐ When hit by{1} had a small chance to {0}[NEW_LINE]^FF2525(Temporary)^000000"
+                    "thai": "๐ เมื่อโดน{1} มีโอกาส {2}% ที่จะ {0}[NEW_LINE]^FF2525(เป็นเวลา {3} วินาที)^000000",
+                    "english": "๐ When hit by{1} had {2}% chance to {0}[NEW_LINE]^FF2525(For {3}s)^000000"
                 }, {
                     "key": "AUTO_BONUS_1",
-                    "thai": "๐ เมื่อ{1} มีโอกาสเล็กน้อย ที่จะ {0}[NEW_LINE]^FF2525(ชั่วคราว)^000000",
-                    "english": "๐ When{1} had a small chance to {0}[NEW_LINE]^FF2525(Temporary)^000000"
+                    "thai": "๐ เมื่อ{1} มีโอกาส {2}% ที่จะ {0}[NEW_LINE]^FF2525(เป็นเวลา {3} วินาที)^000000",
+                    "english": "๐ When{1} had {2}% to {0}[NEW_LINE]^FF2525(For {3}s)^000000"
                 }, {
                     "key": "BONUS_SCRIPT",
-                    "thai": "๐ มีผล {0}[NEW_LINE]^FF2525(ชั่วคราว)^000000",
-                    "english": "๐ Grant {0}[NEW_LINE]^FF2525(Temporary)^000000"
+                    "thai": "๐ มีผล {0}[NEW_LINE]^FF2525(เป็นเวลา {1} วินาที)^000000",
+                    "english": "๐ Grant {0}[NEW_LINE]^FF2525(For {1}s)^000000"
                 }, {
                     "key": "BONUS_BASE_ATK",
                     "thai": "๐ ฐาน Atk +",

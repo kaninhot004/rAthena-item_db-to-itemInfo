@@ -2041,6 +2041,7 @@ public class Converter : MonoBehaviour
         text = text.Replace("bMaxSPRate", "bMaxSPrate");
         text = text.Replace("bHPRecovRate", "bHPrecovRate");
         text = text.Replace("Baselevel", "BaseLevel");
+        text = text.Replace("buseSPRate", "bUseSPrate");
         // End wrong wording fix
 
         // Comma fix
@@ -2092,27 +2093,28 @@ public class Converter : MonoBehaviour
         // autobonus3
         if (text.Contains("autobonus3 \"{"))
         {
-            var temp = text.Replace("autobonus3 \"{", string.Empty);
             string duplicate = string.Empty;
+
+            var temp = text.Replace("autobonus3 \"{", string.Empty);
             if (temp.IndexOf("}\"") > 0)
             {
                 duplicate = temp.Substring(temp.IndexOf("}\""));
+
                 temp = temp.Substring(0, temp.IndexOf("}\""));
+
+                text = text.Replace(temp + "}\"", string.Empty);
             }
             var duplicates = duplicate.Split(',');
             var bonuses = string.Empty;
-            int retry = 30;
-            while (temp.Contains("bonus"))
+            var allBonus = temp.Split(';');
+            for (int i = 0; i < allBonus.Length; i++)
             {
-                var sumBonus = temp.Substring(0, temp.IndexOf(';'));
-                bonuses += ConvertItemScripts(sumBonus);
-                if (temp.Length > temp.IndexOf(';') + 1)
-                    temp = temp.Substring(temp.IndexOf(';') + 1);
-                else
-                    temp = string.Empty;
-                retry--;
-                if (retry <= 0)
-                    break;
+                if (!string.IsNullOrEmpty(allBonus[i]) && !string.IsNullOrWhiteSpace(allBonus[i]))
+                {
+                    text = text.Replace(allBonus[i] + ";", string.Empty);
+
+                    bonuses += ConvertItemScripts(allBonus[i]);
+                }
             }
 
             // Find first "{ for other script
@@ -2151,7 +2153,9 @@ public class Converter : MonoBehaviour
                 }
 
                 var skillName = QuoteRemover.Remove(duplicates.Length >= 4 ? duplicates[3] : string.Empty);
-                text = string.Format(_localization.GetTexts(Localization.AUTO_BONUS_3), bonuses, GetSkillName(skillName));
+                var duration = QuoteRemover.Remove(duplicates.Length >= 3 ? duplicates[2] : string.Empty);
+                var rate = QuoteRemover.Remove(duplicates.Length >= 2 ? duplicates[1] : string.Empty);
+                text = string.Format(_localization.GetTexts(Localization.AUTO_BONUS_3), bonuses, GetSkillName(skillName), TryParseInt(rate, 10), TryParseInt(duration, 1000));
             }
             else
                 text = string.Empty;
@@ -2165,23 +2169,23 @@ public class Converter : MonoBehaviour
             var flag = GetAllAtf(temp);
             if (temp.IndexOf("}\"") > 0)
             {
+                duplicate = temp.Substring(temp.IndexOf("}\"") + 2);
+
                 temp = temp.Substring(0, temp.IndexOf("}\""));
 
-                duplicate = temp.Substring(temp.IndexOf("}\"") + 2);
+                text = text.Replace(temp + "}\"", string.Empty);
             }
+            var duplicates = duplicate.Split(',');
             var bonuses = string.Empty;
-            int retry = 30;
-            while (temp.Contains("bonus"))
+            var allBonus = temp.Split(';');
+            for (int i = 0; i < allBonus.Length; i++)
             {
-                var sumBonus = temp.Substring(0, temp.IndexOf(';'));
-                bonuses += ConvertItemScripts(sumBonus);
-                if (temp.Length > temp.IndexOf(';') + 1)
-                    temp = temp.Substring(temp.IndexOf(';') + 1);
-                else
-                    temp = string.Empty;
-                retry--;
-                if (retry <= 0)
-                    break;
+                if (!string.IsNullOrEmpty(allBonus[i]) && !string.IsNullOrWhiteSpace(allBonus[i]))
+                {
+                    text = text.Replace(allBonus[i] + ";", string.Empty);
+
+                    bonuses += ConvertItemScripts(allBonus[i]);
+                }
             }
 
             // Find first "{ for other script
@@ -2219,7 +2223,9 @@ public class Converter : MonoBehaviour
                     number++;
                 }
 
-                text = string.Format(_localization.GetTexts(Localization.AUTO_BONUS_2), bonuses, flag);
+                var duration = QuoteRemover.Remove(duplicates.Length >= 3 ? duplicates[2] : string.Empty);
+                var rate = QuoteRemover.Remove(duplicates.Length >= 2 ? duplicates[1] : string.Empty);
+                text = string.Format(_localization.GetTexts(Localization.AUTO_BONUS_2), bonuses, flag, TryParseInt(rate, 10), TryParseInt(duration, 1000));
             }
             else
                 text = string.Empty;
@@ -2233,23 +2239,23 @@ public class Converter : MonoBehaviour
             var flag = GetAllAtf(temp);
             if (temp.IndexOf("}\"") > 0)
             {
+                duplicate = temp.Substring(temp.IndexOf("}\"") + 2);
+
                 temp = temp.Substring(0, temp.IndexOf("}\""));
 
-                duplicate = temp.Substring(temp.IndexOf("}\"") + 2);
+                text = text.Replace(temp + "}\"", string.Empty);
             }
+            var duplicates = duplicate.Split(',');
             var bonuses = string.Empty;
-            int retry = 30;
-            while (temp.Contains("bonus"))
+            var allBonus = temp.Split(';');
+            for (int i = 0; i < allBonus.Length; i++)
             {
-                var sumBonus = temp.Substring(0, temp.IndexOf(';'));
-                bonuses += ConvertItemScripts(sumBonus);
-                if (temp.Length > temp.IndexOf(';') + 1)
-                    temp = temp.Substring(temp.IndexOf(';') + 1);
-                else
-                    temp = string.Empty;
-                retry--;
-                if (retry <= 0)
-                    break;
+                if (!string.IsNullOrEmpty(allBonus[i]) && !string.IsNullOrWhiteSpace(allBonus[i]))
+                {
+                    text = text.Replace(allBonus[i] + ";", string.Empty);
+
+                    bonuses += ConvertItemScripts(allBonus[i]);
+                }
             }
 
             // Find first "{ for other script
@@ -2287,7 +2293,9 @@ public class Converter : MonoBehaviour
                     number++;
                 }
 
-                text = string.Format(_localization.GetTexts(Localization.AUTO_BONUS_1), bonuses, flag);
+                var duration = QuoteRemover.Remove(duplicates.Length >= 3 ? duplicates[2] : string.Empty);
+                var rate = QuoteRemover.Remove(duplicates.Length >= 2 ? duplicates[1] : string.Empty);
+                text = string.Format(_localization.GetTexts(Localization.AUTO_BONUS_1), bonuses, flag, TryParseInt(rate, 10), TryParseInt(duration, 1000));
             }
             else
                 text = string.Empty;
@@ -2295,23 +2303,30 @@ public class Converter : MonoBehaviour
         // bonus_script
         if (text.Contains("bonus_script \"{"))
         {
+            var duplicate = string.Empty;
+
             var temp = text.Replace("bonus_script \"{", string.Empty);
             if (temp.IndexOf("}\"") > 0)
-                temp = temp.Substring(0, temp.IndexOf("}\""));
-            var bonuses = string.Empty;
-            int retry = 30;
-            while (temp.Contains("bonus"))
             {
-                var sumBonus = temp.Substring(0, temp.IndexOf(';'));
-                bonuses += ConvertItemScripts(sumBonus);
-                if (temp.Length > temp.IndexOf(';') + 1)
-                    temp = temp.Substring(temp.IndexOf(';') + 1);
-                else
-                    temp = string.Empty;
-                retry--;
-                if (retry <= 0)
-                    break;
+                duplicate = temp.Substring(temp.IndexOf("}\"") + 2);
+
+                temp = temp.Substring(0, temp.IndexOf("}\""));
+
+                text = text.Replace(temp + "}\"", string.Empty);
             }
+            var duplicates = duplicate.Split(',');
+            var bonuses = string.Empty;
+            var allBonus = temp.Split(';');
+            for (int i = 0; i < allBonus.Length; i++)
+            {
+                if (!string.IsNullOrEmpty(allBonus[i]) && !string.IsNullOrWhiteSpace(allBonus[i]))
+                {
+                    text = text.Replace(allBonus[i] + ";", string.Empty);
+
+                    bonuses += ConvertItemScripts(allBonus[i]);
+                }
+            }
+
             if (!string.IsNullOrEmpty(bonuses) || !string.IsNullOrWhiteSpace(bonuses))
             {
                 bonuses = bonuses.Replace("๐", "[NEW_LINE]๐");
@@ -2325,7 +2340,8 @@ public class Converter : MonoBehaviour
                     number++;
                 }
 
-                text = string.Format(_localization.GetTexts(Localization.BONUS_SCRIPT), bonuses);
+                var duration = QuoteRemover.Remove(duplicates.Length >= 2 ? duplicates[1] : string.Empty);
+                text = string.Format(_localization.GetTexts(Localization.BONUS_SCRIPT), bonuses, TryParseInt(duration));
             }
             else
                 text = string.Empty;
@@ -3636,7 +3652,16 @@ public class Converter : MonoBehaviour
         {
             var temp = text.Replace("active_transform ", string.Empty);
             var temps = temp.Split(',');
-            text = string.Format(_localization.GetTexts(Localization.ACTIVE_TRANSFORM), QuoteRemover.Remove(temps[0]), TryParseInt(temps[1], 1000));
+            var monsterDatabase = GetMonsterDatabase(QuoteRemover.Remove(temps[0]));
+            text = string.Format(_localization.GetTexts(Localization.ACTIVE_TRANSFORM), (monsterDatabase != null) ? monsterDatabase.name : QuoteRemover.Remove(temps[0]), TryParseInt(temps[1], 1000));
+        }
+        // transform
+        if (text.Contains("transform "))
+        {
+            var temp = text.Replace("transform ", string.Empty);
+            var temps = temp.Split(',');
+            var monsterDatabase = GetMonsterDatabase(QuoteRemover.Remove(temps[0]));
+            text = string.Format(_localization.GetTexts(Localization.ACTIVE_TRANSFORM), (monsterDatabase != null) ? monsterDatabase.name : QuoteRemover.Remove(temps[0]), TryParseInt(temps[1], 1000));
         }
         // getitem
         if (text.Contains("getitem "))
@@ -3683,6 +3708,13 @@ public class Converter : MonoBehaviour
         text = text.Replace("   ", " ");
         text = text.Replace("  ", " ");
         text = text.Replace("\\", string.Empty);
+
+        // Spacing fix
+        text = text.Replace("     ๐", "๐");
+        text = text.Replace("    ๐", "๐");
+        text = text.Replace("   ๐", "๐");
+        text = text.Replace("  ๐", "๐");
+        text = text.Replace(" ๐", "๐");
 
         return text;
     }
@@ -4446,6 +4478,8 @@ public class Converter : MonoBehaviour
         {
             if (!isKeepSpacebar)
                 text = SpacingRemover.Remove(text);
+
+            text = text.Replace(";", string.Empty);
 
             if (_skillNameDatabases.ContainsKey(text))
             {
