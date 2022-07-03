@@ -1814,13 +1814,27 @@ public class Converter : MonoBehaviour
                 else if (_isZeroValuePrintable)
                     description += "			\"^3F28FF" + _localization.GetTexts(Localization.LOCATION) + ":^000000 -\",\n";
 
+                bool isMultipleJob = _itemContainer.jobs.Split("[NEW_LINE]").Length > 2;
+                if (!isMultipleJob)
+                {
+                    _itemContainer.jobs = _itemContainer.jobs.Replace("- ", string.Empty);
+
+                    _itemContainer.jobs = _itemContainer.jobs.Replace("— ", string.Empty);
+                }
                 if (!string.IsNullOrEmpty(_itemContainer.jobs))
-                    description += "			\"^3F28FF" + _localization.GetTexts(Localization.JOB) + ":^000000 " + (_isUseNewLineInsteadOfCommaForAvailableJob ? "[NEW_LINE]" + _itemContainer.jobs.Substring(0, _itemContainer.jobs.Length - 10) : _itemContainer.jobs.Substring(0, _itemContainer.jobs.Length - 2)) + "\",\n";
+                    description += "			\"^3F28FF" + _localization.GetTexts(Localization.JOB) + ":^000000 " + (_isUseNewLineInsteadOfCommaForAvailableJob ? (isMultipleJob ? "[NEW_LINE]" : string.Empty) + _itemContainer.jobs.Substring(0, _itemContainer.jobs.Length - 10) : _itemContainer.jobs.Substring(0, _itemContainer.jobs.Length - 2)) + "\",\n";
                 else if (_isZeroValuePrintable)
                     description += "			\"^3F28FF" + _localization.GetTexts(Localization.JOB) + ":^000000 -\",\n";
 
+                bool isMultipleClass = _itemContainer.classes.Split("[NEW_LINE]").Length > 2;
+                if (!isMultipleClass)
+                {
+                    _itemContainer.classes = _itemContainer.classes.Replace("- ", string.Empty);
+
+                    _itemContainer.classes = _itemContainer.classes.Replace("— ", string.Empty);
+                }
                 if (!string.IsNullOrEmpty(_itemContainer.classes))
-                    description += "			\"^3F28FF" + _localization.GetTexts(Localization.CLASS) + ":^000000 " + (_isUseNewLineInsteadOfCommaForAvailableJob ? "[NEW_LINE]" + _itemContainer.classes.Substring(0, _itemContainer.classes.Length - 10) : _itemContainer.classes.Substring(0, _itemContainer.classes.Length - 2)) + "\",\n";
+                    description += "			\"^3F28FF" + _localization.GetTexts(Localization.CLASS) + ":^000000 " + (_isUseNewLineInsteadOfCommaForAvailableClass ? (isMultipleClass ? "[NEW_LINE]" : string.Empty) + _itemContainer.classes.Substring(0, _itemContainer.classes.Length - 10) : _itemContainer.classes.Substring(0, _itemContainer.classes.Length - 2)) + "\",\n";
                 else if (_isZeroValuePrintable)
                     description += "			\"^3F28FF" + _localization.GetTexts(Localization.CLASS) + ":^000000 -\",\n";
 
