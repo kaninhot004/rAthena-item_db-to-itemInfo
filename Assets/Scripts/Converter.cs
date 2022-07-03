@@ -49,22 +49,32 @@ public class Converter : MonoBehaviour
     /// Is print out zero value? (Example: Attack: 0)
     /// </summary>
     [SerializeField] bool _isZeroValuePrintable;
+    public bool IsZeroValuePrintAble { set { _isZeroValuePrintable = value; } }
     /// <summary>
     /// Only read text asset from 'item_db_test.txt'
     /// </summary>
     [SerializeField] bool _isOnlyUseTestTextAsset;
+    public bool IsOnlyUseTestTextAsset { set { _isOnlyUseTestTextAsset = value; } }
     /// <summary>
     /// Only read text asset from 'item_db_custom.txt'
     /// </summary>
     [SerializeField] bool _isOnlyUseCustomTextAsset;
+    public bool IsOnlyUseCustomTextAsset { set { _isOnlyUseCustomTextAsset = value; } }
     /// <summary>
     /// Is random resource name for all item?
     /// </summary>
     [SerializeField] bool _isRandomResourceName;
+    public bool IsRandomResourceName { set { _isRandomResourceName = value; } }
     /// <summary>
     /// Is only random resource name for custom item?
     /// </summary>
     [SerializeField] bool _isRandomResourceNameForCustomTextAssetOnly;
+    public bool IsRandomResourceNameForCustomTextAssetOnly { set { _isRandomResourceNameForCustomTextAssetOnly = value; } }
+    /// <summary>
+    /// Is use new line instead of , for available jobs?
+    /// </summary>
+    [SerializeField] bool _isUseNewLineInsteadOfCommaForAvailableJob;
+    public bool IsUseNewLineInsteadOfCommaForAvailableJob { set { _isUseNewLineInsteadOfCommaForAvailableJob = value; } }
 
     // Containers
 
@@ -1358,149 +1368,149 @@ public class Converter : MonoBehaviour
                 _itemContainer.slots = text.Replace("    Slots: ", string.Empty);
             // Jobs
             else if (_itemContainer.isJob && text.Contains("      All: true"))
-                _itemContainer.jobs += _localization.GetTexts(Localization.JOBS_ALL_JOB) + ", ";
+                _itemContainer.jobs += _localization.GetTexts(Localization.JOBS_ALL_JOB) + GetAvailableJobSeperator + " ";
             else if (_itemContainer.isJob && text.Contains("      All: false"))
-                _itemContainer.jobs += _localization.GetTexts(Localization.JOBS_ALL_JOB) + " [x], ";
+                _itemContainer.jobs += _localization.GetTexts(Localization.JOBS_ALL_JOB) + " [x]" + GetAvailableJobSeperator + " ";
             else if (_itemContainer.isJob && text.Contains("      Acolyte: true"))
-                _itemContainer.jobs += "Acolyte, ";
+                _itemContainer.jobs += "Acolyte" + GetAvailableJobSeperator + " ";
             else if (_itemContainer.isJob && text.Contains("      Acolyte: false"))
-                _itemContainer.jobs += "Acolyte [x], ";
+                _itemContainer.jobs += "Acolyte [x]" + GetAvailableJobSeperator + " ";
             else if (_itemContainer.isJob && text.Contains("      Alchemist: true"))
-                _itemContainer.jobs += "Alchemist, ";
+                _itemContainer.jobs += "Alchemist" + GetAvailableJobSeperator + " ";
             else if (_itemContainer.isJob && text.Contains("      Alchemist: false"))
-                _itemContainer.jobs += "Alchemist [x], ";
+                _itemContainer.jobs += "Alchemist [x]" + GetAvailableJobSeperator + " ";
             else if (_itemContainer.isJob && text.Contains("      Archer: true"))
-                _itemContainer.jobs += "Archer, ";
+                _itemContainer.jobs += "Archer" + GetAvailableJobSeperator + " ";
             else if (_itemContainer.isJob && text.Contains("      Archer: false"))
-                _itemContainer.jobs += "Archer [x], ";
+                _itemContainer.jobs += "Archer [x]" + GetAvailableJobSeperator + " ";
             else if (_itemContainer.isJob && text.Contains("      Assassin: true"))
-                _itemContainer.jobs += "Assassin, ";
+                _itemContainer.jobs += "Assassin" + GetAvailableJobSeperator + " ";
             else if (_itemContainer.isJob && text.Contains("      Assassin: false"))
-                _itemContainer.jobs += "Assassin [x], ";
+                _itemContainer.jobs += "Assassin [x]" + GetAvailableJobSeperator + " ";
             else if (_itemContainer.isJob && text.Contains("      BardDancer: true"))
-                _itemContainer.jobs += "Bard & Dancer, ";
+                _itemContainer.jobs += "Bard & Dancer" + GetAvailableJobSeperator + " ";
             else if (_itemContainer.isJob && text.Contains("      BardDancer: false"))
-                _itemContainer.jobs += "Bard & Dancer [x], ";
+                _itemContainer.jobs += "Bard & Dancer [x]" + GetAvailableJobSeperator + " ";
             else if (_itemContainer.isJob && text.Contains("      Blacksmith: true"))
-                _itemContainer.jobs += "Blacksmith, ";
+                _itemContainer.jobs += "Blacksmith" + GetAvailableJobSeperator + " ";
             else if (_itemContainer.isJob && text.Contains("      Blacksmith: false"))
-                _itemContainer.jobs += "Blacksmith [x], ";
+                _itemContainer.jobs += "Blacksmith [x]" + GetAvailableJobSeperator + " ";
             else if (_itemContainer.isJob && text.Contains("      Crusader: true"))
-                _itemContainer.jobs += "Crusader, ";
+                _itemContainer.jobs += "Crusader" + GetAvailableJobSeperator + " ";
             else if (_itemContainer.isJob && text.Contains("      Crusader: false"))
-                _itemContainer.jobs += "Crusader [x], ";
+                _itemContainer.jobs += "Crusader [x]" + GetAvailableJobSeperator + " ";
             else if (_itemContainer.isJob && text.Contains("      Gunslinger: true"))
-                _itemContainer.jobs += "Gunslinger, ";
+                _itemContainer.jobs += "Gunslinger" + GetAvailableJobSeperator + " ";
             else if (_itemContainer.isJob && text.Contains("      Gunslinger: false"))
-                _itemContainer.jobs += "Gunslinger [x], ";
+                _itemContainer.jobs += "Gunslinger [x]" + GetAvailableJobSeperator + " ";
             else if (_itemContainer.isJob && text.Contains("      Hunter: true"))
-                _itemContainer.jobs += "Hunter, ";
+                _itemContainer.jobs += "Hunter" + GetAvailableJobSeperator + " ";
             else if (_itemContainer.isJob && text.Contains("      Hunter: false"))
-                _itemContainer.jobs += "Hunter [x], ";
+                _itemContainer.jobs += "Hunter [x]" + GetAvailableJobSeperator + " ";
             else if (_itemContainer.isJob && text.Contains("      KagerouOboro: true"))
-                _itemContainer.jobs += "Kagerou & Oboro, ";
+                _itemContainer.jobs += "Kagerou & Oboro" + GetAvailableJobSeperator + " ";
             else if (_itemContainer.isJob && text.Contains("      KagerouOboro: false"))
-                _itemContainer.jobs += "Kagerou & Oboro [x], ";
+                _itemContainer.jobs += "Kagerou & Oboro [x]" + GetAvailableJobSeperator + " ";
             else if (_itemContainer.isJob && text.Contains("      Shinkiro: true"))
-                _itemContainer.jobs += "Shinkiro, ";
+                _itemContainer.jobs += "Shinkiro" + GetAvailableJobSeperator + " ";
             else if (_itemContainer.isJob && text.Contains("      Shinkiro: false"))
-                _itemContainer.jobs += "Shinkiro [x], ";
+                _itemContainer.jobs += "Shinkiro [x]" + GetAvailableJobSeperator + " ";
             else if (_itemContainer.isJob && text.Contains("      Shiranui: true"))
-                _itemContainer.jobs += "Shiranui, ";
+                _itemContainer.jobs += "Shiranui" + GetAvailableJobSeperator + " ";
             else if (_itemContainer.isJob && text.Contains("      Shiranui: false"))
-                _itemContainer.jobs += "Shiranui [x], ";
+                _itemContainer.jobs += "Shiranui [x]" + GetAvailableJobSeperator + " ";
             else if (_itemContainer.isJob && text.Contains("      Knight: true"))
-                _itemContainer.jobs += "Knight, ";
+                _itemContainer.jobs += "Knight" + GetAvailableJobSeperator + " ";
             else if (_itemContainer.isJob && text.Contains("      Knight: false"))
-                _itemContainer.jobs += "Knight [x], ";
+                _itemContainer.jobs += "Knight [x]" + GetAvailableJobSeperator + " ";
             else if (_itemContainer.isJob && text.Contains("      Mage: true"))
-                _itemContainer.jobs += "Mage, ";
+                _itemContainer.jobs += "Mage" + GetAvailableJobSeperator + " ";
             else if (_itemContainer.isJob && text.Contains("      Mage: false"))
-                _itemContainer.jobs += "Mage [x], ";
+                _itemContainer.jobs += "Mage [x]" + GetAvailableJobSeperator + " ";
             else if (_itemContainer.isJob && text.Contains("      Merchant: true"))
-                _itemContainer.jobs += "Merchant, ";
+                _itemContainer.jobs += "Merchant" + GetAvailableJobSeperator + " ";
             else if (_itemContainer.isJob && text.Contains("      Merchant: false"))
-                _itemContainer.jobs += "Merchant [x], ";
+                _itemContainer.jobs += "Merchant [x]" + GetAvailableJobSeperator + " ";
             else if (_itemContainer.isJob && text.Contains("      Monk: true"))
-                _itemContainer.jobs += "Monk, ";
+                _itemContainer.jobs += "Monk" + GetAvailableJobSeperator + " ";
             else if (_itemContainer.isJob && text.Contains("      Monk: false"))
-                _itemContainer.jobs += "Monk [x], ";
+                _itemContainer.jobs += "Monk [x]" + GetAvailableJobSeperator + " ";
             else if (_itemContainer.isJob && text.Contains("      Ninja: true"))
-                _itemContainer.jobs += "Ninja, ";
+                _itemContainer.jobs += "Ninja" + GetAvailableJobSeperator + " ";
             else if (_itemContainer.isJob && text.Contains("      Ninja: false"))
-                _itemContainer.jobs += "Ninja [x], ";
+                _itemContainer.jobs += "Ninja [x]" + GetAvailableJobSeperator + " ";
             else if (_itemContainer.isJob && text.Contains("      Novice: true"))
-                _itemContainer.jobs += "Novice, ";
+                _itemContainer.jobs += "Novice" + GetAvailableJobSeperator + " ";
             else if (_itemContainer.isJob && text.Contains("      Novice: false"))
-                _itemContainer.jobs += "Novice [x], ";
+                _itemContainer.jobs += "Novice [x]" + GetAvailableJobSeperator + " ";
             else if (_itemContainer.isJob && text.Contains("      Priest: true"))
-                _itemContainer.jobs += "Priest, ";
+                _itemContainer.jobs += "Priest" + GetAvailableJobSeperator + " ";
             else if (_itemContainer.isJob && text.Contains("      Priest: false"))
-                _itemContainer.jobs += "Priest [x], ";
+                _itemContainer.jobs += "Priest [x]" + GetAvailableJobSeperator + " ";
             else if (_itemContainer.isJob && text.Contains("      Rebellion: true"))
-                _itemContainer.jobs += "Rebellion, ";
+                _itemContainer.jobs += "Rebellion" + GetAvailableJobSeperator + " ";
             else if (_itemContainer.isJob && text.Contains("      Rebellion: false"))
-                _itemContainer.jobs += "Rebellion [x], ";
+                _itemContainer.jobs += "Rebellion [x]" + GetAvailableJobSeperator + " ";
             else if (_itemContainer.isJob && text.Contains("      Night_Watch: true"))
-                _itemContainer.jobs += "Night Watch, ";
+                _itemContainer.jobs += "Night Watch" + GetAvailableJobSeperator + " ";
             else if (_itemContainer.isJob && text.Contains("      Night_Watch: false"))
-                _itemContainer.jobs += "Night Watch [x], ";
+                _itemContainer.jobs += "Night Watch [x]" + GetAvailableJobSeperator + " ";
             else if (_itemContainer.isJob && text.Contains("      Rogue: true"))
-                _itemContainer.jobs += "Rogue, ";
+                _itemContainer.jobs += "Rogue" + GetAvailableJobSeperator + " ";
             else if (_itemContainer.isJob && text.Contains("      Rogue: false"))
-                _itemContainer.jobs += "Rogue [x], ";
+                _itemContainer.jobs += "Rogue [x]" + GetAvailableJobSeperator + " ";
             else if (_itemContainer.isJob && text.Contains("      Sage: true"))
-                _itemContainer.jobs += "Sage, ";
+                _itemContainer.jobs += "Sage" + GetAvailableJobSeperator + " ";
             else if (_itemContainer.isJob && text.Contains("      Sage: false"))
-                _itemContainer.jobs += "Sage [x], ";
+                _itemContainer.jobs += "Sage [x]" + GetAvailableJobSeperator + " ";
             else if (_itemContainer.isJob && text.Contains("      SoulLinker: true"))
-                _itemContainer.jobs += "Soul Linker, ";
+                _itemContainer.jobs += "Soul Linker" + GetAvailableJobSeperator + " ";
             else if (_itemContainer.isJob && text.Contains("      SoulLinker: false"))
-                _itemContainer.jobs += "Soul Linker [x], ";
+                _itemContainer.jobs += "Soul Linker [x]" + GetAvailableJobSeperator + " ";
             else if (_itemContainer.isJob && text.Contains("      Soul_Ascetic: true"))
-                _itemContainer.jobs += "Soul Ascetic, ";
+                _itemContainer.jobs += "Soul Ascetic" + GetAvailableJobSeperator + " ";
             else if (_itemContainer.isJob && text.Contains("      Soul_Ascetic: false"))
-                _itemContainer.jobs += "Soul Ascetic [x], ";
+                _itemContainer.jobs += "Soul Ascetic [x]" + GetAvailableJobSeperator + " ";
             else if (_itemContainer.isJob && text.Contains("      StarGladiator: true"))
-                _itemContainer.jobs += "Star Gladiator, ";
+                _itemContainer.jobs += "Star Gladiator" + GetAvailableJobSeperator + " ";
             else if (_itemContainer.isJob && text.Contains("      StarGladiator: false"))
-                _itemContainer.jobs += "Star Gladiator [x], ";
+                _itemContainer.jobs += "Star Gladiator [x]" + GetAvailableJobSeperator + " ";
             else if (_itemContainer.isJob && text.Contains("      Sky_Emperor: true"))
-                _itemContainer.jobs += "Sky Emperor, ";
+                _itemContainer.jobs += "Sky Emperor" + GetAvailableJobSeperator + " ";
             else if (_itemContainer.isJob && text.Contains("      Sky_Emperor: false"))
-                _itemContainer.jobs += "Sky Emperor [x], ";
+                _itemContainer.jobs += "Sky Emperor [x]" + GetAvailableJobSeperator + " ";
             else if (_itemContainer.isJob && text.Contains("      Summoner: true"))
-                _itemContainer.jobs += "Summoner, ";
+                _itemContainer.jobs += "Summoner" + GetAvailableJobSeperator + " ";
             else if (_itemContainer.isJob && text.Contains("      Summoner: false"))
-                _itemContainer.jobs += "Summoner [x], ";
+                _itemContainer.jobs += "Summoner [x]" + GetAvailableJobSeperator + " ";
             else if (_itemContainer.isJob && text.Contains("      Spirit_Handler: true"))
-                _itemContainer.jobs += "Spirit Handler, ";
+                _itemContainer.jobs += "Spirit Handler" + GetAvailableJobSeperator + " ";
             else if (_itemContainer.isJob && text.Contains("      Spirit_Handler: false"))
-                _itemContainer.jobs += "Spirit Handler [x], ";
+                _itemContainer.jobs += "Spirit Handler [x]" + GetAvailableJobSeperator + " ";
             else if (_itemContainer.isJob && text.Contains("      SuperNovice: true"))
-                _itemContainer.jobs += "Super Novice, ";
+                _itemContainer.jobs += "Super Novice" + GetAvailableJobSeperator + " ";
             else if (_itemContainer.isJob && text.Contains("      SuperNovice: false"))
-                _itemContainer.jobs += "Super Novice [x], ";
+                _itemContainer.jobs += "Super Novice [x]" + GetAvailableJobSeperator + " ";
             else if (_itemContainer.isJob && text.Contains("      Hyper_Novice: true"))
-                _itemContainer.jobs += "Hyper Novice, ";
+                _itemContainer.jobs += "Hyper Novice" + GetAvailableJobSeperator + " ";
             else if (_itemContainer.isJob && text.Contains("      Hyper_Novice: false"))
-                _itemContainer.jobs += "Hyper Novice [x], ";
+                _itemContainer.jobs += "Hyper Novice [x]" + GetAvailableJobSeperator + " ";
             else if (_itemContainer.isJob && text.Contains("      Swordman: true"))
-                _itemContainer.jobs += "Swordman, ";
+                _itemContainer.jobs += "Swordman" + GetAvailableJobSeperator + " ";
             else if (_itemContainer.isJob && text.Contains("      Swordman: false"))
-                _itemContainer.jobs += "Swordman [x], ";
+                _itemContainer.jobs += "Swordman [x]" + GetAvailableJobSeperator + " ";
             else if (_itemContainer.isJob && text.Contains("      Taekwon: true"))
-                _itemContainer.jobs += "Taekwon, ";
+                _itemContainer.jobs += "Taekwon" + GetAvailableJobSeperator + " ";
             else if (_itemContainer.isJob && text.Contains("      Taekwon: false"))
-                _itemContainer.jobs += "Taekwon [x], ";
+                _itemContainer.jobs += "Taekwon [x]" + GetAvailableJobSeperator + " ";
             else if (_itemContainer.isJob && text.Contains("      Thief: true"))
-                _itemContainer.jobs += "Thief, ";
+                _itemContainer.jobs += "Thief" + GetAvailableJobSeperator + " ";
             else if (_itemContainer.isJob && text.Contains("      Thief: false"))
-                _itemContainer.jobs += "Thief [x], ";
+                _itemContainer.jobs += "Thief [x]" + GetAvailableJobSeperator + " ";
             else if (_itemContainer.isJob && text.Contains("      Wizard: true"))
-                _itemContainer.jobs += "Wizard, ";
+                _itemContainer.jobs += "Wizard" + GetAvailableJobSeperator + " ";
             else if (_itemContainer.isJob && text.Contains("      Wizard: false"))
-                _itemContainer.jobs += "Wizard [x], ";
+                _itemContainer.jobs += "Wizard [x]" + GetAvailableJobSeperator + " ";
             // Classes
             else if (_itemContainer.isClass && text.Contains("      All: true"))
                 _itemContainer.classes += _localization.GetTexts(Localization.CLASSES_ALL_CLASS) + ", ";
@@ -1800,7 +1810,7 @@ public class Converter : MonoBehaviour
                     description += "			\"^3F28FF" + _localization.GetTexts(Localization.LOCATION) + ":^000000 -\",\n";
 
                 if (!string.IsNullOrEmpty(_itemContainer.jobs))
-                    description += "			\"^3F28FF" + _localization.GetTexts(Localization.JOB) + ":^000000 " + _itemContainer.jobs.Substring(0, _itemContainer.jobs.Length - 2) + "\",\n";
+                    description += "			\"^3F28FF" + _localization.GetTexts(Localization.JOB) + ":^000000 " + (_isUseNewLineInsteadOfCommaForAvailableJob ? _itemContainer.jobs.Substring(0, _itemContainer.jobs.Length - 11) : _itemContainer.jobs.Substring(0, _itemContainer.jobs.Length - 2)) + "\",\n";
                 else if (_isZeroValuePrintable)
                     description += "			\"^3F28FF" + _localization.GetTexts(Localization.JOB) + ":^000000 -\",\n";
 
@@ -4575,6 +4585,8 @@ public class Converter : MonoBehaviour
         else
             return "false";
     }
+
+    string GetAvailableJobSeperator { get { return _isUseNewLineInsteadOfCommaForAvailableJob ? "[NEW_LINE]" : ","; } }
 
     /// <summary>
     /// Get monster database by ID
