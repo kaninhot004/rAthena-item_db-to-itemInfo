@@ -14,7 +14,8 @@ public class Settings : MonoBehaviour
     [SerializeField] Toggle _onlyPrintCustomItemToggle;
     [SerializeField] Toggle _randomResourceNameToggle;
     [SerializeField] Toggle _randomResourceNameForCustomItemOnlyToggle;
-    [SerializeField] Toggle _newLineForAvailableJobsToggle;
+    [SerializeField] Toggle _newLineForAvailableJobToggle;
+    [SerializeField] Toggle _newLineForAvailableClassToggle;
 
     [SerializeField] Converter _converter;
 
@@ -30,13 +31,15 @@ public class Settings : MonoBehaviour
         _onlyPrintCustomItemToggle.isOn = (PlayerPrefs.GetInt("IsOnlyUseCustomTextAsset") == 1) ? true : false;
         _randomResourceNameToggle.isOn = (PlayerPrefs.GetInt("IsRandomResourceName") == 1) ? true : false;
         _randomResourceNameForCustomItemOnlyToggle.isOn = (PlayerPrefs.GetInt("IsRandomResourceNameForCustomTextAssetOnly") == 1) ? true : false;
-        _newLineForAvailableJobsToggle.isOn = (PlayerPrefs.GetInt("IsUseNewLineInsteadOfCommaForAvailableJob") == 1) ? true : false;
+        _newLineForAvailableJobToggle.isOn = (PlayerPrefs.GetInt("IsUseNewLineInsteadOfCommaForAvailableJob") == 1) ? true : false;
+        _newLineForAvailableClassToggle.isOn = (PlayerPrefs.GetInt("IsUseNewLineInsteadOfCommaForAvailableClass") == 1) ? true : false;
         _converter.IsZeroValuePrintAble = _printZeroValueToggle.isOn;
         _converter.IsOnlyUseTestTextAsset = _onlyPrintTestItemToggle.isOn;
         _converter.IsOnlyUseCustomTextAsset = _onlyPrintCustomItemToggle.isOn;
         _converter.IsRandomResourceName = _randomResourceNameToggle.isOn;
         _converter.IsRandomResourceNameForCustomTextAssetOnly = _randomResourceNameForCustomItemOnlyToggle.isOn;
-        _converter.IsUseNewLineInsteadOfCommaForAvailableJob = _newLineForAvailableJobsToggle.isOn;
+        _converter.IsUseNewLineInsteadOfCommaForAvailableJob = _newLineForAvailableJobToggle.isOn;
+        _converter.IsUseNewLineInsteadOfCommaForAvailableClass = _newLineForAvailableClassToggle.isOn;
 
         // Add Toggle Listener
         _printZeroValueToggle.onValueChanged.AddListener(OnPrintZeroValueToggle);
@@ -44,9 +47,16 @@ public class Settings : MonoBehaviour
         _onlyPrintCustomItemToggle.onValueChanged.AddListener(OnOnlyPrintCustomItemToggle);
         _randomResourceNameToggle.onValueChanged.AddListener(OnRandomResourceNameToggle);
         _randomResourceNameForCustomItemOnlyToggle.onValueChanged.AddListener(OnRandomResourceNameForCustomItemOnlyToggle);
-        _newLineForAvailableJobsToggle.onValueChanged.AddListener(OnNewLineForAvailableJobsToggle);
+        _newLineForAvailableJobToggle.onValueChanged.AddListener(OnNewLineForAvailableJobToggle);
+        _newLineForAvailableClassToggle.onValueChanged.AddListener(OnNewLineForAvailableClassToggle);
     }
-    void OnNewLineForAvailableJobsToggle(bool isOn)
+    void OnNewLineForAvailableClassToggle(bool isOn)
+    {
+        PlayerPrefs.SetInt("IsUseNewLineInsteadOfCommaForAvailableClass", isOn ? 1 : 0);
+        PlayerPrefs.Save();
+        _converter.IsUseNewLineInsteadOfCommaForAvailableClass = isOn;
+    }
+    void OnNewLineForAvailableJobToggle(bool isOn)
     {
         PlayerPrefs.SetInt("IsUseNewLineInsteadOfCommaForAvailableJob", isOn ? 1 : 0);
         PlayerPrefs.Save();

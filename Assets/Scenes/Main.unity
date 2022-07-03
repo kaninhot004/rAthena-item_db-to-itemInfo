@@ -1452,7 +1452,8 @@ MonoBehaviour:
   _onlyPrintCustomItemToggle: {fileID: 1104044115}
   _randomResourceNameToggle: {fileID: 2095340194}
   _randomResourceNameForCustomItemOnlyToggle: {fileID: 619715347}
-  _newLineForAvailableJobsToggle: {fileID: 1491971033}
+  _newLineForAvailableJobToggle: {fileID: 1491971033}
+  _newLineForAvailableClassToggle: {fileID: 1553347548}
   _converter: {fileID: 1553147}
 --- !u!4 &809598356
 Transform:
@@ -2520,13 +2521,14 @@ RectTransform:
   - {fileID: 2095340193}
   - {fileID: 619715346}
   - {fileID: 1491971032}
+  - {fileID: 1553347547}
   m_Father: {fileID: 1479337664}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 1, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: -100, y: 1550}
+  m_SizeDelta: {x: -100, y: 1750}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1103503035
 MonoBehaviour:
@@ -3527,7 +3529,7 @@ PrefabInstance:
     - target: {fileID: 1211701829280273104, guid: 98fb3f9a6c2c0df49a8c82ef162fd411,
         type: 3}
       propertyPath: m_Text
-      value: Is use new line instead of , for available jobs?
+      value: Is use new line instead of , for available job?
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 98fb3f9a6c2c0df49a8c82ef162fd411, type: 3}
@@ -3542,6 +3544,148 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 1211701829020212455, guid: 98fb3f9a6c2c0df49a8c82ef162fd411,
     type: 3}
   m_PrefabInstance: {fileID: 1491971031}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9085046f02f69544eb97fd06b6048fe2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!1001 &1553347546
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 1103503033}
+    m_Modifications:
+    - target: {fileID: 1211701829020212453, guid: 98fb3f9a6c2c0df49a8c82ef162fd411,
+        type: 3}
+      propertyPath: m_Name
+      value: Toggle - Settings #7
+      objectReference: {fileID: 0}
+    - target: {fileID: 1211701829020212454, guid: 98fb3f9a6c2c0df49a8c82ef162fd411,
+        type: 3}
+      propertyPath: m_Pivot.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1211701829020212454, guid: 98fb3f9a6c2c0df49a8c82ef162fd411,
+        type: 3}
+      propertyPath: m_Pivot.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1211701829020212454, guid: 98fb3f9a6c2c0df49a8c82ef162fd411,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 1211701829020212454, guid: 98fb3f9a6c2c0df49a8c82ef162fd411,
+        type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1211701829020212454, guid: 98fb3f9a6c2c0df49a8c82ef162fd411,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1211701829020212454, guid: 98fb3f9a6c2c0df49a8c82ef162fd411,
+        type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1211701829020212454, guid: 98fb3f9a6c2c0df49a8c82ef162fd411,
+        type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1211701829020212454, guid: 98fb3f9a6c2c0df49a8c82ef162fd411,
+        type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 1670
+      objectReference: {fileID: 0}
+    - target: {fileID: 1211701829020212454, guid: 98fb3f9a6c2c0df49a8c82ef162fd411,
+        type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 200
+      objectReference: {fileID: 0}
+    - target: {fileID: 1211701829020212454, guid: 98fb3f9a6c2c0df49a8c82ef162fd411,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1211701829020212454, guid: 98fb3f9a6c2c0df49a8c82ef162fd411,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1211701829020212454, guid: 98fb3f9a6c2c0df49a8c82ef162fd411,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1211701829020212454, guid: 98fb3f9a6c2c0df49a8c82ef162fd411,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1211701829020212454, guid: 98fb3f9a6c2c0df49a8c82ef162fd411,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1211701829020212454, guid: 98fb3f9a6c2c0df49a8c82ef162fd411,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1211701829020212454, guid: 98fb3f9a6c2c0df49a8c82ef162fd411,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1211701829020212454, guid: 98fb3f9a6c2c0df49a8c82ef162fd411,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 910
+      objectReference: {fileID: 0}
+    - target: {fileID: 1211701829020212454, guid: 98fb3f9a6c2c0df49a8c82ef162fd411,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -1540
+      objectReference: {fileID: 0}
+    - target: {fileID: 1211701829020212454, guid: 98fb3f9a6c2c0df49a8c82ef162fd411,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1211701829020212454, guid: 98fb3f9a6c2c0df49a8c82ef162fd411,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1211701829020212454, guid: 98fb3f9a6c2c0df49a8c82ef162fd411,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1211701829280273104, guid: 98fb3f9a6c2c0df49a8c82ef162fd411,
+        type: 3}
+      propertyPath: m_Text
+      value: Is use new line instead of , for available class?
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 98fb3f9a6c2c0df49a8c82ef162fd411, type: 3}
+--- !u!224 &1553347547 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 1211701829020212454, guid: 98fb3f9a6c2c0df49a8c82ef162fd411,
+    type: 3}
+  m_PrefabInstance: {fileID: 1553347546}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1553347548 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1211701829020212455, guid: 98fb3f9a6c2c0df49a8c82ef162fd411,
+    type: 3}
+  m_PrefabInstance: {fileID: 1553347546}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 0}
   m_Enabled: 1
