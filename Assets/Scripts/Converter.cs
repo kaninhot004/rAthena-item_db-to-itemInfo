@@ -4067,6 +4067,9 @@ public class Converter : MonoBehaviour
         if (text == "INFINITE_TICK")
             return _localization.GetTexts(Localization.INFINITE);
 
+        if (!string.IsNullOrEmpty(text))
+            text = text.Replace(";", string.Empty);
+
         float sum = -1;
 
         if (float.TryParse(text, out sum))
