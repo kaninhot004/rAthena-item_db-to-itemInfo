@@ -1,0 +1,7 @@
+#What is this?
+#This is useful for item like 1000105 (No script) vs 25670 (Scripted)
+#
+#How to use?
+#500=501 << This will print Red Potion script for Choko Gangjeong
+#500=1164 << This will print Muramasa script for Choko Gangjeong
+#500=4263 << This will print Samurai Scepter script for Choko Gangjeong

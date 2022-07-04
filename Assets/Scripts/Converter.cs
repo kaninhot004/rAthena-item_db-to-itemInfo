@@ -127,6 +127,18 @@ public class Converter : MonoBehaviour
     /// Skill name holder
     /// </summary>
     Dictionary<string, int> _skillNameDatabases = new Dictionary<string, int>();
+    /// <summary>
+    /// Container that hold all item information to print out (In order)
+    /// </summary>
+    List<ItemContainer> _itemContainers = new List<ItemContainer>();
+    /// <summary>
+    /// Item script copier holder
+    /// </summary>
+    Dictionary<int, int> _itemScriptCopierDatabases = new Dictionary<int, int>();
+    /// <summary>
+    /// Item container holder (To get skill directly instead of loop all item)
+    /// </summary>
+    Dictionary<int, ItemContainer> _itemContaianerDatabases = new Dictionary<int, ItemContainer>();
 
     void Start()
     {
@@ -233,6 +245,15 @@ public class Converter : MonoBehaviour
         _txtConvertProgression.text = _localization.GetTexts(Localization.CONVERT_PROGRESSION_FETCHING_RESOURCE_NAME_WITH_TYPE) + "..";
 
         FetchResourceNameWithType();
+
+        if (_isFilesError)
+        {
+            _txtConvertProgression.text = "<color=red>" + _localization.GetTexts(Localization.ERROR) + "</color>: " + _errorLog;
+
+            return;
+        }
+
+        FetchItemScriptCopier();
 
         if (_isFilesError)
         {
@@ -405,6 +426,54 @@ public class Converter : MonoBehaviour
 
     // Parsing
 
+    /// <summary>
+    /// Parse monster database file into converter (Only store ID, Name)
+    /// </summary>
+    void FetchItemScriptCopier()
+    {
+        var path = Application.dataPath + "/Assets/itemScriptCopier.txt";
+
+        // Is file exists?
+        if (!File.Exists(path))
+        {
+            _errorLog = path + " " + _localization.GetTexts(Localization.NOT_FOUND);
+
+            Debug.Log(_errorLog);
+
+            _isFilesError = true;
+
+            return;
+        }
+
+        var itemScriptCopierFile = File.ReadAllText(path);
+
+        var itemScriptCopierDatabases = itemScriptCopierFile.Split('\n');
+
+        _itemScriptCopierDatabases = new Dictionary<int, int>();
+
+        for (int i = 0; i < itemScriptCopierDatabases.Length; i++)
+        {
+            var text = itemScriptCopierDatabases[i];
+
+            text = CommentRemover.Fix(text);
+
+            text = LineEndingsRemover.Fix(text);
+
+            if (string.IsNullOrEmpty(text)
+                || string.IsNullOrWhiteSpace(text))
+                continue;
+
+            var texts = text.Split('=');
+
+            var itemId = int.Parse(texts[0]);
+            var copyFromItemId = int.Parse(texts[1]);
+
+            if (!_itemScriptCopierDatabases.ContainsKey(itemId))
+                _itemScriptCopierDatabases.Add(itemId, copyFromItemId);
+        }
+
+        Debug.Log("There are " + _itemScriptCopierDatabases.Count + " item script copier database.");
+    }
     /// <summary>
     /// Fetch resource name from all equipment (Split into list by equipment type)
     /// </summary>
@@ -1206,6 +1275,10 @@ public class Converter : MonoBehaviour
 
         var itemDatabases = itemDatabasesFile.Split('\n');
 
+        _itemContaianerDatabases = new Dictionary<int, ItemContainer>();
+
+        _itemContainers = new List<ItemContainer>();
+
         _itemContainer = new ItemContainer();
 
         StringBuilder builder = new StringBuilder();
@@ -1719,10 +1792,11 @@ public class Converter : MonoBehaviour
             {
                 _itemContainer.view = text.Replace("    View: ", string.Empty);
 
-                if (!_classNumberDatabases.ContainsKey(int.Parse(_itemContainer.id)))
-                    _classNumberDatabases.Add(int.Parse(_itemContainer.id), _itemContainer.view);
+                var itemId = int.Parse(_itemContainer.id);
+                if (!_classNumberDatabases.ContainsKey(itemId))
+                    _classNumberDatabases.Add(itemId, _itemContainer.view);
                 else
-                    _classNumberDatabases[int.Parse(_itemContainer.id)] = _itemContainer.view;
+                    _classNumberDatabases[itemId] = _itemContainer.view;
             }
             // Script
             else if (_itemContainer.isScript)
@@ -1749,196 +1823,216 @@ public class Converter : MonoBehaviour
                     _itemContainer.unequipScript += "			\"" + unequipScript + "\",\n";
             }
 
-            // Write builder now
+            // Store in container
             if (nextText.Contains("- Id:")
                 && !string.IsNullOrEmpty(_itemContainer.id)
                 && !string.IsNullOrWhiteSpace(_itemContainer.id)
                 || ((i + 1) >= itemDatabases.Length))
             {
-                var resourceName = GetResourceNameFromId(int.Parse(_itemContainer.id)
-                    , _itemContainer.type
-                    , _itemContainer.subType
-                    , !string.IsNullOrEmpty(_itemContainer.locations) ? _itemContainer.locations.Substring(0, _itemContainer.locations.Length - 2) : string.Empty);
+                _itemContaianerDatabases.Add(int.Parse(_itemContainer.id), _itemContainer);
 
-                // Id
-                builder.Append("	[" + _itemContainer.id + "] = {\n");
-                // Unidentified display name
-                builder.Append("		unidentifiedDisplayName = \"" + _itemContainer.name
-                    +
-                    (((_itemContainer.type.ToLower() == "weapon")
-                    || (_itemContainer.type.ToLower() == "armor")
-                    || (_itemContainer.type.ToLower() == "shadowgear"))
-                    ? " [" + (!string.IsNullOrEmpty(_itemContainer.slots) ? _itemContainer.slots : "0") + "]"
-                    : string.Empty) + "\",\n");
-                // Unidentified resource name
-                builder.Append("		unidentifiedResourceName = " + resourceName + ",\n");
-                // Unidentified description
-                builder.Append("		unidentifiedDescriptionName = {\n");
-                builder.Append("			\"\"\n");
-                builder.Append("		},\n");
-                // Identified display name
-                builder.Append("		identifiedDisplayName = \"" + _itemContainer.name + "\",\n");
-                // Identified resource name
-                builder.Append("		identifiedResourceName = " + resourceName + ",\n");
-                // Identified description
-                builder.Append("		identifiedDescriptionName = {\n");
-                // Description
-                var comboBonuses = GetCombo(GetItemDatabase(int.Parse(_itemContainer.id)).aegisName);
-
-                string hardcodeBonuses = _hardcodeItemScripts.GetHardcodeItemScript(int.Parse(_itemContainer.id));
-
-                var bonuses = !string.IsNullOrEmpty(hardcodeBonuses)
-                    ? hardcodeBonuses
-                    : !string.IsNullOrEmpty(_itemContainer.script)
-                    ? _itemContainer.script
-                    : string.Empty;
-
-                var equipBonuses = !string.IsNullOrEmpty(_itemContainer.equipScript)
-                    ? "			\"^666478[" + _localization.GetTexts(Localization.WHEN_EQUIP) + "]^000000\",\n"
-                    + _itemContainer.equipScript
-                    : string.Empty;
-
-                var unequipBonuses = !string.IsNullOrEmpty(_itemContainer.unequipScript)
-                    ? "			\"^666478[" + _localization.GetTexts(Localization.WHEN_UNEQUIP) + "]^000000\",\n"
-                    + _itemContainer.unequipScript
-                    : string.Empty;
-
-                var description = "			\"^3F28FFID:^000000 " + _itemContainer.id + "\",\n"
-                    + "			\"^3F28FF" + _localization.GetTexts(Localization.TYPE) + ":^000000 " + _itemContainer.type + "\",\n";
-
-                if (!string.IsNullOrEmpty(_itemContainer.subType))
-                    description += "			\"^3F28FF" + _localization.GetTexts(Localization.SUB_TYPE) + ":^000000 " + _itemContainer.subType + "\",\n";
-                else if (_isZeroValuePrintable)
-                    description += "			\"^3F28FF" + _localization.GetTexts(Localization.SUB_TYPE) + ":^000000 -\",\n";
-
-                if (!string.IsNullOrEmpty(_itemContainer.locations))
-                    description += "			\"^3F28FF" + _localization.GetTexts(Localization.LOCATION) + ":^000000 " + _itemContainer.locations.Substring(0, _itemContainer.locations.Length - 2) + "\",\n";
-                else if (_isZeroValuePrintable)
-                    description += "			\"^3F28FF" + _localization.GetTexts(Localization.LOCATION) + ":^000000 -\",\n";
-
-                bool isMultipleJob = _itemContainer.jobs.Split("[NEW_LINE]").Length > 2;
-                if (!isMultipleJob)
-                {
-                    _itemContainer.jobs = _itemContainer.jobs.Replace("- ", string.Empty);
-
-                    _itemContainer.jobs = _itemContainer.jobs.Replace("— ", string.Empty);
-                }
-                if (!string.IsNullOrEmpty(_itemContainer.jobs))
-                    description += "			\"^3F28FF" + _localization.GetTexts(Localization.JOB) + ":^000000 " + (_isUseNewLineInsteadOfCommaForAvailableJob ? (isMultipleJob ? "[NEW_LINE]" : string.Empty) + _itemContainer.jobs.Substring(0, _itemContainer.jobs.Length - 10) : _itemContainer.jobs.Substring(0, _itemContainer.jobs.Length - 2)) + "\",\n";
-                else if (_isZeroValuePrintable)
-                    description += "			\"^3F28FF" + _localization.GetTexts(Localization.JOB) + ":^000000 -\",\n";
-
-                bool isMultipleClass = _itemContainer.classes.Split("[NEW_LINE]").Length > 2;
-                if (!isMultipleClass)
-                {
-                    _itemContainer.classes = _itemContainer.classes.Replace("- ", string.Empty);
-
-                    _itemContainer.classes = _itemContainer.classes.Replace("— ", string.Empty);
-                }
-                if (!string.IsNullOrEmpty(_itemContainer.classes))
-                    description += "			\"^3F28FF" + _localization.GetTexts(Localization.CLASS) + ":^000000 " + (_isUseNewLineInsteadOfCommaForAvailableClass ? (isMultipleClass ? "[NEW_LINE]" : string.Empty) + _itemContainer.classes.Substring(0, _itemContainer.classes.Length - 10) : _itemContainer.classes.Substring(0, _itemContainer.classes.Length - 2)) + "\",\n";
-                else if (_isZeroValuePrintable)
-                    description += "			\"^3F28FF" + _localization.GetTexts(Localization.CLASS) + ":^000000 -\",\n";
-
-                if (!string.IsNullOrEmpty(_itemContainer.gender))
-                    description += "			\"^3F28FF" + _localization.GetTexts(Localization.GENDER) + ":^000000 " + _itemContainer.gender.Substring(0, _itemContainer.gender.Length - 2) + "\",\n";
-                else if (_isZeroValuePrintable)
-                    description += "			\"^3F28FF" + _localization.GetTexts(Localization.GENDER) + ":^000000 -\",\n";
-
-                if (!string.IsNullOrEmpty(_itemContainer.attack))
-                    description += "			\"^3F28FF" + _localization.GetTexts(Localization.ATTACK) + ":^000000 " + _itemContainer.attack + "\",\n";
-                else if (_isZeroValuePrintable)
-                    description += "			\"^3F28FF" + _localization.GetTexts(Localization.ATTACK) + ":^000000 -\",\n";
-
-                if (!string.IsNullOrEmpty(_itemContainer.magicAttack))
-                    description += "			\"^3F28FF" + _localization.GetTexts(Localization.MAGIC_ATTACK) + ":^000000 " + _itemContainer.magicAttack + "\",\n";
-                else if (_isZeroValuePrintable)
-                    description += "			\"^3F28FF" + _localization.GetTexts(Localization.MAGIC_ATTACK) + ":^000000 -\",\n";
-
-                if (!string.IsNullOrEmpty(_itemContainer.defense))
-                    description += "			\"^3F28FF" + _localization.GetTexts(Localization.DEFENSE) + ":^000000 " + _itemContainer.defense + "\",\n";
-                else if (_isZeroValuePrintable)
-                    description += "			\"^3F28FF" + _localization.GetTexts(Localization.DEFENSE) + ":^000000 -\",\n";
-
-                if (!string.IsNullOrEmpty(_itemContainer.range))
-                    description += "			\"^3F28FF" + _localization.GetTexts(Localization.RANGE) + ":^000000 " + _itemContainer.range + "\",\n";
-                else if (_isZeroValuePrintable)
-                    description += "			\"^3F28FF" + _localization.GetTexts(Localization.RANGE) + ":^000000 -\",\n";
-
-                if (!string.IsNullOrEmpty(_itemContainer.weaponLevel))
-                    description += "			\"^3F28FF" + _localization.GetTexts(Localization.WEAPON_LEVEL) + ":^000000 " + _itemContainer.weaponLevel + "\",\n";
-                else if (_isZeroValuePrintable)
-                    description += "			\"^3F28FF" + _localization.GetTexts(Localization.WEAPON_LEVEL) + ":^000000 -\",\n";
-
-                if (!string.IsNullOrEmpty(_itemContainer.armorLevel))
-                    description += "			\"^3F28FF" + _localization.GetTexts(Localization.ARMOR_LEVEL) + ":^000000 " + _itemContainer.armorLevel + "\",\n";
-                else if (_isZeroValuePrintable)
-                    description += "			\"^3F28FF" + _localization.GetTexts(Localization.ARMOR_LEVEL) + ":^000000 -\",\n";
-
-                if (!string.IsNullOrEmpty(_itemContainer.equipLevelMinimum))
-                    description += "			\"^3F28FF" + _localization.GetTexts(Localization.MINIMUM_EQUIP_LEVEL) + ":^000000 " + _itemContainer.equipLevelMinimum + "\",\n";
-                else if (_isZeroValuePrintable)
-                    description += "			\"^3F28FF" + _localization.GetTexts(Localization.MINIMUM_EQUIP_LEVEL) + ":^000000 -\",\n";
-
-                if (!string.IsNullOrEmpty(_itemContainer.equipLevelMaximum))
-                    description += "			\"^3F28FF" + _localization.GetTexts(Localization.MAXIMUM_EQUIP_LEVEL) + ":^000000 " + _itemContainer.equipLevelMaximum + "\",\n";
-                else if (_isZeroValuePrintable)
-                    description += "			\"^3F28FF" + _localization.GetTexts(Localization.MAXIMUM_EQUIP_LEVEL) + ":^000000 -\",\n";
-
-                if (!string.IsNullOrEmpty(_itemContainer.refinable))
-                    description += "			\"^3F28FF" + _localization.GetTexts(Localization.REFINABLE) + ":^000000 " + _itemContainer.refinable + "\",\n";
-                else if (_isZeroValuePrintable)
-                    description += "			\"^3F28FF" + _localization.GetTexts(Localization.REFINABLE) + ":^000000 -\",\n";
-
-                if (!string.IsNullOrEmpty(_itemContainer.weight))
-                    description += "			\"^3F28FF" + _localization.GetTexts(Localization.WEIGHT) + ":^000000 " + _itemContainer.weight + "\",\n";
-                else if (_isZeroValuePrintable)
-                    description += "			\"^3F28FF" + _localization.GetTexts(Localization.WEIGHT) + ":^000000 -\",\n";
-
-                if (!string.IsNullOrEmpty(_itemContainer.buy))
-                    description += "			\"^3F28FF" + _localization.GetTexts(Localization.PRICE) + ":^000000 " + _itemContainer.buy + "\",\n";
-                else if (_isZeroValuePrintable)
-                    description += "			\"^3F28FF" + _localization.GetTexts(Localization.PRICE) + ":^000000 -\",\n";
-
-                builder.Append(bonuses);
-
-                if (!string.IsNullOrEmpty(bonuses)
-                    && !string.IsNullOrWhiteSpace(bonuses))
-                    builder.Append("			\"————————————\",\n");
-
-                builder.Append(comboBonuses);
-
-                builder.Append(equipBonuses);
-
-                builder.Append(unequipBonuses);
-
-                builder.Append(description);
-
-                builder.Append("			\"\"\n");
-
-                builder.Append("		},\n");
-
-                // Slot Count
-                if (!string.IsNullOrEmpty(_itemContainer.slots))
-                    builder.Append("		slotCount = " + _itemContainer.slots + ",\n");
-                else
-                    builder.Append("		slotCount = 0,\n");
-
-                // View / Class Number
-                builder.Append("		ClassNum = " + GetClassNumFromId(_itemContainer) + ",\n");
-
-                // Costume
-                builder.Append("		costume = " + IsCostumeFromId(_itemContainer) + "\n");
-
-                if (string.IsNullOrEmpty(nextNextText)
-                    || string.IsNullOrWhiteSpace(nextNextText))
-                    builder.Append("	}\n");
-                else
-                    builder.Append("	},\n");
+                _itemContainers.Add(_itemContainer);
 
                 _itemContainer = new ItemContainer();
+
+                continue;
             }
         }
+
+        _itemContainers.Sort((a, b) => int.Parse(a.id).CompareTo(int.Parse(b.id)));
+
+        for (int i = 0; i < _itemContainers.Count; i++)
+        {
+            _itemContainer = _itemContainers[i];
+
+            var itemId = int.Parse(_itemContainer.id);
+
+            if (_itemScriptCopierDatabases.ContainsKey(itemId))
+            {
+                _itemContainer.script = _itemContaianerDatabases[_itemScriptCopierDatabases[itemId]].script;
+                _itemContainer.equipScript = _itemContaianerDatabases[_itemScriptCopierDatabases[itemId]].equipScript;
+                _itemContainer.unequipScript = _itemContaianerDatabases[_itemScriptCopierDatabases[itemId]].unequipScript;
+            }
+
+            var resourceName = GetResourceNameFromId(itemId
+                , _itemContainer.type
+                , _itemContainer.subType
+                , !string.IsNullOrEmpty(_itemContainer.locations) ? _itemContainer.locations.Substring(0, _itemContainer.locations.Length - 2) : string.Empty);
+
+            // Id
+            builder.Append("	[" + _itemContainer.id + "] = {\n");
+            // Unidentified display name
+            builder.Append("		unidentifiedDisplayName = \"" + _itemContainer.name
+                +
+                (((_itemContainer.type.ToLower() == "weapon")
+                || (_itemContainer.type.ToLower() == "armor")
+                || (_itemContainer.type.ToLower() == "shadowgear"))
+                ? " [" + (!string.IsNullOrEmpty(_itemContainer.slots) ? _itemContainer.slots : "0") + "]"
+                : string.Empty) + "\",\n");
+            // Unidentified resource name
+            builder.Append("		unidentifiedResourceName = " + resourceName + ",\n");
+            // Unidentified description
+            builder.Append("		unidentifiedDescriptionName = {\n");
+            builder.Append("			\"\"\n");
+            builder.Append("		},\n");
+            // Identified display name
+            builder.Append("		identifiedDisplayName = \"" + _itemContainer.name + "\",\n");
+            // Identified resource name
+            builder.Append("		identifiedResourceName = " + resourceName + ",\n");
+            // Identified description
+            builder.Append("		identifiedDescriptionName = {\n");
+            // Description
+            var comboBonuses = GetCombo(GetItemDatabase(itemId).aegisName);
+
+            string hardcodeBonuses = _hardcodeItemScripts.GetHardcodeItemScript(itemId);
+
+            var bonuses = !string.IsNullOrEmpty(hardcodeBonuses)
+                ? hardcodeBonuses
+                : !string.IsNullOrEmpty(_itemContainer.script)
+                ? _itemContainer.script
+                : string.Empty;
+
+            var equipBonuses = !string.IsNullOrEmpty(_itemContainer.equipScript)
+                ? "			\"^666478[" + _localization.GetTexts(Localization.WHEN_EQUIP) + "]^000000\",\n"
+                + _itemContainer.equipScript
+                : string.Empty;
+
+            var unequipBonuses = !string.IsNullOrEmpty(_itemContainer.unequipScript)
+                ? "			\"^666478[" + _localization.GetTexts(Localization.WHEN_UNEQUIP) + "]^000000\",\n"
+                + _itemContainer.unequipScript
+                : string.Empty;
+
+            var description = "			\"^3F28FFID:^000000 " + _itemContainer.id + "\",\n"
+                + "			\"^3F28FF" + _localization.GetTexts(Localization.TYPE) + ":^000000 " + _itemContainer.type + "\",\n";
+
+            if (!string.IsNullOrEmpty(_itemContainer.subType))
+                description += "			\"^3F28FF" + _localization.GetTexts(Localization.SUB_TYPE) + ":^000000 " + _itemContainer.subType + "\",\n";
+            else if (_isZeroValuePrintable)
+                description += "			\"^3F28FF" + _localization.GetTexts(Localization.SUB_TYPE) + ":^000000 -\",\n";
+
+            if (!string.IsNullOrEmpty(_itemContainer.locations))
+                description += "			\"^3F28FF" + _localization.GetTexts(Localization.LOCATION) + ":^000000 " + _itemContainer.locations.Substring(0, _itemContainer.locations.Length - 2) + "\",\n";
+            else if (_isZeroValuePrintable)
+                description += "			\"^3F28FF" + _localization.GetTexts(Localization.LOCATION) + ":^000000 -\",\n";
+
+            bool isMultipleJob = _itemContainer.jobs.Split("[NEW_LINE]").Length > 2;
+            if (!isMultipleJob)
+            {
+                _itemContainer.jobs = _itemContainer.jobs.Replace("- ", string.Empty);
+
+                _itemContainer.jobs = _itemContainer.jobs.Replace("— ", string.Empty);
+            }
+            if (!string.IsNullOrEmpty(_itemContainer.jobs))
+                description += "			\"^3F28FF" + _localization.GetTexts(Localization.JOB) + ":^000000 " + (_isUseNewLineInsteadOfCommaForAvailableJob ? (isMultipleJob ? "[NEW_LINE]" : string.Empty) + _itemContainer.jobs.Substring(0, _itemContainer.jobs.Length - 10) : _itemContainer.jobs.Substring(0, _itemContainer.jobs.Length - 2)) + "\",\n";
+            else if (_isZeroValuePrintable)
+                description += "			\"^3F28FF" + _localization.GetTexts(Localization.JOB) + ":^000000 -\",\n";
+
+            bool isMultipleClass = _itemContainer.classes.Split("[NEW_LINE]").Length > 2;
+            if (!isMultipleClass)
+            {
+                _itemContainer.classes = _itemContainer.classes.Replace("- ", string.Empty);
+
+                _itemContainer.classes = _itemContainer.classes.Replace("— ", string.Empty);
+            }
+            if (!string.IsNullOrEmpty(_itemContainer.classes))
+                description += "			\"^3F28FF" + _localization.GetTexts(Localization.CLASS) + ":^000000 " + (_isUseNewLineInsteadOfCommaForAvailableClass ? (isMultipleClass ? "[NEW_LINE]" : string.Empty) + _itemContainer.classes.Substring(0, _itemContainer.classes.Length - 10) : _itemContainer.classes.Substring(0, _itemContainer.classes.Length - 2)) + "\",\n";
+            else if (_isZeroValuePrintable)
+                description += "			\"^3F28FF" + _localization.GetTexts(Localization.CLASS) + ":^000000 -\",\n";
+
+            if (!string.IsNullOrEmpty(_itemContainer.gender))
+                description += "			\"^3F28FF" + _localization.GetTexts(Localization.GENDER) + ":^000000 " + _itemContainer.gender.Substring(0, _itemContainer.gender.Length - 2) + "\",\n";
+            else if (_isZeroValuePrintable)
+                description += "			\"^3F28FF" + _localization.GetTexts(Localization.GENDER) + ":^000000 -\",\n";
+
+            if (!string.IsNullOrEmpty(_itemContainer.attack))
+                description += "			\"^3F28FF" + _localization.GetTexts(Localization.ATTACK) + ":^000000 " + _itemContainer.attack + "\",\n";
+            else if (_isZeroValuePrintable)
+                description += "			\"^3F28FF" + _localization.GetTexts(Localization.ATTACK) + ":^000000 -\",\n";
+
+            if (!string.IsNullOrEmpty(_itemContainer.magicAttack))
+                description += "			\"^3F28FF" + _localization.GetTexts(Localization.MAGIC_ATTACK) + ":^000000 " + _itemContainer.magicAttack + "\",\n";
+            else if (_isZeroValuePrintable)
+                description += "			\"^3F28FF" + _localization.GetTexts(Localization.MAGIC_ATTACK) + ":^000000 -\",\n";
+
+            if (!string.IsNullOrEmpty(_itemContainer.defense))
+                description += "			\"^3F28FF" + _localization.GetTexts(Localization.DEFENSE) + ":^000000 " + _itemContainer.defense + "\",\n";
+            else if (_isZeroValuePrintable)
+                description += "			\"^3F28FF" + _localization.GetTexts(Localization.DEFENSE) + ":^000000 -\",\n";
+
+            if (!string.IsNullOrEmpty(_itemContainer.range))
+                description += "			\"^3F28FF" + _localization.GetTexts(Localization.RANGE) + ":^000000 " + _itemContainer.range + "\",\n";
+            else if (_isZeroValuePrintable)
+                description += "			\"^3F28FF" + _localization.GetTexts(Localization.RANGE) + ":^000000 -\",\n";
+
+            if (!string.IsNullOrEmpty(_itemContainer.weaponLevel))
+                description += "			\"^3F28FF" + _localization.GetTexts(Localization.WEAPON_LEVEL) + ":^000000 " + _itemContainer.weaponLevel + "\",\n";
+            else if (_isZeroValuePrintable)
+                description += "			\"^3F28FF" + _localization.GetTexts(Localization.WEAPON_LEVEL) + ":^000000 -\",\n";
+
+            if (!string.IsNullOrEmpty(_itemContainer.armorLevel))
+                description += "			\"^3F28FF" + _localization.GetTexts(Localization.ARMOR_LEVEL) + ":^000000 " + _itemContainer.armorLevel + "\",\n";
+            else if (_isZeroValuePrintable)
+                description += "			\"^3F28FF" + _localization.GetTexts(Localization.ARMOR_LEVEL) + ":^000000 -\",\n";
+
+            if (!string.IsNullOrEmpty(_itemContainer.equipLevelMinimum))
+                description += "			\"^3F28FF" + _localization.GetTexts(Localization.MINIMUM_EQUIP_LEVEL) + ":^000000 " + _itemContainer.equipLevelMinimum + "\",\n";
+            else if (_isZeroValuePrintable)
+                description += "			\"^3F28FF" + _localization.GetTexts(Localization.MINIMUM_EQUIP_LEVEL) + ":^000000 -\",\n";
+
+            if (!string.IsNullOrEmpty(_itemContainer.equipLevelMaximum))
+                description += "			\"^3F28FF" + _localization.GetTexts(Localization.MAXIMUM_EQUIP_LEVEL) + ":^000000 " + _itemContainer.equipLevelMaximum + "\",\n";
+            else if (_isZeroValuePrintable)
+                description += "			\"^3F28FF" + _localization.GetTexts(Localization.MAXIMUM_EQUIP_LEVEL) + ":^000000 -\",\n";
+
+            if (!string.IsNullOrEmpty(_itemContainer.refinable))
+                description += "			\"^3F28FF" + _localization.GetTexts(Localization.REFINABLE) + ":^000000 " + _itemContainer.refinable + "\",\n";
+            else if (_isZeroValuePrintable)
+                description += "			\"^3F28FF" + _localization.GetTexts(Localization.REFINABLE) + ":^000000 -\",\n";
+
+            if (!string.IsNullOrEmpty(_itemContainer.weight))
+                description += "			\"^3F28FF" + _localization.GetTexts(Localization.WEIGHT) + ":^000000 " + _itemContainer.weight + "\",\n";
+            else if (_isZeroValuePrintable)
+                description += "			\"^3F28FF" + _localization.GetTexts(Localization.WEIGHT) + ":^000000 -\",\n";
+
+            if (!string.IsNullOrEmpty(_itemContainer.buy))
+                description += "			\"^3F28FF" + _localization.GetTexts(Localization.PRICE) + ":^000000 " + _itemContainer.buy + "\",\n";
+            else if (_isZeroValuePrintable)
+                description += "			\"^3F28FF" + _localization.GetTexts(Localization.PRICE) + ":^000000 -\",\n";
+
+            builder.Append(bonuses);
+
+            if (!string.IsNullOrEmpty(bonuses)
+                && !string.IsNullOrWhiteSpace(bonuses))
+                builder.Append("			\"————————————\",\n");
+
+            builder.Append(comboBonuses);
+
+            builder.Append(equipBonuses);
+
+            builder.Append(unequipBonuses);
+
+            builder.Append(description);
+
+            builder.Append("			\"\"\n");
+
+            builder.Append("		},\n");
+
+            // Slot Count
+            if (!string.IsNullOrEmpty(_itemContainer.slots))
+                builder.Append("		slotCount = " + _itemContainer.slots + ",\n");
+            else
+                builder.Append("		slotCount = 0,\n");
+
+            // View / Class Number
+            builder.Append("		ClassNum = " + GetClassNumFromId(_itemContainer) + ",\n");
+
+            // Costume
+            builder.Append("		costume = " + IsCostumeFromId(_itemContainer) + "\n");
+
+            builder.Append("	},\n");
+        }
+
+        builder.Remove(builder.Length - 2, 1);
 
         var prefix = "tbl = {\n";
         var postfix = "}\n\n" +

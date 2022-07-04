@@ -83,6 +83,7 @@
     <None Include="Assets\Assets\resourceName.txt" />
     <None Include="Assets\Assets\classNum.txt" />
     <None Include="Assets\DLL\I18N.West.dll" />
+    <None Include="Assets\Assets\itemScriptCopier.txt" />
     <None Include="Assets\DLL\I18N.Other.dll" />
     <None Include="Assets\Assets\item_db_test.txt" />
     <None Include="Assets\DLL\I18N.MidEast.dll" />
