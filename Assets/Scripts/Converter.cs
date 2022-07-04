@@ -888,6 +888,8 @@ public class Converter : MonoBehaviour
         {
             var text = CommentRemover.FixCommentSeperateLine(comboDatabases, i);
 
+            text = CommentRemover.Fix(text);
+
             if (text.Contains("- Combos:"))
             {
                 comboDatabase = new ComboDatabase();
