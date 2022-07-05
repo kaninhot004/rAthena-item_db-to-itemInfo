@@ -950,14 +950,15 @@ public class Converter : MonoBehaviour
 
         // Comment remover
 
+        for (int i = 0; i < comboDatabases.Length; i++)
+            comboDatabases[i] = CommentRemover.Fix(comboDatabases[i]);
+
         // Nowaday rAthena use YAML for combo database, but it still had /* and */
         // Then just keep these for unexpected error
 
         for (int i = 0; i < comboDatabases.Length; i++)
         {
             var text = CommentRemover.FixCommentSeperateLine(comboDatabases, i);
-
-            text = CommentRemover.Fix(text);
 
             if (text.Contains("- Combos:"))
             {
@@ -3340,7 +3341,7 @@ public class Converter : MonoBehaviour
         }
         if (text.Contains("bonus4 bAddEffWhenHit,"))
         {
-            var temp = text.Replace("bonus4 bAddEff,", string.Empty);
+            var temp = text.Replace("bonus4 bAddEffWhenHit,", string.Empty);
             var temps = temp.Split(',');
             text = string.Format(_localization.GetTexts(Localization.BONUS4_ADD_EFF_WHEN_HIT), ParseEffect(temps[0]), TryParseInt(temps[1], 100), ParseAtf(temps[2]), TryParseInt(temps[3], 1000));
         }
@@ -3602,7 +3603,8 @@ public class Converter : MonoBehaviour
             var temp = text.Replace("bonus3 bAddMonsterIdDropItem,", string.Empty);
             var temps = temp.Split(',');
             var itemId = QuoteRemover.Remove(temps[0]);
-            text = string.Format(_localization.GetTexts(Localization.BONUS3_ADD_MONSTER_ID_DROP_ITEM), GetItemName(itemId), TryParseInt(temps[1]), TryParseInt(temps[2], 100), itemId);
+            var monsterDatabase = GetMonsterDatabase(TryParseInt(temps[1]));
+            text = string.Format(_localization.GetTexts(Localization.BONUS3_ADD_MONSTER_ID_DROP_ITEM), GetItemName(itemId), (monsterDatabase != null) ? monsterDatabase.name : temps[1], TryParseInt(temps[2], 100), itemId);
         }
         if (text.Contains("bonus2 bAddMonsterDropItem,"))
         {
