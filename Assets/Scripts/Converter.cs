@@ -1848,11 +1848,15 @@ public class Converter : MonoBehaviour
 
             var itemId = int.Parse(_itemContainer.id);
 
+            var itemIdToGetCombo = itemId;
+
             if (_itemScriptCopierDatabases.ContainsKey(itemId))
             {
                 _itemContainer.script = _itemContaianerDatabases[_itemScriptCopierDatabases[itemId]].script;
                 _itemContainer.equipScript = _itemContaianerDatabases[_itemScriptCopierDatabases[itemId]].equipScript;
                 _itemContainer.unequipScript = _itemContaianerDatabases[_itemScriptCopierDatabases[itemId]].unequipScript;
+
+                itemIdToGetCombo = _itemScriptCopierDatabases[itemId];
             }
 
             var resourceName = GetResourceNameFromId(itemId
@@ -1883,7 +1887,7 @@ public class Converter : MonoBehaviour
             // Identified description
             builder.Append("		identifiedDescriptionName = {\n");
             // Description
-            var comboBonuses = GetCombo(GetItemDatabase(itemId).aegisName);
+            var comboBonuses = GetCombo(GetItemDatabase(itemIdToGetCombo).aegisName);
 
             string hardcodeBonuses = _hardcodeItemScripts.GetHardcodeItemScript(itemId);
 
