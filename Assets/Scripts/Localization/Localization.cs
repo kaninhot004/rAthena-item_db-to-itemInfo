@@ -11,7 +11,6 @@ public class Localization : MonoBehaviour
     #region Constant
     public const int UTF8 = 0;
     public const int ANSI = 1;
-    public const int TIS620 = 2;
 
     public const string THAI = "THAI";
     public const string ENGLISH = "ENGLISH";
@@ -421,7 +420,6 @@ public class Localization : MonoBehaviour
     LocalizationDatabase _currentLocalizationDatabase = new LocalizationDatabase();
 
     int _currentEncoding;
-    public bool IsUsingTIS620 { get { return _currentEncoding == TIS620; } }
     public bool IsUsingANSI { get { return _currentEncoding == ANSI; } }
     public bool IsUsingUTF8 { get { return _currentEncoding == UTF8; } }
 
@@ -544,10 +542,6 @@ public class Localization : MonoBehaviour
         dropdownOption2.text = "ANSI";
         dropdownList.Add(dropdownOption2);
 
-        Dropdown.OptionData dropdownOption3 = new Dropdown.OptionData();
-        dropdownOption3.text = "tis-620";
-        dropdownList.Add(dropdownOption3);
-
         _encodingDropdown.AddOptions(dropdownList);
 
         _encodingDropdown.value = 0;
@@ -564,9 +558,7 @@ public class Localization : MonoBehaviour
     {
         get
         {
-            return IsUsingTIS620
-                ? Encoding.GetEncoding("tis-620")
-                : IsUsingANSI
+            return IsUsingANSI
                 ? Encoding.GetEncoding(51949)
                 : Encoding.Default;
         }
