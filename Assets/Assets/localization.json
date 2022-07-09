@@ -1488,6 +1488,14 @@
                     "key": "PET_WITH_CHANCE",
                     "thai": "๐ สำหรับจับ {0} โอกาสจับได้ {1}%",
                     "english": "๐ Catch {0} success chance {1}%"
+                }, {
+                    "key": "CONVERT_PROGRESSION_FETCHING_PET",
+                    "thai": "Fetching pet",
+                    "english": "Fetching pet"
+                }, {
+                    "key": "CONVERT_PROGRESSION_FETCHING_ITEM_SCRIPT_COPIER",
+                    "thai": "Fetching item script copier",
+                    "english": "Fetching item script copier"
                 }
             ]
         }

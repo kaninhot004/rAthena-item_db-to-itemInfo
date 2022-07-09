@@ -395,6 +395,8 @@ public class Localization : MonoBehaviour
     public const string SC_START_2_NO_DURATION = "SC_START_2_NO_DURATION";
     public const string SC_START_NO_DURATION = "SC_START_NO_DURATION";
     public const string PET_WITH_CHANCE = "PET_WITH_CHANCE";
+    public const string CONVERT_PROGRESSION_FETCHING_PET = "CONVERT_PROGRESSION_FETCHING_PET";
+    public const string CONVERT_PROGRESSION_FETCHING_ITEM_SCRIPT_COPIER = "CONVERT_PROGRESSION_FETCHING_ITEM_SCRIPT_COPIER";
     #endregion
 
     [Serializable]

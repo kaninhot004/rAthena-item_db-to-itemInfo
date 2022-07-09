@@ -116,6 +116,10 @@ public class Converter : MonoBehaviour
     /// </summary>
     Dictionary<int, MonsterDatabase> _monsterDatabases = new Dictionary<int, MonsterDatabase>();
     /// <summary>
+    /// Monsters holder
+    /// </summary>
+    Dictionary<string, int> _monsterIds = new Dictionary<string, int>();
+    /// <summary>
     /// Resources holder
     /// </summary>
     Dictionary<int, string> _resourceDatabases = new Dictionary<int, string>();
@@ -252,6 +256,19 @@ public class Converter : MonoBehaviour
 
             return;
         }
+
+        _txtConvertProgression.text = _localization.GetTexts(Localization.CONVERT_PROGRESSION_FETCHING_PET) + "..";
+
+        FetchPet();
+
+        if (_isFilesError)
+        {
+            _txtConvertProgression.text = "<color=red>" + _localization.GetTexts(Localization.ERROR) + "</color>: " + _errorLog;
+
+            return;
+        }
+
+        _txtConvertProgression.text = _localization.GetTexts(Localization.CONVERT_PROGRESSION_FETCHING_ITEM_SCRIPT_COPIER) + "..";
 
         FetchItemScriptCopier();
 
@@ -682,6 +699,8 @@ public class Converter : MonoBehaviour
 
         _monsterDatabases = new Dictionary<int, MonsterDatabase>();
 
+        _monsterIds = new Dictionary<string, int>();
+
         MonsterDatabase monsterDatabase = new MonsterDatabase();
 
         for (int i = 0; i < monsterDatabases.Length; i++)
@@ -701,6 +720,15 @@ public class Converter : MonoBehaviour
                 monsterDatabase = new MonsterDatabase();
 
                 monsterDatabase.id = int.Parse(SpacingRemover.Remove(text).Replace("-Id:", string.Empty));
+            }
+            else if (text.Contains("    AegisName:"))
+            {
+                monsterDatabase.aegisName = QuoteRemover.Remove(text.Replace("    AegisName: ", string.Empty));
+
+                if (_monsterIds.ContainsKey(monsterDatabase.aegisName))
+                    Debug.LogWarning("Found duplicated monster aegis name: " + monsterDatabase.id + " Please tell rAthena about this.");
+                else
+                    _monsterIds.Add(monsterDatabase.aegisName, monsterDatabase.id);
             }
             else if (text.Contains("    Name:"))
             {
@@ -1246,6 +1274,56 @@ public class Converter : MonoBehaviour
         Debug.Log("There are " + _itemListContainer.costumeIds.Count + " costume database.");
         Debug.Log("There are " + _itemListContainer.cardIds.Count + " card database.");
         Debug.Log("There are " + _itemListContainer.enchantIds.Count + " enchant database.");
+    }
+    /// <summary>
+    /// Parse pet database file into converter
+    /// </summary>
+    void FetchPet()
+    {
+        var path = Application.dataPath + "/Assets/pet_db.yml";
+
+        // Is file exists?
+        if (!File.Exists(path))
+        {
+            _errorLog = path + " " + _localization.GetTexts(Localization.NOT_FOUND);
+
+            Debug.Log(_errorLog);
+
+            _isFilesError = true;
+
+            return;
+        }
+
+        var petDatabasesFile = File.ReadAllText(path);
+
+        var petDatabases = petDatabasesFile.Split('\n');
+
+        var monsterDatabase = new MonsterDatabase();
+
+        for (int i = 0; i < petDatabases.Length; i++)
+        {
+            var text = petDatabases[i];
+
+            if (string.IsNullOrEmpty(text)
+                || string.IsNullOrWhiteSpace(text))
+                continue;
+
+            text = CommentRemover.Fix(text);
+
+            text = LineEndingsRemover.Fix(text);
+
+            if (text.Contains("  - Mob:"))
+            {
+                monsterDatabase = new MonsterDatabase();
+
+                monsterDatabase.name = SpacingRemover.Remove(text).Replace("-Mob:", string.Empty);
+            }
+            else if (text.Contains("    CaptureRate:"))
+            {
+                if (_monsterIds.ContainsKey(monsterDatabase.name))
+                    _monsterDatabases[_monsterIds[monsterDatabase.name]].captureRate = int.Parse(QuoteRemover.Remove(text.Replace("    CaptureRate: ", string.Empty))) / 100;
+            }
+        }
     }
 
     // Converting
@@ -3829,7 +3907,7 @@ public class Converter : MonoBehaviour
             var temps = temp.Split(',');
             var monsterDatabase = GetMonsterDatabase(QuoteRemover.Remove(temps[0]));
             if ((monsterDatabase != null)
-                && string.IsNullOrEmpty(monsterDatabase.captureRate))
+                && (monsterDatabase.captureRate <= 0))
                 text = string.Format(_localization.GetTexts(Localization.PET), (monsterDatabase != null) ? "^FF0000" + monsterDatabase.name + "^000000" : temps[0]);
             else
                 text = string.Format(_localization.GetTexts(Localization.PET_WITH_CHANCE), (monsterDatabase != null) ? "^FF0000" + monsterDatabase.name + "^000000" : temps[0], (monsterDatabase != null) ? monsterDatabase.captureRate : "0");
