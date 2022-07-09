@@ -1472,6 +1472,22 @@
                     "key": "SHIELD",
                     "thai": "โล่",
                     "english": "Shield"
+                }, {
+                    "key": "SC_START_4_NO_DURATION",
+                    "thai": "๐ รับผล {0}",
+                    "english": "๐ Grant {0}"
+                }, {
+                    "key": "SC_START_2_NO_DURATION",
+                    "thai": "๐ รับผล {0}",
+                    "english": "๐ Grant {0}"
+                }, {
+                    "key": "SC_START_NO_DURATION",
+                    "thai": "๐ รับผล {0}",
+                    "english": "๐ Grant {0}"
+                }, {
+                    "key": "PET_WITH_CHANCE",
+                    "thai": "๐ สำหรับจับ {0} โอกาสจับได้ {1}%",
+                    "english": "๐ Catch {0} success chance {1}%"
                 }
             ]
         }

@@ -390,6 +390,11 @@ public class Localization : MonoBehaviour
     public const string EQUIP_COMPOUND_ON = "EQUIP_COMPOUND_ON";
     public const string FIST = "FIST";
     public const string SHIELD = "SHIELD";
+
+    public const string SC_START_4_NO_DURATION = "SC_START_4_NO_DURATION";
+    public const string SC_START_2_NO_DURATION = "SC_START_2_NO_DURATION";
+    public const string SC_START_NO_DURATION = "SC_START_NO_DURATION";
+    public const string PET_WITH_CHANCE = "PET_WITH_CHANCE";
     #endregion
 
     [Serializable]

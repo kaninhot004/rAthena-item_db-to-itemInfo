@@ -697,7 +697,11 @@ public class Converter : MonoBehaviour
             text = LineEndingsRemover.Fix(text);
 
             if (text.Contains("  - Id:"))
+            {
+                monsterDatabase = new MonsterDatabase();
+
                 monsterDatabase.id = int.Parse(SpacingRemover.Remove(text).Replace("-Id:", string.Empty));
+            }
             else if (text.Contains("    Name:"))
             {
                 monsterDatabase.name = QuoteRemover.Remove(text.Replace("    Name: ", string.Empty));
@@ -706,8 +710,6 @@ public class Converter : MonoBehaviour
                     Debug.LogWarning("Found duplicated monster ID: " + monsterDatabase.id + " Please tell rAthena about this.");
                 else
                     _monsterDatabases.Add(monsterDatabase.id, monsterDatabase);
-
-                monsterDatabase = new MonsterDatabase();
             }
         }
 
@@ -3749,7 +3751,11 @@ public class Converter : MonoBehaviour
         {
             var temp = text.Replace("sc_start4 ", string.Empty);
             var temps = temp.Split(',');
-            text = string.Format(_localization.GetTexts(Localization.SC_START_4), QuoteRemover.Remove(temps[0]), TryParseInt(temps[1], 1000));
+            var duration = (temps.Length > 1) ? TryParseInt(temps[1], 1000) : "0";
+            if (duration == "0")
+                text = string.Format(_localization.GetTexts(Localization.SC_START_4_NO_DURATION), QuoteRemover.Remove(temps[0]));
+            else
+                text = string.Format(_localization.GetTexts(Localization.SC_START_4), QuoteRemover.Remove(temps[0]), TryParseInt(temps[1], 1000));
 
             ParseStatusChangeStartIntoItemId();
         }
@@ -3758,7 +3764,11 @@ public class Converter : MonoBehaviour
         {
             var temp = text.Replace("sc_start2 ", string.Empty);
             var temps = temp.Split(',');
-            text = string.Format(_localization.GetTexts(Localization.SC_START_2), QuoteRemover.Remove(temps[0]), TryParseInt(temps[1], 1000));
+            var duration = (temps.Length > 1) ? TryParseInt(temps[1], 1000) : "0";
+            if (duration == "0")
+                text = string.Format(_localization.GetTexts(Localization.SC_START_2_NO_DURATION), QuoteRemover.Remove(temps[0]));
+            else
+                text = string.Format(_localization.GetTexts(Localization.SC_START_2), QuoteRemover.Remove(temps[0]), TryParseInt(temps[1], 1000));
 
             ParseStatusChangeStartIntoItemId();
         }
@@ -3767,7 +3777,11 @@ public class Converter : MonoBehaviour
         {
             var temp = text.Replace("sc_start ", string.Empty);
             var temps = temp.Split(',');
-            text = string.Format(_localization.GetTexts(Localization.SC_START), QuoteRemover.Remove(temps[0]), (temps.Length > 1) ? TryParseInt(temps[1], 1000) : "0");
+            var duration = (temps.Length > 1) ? TryParseInt(temps[1], 1000) : "0";
+            if (duration == "0")
+                text = string.Format(_localization.GetTexts(Localization.SC_START_NO_DURATION), QuoteRemover.Remove(temps[0]));
+            else
+                text = string.Format(_localization.GetTexts(Localization.SC_START), QuoteRemover.Remove(temps[0]), (temps.Length > 1) ? TryParseInt(temps[1], 1000) : "0");
 
             ParseStatusChangeStartIntoItemId();
         }
@@ -3814,7 +3828,11 @@ public class Converter : MonoBehaviour
             var temp = text.Replace("pet ", string.Empty);
             var temps = temp.Split(',');
             var monsterDatabase = GetMonsterDatabase(QuoteRemover.Remove(temps[0]));
-            text = string.Format(_localization.GetTexts(Localization.PET), (monsterDatabase != null) ? "^FF0000" + monsterDatabase.name + "^000000" : temps[0]);
+            if ((monsterDatabase != null)
+                && string.IsNullOrEmpty(monsterDatabase.captureRate))
+                text = string.Format(_localization.GetTexts(Localization.PET), (monsterDatabase != null) ? "^FF0000" + monsterDatabase.name + "^000000" : temps[0]);
+            else
+                text = string.Format(_localization.GetTexts(Localization.PET_WITH_CHANCE), (monsterDatabase != null) ? "^FF0000" + monsterDatabase.name + "^000000" : temps[0], (monsterDatabase != null) ? monsterDatabase.captureRate : "0");
         }
         text = text.Replace("sc_end_class", _localization.GetTexts(Localization.SC_END_CLASS));
         text = text.Replace("setmounting()", _localization.GetTexts(Localization.SET_MOUNTING));
