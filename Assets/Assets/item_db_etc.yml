@@ -11459,6 +11459,8 @@ Body:
       bonus bDef,20;
       bonus2 bSubSize,Size_Medium,25;
       bonus2 bSubSize,Size_Large,25;
+      bonus2 bMagicSubSize,Size_Medium,25;
+      bonus2 bMagicSubSize,Size_Large,25;
   - Id: 4610
     AegisName: Sarah_Card
     Name: Sarah Card
@@ -27858,10 +27860,10 @@ Body:
     Flags:
       BuyingStore: true
   - Id: 7513
-    AegisName: Pocket_Watch__
+    AegisName: Pocket_Watch
     Name: Pocket Watch
     Type: Etc
-    Buy: 3420
+    Buy: 2564
     Weight: 10
     Flags:
       BuyingStore: true
@@ -31129,11 +31131,10 @@ Body:
     Buy: 20
     Weight: 10
   - Id: 7925
-    AegisName: Silver_Paper
-    Name: Silver Paper
+    AegisName: M_Dimension_Essence
+    Name: Essence of a Powerful Dimension
     Type: Etc
     Buy: 20
-    Weight: 10
   - Id: 7926
     AegisName: Incense
     Name: Incense
@@ -35851,7 +35852,7 @@ Body:
       NoMail: true
       NoAuction: true
   - Id: 25375
-    AegisName: Powerful_Soul_Essence
+    AegisName: Mightysoul_Essence
     Name: Powerful Soul Essence
     Type: Etc
   - Id: 25376
