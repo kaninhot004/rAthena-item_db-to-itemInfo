@@ -2365,7 +2365,7 @@ public class Converter : MonoBehaviour
                 var skillName = QuoteRemover.Remove(duplicates.Length >= 4 ? duplicates[3] : string.Empty);
                 var duration = QuoteRemover.Remove(duplicates.Length >= 3 ? duplicates[2] : string.Empty);
                 var rate = QuoteRemover.Remove(duplicates.Length >= 2 ? duplicates[1] : string.Empty);
-                text = string.Format(_localization.GetTexts(Localization.AUTO_BONUS_3), bonuses, GetSkillName(skillName), TryParseInt(rate, 10), TryParseInt(duration, 1000));
+                text = string.Format(_localization.GetTexts(Localization.AUTO_BONUS_3), bonuses, GetSkillName(skillName), TryParseInt(rate, 10), TryParseTimer(TryParseInt(duration, 1000)));
             }
             else
                 text = string.Empty;
@@ -2435,7 +2435,7 @@ public class Converter : MonoBehaviour
 
                 var duration = QuoteRemover.Remove(duplicates.Length >= 3 ? duplicates[2] : string.Empty);
                 var rate = QuoteRemover.Remove(duplicates.Length >= 2 ? duplicates[1] : string.Empty);
-                text = string.Format(_localization.GetTexts(Localization.AUTO_BONUS_2), bonuses, flag, TryParseInt(rate, 10), TryParseInt(duration, 1000));
+                text = string.Format(_localization.GetTexts(Localization.AUTO_BONUS_2), bonuses, flag, TryParseInt(rate, 10), TryParseTimer(TryParseInt(duration, 1000)));
             }
             else
                 text = string.Empty;
@@ -2505,7 +2505,7 @@ public class Converter : MonoBehaviour
 
                 var duration = QuoteRemover.Remove(duplicates.Length >= 3 ? duplicates[2] : string.Empty);
                 var rate = QuoteRemover.Remove(duplicates.Length >= 2 ? duplicates[1] : string.Empty);
-                text = string.Format(_localization.GetTexts(Localization.AUTO_BONUS_1), bonuses, flag, TryParseInt(rate, 10), TryParseInt(duration, 1000));
+                text = string.Format(_localization.GetTexts(Localization.AUTO_BONUS_1), bonuses, flag, TryParseInt(rate, 10), TryParseTimer(TryParseInt(duration, 1000)));
             }
             else
                 text = string.Empty;
@@ -2551,7 +2551,7 @@ public class Converter : MonoBehaviour
                 }
 
                 var duration = QuoteRemover.Remove(duplicates.Length >= 2 ? duplicates[1] : string.Empty);
-                text = string.Format(_localization.GetTexts(Localization.BONUS_SCRIPT), bonuses, TryParseInt(duration));
+                text = string.Format(_localization.GetTexts(Localization.BONUS_SCRIPT), bonuses, TryParseTimer(TryParseInt(duration)));
             }
             else
                 text = string.Empty;
@@ -2792,37 +2792,37 @@ public class Converter : MonoBehaviour
         {
             var temp = text.Replace("bonus2 bHPRegenRate,", string.Empty);
             var temps = temp.Split(',');
-            text = string.Format(_localization.GetTexts(Localization.BONUS2_HP_REGEN_RATE), TryParseInt(temps[0]), TryParseInt(temps[1], 1000));
+            text = string.Format(_localization.GetTexts(Localization.BONUS2_HP_REGEN_RATE), TryParseInt(temps[0]), TryParseTimer(TryParseInt(temps[1], 1000)));
         }
         if (text.Contains("bonus2 bHPLossRate,"))
         {
             var temp = text.Replace("bonus2 bHPLossRate,", string.Empty);
             var temps = temp.Split(',');
-            text = string.Format(_localization.GetTexts(Localization.BONUS2_HP_LOSS_RATE), TryParseInt(temps[0]), TryParseInt(temps[1], 1000));
+            text = string.Format(_localization.GetTexts(Localization.BONUS2_HP_LOSS_RATE), TryParseInt(temps[0]), TryParseTimer(TryParseInt(temps[1], 1000)));
         }
         if (text.Contains("bonus2 bSPRegenRate,"))
         {
             var temp = text.Replace("bonus2 bSPRegenRate,", string.Empty);
             var temps = temp.Split(',');
-            text = string.Format(_localization.GetTexts(Localization.BONUS2_SP_REGEN_RATE), TryParseInt(temps[0]), TryParseInt(temps[1], 1000));
+            text = string.Format(_localization.GetTexts(Localization.BONUS2_SP_REGEN_RATE), TryParseInt(temps[0]), TryParseTimer(TryParseInt(temps[1], 1000)));
         }
         if (text.Contains("bonus2 bSPLossRate,"))
         {
             var temp = text.Replace("bonus2 bSPLossRate,", string.Empty);
             var temps = temp.Split(',');
-            text = string.Format(_localization.GetTexts(Localization.BONUS2_SP_LOSS_RATE), TryParseInt(temps[0]), TryParseInt(temps[1], 1000));
+            text = string.Format(_localization.GetTexts(Localization.BONUS2_SP_LOSS_RATE), TryParseInt(temps[0]), TryParseTimer(TryParseInt(temps[1], 1000)));
         }
         if (text.Contains("bonus2 bRegenPercentHP,"))
         {
             var temp = text.Replace("bonus2 bRegenPercentHP,", string.Empty);
             var temps = temp.Split(',');
-            text = string.Format(_localization.GetTexts(Localization.BONUS2_REGEN_PERCENT_HP), TryParseInt(temps[0]), TryParseInt(temps[1], 1000));
+            text = string.Format(_localization.GetTexts(Localization.BONUS2_REGEN_PERCENT_HP), TryParseInt(temps[0]), TryParseTimer(TryParseInt(temps[1], 1000)));
         }
         if (text.Contains("bonus2 bRegenPercentSP,"))
         {
             var temp = text.Replace("bonus2 bRegenPercentSP,", string.Empty);
             var temps = temp.Split(',');
-            text = string.Format(_localization.GetTexts(Localization.BONUS2_REGEN_PERCENT_SP), TryParseInt(temps[0]), TryParseInt(temps[1], 1000));
+            text = string.Format(_localization.GetTexts(Localization.BONUS2_REGEN_PERCENT_SP), TryParseInt(temps[0]), TryParseTimer(TryParseInt(temps[1], 1000)));
         }
         text = text.Replace("bonus bNoRegen,1", _localization.GetTexts(Localization.BONUS_STOP_HP_REGEN));
         text = text.Replace("bonus bNoRegen,2", _localization.GetTexts(Localization.BONUS_STOP_SP_REGEN));
@@ -3036,25 +3036,25 @@ public class Converter : MonoBehaviour
         {
             var temp = text.Replace("bonus bFixedCast,", string.Empty);
             var temps = temp.Split(',');
-            text = string.Format(_localization.GetTexts(Localization.BONUS_FIXED_CAST), TryParseInt(temps[0], 1000));
+            text = string.Format(_localization.GetTexts(Localization.BONUS_FIXED_CAST), TryParseTimer(TryParseInt(temps[0], 1000)));
         }
         if (text.Contains("bonus2 bSkillFixedCast,"))
         {
             var temp = text.Replace("bonus2 bSkillFixedCast,", string.Empty);
             var temps = temp.Split(',');
-            text = string.Format(_localization.GetTexts(Localization.BONUS2_SKILL_FIXED_CAST), GetSkillName(QuoteRemover.Remove(temps[0])), TryParseInt(temps[1], 1000));
+            text = string.Format(_localization.GetTexts(Localization.BONUS2_SKILL_FIXED_CAST), GetSkillName(QuoteRemover.Remove(temps[0])), TryParseTimer(TryParseInt(temps[1], 1000)));
         }
         if (text.Contains("bonus bVariableCast,"))
         {
             var temp = text.Replace("bonus bVariableCast,", string.Empty);
             var temps = temp.Split(',');
-            text = string.Format(_localization.GetTexts(Localization.BONUS_VARIABLE_CAST), TryParseInt(temps[0], 1000));
+            text = string.Format(_localization.GetTexts(Localization.BONUS_VARIABLE_CAST), TryParseTimer(TryParseInt(temps[0], 1000)));
         }
         if (text.Contains("bonus2 bSkillVariableCast,"))
         {
             var temp = text.Replace("bonus2 bSkillVariableCast,", string.Empty);
             var temps = temp.Split(',');
-            text = string.Format(_localization.GetTexts(Localization.BONUS2_SKILL_VARIABLE_CAST), GetSkillName(QuoteRemover.Remove(temps[0])), TryParseInt(temps[1], 1000));
+            text = string.Format(_localization.GetTexts(Localization.BONUS2_SKILL_VARIABLE_CAST), GetSkillName(QuoteRemover.Remove(temps[0])), TryParseTimer(TryParseInt(temps[1], 1000)));
         }
         text = text.Replace("bonus bNoCastCancel2", _localization.GetTexts(Localization.BONUS_NO_CAST_CANCEL_2));
         text = text.Replace("bonus bNoCastCancel", _localization.GetTexts(Localization.BONUS_NO_CAST_CANCEL));
@@ -3074,13 +3074,13 @@ public class Converter : MonoBehaviour
         {
             var temp = text.Replace("bonus2 bSkillDelay,", string.Empty);
             var temps = temp.Split(',');
-            text = string.Format(_localization.GetTexts(Localization.BONUS2_SKILL_DELAY), GetSkillName(QuoteRemover.Remove(temps[0])), TryParseInt(temps[1], 1000));
+            text = string.Format(_localization.GetTexts(Localization.BONUS2_SKILL_DELAY), GetSkillName(QuoteRemover.Remove(temps[0])), TryParseTimer(TryParseInt(temps[1], 1000)));
         }
         if (text.Contains("bonus2 bSkillCooldown,"))
         {
             var temp = text.Replace("bonus2 bSkillCooldown,", string.Empty);
             var temps = temp.Split(',');
-            text = string.Format(_localization.GetTexts(Localization.BONUS2_SKILL_COOLDOWN), GetSkillName(QuoteRemover.Remove(temps[0])), TryParseInt(temps[1], 1000));
+            text = string.Format(_localization.GetTexts(Localization.BONUS2_SKILL_COOLDOWN), GetSkillName(QuoteRemover.Remove(temps[0])), TryParseTimer(TryParseInt(temps[1], 1000)));
         }
         if (text.Contains("bonus2 bAddEle,"))
         {
@@ -3301,13 +3301,13 @@ public class Converter : MonoBehaviour
         {
             var temp = text.Replace("bonus4 bSetDefRace,", string.Empty);
             var temps = temp.Split(',');
-            text = string.Format(_localization.GetTexts(Localization.BONUS4_SET_DEF_RACE), ParseRace(temps[0]), TryParseInt(temps[1]), TryParseInt(temps[2], 1000), TryParseInt(temps[3]));
+            text = string.Format(_localization.GetTexts(Localization.BONUS4_SET_DEF_RACE), ParseRace(temps[0]), TryParseInt(temps[1]), TryParseTimer(TryParseInt(temps[2], 1000)), TryParseInt(temps[3]));
         }
         if (text.Contains("bonus4 bSetMDefRace,"))
         {
             var temp = text.Replace("bonus4 bSetMDefRace,", string.Empty);
             var temps = temp.Split(',');
-            text = string.Format(_localization.GetTexts(Localization.BONUS4_SET_MDEF_RACE), ParseRace(temps[0]), TryParseInt(temps[1]), TryParseInt(temps[2], 1000), TryParseInt(temps[3]));
+            text = string.Format(_localization.GetTexts(Localization.BONUS4_SET_MDEF_RACE), ParseRace(temps[0]), TryParseInt(temps[1]), TryParseTimer(TryParseInt(temps[2], 1000)), TryParseInt(temps[3]));
         }
         if (text.Contains("bonus bIgnoreDefEle,"))
         {
@@ -3415,7 +3415,7 @@ public class Converter : MonoBehaviour
         {
             var temp = text.Replace("bonus4 bAddEff,", string.Empty);
             var temps = temp.Split(',');
-            text = string.Format(_localization.GetTexts(Localization.BONUS4_ADD_EFF), ParseEffect(temps[0]), TryParseInt(temps[1], 100), ParseAtf(temps[2]), TryParseInt(temps[3], 1000));
+            text = string.Format(_localization.GetTexts(Localization.BONUS4_ADD_EFF), ParseEffect(temps[0]), TryParseInt(temps[1], 100), ParseAtf(temps[2]), TryParseTimer(TryParseInt(temps[3], 1000)));
         }
         if (text.Contains("bonus3 bAddEffWhenHit,"))
         {
@@ -3427,7 +3427,7 @@ public class Converter : MonoBehaviour
         {
             var temp = text.Replace("bonus4 bAddEffWhenHit,", string.Empty);
             var temps = temp.Split(',');
-            text = string.Format(_localization.GetTexts(Localization.BONUS4_ADD_EFF_WHEN_HIT), ParseEffect(temps[0]), TryParseInt(temps[1], 100), ParseAtf(temps[2]), TryParseInt(temps[3], 1000));
+            text = string.Format(_localization.GetTexts(Localization.BONUS4_ADD_EFF_WHEN_HIT), ParseEffect(temps[0]), TryParseInt(temps[1], 100), ParseAtf(temps[2]), TryParseTimer(TryParseInt(temps[3], 1000)));
         }
         if (text.Contains("bonus3 bAddEffOnSkill,"))
         {
@@ -3445,7 +3445,7 @@ public class Converter : MonoBehaviour
         {
             var temp = text.Replace("bonus5 bAddEffOnSkill,", string.Empty);
             var temps = temp.Split(',');
-            text = string.Format(_localization.GetTexts(Localization.BONUS5_ADD_EFF_ON_SKILL), GetSkillName(QuoteRemover.Remove(temps[0])), ParseEffect(temps[1]), TryParseInt(temps[2], 100), ParseAtf(temps[3]), TryParseInt(temps[4], 1000));
+            text = string.Format(_localization.GetTexts(Localization.BONUS5_ADD_EFF_ON_SKILL), GetSkillName(QuoteRemover.Remove(temps[0])), ParseEffect(temps[1]), TryParseInt(temps[2], 100), ParseAtf(temps[3]), TryParseTimer(TryParseInt(temps[4], 1000)));
         }
         if (text.Contains("bonus2 bComaClass,"))
         {
@@ -3603,7 +3603,7 @@ public class Converter : MonoBehaviour
         {
             var temp = text.Replace("bonus3 bStateNoRecoverRace,", string.Empty);
             var temps = temp.Split(',');
-            text = string.Format(_localization.GetTexts(Localization.BONUS3_STATE_NO_RECOVER_RACE), ParseRace(temps[0]), TryParseInt(temps[1], 100), TryParseInt(temps[2], 1000));
+            text = string.Format(_localization.GetTexts(Localization.BONUS3_STATE_NO_RECOVER_RACE), ParseRace(temps[0]), TryParseInt(temps[1], 100), TryParseTimer(TryParseInt(temps[2], 1000)));
         }
         text = text.Replace("bonus bHPGainValue,", _localization.GetTexts(Localization.BONUS_HP_GAIN_VALUE));
         text = text.Replace("bonus bSPGainValue,", _localization.GetTexts(Localization.BONUS_SP_GAIN_VALUE));
@@ -3833,7 +3833,7 @@ public class Converter : MonoBehaviour
             if (duration == "0")
                 text = string.Format(_localization.GetTexts(Localization.SC_START_4_NO_DURATION), QuoteRemover.Remove(temps[0]));
             else
-                text = string.Format(_localization.GetTexts(Localization.SC_START_4), QuoteRemover.Remove(temps[0]), TryParseInt(temps[1], 1000));
+                text = string.Format(_localization.GetTexts(Localization.SC_START_4), QuoteRemover.Remove(temps[0]), TryParseTimer(TryParseInt(temps[1], 1000)));
 
             ParseStatusChangeStartIntoItemId();
         }
@@ -3846,7 +3846,7 @@ public class Converter : MonoBehaviour
             if (duration == "0")
                 text = string.Format(_localization.GetTexts(Localization.SC_START_2_NO_DURATION), QuoteRemover.Remove(temps[0]));
             else
-                text = string.Format(_localization.GetTexts(Localization.SC_START_2), QuoteRemover.Remove(temps[0]), TryParseInt(temps[1], 1000));
+                text = string.Format(_localization.GetTexts(Localization.SC_START_2), QuoteRemover.Remove(temps[0]), TryParseTimer(TryParseInt(temps[1], 1000)));
 
             ParseStatusChangeStartIntoItemId();
         }
@@ -3859,7 +3859,7 @@ public class Converter : MonoBehaviour
             if (duration == "0")
                 text = string.Format(_localization.GetTexts(Localization.SC_START_NO_DURATION), QuoteRemover.Remove(temps[0]));
             else
-                text = string.Format(_localization.GetTexts(Localization.SC_START), QuoteRemover.Remove(temps[0]), (temps.Length > 1) ? TryParseInt(temps[1], 1000) : "0");
+                text = string.Format(_localization.GetTexts(Localization.SC_START), QuoteRemover.Remove(temps[0]), (temps.Length > 1) ? TryParseTimer(TryParseInt(temps[1], 1000)) : "0");
 
             ParseStatusChangeStartIntoItemId();
         }
@@ -3876,7 +3876,7 @@ public class Converter : MonoBehaviour
             var temp = text.Replace("active_transform ", string.Empty);
             var temps = temp.Split(',');
             var monsterDatabase = GetMonsterDatabase(QuoteRemover.Remove(temps[0]));
-            text = string.Format(_localization.GetTexts(Localization.ACTIVE_TRANSFORM), (monsterDatabase != null) ? monsterDatabase.name : QuoteRemover.Remove(temps[0]), TryParseInt(temps[1], 1000));
+            text = string.Format(_localization.GetTexts(Localization.ACTIVE_TRANSFORM), (monsterDatabase != null) ? monsterDatabase.name : QuoteRemover.Remove(temps[0]), TryParseTimer(TryParseInt(temps[1], 1000)));
         }
         // transform
         if (text.Contains("transform "))
@@ -3884,7 +3884,7 @@ public class Converter : MonoBehaviour
             var temp = text.Replace("transform ", string.Empty);
             var temps = temp.Split(',');
             var monsterDatabase = GetMonsterDatabase(QuoteRemover.Remove(temps[0]));
-            text = string.Format(_localization.GetTexts(Localization.ACTIVE_TRANSFORM), (monsterDatabase != null) ? monsterDatabase.name : QuoteRemover.Remove(temps[0]), TryParseInt(temps[1], 1000));
+            text = string.Format(_localization.GetTexts(Localization.ACTIVE_TRANSFORM), (monsterDatabase != null) ? monsterDatabase.name : QuoteRemover.Remove(temps[0]), TryParseTimer(TryParseInt(temps[1], 1000)));
         }
         // getitem
         if (text.Contains("getitem "))
@@ -4855,5 +4855,34 @@ public class Converter : MonoBehaviour
                 || (_itemContainer.type.ToLower() == "cash")))
                 _itemListContainer.buffItemIds.Add(_itemContainer.id);
         }
+    }
+
+    /// <summary>
+    /// Timer Abbreviation
+    /// </summary>
+    /// <param name="timerText"></param>
+    /// <returns></returns>
+    string TryParseTimer(string timerText)
+    {
+        int integer = 0;
+        if (int.TryParse(timerText, out integer))
+        {
+            bool isMinus = integer < 0;
+            if (isMinus)
+                integer = -integer;
+            TimeSpan timeSpan = TimeSpan.FromSeconds(integer);
+            if (timeSpan.Hours > 0 && timeSpan.Minutes > 0)
+                return (isMinus ? "-" : string.Empty) + timeSpan.Hours + _localization.GetTexts(Localization.HOUR_ABBREVIATION) + " " + timeSpan.Minutes + _localization.GetTexts(Localization.MINUTE_ABBREVIATION);
+            else if (timeSpan.Hours > 0)
+                return (isMinus ? "-" : string.Empty) + timeSpan.Hours + _localization.GetTexts(Localization.HOUR_ABBREVIATION);
+            else if (timeSpan.Minutes > 0 && timeSpan.Seconds > 0)
+                return (isMinus ? "-" : string.Empty) + timeSpan.Minutes + _localization.GetTexts(Localization.MINUTE_ABBREVIATION) + " " + timeSpan.Seconds + _localization.GetTexts(Localization.SECOND_ABBREVIATION);
+            else if (timeSpan.Minutes > 0)
+                return (isMinus ? "-" : string.Empty) + timeSpan.Minutes + _localization.GetTexts(Localization.MINUTE_ABBREVIATION);
+            else
+                return (isMinus ? "-" : string.Empty) + timeSpan.Seconds + _localization.GetTexts(Localization.SECOND_ABBREVIATION);
+        }
+        else
+            return timerText + _localization.GetTexts(Localization.SECOND_ABBREVIATION);
     }
 }

@@ -266,20 +266,20 @@
                     "english": "Price"
                 }, {
                     "key": "AUTO_BONUS_3",
-                    "thai": "๐ เมื่อใช้ {1} มีโอกาส {2}% ที่จะ {0}[NEW_LINE]^FF2525(เป็นเวลา {3} วินาที)^000000",
-                    "english": "๐ When using {1} had {2}% chance to {0}[NEW_LINE]^FF2525(For {3}s)^000000"
+                    "thai": "๐ เมื่อใช้ {1} มีโอกาส {2}% ที่จะ {0}[NEW_LINE]^FF2525(เป็นเวลา {3})^000000",
+                    "english": "๐ When using {1} had {2}% chance to {0}[NEW_LINE]^FF2525(For {3})^000000"
                 }, {
                     "key": "AUTO_BONUS_2",
-                    "thai": "๐ เมื่อโดน{1} มีโอกาส {2}% ที่จะ {0}[NEW_LINE]^FF2525(เป็นเวลา {3} วินาที)^000000",
-                    "english": "๐ When hit by{1} had {2}% chance to {0}[NEW_LINE]^FF2525(For {3}s)^000000"
+                    "thai": "๐ เมื่อโดน{1} มีโอกาส {2}% ที่จะ {0}[NEW_LINE]^FF2525(เป็นเวลา {3})^000000",
+                    "english": "๐ When hit by{1} had {2}% chance to {0}[NEW_LINE]^FF2525(For {3})^000000"
                 }, {
                     "key": "AUTO_BONUS_1",
-                    "thai": "๐ เมื่อ{1} มีโอกาส {2}% ที่จะ {0}[NEW_LINE]^FF2525(เป็นเวลา {3} วินาที)^000000",
-                    "english": "๐ When{1} had {2}% to {0}[NEW_LINE]^FF2525(For {3}s)^000000"
+                    "thai": "๐ เมื่อ{1} มีโอกาส {2}% ที่จะ {0}[NEW_LINE]^FF2525(เป็นเวลา {3})^000000",
+                    "english": "๐ When{1} had {2}% to {0}[NEW_LINE]^FF2525(For {3})^000000"
                 }, {
                     "key": "BONUS_SCRIPT",
-                    "thai": "๐ มีผล {0}[NEW_LINE]^FF2525(เป็นเวลา {1} วินาที)^000000",
-                    "english": "๐ Grant {0}[NEW_LINE]^FF2525(For {1}s)^000000"
+                    "thai": "๐ มีผล {0}[NEW_LINE]^FF2525(เป็นเวลา {1})^000000",
+                    "english": "๐ Grant {0}[NEW_LINE]^FF2525(For {1})^000000"
                 }, {
                     "key": "BONUS_BASE_ATK",
                     "thai": "๐ ฐาน Atk +",
@@ -346,28 +346,28 @@
                     "english": "๐ Neutral SP Recovery +{0}%"
                 }, {
                     "key": "BONUS2_HP_REGEN_RATE",
-                    "thai": "๐ ฟื้นฟู HP +{0} ทุก ๆ {1} วินาที",
-                    "english": "๐ Heal +{0} HP every {1}s"
+                    "thai": "๐ ฟื้นฟู HP +{0} ทุก ๆ {1}",
+                    "english": "๐ Heal +{0} HP every {1}"
                 }, {
                     "key": "BONUS2_HP_LOSS_RATE",
-                    "thai": "๐ เสีย HP +{0} ทุก ๆ {1} วินาที",
-                    "english": "๐ Lose +{0} HP every {1}s"
+                    "thai": "๐ เสีย HP +{0} ทุก ๆ {1}",
+                    "english": "๐ Lose +{0} HP every {1}"
                 }, {
                     "key": "BONUS2_SP_REGEN_RATE",
-                    "thai": "๐ ฟื้นฟู SP +{0} ทุก ๆ {1} วินาที",
-                    "english": "๐ Heal +{0} SP every {1}s"
+                    "thai": "๐ ฟื้นฟู SP +{0} ทุก ๆ {1}",
+                    "english": "๐ Heal +{0} SP every {1}"
                 }, {
                     "key": "BONUS2_SP_LOSS_RATE",
-                    "thai": "๐ เสีย SP +{0} ทุก ๆ {1} วินาที",
-                    "english": "๐ Lose +{0} SP every {1}s"
+                    "thai": "๐ เสีย SP +{0} ทุก ๆ {1}",
+                    "english": "๐ Lose +{0} SP every {1}"
                 }, {
                     "key": "BONUS2_REGEN_PERCENT_HP",
-                    "thai": "๐ ฟื้นฟู +{0}% จาก MaxHP ทุก ๆ {1} วินาที",
-                    "english": "๐ Heal +{0}% from MaxHP every {1}s"
+                    "thai": "๐ ฟื้นฟู +{0}% จาก MaxHP ทุก ๆ {1}",
+                    "english": "๐ Heal +{0}% from MaxHP every {1}"
                 }, {
                     "key": "BONUS2_REGEN_PERCENT_SP",
-                    "thai": "๐ ฟื้นฟู +{0}% จาก MaxSP ทุก ๆ {1} วินาที",
-                    "english": "๐ Heal +{0}% from MaxSP every {1}s"
+                    "thai": "๐ ฟื้นฟู +{0}% จาก MaxSP ทุก ๆ {1}",
+                    "english": "๐ Heal +{0}% from MaxSP every {1}"
                 }, {
                     "key": "BONUS_STOP_HP_REGEN",
                     "thai": "๐ หยุดการฟื้นฟู HP ปกติ",
@@ -514,20 +514,20 @@
                     "english": "๐ {0} Variable Cast +{1}%"
                 }, {
                     "key": "BONUS_FIXED_CAST",
-                    "thai": "๐ ร่าย F. +{0} วินาที",
-                    "english": "๐ Fixed Cast +{0}s"
+                    "thai": "๐ ร่าย F. +{0}",
+                    "english": "๐ Fixed Cast +{0}"
                 }, {
                     "key": "BONUS2_SKILL_FIXED_CAST",
-                    "thai": "๐ ร่าย F. {0} +{1} วินาที",
-                    "english": "๐ {0} Fixed Cast +{1}s"
+                    "thai": "๐ ร่าย F. {0} +{1}",
+                    "english": "๐ {0} Fixed Cast +{1}"
                 }, {
                     "key": "BONUS_VARIABLE_CAST",
-                    "thai": "๐ ร่าย V. +{0} วินาที",
-                    "english": "๐ Variable Cast +{0}s"
+                    "thai": "๐ ร่าย V. +{0}",
+                    "english": "๐ Variable Cast +{0}"
                 }, {
                     "key": "BONUS2_SKILL_VARIABLE_CAST",
-                    "thai": "๐ ร่าย V. {0} +{1} วินาที",
-                    "english": "๐ {0} Variable Cast +{1}s"
+                    "thai": "๐ ร่าย V. {0} +{1}",
+                    "english": "๐ {0} Variable Cast +{1}"
                 }, {
                     "key": "BONUS_NO_CAST_CANCEL_2",
                     "thai": "๐ การร่ายไม่ถูกหยุด",
@@ -542,12 +542,12 @@
                     "english": "๐ Delay after cast +{0}%"
                 }, {
                     "key": "BONUS2_SKILL_DELAY",
-                    "thai": "๐ Delay หลังร่าย {0} +{1} วินาที",
-                    "english": "๐ {0} Delay after cast +{1}s"
+                    "thai": "๐ Delay หลังร่าย {0} +{1}",
+                    "english": "๐ {0} Delay after cast +{1}"
                 }, {
                     "key": "BONUS2_SKILL_COOLDOWN",
-                    "thai": "๐ Cooldown {0} +{1} วินาที",
-                    "english": "๐ {0} Cooldown +{1}s"
+                    "thai": "๐ Cooldown {0} +{1}",
+                    "english": "๐ {0} Cooldown +{1}"
                 }, {
                     "key": "BONUS2_ADD_ELE",
                     "thai": "๐ ตีกายภาพ {0} +{1}%",
@@ -694,12 +694,12 @@
                     "english": "๐ Deal more damage by target Defense {0}"
                 }, {
                     "key": "BONUS4_SET_DEF_RACE",
-                    "thai": "๐ มีโอกาส {1}% ลด DEF เหลือ {3} กับ {0} {2} วินาที",
-                    "english": "๐ Had {1}% chance to decrease target Defense to {3} with {0} for {2}s"
+                    "thai": "๐ มีโอกาส {1}% ลด DEF เหลือ {3} กับ {0} {2}",
+                    "english": "๐ Had {1}% chance to decrease target Defense to {3} with {0} for {2}"
                 }, {
                     "key": "BONUS4_SET_MDEF_RACE",
-                    "thai": "๐ มีโอกาส {1}% ลด MDEF เหลือ {3} กับ {0} {2} วินาที",
-                    "english": "๐ Had {1}% chance to decrease target Magical Defense to {3} with {0} for {2}s"
+                    "thai": "๐ มีโอกาส {1}% ลด MDEF เหลือ {3} กับ {0} {2}",
+                    "english": "๐ Had {1}% chance to decrease target Magical Defense to {3} with {0} for {2}"
                 }, {
                     "key": "BONUS_IGNORE_DEF_ELE",
                     "thai": "๐ ไม่สนใจ DEF {0}",
@@ -770,16 +770,16 @@
                     "english": "๐ When deal damage by {2} had {1}% chance to {0} to target"
                 }, {
                     "key": "BONUS4_ADD_EFF",
-                    "thai": "๐ เมื่อตีโดย {2} มีโอกาส {1}% ที่จะเกิด {0} กับเป้าหมาย {3} วินาที",
-                    "english": "๐ When deal damage by {2} had {1}% chance to {0} to target for {3}s"
+                    "thai": "๐ เมื่อตีโดย {2} มีโอกาส {1}% ที่จะเกิด {0} กับเป้าหมาย {3}",
+                    "english": "๐ When deal damage by {2} had {1}% chance to {0} to target for {3}"
                 }, {
                     "key": "BONUS3_ADD_EFF_WHEN_HIT",
                     "thai": "๐ เมื่อโดนตีโดย {2} มีโอกาส {1}% ที่จะเกิด {0} กับเป้าหมาย",
                     "english": "๐ When received damage by {2} had {1}% chance to {0} to target"
                 }, {
                     "key": "BONUS4_ADD_EFF_WHEN_HIT",
-                    "thai": "๐ เมื่อโดนตีโดย {2} มีโอกาส {1}% ที่จะเกิด {0} กับเป้าหมาย {3} วินาที",
-                    "english": "๐ When received damage by {2} had {1}% chance to {0} to target for {3}s"
+                    "thai": "๐ เมื่อโดนตีโดย {2} มีโอกาส {1}% ที่จะเกิด {0} กับเป้าหมาย {3}",
+                    "english": "๐ When received damage by {2} had {1}% chance to {0} to target for {3}"
                 }, {
                     "key": "BONUS3_ADD_EFF_ON_SKILL",
                     "thai": "๐ เมื่อร่าย {0} มีโอกาส {2}% ที่จะเกิด {1} กับเป้าหมาย",
@@ -790,8 +790,8 @@
                     "english": "๐ When cast {0} with {3} had {2}% chance to {1} to target"
                 }, {
                     "key": "BONUS5_ADD_EFF_ON_SKILL",
-                    "thai": "๐ เมื่อร่าย {0} กับ {3} มีโอกาส {2}% ที่จะเกิด {1} กับเป้าหมาย {4} วินาที",
-                    "english": "๐ When cast {0} with {3} had {2}% chance to {1} to target for {4}s"
+                    "thai": "๐ เมื่อร่าย {0} กับ {3} มีโอกาส {2}% ที่จะเกิด {1} กับเป้าหมาย {4}",
+                    "english": "๐ When cast {0} with {3} had {2}% chance to {1} to target for {4}"
                 }, {
                     "key": "BONUS2_COMA_CLASS",
                     "thai": "๐ เมื่อตี {0} มีโอกาส {1}% ที่จะเกิด Coma",
@@ -902,8 +902,8 @@
                     "english": "๐ When deal damage by {2} had {0}% chance to vanish target SP by {1}%"
                 }, {
                     "key": "BONUS3_STATE_NO_RECOVER_RACE",
-                    "thai": "๐ เมื่อตีกายภาพ {0} มีโอกาส {1}% ที่จะหยุดการฟื้นฟูทุกอย่าง กับเป้าหมาย {2} วินาที",
-                    "english": "๐ When deal Physical Damage {0} had {1}% chance to stop target neutral recovery for {2}s"
+                    "thai": "๐ เมื่อตีกายภาพ {0} มีโอกาส {1}% ที่จะหยุดการฟื้นฟูทุกอย่าง กับเป้าหมาย {2}",
+                    "english": "๐ When deal Physical Damage {0} had {1}% chance to stop target neutral recovery for {2}"
                 }, {
                     "key": "BONUS_HP_GAIN_VALUE",
                     "thai": "๐ ฆ่าด้วยตีกายภาพใกล้ HP +",
@@ -1138,24 +1138,24 @@
                     "english": "๐ Heal {0} HP and {1} SP"
                 }, {
                     "key": "SC_START_4",
-                    "thai": "๐ รับผล {0} เป็นเวลา {1} วินาที",
-                    "english": "๐ Grant {0} for {1}s"
+                    "thai": "๐ รับผล {0} เป็นเวลา {1}",
+                    "english": "๐ Grant {0} for {1}"
                 }, {
                     "key": "SC_START_2",
-                    "thai": "๐ รับผล {0} เป็นเวลา {1} วินาที",
-                    "english": "๐ Grant {0} for {1}s"
+                    "thai": "๐ รับผล {0} เป็นเวลา {1}",
+                    "english": "๐ Grant {0} for {1}"
                 }, {
                     "key": "SC_START",
-                    "thai": "๐ รับผล {0} เป็นเวลา {1} วินาที",
-                    "english": "๐ Grant {0} for {1}s"
+                    "thai": "๐ รับผล {0} เป็นเวลา {1}",
+                    "english": "๐ Grant {0} for {1}"
                 }, {
                     "key": "SC_END",
                     "thai": "๐ ลบผล {0}",
                     "english": "๐ Remove {0}"
                 }, {
                     "key": "ACTIVE_TRANSFORM",
-                    "thai": "๐ แปลงร่างเป็น {0} เป็นเวลา {1} วินาที",
-                    "english": "๐ Transform to {0} for {1}s"
+                    "thai": "๐ แปลงร่างเป็น {0} เป็นเวลา {1}",
+                    "english": "๐ Transform to {0} for {1}"
                 }, {
                     "key": "GET_ITEM",
                     "thai": "๐ รับ {0} {1} ชิ้น",
@@ -1496,6 +1496,22 @@
                     "key": "CONVERT_PROGRESSION_FETCHING_ITEM_SCRIPT_COPIER",
                     "thai": "Fetching item script copier",
                     "english": "Fetching item script copier"
+                }, {
+                    "key": "SECOND_ABBREVIATION",
+                    "thai": " วินาที",
+                    "english": "s"
+                }, {
+                    "key": "MINUTE_ABBREVIATION",
+                    "thai": " นาที",
+                    "english": "m"
+                }, {
+                    "key": "HOUR_ABBREVIATION",
+                    "thai": " ชั่วโมง",
+                    "english": "h"
+                }, {
+                    "key": "DAY_ABBREVIATION",
+                    "thai": " วัน",
+                    "english": "d"
                 }
             ]
         }

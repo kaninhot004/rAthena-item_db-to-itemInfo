@@ -397,6 +397,11 @@ public class Localization : MonoBehaviour
     public const string PET_WITH_CHANCE = "PET_WITH_CHANCE";
     public const string CONVERT_PROGRESSION_FETCHING_PET = "CONVERT_PROGRESSION_FETCHING_PET";
     public const string CONVERT_PROGRESSION_FETCHING_ITEM_SCRIPT_COPIER = "CONVERT_PROGRESSION_FETCHING_ITEM_SCRIPT_COPIER";
+
+    public const string SECOND_ABBREVIATION = "SECOND_ABBREVIATION";
+    public const string MINUTE_ABBREVIATION = "MINUTE_ABBREVIATION";
+    public const string HOUR_ABBREVIATION = "HOUR_ABBREVIATION";
+    public const string DAY_ABBREVIATION = "DAY_ABBREVIATION";
     #endregion
 
     [Serializable]
