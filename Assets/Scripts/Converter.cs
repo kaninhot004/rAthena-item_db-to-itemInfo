@@ -80,6 +80,11 @@ public class Converter : MonoBehaviour
     /// </summary>
     [SerializeField] bool _isUseNewLineInsteadOfCommaForAvailableClass;
     public bool IsUseNewLineInsteadOfCommaForAvailableClass { set { _isUseNewLineInsteadOfCommaForAvailableClass = value; } }
+    /// <summary>
+    /// Is equipment type will print as not have any value?
+    /// </summary>
+    [SerializeField] bool _isEquipmentNoValue;
+    //public bool IsEquipmentNoValue { set { _isEquipmentNoValue = value; } }
 
     // Containers
 
@@ -165,6 +170,8 @@ public class Converter : MonoBehaviour
     /// </summary>
     void OnConvertButtonTap()
     {
+        _isEquipmentNoValue = Input.GetKey(KeyCode.K);
+
         for (int i = 0; i < _objectsToHideWhenConverterStart.Length; i++)
             _objectsToHideWhenConverterStart[i].SetActive(false);
 
@@ -1944,6 +1951,28 @@ public class Converter : MonoBehaviour
                 , _itemContainer.subType
                 , !string.IsNullOrEmpty(_itemContainer.locations) ? _itemContainer.locations.Substring(0, _itemContainer.locations.Length - 2) : string.Empty);
 
+            if (_isEquipmentNoValue)
+            {
+                var itemType = _itemContainer.type.ToLower();
+                if ((itemType == "weapon")
+                    || (itemType == "armor")
+                    || (itemType == "shadowgear")
+                    || (itemType == "ammo"))
+                {
+                    _itemContainer.slots = "0";
+                    _itemContainer.script = string.Empty;
+                    _itemContainer.equipScript = string.Empty;
+                    _itemContainer.unequipScript = string.Empty;
+                    _itemContainer.attack = string.Empty;
+                    _itemContainer.magicAttack = string.Empty;
+                    _itemContainer.defense = string.Empty;
+                    _itemContainer.equipLevelMinimum = string.Empty;
+                    _itemContainer.equipLevelMaximum = string.Empty;
+                    _itemContainer.refinable = _localization.GetTexts(Localization.CAN);
+                    _itemContainer.buy = string.Empty;
+                }
+            }
+
             // Id
             builder.Append("	[" + _itemContainer.id + "] = {\n");
             // Unidentified display name
@@ -2090,7 +2119,8 @@ public class Converter : MonoBehaviour
                 && !string.IsNullOrWhiteSpace(bonuses))
                 builder.Append("			\"————————————\",\n");
 
-            builder.Append(comboBonuses);
+            if (!_isEquipmentNoValue)
+                builder.Append(comboBonuses);
 
             builder.Append(equipBonuses);
 
