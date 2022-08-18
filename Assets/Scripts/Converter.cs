@@ -1959,6 +1959,7 @@ public class Converter : MonoBehaviour
                     || (itemType == "shadowgear")
                     || (itemType == "ammo"))
                 {
+                    _itemContainer.classes = GetAvailableClassBullet + _localization.GetTexts(Localization.CLASSES_ALL_CLASS);
                     _itemContainer.slots = "0";
                     _itemContainer.script = string.Empty;
                     _itemContainer.equipScript = string.Empty;

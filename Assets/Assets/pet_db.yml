@@ -1198,7 +1198,7 @@ Body:
     IntimacyOwnerDie: 0
     CaptureRate: 50
     SpecialPerformance: false
-  - Mob: C4_ALICEL
+  - Mob: J_TAINI
     EggItem: Egg_Of_Tiny
     FoodItem: Apple
     Fullness: 3
