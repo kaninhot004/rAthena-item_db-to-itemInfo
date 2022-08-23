@@ -14,6 +14,10 @@ public class Localization : MonoBehaviour
 
     public const string THAI = "THAI";
     public const string ENGLISH = "ENGLISH";
+    public const string JAPANESE = "JAPANESE";
+    public const string TRADITIONAL_CHINESE = "TRADITIONAL_CHINESE";
+    public const string SIMPIFIED_CHINESE = "SIMPIFIED_CHINESE";
+    public const string KOREAN = "KOREAN";
 
     public const string ERROR = "ERROR";
     public const string NOT_FOUND = "NOT_FOUND";
@@ -420,6 +424,10 @@ public class Localization : MonoBehaviour
                 public string key;
                 public string thai;
                 public string english;
+                public string japanese;
+                public string traditionalChinese;
+                public string simpifiedChinese;
+                public string korean;
             }
         }
 
@@ -478,6 +486,10 @@ public class Localization : MonoBehaviour
                             LocalizationDatabase.Data data = new LocalizationDatabase.Data();
                             data.thai = jsonData.datas[i].keyDatas[j].thai;
                             data.english = jsonData.datas[i].keyDatas[j].english;
+                            data.japanese = jsonData.datas[i].keyDatas[j].japanese;
+                            data.traditionalChinese = jsonData.datas[i].keyDatas[j].traditionalChinese;
+                            data.simpifiedChinese = jsonData.datas[i].keyDatas[j].simpifiedChinese;
+                            data.korean = jsonData.datas[i].keyDatas[j].korean;
 
                             _currentLocalizationDatabase.datas.Add(jsonData.datas[i].keyDatas[j].key, data);
                         }
@@ -500,6 +512,14 @@ public class Localization : MonoBehaviour
                 return _currentLocalizationDatabase.datas[key].thai;
             else if (_currentLanguage == ENGLISH)
                 return _currentLocalizationDatabase.datas[key].english;
+            else if (_currentLanguage == JAPANESE)
+                return _currentLocalizationDatabase.datas[key].japanese;
+            else if (_currentLanguage == TRADITIONAL_CHINESE)
+                return _currentLocalizationDatabase.datas[key].traditionalChinese;
+            else if (_currentLanguage == SIMPIFIED_CHINESE)
+                return _currentLocalizationDatabase.datas[key].simpifiedChinese;
+            else if (_currentLanguage == KOREAN)
+                return _currentLocalizationDatabase.datas[key].korean;
             else
                 return string.Empty;
         }
@@ -527,6 +547,22 @@ public class Localization : MonoBehaviour
         Dropdown.OptionData dropdownOption2 = new Dropdown.OptionData();
         dropdownOption2.text = "English";
         dropdownList.Add(dropdownOption2);
+
+        Dropdown.OptionData dropdownOption3 = new Dropdown.OptionData();
+        dropdownOption3.text = "Japanese";
+        dropdownList.Add(dropdownOption3);
+
+        Dropdown.OptionData dropdownOption4 = new Dropdown.OptionData();
+        dropdownOption4.text = "Traditional Chinese";
+        dropdownList.Add(dropdownOption4);
+
+        Dropdown.OptionData dropdownOption5 = new Dropdown.OptionData();
+        dropdownOption5.text = "Simpified Chinese";
+        dropdownList.Add(dropdownOption5);
+
+        Dropdown.OptionData dropdownOption6 = new Dropdown.OptionData();
+        dropdownOption6.text = "Korean";
+        dropdownList.Add(dropdownOption6);
 
         _languageDropdown.AddOptions(dropdownList);
 
