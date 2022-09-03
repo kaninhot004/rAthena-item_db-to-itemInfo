@@ -25,6 +25,7 @@ public class ItemContainer
     public string equipLevelMinimum = string.Empty;
     public string equipLevelMaximum = string.Empty;
     public string refinable = string.Empty;
+    public string grable = string.Empty;
     public string view = string.Empty;
     public bool isScript = false;
     public string script = string.Empty;

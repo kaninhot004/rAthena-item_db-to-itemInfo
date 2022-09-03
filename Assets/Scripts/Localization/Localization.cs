@@ -87,6 +87,7 @@ public class Localization : MonoBehaviour
     public const string MINIMUM_EQUIP_LEVEL = "MINIMUM_EQUIP_LEVEL";
     public const string MAXIMUM_EQUIP_LEVEL = "MAXIMUM_EQUIP_LEVEL";
     public const string REFINABLE = "REFINABLE";
+    public const string GRADABLE = "GRADABLE";
     public const string WEIGHT = "WEIGHT";
     public const string PRICE = "PRICE";
 

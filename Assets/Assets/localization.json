@@ -3024,6 +3024,14 @@
                     "traditionalChinese": "-",
                     "simpifiedChinese": "-",
                     "korean": "-"
+                }, {
+                    "key": "GRADABLE",
+                    "thai": "Grade",
+                    "english": "Grade",
+                    "japanese": "Grade",
+                    "traditionalChinese": "Grade",
+                    "simpifiedChinese": "Grade",
+                    "korean": "Grade"
                 }
             ]
         }

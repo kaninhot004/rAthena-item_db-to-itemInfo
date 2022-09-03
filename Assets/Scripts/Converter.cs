@@ -1875,6 +1875,11 @@ public class Converter : MonoBehaviour
                 _itemContainer.refinable = _localization.GetTexts(Localization.CAN);
             else if (text.Contains("    Refineable: false"))
                 _itemContainer.refinable = _localization.GetTexts(Localization.CANNOT);
+            // Gradable
+            else if (text.Contains("    Gradable: true"))
+                _itemContainer.grable = _localization.GetTexts(Localization.CAN);
+            else if (text.Contains("    Gradable: false"))
+                _itemContainer.grable = _localization.GetTexts(Localization.CANNOT);
             // View
             else if (text.Contains("    View:"))
             {
@@ -1972,6 +1977,7 @@ public class Converter : MonoBehaviour
                     _itemContainer.equipLevelMinimum = string.Empty;
                     _itemContainer.equipLevelMaximum = string.Empty;
                     _itemContainer.refinable = _localization.GetTexts(Localization.CAN);
+                    _itemContainer.grable = _localization.GetTexts(Localization.CAN);
                     _itemContainer.buy = string.Empty;
                 }
             }
@@ -2105,6 +2111,11 @@ public class Converter : MonoBehaviour
                 description += "			\"^3F28FF" + _localization.GetTexts(Localization.REFINABLE) + ":^000000 " + _itemContainer.refinable + "\",\n";
             else if (_isZeroValuePrintable)
                 description += "			\"^3F28FF" + _localization.GetTexts(Localization.REFINABLE) + ":^000000 -\",\n";
+
+            if (!string.IsNullOrEmpty(_itemContainer.grable))
+                description += "			\"^3F28FF" + _localization.GetTexts(Localization.GRADABLE) + ":^000000 " + _itemContainer.grable + "\",\n";
+            else if (_isZeroValuePrintable)
+                description += "			\"^3F28FF" + _localization.GetTexts(Localization.GRADABLE) + ":^000000 -\",\n";
 
             if (!string.IsNullOrEmpty(_itemContainer.weight))
                 description += "			\"^3F28FF" + _localization.GetTexts(Localization.WEIGHT) + ":^000000 " + _itemContainer.weight + "\",\n";
