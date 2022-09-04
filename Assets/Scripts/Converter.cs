@@ -4459,9 +4459,12 @@ public class Converter : MonoBehaviour
         else
         {
             var itemId = 0;
-            if (_aegisNameDatabases.ContainsKey(text))
+
+            var textLower = text.ToLower();
+
+            if (_aegisNameDatabases.ContainsKey(textLower))
             {
-                itemId = _aegisNameDatabases[text];
+                itemId = _aegisNameDatabases[textLower];
 
                 if (_itemDatabases.ContainsKey(itemId))
                     return _itemDatabases[itemId].name;
@@ -4475,11 +4478,13 @@ public class Converter : MonoBehaviour
     {
         text = SpacingRemover.Remove(text);
 
-        if (_aegisNameDatabases.ContainsKey(text))
-            return _aegisNameDatabases[text];
+        var textLower = text.ToLower();
+
+        if (_aegisNameDatabases.ContainsKey(textLower))
+            return _aegisNameDatabases[textLower];
         else
         {
-            Debug.LogWarning(text + " not found in aegisNameDatabases");
+            Debug.LogWarning(textLower + " not found in aegisNameDatabases");
 
             return 0;
         }
