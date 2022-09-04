@@ -9,9 +9,6 @@ using System.IO;
 public class Localization : MonoBehaviour
 {
     #region Constant
-    public const int UTF8 = 0;
-    public const int ANSI = 1;
-
     public const string THAI = "THAI";
     public const string ENGLISH = "ENGLISH";
     public const string JAPANESE = "JAPANESE";
@@ -431,24 +428,16 @@ public class Localization : MonoBehaviour
                 public string korean;
             }
         }
-
     }
 
-    [SerializeField] Dropdown _encodingDropdown;
     [SerializeField] Dropdown _languageDropdown;
 
     string _currentLanguage;
     LocalizationDatabase _currentLocalizationDatabase = new LocalizationDatabase();
 
-    int _currentEncoding;
-    public bool IsUsingANSI { get { return _currentEncoding == ANSI; } }
-    public bool IsUsingUTF8 { get { return _currentEncoding == UTF8; } }
-
     void Start()
     {
         ParseJson();
-
-        EncodingDropdownSetup();
 
         LanguageDropdownSetup();
     }
@@ -579,37 +568,6 @@ public class Localization : MonoBehaviour
         else if (option == 1)
             SetupLanguage(ENGLISH);
     }
-    void EncodingDropdownSetup()
-    {
-        List<Dropdown.OptionData> dropdownList = new List<Dropdown.OptionData>();
 
-        Dropdown.OptionData dropdownOption1 = new Dropdown.OptionData();
-        dropdownOption1.text = "UTF8 (Best)";
-        dropdownList.Add(dropdownOption1);
-
-        Dropdown.OptionData dropdownOption2 = new Dropdown.OptionData();
-        dropdownOption2.text = "ANSI";
-        dropdownList.Add(dropdownOption2);
-
-        _encodingDropdown.AddOptions(dropdownList);
-
-        _encodingDropdown.value = 0;
-        _currentEncoding = 0;
-
-        _encodingDropdown.onValueChanged.AddListener(OnEncodingChanged);
-    }
-    void OnEncodingChanged(int option)
-    {
-        _currentEncoding = option;
-    }
-
-    public Encoding GetCurrentEncoding
-    {
-        get
-        {
-            return IsUsingANSI
-                ? Encoding.GetEncoding(51949)
-                : Encoding.Default;
-        }
-    }
+    public Encoding GetCurrentEncoding { get { return Encoding.Default; } }
 }

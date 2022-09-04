@@ -911,7 +911,7 @@ public class Converter : MonoBehaviour
     /// </summary>
     void FetchResourceName()
     {
-        var path = Application.dataPath + "/Assets/resourceName" + (_localization.IsUsingANSI ? "ANSI" : string.Empty) + ".txt";
+        var path = Application.dataPath + "/Assets/resourceName.txt";
 
         // Is file exists?
         if (!File.Exists(path))
@@ -925,7 +925,7 @@ public class Converter : MonoBehaviour
             return;
         }
 
-        var resourceNamesFile = File.ReadAllText(path, _localization.IsUsingANSI ? Encoding.GetEncoding(51949) : Encoding.UTF8);
+        var resourceNamesFile = File.ReadAllText(path, Encoding.UTF8);
 
         var resourceNames = resourceNamesFile.Split('\n');
 
@@ -1010,7 +1010,7 @@ public class Converter : MonoBehaviour
             else if (text.Contains("- Combo:"))
                 comboDatabase.sameComboDatas.Add(new ComboDatabase.SameComboData());
             else if (text.Contains("          - "))
-                comboDatabase.sameComboDatas[comboDatabase.sameComboDatas.Count - 1].aegisNames.Add(SpacingRemover.Remove(QuoteRemover.Remove(text.Replace("          - ", string.Empty))));
+                comboDatabase.sameComboDatas[comboDatabase.sameComboDatas.Count - 1].aegisNames.Add(SpacingRemover.Remove(QuoteRemover.Remove(text.Replace("          - ", string.Empty))).ToLower());
             else if (text.Contains("Script: |"))
                 isScript = true;
             else if (isScript)
@@ -1171,7 +1171,7 @@ public class Converter : MonoBehaviour
                 // To prevent some aegis name that had double spacebar format
                 _name = SpacingRemover.Remove(_name);
 
-                itemDatabase.aegisName = _name;
+                itemDatabase.aegisName = _name.ToLower();
             }
             else if (text.Contains("    Name:"))
             {
@@ -2232,11 +2232,6 @@ public class Converter : MonoBehaviour
         finalize = finalize.Replace("   ๐", "๐");
         finalize = finalize.Replace("  ๐", "๐");
         finalize = finalize.Replace(" ๐", "๐");
-
-        if (_localization.IsUsingANSI)
-            finalize = finalize.Replace("๐", "^5D2799-^000000");
-        if (!_localization.IsUsingUTF8)
-            finalize = finalize.Replace("—", "-");
 
         // Write it out
         File.WriteAllText("itemInfo_Sak.lub", finalize, _localization.GetCurrentEncoding);
@@ -4407,7 +4402,7 @@ public class Converter : MonoBehaviour
                         // Add item name
                         for (int k = 0; k < currentSameComboData.aegisNames.Count; k++)
                         {
-                            var currentAegisName = currentSameComboData.aegisNames[k];
+                            var currentAegisName = currentSameComboData.aegisNames[k].ToLower();
 
                             // Should not add base item name
                             if (currentAegisName == aegisName)
@@ -4848,9 +4843,9 @@ public class Converter : MonoBehaviour
     }
 
     string GetAvailableJobSeperator { get { return _isUseNewLineInsteadOfCommaForAvailableJob ? "[NEW_LINE]" : ", "; } }
-    string GetAvailableJobBullet { get { return _isUseNewLineInsteadOfCommaForAvailableJob ? (_localization.IsUsingANSI ? "- " : "— ") : string.Empty; } }
+    string GetAvailableJobBullet { get { return _isUseNewLineInsteadOfCommaForAvailableJob ? "— " : string.Empty; } }
     string GetAvailableClassSeperator { get { return _isUseNewLineInsteadOfCommaForAvailableClass ? "[NEW_LINE]" : ", "; } }
-    string GetAvailableClassBullet { get { return _isUseNewLineInsteadOfCommaForAvailableClass ? (_localization.IsUsingANSI ? "- " : "— ") : string.Empty; } }
+    string GetAvailableClassBullet { get { return _isUseNewLineInsteadOfCommaForAvailableClass ? "— " : string.Empty; } }
 
     /// <summary>
     /// Get monster database by ID

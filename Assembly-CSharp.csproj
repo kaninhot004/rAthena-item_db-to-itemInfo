@@ -87,7 +87,6 @@
     <None Include="Assets\DLL\I18N.Other.dll" />
     <None Include="Assets\Assets\item_db_test.txt" />
     <None Include="Assets\DLL\I18N.MidEast.dll" />
-    <None Include="Assets\Assets\resourceNameANSI.txt" />
     <None Include="Assets\DLL\I18N.Rare.dll" />
     <None Include="Assets\Assets\item_db_custom.txt" />
     <None Include="Assets\DLL\I18N.dll" />
