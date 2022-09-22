@@ -81,6 +81,16 @@ public class Converter : MonoBehaviour
     [SerializeField] bool _isUseNewLineInsteadOfCommaForAvailableClass;
     public bool IsUseNewLineInsteadOfCommaForAvailableClass { set { _isUseNewLineInsteadOfCommaForAvailableClass = value; } }
     /// <summary>
+    /// Is print item id?
+    /// </summary>
+    [SerializeField] bool _isHideItemId;
+    public bool IsHideItemId { set { _isHideItemId = value; } }
+    /// <summary>
+    /// Is print sub-type?
+    /// </summary>
+    [SerializeField] bool _isHideSubType;
+    public bool IsHideSubType { set { _isHideSubType = value; } }
+    /// <summary>
     /// Is equipment type will print as not have any value?
     /// </summary>
     [SerializeField] bool _isEquipmentNoValue;
@@ -2025,13 +2035,18 @@ public class Converter : MonoBehaviour
                 + _itemContainer.unequipScript
                 : string.Empty;
 
-            var description = "			\"^3F28FFID:^000000 " + _itemContainer.id + "\",\n"
+            var description = (!_isHideItemId
+                ? "			\"^3F28FFID:^000000 " + _itemContainer.id + "\",\n"
+                : string.Empty)
                 + "			\"^3F28FF" + _localization.GetTexts(Localization.TYPE) + ":^000000 " + _itemContainer.type + "\",\n";
 
-            if (!string.IsNullOrEmpty(_itemContainer.subType))
-                description += "			\"^3F28FF" + _localization.GetTexts(Localization.SUB_TYPE) + ":^000000 " + _itemContainer.subType + "\",\n";
-            else if (_isZeroValuePrintable)
-                description += "			\"^3F28FF" + _localization.GetTexts(Localization.SUB_TYPE) + ":^000000 -\",\n";
+            if (!_isHideSubType)
+            {
+                if (!string.IsNullOrEmpty(_itemContainer.subType))
+                    description += "			\"^3F28FF" + _localization.GetTexts(Localization.SUB_TYPE) + ":^000000 " + _itemContainer.subType + "\",\n";
+                else if (_isZeroValuePrintable)
+                    description += "			\"^3F28FF" + _localization.GetTexts(Localization.SUB_TYPE) + ":^000000 -\",\n";
+            }
 
             if (!string.IsNullOrEmpty(_itemContainer.locations))
                 description += "			\"^3F28FF" + _localization.GetTexts(Localization.LOCATION) + ":^000000 " + _itemContainer.locations.Substring(0, _itemContainer.locations.Length - 2) + "\",\n";

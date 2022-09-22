@@ -5,6 +5,9 @@ using UnityEngine.UI;
 
 public class Settings : MonoBehaviour
 {
+    const string ITEM_ID_TOGGLE = "IsPrintItemId";
+    const string SUB_TYPE_TOGGLE = "IsPrintSubType";
+
     [SerializeField] Button _openSettingButton;
     [SerializeField] GameObject _settingCanvasObject;
     [SerializeField] Button _closeSettingButton;
@@ -16,6 +19,8 @@ public class Settings : MonoBehaviour
     [SerializeField] Toggle _randomResourceNameForCustomItemOnlyToggle;
     [SerializeField] Toggle _newLineForAvailableJobToggle;
     [SerializeField] Toggle _newLineForAvailableClassToggle;
+    [SerializeField] Toggle _itemIdToggle;
+    [SerializeField] Toggle _subTypeToggle;
 
     [SerializeField] Converter _converter;
 
@@ -33,6 +38,8 @@ public class Settings : MonoBehaviour
         _randomResourceNameForCustomItemOnlyToggle.isOn = (PlayerPrefs.GetInt("IsRandomResourceNameForCustomTextAssetOnly") == 1) ? true : false;
         _newLineForAvailableJobToggle.isOn = (PlayerPrefs.GetInt("IsUseNewLineInsteadOfCommaForAvailableJob") == 1) ? true : false;
         _newLineForAvailableClassToggle.isOn = (PlayerPrefs.GetInt("IsUseNewLineInsteadOfCommaForAvailableClass") == 1) ? true : false;
+        _itemIdToggle.isOn = (PlayerPrefs.GetInt(ITEM_ID_TOGGLE) == 1) ? true : false;
+        _subTypeToggle.isOn = (PlayerPrefs.GetInt(SUB_TYPE_TOGGLE) == 1) ? true : false;
         _converter.IsZeroValuePrintAble = _printZeroValueToggle.isOn;
         _converter.IsOnlyUseTestTextAsset = _onlyPrintTestItemToggle.isOn;
         _converter.IsOnlyUseCustomTextAsset = _onlyPrintCustomItemToggle.isOn;
@@ -40,6 +47,8 @@ public class Settings : MonoBehaviour
         _converter.IsRandomResourceNameForCustomTextAssetOnly = _randomResourceNameForCustomItemOnlyToggle.isOn;
         _converter.IsUseNewLineInsteadOfCommaForAvailableJob = _newLineForAvailableJobToggle.isOn;
         _converter.IsUseNewLineInsteadOfCommaForAvailableClass = _newLineForAvailableClassToggle.isOn;
+        _converter.IsHideItemId = _itemIdToggle.isOn;
+        _converter.IsHideSubType = _subTypeToggle.isOn;
 
         // Add Toggle Listener
         _printZeroValueToggle.onValueChanged.AddListener(OnPrintZeroValueToggle);
@@ -49,6 +58,20 @@ public class Settings : MonoBehaviour
         _randomResourceNameForCustomItemOnlyToggle.onValueChanged.AddListener(OnRandomResourceNameForCustomItemOnlyToggle);
         _newLineForAvailableJobToggle.onValueChanged.AddListener(OnNewLineForAvailableJobToggle);
         _newLineForAvailableClassToggle.onValueChanged.AddListener(OnNewLineForAvailableClassToggle);
+        _itemIdToggle.onValueChanged.AddListener(OnItemIdToggle);
+        _subTypeToggle.onValueChanged.AddListener(OnSubTypeToggle);
+    }
+    void OnSubTypeToggle(bool isOn)
+    {
+        PlayerPrefs.SetInt(SUB_TYPE_TOGGLE, isOn ? 1 : 0);
+        PlayerPrefs.Save();
+        _converter.IsHideSubType = isOn;
+    }
+    void OnItemIdToggle(bool isOn)
+    {
+        PlayerPrefs.SetInt(ITEM_ID_TOGGLE, isOn ? 1 : 0);
+        PlayerPrefs.Save();
+        _converter.IsHideItemId = isOn;
     }
     void OnNewLineForAvailableClassToggle(bool isOn)
     {
