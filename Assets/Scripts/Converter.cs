@@ -94,9 +94,10 @@ public class Converter : MonoBehaviour
     /// Is equipment type will print as not have any value?
     /// </summary>
     [SerializeField] bool _isEquipmentNoValue;
-    //public bool IsEquipmentNoValue { set { _isEquipmentNoValue = value; } }
-
-    // Containers
+    /// <summary>
+    /// Is enchantment able to use?
+    /// </summary>
+    [SerializeField] bool _isEnchantmentAbleToUse;
 
     /// <summary>
     /// Container for 1 item, use while parsing from item_db
@@ -181,6 +182,7 @@ public class Converter : MonoBehaviour
     void OnConvertButtonTap()
     {
         _isEquipmentNoValue = Input.GetKey(KeyCode.K);
+        _isEnchantmentAbleToUse = Input.GetKey(KeyCode.Alpha4);
 
         for (int i = 0; i < _objectsToHideWhenConverterStart.Length; i++)
             _objectsToHideWhenConverterStart[i].SetActive(false);
@@ -1352,6 +1354,8 @@ public class Converter : MonoBehaviour
     {
         if (File.Exists("itemInfo_Sak.lub"))
             File.Delete("itemInfo_Sak.lub");
+        if (File.Exists("itemInfo_true.lub"))
+            File.Delete("itemInfo_true.lub");
 
         var path = Application.dataPath + "/Assets/item_db_equip.yml";
         var path2 = Application.dataPath + "/Assets/item_db_usable.yml";
@@ -2142,6 +2146,10 @@ public class Converter : MonoBehaviour
             else if (_isZeroValuePrintable)
                 description += "			\"^3F28FF" + _localization.GetTexts(Localization.PRICE) + ":^000000 -\",\n";
 
+            if (_isEnchantmentAbleToUse
+                && (_itemContainer.subType == "Enchant"))
+                builder.Append("			\"^9390C5กดใช้เพื่อ ผนึกใส่ อุปกรณ์สวมใส่ที่ไม่มีรู^000000\",\n");
+
             builder.Append(bonuses);
 
             if (!string.IsNullOrEmpty(bonuses)
@@ -2242,16 +2250,17 @@ public class Converter : MonoBehaviour
         finalize = finalize.Replace(_localization.GetTexts(Localization.WITH) + " ITEMINFO_VIEW )", _localization.GetTexts(Localization.TYPE) + ")");
 
         // Spacing fix
-        finalize = finalize.Replace("     ๐", "๐");
-        finalize = finalize.Replace("    ๐", "๐");
-        finalize = finalize.Replace("   ๐", "๐");
-        finalize = finalize.Replace("  ๐", "๐");
-        finalize = finalize.Replace(" ๐", "๐");
+        finalize = finalize.Replace("     •", "•");
+        finalize = finalize.Replace("    •", "•");
+        finalize = finalize.Replace("   •", "•");
+        finalize = finalize.Replace("  •", "•");
+        finalize = finalize.Replace(" •", "•");
 
         // Write it out
         File.WriteAllText("itemInfo_Sak.lub", finalize, _localization.GetCurrentEncoding);
+        File.WriteAllText("itemInfo_true.lub", finalize, _localization.GetCurrentEncoding);
 
-        Debug.Log("'itemInfo_Sak.lub' has been successfully created.");
+        Debug.Log("Files has been successfully created.");
 
         ExportItemLists();
 
@@ -2405,13 +2414,13 @@ public class Converter : MonoBehaviour
 
             if (!string.IsNullOrEmpty(bonuses) || !string.IsNullOrWhiteSpace(bonuses))
             {
-                bonuses = bonuses.Replace("๐", "[NEW_LINE]๐");
+                bonuses = bonuses.Replace("•", "[NEW_LINE]•");
                 bonuses = bonuses.Replace("^FF2525", "[NEW_LINE]^FF2525");
 
                 int number = 1;
-                while (bonuses.Contains("๐"))
+                while (bonuses.Contains("•"))
                 {
-                    bonuses = ReplaceOneTime.ReplaceNow(bonuses, "๐", number.ToString("f0") + ".)");
+                    bonuses = ReplaceOneTime.ReplaceNow(bonuses, "•", number.ToString("f0") + ".)");
 
                     number++;
                 }
@@ -2476,13 +2485,13 @@ public class Converter : MonoBehaviour
 
             if (!string.IsNullOrEmpty(bonuses) || !string.IsNullOrWhiteSpace(bonuses))
             {
-                bonuses = bonuses.Replace("๐", "[NEW_LINE]๐");
+                bonuses = bonuses.Replace("•", "[NEW_LINE]•");
                 bonuses = bonuses.Replace("^FF2525", "[NEW_LINE]^FF2525");
 
                 int number = 1;
-                while (bonuses.Contains("๐"))
+                while (bonuses.Contains("•"))
                 {
-                    bonuses = ReplaceOneTime.ReplaceNow(bonuses, "๐", number.ToString("f0") + ".)");
+                    bonuses = ReplaceOneTime.ReplaceNow(bonuses, "•", number.ToString("f0") + ".)");
 
                     number++;
                 }
@@ -2546,13 +2555,13 @@ public class Converter : MonoBehaviour
 
             if (!string.IsNullOrEmpty(bonuses) || !string.IsNullOrWhiteSpace(bonuses))
             {
-                bonuses = bonuses.Replace("๐", "[NEW_LINE]๐");
+                bonuses = bonuses.Replace("•", "[NEW_LINE]•");
                 bonuses = bonuses.Replace("^FF2525", "[NEW_LINE]^FF2525");
 
                 int number = 1;
-                while (bonuses.Contains("๐"))
+                while (bonuses.Contains("•"))
                 {
-                    bonuses = ReplaceOneTime.ReplaceNow(bonuses, "๐", number.ToString("f0") + ".)");
+                    bonuses = ReplaceOneTime.ReplaceNow(bonuses, "•", number.ToString("f0") + ".)");
 
                     number++;
                 }
@@ -2593,13 +2602,13 @@ public class Converter : MonoBehaviour
 
             if (!string.IsNullOrEmpty(bonuses) || !string.IsNullOrWhiteSpace(bonuses))
             {
-                bonuses = bonuses.Replace("๐", "[NEW_LINE]๐");
+                bonuses = bonuses.Replace("•", "[NEW_LINE]•");
                 bonuses = bonuses.Replace("^FF2525", "[NEW_LINE]^FF2525");
 
                 int number = 1;
-                while (bonuses.Contains("๐"))
+                while (bonuses.Contains("•"))
                 {
-                    bonuses = ReplaceOneTime.ReplaceNow(bonuses, "๐", number.ToString("f0") + ".)");
+                    bonuses = ReplaceOneTime.ReplaceNow(bonuses, "•", number.ToString("f0") + ".)");
 
                     number++;
                 }
@@ -2618,54 +2627,54 @@ public class Converter : MonoBehaviour
         text = text.Replace("UnEquipScript: |", "^666478[" + _localization.GetTexts(Localization.WHEN_UNEQUIP) + "]^000000");
         text = text.Replace("EquipScript: |", "^666478[" + _localization.GetTexts(Localization.WHEN_EQUIP) + "]^000000");
 
-        text = text.Replace("bonus bStr,", "๐ Str +");
-        text = text.Replace("bonus bAgi,", "๐ Agi +");
-        text = text.Replace("bonus bVit,", "๐ Vit +");
-        text = text.Replace("bonus bInt,", "๐ Int +");
-        text = text.Replace("bonus bDex,", "๐ Dex +");
-        text = text.Replace("bonus bLuk,", "๐ Luk +");
-        text = text.Replace("bonus bAllStats,", "๐ All Status +");
-        text = text.Replace("bonus bAgiVit,", "๐ Agi, Vit +");
-        text = text.Replace("bonus bAgiDexStr,", "๐ Agi, Dex, Str +");
+        text = text.Replace("bonus bStr,", "• Str +");
+        text = text.Replace("bonus bAgi,", "• Agi +");
+        text = text.Replace("bonus bVit,", "• Vit +");
+        text = text.Replace("bonus bInt,", "• Int +");
+        text = text.Replace("bonus bDex,", "• Dex +");
+        text = text.Replace("bonus bLuk,", "• Luk +");
+        text = text.Replace("bonus bAllStats,", "• All Status +");
+        text = text.Replace("bonus bAgiVit,", "• Agi, Vit +");
+        text = text.Replace("bonus bAgiDexStr,", "• Agi, Dex, Str +");
 
-        text = text.Replace("bonus bPow,", "๐ Pow +");
-        text = text.Replace("bonus bSta,", "๐ Sta +");
-        text = text.Replace("bonus bWis,", "๐ Wis +");
-        text = text.Replace("bonus bSpl,", "๐ Spl +");
-        text = text.Replace("bonus bCon,", "๐ Con +");
-        text = text.Replace("bonus bCrt,", "๐ Crt +");
-        text = text.Replace("bonus bAllTraitStats,", "๐ All Trait +");
+        text = text.Replace("bonus bPow,", "• Pow +");
+        text = text.Replace("bonus bSta,", "• Sta +");
+        text = text.Replace("bonus bWis,", "• Wis +");
+        text = text.Replace("bonus bSpl,", "• Spl +");
+        text = text.Replace("bonus bCon,", "• Con +");
+        text = text.Replace("bonus bCrt,", "• Crt +");
+        text = text.Replace("bonus bAllTraitStats,", "• All Trait +");
 
-        text = text.Replace("bonus bMaxHP,", "๐ MaxHP +");
+        text = text.Replace("bonus bMaxHP,", "• MaxHP +");
         if (text.Contains("bonus bMaxHPrate,"))
         {
             var temp = text.Replace("bonus bMaxHPrate,", string.Empty);
             var temps = temp.Split(',');
-            text = string.Format("๐ MaxHP +{0}%", TryParseInt(temps[0]));
+            text = string.Format("• MaxHP +{0}%", TryParseInt(temps[0]));
         }
-        text = text.Replace("bonus bMaxSP,", "๐ MaxSP +");
+        text = text.Replace("bonus bMaxSP,", "• MaxSP +");
         if (text.Contains("bonus bMaxSPrate,"))
         {
             var temp = text.Replace("bonus bMaxSPrate,", string.Empty);
             var temps = temp.Split(',');
-            text = string.Format("๐ MaxSP +{0}%", TryParseInt(temps[0]));
+            text = string.Format("• MaxSP +{0}%", TryParseInt(temps[0]));
         }
-        text = text.Replace("bonus bMaxAP,", "๐ MaxAP +");
+        text = text.Replace("bonus bMaxAP,", "• MaxAP +");
         if (text.Contains("bonus bMaxAPrate,"))
         {
             var temp = text.Replace("bonus bMaxAPrate,", string.Empty);
             var temps = temp.Split(',');
-            text = string.Format("๐ MaxAP +{0}%", TryParseInt(temps[0]));
+            text = string.Format("• MaxAP +{0}%", TryParseInt(temps[0]));
         }
 
         text = text.Replace("bonus bBaseAtk,", _localization.GetTexts(Localization.BONUS_BASE_ATK));
-        text = text.Replace("bonus bAtk,", "๐ Atk +");
-        text = text.Replace("bonus bAtk2,", "๐ Atk +");
+        text = text.Replace("bonus bAtk,", "• Atk +");
+        text = text.Replace("bonus bAtk2,", "• Atk +");
         if (text.Contains("bonus bAtkRate,"))
         {
             var temp = text.Replace("bonus bAtkRate,", string.Empty);
             var temps = temp.Split(',');
-            text = string.Format("๐ Atk +{0}%", TryParseInt(temps[0]));
+            text = string.Format("• Atk +{0}%", TryParseInt(temps[0]));
         }
         if (text.Contains("bonus bWeaponAtkRate,"))
         {
@@ -2673,12 +2682,12 @@ public class Converter : MonoBehaviour
             var temps = temp.Split(',');
             text = string.Format(_localization.GetTexts(Localization.BONUS_WEAPON_ATK_RATE), TryParseInt(temps[0]));
         }
-        text = text.Replace("bonus bMatk,", "๐ MAtk +");
+        text = text.Replace("bonus bMatk,", "• MAtk +");
         if (text.Contains("bonus bMatkRate,"))
         {
             var temp = text.Replace("bonus bMatkRate,", string.Empty);
             var temps = temp.Split(',');
-            text = string.Format("๐ MAtk +{0}%", TryParseInt(temps[0]));
+            text = string.Format("• MAtk +{0}%", TryParseInt(temps[0]));
         }
         if (text.Contains("bonus bWeaponMatkRate,"))
         {
@@ -2686,12 +2695,12 @@ public class Converter : MonoBehaviour
             var temps = temp.Split(',');
             text = string.Format(_localization.GetTexts(Localization.BONUS_WEAPON_MATK_RATE), TryParseInt(temps[0]));
         }
-        text = text.Replace("bonus bDef,", "๐ Def +");
+        text = text.Replace("bonus bDef,", "• Def +");
         if (text.Contains("bonus bDefRate,"))
         {
             var temp = text.Replace("bonus bDefRate,", string.Empty);
             var temps = temp.Split(',');
-            text = string.Format("๐ Def +{0}%", TryParseInt(temps[0]));
+            text = string.Format("• Def +{0}%", TryParseInt(temps[0]));
         }
         text = text.Replace("bonus bDef2,", _localization.GetTexts(Localization.BONUS_DEF2));
         if (text.Contains("bonus bDef2Rate,"))
@@ -2700,12 +2709,12 @@ public class Converter : MonoBehaviour
             var temps = temp.Split(',');
             text = string.Format(_localization.GetTexts(Localization.BONUS_DEF2_RATE), TryParseInt(temps[0]));
         }
-        text = text.Replace("bonus bMdef,", "๐ MDef +");
+        text = text.Replace("bonus bMdef,", "• MDef +");
         if (text.Contains("bonus bMdefRate,"))
         {
             var temp = text.Replace("bonus bMdefRate,", string.Empty);
             var temps = temp.Split(',');
-            text = string.Format("๐ MDef +{0}%", TryParseInt(temps[0]));
+            text = string.Format("• MDef +{0}%", TryParseInt(temps[0]));
         }
         text = text.Replace("bonus bMdef2,", _localization.GetTexts(Localization.BONUS_MDEF2));
         if (text.Contains("bonus bMdef2Rate,"))
@@ -2714,14 +2723,14 @@ public class Converter : MonoBehaviour
             var temps = temp.Split(',');
             text = string.Format(_localization.GetTexts(Localization.BONUS_MDEF2_RATE), TryParseInt(temps[0]));
         }
-        text = text.Replace("bonus bHit,", "๐ Hit +");
+        text = text.Replace("bonus bHit,", "• Hit +");
         if (text.Contains("bonus bHitRate,"))
         {
             var temp = text.Replace("bonus bHitRate,", string.Empty);
             var temps = temp.Split(',');
-            text = string.Format("๐ Hit +{0}%", TryParseInt(temps[0]));
+            text = string.Format("• Hit +{0}%", TryParseInt(temps[0]));
         }
-        text = text.Replace("bonus bCritical,", "๐ Critical +");
+        text = text.Replace("bonus bCritical,", "• Critical +");
         text = text.Replace("bonus bCriticalLong,", _localization.GetTexts(Localization.BONUS_CRITICAL_LONG));
         if (text.Contains("bonus2 bCriticalAddRace,"))
         {
@@ -2733,21 +2742,21 @@ public class Converter : MonoBehaviour
         {
             var temp = text.Replace("bonus bCriticalRate,", string.Empty);
             var temps = temp.Split(',');
-            text = string.Format("๐ Critical +{0}%", TryParseInt(temps[0]));
+            text = string.Format("• Critical +{0}%", TryParseInt(temps[0]));
         }
-        text = text.Replace("bonus bFlee,", "๐ Flee +");
+        text = text.Replace("bonus bFlee,", "• Flee +");
         if (text.Contains("bonus bFleeRate,"))
         {
             var temp = text.Replace("bonus bFleeRate,", string.Empty);
             var temps = temp.Split(',');
-            text = string.Format("๐ Flee +{0}%", TryParseInt(temps[0]));
+            text = string.Format("• Flee +{0}%", TryParseInt(temps[0]));
         }
-        text = text.Replace("bonus bFlee2,", "๐ Perfect Dodge +");
+        text = text.Replace("bonus bFlee2,", "• Perfect Dodge +");
         if (text.Contains("bonus bFlee2Rate,"))
         {
             var temp = text.Replace("bonus bFlee2Rate,", string.Empty);
             var temps = temp.Split(',');
-            text = string.Format("๐ Perfect Dodge +{0}%", TryParseInt(temps[0]));
+            text = string.Format("• Perfect Dodge +{0}%", TryParseInt(temps[0]));
         }
         if (text.Contains("bonus bPerfectHitRate,"))
         {
@@ -2759,7 +2768,7 @@ public class Converter : MonoBehaviour
         {
             var temp = text.Replace("bonus bPerfectHitAddRate,", string.Empty);
             var temps = temp.Split(',');
-            text = string.Format("๐ Perfect Hit +{0}%", TryParseInt(temps[0]));
+            text = string.Format("• Perfect Hit +{0}%", TryParseInt(temps[0]));
         }
         if (text.Contains("bonus bSpeedRate,"))
         {
@@ -2773,12 +2782,12 @@ public class Converter : MonoBehaviour
             var temps = temp.Split(',');
             text = string.Format(_localization.GetTexts(Localization.BONUS_SPEED_ADD_RATE), TryParseInt(temps[0]));
         }
-        text = text.Replace("bonus bAspd,", "๐ ASPD +");
+        text = text.Replace("bonus bAspd,", "• ASPD +");
         if (text.Contains("bonus bAspdRate,"))
         {
             var temp = text.Replace("bonus bAspdRate,", string.Empty);
             var temps = temp.Split(',');
-            text = string.Format("๐ ASPD +{0}%", TryParseInt(temps[0]));
+            text = string.Format("• ASPD +{0}%", TryParseInt(temps[0]));
         }
         text = text.Replace("bonus bAtkRange,", _localization.GetTexts(Localization.BONUS_ATK_RANGE));
         if (text.Contains("bonus bAddMaxWeight,"))
@@ -2788,47 +2797,47 @@ public class Converter : MonoBehaviour
             text = string.Format(_localization.GetTexts(Localization.BONUS_ADD_MAX_WEIGHT), TryParseInt(temps[0], 10));
         }
 
-        text = text.Replace("bonus bPatk,", "๐ P.Atk +");
+        text = text.Replace("bonus bPatk,", "• P.Atk +");
         if (text.Contains("bonus bPAtkRate,"))
         {
             var temp = text.Replace("bonus bPAtkRate,", string.Empty);
             var temps = temp.Split(',');
-            text = string.Format("๐ P.Atk +{0}%", TryParseInt(temps[0]));
+            text = string.Format("• P.Atk +{0}%", TryParseInt(temps[0]));
         }
-        text = text.Replace("bonus bSmatk,", "๐ S.MAtk +");
+        text = text.Replace("bonus bSmatk,", "• S.MAtk +");
         if (text.Contains("bonus bSMatkRate,"))
         {
             var temp = text.Replace("bonus bSMatkRate,", string.Empty);
             var temps = temp.Split(',');
-            text = string.Format("๐ S.MAtk +{0}%", TryParseInt(temps[0]));
+            text = string.Format("• S.MAtk +{0}%", TryParseInt(temps[0]));
         }
-        text = text.Replace("bonus bRes,", "๐ Res +");
+        text = text.Replace("bonus bRes,", "• Res +");
         if (text.Contains("bonus bResRate,"))
         {
             var temp = text.Replace("bonus bResRate,", string.Empty);
             var temps = temp.Split(',');
-            text = string.Format("๐ Res +{0}%", TryParseInt(temps[0]));
+            text = string.Format("• Res +{0}%", TryParseInt(temps[0]));
         }
-        text = text.Replace("bonus bMres,", "๐ M.Res +");
+        text = text.Replace("bonus bMres,", "• M.Res +");
         if (text.Contains("bonus bMResRate,"))
         {
             var temp = text.Replace("bonus bMResRate,", string.Empty);
             var temps = temp.Split(',');
-            text = string.Format("๐ M.Res +{0}%", TryParseInt(temps[0]));
+            text = string.Format("• M.Res +{0}%", TryParseInt(temps[0]));
         }
-        text = text.Replace("bonus bHplus,", "๐ H.Plus +");
+        text = text.Replace("bonus bHplus,", "• H.Plus +");
         if (text.Contains("bonus bHPlusRate,"))
         {
             var temp = text.Replace("bonus bHPlusRate,", string.Empty);
             var temps = temp.Split(',');
-            text = string.Format("๐ H.Plus +{0}%", TryParseInt(temps[0]));
+            text = string.Format("• H.Plus +{0}%", TryParseInt(temps[0]));
         }
-        text = text.Replace("bonus bCrate,", "๐ C.Rate +");
+        text = text.Replace("bonus bCrate,", "• C.Rate +");
         if (text.Contains("bonus bCRateRate,"))
         {
             var temp = text.Replace("bonus bCRateRate,", string.Empty);
             var temps = temp.Split(',');
-            text = string.Format("๐ C.Rate +{0}%", TryParseInt(temps[0]));
+            text = string.Format("• C.Rate +{0}%", TryParseInt(temps[0]));
         }
         if (text.Contains("bonus bHPrecovRate,"))
         {
@@ -3991,11 +4000,11 @@ public class Converter : MonoBehaviour
         text = text.Replace("\\", string.Empty);
 
         // Spacing fix
-        text = text.Replace("     ๐", "๐");
-        text = text.Replace("    ๐", "๐");
-        text = text.Replace("   ๐", "๐");
-        text = text.Replace("  ๐", "๐");
-        text = text.Replace(" ๐", "๐");
+        text = text.Replace("     •", "•");
+        text = text.Replace("    •", "•");
+        text = text.Replace("   •", "•");
+        text = text.Replace("  •", "•");
+        text = text.Replace(" •", "•");
 
         return text;
     }
