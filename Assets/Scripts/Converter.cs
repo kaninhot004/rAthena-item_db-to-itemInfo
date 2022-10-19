@@ -98,6 +98,14 @@ public class Converter : MonoBehaviour
     /// Is enchantment able to use?
     /// </summary>
     [SerializeField] bool _isEnchantmentAbleToUse;
+    /// <summary>
+    /// Is hide refinable?
+    /// </summary>
+    [SerializeField] bool _isHideRefinable;
+    /// <summary>
+    /// Is hide gradable?
+    /// </summary>
+    [SerializeField] bool _isHideGradable;
 
     /// <summary>
     /// Container for 1 item, use while parsing from item_db
@@ -183,6 +191,8 @@ public class Converter : MonoBehaviour
     {
         _isEquipmentNoValue = Input.GetKey(KeyCode.K);
         _isEnchantmentAbleToUse = Input.GetKey(KeyCode.Alpha4);
+        _isHideRefinable = Input.GetKey(KeyCode.Alpha4);
+        _isHideGradable = Input.GetKey(KeyCode.Alpha4);
 
         for (int i = 0; i < _objectsToHideWhenConverterStart.Length; i++)
             _objectsToHideWhenConverterStart[i].SetActive(false);
@@ -318,6 +328,7 @@ public class Converter : MonoBehaviour
         ExportingItemLists(builder, "costumeIds", _itemListContainer.costumeIds);
         ExportingItemLists(builder, "cardIds", _itemListContainer.cardIds);
         ExportingItemLists(builder, "enchantIds", _itemListContainer.enchantIds);
+        ExportingItemLists(builder, "itemGroupIds", _itemListContainer.itemGroupIds);
 
         File.WriteAllText("global_item_ids.txt", builder.ToString(), Encoding.UTF8);
 
@@ -2126,15 +2137,21 @@ public class Converter : MonoBehaviour
             else if (_isZeroValuePrintable)
                 description += "			\"^3F28FF" + _localization.GetTexts(Localization.MAXIMUM_EQUIP_LEVEL) + ":^000000 -\",\n";
 
-            if (!string.IsNullOrEmpty(_itemContainer.refinable))
-                description += "			\"^3F28FF" + _localization.GetTexts(Localization.REFINABLE) + ":^000000 " + _itemContainer.refinable + "\",\n";
-            else if (_isZeroValuePrintable)
-                description += "			\"^3F28FF" + _localization.GetTexts(Localization.REFINABLE) + ":^000000 -\",\n";
+            if (!_isHideRefinable)
+            {
+                if (!string.IsNullOrEmpty(_itemContainer.refinable))
+                    description += "			\"^3F28FF" + _localization.GetTexts(Localization.REFINABLE) + ":^000000 " + _itemContainer.refinable + "\",\n";
+                else if (_isZeroValuePrintable)
+                    description += "			\"^3F28FF" + _localization.GetTexts(Localization.REFINABLE) + ":^000000 -\",\n";
+            }
 
-            if (!string.IsNullOrEmpty(_itemContainer.grable))
-                description += "			\"^3F28FF" + _localization.GetTexts(Localization.GRADABLE) + ":^000000 " + _itemContainer.grable + "\",\n";
-            else if (_isZeroValuePrintable)
-                description += "			\"^3F28FF" + _localization.GetTexts(Localization.GRADABLE) + ":^000000 -\",\n";
+            if (!_isHideGradable)
+            {
+                if (!string.IsNullOrEmpty(_itemContainer.grable))
+                    description += "			\"^3F28FF" + _localization.GetTexts(Localization.GRADABLE) + ":^000000 " + _itemContainer.grable + "\",\n";
+                else if (_isZeroValuePrintable)
+                    description += "			\"^3F28FF" + _localization.GetTexts(Localization.GRADABLE) + ":^000000 -\",\n";
+            }
 
             if (!string.IsNullOrEmpty(_itemContainer.weight))
                 description += "			\"^3F28FF" + _localization.GetTexts(Localization.WEIGHT) + ":^000000 " + _itemContainer.weight + "\",\n";
@@ -3956,12 +3973,35 @@ public class Converter : MonoBehaviour
             var temps = temp.Split(',');
             text = string.Format(_localization.GetTexts(Localization.GET_ITEM), GetItemName(QuoteRemover.Remove(temps[0])), TryParseInt(temps[1]));
         }
+        // groupranditem
+        if (text.Contains("groupranditem"))
+        {
+            var temp = text.Replace("groupranditem", string.Empty);
+            var temps = temp.Split(',');
+            text = string.Format(_localization.GetTexts(Localization.GET_GROUP_ITEM), QuoteRemover.Remove(temps[0]).Replace("IG_", string.Empty), TryParseInt((temps.Length > 1) ? temps[1] : null, 1, 1));
+
+            if (!_itemListContainer.itemGroupIds.Contains(_itemContainer.id))
+                _itemListContainer.itemGroupIds.Add(_itemContainer.id);
+        }
+        // getrandgroupitem
+        if (text.Contains("getrandgroupitem"))
+        {
+            var temp = text.Replace("getrandgroupitem", string.Empty);
+            var temps = temp.Split(',');
+            text = string.Format(_localization.GetTexts(Localization.GET_GROUP_ITEM), QuoteRemover.Remove(temps[0]).Replace("IG_", string.Empty), TryParseInt((temps.Length > 1) ? temps[1] : null, 1, 1));
+
+            if (!_itemListContainer.itemGroupIds.Contains(_itemContainer.id))
+                _itemListContainer.itemGroupIds.Add(_itemContainer.id);
+        }
         // getgroupitem
         if (text.Contains("getgroupitem"))
         {
             var temp = text.Replace("getgroupitem", string.Empty);
             var temps = temp.Split(',');
             text = string.Format(_localization.GetTexts(Localization.GET_GROUP_ITEM), QuoteRemover.Remove(temps[0]).Replace("IG_", string.Empty), TryParseInt((temps.Length > 1) ? temps[1] : null, 1, 1));
+
+            if (!_itemListContainer.itemGroupIds.Contains(_itemContainer.id))
+                _itemListContainer.itemGroupIds.Add(_itemContainer.id);
         }
         // pet
         if (text.Contains("pet "))

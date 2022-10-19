@@ -11,6 +11,7 @@ public class ItemListContainer
     public List<string> costumeIds = new List<string>();
     public List<string> cardIds = new List<string>();
     public List<string> enchantIds = new List<string>();
+    public List<string> itemGroupIds = new List<string>();
 
     public List<string> petEggIds = new List<string>();
     public List<string> petArmorIds = new List<string>();
