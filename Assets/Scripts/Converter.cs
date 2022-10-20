@@ -2332,6 +2332,13 @@ public class Converter : MonoBehaviour
         text = text.Replace("bHPRecovRate", "bHPrecovRate");
         text = text.Replace("Baselevel", "BaseLevel");
         text = text.Replace("buseSPRate", "bUseSPrate");
+        text = text.Replace("bUseSPRate", "bUseSPrate");
+        text = text.Replace("bHealpower2", "bHealPower2");
+        text = text.Replace("bautospellonskill", "bAutoSpellOnSkill");
+        text = text.Replace("bFixedCastRate", "bFixedCastrate");
+        text = text.Replace("bIgnoreMdefRace", "bIgnoreMDefRace");
+        text = text.Replace("bIgnoreMDefClassRate", "bIgnoreMdefClassRate");
+        text = text.Replace("bIgnoreMDefRaceRate", "bIgnoreMdefRaceRate");
         // End wrong wording fix
 
         // Comma fix
