@@ -2323,11 +2323,11 @@ public class Converter : MonoBehaviour
         }
 
         // Wrong wording fix
-        text = text.Replace("bPAtk", "bPatk");
         text = text.Replace("Ele_dark", "Ele_Dark");
         text = text.Replace("bonus2 bIgnoreMDefRaceRate", "bonus2 bIgnoreMdefRaceRate");
         text = text.Replace("bVariableCastRate", "bVariableCastrate");
         text = text.Replace("bMaxHPRate", "bMaxHPrate");
+        text = text.Replace("bMaxHprate", "bMaxHPrate");
         text = text.Replace("bMaxSPRate", "bMaxSPrate");
         text = text.Replace("bHPRecovRate", "bHPrecovRate");
         text = text.Replace("Baselevel", "BaseLevel");
@@ -2339,6 +2339,18 @@ public class Converter : MonoBehaviour
         text = text.Replace("bIgnoreMdefRace", "bIgnoreMDefRace");
         text = text.Replace("bIgnoreMDefClassRate", "bIgnoreMdefClassRate");
         text = text.Replace("bIgnoreMDefRaceRate", "bIgnoreMdefRaceRate");
+        text = text.Replace("bIgnoreMDefRace2Rate", "bIgnoreMdefRace2Rate");
+        text = text.Replace("bAutoSpellwhenhit", "bAutoSpellWhenHit");
+        text = text.Replace("bflee", "bFlee");
+        text = text.Replace("bAutospell", "bAutoSpell");
+        text = text.Replace("bMaxHp", "bMaxHP");
+        text = text.Replace("bMAtk", "bMatk");
+        text = text.Replace("bBaseatk", "bBaseAtk");
+        text = text.Replace("bMDef,", "bMdef,");
+        text = text.Replace("bSmatk,", "bSMatk,");
+        text = text.Replace("bMres,", "bMRes,");
+        text = text.Replace("bCrate,", "bCRate,");
+        text = text.Replace("bHplus,", "bHPlus,");
         // End wrong wording fix
 
         // Comma fix
@@ -2821,14 +2833,14 @@ public class Converter : MonoBehaviour
             text = string.Format(_localization.GetTexts(Localization.BONUS_ADD_MAX_WEIGHT), TryParseInt(temps[0], 10));
         }
 
-        text = text.Replace("bonus bPatk,", "• P.Atk +");
+        text = text.Replace("bonus bPAtk,", "• P.Atk +");
         if (text.Contains("bonus bPAtkRate,"))
         {
             var temp = text.Replace("bonus bPAtkRate,", string.Empty);
             var temps = temp.Split(',');
             text = string.Format("• P.Atk +{0}%", TryParseInt(temps[0]));
         }
-        text = text.Replace("bonus bSmatk,", "• S.MAtk +");
+        text = text.Replace("bonus bSMatk,", "• S.MAtk +");
         if (text.Contains("bonus bSMatkRate,"))
         {
             var temp = text.Replace("bonus bSMatkRate,", string.Empty);
@@ -2842,21 +2854,21 @@ public class Converter : MonoBehaviour
             var temps = temp.Split(',');
             text = string.Format("• Res +{0}%", TryParseInt(temps[0]));
         }
-        text = text.Replace("bonus bMres,", "• M.Res +");
+        text = text.Replace("bonus bMRes,", "• M.Res +");
         if (text.Contains("bonus bMResRate,"))
         {
             var temp = text.Replace("bonus bMResRate,", string.Empty);
             var temps = temp.Split(',');
             text = string.Format("• M.Res +{0}%", TryParseInt(temps[0]));
         }
-        text = text.Replace("bonus bHplus,", "• H.Plus +");
+        text = text.Replace("bonus bHPlus,", "• H.Plus +");
         if (text.Contains("bonus bHPlusRate,"))
         {
             var temp = text.Replace("bonus bHPlusRate,", string.Empty);
             var temps = temp.Split(',');
             text = string.Format("• H.Plus +{0}%", TryParseInt(temps[0]));
         }
-        text = text.Replace("bonus bCrate,", "• C.Rate +");
+        text = text.Replace("bonus bCRate,", "• C.Rate +");
         if (text.Contains("bonus bCRateRate,"))
         {
             var temp = text.Replace("bonus bCRateRate,", string.Empty);
