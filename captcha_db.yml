@@ -1,0 +1,161 @@
+﻿# This file is a part of rAthena.
+#   Copyright(C) 2022 rAthena Development Team
+#   https://rathena.org - https://github.com/rathena
+#
+# This program is free software: you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation, either version 3 of the License, or
+# (at your option) any later version.
+#
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+# GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License
+# along with this program. If not, see <http://www.gnu.org/licenses/>.
+#
+###########################################################################
+# Captcha Database Table
+###########################################################################
+#
+# Captcha Database Settings
+#
+###########################################################################
+# - Id                Index value.
+#   Filename          Name of the BMP image file (with location).
+#   Answer            Correct answer for the captcha (case-sensitive).
+#   Bonus             Bonus Script ran on success. (Default: Level 10 Blessing and Increase Agility)
+###########################################################################
+
+Header:
+  Type: CAPTCHA_DB
+  Version: 1
+
+Body:
+ - Id: 1
+   Filename: captcha/1.bmp
+   Answer: prayut getout
+ - Id: 2
+   Filename: captcha/2.bmp
+   Answer: rule 112
+ - Id: 3
+   Filename: captcha/3.bmp
+   Answer: ม.44
+ - Id: 4
+   Filename: captcha/4.bmp
+   Answer: (คนดีย์)
+ - Id: 5
+   Filename: captcha/5.bmp
+   Answer: ไม่รู้ ๆ
+ - Id: 6
+   Filename: captcha/6.bmp
+   Answer: มันคือแป้ง
+ - Id: 7
+   Filename: captcha/7.bmp
+   Answer: วัคซีนเต็มแขน
+ - Id: 8
+   Filename: captcha/8.bmp
+   Answer: นักกู้ลุ่มน้ำจพย
+ - Id: 9
+   Filename: captcha/9.bmp
+   Answer: เลานจ์ชนะ
+ - Id: 10
+   Filename: captcha/10.bmp
+   Answer: กล้ามากเก่งมากขจ
+ - Id: 11
+   Filename: captcha/11.bmp
+   Answer: แอร์ไม่เย็น
+ - Id: 12
+   Filename: captcha/12.bmp
+   Answer: ขอพี่สนุกหน่อย
+ - Id: 13
+   Filename: captcha/13.bmp
+   Answer: ผมสวดมนต์ทุกวัน
+ - Id: 14
+   Filename: captcha/14.bmp
+   Answer: รั้วของชาติ
+ - Id: 15
+   Filename: captcha/15.bmp
+   Answer: โอริมสระ
+ - Id: 16
+   Filename: captcha/16.bmp
+   Answer: หญิงเองก็ลำบาก
+ - Id: 17
+   Filename: captcha/17.bmp
+   Answer: ดีที่สุดในโลก
+ - Id: 18
+   Filename: captcha/18.bmp
+   Answer: นายสั่งมา
+ - Id: 19
+   Filename: captcha/19.bmp
+   Answer: ตำรวจไซเบอร์
+ - Id: 20
+   Filename: captcha/20.bmp
+   Answer: ศีลธรรมอันดีงาม
+ - Id: 21
+   Filename: captcha/21.bmp
+   Answer: สวดมนต์ไล่พายุ
+ - Id: 22
+   Filename: captcha/22.bmp
+   Answer: ตำรวจไทย 4.0
+ - Id: 23
+   Filename: captcha/23.bmp
+   Answer: โคล้านตัว
+ - Id: 24
+   Filename: captcha/24.bmp
+   Answer: ข้าวล้านกล่อง
+ - Id: 25
+   Filename: captcha/25.bmp
+   Answer: อย่ามาโจ้
+ - Id: 26
+   Filename: captcha/26.bmp
+   Answer: หมอย ง
+ - Id: 27
+   Filename: captcha/27.bmp
+   Answer: จำนำข้าวย์
+ - Id: 28
+   Filename: captcha/28.bmp
+   Answer: อย่าบอกชาวบ้านนะ
+ - Id: 29
+   Filename: captcha/29.bmp
+   Answer: กระดกให้หมด มกทท
+ - Id: 30
+   Filename: captcha/30.bmp
+   Answer: สร้างหมูใหม่
+ - Id: 31
+   Filename: captcha/31.bmp
+   Answer: มะม่วงแทนมะนาว
+ - Id: 32
+   Filename: captcha/32.bmp
+   Answer: พรี่รับมาแพง
+ - Id: 33
+   Filename: captcha/33.bmp
+   Answer: Copy Map Sv จริง
+ - Id: 34
+   Filename: captcha/34.bmp
+   Answer: ดูดไฟล์ Any Desk
+ - Id: 35
+   Filename: captcha/35.bmp
+   Answer: กองทัพรบลาซาด้า
+ - Id: 36
+   Filename: captcha/36.bmp
+   Answer: พระบิดาโจเซฟ
+ - Id: 37
+   Filename: captcha/37.bmp
+   Answer: เราอดหลับอดนอน
+ - Id: 38
+   Filename: captcha/38.bmp
+   Answer: กลุ่มควาย
+ - Id: 39
+   Filename: captcha/39.bmp
+   Answer: อ่านธรรมะลดค่าไฟ
+ - Id: 40
+   Filename: captcha/40.bmp
+   Answer: ผู้ว่าคนก่อนดอล
+ - Id: 41
+   Filename: captcha/41.bmp
+   Answer: กระสอบทรายในท่อ
+ - Id: 42
+   Filename: captcha/42.bmp
+   Answer: แก้ไงบอกซิอะโด่

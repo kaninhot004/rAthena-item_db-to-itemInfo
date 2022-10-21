@@ -58,6 +58,7 @@
   <ItemGroup>
     <Compile Include="Assets\Scripts\Localization\Localization.cs" />
     <Compile Include="Assets\Scripts\Utilities\ReplaceOneTime.cs" />
+    <Compile Include="Assets\Scripts\Captcha\CaptchaGenerator.cs" />
     <Compile Include="Assets\Scripts\Utilities\QuoteRemover.cs" />
     <Compile Include="Assets\Scripts\Classes\ResourceContainer.cs" />
     <Compile Include="Assets\Scripts\HardcodeItemScripts.cs" />
@@ -81,6 +82,7 @@
     <None Include="Assets\DLL\I18N.CJK.dll" />
     <None Include="Assets\Assets\all_english_word.txt" />
     <None Include="Assets\Assets\resourceName.txt" />
+    <None Include="Assets\Assets\captcha.txt" />
     <None Include="Assets\Assets\classNum.txt" />
     <None Include="Assets\DLL\I18N.West.dll" />
     <None Include="Assets\Assets\itemScriptCopier.txt" />

@@ -15,6 +15,10 @@ public class Converter : MonoBehaviour
     string _errorLog;
 
     /// <summary>
+    /// Button to generate captcha
+    /// </summary>
+    [SerializeField] Button _btnCaptchaGenerator;
+    /// <summary>
     /// Button to start convert
     /// </summary>
     [SerializeField] Button _btnConvert;
@@ -42,6 +46,10 @@ public class Converter : MonoBehaviour
     /// Localization
     /// </summary>
     [SerializeField] Localization _localization;
+    /// <summary>
+    /// Captcha Generator
+    /// </summary>
+    [SerializeField] CaptchaGenerator _captchaGenerator;
 
     // Settings
 
@@ -170,12 +178,20 @@ public class Converter : MonoBehaviour
 
     void Start()
     {
+        _btnCaptchaGenerator.onClick.AddListener(OnCaptchaGeneratorButtonTap);
         _btnConvert.onClick.AddListener(OnConvertButtonTap);
         _btnCreator.onClick.AddListener(OnCreatorButtonTap);
 
         _objConvertProgression.SetActive(false);
         for (int i = 0; i < _objectsToHideWhenConverterStart.Length; i++)
             _objectsToHideWhenConverterStart[i].SetActive(true);
+    }
+    /// <summary>
+    /// Call when captcha generator button has been tap
+    /// </summary>
+    void OnCaptchaGeneratorButtonTap()
+    {
+        _captchaGenerator.Generate();
     }
     /// <summary>
     /// Call when creator button has been tap
