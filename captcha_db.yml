@@ -56,7 +56,7 @@ Body:
    Answer: วัคซีนเต็มแขน
  - Id: 8
    Filename: captcha/8.bmp
-   Answer: นักกู้ลุ่มน้ำจพย
+   Answer: นักกู้เจ้าพระยา
  - Id: 9
    Filename: captcha/9.bmp
    Answer: เลานจ์ชนะ
@@ -80,7 +80,7 @@ Body:
    Answer: โอริมสระ
  - Id: 16
    Filename: captcha/16.bmp
-   Answer: หญิงเองก็ลำบาก
+   Answer: หญิงเองก็ลามบาก
  - Id: 17
    Filename: captcha/17.bmp
    Answer: ดีที่สุดในโลก
@@ -89,7 +89,7 @@ Body:
    Answer: นายสั่งมา
  - Id: 19
    Filename: captcha/19.bmp
-   Answer: ตำรวจไซเบอร์
+   Answer: ตามรวจไซเบอร์
  - Id: 20
    Filename: captcha/20.bmp
    Answer: ศีลธรรมอันดีงาม
@@ -98,7 +98,7 @@ Body:
    Answer: สวดมนต์ไล่พายุ
  - Id: 22
    Filename: captcha/22.bmp
-   Answer: ตำรวจไทย 4.0
+   Answer: ตามรวดไทย 4.0
  - Id: 23
    Filename: captcha/23.bmp
    Answer: โคล้านตัว
@@ -113,10 +113,10 @@ Body:
    Answer: หมอย ง
  - Id: 27
    Filename: captcha/27.bmp
-   Answer: จำนำข้าวย์
+   Answer: จามนามข้าว
  - Id: 28
    Filename: captcha/28.bmp
-   Answer: อย่าบอกชาวบ้านนะ
+   Answer: อย่าบอกชาวบ้าน
  - Id: 29
    Filename: captcha/29.bmp
    Answer: กระดกให้หมด มกทท
@@ -131,7 +131,7 @@ Body:
    Answer: พรี่รับมาแพง
  - Id: 33
    Filename: captcha/33.bmp
-   Answer: Copy Map Sv จริง
+   Answer: Copy Map
  - Id: 34
    Filename: captcha/34.bmp
    Answer: ดูดไฟล์ Any Desk
