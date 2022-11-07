@@ -3916,7 +3916,8 @@ public class Converter : MonoBehaviour
         {
             var temp = text.Replace("skill ", string.Empty);
             var temps = temp.Split(',');
-            text = string.Format(_localization.GetTexts(Localization.SKILL), GetSkillName(QuoteRemover.Remove(temps[0])), TryParseInt(temps[1]));
+            if (temps.Length > 1)
+                text = string.Format(_localization.GetTexts(Localization.SKILL), GetSkillName(QuoteRemover.Remove(temps[0])), TryParseInt(temps[1]));
         }
         // itemheal
         if (text.Contains("percentheal "))
