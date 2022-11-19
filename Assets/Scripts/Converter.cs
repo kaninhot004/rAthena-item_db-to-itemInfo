@@ -4349,6 +4349,7 @@ public class Converter : MonoBehaviour
         text = text.Replace("EAJ_UPPERMASK", _localization.GetTexts(Localization.HI_CLASS));
         text = text.Replace("EAJ_THIRDMASK", _localization.GetTexts(Localization.CLASS) + " 3");
         text = text.Replace("PETINFO_ID", "Pet");
+        text = text.Replace("PETINFO_EGGID", "Pet");
         text = text.Replace("PETINFO_INTIMATE", _localization.GetTexts(Localization.PET_INFO_INTIMATE));
         text = text.Replace("PET_INTIMATE_LOYAL", _localization.GetTexts(Localization.PET_INTIMATE_LOYAL));
         text = text.Replace("getpetinfo(", "(");
@@ -4364,6 +4365,7 @@ public class Converter : MonoBehaviour
         text = text.Replace("getequiparmorlv", _localization.GetTexts(Localization.GET_EQUIPMENT_LEVEL));
         text = text.Replace("ismounting()", _localization.GetTexts(Localization.IF_MOUNTING));
         text = text.Replace("getskilllv", "Lv. Skill");
+        text = text.Replace("duplicate_dynamic", "เรียก");
         text = text.Replace("pow (", _localization.GetTexts(Localization.POW) + "(");
         text = text.Replace("pow(", _localization.GetTexts(Localization.POW) + "(");
         text = text.Replace("min (", _localization.GetTexts(Localization.MIN) + "(");
