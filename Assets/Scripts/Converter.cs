@@ -2570,16 +2570,27 @@ public class Converter : MonoBehaviour
 
                 text = text.Replace(temp + "}\"", string.Empty);
             }
+            else
+                duplicate = text;
+
             var duplicates = duplicate.Split(',');
             var bonuses = string.Empty;
             var allBonus = temp.Split(';');
             for (int i = 0; i < allBonus.Length; i++)
             {
-                if (!string.IsNullOrEmpty(allBonus[i]) && !string.IsNullOrWhiteSpace(allBonus[i]))
-                {
-                    text = text.Replace(allBonus[i] + ";", string.Empty);
+                var currentBonus = allBonus[i];
 
-                    bonuses += ConvertItemScripts(allBonus[i]);
+                // { Fix
+                if (currentBonus.IndexOf("\"{") > 0)
+                    currentBonus = currentBonus.Substring(currentBonus.IndexOf("\"{") + 2);
+
+                currentBonus = currentBonus.Replace("}\"", string.Empty);
+
+                if (!string.IsNullOrEmpty(currentBonus) && !string.IsNullOrWhiteSpace(currentBonus))
+                {
+                    text = text.Replace(currentBonus + ";", string.Empty);
+
+                    bonuses += ConvertItemScripts(currentBonus);
                 }
             }
 
