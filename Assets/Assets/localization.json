@@ -3032,6 +3032,22 @@
                     "traditionalChinese": "Grade",
                     "simpifiedChinese": "Grade",
                     "korean": "Grade"
+                }, {
+                    "key": "GET_ITEM_POS",
+                    "thai": "ตำแหน่งอุปกรณ์สวมใส่",
+                    "english": "Equipment Position",
+                    "japanese": "-",
+                    "traditionalChinese": "-",
+                    "simpifiedChinese": "-",
+                    "korean": "-"
+                }, {
+                    "key": "LOCATION_BOTH_SHADOW_ACCESSORY",
+                    "thai": "ประดับ Shadow สองข้าง",
+                    "english": "Both Shadow Accessory",
+                    "japanese": "-",
+                    "traditionalChinese": "-",
+                    "simpifiedChinese": "-",
+                    "korean": "-"
                 }
             ]
         }

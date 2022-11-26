@@ -66,6 +66,7 @@ public class Localization : MonoBehaviour
     public const string LOCATION_SHADOW_LEFT_ACCESSORY = "LOCATION_SHADOW_LEFT_ACCESSORY";
     public const string LOCATION_BOTH_HAND = "LOCATION_BOTH_HAND";
     public const string LOCATION_BOTH_ACCESSORY = "LOCATION_BOTH_ACCESSORY";
+    public const string LOCATION_BOTH_SHADOW_ACCESSORY = "LOCATION_BOTH_SHADOW_ACCESSORY";
 
     public const string WHEN_EQUIP = "WHEN_EQUIP";
     public const string WHEN_UNEQUIP = "WHEN_UNEQUIP";
@@ -404,6 +405,8 @@ public class Localization : MonoBehaviour
     public const string MINUTE_ABBREVIATION = "MINUTE_ABBREVIATION";
     public const string HOUR_ABBREVIATION = "HOUR_ABBREVIATION";
     public const string DAY_ABBREVIATION = "DAY_ABBREVIATION";
+
+    public const string GET_ITEM_POS = "GET_ITEM_POS";
     #endregion
 
     [Serializable]
