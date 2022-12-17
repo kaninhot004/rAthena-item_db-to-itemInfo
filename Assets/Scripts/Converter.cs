@@ -147,10 +147,11 @@ public class Converter : MonoBehaviour
     /// Monsters holder
     /// </summary>
     Dictionary<int, MonsterDatabase> _monsterDatabases = new Dictionary<int, MonsterDatabase>();
+    List<int> _monsterIds = new List<int>();
     /// <summary>
     /// Monsters holder
     /// </summary>
-    Dictionary<string, int> _monsterIds = new Dictionary<string, int>();
+    Dictionary<string, int> _monsterIdsByAegisName = new Dictionary<string, int>();
     /// <summary>
     /// Resources holder
     /// </summary>
@@ -330,6 +331,7 @@ public class Converter : MonoBehaviour
 
         Invoke("Convert", ONE_SECOND);
     }
+
     // Exporting
 
     /// <summary>
@@ -486,6 +488,107 @@ public class Converter : MonoBehaviour
 
         Debug.Log("'item_mall.txt' has been successfully created.");
     }
+
+    /// <summary>
+    /// Export monster list
+    /// </summary>
+    void ExportMonsterLists()
+    {
+        List<string> monsterIds = new List<string>();
+        List<string> monsterTier1Ids = new List<string>();
+        List<string> monsterTier2Ids = new List<string>();
+        List<string> monsterTier3Ids = new List<string>();
+        List<string> monsterTier4Ids = new List<string>();
+        List<string> monsterTier5Ids = new List<string>();
+        List<string> monsterTier6Ids = new List<string>();
+        List<string> monsterTier7Ids = new List<string>();
+        List<string> monsterTier8Ids = new List<string>();
+        List<string> monsterTier9Ids = new List<string>();
+        List<string> monsterTier10Ids = new List<string>();
+
+        for (int i = 0; i < _monsterIds.Count; i++)
+        {
+            var monsterDatabase = _monsterDatabases[_monsterIds[i]];
+            var monsterId = monsterDatabase.id.ToString("f0");
+
+            monsterIds.Add(monsterId);
+
+            // For my own purposes
+            if ((monsterDatabase.attackMotion > 1)
+                && (monsterDatabase.walkSpeed != 0))
+            {
+                if (monsterDatabase.hp <= 50)
+                    monsterTier1Ids.Add(monsterId);
+                else if (monsterDatabase.hp <= 500)
+                    monsterTier2Ids.Add(monsterId);
+                else if (monsterDatabase.hp <= 5000)
+                    monsterTier3Ids.Add(monsterId);
+                else if (monsterDatabase.hp <= 25000)
+                    monsterTier4Ids.Add(monsterId);
+                else if (monsterDatabase.hp <= 50000)
+                    monsterTier5Ids.Add(monsterId);
+                else if (monsterDatabase.hp <= 100000)
+                    monsterTier6Ids.Add(monsterId);
+                else if (monsterDatabase.hp <= 1000000)
+                    monsterTier7Ids.Add(monsterId);
+                else if (monsterDatabase.hp <= 10000000)
+                    monsterTier8Ids.Add(monsterId);
+                else if (monsterDatabase.hp <= 100000000)
+                    monsterTier9Ids.Add(monsterId);
+                else
+                    monsterTier10Ids.Add(monsterId);
+            }
+        }
+
+        StringBuilder builder = new StringBuilder();
+
+        ExportingItemLists(builder, "monsterIds", monsterIds);
+        ExportingItemLists(builder, "monsterTier1Ids", monsterTier1Ids);
+        ExportingItemLists(builder, "monsterTier2Ids", monsterTier2Ids);
+        ExportingItemLists(builder, "monsterTier3Ids", monsterTier3Ids);
+        ExportingItemLists(builder, "monsterTier4Ids", monsterTier4Ids);
+        ExportingItemLists(builder, "monsterTier5Ids", monsterTier5Ids);
+        ExportingItemLists(builder, "monsterTier6Ids", monsterTier6Ids);
+        ExportingItemLists(builder, "monsterTier7Ids", monsterTier7Ids);
+        ExportingItemLists(builder, "monsterTier8Ids", monsterTier8Ids);
+        ExportingItemLists(builder, "monsterTier9Ids", monsterTier9Ids);
+        ExportingItemLists(builder, "monsterTier10Ids", monsterTier10Ids);
+
+        File.WriteAllText("global-monster-list.txt", builder.ToString(), Encoding.UTF8);
+
+        Debug.Log("'global-monster-list.txt' has been successfully created.");
+        Debug.Log("monsterIds.Count:" + monsterIds.Count);
+        Debug.Log("monsterTier1Ids.Count:" + monsterTier1Ids.Count);
+        Debug.Log("monsterTier2Ids.Count:" + monsterTier2Ids.Count);
+        Debug.Log("monsterTier3Ids.Count:" + monsterTier3Ids.Count);
+        Debug.Log("monsterTier4Ids.Count:" + monsterTier4Ids.Count);
+        Debug.Log("monsterTier5Ids.Count:" + monsterTier5Ids.Count);
+        Debug.Log("monsterTier6Ids.Count:" + monsterTier6Ids.Count);
+        Debug.Log("monsterTier7Ids.Count:" + monsterTier7Ids.Count);
+        Debug.Log("monsterTier8Ids.Count:" + monsterTier8Ids.Count);
+        Debug.Log("monsterTier9Ids.Count:" + monsterTier9Ids.Count);
+        Debug.Log("monsterTier10Ids.Count:" + monsterTier10Ids.Count);
+    }
+    /// <summary>
+    /// Exporting item lists to StringBuilder
+    /// </summary>
+    /// <param name="builder"></param>
+    /// <param name="listName"></param>
+    /// <param name="items"></param>
+    void ExportingMonsterLists(StringBuilder builder, string listName, List<string> items)
+    {
+        builder.Append("setarray $" + listName + "[0],");
+
+        items.RemoveAll((item) => string.IsNullOrEmpty(item) || string.IsNullOrWhiteSpace(item) || (item == null));
+
+        foreach (var item in items)
+            builder.Append(item + ",");
+
+        builder.Remove(builder.Length - 1, 1);
+
+        builder.Append(";\n");
+    }
+
 
     // Parsing
 
@@ -745,7 +848,9 @@ public class Converter : MonoBehaviour
 
         _monsterDatabases = new Dictionary<int, MonsterDatabase>();
 
-        _monsterIds = new Dictionary<string, int>();
+        _monsterIds = new List<int>();
+
+        _monsterIdsByAegisName = new Dictionary<string, int>();
 
         MonsterDatabase monsterDatabase = new MonsterDatabase();
 
@@ -771,10 +876,13 @@ public class Converter : MonoBehaviour
             {
                 monsterDatabase.aegisName = QuoteRemover.Remove(text.Replace("    AegisName: ", string.Empty));
 
-                if (_monsterIds.ContainsKey(monsterDatabase.aegisName))
+                if (_monsterIdsByAegisName.ContainsKey(monsterDatabase.aegisName))
                     Debug.LogWarning("Found duplicated monster aegis name: " + monsterDatabase.id + " Please tell rAthena about this.");
                 else
-                    _monsterIds.Add(monsterDatabase.aegisName, monsterDatabase.id);
+                {
+                    _monsterIdsByAegisName.Add(monsterDatabase.aegisName, monsterDatabase.id);
+                    _monsterIds.Add(monsterDatabase.id);
+                }
             }
             else if (text.Contains("    Name:"))
             {
@@ -785,6 +893,12 @@ public class Converter : MonoBehaviour
                 else
                     _monsterDatabases.Add(monsterDatabase.id, monsterDatabase);
             }
+            else if (text.Contains("    Hp: "))
+                monsterDatabase.hp = int.Parse(SpacingRemover.Remove(text).Replace("Hp:", string.Empty));
+            else if (text.Contains("    WalkSpeed: "))
+                monsterDatabase.walkSpeed = int.Parse(SpacingRemover.Remove(text).Replace("WalkSpeed:", string.Empty));
+            else if (text.Contains("    AttackMotion: "))
+                monsterDatabase.attackMotion = int.Parse(SpacingRemover.Remove(text).Replace("AttackMotion:", string.Empty));
         }
 
         Debug.Log("There are " + _monsterDatabases.Count + " monster database.");
@@ -1366,8 +1480,8 @@ public class Converter : MonoBehaviour
             }
             else if (text.Contains("    CaptureRate:"))
             {
-                if (_monsterIds.ContainsKey(monsterDatabase.name))
-                    _monsterDatabases[_monsterIds[monsterDatabase.name]].captureRate = int.Parse(QuoteRemover.Remove(text.Replace("    CaptureRate: ", string.Empty))) / 100;
+                if (_monsterIdsByAegisName.ContainsKey(monsterDatabase.name))
+                    _monsterDatabases[_monsterIdsByAegisName[monsterDatabase.name]].captureRate = int.Parse(QuoteRemover.Remove(text.Replace("    CaptureRate: ", string.Empty))) / 100;
             }
         }
     }
@@ -2298,6 +2412,8 @@ public class Converter : MonoBehaviour
         ExportItemLists();
 
         ExportItemMall();
+
+        ExportMonsterLists();
 
         Debug.Log(DateTime.Now);
 
