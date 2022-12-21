@@ -160,6 +160,7 @@ public class Converter : MonoBehaviour
     /// Skills holder
     /// </summary>
     Dictionary<int, SkillDatabase> _skillDatabases = new Dictionary<int, SkillDatabase>();
+    Dictionary<string, SkillDatabase> _skillDatabasesByName = new Dictionary<string, SkillDatabase>();
     /// <summary>
     /// Skill name holder
     /// </summary>
@@ -351,6 +352,8 @@ public class Converter : MonoBehaviour
         File.WriteAllText("global_item_ids.txt", builder.ToString(), Encoding.UTF8);
 
         Debug.Log("'global_item_ids.txt' has been successfully created.");
+
+        TurnSkillNameIntoDescription();
     }
     /// <summary>
     /// Exporting item lists to StringBuilder
@@ -1017,6 +1020,7 @@ public class Converter : MonoBehaviour
         var skillDatabases = skillDatabasesFile.Split('\n');
 
         _skillDatabases = new Dictionary<int, SkillDatabase>();
+        _skillDatabasesByName = new Dictionary<string, SkillDatabase>();
         _skillNameDatabases = new Dictionary<string, int>();
 
         SkillDatabase skillDatabase = new SkillDatabase();
@@ -1046,7 +1050,10 @@ public class Converter : MonoBehaviour
                 if (_skillDatabases.ContainsKey(skillDatabase.id))
                     Debug.LogWarning("Found duplicated skill ID: " + skillDatabase.id + " (Old: " + _skillDatabases[skillDatabase.id] + " vs New: " + skillDatabase.id + ")");
                 else
+                {
                     _skillDatabases.Add(skillDatabase.id, skillDatabase);
+                    _skillDatabasesByName.Add(skillDatabase.name, skillDatabase);
+                }
 
                 if (_skillNameDatabases.ContainsKey(skillDatabase.name))
                     Debug.LogWarning("Found duplicated skill name: " + skillDatabase.name + " (Old: " + _skillNameDatabases[skillDatabase.name] + " vs New: " + skillDatabase.name + ")");
@@ -1486,6 +1493,63 @@ public class Converter : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// For my own purpose used only
+    /// </summary>
+    void TurnSkillNameIntoDescription()
+    {
+        var path = Application.dataPath + "/Assets/skill_name.txt";
+
+        // Is file exists?
+        if (!File.Exists(path))
+        {
+            _errorLog = path + " " + _localization.GetTexts(Localization.NOT_FOUND);
+
+            Debug.Log(_errorLog);
+
+            _isFilesError = true;
+
+            return;
+        }
+
+        var skillNameDatabasesFile = File.ReadAllText(path);
+
+        var skillNameDatabases = skillNameDatabasesFile.Split('\n');
+
+        StringBuilder builder = new StringBuilder();
+        StringBuilder builder2 = new StringBuilder();
+
+        builder.Append("setarray $skillDesc$[0],");
+        builder2.Append("setarray $allSkills$[0],");
+
+        for (int i = 0; i < skillNameDatabases.Length; i++)
+        {
+            var text = skillNameDatabases[i];
+
+            text = CommentRemover.Fix(text);
+
+            text = LineEndingsRemover.Fix(text);
+
+            if (!_skillDatabasesByName.ContainsKey(text))
+                continue;
+
+            builder.Append("\"" + _skillDatabasesByName[text].description + "\",");
+            builder2.Append("\"" + _skillDatabasesByName[text].name + "\",");
+        }
+
+        builder.Remove(builder.Length - 1, 1);
+        builder2.Remove(builder2.Length - 1, 1);
+
+        builder.Append(";\n");
+        builder2.Append(";\n");
+
+        File.WriteAllText("skill_desc.txt", builder.ToString(), Encoding.UTF8);
+        File.WriteAllText("skill_name.txt", builder2.ToString(), Encoding.UTF8);
+
+        Debug.Log("'skill_desc.txt' has been successfully created.");
+        Debug.Log("'skill_name.txt' has been successfully created.");
+
+    }
     // Converting
 
     /// <summary>
