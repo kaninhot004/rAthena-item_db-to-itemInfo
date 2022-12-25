@@ -103,6 +103,10 @@ public class Converter : MonoBehaviour
     /// </summary>
     [SerializeField] bool _isEquipmentNoValue;
     /// <summary>
+    /// Is non-usable item will print as not have any bonuses and combos?
+    /// </summary>
+    [SerializeField] bool _isItemNoBonus;
+    /// <summary>
     /// Is enchantment able to use?
     /// </summary>
     [SerializeField] bool _isEnchantmentAbleToUse;
@@ -208,6 +212,7 @@ public class Converter : MonoBehaviour
     void OnConvertButtonTap()
     {
         _isEquipmentNoValue = Input.GetKey(KeyCode.K);
+        _isItemNoBonus = Input.GetKey(KeyCode.D);
         _isEnchantmentAbleToUse = Input.GetKey(KeyCode.Alpha4);
         _isHideRefinable = Input.GetKey(KeyCode.Alpha4);
         _isHideGradable = Input.GetKey(KeyCode.Alpha4);
@@ -1498,7 +1503,7 @@ public class Converter : MonoBehaviour
     /// </summary>
     void TurnSkillNameIntoDescription()
     {
-        var path = Application.dataPath + "/Assets/skill_name.txt";
+        var path = Application.dataPath + "/Assets/skill_tree.txt";
 
         // Is file exists?
         if (!File.Exists(path))
@@ -1516,15 +1521,22 @@ public class Converter : MonoBehaviour
 
         var skillNameDatabases = skillNameDatabasesFile.Split('\n');
 
+        List<string> availableSkills = new List<string>();
+        for (int i = 0; i < skillNameDatabases.Length; i++)
+        {
+            if (!availableSkills.Contains(skillNameDatabases[i]))
+                availableSkills.Add(skillNameDatabases[i]);
+        }
+
         StringBuilder builder = new StringBuilder();
         StringBuilder builder2 = new StringBuilder();
 
         builder.Append("setarray $skillDesc$[0],");
         builder2.Append("setarray $allSkills$[0],");
 
-        for (int i = 0; i < skillNameDatabases.Length; i++)
+        for (int i = 0; i < availableSkills.Count; i++)
         {
-            var text = skillNameDatabases[i];
+            var text = availableSkills[i];
 
             text = CommentRemover.Fix(text);
 
@@ -1550,6 +1562,7 @@ public class Converter : MonoBehaviour
         Debug.Log("'skill_name.txt' has been successfully created.");
 
     }
+
     // Converting
 
     /// <summary>
@@ -2200,6 +2213,33 @@ public class Converter : MonoBehaviour
                     _itemContainer.buy = string.Empty;
                 }
             }
+            else if (_isItemNoBonus)
+            {
+                var itemType = _itemContainer.type.ToLower();
+                if ((itemType == "weapon")
+                    || (itemType == "armor")
+                    || (itemType == "shadowgear")
+                    || (itemType == "ammo")
+                    || (itemType == "etc")
+                    || (itemType == "card"))
+                {
+                    if ((itemType != "etc")
+                        && (itemType != "card"))
+                    {
+                        _itemContainer.jobs = GetAvailableJobBullet + _localization.GetTexts(Localization.JOBS_ALL_JOB) + GetAvailableJobSeperator;
+                        _itemContainer.classes = GetAvailableClassBullet + _localization.GetTexts(Localization.CLASSES_ALL_CLASS) + GetAvailableClassSeperator;
+                        _itemContainer.refinable = _localization.GetTexts(Localization.CAN);
+                        _itemContainer.grable = _localization.GetTexts(Localization.CAN);
+                    }
+                    _itemContainer.slots = "0";
+                    _itemContainer.script = string.Empty;
+                    _itemContainer.equipScript = string.Empty;
+                    _itemContainer.unequipScript = string.Empty;
+                    _itemContainer.equipLevelMinimum = string.Empty;
+                    _itemContainer.equipLevelMaximum = string.Empty;
+                    _itemContainer.buy = string.Empty;
+                }
+            }
 
             // Id
             builder.Append("	[" + _itemContainer.id + "] = {\n");
@@ -2367,7 +2407,7 @@ public class Converter : MonoBehaviour
                 && !string.IsNullOrWhiteSpace(bonuses))
                 builder.Append("			\"————————————\",\n");
 
-            if (!_isEquipmentNoValue)
+            if (!_isEquipmentNoValue && !_isItemNoBonus)
                 builder.Append(comboBonuses);
 
             builder.Append(equipBonuses);
