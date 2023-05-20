@@ -597,7 +597,6 @@ public class Converter : MonoBehaviour
         builder.Append(";\n");
     }
 
-
     // Parsing
 
     /// <summary>
