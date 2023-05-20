@@ -1481,6 +1481,22 @@
                     "simpifiedChinese": "-",
                     "korean": "-"
                 }, {
+                    "key": "BONUS2_IGNORE_RES_RACE_RATE",
+                    "thai": "• ไม่สนใจ RES {1}% {0}",
+                    "english": "• Ignore Resistance {1}% {0}",
+                    "japanese": "-",
+                    "traditionalChinese": "-",
+                    "simpifiedChinese": "-",
+                    "korean": "-"
+                }, {
+                    "key": "BONUS2_IGNORE_MRES_RACE_RATE",
+                    "thai": "• ไม่สนใจ MRES {1}% {0}",
+                    "english": "• Ignore Magical Resistance {1}% {0}",
+                    "japanese": "-",
+                    "traditionalChinese": "-",
+                    "simpifiedChinese": "-",
+                    "korean": "-"
+                }, {
                     "key": "BONUS2_EXP_ADD_RACE",
                     "thai": "• EXP +{1}% {0}",
                     "english": "• EXP +{1}% {0}",

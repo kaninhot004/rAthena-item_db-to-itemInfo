@@ -3714,6 +3714,18 @@ public class Converter : MonoBehaviour
             var temps = temp.Split(',');
             text = string.Format(_localization.GetTexts(Localization.BONUS2_IGNORE_MDEF_CLASS_RATE), ParseClass(temps[0]), TryParseInt(temps[1]));
         }
+        if (text.Contains("bonus2 bIgnoreResRaceRate,"))
+        {
+            var temp = text.Replace("bonus2 bIgnoreResRaceRate,", string.Empty);
+            var temps = temp.Split(',');
+            text = string.Format(_localization.GetTexts(Localization.BONUS2_IGNORE_RES_RACE_RATE), ParseRace(temps[0]), TryParseInt(temps[1]));
+        }
+        if (text.Contains("bonus2 bIgnoreMResRaceRate,"))
+        {
+            var temp = text.Replace("bonus2 bIgnoreMResRaceRate,", string.Empty);
+            var temps = temp.Split(',');
+            text = string.Format(_localization.GetTexts(Localization.BONUS2_IGNORE_MRES_RACE_RATE), ParseRace(temps[0]), TryParseInt(temps[1]));
+        }
         if (text.Contains("bonus2 bExpAddRace,"))
         {
             var temp = text.Replace("bonus2 bExpAddRace,", string.Empty);

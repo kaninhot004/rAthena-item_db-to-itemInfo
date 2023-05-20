@@ -209,6 +209,8 @@ public class Localization : MonoBehaviour
     public const string BONUS_IGNORE_MDEF_ELE = "BONUS_IGNORE_MDEF_ELE";
     public const string BONUS2_IGNORE_DEF_CLASS_RATE = "BONUS2_IGNORE_DEF_CLASS_RATE";
     public const string BONUS2_IGNORE_MDEF_CLASS_RATE = "BONUS2_IGNORE_MDEF_CLASS_RATE";
+    public const string BONUS2_IGNORE_RES_RACE_RATE = "BONUS2_IGNORE_RES_RACE_RATE";
+    public const string BONUS2_IGNORE_MRES_RACE_RATE = "BONUS2_IGNORE_MRES_RACE_RATE";
     public const string BONUS2_EXP_ADD_RACE = "BONUS2_EXP_ADD_RACE";
     public const string BONUS2_EXP_ADD_CLASS = "BONUS2_EXP_ADD_CLASS";
     public const string BONUS2_ADD_EFF = "BONUS2_ADD_EFF";
