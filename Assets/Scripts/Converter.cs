@@ -1105,6 +1105,9 @@ public class Converter : MonoBehaviour
 
             text = LineEndingsRemover.Fix(text);
 
+            if (text[0] == '/')
+                continue;
+
             var texts = text.Split('=');
 
             var id = int.Parse(texts[0]);
@@ -1114,10 +1117,7 @@ public class Converter : MonoBehaviour
                 && (name != "\"\""))
             {
                 if (_resourceDatabases.ContainsKey(id))
-                {
-                    _resourceDatabases[id] = name;
-                    Debug.LogWarning("Found duplicated resource name ID: " + id + " (Old: " + _resourceDatabases[id] + " vs New: " + name + ") (Will using a new one)");
-                }
+                    Debug.LogWarning("Found duplicated resource name ID: " + id + " (Old: " + _resourceDatabases[id] + " vs New: " + name + ") (Will using a old one)");
                 else
                     _resourceDatabases.Add(id, name);
             }
@@ -4356,18 +4356,38 @@ public class Converter : MonoBehaviour
 
     string ParseRace2(string text)
     {
-        text = text.Replace("RC2_Goblin", "^AC6523(Goblin)^000000");
-        text = text.Replace("RC2_Kobold", "^AC6523(Kobold)^000000");
-        text = text.Replace("RC2_Orc", "^AC6523(Orc)^000000");
-        text = text.Replace("RC2_Golem", "^AC6523(Golem)^000000");
-        text = text.Replace("RC2_Guardian", "^AC6523(Guardian)^000000");
-        text = text.Replace("RC2_Ninja", "^AC6523(Ninja)^000000");
-        text = text.Replace("RC2_BioLab", "^AC6523(Biolab)^000000");
+        text = text.ToUpper();
+        text = text.Replace("RC2_GOBLIN", "^AC6523(Goblin)^000000");
+        text = text.Replace("RC2_KOBOLD", "^AC6523(Kobold)^000000");
+        text = text.Replace("RC2_ORC", "^AC6523(Orc)^000000");
+        text = text.Replace("RC2_GOLEM", "^AC6523(Golem)^000000");
+        text = text.Replace("RC2_GUARDIAN", "^AC6523(Guardian)^000000");
+        text = text.Replace("RC2_NINJA", "^AC6523(Ninja)^000000");
+        text = text.Replace("RC2_GVG", "^AC6523(GvG)^000000");
+        text = text.Replace("RC2_BATTLEFIELD", "^AC6523(Battlefield)^000000");
+        text = text.Replace("RC2_TREASURE", "^AC6523(Treasure)^000000");
+        text = text.Replace("RC2_BIOLAB", "^AC6523(Biolab)^000000");
+        text = text.Replace("RC2_MANUK", "^AC6523(Manuk)^000000");
+        text = text.Replace("RC2_SPLENDIDE", "^AC6523(Splendide)^000000");
         text = text.Replace("RC2_SCARABA", "^AC6523(Scaraba)^000000");
-        text = text.Replace("RC2_FACEWORM", "^AC6523(Faceworm)^000000");
-        text = text.Replace("RC2_THANATOS", "^AC6523(Thanatos)^000000");
+        text = text.Replace("RC2_OGH_ATK_DEF", "^AC6523(Old Glast Heim)^000000");
+        text = text.Replace("RC2_OGH_Hidden", "^AC6523(Hidden Old Glast Heim)^000000");
+        text = text.Replace("RC2_BIO5_SWORDMAN_THIEF", "^AC6523(Biolab 5 Swordman & Theif)^000000");
+        text = text.Replace("RC2_BIO5_ACOLYTE_MERCHANT", "^AC6523(Biolab 5 Acolyte & Merchant)^000000");
+        text = text.Replace("RC2_BIO5_MAGE_ARCHER", "^AC6523(Biolab 5 Mage & Archer)^000000");
+        text = text.Replace("RC2_BIO5_MVP", "^AC6523(Biolab 5 MvP)^000000");
         text = text.Replace("RC2_CLOCKTOWER", "^AC6523(Clocktower)^000000");
+        text = text.Replace("RC2_THANATOS", "^AC6523(Thanatos)^000000");
+        text = text.Replace("RC2_FACEWORM", "^AC6523(Faceworm)^000000");
+        text = text.Replace("RC2_HEARTHUNTER", "^AC6523(Heart Hunter)^000000");
         text = text.Replace("RC2_ROCKRIDGE", "^AC6523(Rockridge)^000000");
+        text = text.Replace("RC2_WERNER_LAB", "^AC6523(Werner's Laboratory)^000000");
+        text = text.Replace("RC2_TEMPLE_DEMON", "^AC6523(Temple of Demon God)^000000");
+        text = text.Replace("RC2_ILLUSION_VAMPIRE", "^AC6523(Illusion Vampire)^000000");
+        text = text.Replace("RC2_MALANGDO", "^AC6523(Malangdo)^000000");
+        text = text.Replace("RC2_EP172ALPHA", "^AC6523(EP 17.2 Alpha)^000000");
+        text = text.Replace("RC2_EP172BETA", "^AC6523(EP 17.2 Beta)^000000");
+        text = text.Replace("RC2_EP172BATH", "^AC6523(EP 17.2 Bath)^000000");
         return text;
     }
 
