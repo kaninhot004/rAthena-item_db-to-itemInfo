@@ -1110,10 +1110,19 @@ public class Converter : MonoBehaviour
             var id = int.Parse(texts[0]);
             var name = texts[1];
 
-            if (_resourceDatabases.ContainsKey(id))
-                Debug.LogWarning("Found duplicated resource name ID: " + id + " (Old: " + _resourceDatabases[id] + " vs New: " + name + ")");
+            if (!string.IsNullOrEmpty(name)
+                && (name != "\"\""))
+            {
+                if (_resourceDatabases.ContainsKey(id))
+                {
+                    _resourceDatabases[id] = name;
+                    Debug.LogWarning("Found duplicated resource name ID: " + id + " (Old: " + _resourceDatabases[id] + " vs New: " + name + ") (Will using a new one)");
+                }
+                else
+                    _resourceDatabases.Add(id, name);
+            }
             else
-                _resourceDatabases.Add(id, name);
+                Debug.LogWarning("Found empty resource name ID: " + id + ") (Skip adding these)");
         }
 
         Debug.Log("There are " + _resourceDatabases.Count + " resource name database.");
