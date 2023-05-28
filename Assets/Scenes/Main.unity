@@ -176,6 +176,7 @@ MonoBehaviour:
   _isHideItemId: 0
   _isHideSubType: 0
   _isEquipmentNoValue: 0
+  _isItemNoBonus: 0
   _isEnchantmentAbleToUse: 0
   _isHideRefinable: 0
   _isHideGradable: 0
@@ -4344,6 +4345,59 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1930521188}
   m_CullTransparentMesh: 1
+--- !u!1 &1954726039
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1954726041}
+  - component: {fileID: 1954726040}
+  m_Layer: 0
+  m_Name: Refine Database Maker
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1954726040
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1954726039}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fb647f90a1f38eb4eaefbb91682c1dd4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  refineGroupDatas:
+  - group: 0
+    equipmentLevelDatas: []
+  - group: 0
+    equipmentLevelDatas: []
+  - group: 0
+    equipmentLevelDatas: []
+  - group: 0
+    equipmentLevelDatas: []
+--- !u!4 &1954726041
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1954726039}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 10
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1959319724
 PrefabInstance:
   m_ObjectHideFlags: 0

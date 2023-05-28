@@ -1,0 +1,2371 @@
+﻿Header:
+  Type: REFINE_DB
+  Version: 2
+
+Body:
+  - Group: Armor
+    Levels:
+      - Level: 1
+        RefineLevels:
+          - Level: 1
+            Bonus: 100
+            RandomBonus: 10
+            Chances:
+              - Type: Normal
+                Rate: 10000
+                Price: 20000
+                Material: Elunium
+                DowngradeAmount: 1
+              - Type: HD
+                Rate: 10000
+                Price: 40000
+                Material: Special_Elunium
+          - Level: 2
+            Bonus: 410
+            RandomBonus: 20
+            Chances:
+              - Type: Normal
+                Rate: 9480
+                Price: 40000
+                Material: Elunium
+                DowngradeAmount: 1
+              - Type: HD
+                Rate: 9980
+                Price: 80000
+                Material: Special_Elunium
+          - Level: 3
+            Bonus: 720
+            RandomBonus: 30
+            Chances:
+              - Type: Normal
+                Rate: 8960
+                Price: 60000
+                Material: Elunium
+                DowngradeAmount: 1
+              - Type: HD
+                Rate: 9460
+                Price: 120000
+                Material: Special_Elunium
+          - Level: 4
+            Bonus: 1030
+            RandomBonus: 40
+            Chances:
+              - Type: Normal
+                Rate: 8440
+                Price: 80000
+                Material: Elunium
+                DowngradeAmount: 1
+              - Type: HD
+                Rate: 8940
+                Price: 160000
+                Material: Special_Elunium
+          - Level: 5
+            Bonus: 1340
+            RandomBonus: 50
+            Chances:
+              - Type: Normal
+                Rate: 7920
+                Price: 100000
+                Material: Elunium
+                DowngradeAmount: 1
+              - Type: HD
+                Rate: 8420
+                Price: 200000
+                Material: Special_Elunium
+          - Level: 6
+            Bonus: 1650
+            RandomBonus: 60
+            Chances:
+              - Type: Normal
+                Rate: 7400
+                Price: 120000
+                Material: Elunium
+                DowngradeAmount: 1
+              - Type: HD
+                Rate: 7900
+                Price: 240000
+                Material: Special_Elunium
+          - Level: 7
+            Bonus: 1960
+            RandomBonus: 70
+            Chances:
+              - Type: Normal
+                Rate: 6880
+                Price: 140000
+                Material: Elunium
+                DowngradeAmount: 1
+              - Type: HD
+                Rate: 7380
+                Price: 280000
+                Material: Special_Elunium
+          - Level: 8
+            Bonus: 2270
+            RandomBonus: 80
+            Chances:
+              - Type: Normal
+                Rate: 6360
+                Price: 160000
+                Material: Elunium
+                DowngradeAmount: 1
+              - Type: HD
+                Rate: 6860
+                Price: 320000
+                Material: Special_Elunium
+          - Level: 9
+            Bonus: 2580
+            RandomBonus: 90
+            Chances:
+              - Type: Normal
+                Rate: 5840
+                Price: 180000
+                Material: Elunium
+                DowngradeAmount: 1
+              - Type: HD
+                Rate: 6340
+                Price: 360000
+                Material: Special_Elunium
+          - Level: 10
+            Bonus: 2890
+            RandomBonus: 100
+            Chances:
+              - Type: Normal
+                Rate: 5320
+                Price: 200000
+                Material: Elunium
+                DowngradeAmount: 1
+              - Type: HD
+                Rate: 5820
+                Price: 400000
+                Material: Special_Elunium
+          - Level: 11
+            Bonus: 3200
+            RandomBonus: 110
+            Chances:
+              - Type: Normal
+                Rate: 4800
+                Price: 220000
+                Material: Elunium
+                DowngradeAmount: 1
+              - Type: HD
+                Rate: 5300
+                Price: 440000
+                Material: Special_Elunium
+          - Level: 12
+            Bonus: 3510
+            RandomBonus: 120
+            Chances:
+              - Type: Normal
+                Rate: 4280
+                Price: 240000
+                Material: Elunium
+                DowngradeAmount: 1
+              - Type: HD
+                Rate: 4780
+                Price: 480000
+                Material: Special_Elunium
+          - Level: 13
+            Bonus: 3820
+            RandomBonus: 130
+            Chances:
+              - Type: Normal
+                Rate: 3760
+                Price: 260000
+                Material: Elunium
+                DowngradeAmount: 1
+              - Type: HD
+                Rate: 4260
+                Price: 520000
+                Material: Special_Elunium
+          - Level: 14
+            Bonus: 4130
+            RandomBonus: 140
+            Chances:
+              - Type: Normal
+                Rate: 3240
+                Price: 280000
+                Material: Elunium
+                DowngradeAmount: 1
+              - Type: HD
+                Rate: 3740
+                Price: 560000
+                Material: Special_Elunium
+          - Level: 15
+            Bonus: 4440
+            RandomBonus: 150
+            Chances:
+              - Type: Normal
+                Rate: 2720
+                Price: 300000
+                Material: Elunium
+                DowngradeAmount: 1
+              - Type: HD
+                Rate: 3220
+                Price: 600000
+                Material: Special_Elunium
+          - Level: 16
+            Bonus: 4750
+            RandomBonus: 160
+            Chances:
+              - Type: Normal
+                Rate: 2200
+                Price: 320000
+                Material: Elunium
+                DowngradeAmount: 1
+              - Type: HD
+                Rate: 2700
+                Price: 640000
+                Material: Special_Elunium
+          - Level: 17
+            Bonus: 5060
+            RandomBonus: 170
+            Chances:
+              - Type: Normal
+                Rate: 1680
+                Price: 340000
+                Material: Elunium
+                DowngradeAmount: 1
+              - Type: HD
+                Rate: 2180
+                Price: 680000
+                Material: Special_Elunium
+          - Level: 18
+            Bonus: 5370
+            RandomBonus: 180
+            Chances:
+              - Type: Normal
+                Rate: 1160
+                Price: 360000
+                Material: Elunium
+                DowngradeAmount: 1
+              - Type: HD
+                Rate: 1660
+                Price: 720000
+                Material: Special_Elunium
+          - Level: 19
+            Bonus: 5680
+            RandomBonus: 190
+            Chances:
+              - Type: Normal
+                Rate: 640
+                Price: 380000
+                Material: Elunium
+                DowngradeAmount: 1
+              - Type: HD
+                Rate: 1140
+                Price: 760000
+                Material: Special_Elunium
+          - Level: 20
+            Bonus: 5990
+            RandomBonus: 200
+            Chances:
+              - Type: Normal
+                Rate: 120
+                Price: 400000
+                Material: Elunium
+                DowngradeAmount: 1
+              - Type: HD
+                Rate: 620
+                Price: 800000
+                Material: Special_Elunium
+      - Level: 2
+        RefineLevels:
+          - Level: 1
+            Bonus: 120
+            RandomBonus: 20
+            Chances:
+              - Type: Normal
+                Rate: 10000
+                Price: 40000
+                Material: Carnium
+                DowngradeAmount: 1
+              - Type: HD
+                Rate: 10000
+                Price: 80000
+                Material: Special_Carnium
+          - Level: 2
+            Bonus: 490
+            RandomBonus: 40
+            Chances:
+              - Type: Normal
+                Rate: 9475
+                Price: 80000
+                Material: Carnium
+                DowngradeAmount: 1
+              - Type: HD
+                Rate: 9975
+                Price: 160000
+                Material: Special_Carnium
+          - Level: 3
+            Bonus: 860
+            RandomBonus: 60
+            Chances:
+              - Type: Normal
+                Rate: 8950
+                Price: 120000
+                Material: Carnium
+                DowngradeAmount: 1
+              - Type: HD
+                Rate: 9450
+                Price: 240000
+                Material: Special_Carnium
+          - Level: 4
+            Bonus: 1230
+            RandomBonus: 80
+            Chances:
+              - Type: Normal
+                Rate: 8425
+                Price: 160000
+                Material: Carnium
+                DowngradeAmount: 1
+              - Type: HD
+                Rate: 8925
+                Price: 320000
+                Material: Special_Carnium
+          - Level: 5
+            Bonus: 1600
+            RandomBonus: 100
+            Chances:
+              - Type: Normal
+                Rate: 7900
+                Price: 200000
+                Material: Carnium
+                DowngradeAmount: 1
+              - Type: HD
+                Rate: 8400
+                Price: 400000
+                Material: Special_Carnium
+          - Level: 6
+            Bonus: 1970
+            RandomBonus: 120
+            Chances:
+              - Type: Normal
+                Rate: 7375
+                Price: 240000
+                Material: Carnium
+                DowngradeAmount: 1
+              - Type: HD
+                Rate: 7875
+                Price: 480000
+                Material: Special_Carnium
+          - Level: 7
+            Bonus: 2340
+            RandomBonus: 140
+            Chances:
+              - Type: Normal
+                Rate: 6850
+                Price: 280000
+                Material: Carnium
+                DowngradeAmount: 1
+              - Type: HD
+                Rate: 7350
+                Price: 560000
+                Material: Special_Carnium
+          - Level: 8
+            Bonus: 2710
+            RandomBonus: 160
+            Chances:
+              - Type: Normal
+                Rate: 6325
+                Price: 320000
+                Material: Carnium
+                DowngradeAmount: 1
+              - Type: HD
+                Rate: 6825
+                Price: 640000
+                Material: Special_Carnium
+          - Level: 9
+            Bonus: 3080
+            RandomBonus: 180
+            Chances:
+              - Type: Normal
+                Rate: 5800
+                Price: 360000
+                Material: Carnium
+                DowngradeAmount: 1
+              - Type: HD
+                Rate: 6300
+                Price: 720000
+                Material: Special_Carnium
+          - Level: 10
+            Bonus: 3450
+            RandomBonus: 200
+            Chances:
+              - Type: Normal
+                Rate: 5275
+                Price: 400000
+                Material: Carnium
+                DowngradeAmount: 1
+              - Type: HD
+                Rate: 5775
+                Price: 800000
+                Material: Special_Carnium
+          - Level: 11
+            Bonus: 3820
+            RandomBonus: 220
+            Chances:
+              - Type: Normal
+                Rate: 4750
+                Price: 440000
+                Material: Carnium
+                DowngradeAmount: 1
+              - Type: HD
+                Rate: 5250
+                Price: 880000
+                Material: Special_Carnium
+          - Level: 12
+            Bonus: 4190
+            RandomBonus: 240
+            Chances:
+              - Type: Normal
+                Rate: 4225
+                Price: 480000
+                Material: Carnium
+                DowngradeAmount: 1
+              - Type: HD
+                Rate: 4725
+                Price: 960000
+                Material: Special_Carnium
+          - Level: 13
+            Bonus: 4560
+            RandomBonus: 260
+            Chances:
+              - Type: Normal
+                Rate: 3700
+                Price: 520000
+                Material: Carnium
+                DowngradeAmount: 1
+              - Type: HD
+                Rate: 4200
+                Price: 1040000
+                Material: Special_Carnium
+          - Level: 14
+            Bonus: 4930
+            RandomBonus: 280
+            Chances:
+              - Type: Normal
+                Rate: 3175
+                Price: 560000
+                Material: Carnium
+                DowngradeAmount: 1
+              - Type: HD
+                Rate: 3675
+                Price: 1120000
+                Material: Special_Carnium
+          - Level: 15
+            Bonus: 5300
+            RandomBonus: 300
+            Chances:
+              - Type: Normal
+                Rate: 2650
+                Price: 600000
+                Material: Carnium
+                DowngradeAmount: 1
+              - Type: HD
+                Rate: 3150
+                Price: 1200000
+                Material: Special_Carnium
+          - Level: 16
+            Bonus: 5670
+            RandomBonus: 320
+            Chances:
+              - Type: Normal
+                Rate: 2125
+                Price: 640000
+                Material: Carnium
+                DowngradeAmount: 1
+              - Type: HD
+                Rate: 2625
+                Price: 1280000
+                Material: Special_Carnium
+          - Level: 17
+            Bonus: 6040
+            RandomBonus: 340
+            Chances:
+              - Type: Normal
+                Rate: 1600
+                Price: 680000
+                Material: Carnium
+                DowngradeAmount: 1
+              - Type: HD
+                Rate: 2100
+                Price: 1360000
+                Material: Special_Carnium
+          - Level: 18
+            Bonus: 6410
+            RandomBonus: 360
+            Chances:
+              - Type: Normal
+                Rate: 1075
+                Price: 720000
+                Material: Carnium
+                DowngradeAmount: 1
+              - Type: HD
+                Rate: 1575
+                Price: 1440000
+                Material: Special_Carnium
+          - Level: 19
+            Bonus: 6780
+            RandomBonus: 380
+            Chances:
+              - Type: Normal
+                Rate: 550
+                Price: 760000
+                Material: Carnium
+                DowngradeAmount: 1
+              - Type: HD
+                Rate: 1050
+                Price: 1520000
+                Material: Special_Carnium
+          - Level: 20
+            Bonus: 7150
+            RandomBonus: 400
+            Chances:
+              - Type: Normal
+                Rate: 25
+                Price: 800000
+                Material: Carnium
+                DowngradeAmount: 1
+              - Type: HD
+                Rate: 525
+                Price: 1600000
+                Material: Special_Carnium
+  - Group: Weapon
+    Levels:
+      - Level: 1
+        RefineLevels:
+          - Level: 1
+            Bonus: 200
+            RandomBonus: 500
+            Chances:
+              - Type: Normal
+                Rate: 10000
+                Price: 1000
+                Material: Phracon
+                DowngradeAmount: 1
+              - Type: HD
+                Rate: 10000
+                Price: 2000
+                Material: Special_Phracon
+          - Level: 2
+            Bonus: 505
+            RandomBonus: 685
+            Chances:
+              - Type: Normal
+                Rate: 9495
+                Price: 2000
+                Material: Phracon
+                DowngradeAmount: 1
+              - Type: HD
+                Rate: 9995
+                Price: 4000
+                Material: Special_Phracon
+          - Level: 3
+            Bonus: 810
+            RandomBonus: 870
+            Chances:
+              - Type: Normal
+                Rate: 8990
+                Price: 3000
+                Material: Phracon
+                DowngradeAmount: 1
+              - Type: HD
+                Rate: 9490
+                Price: 6000
+                Material: Special_Phracon
+          - Level: 4
+            Bonus: 1115
+            RandomBonus: 1055
+            Chances:
+              - Type: Normal
+                Rate: 8485
+                Price: 4000
+                Material: Phracon
+                DowngradeAmount: 1
+              - Type: HD
+                Rate: 8985
+                Price: 8000
+                Material: Special_Phracon
+          - Level: 5
+            Bonus: 1420
+            RandomBonus: 1240
+            Chances:
+              - Type: Normal
+                Rate: 7980
+                Price: 5000
+                Material: Phracon
+                DowngradeAmount: 1
+              - Type: HD
+                Rate: 8480
+                Price: 10000
+                Material: Special_Phracon
+          - Level: 6
+            Bonus: 1725
+            RandomBonus: 1425
+            Chances:
+              - Type: Normal
+                Rate: 7475
+                Price: 6000
+                Material: Phracon
+                DowngradeAmount: 1
+              - Type: HD
+                Rate: 7975
+                Price: 12000
+                Material: Special_Phracon
+          - Level: 7
+            Bonus: 2030
+            RandomBonus: 1610
+            Chances:
+              - Type: Normal
+                Rate: 6970
+                Price: 7000
+                Material: Phracon
+                DowngradeAmount: 1
+              - Type: HD
+                Rate: 7470
+                Price: 14000
+                Material: Special_Phracon
+          - Level: 8
+            Bonus: 2335
+            RandomBonus: 1795
+            Chances:
+              - Type: Normal
+                Rate: 6465
+                Price: 8000
+                Material: Phracon
+                DowngradeAmount: 1
+              - Type: HD
+                Rate: 6965
+                Price: 16000
+                Material: Special_Phracon
+          - Level: 9
+            Bonus: 2640
+            RandomBonus: 1980
+            Chances:
+              - Type: Normal
+                Rate: 5960
+                Price: 9000
+                Material: Phracon
+                DowngradeAmount: 1
+              - Type: HD
+                Rate: 6460
+                Price: 18000
+                Material: Special_Phracon
+          - Level: 10
+            Bonus: 2945
+            RandomBonus: 2165
+            Chances:
+              - Type: Normal
+                Rate: 5455
+                Price: 10000
+                Material: Phracon
+                DowngradeAmount: 1
+              - Type: HD
+                Rate: 5955
+                Price: 20000
+                Material: Special_Phracon
+          - Level: 11
+            Bonus: 3250
+            RandomBonus: 2350
+            Chances:
+              - Type: Normal
+                Rate: 4950
+                Price: 11000
+                Material: Phracon
+                DowngradeAmount: 1
+              - Type: HD
+                Rate: 5450
+                Price: 22000
+                Material: Special_Phracon
+          - Level: 12
+            Bonus: 3555
+            RandomBonus: 2535
+            Chances:
+              - Type: Normal
+                Rate: 4445
+                Price: 12000
+                Material: Phracon
+                DowngradeAmount: 1
+              - Type: HD
+                Rate: 4945
+                Price: 24000
+                Material: Special_Phracon
+          - Level: 13
+            Bonus: 3860
+            RandomBonus: 2720
+            Chances:
+              - Type: Normal
+                Rate: 3940
+                Price: 13000
+                Material: Phracon
+                DowngradeAmount: 1
+              - Type: HD
+                Rate: 4440
+                Price: 26000
+                Material: Special_Phracon
+          - Level: 14
+            Bonus: 4165
+            RandomBonus: 2905
+            Chances:
+              - Type: Normal
+                Rate: 3435
+                Price: 14000
+                Material: Phracon
+                DowngradeAmount: 1
+              - Type: HD
+                Rate: 3935
+                Price: 28000
+                Material: Special_Phracon
+          - Level: 15
+            Bonus: 4470
+            RandomBonus: 3090
+            Chances:
+              - Type: Normal
+                Rate: 2930
+                Price: 15000
+                Material: Phracon
+                DowngradeAmount: 1
+              - Type: HD
+                Rate: 3430
+                Price: 30000
+                Material: Special_Phracon
+          - Level: 16
+            Bonus: 4775
+            RandomBonus: 3275
+            Chances:
+              - Type: Normal
+                Rate: 2425
+                Price: 16000
+                Material: Phracon
+                DowngradeAmount: 1
+              - Type: HD
+                Rate: 2925
+                Price: 32000
+                Material: Special_Phracon
+          - Level: 17
+            Bonus: 5080
+            RandomBonus: 3460
+            Chances:
+              - Type: Normal
+                Rate: 1920
+                Price: 17000
+                Material: Phracon
+                DowngradeAmount: 1
+              - Type: HD
+                Rate: 2420
+                Price: 34000
+                Material: Special_Phracon
+          - Level: 18
+            Bonus: 5385
+            RandomBonus: 3645
+            Chances:
+              - Type: Normal
+                Rate: 1415
+                Price: 18000
+                Material: Phracon
+                DowngradeAmount: 1
+              - Type: HD
+                Rate: 1915
+                Price: 36000
+                Material: Special_Phracon
+          - Level: 19
+            Bonus: 5690
+            RandomBonus: 3830
+            Chances:
+              - Type: Normal
+                Rate: 910
+                Price: 19000
+                Material: Phracon
+                DowngradeAmount: 1
+              - Type: HD
+                Rate: 1410
+                Price: 38000
+                Material: Special_Phracon
+          - Level: 20
+            Bonus: 5995
+            RandomBonus: 4015
+            Chances:
+              - Type: Normal
+                Rate: 405
+                Price: 20000
+                Material: Phracon
+                DowngradeAmount: 1
+              - Type: HD
+                Rate: 905
+                Price: 40000
+                Material: Special_Phracon
+      - Level: 2
+        RefineLevels:
+          - Level: 1
+            Bonus: 300
+            RandomBonus: 120
+            Chances:
+              - Type: Normal
+                Rate: 10000
+                Price: 5000
+                Material: Emveretarcon
+                DowngradeAmount: 1
+              - Type: HD
+                Rate: 10000
+                Price: 10000
+                Material: Special_Emveretarcon
+          - Level: 2
+            Bonus: 810
+            RandomBonus: 485
+            Chances:
+              - Type: Normal
+                Rate: 9490
+                Price: 10000
+                Material: Emveretarcon
+                DowngradeAmount: 1
+              - Type: HD
+                Rate: 9990
+                Price: 20000
+                Material: Special_Emveretarcon
+          - Level: 3
+            Bonus: 1320
+            RandomBonus: 850
+            Chances:
+              - Type: Normal
+                Rate: 8980
+                Price: 15000
+                Material: Emveretarcon
+                DowngradeAmount: 1
+              - Type: HD
+                Rate: 9480
+                Price: 30000
+                Material: Special_Emveretarcon
+          - Level: 4
+            Bonus: 1830
+            RandomBonus: 1215
+            Chances:
+              - Type: Normal
+                Rate: 8470
+                Price: 20000
+                Material: Emveretarcon
+                DowngradeAmount: 1
+              - Type: HD
+                Rate: 8970
+                Price: 40000
+                Material: Special_Emveretarcon
+          - Level: 5
+            Bonus: 2340
+            RandomBonus: 1580
+            Chances:
+              - Type: Normal
+                Rate: 7960
+                Price: 25000
+                Material: Emveretarcon
+                DowngradeAmount: 1
+              - Type: HD
+                Rate: 8460
+                Price: 50000
+                Material: Special_Emveretarcon
+          - Level: 6
+            Bonus: 2850
+            RandomBonus: 1945
+            Chances:
+              - Type: Normal
+                Rate: 7450
+                Price: 30000
+                Material: Emveretarcon
+                DowngradeAmount: 1
+              - Type: HD
+                Rate: 7950
+                Price: 60000
+                Material: Special_Emveretarcon
+          - Level: 7
+            Bonus: 3360
+            RandomBonus: 2310
+            Chances:
+              - Type: Normal
+                Rate: 6940
+                Price: 35000
+                Material: Emveretarcon
+                DowngradeAmount: 1
+              - Type: HD
+                Rate: 7440
+                Price: 70000
+                Material: Special_Emveretarcon
+          - Level: 8
+            Bonus: 3870
+            RandomBonus: 2675
+            Chances:
+              - Type: Normal
+                Rate: 6430
+                Price: 40000
+                Material: Emveretarcon
+                DowngradeAmount: 1
+              - Type: HD
+                Rate: 6930
+                Price: 80000
+                Material: Special_Emveretarcon
+          - Level: 9
+            Bonus: 4380
+            RandomBonus: 3040
+            Chances:
+              - Type: Normal
+                Rate: 5920
+                Price: 45000
+                Material: Emveretarcon
+                DowngradeAmount: 1
+              - Type: HD
+                Rate: 6420
+                Price: 90000
+                Material: Special_Emveretarcon
+          - Level: 10
+            Bonus: 4890
+            RandomBonus: 3405
+            Chances:
+              - Type: Normal
+                Rate: 5410
+                Price: 50000
+                Material: Emveretarcon
+                DowngradeAmount: 1
+              - Type: HD
+                Rate: 5910
+                Price: 100000
+                Material: Special_Emveretarcon
+          - Level: 11
+            Bonus: 5400
+            RandomBonus: 3770
+            Chances:
+              - Type: Normal
+                Rate: 4900
+                Price: 55000
+                Material: Emveretarcon
+                DowngradeAmount: 1
+              - Type: HD
+                Rate: 5400
+                Price: 110000
+                Material: Special_Emveretarcon
+          - Level: 12
+            Bonus: 5910
+            RandomBonus: 4135
+            Chances:
+              - Type: Normal
+                Rate: 4390
+                Price: 60000
+                Material: Emveretarcon
+                DowngradeAmount: 1
+              - Type: HD
+                Rate: 4890
+                Price: 120000
+                Material: Special_Emveretarcon
+          - Level: 13
+            Bonus: 6420
+            RandomBonus: 4500
+            Chances:
+              - Type: Normal
+                Rate: 3880
+                Price: 65000
+                Material: Emveretarcon
+                DowngradeAmount: 1
+              - Type: HD
+                Rate: 4380
+                Price: 130000
+                Material: Special_Emveretarcon
+          - Level: 14
+            Bonus: 6930
+            RandomBonus: 4865
+            Chances:
+              - Type: Normal
+                Rate: 3370
+                Price: 70000
+                Material: Emveretarcon
+                DowngradeAmount: 1
+              - Type: HD
+                Rate: 3870
+                Price: 140000
+                Material: Special_Emveretarcon
+          - Level: 15
+            Bonus: 7440
+            RandomBonus: 5230
+            Chances:
+              - Type: Normal
+                Rate: 2860
+                Price: 75000
+                Material: Emveretarcon
+                DowngradeAmount: 1
+              - Type: HD
+                Rate: 3360
+                Price: 150000
+                Material: Special_Emveretarcon
+          - Level: 16
+            Bonus: 7950
+            RandomBonus: 5595
+            Chances:
+              - Type: Normal
+                Rate: 2350
+                Price: 80000
+                Material: Emveretarcon
+                DowngradeAmount: 1
+              - Type: HD
+                Rate: 2850
+                Price: 160000
+                Material: Special_Emveretarcon
+          - Level: 17
+            Bonus: 8460
+            RandomBonus: 5960
+            Chances:
+              - Type: Normal
+                Rate: 1840
+                Price: 85000
+                Material: Emveretarcon
+                DowngradeAmount: 1
+              - Type: HD
+                Rate: 2340
+                Price: 170000
+                Material: Special_Emveretarcon
+          - Level: 18
+            Bonus: 8970
+            RandomBonus: 6325
+            Chances:
+              - Type: Normal
+                Rate: 1330
+                Price: 90000
+                Material: Emveretarcon
+                DowngradeAmount: 1
+              - Type: HD
+                Rate: 1830
+                Price: 180000
+                Material: Special_Emveretarcon
+          - Level: 19
+            Bonus: 9480
+            RandomBonus: 6690
+            Chances:
+              - Type: Normal
+                Rate: 820
+                Price: 95000
+                Material: Emveretarcon
+                DowngradeAmount: 1
+              - Type: HD
+                Rate: 1320
+                Price: 190000
+                Material: Special_Emveretarcon
+          - Level: 20
+            Bonus: 9990
+            RandomBonus: 7055
+            Chances:
+              - Type: Normal
+                Rate: 310
+                Price: 100000
+                Material: Emveretarcon
+                DowngradeAmount: 1
+              - Type: HD
+                Rate: 810
+                Price: 200000
+                Material: Special_Emveretarcon
+      - Level: 3
+        RefineLevels:
+          - Level: 1
+            Bonus: 500
+            RandomBonus: 200
+            Chances:
+              - Type: Normal
+                Rate: 10000
+                Price: 10000
+                Material: Oridecon
+                DowngradeAmount: 1
+              - Type: HD
+                Rate: 10000
+                Price: 20000
+                Material: Special_Oridecon
+          - Level: 2
+            Bonus: 1210
+            RandomBonus: 825
+            Chances:
+              - Type: Normal
+                Rate: 9485
+                Price: 20000
+                Material: Oridecon
+                DowngradeAmount: 1
+              - Type: HD
+                Rate: 9985
+                Price: 40000
+                Material: Special_Oridecon
+          - Level: 3
+            Bonus: 1920
+            RandomBonus: 1450
+            Chances:
+              - Type: Normal
+                Rate: 8970
+                Price: 30000
+                Material: Oridecon
+                DowngradeAmount: 1
+              - Type: HD
+                Rate: 9470
+                Price: 60000
+                Material: Special_Oridecon
+          - Level: 4
+            Bonus: 2630
+            RandomBonus: 2075
+            Chances:
+              - Type: Normal
+                Rate: 8455
+                Price: 40000
+                Material: Oridecon
+                DowngradeAmount: 1
+              - Type: HD
+                Rate: 8955
+                Price: 80000
+                Material: Special_Oridecon
+          - Level: 5
+            Bonus: 3340
+            RandomBonus: 2700
+            Chances:
+              - Type: Normal
+                Rate: 7940
+                Price: 50000
+                Material: Oridecon
+                DowngradeAmount: 1
+              - Type: HD
+                Rate: 8440
+                Price: 100000
+                Material: Special_Oridecon
+          - Level: 6
+            Bonus: 4050
+            RandomBonus: 3325
+            Chances:
+              - Type: Normal
+                Rate: 7425
+                Price: 60000
+                Material: Oridecon
+                DowngradeAmount: 1
+              - Type: HD
+                Rate: 7925
+                Price: 120000
+                Material: Special_Oridecon
+          - Level: 7
+            Bonus: 4760
+            RandomBonus: 3950
+            Chances:
+              - Type: Normal
+                Rate: 6910
+                Price: 70000
+                Material: Oridecon
+                DowngradeAmount: 1
+              - Type: HD
+                Rate: 7410
+                Price: 140000
+                Material: Special_Oridecon
+          - Level: 8
+            Bonus: 5470
+            RandomBonus: 4575
+            Chances:
+              - Type: Normal
+                Rate: 6395
+                Price: 80000
+                Material: Oridecon
+                DowngradeAmount: 1
+              - Type: HD
+                Rate: 6895
+                Price: 160000
+                Material: Special_Oridecon
+          - Level: 9
+            Bonus: 6180
+            RandomBonus: 5200
+            Chances:
+              - Type: Normal
+                Rate: 5880
+                Price: 90000
+                Material: Oridecon
+                DowngradeAmount: 1
+              - Type: HD
+                Rate: 6380
+                Price: 180000
+                Material: Special_Oridecon
+          - Level: 10
+            Bonus: 6890
+            RandomBonus: 5825
+            Chances:
+              - Type: Normal
+                Rate: 5365
+                Price: 100000
+                Material: Oridecon
+                DowngradeAmount: 1
+              - Type: HD
+                Rate: 5865
+                Price: 200000
+                Material: Special_Oridecon
+          - Level: 11
+            Bonus: 7600
+            RandomBonus: 6450
+            Chances:
+              - Type: Normal
+                Rate: 4850
+                Price: 110000
+                Material: Oridecon
+                DowngradeAmount: 1
+              - Type: HD
+                Rate: 5350
+                Price: 220000
+                Material: Special_Oridecon
+          - Level: 12
+            Bonus: 8310
+            RandomBonus: 7075
+            Chances:
+              - Type: Normal
+                Rate: 4335
+                Price: 120000
+                Material: Oridecon
+                DowngradeAmount: 1
+              - Type: HD
+                Rate: 4835
+                Price: 240000
+                Material: Special_Oridecon
+          - Level: 13
+            Bonus: 9020
+            RandomBonus: 7700
+            Chances:
+              - Type: Normal
+                Rate: 3820
+                Price: 130000
+                Material: Oridecon
+                DowngradeAmount: 1
+              - Type: HD
+                Rate: 4320
+                Price: 260000
+                Material: Special_Oridecon
+          - Level: 14
+            Bonus: 9730
+            RandomBonus: 8325
+            Chances:
+              - Type: Normal
+                Rate: 3305
+                Price: 140000
+                Material: Oridecon
+                DowngradeAmount: 1
+              - Type: HD
+                Rate: 3805
+                Price: 280000
+                Material: Special_Oridecon
+          - Level: 15
+            Bonus: 10440
+            RandomBonus: 8950
+            Chances:
+              - Type: Normal
+                Rate: 2790
+                Price: 150000
+                Material: Oridecon
+                DowngradeAmount: 1
+              - Type: HD
+                Rate: 3290
+                Price: 300000
+                Material: Special_Oridecon
+          - Level: 16
+            Bonus: 11150
+            RandomBonus: 9575
+            Chances:
+              - Type: Normal
+                Rate: 2275
+                Price: 160000
+                Material: Oridecon
+                DowngradeAmount: 1
+              - Type: HD
+                Rate: 2775
+                Price: 320000
+                Material: Special_Oridecon
+          - Level: 17
+            Bonus: 11860
+            RandomBonus: 10200
+            Chances:
+              - Type: Normal
+                Rate: 1760
+                Price: 170000
+                Material: Oridecon
+                DowngradeAmount: 1
+              - Type: HD
+                Rate: 2260
+                Price: 340000
+                Material: Special_Oridecon
+          - Level: 18
+            Bonus: 12570
+            RandomBonus: 10825
+            Chances:
+              - Type: Normal
+                Rate: 1245
+                Price: 180000
+                Material: Oridecon
+                DowngradeAmount: 1
+              - Type: HD
+                Rate: 1745
+                Price: 360000
+                Material: Special_Oridecon
+          - Level: 19
+            Bonus: 13280
+            RandomBonus: 11450
+            Chances:
+              - Type: Normal
+                Rate: 730
+                Price: 190000
+                Material: Oridecon
+                DowngradeAmount: 1
+              - Type: HD
+                Rate: 1230
+                Price: 380000
+                Material: Special_Oridecon
+          - Level: 20
+            Bonus: 13990
+            RandomBonus: 12075
+            Chances:
+              - Type: Normal
+                Rate: 215
+                Price: 200000
+                Material: Oridecon
+                DowngradeAmount: 1
+              - Type: HD
+                Rate: 715
+                Price: 400000
+                Material: Special_Oridecon
+      - Level: 4
+        RefineLevels:
+          - Level: 1
+            Bonus: 700
+            RandomBonus: 300
+            Chances:
+              - Type: Normal
+                Rate: 10000
+                Price: 20000
+                Material: Oridecon
+                DowngradeAmount: 1
+              - Type: HD
+                Rate: 10000
+                Price: 40000
+                Material: Special_Oridecon
+          - Level: 2
+            Bonus: 1720
+            RandomBonus: 1460
+            Chances:
+              - Type: Normal
+                Rate: 9480
+                Price: 40000
+                Material: Oridecon
+                DowngradeAmount: 1
+              - Type: HD
+                Rate: 9980
+                Price: 80000
+                Material: Special_Oridecon
+          - Level: 3
+            Bonus: 2740
+            RandomBonus: 2620
+            Chances:
+              - Type: Normal
+                Rate: 8960
+                Price: 60000
+                Material: Oridecon
+                DowngradeAmount: 1
+              - Type: HD
+                Rate: 9460
+                Price: 120000
+                Material: Special_Oridecon
+          - Level: 4
+            Bonus: 3760
+            RandomBonus: 3780
+            Chances:
+              - Type: Normal
+                Rate: 8440
+                Price: 80000
+                Material: Oridecon
+                DowngradeAmount: 1
+              - Type: HD
+                Rate: 8940
+                Price: 160000
+                Material: Special_Oridecon
+          - Level: 5
+            Bonus: 4780
+            RandomBonus: 4940
+            Chances:
+              - Type: Normal
+                Rate: 7920
+                Price: 100000
+                Material: Oridecon
+                DowngradeAmount: 1
+              - Type: HD
+                Rate: 8420
+                Price: 200000
+                Material: Special_Oridecon
+          - Level: 6
+            Bonus: 5800
+            RandomBonus: 6100
+            Chances:
+              - Type: Normal
+                Rate: 7400
+                Price: 120000
+                Material: Oridecon
+                DowngradeAmount: 1
+              - Type: HD
+                Rate: 7900
+                Price: 240000
+                Material: Special_Oridecon
+          - Level: 7
+            Bonus: 6820
+            RandomBonus: 7260
+            Chances:
+              - Type: Normal
+                Rate: 6880
+                Price: 140000
+                Material: Oridecon
+                DowngradeAmount: 1
+              - Type: HD
+                Rate: 7380
+                Price: 280000
+                Material: Special_Oridecon
+          - Level: 8
+            Bonus: 7840
+            RandomBonus: 8420
+            Chances:
+              - Type: Normal
+                Rate: 6360
+                Price: 160000
+                Material: Oridecon
+                DowngradeAmount: 1
+              - Type: HD
+                Rate: 6860
+                Price: 320000
+                Material: Special_Oridecon
+          - Level: 9
+            Bonus: 8860
+            RandomBonus: 9580
+            Chances:
+              - Type: Normal
+                Rate: 5840
+                Price: 180000
+                Material: Oridecon
+                DowngradeAmount: 1
+              - Type: HD
+                Rate: 6340
+                Price: 360000
+                Material: Special_Oridecon
+          - Level: 10
+            Bonus: 9880
+            RandomBonus: 10740
+            Chances:
+              - Type: Normal
+                Rate: 5320
+                Price: 200000
+                Material: Oridecon
+                DowngradeAmount: 1
+              - Type: HD
+                Rate: 5820
+                Price: 400000
+                Material: Special_Oridecon
+          - Level: 11
+            Bonus: 10900
+            RandomBonus: 11900
+            Chances:
+              - Type: Normal
+                Rate: 4800
+                Price: 220000
+                Material: Oridecon
+                DowngradeAmount: 1
+              - Type: HD
+                Rate: 5300
+                Price: 440000
+                Material: Special_Oridecon
+          - Level: 12
+            Bonus: 11920
+            RandomBonus: 13060
+            Chances:
+              - Type: Normal
+                Rate: 4280
+                Price: 240000
+                Material: Oridecon
+                DowngradeAmount: 1
+              - Type: HD
+                Rate: 4780
+                Price: 480000
+                Material: Special_Oridecon
+          - Level: 13
+            Bonus: 12940
+            RandomBonus: 14220
+            Chances:
+              - Type: Normal
+                Rate: 3760
+                Price: 260000
+                Material: Oridecon
+                DowngradeAmount: 1
+              - Type: HD
+                Rate: 4260
+                Price: 520000
+                Material: Special_Oridecon
+          - Level: 14
+            Bonus: 13960
+            RandomBonus: 15380
+            Chances:
+              - Type: Normal
+                Rate: 3240
+                Price: 280000
+                Material: Oridecon
+                DowngradeAmount: 1
+              - Type: HD
+                Rate: 3740
+                Price: 560000
+                Material: Special_Oridecon
+          - Level: 15
+            Bonus: 14980
+            RandomBonus: 16540
+            Chances:
+              - Type: Normal
+                Rate: 2720
+                Price: 300000
+                Material: Oridecon
+                DowngradeAmount: 1
+              - Type: HD
+                Rate: 3220
+                Price: 600000
+                Material: Special_Oridecon
+          - Level: 16
+            Bonus: 16000
+            RandomBonus: 17700
+            Chances:
+              - Type: Normal
+                Rate: 2200
+                Price: 320000
+                Material: Oridecon
+                DowngradeAmount: 1
+              - Type: HD
+                Rate: 2700
+                Price: 640000
+                Material: Special_Oridecon
+          - Level: 17
+            Bonus: 17020
+            RandomBonus: 18860
+            Chances:
+              - Type: Normal
+                Rate: 1680
+                Price: 340000
+                Material: Oridecon
+                DowngradeAmount: 1
+              - Type: HD
+                Rate: 2180
+                Price: 680000
+                Material: Special_Oridecon
+          - Level: 18
+            Bonus: 18040
+            RandomBonus: 20020
+            Chances:
+              - Type: Normal
+                Rate: 1160
+                Price: 360000
+                Material: Oridecon
+                DowngradeAmount: 1
+              - Type: HD
+                Rate: 1660
+                Price: 720000
+                Material: Special_Oridecon
+          - Level: 19
+            Bonus: 19060
+            RandomBonus: 21180
+            Chances:
+              - Type: Normal
+                Rate: 640
+                Price: 380000
+                Material: Oridecon
+                DowngradeAmount: 1
+              - Type: HD
+                Rate: 1140
+                Price: 760000
+                Material: Special_Oridecon
+          - Level: 20
+            Bonus: 20080
+            RandomBonus: 22340
+            Chances:
+              - Type: Normal
+                Rate: 120
+                Price: 400000
+                Material: Oridecon
+                DowngradeAmount: 1
+              - Type: HD
+                Rate: 620
+                Price: 800000
+                Material: Special_Oridecon
+      - Level: 5
+        RefineLevels:
+          - Level: 1
+            Bonus: 800
+            RandomBonus: 100
+            Chances:
+              - Type: Normal
+                Rate: 10000
+                Price: 40000
+                Material: Bradium
+                DowngradeAmount: 1
+              - Type: HD
+                Rate: 10000
+                Price: 80000
+                Material: Special_Bradium
+          - Level: 2
+            Bonus: 1600
+            RandomBonus: 200
+            Chances:
+              - Type: Normal
+                Rate: 9475
+                Price: 80000
+                Material: Bradium
+                DowngradeAmount: 1
+              - Type: HD
+                Rate: 9975
+                Price: 160000
+                Material: Special_Bradium
+          - Level: 3
+            Bonus: 2400
+            RandomBonus: 300
+            Chances:
+              - Type: Normal
+                Rate: 8950
+                Price: 120000
+                Material: Bradium
+                DowngradeAmount: 1
+              - Type: HD
+                Rate: 9450
+                Price: 240000
+                Material: Special_Bradium
+          - Level: 4
+            Bonus: 3200
+            RandomBonus: 400
+            Chances:
+              - Type: Normal
+                Rate: 8425
+                Price: 160000
+                Material: Bradium
+                DowngradeAmount: 1
+              - Type: HD
+                Rate: 8925
+                Price: 320000
+                Material: Special_Bradium
+          - Level: 5
+            Bonus: 4000
+            RandomBonus: 500
+            Chances:
+              - Type: Normal
+                Rate: 7900
+                Price: 200000
+                Material: Bradium
+                DowngradeAmount: 1
+              - Type: HD
+                Rate: 8400
+                Price: 400000
+                Material: Special_Bradium
+          - Level: 6
+            Bonus: 4800
+            RandomBonus: 600
+            Chances:
+              - Type: Normal
+                Rate: 7375
+                Price: 240000
+                Material: Bradium
+                DowngradeAmount: 1
+              - Type: HD
+                Rate: 7875
+                Price: 480000
+                Material: Special_Bradium
+          - Level: 7
+            Bonus: 5600
+            RandomBonus: 700
+            Chances:
+              - Type: Normal
+                Rate: 6850
+                Price: 280000
+                Material: Bradium
+                DowngradeAmount: 1
+              - Type: HD
+                Rate: 7350
+                Price: 560000
+                Material: Special_Bradium
+          - Level: 8
+            Bonus: 6400
+            RandomBonus: 800
+            Chances:
+              - Type: Normal
+                Rate: 6325
+                Price: 320000
+                Material: Bradium
+                DowngradeAmount: 1
+              - Type: HD
+                Rate: 6825
+                Price: 640000
+                Material: Special_Bradium
+          - Level: 9
+            Bonus: 7200
+            RandomBonus: 900
+            Chances:
+              - Type: Normal
+                Rate: 5800
+                Price: 360000
+                Material: Bradium
+                DowngradeAmount: 1
+              - Type: HD
+                Rate: 6300
+                Price: 720000
+                Material: Special_Bradium
+          - Level: 10
+            Bonus: 8000
+            RandomBonus: 1000
+            Chances:
+              - Type: Normal
+                Rate: 5275
+                Price: 400000
+                Material: Bradium
+                DowngradeAmount: 1
+              - Type: HD
+                Rate: 5775
+                Price: 800000
+                Material: Special_Bradium
+          - Level: 11
+            Bonus: 8800
+            RandomBonus: 1100
+            Chances:
+              - Type: Normal
+                Rate: 4750
+                Price: 440000
+                Material: Bradium
+                DowngradeAmount: 1
+              - Type: HD
+                Rate: 5250
+                Price: 880000
+                Material: Special_Bradium
+          - Level: 12
+            Bonus: 9600
+            RandomBonus: 1200
+            Chances:
+              - Type: Normal
+                Rate: 4225
+                Price: 480000
+                Material: Bradium
+                DowngradeAmount: 1
+              - Type: HD
+                Rate: 4725
+                Price: 960000
+                Material: Special_Bradium
+          - Level: 13
+            Bonus: 10400
+            RandomBonus: 1300
+            Chances:
+              - Type: Normal
+                Rate: 3700
+                Price: 520000
+                Material: Bradium
+                DowngradeAmount: 1
+              - Type: HD
+                Rate: 4200
+                Price: 1040000
+                Material: Special_Bradium
+          - Level: 14
+            Bonus: 11200
+            RandomBonus: 1400
+            Chances:
+              - Type: Normal
+                Rate: 3175
+                Price: 560000
+                Material: Bradium
+                DowngradeAmount: 1
+              - Type: HD
+                Rate: 3675
+                Price: 1120000
+                Material: Special_Bradium
+          - Level: 15
+            Bonus: 12000
+            RandomBonus: 1500
+            Chances:
+              - Type: Normal
+                Rate: 2650
+                Price: 600000
+                Material: Bradium
+                DowngradeAmount: 1
+              - Type: HD
+                Rate: 3150
+                Price: 1200000
+                Material: Special_Bradium
+          - Level: 16
+            Bonus: 12800
+            RandomBonus: 1600
+            Chances:
+              - Type: Normal
+                Rate: 2125
+                Price: 640000
+                Material: Bradium
+                DowngradeAmount: 1
+              - Type: HD
+                Rate: 2625
+                Price: 1280000
+                Material: Special_Bradium
+          - Level: 17
+            Bonus: 13600
+            RandomBonus: 1700
+            Chances:
+              - Type: Normal
+                Rate: 1600
+                Price: 680000
+                Material: Bradium
+                DowngradeAmount: 1
+              - Type: HD
+                Rate: 2100
+                Price: 1360000
+                Material: Special_Bradium
+          - Level: 18
+            Bonus: 14400
+            RandomBonus: 1800
+            Chances:
+              - Type: Normal
+                Rate: 1075
+                Price: 720000
+                Material: Bradium
+                DowngradeAmount: 1
+              - Type: HD
+                Rate: 1575
+                Price: 1440000
+                Material: Special_Bradium
+          - Level: 19
+            Bonus: 15200
+            RandomBonus: 1900
+            Chances:
+              - Type: Normal
+                Rate: 550
+                Price: 760000
+                Material: Bradium
+                DowngradeAmount: 1
+              - Type: HD
+                Rate: 1050
+                Price: 1520000
+                Material: Special_Bradium
+          - Level: 20
+            Bonus: 16000
+            RandomBonus: 2000
+            Chances:
+              - Type: Normal
+                Rate: 25
+                Price: 800000
+                Material: Bradium
+                DowngradeAmount: 1
+              - Type: HD
+                Rate: 525
+                Price: 1600000
+                Material: Special_Bradium
+  - Group: Shadow_Armor
+    Levels:
+      - Level: 1
+        RefineLevels:
+          - Level: 1
+            Bonus: 1
+            RandomBonus: 1
+            Chances:
+              - Type: Normal
+                Rate: 10000
+                Price: 30000
+                Material: Elunium
+                DowngradeAmount: 1
+              - Type: HD
+                Rate: 10000
+                Price: 60000
+                Material: Special_Elunium
+          - Level: 2
+            Bonus: 2
+            RandomBonus: 2
+            Chances:
+              - Type: Normal
+                Rate: 9500
+                Price: 60000
+                Material: Elunium
+                DowngradeAmount: 1
+              - Type: HD
+                Rate: 10000
+                Price: 120000
+                Material: Special_Elunium
+          - Level: 3
+            Bonus: 3
+            RandomBonus: 3
+            Chances:
+              - Type: Normal
+                Rate: 9000
+                Price: 90000
+                Material: Elunium
+                DowngradeAmount: 1
+              - Type: HD
+                Rate: 9500
+                Price: 180000
+                Material: Special_Elunium
+          - Level: 4
+            Bonus: 4
+            RandomBonus: 4
+            Chances:
+              - Type: Normal
+                Rate: 8500
+                Price: 120000
+                Material: Elunium
+                DowngradeAmount: 1
+              - Type: HD
+                Rate: 9000
+                Price: 240000
+                Material: Special_Elunium
+          - Level: 5
+            Bonus: 5
+            RandomBonus: 5
+            Chances:
+              - Type: Normal
+                Rate: 8000
+                Price: 150000
+                Material: Elunium
+                DowngradeAmount: 1
+              - Type: HD
+                Rate: 8500
+                Price: 300000
+                Material: Special_Elunium
+          - Level: 6
+            Bonus: 6
+            RandomBonus: 6
+            Chances:
+              - Type: Normal
+                Rate: 7500
+                Price: 180000
+                Material: Elunium
+                DowngradeAmount: 1
+              - Type: HD
+                Rate: 8000
+                Price: 360000
+                Material: Special_Elunium
+          - Level: 7
+            Bonus: 7
+            RandomBonus: 7
+            Chances:
+              - Type: Normal
+                Rate: 7000
+                Price: 210000
+                Material: Elunium
+                DowngradeAmount: 1
+              - Type: HD
+                Rate: 7500
+                Price: 420000
+                Material: Special_Elunium
+          - Level: 8
+            Bonus: 8
+            RandomBonus: 8
+            Chances:
+              - Type: Normal
+                Rate: 6500
+                Price: 240000
+                Material: Elunium
+                DowngradeAmount: 1
+              - Type: HD
+                Rate: 7000
+                Price: 480000
+                Material: Special_Elunium
+          - Level: 9
+            Bonus: 9
+            RandomBonus: 9
+            Chances:
+              - Type: Normal
+                Rate: 6000
+                Price: 270000
+                Material: Elunium
+                DowngradeAmount: 1
+              - Type: HD
+                Rate: 6500
+                Price: 540000
+                Material: Special_Elunium
+          - Level: 10
+            Bonus: 10
+            RandomBonus: 10
+            Chances:
+              - Type: Normal
+                Rate: 5500
+                Price: 300000
+                Material: Elunium
+                DowngradeAmount: 1
+              - Type: HD
+                Rate: 6000
+                Price: 600000
+                Material: Special_Elunium
+          - Level: 11
+            Bonus: 11
+            RandomBonus: 11
+            Chances:
+              - Type: Normal
+                Rate: 5000
+                Price: 330000
+                Material: Elunium
+                DowngradeAmount: 1
+              - Type: HD
+                Rate: 5500
+                Price: 660000
+                Material: Special_Elunium
+          - Level: 12
+            Bonus: 12
+            RandomBonus: 12
+            Chances:
+              - Type: Normal
+                Rate: 4500
+                Price: 360000
+                Material: Elunium
+                DowngradeAmount: 1
+              - Type: HD
+                Rate: 5000
+                Price: 720000
+                Material: Special_Elunium
+          - Level: 13
+            Bonus: 13
+            RandomBonus: 13
+            Chances:
+              - Type: Normal
+                Rate: 4000
+                Price: 390000
+                Material: Elunium
+                DowngradeAmount: 1
+              - Type: HD
+                Rate: 4500
+                Price: 780000
+                Material: Special_Elunium
+          - Level: 14
+            Bonus: 14
+            RandomBonus: 14
+            Chances:
+              - Type: Normal
+                Rate: 3500
+                Price: 420000
+                Material: Elunium
+                DowngradeAmount: 1
+              - Type: HD
+                Rate: 4000
+                Price: 840000
+                Material: Special_Elunium
+          - Level: 15
+            Bonus: 15
+            RandomBonus: 15
+            Chances:
+              - Type: Normal
+                Rate: 3000
+                Price: 450000
+                Material: Elunium
+                DowngradeAmount: 1
+              - Type: HD
+                Rate: 3500
+                Price: 900000
+                Material: Special_Elunium
+          - Level: 16
+            Bonus: 16
+            RandomBonus: 16
+            Chances:
+              - Type: Normal
+                Rate: 2500
+                Price: 480000
+                Material: Elunium
+                DowngradeAmount: 1
+              - Type: HD
+                Rate: 3000
+                Price: 960000
+                Material: Special_Elunium
+          - Level: 17
+            Bonus: 17
+            RandomBonus: 17
+            Chances:
+              - Type: Normal
+                Rate: 2000
+                Price: 510000
+                Material: Elunium
+                DowngradeAmount: 1
+              - Type: HD
+                Rate: 2500
+                Price: 1020000
+                Material: Special_Elunium
+          - Level: 18
+            Bonus: 18
+            RandomBonus: 18
+            Chances:
+              - Type: Normal
+                Rate: 1500
+                Price: 540000
+                Material: Elunium
+                DowngradeAmount: 1
+              - Type: HD
+                Rate: 2000
+                Price: 1080000
+                Material: Special_Elunium
+          - Level: 19
+            Bonus: 19
+            RandomBonus: 19
+            Chances:
+              - Type: Normal
+                Rate: 1000
+                Price: 570000
+                Material: Elunium
+                DowngradeAmount: 1
+              - Type: HD
+                Rate: 1500
+                Price: 1140000
+                Material: Special_Elunium
+          - Level: 20
+            Bonus: 20
+            RandomBonus: 20
+            Chances:
+              - Type: Normal
+                Rate: 500
+                Price: 600000
+                Material: Elunium
+                DowngradeAmount: 1
+              - Type: HD
+                Rate: 1000
+                Price: 1200000
+                Material: Special_Elunium
+  - Group: Shadow_Weapon
+    Levels:
+      - Level: 1
+        RefineLevels:
+          - Level: 1
+            Bonus: 1
+            RandomBonus: 1
+            Chances:
+              - Type: Normal
+                Rate: 10000
+                Price: 30000
+                Material: Elunium
+                DowngradeAmount: 1
+              - Type: HD
+                Rate: 10000
+                Price: 60000
+                Material: Special_Elunium
+          - Level: 2
+            Bonus: 2
+            RandomBonus: 2
+            Chances:
+              - Type: Normal
+                Rate: 9500
+                Price: 60000
+                Material: Elunium
+                DowngradeAmount: 1
+              - Type: HD
+                Rate: 10000
+                Price: 120000
+                Material: Special_Elunium
+          - Level: 3
+            Bonus: 3
+            RandomBonus: 3
+            Chances:
+              - Type: Normal
+                Rate: 9000
+                Price: 90000
+                Material: Elunium
+                DowngradeAmount: 1
+              - Type: HD
+                Rate: 9500
+                Price: 180000
+                Material: Special_Elunium
+          - Level: 4
+            Bonus: 4
+            RandomBonus: 4
+            Chances:
+              - Type: Normal
+                Rate: 8500
+                Price: 120000
+                Material: Elunium
+                DowngradeAmount: 1
+              - Type: HD
+                Rate: 9000
+                Price: 240000
+                Material: Special_Elunium
+          - Level: 5
+            Bonus: 5
+            RandomBonus: 5
+            Chances:
+              - Type: Normal
+                Rate: 8000
+                Price: 150000
+                Material: Elunium
+                DowngradeAmount: 1
+              - Type: HD
+                Rate: 8500
+                Price: 300000
+                Material: Special_Elunium
+          - Level: 6
+            Bonus: 6
+            RandomBonus: 6
+            Chances:
+              - Type: Normal
+                Rate: 7500
+                Price: 180000
+                Material: Elunium
+                DowngradeAmount: 1
+              - Type: HD
+                Rate: 8000
+                Price: 360000
+                Material: Special_Elunium
+          - Level: 7
+            Bonus: 7
+            RandomBonus: 7
+            Chances:
+              - Type: Normal
+                Rate: 7000
+                Price: 210000
+                Material: Elunium
+                DowngradeAmount: 1
+              - Type: HD
+                Rate: 7500
+                Price: 420000
+                Material: Special_Elunium
+          - Level: 8
+            Bonus: 8
+            RandomBonus: 8
+            Chances:
+              - Type: Normal
+                Rate: 6500
+                Price: 240000
+                Material: Elunium
+                DowngradeAmount: 1
+              - Type: HD
+                Rate: 7000
+                Price: 480000
+                Material: Special_Elunium
+          - Level: 9
+            Bonus: 9
+            RandomBonus: 9
+            Chances:
+              - Type: Normal
+                Rate: 6000
+                Price: 270000
+                Material: Elunium
+                DowngradeAmount: 1
+              - Type: HD
+                Rate: 6500
+                Price: 540000
+                Material: Special_Elunium
+          - Level: 10
+            Bonus: 10
+            RandomBonus: 10
+            Chances:
+              - Type: Normal
+                Rate: 5500
+                Price: 300000
+                Material: Elunium
+                DowngradeAmount: 1
+              - Type: HD
+                Rate: 6000
+                Price: 600000
+                Material: Special_Elunium
+          - Level: 11
+            Bonus: 11
+            RandomBonus: 11
+            Chances:
+              - Type: Normal
+                Rate: 5000
+                Price: 330000
+                Material: Elunium
+                DowngradeAmount: 1
+              - Type: HD
+                Rate: 5500
+                Price: 660000
+                Material: Special_Elunium
+          - Level: 12
+            Bonus: 12
+            RandomBonus: 12
+            Chances:
+              - Type: Normal
+                Rate: 4500
+                Price: 360000
+                Material: Elunium
+                DowngradeAmount: 1
+              - Type: HD
+                Rate: 5000
+                Price: 720000
+                Material: Special_Elunium
+          - Level: 13
+            Bonus: 13
+            RandomBonus: 13
+            Chances:
+              - Type: Normal
+                Rate: 4000
+                Price: 390000
+                Material: Elunium
+                DowngradeAmount: 1
+              - Type: HD
+                Rate: 4500
+                Price: 780000
+                Material: Special_Elunium
+          - Level: 14
+            Bonus: 14
+            RandomBonus: 14
+            Chances:
+              - Type: Normal
+                Rate: 3500
+                Price: 420000
+                Material: Elunium
+                DowngradeAmount: 1
+              - Type: HD
+                Rate: 4000
+                Price: 840000
+                Material: Special_Elunium
+          - Level: 15
+            Bonus: 15
+            RandomBonus: 15
+            Chances:
+              - Type: Normal
+                Rate: 3000
+                Price: 450000
+                Material: Elunium
+                DowngradeAmount: 1
+              - Type: HD
+                Rate: 3500
+                Price: 900000
+                Material: Special_Elunium
+          - Level: 16
+            Bonus: 16
+            RandomBonus: 16
+            Chances:
+              - Type: Normal
+                Rate: 2500
+                Price: 480000
+                Material: Elunium
+                DowngradeAmount: 1
+              - Type: HD
+                Rate: 3000
+                Price: 960000
+                Material: Special_Elunium
+          - Level: 17
+            Bonus: 17
+            RandomBonus: 17
+            Chances:
+              - Type: Normal
+                Rate: 2000
+                Price: 510000
+                Material: Elunium
+                DowngradeAmount: 1
+              - Type: HD
+                Rate: 2500
+                Price: 1020000
+                Material: Special_Elunium
+          - Level: 18
+            Bonus: 18
+            RandomBonus: 18
+            Chances:
+              - Type: Normal
+                Rate: 1500
+                Price: 540000
+                Material: Elunium
+                DowngradeAmount: 1
+              - Type: HD
+                Rate: 2000
+                Price: 1080000
+                Material: Special_Elunium
+          - Level: 19
+            Bonus: 19
+            RandomBonus: 19
+            Chances:
+              - Type: Normal
+                Rate: 1000
+                Price: 570000
+                Material: Elunium
+                DowngradeAmount: 1
+              - Type: HD
+                Rate: 1500
+                Price: 1140000
+                Material: Special_Elunium
+          - Level: 20
+            Bonus: 20
+            RandomBonus: 20
+            Chances:
+              - Type: Normal
+                Rate: 500
+                Price: 600000
+                Material: Elunium
+                DowngradeAmount: 1
+              - Type: HD
+                Rate: 1000
+                Price: 1200000
+                Material: Special_Elunium
