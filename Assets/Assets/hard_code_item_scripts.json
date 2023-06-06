@@ -122,11 +122,11 @@
         },
         {
             "itemId": 985,
-            "itemScriptDescription": "แร่ตีบวกชุดเกราะ"
+            "itemScriptDescription": "แร่ตีบวกชุดเกราะ Level 1"
         },
         {
             "itemId": 984,
-            "itemScriptDescription": "แร่ตีบวกอาวุธ Level 3 ขึ้นไป"
+            "itemScriptDescription": "แร่ตีบวกอาวุธ Level 3 และ 4"
         },
         {
             "itemId": 1010,
@@ -137,8 +137,44 @@
             "itemScriptDescription": "แร่ตีบวกอาวุธ Level 2"
         },
         {
+            "itemId": 6223,
+            "itemScriptDescription": "แร่ตีบวกชุดเกราะ Level 2"
+        },
+        {
+            "itemId": 6224,
+            "itemScriptDescription": "แร่ตีบวกอาวุธ Level 5"
+        },
+        {
             "itemId": 100158,
             "itemScriptDescription": "กดใช้เพื่อ สวมใส่ Mado Suit"
+        },
+        {
+            "itemId": 10000000,
+            "itemScriptDescription": "แร่ตีบวกอาวุธ Level 1 ^11B120การตีบวกจะไม่ถูกลดระดับ^000000 ^F81717หากการตีบวกไม่สำเร็จ^000000"
+        },
+        {
+            "itemId": 10000001,
+            "itemScriptDescription": "แร่ตีบวกอาวุธ Level 2 ^11B120การตีบวกจะไม่ถูกลดระดับ^000000  ^F81717หากการตีบวกไม่สำเร็จ^000000"
+        },
+        {
+            "itemId": 10000002,
+            "itemScriptDescription": "แร่ตีบวกอาวุธ Level 3 และ 4 ^11B120การตีบวกจะไม่ถูกลดระดับ^000000 ^F81717หากการตีบวกไม่สำเร็จ^000000"
+        },
+        {
+            "itemId": 10000003,
+            "itemScriptDescription": "แร่ตีบวกอาวุธ Level 5 ^11B120การตีบวกจะไม่ถูกลดระดับ^000000 ^F81717หากการตีบวกไม่สำเร็จ^000000"
+        },
+        {
+            "itemId": 10000004,
+            "itemScriptDescription": "แร่ตีบวกชุดเกราะ Level 1 ^11B120การตีบวกจะไม่ถูกลดระดับ^000000 ^F81717หากการตีบวกไม่สำเร็จ^000000"
+        },
+        {
+            "itemId": 10000005,
+            "itemScriptDescription": "แร่ตีบวกชุดเกราะ Level 2 ^11B120การตีบวกจะไม่ถูกลดระดับ^000000 ^F81717หากการตีบวกไม่สำเร็จ^000000"
+        },
+        {
+            "itemId": 10000006,
+            "itemScriptDescription": "^11B120กดใช้เพื่อ สุ่มรับแร่ตีบวกพิเศษ^000000"
         }
     ]
 }

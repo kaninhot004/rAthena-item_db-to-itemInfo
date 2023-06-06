@@ -2162,6 +2162,11 @@ public class Converter : MonoBehaviour
                 && !string.IsNullOrWhiteSpace(_itemContainer.id)
                 || ((i + 1) >= itemDatabases.Length))
             {
+                if ((_itemContainer.subType == "Bow")
+                    && (_itemContainer.locations.Contains(_localization.GetTexts(Localization.LOCATION_RIGHT_HAND))
+                    || _itemContainer.locations.Contains(_localization.GetTexts(Localization.LOCATION_LEFT_HAND))))
+                    Debug.Log("Item ID: " + _itemContainer.id + " wrong location");
+
                 _itemContaianerDatabases.Add(int.Parse(_itemContainer.id), _itemContainer);
 
                 _itemContainers.Add(_itemContainer);
