@@ -5,6 +5,7 @@
 10000004="Etel_Stone"
 10000005="EP19_D_P_Stone"
 10000006="MD_Airboat_Expbox"
+10000007="Labyrinth_S_Crystal"
 500="ฑฑคผฎ"
 501="ปกฐฃฦ๗ผว"
 502="มึศซฦ๗ผว"

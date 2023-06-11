@@ -175,6 +175,10 @@
         {
             "itemId": 10000006,
             "itemScriptDescription": "^11B120กดใช้เพื่อ สุ่มรับแร่ตีบวกพิเศษ^000000"
+        },
+        {
+            "itemId": 10000007,
+            "itemScriptDescription": "^11B120กดใช้เพื่อ รับ 1 Trait Points^000000"
         }
     ]
 }

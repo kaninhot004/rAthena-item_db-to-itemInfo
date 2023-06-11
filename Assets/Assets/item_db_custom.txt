@@ -63,3 +63,14 @@
       NoSell: true
     Script: |
       callfunc("SpecialRefineBox");
+  - Id: 10000007
+    AegisName: Trait_Points
+    Name: Trait Points
+    Type: Usable
+    Flags:
+      BuyingStore: true
+    TradeNoUse:
+      Override: 100
+      NoSell: true
+    Script: |
+      callfunc("GainTraitPoints");
