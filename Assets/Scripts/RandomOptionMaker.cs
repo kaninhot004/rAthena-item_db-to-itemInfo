@@ -1,10 +1,8 @@
 using EasyButtons;
-using System;
 using System.Text;
 using UnityEngine;
 using System.IO;
 using System.Collections.Generic;
-using UnityEditor.Localization.Editor;
 
 public class RandomOptionMaker : MonoBehaviour
 {
