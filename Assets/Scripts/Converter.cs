@@ -2,7 +2,6 @@
 using UnityEngine;
 using UnityEngine.UI;
 using System.IO;
-using EasyButtons;
 using System;
 using System.Text;
 
@@ -4207,6 +4206,9 @@ public class Converter : MonoBehaviour
             else
                 text = string.Format(_localization.GetTexts(Localization.SC_START_4), QuoteRemover.Remove(temps[0]), TryParseTimer(TryParseInt(temps[1], 1000)));
 
+            text = text.Replace("SC_", string.Empty);
+            text = text.Replace("sc_", string.Empty);
+
             ParseStatusChangeStartIntoItemId();
         }
         // sc_start2
@@ -4219,6 +4221,9 @@ public class Converter : MonoBehaviour
                 text = string.Format(_localization.GetTexts(Localization.SC_START_2_NO_DURATION), QuoteRemover.Remove(temps[0]));
             else
                 text = string.Format(_localization.GetTexts(Localization.SC_START_2), QuoteRemover.Remove(temps[0]), TryParseTimer(TryParseInt(temps[1], 1000)));
+
+            text = text.Replace("SC_", string.Empty);
+            text = text.Replace("sc_", string.Empty);
 
             ParseStatusChangeStartIntoItemId();
         }
@@ -4233,6 +4238,9 @@ public class Converter : MonoBehaviour
             else
                 text = string.Format(_localization.GetTexts(Localization.SC_START), QuoteRemover.Remove(temps[0]), (temps.Length > 1) ? TryParseTimer(TryParseInt(temps[1], 1000)) : "0");
 
+            text = text.Replace("SC_", string.Empty);
+            text = text.Replace("sc_", string.Empty);
+
             ParseStatusChangeStartIntoItemId();
         }
         // sc_end
@@ -4241,6 +4249,9 @@ public class Converter : MonoBehaviour
             var temp = text.Replace("sc_end ", string.Empty);
             var temps = temp.Split(',');
             text = string.Format(_localization.GetTexts(Localization.SC_END), QuoteRemover.Remove(temps[0]));
+
+            text = text.Replace("SC_", string.Empty);
+            text = text.Replace("sc_", string.Empty);
         }
         // active_transform
         if (text.Contains("active_transform "))
@@ -5006,8 +5017,6 @@ public class Converter : MonoBehaviour
         text = text.Replace("job_", string.Empty);
         text = text.Replace("EAJ_", string.Empty);
         text = text.Replace("eaj_", string.Empty);
-        text = text.Replace("SC_", string.Empty);
-        text = text.Replace("sc_", string.Empty);
         text = text.Replace("else", "^FF2525" + _localization.GetTexts(Localization.CONDITION_NOT_MET) + "^000000");
         text = text.Replace(" ? ", " " + _localization.GetTexts(Localization.WILL_BE) + " ");
         text = text.Replace("?", " " + _localization.GetTexts(Localization.WILL_BE) + " ");
