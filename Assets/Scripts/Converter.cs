@@ -1379,12 +1379,6 @@ public class Converter : MonoBehaviour
                     _itemListContainer.weaponIds.Add(_id);
                 else if (text.ToLower() == "armor")
                     isArmor = true;
-                else if ((text.ToLower() == "card")
-                    && _name.ToLower().Contains(" card"))
-                    _itemListContainer.cardIds.Add(_id);
-                else if ((text.ToLower() == "card")
-                    && !_name.ToLower().Contains(" card"))
-                    _itemListContainer.enchantIds.Add(_id);
             }
             // Locations
             else if (isArmor)
@@ -2181,6 +2175,14 @@ public class Converter : MonoBehaviour
         for (int i = 0; i < _itemContainers.Count; i++)
         {
             _itemContainer = _itemContainers[i];
+
+            if (_itemContainer.type == "Card")
+            {
+                if (_itemContainer.subType == "Enchant")
+                    _itemListContainer.enchantIds.Add(_itemContainer.id);
+                else
+                    _itemListContainer.cardIds.Add(_itemContainer.id);
+            }
 
             var itemId = int.Parse(_itemContainer.id);
 
