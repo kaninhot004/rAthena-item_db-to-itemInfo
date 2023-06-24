@@ -1966,18 +1966,12 @@ public class Converter : MonoBehaviour
             else if (_itemContainer.isClass && text.Contains("      All_Fourth: false"))
                 _itemContainer.classes += GetAvailableClassBullet + _localization.GetTexts(Localization.CLASS) + " 4 [x]" + GetAvailableClassSeperator;
             // Gender
-            else if (text.Contains("      Female: true"))
+            else if (text.Contains("    Gender: Female"))
                 _itemContainer.gender += _localization.GetTexts(Localization.GENDER_FEMALE) + ", ";
-            else if (text.Contains("      Female: false"))
-                _itemContainer.gender += _localization.GetTexts(Localization.GENDER_FEMALE) + " [x], ";
-            else if (text.Contains("      Male: true"))
+            else if (text.Contains("    Gender: Male"))
                 _itemContainer.gender += _localization.GetTexts(Localization.GENDER_MALE) + ", ";
-            else if (text.Contains("      Male: false"))
-                _itemContainer.gender += _localization.GetTexts(Localization.GENDER_MALE) + " [x], ";
-            else if (text.Contains("      Both: true"))
+            else if (text.Contains("    Gender: Both"))
                 _itemContainer.gender += _localization.GetTexts(Localization.GENDER_ALL) + ", ";
-            else if (text.Contains("      Both: false"))
-                _itemContainer.gender += _localization.GetTexts(Localization.GENDER_ALL) + " [x], ";
             // Location
             else if (text.Contains("      Head_Top: true"))
                 _itemContainer.locations += _localization.GetTexts(Localization.LOCATION_HEAD_TOP) + ", ";
