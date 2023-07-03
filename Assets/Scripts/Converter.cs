@@ -351,6 +351,7 @@ public class Converter : MonoBehaviour
         ExportingItemLists(builder, "costumeIds", _itemListContainer.costumeIds);
         ExportingItemLists(builder, "cardIds", _itemListContainer.cardIds);
         ExportingItemLists(builder, "enchantIds", _itemListContainer.enchantIds);
+        ExportingItemLists(builder, "enchant2Ids", _itemListContainer.enchant2Ids);
         ExportingItemLists(builder, "itemGroupIds", _itemListContainer.itemGroupIds);
 
         File.WriteAllText("global_item_ids.txt", builder.ToString(), Encoding.UTF8);
@@ -1447,6 +1448,7 @@ public class Converter : MonoBehaviour
         Debug.Log("There are " + _itemListContainer.costumeIds.Count + " costume database.");
         Debug.Log("There are " + _itemListContainer.cardIds.Count + " card database.");
         Debug.Log("There are " + _itemListContainer.enchantIds.Count + " enchant database.");
+        Debug.Log("There are " + _itemListContainer.enchant2Ids.Count + " enchant2 database.");
     }
     /// <summary>
     /// Parse pet database file into converter
@@ -2173,7 +2175,14 @@ public class Converter : MonoBehaviour
             if (_itemContainer.type == "Card")
             {
                 if (_itemContainer.subType == "Enchant")
-                    _itemListContainer.enchantIds.Add(_itemContainer.id);
+                {
+                    if (!string.IsNullOrEmpty(_itemContainer.script)
+                        || !string.IsNullOrEmpty(_itemContainer.equipScript)
+                        || !string.IsNullOrEmpty(_itemContainer.unequipScript))
+                        _itemListContainer.enchant2Ids.Add(_itemContainer.id);
+                    else
+                        _itemListContainer.enchantIds.Add(_itemContainer.id);
+                }
                 else
                     _itemListContainer.cardIds.Add(_itemContainer.id);
             }

@@ -11,6 +11,10 @@ public class ItemListContainer
     public List<string> costumeIds = new List<string>();
     public List<string> cardIds = new List<string>();
     public List<string> enchantIds = new List<string>();
+    /// <summary>
+    /// Only Enchantment that had script will kept
+    /// </summary>
+    public List<string> enchant2Ids = new List<string>();
     public List<string> itemGroupIds = new List<string>();
 
     public List<string> petEggIds = new List<string>();
