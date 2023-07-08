@@ -2517,6 +2517,55 @@ public class Converter : MonoBehaviour
         finalize = finalize.Replace(_localization.GetTexts(Localization.WITH) + " ITEMINFO_VIEW)", _localization.GetTexts(Localization.TYPE) + ")");
         finalize = finalize.Replace(_localization.GetTexts(Localization.WITH) + " ITEMINFO_VIEW )", _localization.GetTexts(Localization.TYPE) + ")");
 
+        finalize = finalize.Replace(_localization.GetTexts(Localization.TYPE) + ") " + _localization.GetTexts(Localization.EQUAL) + " 23"
+            , _localization.GetTexts(Localization.TYPE) + " " + _localization.GetTexts(Localization.EQUAL) + " Two-handed Staff");
+        finalize = finalize.Replace(_localization.GetTexts(Localization.TYPE) + ") " + _localization.GetTexts(Localization.EQUAL) + " 22"
+            , _localization.GetTexts(Localization.TYPE) + " " + _localization.GetTexts(Localization.EQUAL) + " Huuma");
+        finalize = finalize.Replace(_localization.GetTexts(Localization.TYPE) + ") " + _localization.GetTexts(Localization.EQUAL) + " 21"
+           , _localization.GetTexts(Localization.TYPE) + " " + _localization.GetTexts(Localization.EQUAL) + " Grenade Launcher");
+        finalize = finalize.Replace(_localization.GetTexts(Localization.TYPE) + ") " + _localization.GetTexts(Localization.EQUAL) + " 20"
+          , _localization.GetTexts(Localization.TYPE) + " " + _localization.GetTexts(Localization.EQUAL) + " Shotgun");
+        finalize = finalize.Replace(_localization.GetTexts(Localization.TYPE) + ") " + _localization.GetTexts(Localization.EQUAL) + " 19"
+        , _localization.GetTexts(Localization.TYPE) + " " + _localization.GetTexts(Localization.EQUAL) + " Gatling Gun");
+        finalize = finalize.Replace(_localization.GetTexts(Localization.TYPE) + ") " + _localization.GetTexts(Localization.EQUAL) + " 18"
+         , _localization.GetTexts(Localization.TYPE) + " " + _localization.GetTexts(Localization.EQUAL) + " Rifle");
+        finalize = finalize.Replace(_localization.GetTexts(Localization.TYPE) + ") " + _localization.GetTexts(Localization.EQUAL) + " 17"
+            , _localization.GetTexts(Localization.TYPE) + " " + _localization.GetTexts(Localization.EQUAL) + " Revolver");
+        finalize = finalize.Replace(_localization.GetTexts(Localization.TYPE) + ") " + _localization.GetTexts(Localization.EQUAL) + " 16"
+            , _localization.GetTexts(Localization.TYPE) + " " + _localization.GetTexts(Localization.EQUAL) + " Katar");
+        finalize = finalize.Replace(_localization.GetTexts(Localization.TYPE) + ") " + _localization.GetTexts(Localization.EQUAL) + " 15"
+            , _localization.GetTexts(Localization.TYPE) + " " + _localization.GetTexts(Localization.EQUAL) + " Book");
+        finalize = finalize.Replace(_localization.GetTexts(Localization.TYPE) + ") " + _localization.GetTexts(Localization.EQUAL) + " 14"
+            , _localization.GetTexts(Localization.TYPE) + " " + _localization.GetTexts(Localization.EQUAL) + " Whip");
+        finalize = finalize.Replace(_localization.GetTexts(Localization.TYPE) + ") " + _localization.GetTexts(Localization.EQUAL) + " 13"
+            , _localization.GetTexts(Localization.TYPE) + " " + _localization.GetTexts(Localization.EQUAL) + " Instrument");
+        finalize = finalize.Replace(_localization.GetTexts(Localization.TYPE) + ") " + _localization.GetTexts(Localization.EQUAL) + " 12"
+            , _localization.GetTexts(Localization.TYPE) + " " + _localization.GetTexts(Localization.EQUAL) + " Knuckle");
+        finalize = finalize.Replace(_localization.GetTexts(Localization.TYPE) + ") " + _localization.GetTexts(Localization.EQUAL) + " 11"
+            , _localization.GetTexts(Localization.TYPE) + " " + _localization.GetTexts(Localization.EQUAL) + " Bow");
+        finalize = finalize.Replace(_localization.GetTexts(Localization.TYPE) + ") " + _localization.GetTexts(Localization.EQUAL) + " 10"
+            , _localization.GetTexts(Localization.TYPE) + " " + _localization.GetTexts(Localization.EQUAL) + " One-handed Staff");
+        finalize = finalize.Replace(_localization.GetTexts(Localization.TYPE) + ") " + _localization.GetTexts(Localization.EQUAL) + " 9"
+            , _localization.GetTexts(Localization.TYPE) + " " + _localization.GetTexts(Localization.EQUAL) + " Two-handed Mace");
+        finalize = finalize.Replace(_localization.GetTexts(Localization.TYPE) + ") " + _localization.GetTexts(Localization.EQUAL) + " 8"
+            , _localization.GetTexts(Localization.TYPE) + " " + _localization.GetTexts(Localization.EQUAL) + " One-handed Mace");
+        finalize = finalize.Replace(_localization.GetTexts(Localization.TYPE) + ") " + _localization.GetTexts(Localization.EQUAL) + " 7"
+            , _localization.GetTexts(Localization.TYPE) + " " + _localization.GetTexts(Localization.EQUAL) + " Two-handed Axe");
+        finalize = finalize.Replace(_localization.GetTexts(Localization.TYPE) + ") " + _localization.GetTexts(Localization.EQUAL) + " 6"
+            , _localization.GetTexts(Localization.TYPE) + " " + _localization.GetTexts(Localization.EQUAL) + " One-handed Axe");
+        finalize = finalize.Replace(_localization.GetTexts(Localization.TYPE) + ") " + _localization.GetTexts(Localization.EQUAL) + " 5"
+            , _localization.GetTexts(Localization.TYPE) + " " + _localization.GetTexts(Localization.EQUAL) + " Two-handed Spear");
+        finalize = finalize.Replace(_localization.GetTexts(Localization.TYPE) + ") " + _localization.GetTexts(Localization.EQUAL) + " 4"
+            , _localization.GetTexts(Localization.TYPE) + " " + _localization.GetTexts(Localization.EQUAL) + " One-handed Spear");
+        finalize = finalize.Replace(_localization.GetTexts(Localization.TYPE) + ") " + _localization.GetTexts(Localization.EQUAL) + " 3"
+            , _localization.GetTexts(Localization.TYPE) + " " + _localization.GetTexts(Localization.EQUAL) + " Two-handed Sword");
+        finalize = finalize.Replace(_localization.GetTexts(Localization.TYPE) + ") " + _localization.GetTexts(Localization.EQUAL) + " 2"
+            , _localization.GetTexts(Localization.TYPE) + " " + _localization.GetTexts(Localization.EQUAL) + " One-handed Sword");
+        finalize = finalize.Replace(_localization.GetTexts(Localization.TYPE) + ") " + _localization.GetTexts(Localization.EQUAL) + " 1"
+          , _localization.GetTexts(Localization.TYPE) + " " + _localization.GetTexts(Localization.EQUAL) + " Dagger");
+        finalize = finalize.Replace(_localization.GetTexts(Localization.TYPE) + ") " + _localization.GetTexts(Localization.EQUAL) + " 0"
+           , _localization.GetTexts(Localization.TYPE) + " " + _localization.GetTexts(Localization.EQUAL) + " Fist");
+
         // Spacing fix
         finalize = finalize.Replace("     •", "•");
         finalize = finalize.Replace("    •", "•");
