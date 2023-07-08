@@ -181,6 +181,11 @@ public class Converter : MonoBehaviour
     /// </summary>
     Dictionary<int, ItemContainer> _itemContaianerDatabases = new Dictionary<int, ItemContainer>();
 
+    bool _isFoundRefine;
+    bool _isFoundGrade;
+    bool _isFoundRefineAutoBonus;
+    bool _isFoundGradeAutoBonus;
+
     void Start()
     {
         _btnCaptchaGenerator.onClick.AddListener(OnCaptchaGeneratorButtonTap);
@@ -1188,6 +1193,7 @@ public class Converter : MonoBehaviour
                 isScript = true;
             else if (isScript)
             {
+                ResetRefineGrade();
                 var comboScript = ConvertItemScripts(text);
 
                 if (!string.IsNullOrEmpty(comboScript))
@@ -1674,6 +1680,7 @@ public class Converter : MonoBehaviour
                 }
                 else if (text.Contains("    Script:"))
                 {
+                    ResetRefineGrade();
                     _itemContainer.isJob = false;
                     _itemContainer.isClass = false;
                     _itemContainer.isScript = true;
@@ -1682,6 +1689,7 @@ public class Converter : MonoBehaviour
                 }
                 else if (text.Contains("    OnEquip_Script:"))
                 {
+                    ResetRefineGrade();
                     _itemContainer.isJob = false;
                     _itemContainer.isClass = false;
                     _itemContainer.isScript = false;
@@ -1690,6 +1698,7 @@ public class Converter : MonoBehaviour
                 }
                 else if (text.Contains("    OnUnequip_Script:"))
                 {
+                    ResetRefineGrade();
                     _itemContainer.isJob = false;
                     _itemContainer.isClass = false;
                     _itemContainer.isScript = false;
@@ -2595,7 +2604,7 @@ public class Converter : MonoBehaviour
     /// </summary>
     /// <param name="text"></param>
     /// <returns></returns>
-    string ConvertItemScripts(string text)
+    string ConvertItemScripts(string text, bool isFromAutoBonus = false)
     {
         // Comment fix
         int commentFixRetry = 300;
@@ -2653,6 +2662,30 @@ public class Converter : MonoBehaviour
         text = text.Replace("bMres,", "bMRes,");
         text = text.Replace("bCrate,", "bCRate,");
         text = text.Replace("bHplus,", "bHPlus,");
+
+        if (isFromAutoBonus)
+        {
+            if (!_isFoundRefineAutoBonus)
+                _isFoundRefineAutoBonus = text.Contains(".@r = getrefine();");
+            if (!_isFoundGradeAutoBonus)
+                _isFoundGradeAutoBonus = text.Contains(".@g = getenchantgrade();");
+            if (_isFoundRefineAutoBonus)
+                text = text.Replace(".@r = getrefine();", string.Empty);
+            if (_isFoundGradeAutoBonus)
+                text = text.Replace(".@g = getenchantgrade();", string.Empty);
+        }
+        else
+        {
+            if (!_isFoundRefine)
+                _isFoundRefine = text.Contains(".@r = getrefine();");
+            if (!_isFoundGrade)
+                _isFoundGrade = text.Contains(".@g = getenchantgrade();");
+            if (_isFoundRefine)
+                text = text.Replace(".@r = getrefine();", string.Empty);
+            if (_isFoundGrade)
+                text = text.Replace(".@g = getenchantgrade();", string.Empty);
+        }
+
         // End wrong wording fix
 
         // Comma fix
@@ -2724,7 +2757,8 @@ public class Converter : MonoBehaviour
                 {
                     text = text.Replace(allBonus[i] + ";", string.Empty);
 
-                    bonuses += ConvertItemScripts(allBonus[i]);
+                    ResetRefineGradeAutoBonus();
+                    bonuses += ConvertItemScripts(allBonus[i], true);
                 }
             }
 
@@ -2739,7 +2773,9 @@ public class Converter : MonoBehaviour
                     if (temp.IndexOf(';') > 0)
                     {
                         var sumBonus = temp.Substring(0, temp.IndexOf(';'));
-                        bonuses += ConvertItemScripts(sumBonus);
+
+                        ResetRefineGradeAutoBonus();
+                        bonuses += ConvertItemScripts(sumBonus, true);
                         if (temp.Length > temp.IndexOf(';') + 1)
                             temp = temp.Substring(temp.IndexOf(';') + 1);
                         else
@@ -2795,7 +2831,8 @@ public class Converter : MonoBehaviour
                 {
                     text = text.Replace(allBonus[i] + ";", string.Empty);
 
-                    bonuses += ConvertItemScripts(allBonus[i]);
+                    ResetRefineGradeAutoBonus();
+                    bonuses += ConvertItemScripts(allBonus[i], true);
                 }
             }
 
@@ -2810,7 +2847,9 @@ public class Converter : MonoBehaviour
                     if (temp.IndexOf(';') > 0)
                     {
                         var sumBonus = temp.Substring(0, temp.IndexOf(';'));
-                        bonuses += ConvertItemScripts(sumBonus);
+
+                        ResetRefineGradeAutoBonus();
+                        bonuses += ConvertItemScripts(sumBonus, true);
                         if (temp.Length > temp.IndexOf(';') + 1)
                             temp = temp.Substring(temp.IndexOf(';') + 1);
                         else
@@ -2876,7 +2915,8 @@ public class Converter : MonoBehaviour
                 {
                     text = text.Replace(currentBonus + ";", string.Empty);
 
-                    bonuses += ConvertItemScripts(currentBonus);
+                    ResetRefineGradeAutoBonus();
+                    bonuses += ConvertItemScripts(currentBonus, true);
                 }
             }
 
@@ -2891,7 +2931,9 @@ public class Converter : MonoBehaviour
                     if (temp.IndexOf(';') > 0)
                     {
                         var sumBonus = temp.Substring(0, temp.IndexOf(';'));
-                        bonuses += ConvertItemScripts(sumBonus);
+
+                        ResetRefineGradeAutoBonus();
+                        bonuses += ConvertItemScripts(sumBonus, true);
                         if (temp.Length > temp.IndexOf(';') + 1)
                             temp = temp.Substring(temp.IndexOf(';') + 1);
                         else
@@ -2945,7 +2987,8 @@ public class Converter : MonoBehaviour
                 {
                     text = text.Replace(allBonus[i] + ";", string.Empty);
 
-                    bonuses += ConvertItemScripts(allBonus[i]);
+                    ResetRefineGradeAutoBonus();
+                    bonuses += ConvertItemScripts(allBonus[i], true);
                 }
             }
 
@@ -4380,7 +4423,7 @@ public class Converter : MonoBehaviour
         text = text.Replace("refineui()", _localization.GetTexts(Localization.REFINE_UI));
 
         // All in one parse...
-        text = AllInOneParse(text);
+        text = AllInOneParse(text, isFromAutoBonus);
 
         // Negative value
         text = text.Replace("+-", "-");
@@ -4653,7 +4696,7 @@ public class Converter : MonoBehaviour
         return text;
     }
 
-    string AllInOneParse(string text)
+    string AllInOneParse(string text, bool isFromAutoBonus = false)
     {
         text = text.Replace("else if (", "^FF2525" + _localization.GetTexts(Localization.CONDITION_NOT_MET) + "^000000(");
         text = text.Replace("else if(", "^FF2525" + _localization.GetTexts(Localization.CONDITION_NOT_MET) + "^000000(");
@@ -5103,6 +5146,21 @@ public class Converter : MonoBehaviour
         text = text.Replace("?", " " + _localization.GetTexts(Localization.WILL_BE) + " ");
         text = text.Replace(" : ", " " + _localization.GetTexts(Localization.IF_NOT) + " ");
         text = text.Replace(":", " " + _localization.GetTexts(Localization.IF_NOT) + " ");
+
+        if (isFromAutoBonus)
+        {
+            if (_isFoundRefineAutoBonus)
+                text = text.Replace(".@r", _localization.GetTexts(Localization.REFINE_COUNT));
+            if (_isFoundGradeAutoBonus)
+                text = text.Replace(".@g", _localization.GetTexts(Localization.GRADE_COUNT));
+        }
+        else
+        {
+            if (_isFoundRefine)
+                text = text.Replace(".@r", _localization.GetTexts(Localization.REFINE_COUNT));
+            if (_isFoundGrade)
+                text = text.Replace(".@g", _localization.GetTexts(Localization.GRADE_COUNT));
+        }
 
         text = ParseWeaponType(text);
         text = ParseEQI(text);
@@ -5745,5 +5803,16 @@ public class Converter : MonoBehaviour
         }
         else
             return timerText + _localization.GetTexts(Localization.SECOND_ABBREVIATION);
+    }
+
+    void ResetRefineGrade()
+    {
+        _isFoundRefine = false;
+        _isFoundGrade = false;
+    }
+    void ResetRefineGradeAutoBonus()
+    {
+        _isFoundRefineAutoBonus = false;
+        _isFoundGradeAutoBonus = false;
     }
 }
