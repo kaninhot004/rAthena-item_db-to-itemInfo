@@ -51980,7 +51980,7 @@ Body:
     Script: |
       bonus bShortAtkRate,30+5*(getrefine()/3);
       bonus bCritical,-5*(readparam(bLuk)/20);
-      if (getiteminfo(getequipid(EQI_HAND_R), ITEMINFO_ARMORLEVEL)==2) {
+      if (getiteminfo(getequipid(EQI_GARMENT), ITEMINFO_ARMORLEVEL)==2) {
          bonus2 bAddClass,Class_Boss,10;
       }
   - Id: 310000
