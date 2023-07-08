@@ -5124,7 +5124,7 @@ public class Converter : MonoBehaviour
         text = text.Replace("getequiparmorlv()", _localization.GetTexts(Localization.GET_EQUIPMENT_LEVEL));
         text = text.Replace("getequiparmorlv", _localization.GetTexts(Localization.GET_EQUIPMENT_LEVEL));
         text = text.Replace("ismounting()", _localization.GetTexts(Localization.IF_MOUNTING));
-        text = text.Replace("getskilllv", "Lv. Skill");
+        text = text.Replace("getskilllv", "Lv.");
         text = text.Replace("duplicate_dynamic", "เรียก");
         text = text.Replace("pow (", _localization.GetTexts(Localization.POW) + "(");
         text = text.Replace("pow(", _localization.GetTexts(Localization.POW) + "(");
@@ -5161,6 +5161,8 @@ public class Converter : MonoBehaviour
             if (_isFoundGrade)
                 text = text.Replace(".@g", _localization.GetTexts(Localization.GRADE_COUNT));
         }
+
+        text = text.Replace("Lv.Lv.", "Lv.");
 
         text = ParseWeaponType(text);
         text = ParseEQI(text);
