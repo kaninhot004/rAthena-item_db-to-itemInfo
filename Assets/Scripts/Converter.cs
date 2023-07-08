@@ -5167,6 +5167,8 @@ public class Converter : MonoBehaviour
         text = ParseWeaponType(text);
         text = ParseEQI(text);
 
+        List<string> foundSkillNames = new List<string>();
+
         // Some normal function contains skill name, let's try parse them
         while (text.Contains("\""))
         {
@@ -5188,6 +5190,7 @@ public class Converter : MonoBehaviour
                     var finalSubText = text.Substring(firstQuoteIndex + 1, secondQuoteIndex);
 
                     var skillName = GetSkillName(finalSubText, true, true);
+                    foundSkillNames.Add(skillName);
 
                     text = text.Replace("\"" + finalSubText + "\"", skillName);
                 }
@@ -5199,6 +5202,10 @@ public class Converter : MonoBehaviour
             else
                 break;
         }
+
+        // Instead of (Bash) it should show Bash for readability
+        for (int i = 0; i < foundSkillNames.Count; i++)
+            text = text.Replace("(" + foundSkillNames[i] + ")", foundSkillNames[i]);
 
         text = QuoteRemover.Remove(text);
 
