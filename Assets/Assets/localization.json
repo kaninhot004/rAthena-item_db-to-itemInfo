@@ -2602,16 +2602,16 @@
                     "korean": "-"
                 }, {
                     "key": "ALL_RACE",
-                    "thai": "ทุกเผ่า",
-                    "english": "All Race",
+                    "thai": "All",
+                    "english": "All",
                     "japanese": "-",
                     "traditionalChinese": "-",
                     "simpifiedChinese": "-",
                     "korean": "-"
                 }, {
                     "key": "ALL_CLASS",
-                    "thai": "ทุกประเภท",
-                    "english": "All Class",
+                    "thai": "All",
+                    "english": "All",
                     "japanese": "-",
                     "traditionalChinese": "-",
                     "simpifiedChinese": "-",
@@ -2642,16 +2642,16 @@
                     "korean": "-"
                 }, {
                     "key": "ALL_SIZE",
-                    "thai": "ทุกขนาด",
-                    "english": "All Size",
+                    "thai": "All",
+                    "english": "All",
                     "japanese": "-",
                     "traditionalChinese": "-",
                     "simpifiedChinese": "-",
                     "korean": "-"
                 }, {
                     "key": "ALL_ELEMENT",
-                    "thai": "ทุกธาตุ",
-                    "english": "All Element",
+                    "thai": "All",
+                    "english": "All",
                     "japanese": "-",
                     "traditionalChinese": "-",
                     "simpifiedChinese": "-",
@@ -3060,6 +3060,54 @@
                     "key": "LOCATION_BOTH_SHADOW_ACCESSORY",
                     "thai": "ประดับ Shadow สองข้าง",
                     "english": "Both Shadow Accessory",
+                    "japanese": "-",
+                    "traditionalChinese": "-",
+                    "simpifiedChinese": "-",
+                    "korean": "-"
+                }, {
+                    "key": "SELL_PRICE",
+                    "thai": "ราคาขาย",
+                    "english": "Sell Price",
+                    "japanese": "-",
+                    "traditionalChinese": "-",
+                    "simpifiedChinese": "-",
+                    "korean": "-"
+                }, {
+                    "key": "MAX_CHANCE",
+                    "thai": "โอกาส Drop",
+                    "english": "Drop Chance",
+                    "japanese": "-",
+                    "traditionalChinese": "-",
+                    "simpifiedChinese": "-",
+                    "korean": "-"
+                }, {
+                    "key": "SLOT",
+                    "thai": "รู",
+                    "english": "Slot",
+                    "japanese": "-",
+                    "traditionalChinese": "-",
+                    "simpifiedChinese": "-",
+                    "korean": "-"
+                }, {
+                    "key": "VIEW",
+                    "thai": "ค่า View",
+                    "english": "View",
+                    "japanese": "-",
+                    "traditionalChinese": "-",
+                    "simpifiedChinese": "-",
+                    "korean": "-"
+                }, {
+                    "key": "ALIAS_NAME",
+                    "thai": "ฉายา",
+                    "english": "Alias",
+                    "japanese": "-",
+                    "traditionalChinese": "-",
+                    "simpifiedChinese": "-",
+                    "korean": "-"
+                }, {
+                    "key": "AEGIS_NAME",
+                    "thai": "ชื่อ (Aegis)",
+                    "english": "Name (Aegis)",
                     "japanese": "-",
                     "traditionalChinese": "-",
                     "simpifiedChinese": "-",

@@ -409,6 +409,13 @@ public class Localization : MonoBehaviour
     public const string DAY_ABBREVIATION = "DAY_ABBREVIATION";
 
     public const string GET_ITEM_POS = "GET_ITEM_POS";
+
+    public const string SELL_PRICE = "SELL_PRICE";
+    public const string MAX_CHANCE = "MAX_CHANCE";
+    public const string SLOT = "SLOT";
+    public const string VIEW = "VIEW";
+    public const string ALIAS_NAME = "ALIAS_NAME";
+    public const string AEGIS_NAME = "AEGIS_NAME";
     #endregion
 
     [Serializable]
