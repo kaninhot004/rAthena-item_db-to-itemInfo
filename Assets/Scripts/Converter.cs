@@ -4635,6 +4635,12 @@ public class Converter : MonoBehaviour
 
     string ParseEQI(string text)
     {
+        text = text.Replace("EQI_SHADOW_ARMOR", _localization.GetTexts(Localization.LOCATION_SHADOW_ARMOR));
+        text = text.Replace("EQI_SHADOW_WEAPON", _localization.GetTexts(Localization.LOCATION_SHADOW_WEAPON));
+        text = text.Replace("EQI_SHADOW_SHIELD", _localization.GetTexts(Localization.LOCATION_SHADOW_SHIELD));
+        text = text.Replace("EQI_SHADOW_SHOES", _localization.GetTexts(Localization.LOCATION_SHADOW_SHOES));
+        text = text.Replace("EQI_SHADOW_ACC_R", _localization.GetTexts(Localization.LOCATION_SHADOW_RIGHT_ACCESSORY));
+        text = text.Replace("EQI_SHADOW_ACC_L", _localization.GetTexts(Localization.LOCATION_SHADOW_LEFT_ACCESSORY));
         text = text.Replace("EQI_COMPOUND_ON", _localization.GetTexts(Localization.EQUIP_COMPOUND_ON));
         text = text.Replace("EQI_ACC_L", _localization.GetTexts(Localization.LOCATION_LEFT_ACCESSORY));
         text = text.Replace("EQI_ACC_R", _localization.GetTexts(Localization.LOCATION_RIGHT_ACCESSORY));
@@ -4651,12 +4657,6 @@ public class Converter : MonoBehaviour
         text = text.Replace("EQI_COSTUME_HEAD_LOW", _localization.GetTexts(Localization.LOCATION_COSTUME_HEAD_LOW));
         text = text.Replace("EQI_COSTUME_GARMENT", _localization.GetTexts(Localization.LOCATION_COSTUME_GARMENT));
         text = text.Replace("EQI_AMMO", _localization.GetTexts(Localization.LOCATION_AMMO));
-        text = text.Replace("EQI_SHADOW_ARMOR", _localization.GetTexts(Localization.LOCATION_SHADOW_ARMOR));
-        text = text.Replace("EQI_SHADOW_WEAPON", _localization.GetTexts(Localization.LOCATION_SHADOW_WEAPON));
-        text = text.Replace("EQI_SHADOW_SHIELD", _localization.GetTexts(Localization.LOCATION_SHADOW_SHIELD));
-        text = text.Replace("EQI_SHADOW_SHOES", _localization.GetTexts(Localization.LOCATION_SHADOW_SHOES));
-        text = text.Replace("EQI_SHADOW_ACC_R", _localization.GetTexts(Localization.LOCATION_SHADOW_RIGHT_ACCESSORY));
-        text = text.Replace("EQI_SHADOW_ACC_L", _localization.GetTexts(Localization.LOCATION_SHADOW_LEFT_ACCESSORY));
         return text;
     }
 
@@ -5164,8 +5164,8 @@ public class Converter : MonoBehaviour
 
         text = text.Replace("Lv.Lv.", "Lv.");
 
-        text = ParseWeaponType(text);
         text = ParseEQI(text);
+        text = ParseWeaponType(text);
 
         List<string> foundSkillNames = new List<string>();
 

@@ -1090,8 +1090,8 @@
                     "korean": "-"
                 }, {
                     "key": "BONUS2_SKILL_COOLDOWN",
-                    "thai": "• Cooldown {0} +{1}",
-                    "english": "• {0} Cooldown +{1}",
+                    "thai": "• CD. {0} +{1}",
+                    "english": "• {0} CD. +{1}",
                     "japanese": "-",
                     "traditionalChinese": "-",
                     "simpifiedChinese": "-",
@@ -3010,7 +3010,7 @@
                     "korean": "-"
                 }, {
                     "key": "SECOND_ABBREVIATION",
-                    "thai": " วินาที",
+                    "thai": "s",
                     "english": "s",
                     "japanese": "-",
                     "traditionalChinese": "-",
@@ -3018,7 +3018,7 @@
                     "korean": "-"
                 }, {
                     "key": "MINUTE_ABBREVIATION",
-                    "thai": " นาที",
+                    "thai": "m",
                     "english": "m",
                     "japanese": "-",
                     "traditionalChinese": "-",
@@ -3026,7 +3026,7 @@
                     "korean": "-"
                 }, {
                     "key": "HOUR_ABBREVIATION",
-                    "thai": " ชั่วโมง",
+                    "thai": "h",
                     "english": "h",
                     "japanese": "-",
                     "traditionalChinese": "-",
@@ -3034,7 +3034,7 @@
                     "korean": "-"
                 }, {
                     "key": "DAY_ABBREVIATION",
-                    "thai": " วัน",
+                    "thai": "d",
                     "english": "d",
                     "japanese": "-",
                     "traditionalChinese": "-",
