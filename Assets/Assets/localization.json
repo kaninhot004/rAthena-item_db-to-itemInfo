@@ -754,7 +754,7 @@
                     "korean": "-"
                 }, {
                     "key": "BONUS_USE_SP_RATE",
-                    "thai": "• SP ที่ใช้ +{0}%",
+                    "thai": "• ใช้ SP +{0}%",
                     "english": "• SP Consumption +{0}%",
                     "japanese": "-",
                     "traditionalChinese": "-",
@@ -762,7 +762,7 @@
                     "korean": "-"
                 }, {
                     "key": "BONUS2_SKILL_USE_SP",
-                    "thai": "• SP ที่ใช้กับ {0} -{1}",
+                    "thai": "• ใช้ SP กับ {0} -{1}",
                     "english": "• {0} SP Consumption -{1}",
                     "japanese": "-",
                     "traditionalChinese": "-",
@@ -770,7 +770,7 @@
                     "korean": "-"
                 }, {
                     "key": "BONUS2_SKILL_USE_SP_RATE",
-                    "thai": "• SP ที่ใช้กับ {0} -{1}%",
+                    "thai": "• ใช้ SP กับ {0} -{1}%",
                     "english": "• {0} SP Consumption -{1}%",
                     "japanese": "-",
                     "traditionalChinese": "-",
@@ -2242,7 +2242,7 @@
                     "korean": "-"
                 }, {
                     "key": "UNIT_SKILL_USE_ID",
-                    "thai": "• สามารถใช้ Lv.{2} {1}",
+                    "thai": "• รับ Lv.{2} {1}",
                     "english": "• Grant Lv.{2} {1}",
                     "japanese": "-",
                     "traditionalChinese": "-",
@@ -2250,7 +2250,7 @@
                     "korean": "-"
                 }, {
                     "key": "ITEM_SKILL",
-                    "thai": "• สามารถใช้ Lv.{1} {0}",
+                    "thai": "• รับ Lv.{1} {0}",
                     "english": "• Grant Lv.{1} {0}",
                     "japanese": "-",
                     "traditionalChinese": "-",
@@ -2258,7 +2258,7 @@
                     "korean": "-"
                 }, {
                     "key": "SKILL",
-                    "thai": "• สามารถใช้ Lv.{1} {0}",
+                    "thai": "• รับ Lv.{1} {0}",
                     "english": "• Grant Lv.{1} {0}",
                     "japanese": "-",
                     "traditionalChinese": "-",
