@@ -530,7 +530,7 @@
                     "korean": "-"
                 }, {
                     "key": "AUTO_BONUS_3",
-                    "thai": "• เมื่อใช้ {1} มีโอกาส {2}% ที่จะ {0}[NEW_LINE]^FF2525(เป็นเวลา {3})^000000",
+                    "thai": "• เมื่อใช้ {1} สุ่ม {2}% ที่จะ {0}[NEW_LINE]^FF2525(เป็นเวลา {3})^000000",
                     "english": "• When using {1} had {2}% chance to {0}[NEW_LINE]^FF2525(For {3})^000000",
                     "japanese": "-",
                     "traditionalChinese": "-",
@@ -538,7 +538,7 @@
                     "korean": "-"
                 }, {
                     "key": "AUTO_BONUS_2",
-                    "thai": "• เมื่อโดน{1} มีโอกาส {2}% ที่จะ {0}[NEW_LINE]^FF2525(เป็นเวลา {3})^000000",
+                    "thai": "• เมื่อโดน{1} สุ่ม {2}% ที่จะ {0}[NEW_LINE]^FF2525(เป็นเวลา {3})^000000",
                     "english": "• When hit by{1} had {2}% chance to {0}[NEW_LINE]^FF2525(For {3})^000000",
                     "japanese": "-",
                     "traditionalChinese": "-",
@@ -546,7 +546,7 @@
                     "korean": "-"
                 }, {
                     "key": "AUTO_BONUS_1",
-                    "thai": "• เมื่อ{1} มีโอกาส {2}% ที่จะ {0}[NEW_LINE]^FF2525(เป็นเวลา {3})^000000",
+                    "thai": "• เมื่อ{1} สุ่ม {2}% ที่จะ {0}[NEW_LINE]^FF2525(เป็นเวลา {3})^000000",
                     "english": "• When{1} had {2}% to {0}[NEW_LINE]^FF2525(For {3})^000000",
                     "japanese": "-",
                     "traditionalChinese": "-",
@@ -1386,7 +1386,7 @@
                     "korean": "-"
                 }, {
                     "key": "BONUS4_SET_DEF_RACE",
-                    "thai": "• มีโอกาส {1}% ลด DEF เหลือ {3} กับ {0} {2}",
+                    "thai": "• สุ่ม {1}% ลด DEF เหลือ {3} กับ {0} {2}",
                     "english": "• Had {1}% chance to decrease target Defense to {3} with {0} for {2}",
                     "japanese": "-",
                     "traditionalChinese": "-",
@@ -1394,7 +1394,7 @@
                     "korean": "-"
                 }, {
                     "key": "BONUS4_SET_MDEF_RACE",
-                    "thai": "• มีโอกาส {1}% ลด MDEF เหลือ {3} กับ {0} {2}",
+                    "thai": "• สุ่ม {1}% ลด MDEF เหลือ {3} กับ {0} {2}",
                     "english": "• Had {1}% chance to decrease target Magical Defense to {3} with {0} for {2}",
                     "japanese": "-",
                     "traditionalChinese": "-",
@@ -1514,7 +1514,7 @@
                     "korean": "-"
                 }, {
                     "key": "BONUS2_ADD_EFF",
-                    "thai": "• เมื่อตีกายภาพมีโอกาส {1}% ที่จะเกิด {0} กับเป้าหมาย",
+                    "thai": "• ตีกายภาพสุ่ม {1}% ที่จะเกิด {0} กับเป้าหมาย",
                     "english": "• When deal Physical Damage had {1}% chance to {0} to target",
                     "japanese": "-",
                     "traditionalChinese": "-",
@@ -1522,7 +1522,7 @@
                     "korean": "-"
                 }, {
                     "key": "BONUS2_ADD_EFF_2",
-                    "thai": "• เมื่อตีกายภาพมีโอกาส {1}% ที่จะเกิด {0} กับตนเอง",
+                    "thai": "• ตีกายภาพสุ่ม {1}% ที่จะเกิด {0} กับตนเอง",
                     "english": "• When deal Physical Damage had {1}% chance to {0} to yourself",
                     "japanese": "-",
                     "traditionalChinese": "-",
@@ -1530,7 +1530,7 @@
                     "korean": "-"
                 }, {
                     "key": "BONUS2_ADD_EFF_WHEN_HIT",
-                    "thai": "• เมื่อโดนตีกายภาพมีโอกาส {1}% ที่จะเกิด {0} กับเป้าหมาย",
+                    "thai": "• เมื่อโดนตีกายภาพสุ่ม {1}% ที่จะเกิด {0} กับเป้าหมาย",
                     "english": "• When received Physical Damage had {1}% chance to {0} to target",
                     "japanese": "-",
                     "traditionalChinese": "-",
@@ -1538,7 +1538,7 @@
                     "korean": "-"
                 }, {
                     "key": "BONUS2_RES_EFF",
-                    "thai": "• มีโอกาส {1}% ที่จะกัน {0}",
+                    "thai": "• มีโอกาส {1}% กัน {0}",
                     "english": "• Had {1}% chance to tolerance {0}",
                     "japanese": "-",
                     "traditionalChinese": "-",
@@ -1546,7 +1546,7 @@
                     "korean": "-"
                 }, {
                     "key": "BONUS3_ADD_EFF",
-                    "thai": "• เมื่อตีโดย {2} มีโอกาส {1}% ที่จะเกิด {0} กับเป้าหมาย",
+                    "thai": "• ตีโดย {2} สุ่ม {1}% ที่จะเกิด {0} กับเป้าหมาย",
                     "english": "• When deal damage by {2} had {1}% chance to {0} to target",
                     "japanese": "-",
                     "traditionalChinese": "-",
@@ -1554,7 +1554,7 @@
                     "korean": "-"
                 }, {
                     "key": "BONUS4_ADD_EFF",
-                    "thai": "• เมื่อตีโดย {2} มีโอกาส {1}% ที่จะเกิด {0} กับเป้าหมาย {3}",
+                    "thai": "• ตีโดย {2} สุ่ม {1}% ที่จะเกิด {0} กับเป้าหมาย {3}",
                     "english": "• When deal damage by {2} had {1}% chance to {0} to target for {3}",
                     "japanese": "-",
                     "traditionalChinese": "-",
@@ -1562,7 +1562,7 @@
                     "korean": "-"
                 }, {
                     "key": "BONUS3_ADD_EFF_WHEN_HIT",
-                    "thai": "• เมื่อโดนตีโดย {2} มีโอกาส {1}% ที่จะเกิด {0} กับเป้าหมาย",
+                    "thai": "• เมื่อโดนตีโดย {2} สุ่ม {1}% ที่จะเกิด {0} กับเป้าหมาย",
                     "english": "• When received damage by {2} had {1}% chance to {0} to target",
                     "japanese": "-",
                     "traditionalChinese": "-",
@@ -1570,7 +1570,7 @@
                     "korean": "-"
                 }, {
                     "key": "BONUS4_ADD_EFF_WHEN_HIT",
-                    "thai": "• เมื่อโดนตีโดย {2} มีโอกาส {1}% ที่จะเกิด {0} กับเป้าหมาย {3}",
+                    "thai": "• เมื่อโดนตีโดย {2} สุ่ม {1}% ที่จะเกิด {0} กับเป้าหมาย {3}",
                     "english": "• When received damage by {2} had {1}% chance to {0} to target for {3}",
                     "japanese": "-",
                     "traditionalChinese": "-",
@@ -1578,7 +1578,7 @@
                     "korean": "-"
                 }, {
                     "key": "BONUS3_ADD_EFF_ON_SKILL",
-                    "thai": "• เมื่อร่าย {0} มีโอกาส {2}% ที่จะเกิด {1} กับเป้าหมาย",
+                    "thai": "• เมื่อร่าย {0} สุ่ม {2}% ที่จะเกิด {1} กับเป้าหมาย",
                     "english": "• When cast {0} had {2}% chance to {1} to target",
                     "japanese": "-",
                     "traditionalChinese": "-",
@@ -1586,7 +1586,7 @@
                     "korean": "-"
                 }, {
                     "key": "BONUS4_ADD_EFF_ON_SKILL",
-                    "thai": "• เมื่อร่าย {0} กับ {3} มีโอกาส {2}% ที่จะเกิด {1} กับเป้าหมาย",
+                    "thai": "• เมื่อร่าย {0} กับ {3} สุ่ม {2}% ที่จะเกิด {1} กับเป้าหมาย",
                     "english": "• When cast {0} with {3} had {2}% chance to {1} to target",
                     "japanese": "-",
                     "traditionalChinese": "-",
@@ -1594,7 +1594,7 @@
                     "korean": "-"
                 }, {
                     "key": "BONUS5_ADD_EFF_ON_SKILL",
-                    "thai": "• เมื่อร่าย {0} กับ {3} มีโอกาส {2}% ที่จะเกิด {1} กับเป้าหมาย {4}",
+                    "thai": "• เมื่อร่าย {0} กับ {3} สุ่ม {2}% ที่จะเกิด {1} กับเป้าหมาย {4}",
                     "english": "• When cast {0} with {3} had {2}% chance to {1} to target for {4}",
                     "japanese": "-",
                     "traditionalChinese": "-",
@@ -1602,7 +1602,7 @@
                     "korean": "-"
                 }, {
                     "key": "BONUS2_COMA_CLASS",
-                    "thai": "• เมื่อตี {0} มีโอกาส {1}% ที่จะเกิด Coma",
+                    "thai": "• ตี {0} สุ่ม {1}% ที่จะเกิด Coma กับเป้าหมาย",
                     "english": "• When deal damage to {0} had {1}% chance to Coma target",
                     "japanese": "-",
                     "traditionalChinese": "-",
@@ -1610,7 +1610,7 @@
                     "korean": "-"
                 }, {
                     "key": "BONUS2_COMA_RACE",
-                    "thai": "• เมื่อตี {0} มีโอกาส {1}% ที่จะเกิด Coma",
+                    "thai": "• ตี {0} สุ่ม {1}% ที่จะเกิด Coma กับเป้าหมาย",
                     "english": "• When deal damage to {0} had {1}% chance to Coma target",
                     "japanese": "-",
                     "traditionalChinese": "-",
@@ -1618,7 +1618,7 @@
                     "korean": "-"
                 }, {
                     "key": "BONUS2_WEAPON_COMA_ELE",
-                    "thai": "• เมื่อตีกายภาพ {0} มีโอกาส {1}% ที่จะเกิด Coma",
+                    "thai": "• ตีกายภาพ {0} สุ่ม {1}% ที่จะเกิด Coma กับเป้าหมาย",
                     "english": "• When deal Physical Damage to {0} had {1}% chance to Coma target",
                     "japanese": "-",
                     "traditionalChinese": "-",
@@ -1626,7 +1626,7 @@
                     "korean": "-"
                 }, {
                     "key": "BONUS2_WEAPON_COMA_CLASS",
-                    "thai": "• เมื่อตีกายภาพ {0} มีโอกาส {1}% ที่จะเกิด Coma",
+                    "thai": "• ตีกายภาพ {0} สุ่ม {1}% ที่จะเกิด Coma กับเป้าหมาย",
                     "english": "• When deal Physical Damage to {0} had {1}% chance to Coma target",
                     "japanese": "-",
                     "traditionalChinese": "-",
@@ -1634,7 +1634,7 @@
                     "korean": "-"
                 }, {
                     "key": "BONUS2_WEAPON_COMA_RACE",
-                    "thai": "• เมื่อตีกายภาพ {0} มีโอกาส {1}% ที่จะเกิด Coma",
+                    "thai": "• ตีกายภาพ {0} สุ่ม {1}% ที่จะเกิด Coma กับเป้าหมาย",
                     "english": "• When deal Physical Damage to {0} had {1}% chance to Coma target",
                     "japanese": "-",
                     "traditionalChinese": "-",
@@ -1642,7 +1642,7 @@
                     "korean": "-"
                 }, {
                     "key": "BONUS3_AUTO_SPELL",
-                    "thai": "• เมื่อตีกายภาพมีโอกาส {2}% ร่าย Lv.{1} {0}",
+                    "thai": "• ตีกายภาพสุ่ม {2}% ร่าย Lv.{1} {0}",
                     "english": "• When deal Physical Damage had {2}% chance to cast Lv.{1} {0}",
                     "japanese": "-",
                     "traditionalChinese": "-",
@@ -1650,7 +1650,7 @@
                     "korean": "-"
                 }, {
                     "key": "BONUS3_AUTO_SPELL_WHEN_HIT",
-                    "thai": "• เมื่อโดนตีกายภาพมีโอกาส {2}% ร่าย Lv.{1} {0}",
+                    "thai": "• เมื่อโดนตีกายภาพสุ่ม {2}% ร่าย Lv.{1} {0}",
                     "english": "• When received Physical Damage had {2}% chance to cast Lv.{1} {0}",
                     "japanese": "-",
                     "traditionalChinese": "-",
@@ -1658,7 +1658,7 @@
                     "korean": "-"
                 }, {
                     "key": "BONUS4_AUTO_SPELL",
-                    "thai": "• เมื่อตีกายภาพมีโอกาส {2}% ร่าย Lv.{1} {0} ใส่ {3}",
+                    "thai": "• ตีกายภาพสุ่ม {2}% ร่าย Lv.{1} {0} ใส่ {3}",
                     "english": "• When deal Physical Damage had {2}% chance to cast Lv.{1} {0} to {3}",
                     "japanese": "-",
                     "traditionalChinese": "-",
@@ -1666,7 +1666,7 @@
                     "korean": "-"
                 }, {
                     "key": "BONUS5_AUTO_SPELL",
-                    "thai": "• เมื่อตีกายภาพโดย {3} มีโอกาส {2}% ร่าย Lv.{1} {0} ใส่ {4}",
+                    "thai": "• ตีกายภาพโดย {3} สุ่ม {2}% ร่าย Lv.{1} {0} ใส่ {4}",
                     "english": "• When deal Physical Damage by {3} had {2}% chance to cast Lv.{1} {0} to {4}",
                     "japanese": "-",
                     "traditionalChinese": "-",
@@ -1674,7 +1674,7 @@
                     "korean": "-"
                 }, {
                     "key": "BONUS4_AUTO_SPELL_WHEN_HIT",
-                    "thai": "• เมื่อโดนตีกายภาพมีโอกาส {2}% ร่าย Lv.{1} {0} ใส่ {3}",
+                    "thai": "• เมื่อโดนตีกายภาพสุ่ม {2}% ร่าย Lv.{1} {0} ใส่ {3}",
                     "english": "• When received Physical Damage had {2}% chance to cast Lv.{1} {0} to {3}",
                     "japanese": "-",
                     "traditionalChinese": "-",
@@ -1682,7 +1682,7 @@
                     "korean": "-"
                 }, {
                     "key": "BONUS5_AUTO_SPELL_WHEN_HIT",
-                    "thai": "• เมื่อโดนตีกายภาพโดย {3} มีโอกาส {2}% ร่าย Lv.{1} {0} ใส่ {4}",
+                    "thai": "• เมื่อโดนตีกายภาพโดย {3} สุ่ม {2}% ร่าย Lv.{1} {0} ใส่ {4}",
                     "english": "• When received Physical Damage by {3} had {2}% chance to cast Lv.{1} {0} to {4}",
                     "japanese": "-",
                     "traditionalChinese": "-",
@@ -1690,7 +1690,7 @@
                     "korean": "-"
                 }, {
                     "key": "BONUS4_AUTO_SPELL_ON_SKILL",
-                    "thai": "• เมื่อร่าย {0} มีโอกาส {3}% ร่าย Lv.{2} {1}",
+                    "thai": "• เมื่อร่าย {0} สุ่ม {3}% ร่าย Lv.{2} {1}",
                     "english": "• When cast {0} had {3}% chance to cast Lv.{2} {1}",
                     "japanese": "-",
                     "traditionalChinese": "-",
@@ -1698,7 +1698,7 @@
                     "korean": "-"
                 }, {
                     "key": "BONUS5_AUTO_SPELL_ON_SKILL",
-                    "thai": "• เมื่อร่าย {0} มีโอกาส {3}% ร่าย Lv.{2} {1} ใส่ {4}",
+                    "thai": "• เมื่อร่าย {0} สุ่ม {3}% ร่าย Lv.{2} {1} ใส่ {4}",
                     "english": "• When cast {0} had {3}% chance to cast Lv.{2} {1} to {4}",
                     "japanese": "-",
                     "traditionalChinese": "-",
@@ -1706,7 +1706,7 @@
                     "korean": "-"
                 }, {
                     "key": "BONUS_HP_DRAIN_VALUE",
-                    "thai": "• เมื่อตีกายภาพ HP +",
+                    "thai": "• ตีกายภาพ HP +",
                     "english": "• When deal Physical Damage HP +",
                     "japanese": "-",
                     "traditionalChinese": "-",
@@ -1714,7 +1714,7 @@
                     "korean": "-"
                 }, {
                     "key": "BONUS2_HP_DRAIN_VALUE_RACE",
-                    "thai": "• เมื่อตีกายภาพ {0} HP +{1}",
+                    "thai": "• ตีกายภาพ {0} HP +{1}",
                     "english": "• When deal Physical Damage {0} HP +{1}",
                     "japanese": "-",
                     "traditionalChinese": "-",
@@ -1722,7 +1722,7 @@
                     "korean": "-"
                 }, {
                     "key": "BONUS2_HP_DRAIN_VALUE_CLASS",
-                    "thai": "• เมื่อตีกายภาพ {0} HP +{1}",
+                    "thai": "• ตีกายภาพ {0} HP +{1}",
                     "english": "• When deal Physical Damage {0} HP +{1}",
                     "japanese": "-",
                     "traditionalChinese": "-",
@@ -1730,7 +1730,7 @@
                     "korean": "-"
                 }, {
                     "key": "BONUS_SP_DRAIN_VALUE",
-                    "thai": "• เมื่อตีกายภาพ SP +",
+                    "thai": "• ตีกายภาพ SP +",
                     "english": "• When deal Physical Damage SP +",
                     "japanese": "-",
                     "traditionalChinese": "-",
@@ -1738,7 +1738,7 @@
                     "korean": "-"
                 }, {
                     "key": "BONUS2_SP_DRAIN_VALUE_RACE",
-                    "thai": "• เมื่อตีกายภาพ {0} SP +{1}",
+                    "thai": "• ตีกายภาพ {0} SP +{1}",
                     "english": "• When deal Physical Damage {0} SP +{1}",
                     "japanese": "-",
                     "traditionalChinese": "-",
@@ -1746,7 +1746,7 @@
                     "korean": "-"
                 }, {
                     "key": "BONUS2_SP_DRAIN_VALUE_CLASS",
-                    "thai": "• เมื่อตีกายภาพ {0} SP +{1}",
+                    "thai": "• ตีกายภาพ {0} SP +{1}",
                     "english": "• When deal Physical Damage {0} SP +{1}",
                     "japanese": "-",
                     "traditionalChinese": "-",
@@ -1754,7 +1754,7 @@
                     "korean": "-"
                 }, {
                     "key": "BONUS2_HP_DRAIN_RATE",
-                    "thai": "• เมื่อตีกายภาพมีโอกาส {0}% HP +{1}%",
+                    "thai": "• ตีกายภาพสุ่ม {0}% HP +{1}%",
                     "english": "• When deal Physical Damage had {0}% chance to HP +{1}%",
                     "japanese": "-",
                     "traditionalChinese": "-",
@@ -1762,7 +1762,7 @@
                     "korean": "-"
                 }, {
                     "key": "BONUS2_SP_DRAIN_RATE",
-                    "thai": "• เมื่อตีกายภาพมีโอกาส {0}% SP +{1}%",
+                    "thai": "• ตีกายภาพสุ่ม {0}% SP +{1}%",
                     "english": "• When deal Physical Damage had {0}% chance to SP +{1}%",
                     "japanese": "-",
                     "traditionalChinese": "-",
@@ -1770,7 +1770,7 @@
                     "korean": "-"
                 }, {
                     "key": "BONUS2_HP_VANISH_RATE",
-                    "thai": "• เมื่อตีกายภาพมีโอกาส {0}% ลด HP ศัตรู {1}%",
+                    "thai": "• ตีกายภาพสุ่ม {0}% ลด HP ศัตรู {1}%",
                     "english": "• When deal Physical Damage had {0}% chance to vanish target HP by {1}%",
                     "japanese": "-",
                     "traditionalChinese": "-",
@@ -1778,7 +1778,7 @@
                     "korean": "-"
                 }, {
                     "key": "BONUS3_HP_VANISH_RACE_RATE",
-                    "thai": "• เมื่อตีกายภาพเผ่า {0} มีโอกาส {1}% ลด HP ศัตรู {2}%",
+                    "thai": "• ตีกายภาพเผ่า {0} สุ่ม {1}% ลด HP ศัตรู {2}%",
                     "english": "• When deal Physical Damage to race {0} had {1}% chance to vanish target HP by {2}%",
                     "japanese": "-",
                     "traditionalChinese": "-",
@@ -1786,7 +1786,7 @@
                     "korean": "-"
                 }, {
                     "key": "BONUS3_HP_VANISH_RATE",
-                    "thai": "• เมื่อตีโดย {2} มีโอกาส {0}% ลด HP ศัตรู {1}%",
+                    "thai": "• ตีโดย {2} สุ่ม {0}% ลด HP ศัตรู {1}%",
                     "english": "• When deal damage by {2} had {0}% chance to vanish target HP by {1}%",
                     "japanese": "-",
                     "traditionalChinese": "-",
@@ -1794,7 +1794,7 @@
                     "korean": "-"
                 }, {
                     "key": "BONUS2_SP_VANISH_RATE",
-                    "thai": "• เมื่อตีกายภาพมีโอกาส {0}% ลด SP ศัตรู {1}%",
+                    "thai": "• ตีกายภาพสุ่ม {0}% ลด SP ศัตรู {1}%",
                     "english": "• When deal Physical Damage had {0}% chance to vanish target SP by {1}%",
                     "japanese": "-",
                     "traditionalChinese": "-",
@@ -1802,7 +1802,7 @@
                     "korean": "-"
                 }, {
                     "key": "BONUS3_SP_VANISH_RACE_RATE",
-                    "thai": "• เมื่อตีกายภาพ {0} มีโอกาส {1}% ลด SP ศัตรู {2}%",
+                    "thai": "• ตีกายภาพ {0} สุ่ม {1}% ลด SP ศัตรู {2}%",
                     "english": "• When deal Physical Damage to race {0} had {1}% chance to vanish target SP by {2}%",
                     "japanese": "-",
                     "traditionalChinese": "-",
@@ -1810,7 +1810,7 @@
                     "korean": "-"
                 }, {
                     "key": "BONUS3_SP_VANISH_RATE",
-                    "thai": "• เมื่อตีโดย {2} มีโอกาส {0}% ลด SP ศัตรู {1}%",
+                    "thai": "• ตีโดย {2} สุ่ม {0}% ลด SP ศัตรู {1}%",
                     "english": "• When deal damage by {2} had {0}% chance to vanish target SP by {1}%",
                     "japanese": "-",
                     "traditionalChinese": "-",
@@ -1818,7 +1818,7 @@
                     "korean": "-"
                 }, {
                     "key": "BONUS3_STATE_NO_RECOVER_RACE",
-                    "thai": "• เมื่อตีกายภาพ {0} มีโอกาส {1}% ที่จะหยุดการฟื้นฟูทุกอย่าง กับเป้าหมาย {2}",
+                    "thai": "• ตีกายภาพ {0} สุ่ม {1}% หยุดการฟื้นฟูทุกอย่าง กับเป้าหมาย {2}",
                     "english": "• When deal Physical Damage {0} had {1}% chance to stop target neutral recovery for {2}",
                     "japanese": "-",
                     "traditionalChinese": "-",
@@ -2010,7 +2010,7 @@
                     "korean": "-"
                 }, {
                     "key": "BONUS_BREAK_WEAPON_RATE",
-                    "thai": "• เมื่อตีมีโอกาส {0}% ที่จะพังอาวุธเป้าหมาย",
+                    "thai": "• มีโอกาส {0}% พังอาวุธเป้าหมาย",
                     "english": "• When deal damage had {0}% chance to break target Weapon",
                     "japanese": "-",
                     "traditionalChinese": "-",
@@ -2018,7 +2018,7 @@
                     "korean": "-"
                 }, {
                     "key": "BONUS_BREAK_ARMOR_RATE",
-                    "thai": "• เมื่อตีมีโอกาส {0}% ที่จะพังชุดเกราะเป้าหมาย",
+                    "thai": "• มีโอกาส {0}% พังชุดเกราะเป้าหมาย",
                     "english": "• When deal damage had {0}% chance to break target Armor",
                     "japanese": "-",
                     "traditionalChinese": "-",
@@ -2042,7 +2042,7 @@
                     "korean": "-"
                 }, {
                     "key": "BONUS3_ADD_MONSTER_ID_DROP_ITEM",
-                    "thai": "• เมื่อกำจัด {1} มีโอกาส {2}% ที่จะ Drop {0} (ID⁞ {3})",
+                    "thai": "• เมื่อกำจัด {1} สุ่ม {2}% ที่จะ Drop {0} (ID⁞ {3})",
                     "english": "• When killed {1} had {2}% chance to drop {0} (ID⁞ {3})",
                     "japanese": "-",
                     "traditionalChinese": "-",
@@ -2098,23 +2098,23 @@
                     "korean": "-"
                 }, {
                     "key": "BONUS2_GET_ZENY_NUM",
-                    "thai": "• เมื่อกำจัด Monster มีโอกาส {1}% ที่จะได้รับ 1~{0} Zeny (ทับไม่ได้)",
-                    "english": "• When killed monster had {1}% chance to get 1~{0} Zeny (Cannot stack)",
+                    "thai": "• เมื่อกำจัด Monster สุ่ม {1}% รับ 1~{0}z (ทับไม่ได้)",
+                    "english": "• When killed monster had {1}% chance to get 1~{0}z (Cannot stack)",
                     "japanese": "-",
                     "traditionalChinese": "-",
                     "simpifiedChinese": "-",
                     "korean": "-"
                 }, {
                     "key": "BONUS2_ADD_GET_ZENY_NUM",
-                    "thai": "• เมื่อกำจัด Monster มีโอกาส {1}% ที่จะได้รับ 1~{0} Zeny",
-                    "english": "• When killed monster had {1}% chance to get 1~{0} Zeny",
+                    "thai": "• เมื่อกำจัด Monster สุ่ม {1}% รับ 1~{0}z",
+                    "english": "• When killed monster had {1}% chance to get 1~{0}z",
                     "japanese": "-",
                     "traditionalChinese": "-",
                     "simpifiedChinese": "-",
                     "korean": "-"
                 }, {
                     "key": "BONUS_DOUBLE_RATE",
-                    "thai": "• มีโอกาส ตีกายภาพสองครั้ง +{0}% (ทับไม่ได้)",
+                    "thai": "• มีโอกาสตีกายภาพสองครั้ง +{0}% (ทับไม่ได้)",
                     "english": "• Chance to double attack +{0}% (Cannot stack)",
                     "japanese": "-",
                     "traditionalChinese": "-",
@@ -2122,7 +2122,7 @@
                     "korean": "-"
                 }, {
                     "key": "BONUS_DOUBLE_ADD_RATE",
-                    "thai": "• มีโอกาส ตีกายภาพสองครั้ง +{0}%",
+                    "thai": "• มีโอกาสตีกายภาพสองครั้ง +{0}%",
                     "english": "• Chance to double attack +{0}%",
                     "japanese": "-",
                     "traditionalChinese": "-",
