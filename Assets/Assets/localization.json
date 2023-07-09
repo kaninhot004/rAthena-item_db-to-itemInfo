@@ -474,32 +474,32 @@
                     "korean": "-"
                 }, {
                     "key": "WEAPON_LEVEL",
-                    "thai": "เลเวลอาวุธ",
-                    "english": "Weapon Level",
+                    "thai": "Lv. อาวุธ",
+                    "english": "Weapon Lv.",
                     "japanese": "-",
                     "traditionalChinese": "-",
                     "simpifiedChinese": "-",
                     "korean": "-"
                 }, {
                     "key": "ARMOR_LEVEL",
-                    "thai": "เลเวลชุดเกราะ",
-                    "english": "Armor Level",
+                    "thai": "Lv. ชุดเกราะ",
+                    "english": "Armor Lv.",
                     "japanese": "-",
                     "traditionalChinese": "-",
                     "simpifiedChinese": "-",
                     "korean": "-"
                 }, {
                     "key": "MINIMUM_EQUIP_LEVEL",
-                    "thai": "เลเวลขั้นต่ำ",
-                    "english": "Min. Equip Level",
+                    "thai": "Lv. ขั้นต่ำ",
+                    "english": "Min. Equip Lv.",
                     "japanese": "-",
                     "traditionalChinese": "-",
                     "simpifiedChinese": "-",
                     "korean": "-"
                 }, {
                     "key": "MAXIMUM_EQUIP_LEVEL",
-                    "thai": "เลเวลสูงสุด",
-                    "english": "Max. Equip Level",
+                    "thai": "Lv. สูงสุด",
+                    "english": "Max. Equip Lv.",
                     "japanese": "-",
                     "traditionalChinese": "-",
                     "simpifiedChinese": "-",
