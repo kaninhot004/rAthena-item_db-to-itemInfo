@@ -1514,7 +1514,7 @@
                     "korean": "-"
                 }, {
                     "key": "BONUS2_ADD_EFF",
-                    "thai": "• ตีกายภาพสุ่ม {1}% ที่จะเกิด {0} กับเป้าหมาย",
+                    "thai": "• ตีกายภาพสุ่ม {1}% เกิด {0} กับเป้าหมาย",
                     "english": "• When deal Physical Damage had {1}% chance to {0} to target",
                     "japanese": "-",
                     "traditionalChinese": "-",
@@ -1522,7 +1522,7 @@
                     "korean": "-"
                 }, {
                     "key": "BONUS2_ADD_EFF_2",
-                    "thai": "• ตีกายภาพสุ่ม {1}% ที่จะเกิด {0} กับตนเอง",
+                    "thai": "• ตีกายภาพสุ่ม {1}% เกิด {0} กับตนเอง",
                     "english": "• When deal Physical Damage had {1}% chance to {0} to yourself",
                     "japanese": "-",
                     "traditionalChinese": "-",
@@ -1530,7 +1530,7 @@
                     "korean": "-"
                 }, {
                     "key": "BONUS2_ADD_EFF_WHEN_HIT",
-                    "thai": "• เมื่อโดนตีกายภาพสุ่ม {1}% ที่จะเกิด {0} กับเป้าหมาย",
+                    "thai": "• เมื่อโดนตีกายภาพสุ่ม {1}% เกิด {0} กับเป้าหมาย",
                     "english": "• When received Physical Damage had {1}% chance to {0} to target",
                     "japanese": "-",
                     "traditionalChinese": "-",
@@ -1546,7 +1546,7 @@
                     "korean": "-"
                 }, {
                     "key": "BONUS3_ADD_EFF",
-                    "thai": "• ตีโดย {2} สุ่ม {1}% ที่จะเกิด {0} กับเป้าหมาย",
+                    "thai": "• ตีโดย {2} สุ่ม {1}% เกิด {0} กับเป้าหมาย",
                     "english": "• When deal damage by {2} had {1}% chance to {0} to target",
                     "japanese": "-",
                     "traditionalChinese": "-",
@@ -1554,7 +1554,7 @@
                     "korean": "-"
                 }, {
                     "key": "BONUS4_ADD_EFF",
-                    "thai": "• ตีโดย {2} สุ่ม {1}% ที่จะเกิด {0} กับเป้าหมาย {3}",
+                    "thai": "• ตีโดย {2} สุ่ม {1}% เกิด {0} กับเป้าหมาย {3}",
                     "english": "• When deal damage by {2} had {1}% chance to {0} to target for {3}",
                     "japanese": "-",
                     "traditionalChinese": "-",
@@ -1562,7 +1562,7 @@
                     "korean": "-"
                 }, {
                     "key": "BONUS3_ADD_EFF_WHEN_HIT",
-                    "thai": "• เมื่อโดนตีโดย {2} สุ่ม {1}% ที่จะเกิด {0} กับเป้าหมาย",
+                    "thai": "• เมื่อโดนตีโดย {2} สุ่ม {1}% เกิด {0} กับเป้าหมาย",
                     "english": "• When received damage by {2} had {1}% chance to {0} to target",
                     "japanese": "-",
                     "traditionalChinese": "-",
@@ -1570,7 +1570,7 @@
                     "korean": "-"
                 }, {
                     "key": "BONUS4_ADD_EFF_WHEN_HIT",
-                    "thai": "• เมื่อโดนตีโดย {2} สุ่ม {1}% ที่จะเกิด {0} กับเป้าหมาย {3}",
+                    "thai": "• เมื่อโดนตีโดย {2} สุ่ม {1}% เกิด {0} กับเป้าหมาย {3}",
                     "english": "• When received damage by {2} had {1}% chance to {0} to target for {3}",
                     "japanese": "-",
                     "traditionalChinese": "-",
@@ -1578,7 +1578,7 @@
                     "korean": "-"
                 }, {
                     "key": "BONUS3_ADD_EFF_ON_SKILL",
-                    "thai": "• เมื่อร่าย {0} สุ่ม {2}% ที่จะเกิด {1} กับเป้าหมาย",
+                    "thai": "• เมื่อร่าย {0} สุ่ม {2}% เกิด {1} กับเป้าหมาย",
                     "english": "• When cast {0} had {2}% chance to {1} to target",
                     "japanese": "-",
                     "traditionalChinese": "-",
@@ -1586,7 +1586,7 @@
                     "korean": "-"
                 }, {
                     "key": "BONUS4_ADD_EFF_ON_SKILL",
-                    "thai": "• เมื่อร่าย {0} กับ {3} สุ่ม {2}% ที่จะเกิด {1} กับเป้าหมาย",
+                    "thai": "• เมื่อร่าย {0} กับ {3} สุ่ม {2}% เกิด {1} กับเป้าหมาย",
                     "english": "• When cast {0} with {3} had {2}% chance to {1} to target",
                     "japanese": "-",
                     "traditionalChinese": "-",
@@ -1594,7 +1594,7 @@
                     "korean": "-"
                 }, {
                     "key": "BONUS5_ADD_EFF_ON_SKILL",
-                    "thai": "• เมื่อร่าย {0} กับ {3} สุ่ม {2}% ที่จะเกิด {1} กับเป้าหมาย {4}",
+                    "thai": "• เมื่อร่าย {0} กับ {3} สุ่ม {2}% เกิด {1} กับเป้าหมาย {4}",
                     "english": "• When cast {0} with {3} had {2}% chance to {1} to target for {4}",
                     "japanese": "-",
                     "traditionalChinese": "-",
@@ -1602,7 +1602,7 @@
                     "korean": "-"
                 }, {
                     "key": "BONUS2_COMA_CLASS",
-                    "thai": "• ตี {0} สุ่ม {1}% ที่จะเกิด Coma กับเป้าหมาย",
+                    "thai": "• ตี {0} สุ่ม {1}% เกิด Coma กับเป้าหมาย",
                     "english": "• When deal damage to {0} had {1}% chance to Coma target",
                     "japanese": "-",
                     "traditionalChinese": "-",
@@ -1610,7 +1610,7 @@
                     "korean": "-"
                 }, {
                     "key": "BONUS2_COMA_RACE",
-                    "thai": "• ตี {0} สุ่ม {1}% ที่จะเกิด Coma กับเป้าหมาย",
+                    "thai": "• ตี {0} สุ่ม {1}% เกิด Coma กับเป้าหมาย",
                     "english": "• When deal damage to {0} had {1}% chance to Coma target",
                     "japanese": "-",
                     "traditionalChinese": "-",
@@ -1618,7 +1618,7 @@
                     "korean": "-"
                 }, {
                     "key": "BONUS2_WEAPON_COMA_ELE",
-                    "thai": "• ตีกายภาพ {0} สุ่ม {1}% ที่จะเกิด Coma กับเป้าหมาย",
+                    "thai": "• ตีกายภาพ {0} สุ่ม {1}% เกิด Coma กับเป้าหมาย",
                     "english": "• When deal Physical Damage to {0} had {1}% chance to Coma target",
                     "japanese": "-",
                     "traditionalChinese": "-",
@@ -1626,7 +1626,7 @@
                     "korean": "-"
                 }, {
                     "key": "BONUS2_WEAPON_COMA_CLASS",
-                    "thai": "• ตีกายภาพ {0} สุ่ม {1}% ที่จะเกิด Coma กับเป้าหมาย",
+                    "thai": "• ตีกายภาพ {0} สุ่ม {1}% เกิด Coma กับเป้าหมาย",
                     "english": "• When deal Physical Damage to {0} had {1}% chance to Coma target",
                     "japanese": "-",
                     "traditionalChinese": "-",
@@ -1634,7 +1634,7 @@
                     "korean": "-"
                 }, {
                     "key": "BONUS2_WEAPON_COMA_RACE",
-                    "thai": "• ตีกายภาพ {0} สุ่ม {1}% ที่จะเกิด Coma กับเป้าหมาย",
+                    "thai": "• ตีกายภาพ {0} สุ่ม {1}% เกิด Coma กับเป้าหมาย",
                     "english": "• When deal Physical Damage to {0} had {1}% chance to Coma target",
                     "japanese": "-",
                     "traditionalChinese": "-",
@@ -2042,7 +2042,7 @@
                     "korean": "-"
                 }, {
                     "key": "BONUS3_ADD_MONSTER_ID_DROP_ITEM",
-                    "thai": "• เมื่อกำจัด {1} สุ่ม {2}% ที่จะ Drop {0} (ID⁞ {3})",
+                    "thai": "• เมื่อกำจัด {1} สุ่ม {2}% Drop {0} (ID⁞ {3})",
                     "english": "• When killed {1} had {2}% chance to drop {0} (ID⁞ {3})",
                     "japanese": "-",
                     "traditionalChinese": "-",
@@ -2050,7 +2050,7 @@
                     "korean": "-"
                 }, {
                     "key": "BONUS2_ADD_MONSTER_DROP_ITEM",
-                    "thai": "• มีโอกาส {1}% ที่จะ Drop {0} (ID⁞ {2})",
+                    "thai": "• มีโอกาส {1}% Drop {0} (ID⁞ {2})",
                     "english": "• Had {1}% chance to drop {0} (ID⁞ {2})",
                     "japanese": "-",
                     "traditionalChinese": "-",
@@ -2074,7 +2074,7 @@
                     "korean": "-"
                 }, {
                     "key": "BONUS2_ADD_MONSTER_DROP_ITEM_GROUP",
-                    "thai": "• มีโอกาส {1}% ที่จะ Drop Item กลุ่ม {0}",
+                    "thai": "• มีโอกาส {1}% Drop Item กลุ่ม {0}",
                     "english": "• Had {1}% chance to drop item group {0}",
                     "japanese": "-",
                     "traditionalChinese": "-",
@@ -2082,7 +2082,7 @@
                     "korean": "-"
                 }, {
                     "key": "BONUS3_ADD_MONSTER_DROP_ITEM_GROUP",
-                    "thai": "• มีโอกาส {2}% ที่จะ Drop Item กลุ่ม {0} {1}",
+                    "thai": "• มีโอกาส {2}% Drop Item กลุ่ม {0} {1}",
                     "english": "• Had {2}% chance to drop item group {0} {1}",
                     "japanese": "-",
                     "traditionalChinese": "-",
@@ -2090,7 +2090,7 @@
                     "korean": "-"
                 }, {
                     "key": "BONUS3_ADD_CLASS_DROP_ITEM_GROUP",
-                    "thai": "• มีโอกาส {2}% ที่จะ Drop Item กลุ่ม {0} {1}",
+                    "thai": "• มีโอกาส {2}% Drop Item กลุ่ม {0} {1}",
                     "english": "• Had {2}% chance to drop item group {0} {1}",
                     "japanese": "-",
                     "traditionalChinese": "-",
