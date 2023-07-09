@@ -778,7 +778,7 @@
                     "korean": "-"
                 }, {
                     "key": "BONUS2_SKILL_ATK",
-                    "thai": "• {0} แรงขึ้น +{1}%",
+                    "thai": "• พลัง {0} +{1}%",
                     "english": "• {0} Damage +{1}%",
                     "japanese": "-",
                     "traditionalChinese": "-",
@@ -802,7 +802,7 @@
                     "korean": "-"
                 }, {
                     "key": "BONUS_CRIT_ATK_RATE",
-                    "thai": "• Critical แรงขึ้น +{0}%",
+                    "thai": "• พลัง Critical +{0}%",
                     "english": "• Critical Damage +{0}%",
                     "japanese": "-",
                     "traditionalChinese": "-",
@@ -898,7 +898,7 @@
                     "korean": "-"
                 }, {
                     "key": "BONUS_HEAL_POWER",
-                    "thai": "• Heal แรงขึ้น +{0}%",
+                    "thai": "• พลัง Heal +{0}%",
                     "english": "• Heal Power +{0}%",
                     "japanese": "-",
                     "traditionalChinese": "-",
@@ -914,7 +914,7 @@
                     "korean": "-"
                 }, {
                     "key": "BONUS2_SKILL_HEAL",
-                    "thai": "• {0} Heal แรงขึ้น +{1}%",
+                    "thai": "• {0} พลัง Heal +{1}%",
                     "english": "• {0} Heal Power +{1}%",
                     "japanese": "-",
                     "traditionalChinese": "-",
@@ -930,15 +930,15 @@
                     "korean": "-"
                 }, {
                     "key": "BONUS_ADD_ITEM_HEAL_RATE",
-                    "thai": "• Item Heal HP แรงขึ้น +{0}%",
-                    "english": "• HP Heal Power (Item) +{0}%",
+                    "thai": "• (Item)พลัง Heal HP +{0}%",
+                    "english": "• (Item)HP Heal Power +{0}%",
                     "japanese": "-",
                     "traditionalChinese": "-",
                     "simpifiedChinese": "-",
                     "korean": "-"
                 }, {
                     "key": "BONUS2_ADD_ITEM_HEAL_RATE",
-                    "thai": "• {0} Heal HP แรงขึ้น +{1}%",
+                    "thai": "• {0} พลัง Heal HP +{1}%",
                     "english": "• {0} HP Heal Power +{1}%",
                     "japanese": "-",
                     "traditionalChinese": "-",
@@ -946,7 +946,7 @@
                     "korean": "-"
                 }, {
                     "key": "BONUS2_ADD_ITEM_GROUP_HEAL_RATE",
-                    "thai": "• Item กลุ่ม {0} Heal HP แรงขึ้น +{1}%",
+                    "thai": "• Item กลุ่ม {0} พลัง Heal HP +{1}%",
                     "english": "• Item Group {0} HP Heal Power +{1}%",
                     "japanese": "-",
                     "traditionalChinese": "-",
@@ -954,15 +954,15 @@
                     "korean": "-"
                 }, {
                     "key": "BONUS_ADD_ITEM_SP_HEAL_RATE",
-                    "thai": "• Item Heal SP แรงขึ้น +{0}%",
-                    "english": "• SP Heal Power (Item) +{0}%",
+                    "thai": "• (Item)พลัง Heal SP +{0}%",
+                    "english": "• (Item)SP Heal Power +{0}%",
                     "japanese": "-",
                     "traditionalChinese": "-",
                     "simpifiedChinese": "-",
                     "korean": "-"
                 }, {
                     "key": "BONUS2_ADD_ITEM_SP_HEAL_RATE",
-                    "thai": "• {0} Heal SP แรงขึ้น +{1}%",
+                    "thai": "• {0} พลัง Heal SP +{1}%",
                     "english": "• {0} SP Heal Power +{1}%",
                     "japanese": "-",
                     "traditionalChinese": "-",
@@ -970,7 +970,7 @@
                     "korean": "-"
                 }, {
                     "key": "BONUS2_ADD_ITEM_GROUP_SP_HEAL_RATE",
-                    "thai": "• Item กลุ่ม {0} Heal SP แรงขึ้น +{1}%",
+                    "thai": "• Item กลุ่ม {0} พลัง Heal SP +{1}%",
                     "english": "• Item Group {0} SP Heal Power +{1}%",
                     "japanese": "-",
                     "traditionalChinese": "-",
