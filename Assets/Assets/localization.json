@@ -1754,7 +1754,7 @@
                     "korean": "-"
                 }, {
                     "key": "BONUS2_HP_DRAIN_RATE",
-                    "thai": "• เมื่อตีกาพภาพมีโอกาส {0}% HP +{1}%",
+                    "thai": "• เมื่อตีกายภาพมีโอกาส {0}% HP +{1}%",
                     "english": "• When deal Physical Damage had {0}% chance to HP +{1}%",
                     "japanese": "-",
                     "traditionalChinese": "-",
@@ -1762,7 +1762,7 @@
                     "korean": "-"
                 }, {
                     "key": "BONUS2_SP_DRAIN_RATE",
-                    "thai": "• เมื่อตีกาพภาพมีโอกาส {0}% SP +{1}%",
+                    "thai": "• เมื่อตีกายภาพมีโอกาส {0}% SP +{1}%",
                     "english": "• When deal Physical Damage had {0}% chance to SP +{1}%",
                     "japanese": "-",
                     "traditionalChinese": "-",
