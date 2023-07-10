@@ -218,7 +218,7 @@
                     "korean": "-"
                 }, {
                     "key": "LOCATION_ARMOR",
-                    "thai": "ชุดเกราะ",
+                    "thai": "ชุด",
                     "english": "Armor",
                     "japanese": "-",
                     "traditionalChinese": "-",
@@ -258,7 +258,7 @@
                     "korean": "-"
                 }, {
                     "key": "LOCATION_RIGHT_ACCESSORY",
-                    "thai": "ประดับข้างขวา",
+                    "thai": "ประดับขวา",
                     "english": "Right-Accessory",
                     "japanese": "-",
                     "traditionalChinese": "-",
@@ -266,7 +266,7 @@
                     "korean": "-"
                 }, {
                     "key": "LOCATION_LEFT_ACCESSORY",
-                    "thai": "ประดับข้างซ้าย",
+                    "thai": "ประดับซ้าย",
                     "english": "Left-Accessory",
                     "japanese": "-",
                     "traditionalChinese": "-",
@@ -314,7 +314,7 @@
                     "korean": "-"
                 }, {
                     "key": "LOCATION_SHADOW_ARMOR",
-                    "thai": "ชุดเกราะ S.",
+                    "thai": "ชุด S.",
                     "english": "S. Armor",
                     "japanese": "-",
                     "traditionalChinese": "-",
@@ -346,7 +346,7 @@
                     "korean": "-"
                 }, {
                     "key": "LOCATION_SHADOW_RIGHT_ACCESSORY",
-                    "thai": "ประดับ S. ข้างขวา",
+                    "thai": "ประดับขวา S.",
                     "english": "S. Right-Accessory",
                     "japanese": "-",
                     "traditionalChinese": "-",
@@ -354,7 +354,7 @@
                     "korean": "-"
                 }, {
                     "key": "LOCATION_SHADOW_LEFT_ACCESSORY",
-                    "thai": "ประดับ S. ข้างซ้าย",
+                    "thai": "ประดับซ้าย S.",
                     "english": "S. Left-Accessory",
                     "japanese": "-",
                     "traditionalChinese": "-",
@@ -370,7 +370,7 @@
                     "korean": "-"
                 }, {
                     "key": "LOCATION_BOTH_ACCESSORY",
-                    "thai": "ประดับสองข้าง",
+                    "thai": "ประดับ",
                     "english": "Both accessory",
                     "japanese": "-",
                     "traditionalChinese": "-",
@@ -482,7 +482,7 @@
                     "korean": "-"
                 }, {
                     "key": "ARMOR_LEVEL",
-                    "thai": "Lv. ชุดเกราะ",
+                    "thai": "Lv. ชุด",
                     "english": "Armor Lv.",
                     "japanese": "-",
                     "traditionalChinese": "-",
@@ -1346,7 +1346,7 @@
                     "korean": "-"
                 }, {
                     "key": "BONUS_DEF_ELE",
-                    "thai": "• เคลือบชุดเกราะธาตุ {0}",
+                    "thai": "• เคลือบชุดธาตุ {0}",
                     "english": "• Coated Armor with {0}",
                     "japanese": "-",
                     "traditionalChinese": "-",
@@ -1922,7 +1922,7 @@
                     "korean": "-"
                 }, {
                     "key": "BONUS_UNSTRIPABLE_ARMOR",
-                    "thai": "• กันปลดชุดเกราะ",
+                    "thai": "• กันปลดชุด",
                     "english": "• Unstripable Armor",
                     "japanese": "-",
                     "traditionalChinese": "-",
@@ -1970,7 +1970,7 @@
                     "korean": "-"
                 }, {
                     "key": "BONUS_UNBREAKABLE_ARMOR",
-                    "thai": "• ชุดเกราะจะไม่พัง",
+                    "thai": "• ชุดจะไม่พัง",
                     "english": "• Unbreakable Armor",
                     "japanese": "-",
                     "traditionalChinese": "-",
@@ -2018,7 +2018,7 @@
                     "korean": "-"
                 }, {
                     "key": "BONUS_BREAK_ARMOR_RATE",
-                    "thai": "• มีโอกาส {0}% พังชุดเกราะเป้าหมาย",
+                    "thai": "• มีโอกาส {0}% พังชุดเป้าหมาย",
                     "english": "• When deal damage had {0}% chance to break target Armor",
                     "japanese": "-",
                     "traditionalChinese": "-",
@@ -3058,7 +3058,7 @@
                     "korean": "-"
                 }, {
                     "key": "LOCATION_BOTH_SHADOW_ACCESSORY",
-                    "thai": "ประดับ S. สองข้าง",
+                    "thai": "ประดับ S.",
                     "english": "Both S. Accessory",
                     "japanese": "-",
                     "traditionalChinese": "-",
