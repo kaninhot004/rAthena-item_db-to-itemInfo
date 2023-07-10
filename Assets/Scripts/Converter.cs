@@ -1583,6 +1583,8 @@ public class Converter : MonoBehaviour
             File.Delete("itemInfo_Sak.lub");
         if (File.Exists("itemInfo_true.lub"))
             File.Delete("itemInfo_true.lub");
+        if (File.Exists("itemInfo_Debug.txt"))
+            File.Delete("itemInfo_Debug.txt");
 
         var path = Application.dataPath + "/Assets/item_db_equip.yml";
         var path2 = Application.dataPath + "/Assets/item_db_usable.yml";
@@ -2585,6 +2587,7 @@ public class Converter : MonoBehaviour
         // Write it out
         File.WriteAllText("itemInfo_Sak.lub", finalize, _localization.GetCurrentEncoding);
         File.WriteAllText("itemInfo_true.lub", finalize, _localization.GetCurrentEncoding);
+        File.WriteAllText("itemInfo_Debug.txt", finalize, _localization.GetCurrentEncoding);
 
         Debug.Log("Files has been successfully created.");
 
