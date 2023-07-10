@@ -10,6 +10,13 @@ public class Converter : MonoBehaviour
     const string CREATOR_URL = "https://kanintemsrisukgames.wordpress.com/2019/04/05/support-kt-games/";
     const float ONE_SECOND = 1;
 
+    [Serializable]
+    public class ReplaceVariable
+    {
+        public string variableName;
+        public string descriptionConverted;
+    }
+
     bool _isFilesError;
     string _errorLog;
 
@@ -181,10 +188,7 @@ public class Converter : MonoBehaviour
     /// </summary>
     Dictionary<int, ItemContainer> _itemContaianerDatabases = new Dictionary<int, ItemContainer>();
 
-    bool _isFoundRefine;
-    bool _isFoundGrade;
-    bool _isFoundRefineAutoBonus;
-    bool _isFoundGradeAutoBonus;
+    List<ReplaceVariable> _replaceVariables = new List<ReplaceVariable>();
 
     void Start()
     {
@@ -1177,6 +1181,8 @@ public class Converter : MonoBehaviour
 
             if (text.Contains("- Combos:"))
             {
+                ResetRefineGrade();
+
                 comboDatabase = new ComboDatabase();
 
                 _comboDatabases.Add(comboDatabase);
@@ -1193,7 +1199,6 @@ public class Converter : MonoBehaviour
                 isScript = true;
             else if (isScript)
             {
-                ResetRefineGrade();
                 var comboScript = ConvertItemScripts(text);
 
                 if (!string.IsNullOrEmpty(comboScript))
@@ -2607,7 +2612,7 @@ public class Converter : MonoBehaviour
     /// </summary>
     /// <param name="text"></param>
     /// <returns></returns>
-    string ConvertItemScripts(string text, bool isFromAutoBonus = false)
+    string ConvertItemScripts(string text)
     {
         // Comment fix
         int commentFixRetry = 300;
@@ -2666,27 +2671,54 @@ public class Converter : MonoBehaviour
         text = text.Replace("bCrate,", "bCRate,");
         text = text.Replace("bHplus,", "bHPlus,");
 
-        if (isFromAutoBonus)
+        if (text.Contains(".@")
+            && text.Contains("=")
+            && text.Contains(";"))
         {
-            if (!_isFoundRefineAutoBonus)
-                _isFoundRefineAutoBonus = text.Contains(".@r = getrefine();");
-            if (!_isFoundGradeAutoBonus)
-                _isFoundGradeAutoBonus = text.Contains(".@g = getenchantgrade();");
-            if (_isFoundRefineAutoBonus)
-                text = text.Replace(".@r = getrefine();", string.Empty);
-            if (_isFoundGradeAutoBonus)
-                text = text.Replace(".@g = getenchantgrade();", string.Empty);
-        }
-        else
-        {
-            if (!_isFoundRefine)
-                _isFoundRefine = text.Contains(".@r = getrefine();");
-            if (!_isFoundGrade)
-                _isFoundGrade = text.Contains(".@g = getenchantgrade();");
-            if (_isFoundRefine)
-                text = text.Replace(".@r = getrefine();", string.Empty);
-            if (_isFoundGrade)
-                text = text.Replace(".@g = getenchantgrade();", string.Empty);
+            bool isFoundOldVariables = false;
+            for (int i = 0; i < _replaceVariables.Count; i++)
+            {
+                if (text.Contains(_replaceVariables[i].variableName))
+                {
+                    isFoundOldVariables = true;
+                    break;
+                }
+            }
+
+            if (!isFoundOldVariables)
+            {
+                ReplaceVariable replaceVariable = new ReplaceVariable();
+                replaceVariable.variableName = text.Substring(0, text.IndexOf("="));
+                var description = text.Substring(text.IndexOf("=") + 1);
+
+                while (replaceVariable.variableName.Contains(" "))
+                    replaceVariable.variableName = replaceVariable.variableName.Replace(" ", string.Empty);
+                while (description.Contains(" "))
+                    description = description.Replace(" ", string.Empty);
+
+                // Don't replace too long or too complex variable
+                if (!description.Contains("getiteminfo")
+                    && !description.Contains("+")
+                    && !description.Contains("-")
+                    && !description.Contains("*")
+                    && !description.Contains("/"))
+                {
+                    replaceVariable.descriptionConverted = AllInOneParse(description).Replace(";", string.Empty);
+
+                    // Only add string to replace variable list
+                    if (!int.TryParse(replaceVariable.descriptionConverted, out _)
+                        && !replaceVariable.descriptionConverted.Contains(_localization.GetTexts(Localization.MIN))
+                        && !replaceVariable.descriptionConverted.Contains(_localization.GetTexts(Localization.MAX))
+                        && !replaceVariable.descriptionConverted.Contains(_localization.GetTexts(Localization.POW)))
+                    {
+                        _replaceVariables.Add(replaceVariable);
+                        _replaceVariables.Sort((a, b) => a.variableName.Length.CompareTo(b.variableName.Length));
+                        _replaceVariables.Reverse();
+
+                        text = string.Empty;
+                    }
+                }
+            }
         }
 
         // End wrong wording fix
@@ -2759,9 +2791,7 @@ public class Converter : MonoBehaviour
                 if (!string.IsNullOrEmpty(allBonus[i]) && !string.IsNullOrWhiteSpace(allBonus[i]))
                 {
                     text = text.Replace(allBonus[i] + ";", string.Empty);
-
-                    ResetRefineGradeAutoBonus();
-                    bonuses += ConvertItemScripts(allBonus[i], true);
+                    bonuses += ConvertItemScripts(allBonus[i]);
                 }
             }
 
@@ -2776,9 +2806,7 @@ public class Converter : MonoBehaviour
                     if (temp.IndexOf(';') > 0)
                     {
                         var sumBonus = temp.Substring(0, temp.IndexOf(';'));
-
-                        ResetRefineGradeAutoBonus();
-                        bonuses += ConvertItemScripts(sumBonus, true);
+                        bonuses += ConvertItemScripts(sumBonus);
                         if (temp.Length > temp.IndexOf(';') + 1)
                             temp = temp.Substring(temp.IndexOf(';') + 1);
                         else
@@ -2833,9 +2861,7 @@ public class Converter : MonoBehaviour
                 if (!string.IsNullOrEmpty(allBonus[i]) && !string.IsNullOrWhiteSpace(allBonus[i]))
                 {
                     text = text.Replace(allBonus[i] + ";", string.Empty);
-
-                    ResetRefineGradeAutoBonus();
-                    bonuses += ConvertItemScripts(allBonus[i], true);
+                    bonuses += ConvertItemScripts(allBonus[i]);
                 }
             }
 
@@ -2850,9 +2876,7 @@ public class Converter : MonoBehaviour
                     if (temp.IndexOf(';') > 0)
                     {
                         var sumBonus = temp.Substring(0, temp.IndexOf(';'));
-
-                        ResetRefineGradeAutoBonus();
-                        bonuses += ConvertItemScripts(sumBonus, true);
+                        bonuses += ConvertItemScripts(sumBonus);
                         if (temp.Length > temp.IndexOf(';') + 1)
                             temp = temp.Substring(temp.IndexOf(';') + 1);
                         else
@@ -2917,9 +2941,7 @@ public class Converter : MonoBehaviour
                 if (!string.IsNullOrEmpty(currentBonus) && !string.IsNullOrWhiteSpace(currentBonus))
                 {
                     text = text.Replace(currentBonus + ";", string.Empty);
-
-                    ResetRefineGradeAutoBonus();
-                    bonuses += ConvertItemScripts(currentBonus, true);
+                    bonuses += ConvertItemScripts(currentBonus);
                 }
             }
 
@@ -2934,9 +2956,7 @@ public class Converter : MonoBehaviour
                     if (temp.IndexOf(';') > 0)
                     {
                         var sumBonus = temp.Substring(0, temp.IndexOf(';'));
-
-                        ResetRefineGradeAutoBonus();
-                        bonuses += ConvertItemScripts(sumBonus, true);
+                        bonuses += ConvertItemScripts(sumBonus);
                         if (temp.Length > temp.IndexOf(';') + 1)
                             temp = temp.Substring(temp.IndexOf(';') + 1);
                         else
@@ -2989,9 +3009,7 @@ public class Converter : MonoBehaviour
                 if (!string.IsNullOrEmpty(allBonus[i]) && !string.IsNullOrWhiteSpace(allBonus[i]))
                 {
                     text = text.Replace(allBonus[i] + ";", string.Empty);
-
-                    ResetRefineGradeAutoBonus();
-                    bonuses += ConvertItemScripts(allBonus[i], true);
+                    bonuses += ConvertItemScripts(allBonus[i]);
                 }
             }
 
@@ -4426,7 +4444,7 @@ public class Converter : MonoBehaviour
         text = text.Replace("refineui()", _localization.GetTexts(Localization.REFINE_UI));
 
         // All in one parse...
-        text = AllInOneParse(text, isFromAutoBonus);
+        text = AllInOneParse(text);
 
         // Negative value
         text = text.Replace("+-", "-");
@@ -4638,6 +4656,29 @@ public class Converter : MonoBehaviour
 
     string ParseEQI(string text)
     {
+        text = text.Replace("(EQI_SHADOW_ARMOR)", _localization.GetTexts(Localization.LOCATION_SHADOW_ARMOR));
+        text = text.Replace("(EQI_SHADOW_WEAPON)", _localization.GetTexts(Localization.LOCATION_SHADOW_WEAPON));
+        text = text.Replace("(EQI_SHADOW_SHIELD)", _localization.GetTexts(Localization.LOCATION_SHADOW_SHIELD));
+        text = text.Replace("(EQI_SHADOW_SHOES)", _localization.GetTexts(Localization.LOCATION_SHADOW_SHOES));
+        text = text.Replace("(EQI_SHADOW_ACC_R)", _localization.GetTexts(Localization.LOCATION_SHADOW_RIGHT_ACCESSORY));
+        text = text.Replace("(EQI_SHADOW_ACC_L)", _localization.GetTexts(Localization.LOCATION_SHADOW_LEFT_ACCESSORY));
+        text = text.Replace("(EQI_COMPOUND_ON)", _localization.GetTexts(Localization.EQUIP_COMPOUND_ON));
+        text = text.Replace("(EQI_ACC_L)", _localization.GetTexts(Localization.LOCATION_LEFT_ACCESSORY));
+        text = text.Replace("(EQI_ACC_R)", _localization.GetTexts(Localization.LOCATION_RIGHT_ACCESSORY));
+        text = text.Replace("(EQI_SHOES)", _localization.GetTexts(Localization.LOCATION_SHOES));
+        text = text.Replace("(EQI_GARMENT)", _localization.GetTexts(Localization.LOCATION_GARMENT));
+        text = text.Replace("(EQI_HEAD_LOW)", _localization.GetTexts(Localization.LOCATION_HEAD_LOW));
+        text = text.Replace("(EQI_HEAD_MID)", _localization.GetTexts(Localization.LOCATION_HEAD_MID));
+        text = text.Replace("(EQI_HEAD_TOP)", _localization.GetTexts(Localization.LOCATION_HEAD_TOP));
+        text = text.Replace("(EQI_ARMOR)", _localization.GetTexts(Localization.LOCATION_ARMOR));
+        text = text.Replace("(EQI_HAND_L)", _localization.GetTexts(Localization.LOCATION_LEFT_HAND));
+        text = text.Replace("(EQI_HAND_R)", _localization.GetTexts(Localization.LOCATION_RIGHT_HAND));
+        text = text.Replace("(EQI_COSTUME_HEAD_TOP)", _localization.GetTexts(Localization.LOCATION_COSTUME_HEAD_TOP));
+        text = text.Replace("(EQI_COSTUME_HEAD_MID)", _localization.GetTexts(Localization.LOCATION_COSTUME_HEAD_MID));
+        text = text.Replace("(EQI_COSTUME_HEAD_LOW)", _localization.GetTexts(Localization.LOCATION_COSTUME_HEAD_LOW));
+        text = text.Replace("(EQI_COSTUME_GARMENT)", _localization.GetTexts(Localization.LOCATION_COSTUME_GARMENT));
+        text = text.Replace("(EQI_AMMO)", _localization.GetTexts(Localization.LOCATION_AMMO));
+
         text = text.Replace("EQI_SHADOW_ARMOR", _localization.GetTexts(Localization.LOCATION_SHADOW_ARMOR));
         text = text.Replace("EQI_SHADOW_WEAPON", _localization.GetTexts(Localization.LOCATION_SHADOW_WEAPON));
         text = text.Replace("EQI_SHADOW_SHIELD", _localization.GetTexts(Localization.LOCATION_SHADOW_SHIELD));
@@ -4660,6 +4701,7 @@ public class Converter : MonoBehaviour
         text = text.Replace("EQI_COSTUME_HEAD_LOW", _localization.GetTexts(Localization.LOCATION_COSTUME_HEAD_LOW));
         text = text.Replace("EQI_COSTUME_GARMENT", _localization.GetTexts(Localization.LOCATION_COSTUME_GARMENT));
         text = text.Replace("EQI_AMMO", _localization.GetTexts(Localization.LOCATION_AMMO));
+
         return text;
     }
 
@@ -4699,7 +4741,7 @@ public class Converter : MonoBehaviour
         return text;
     }
 
-    string AllInOneParse(string text, bool isFromAutoBonus = false)
+    string AllInOneParse(string text)
     {
         text = text.Replace("else if (", "^FF2525" + _localization.GetTexts(Localization.CONDITION_NOT_MET) + "^000000(");
         text = text.Replace("else if(", "^FF2525" + _localization.GetTexts(Localization.CONDITION_NOT_MET) + "^000000(");
@@ -4752,6 +4794,7 @@ public class Converter : MonoBehaviour
         text = text.Replace("EAJ_THIRDMASK", _localization.GetTexts(Localization.CLASS) + " 3");
         text = text.Replace("EAJ_FOURTHMASK", _localization.GetTexts(Localization.CLASS) + " 4");
 
+        #region EAJ
         text = text.Replace("EAJ_NOVICE", " Novice");
         text = text.Replace("EAJ_SWORDMAN", " Swordman");
         text = text.Replace("EAJ_MAGE", " Mage");
@@ -4905,7 +4948,9 @@ public class Converter : MonoBehaviour
         text = text.Replace("EAJ_BIOLO", " Biolo");
         text = text.Replace("EAJ_ABYSS_CHASER", " Abyss Chaser");
         text = text.Replace("EAJ_SOUL_ASCETIC", " Soul Ascetic");
+        #endregion
 
+        #region JOB
         text = text.Replace("JOB_NOVICE", " Novice");
         text = text.Replace("JOB_SWORDMAN", " Swordman");
         text = text.Replace("JOB_MAGE", " Mage");
@@ -5059,6 +5104,7 @@ public class Converter : MonoBehaviour
         text = text.Replace("JOB_BIOLO", " Biolo");
         text = text.Replace("JOB_ABYSS_CHASER", " Abyss Chaser");
         text = text.Replace("JOB_SOUL_ASCETIC", " Soul Ascetic");
+        #endregion
 
         text = text.Replace("PETINFO_ID", "Pet");
         text = text.Replace("PETINFO_EGGID", "Pet");
@@ -5068,6 +5114,30 @@ public class Converter : MonoBehaviour
         text = text.Replace("ENCHANTGRADE_C", "C");
         text = text.Replace("ENCHANTGRADE_B", "B");
         text = text.Replace("ENCHANTGRADE_A", "A");
+
+        text = text.Replace("(EQP_HEAD_LOW)", _localization.GetTexts(Localization.LOCATION_HEAD_LOW));
+        text = text.Replace("(EQP_HEAD_MID)", _localization.GetTexts(Localization.LOCATION_HEAD_MID));
+        text = text.Replace("(EQP_HEAD_TOP)", _localization.GetTexts(Localization.LOCATION_HEAD_TOP));
+        text = text.Replace("(EQP_HAND_R)", _localization.GetTexts(Localization.LOCATION_RIGHT_HAND));
+        text = text.Replace("(EQP_HAND_L)", _localization.GetTexts(Localization.LOCATION_LEFT_HAND));
+        text = text.Replace("(EQP_ARMOR)", _localization.GetTexts(Localization.LOCATION_ARMOR));
+        text = text.Replace("(EQP_SHOES)", _localization.GetTexts(Localization.LOCATION_SHOES));
+        text = text.Replace("(EQP_GARMENT)", _localization.GetTexts(Localization.LOCATION_GARMENT));
+        text = text.Replace("(EQP_ACC_R)", _localization.GetTexts(Localization.LOCATION_RIGHT_ACCESSORY));
+        text = text.Replace("(EQP_ACC_L)", _localization.GetTexts(Localization.LOCATION_LEFT_ACCESSORY));
+        text = text.Replace("(EQP_COSTUME_HEAD_TOP)", _localization.GetTexts(Localization.LOCATION_COSTUME_HEAD_TOP));
+        text = text.Replace("(EQP_COSTUME_HEAD_MID)", _localization.GetTexts(Localization.LOCATION_COSTUME_HEAD_MID));
+        text = text.Replace("(EQP_COSTUME_HEAD_LOW)", _localization.GetTexts(Localization.LOCATION_COSTUME_HEAD_LOW));
+        text = text.Replace("(EQP_COSTUME_GARMENT)", _localization.GetTexts(Localization.LOCATION_COSTUME_GARMENT));
+        text = text.Replace("(EQP_AMMO)", _localization.GetTexts(Localization.LOCATION_AMMO));
+        text = text.Replace("(EQP_SHADOW_ARMOR)", _localization.GetTexts(Localization.LOCATION_SHADOW_ARMOR));
+        text = text.Replace("(EQP_SHADOW_WEAPON)", _localization.GetTexts(Localization.LOCATION_SHADOW_WEAPON));
+        text = text.Replace("(EQP_SHADOW_SHIELD)", _localization.GetTexts(Localization.LOCATION_SHADOW_SHIELD));
+        text = text.Replace("(EQP_SHADOW_SHOES)", _localization.GetTexts(Localization.LOCATION_SHADOW_SHOES));
+        text = text.Replace("(EQP_SHADOW_ACC_R)", _localization.GetTexts(Localization.LOCATION_SHADOW_RIGHT_ACCESSORY));
+        text = text.Replace("(EQP_SHADOW_ACC_L)", _localization.GetTexts(Localization.LOCATION_SHADOW_LEFT_ACCESSORY));
+        text = text.Replace("(EQP_ACC_RL)", _localization.GetTexts(Localization.LOCATION_BOTH_ACCESSORY));
+        text = text.Replace("(EQP_SHADOW_ACC_RL)", _localization.GetTexts(Localization.LOCATION_BOTH_SHADOW_ACCESSORY));
 
         text = text.Replace("EQP_HEAD_LOW", _localization.GetTexts(Localization.LOCATION_HEAD_LOW));
         text = text.Replace("EQP_HEAD_MID", _localization.GetTexts(Localization.LOCATION_HEAD_MID));
@@ -5150,20 +5220,8 @@ public class Converter : MonoBehaviour
         text = text.Replace(" : ", " " + _localization.GetTexts(Localization.IF_NOT) + " ");
         text = text.Replace(":", " " + _localization.GetTexts(Localization.IF_NOT) + " ");
 
-        if (isFromAutoBonus)
-        {
-            if (_isFoundRefineAutoBonus)
-                text = text.Replace(".@r", _localization.GetTexts(Localization.REFINE_COUNT));
-            if (_isFoundGradeAutoBonus)
-                text = text.Replace(".@g", _localization.GetTexts(Localization.GRADE_COUNT));
-        }
-        else
-        {
-            if (_isFoundRefine)
-                text = text.Replace(".@r", _localization.GetTexts(Localization.REFINE_COUNT));
-            if (_isFoundGrade)
-                text = text.Replace(".@g", _localization.GetTexts(Localization.GRADE_COUNT));
-        }
+        for (int i = 0; i < _replaceVariables.Count; i++)
+            text = text.Replace(_replaceVariables[i].variableName, _replaceVariables[i].descriptionConverted);
 
         text = text.Replace("Lv.Lv.", "Lv.");
 
@@ -5819,12 +5877,6 @@ public class Converter : MonoBehaviour
 
     void ResetRefineGrade()
     {
-        _isFoundRefine = false;
-        _isFoundGrade = false;
-    }
-    void ResetRefineGradeAutoBonus()
-    {
-        _isFoundRefineAutoBonus = false;
-        _isFoundGradeAutoBonus = false;
+        _replaceVariables = new List<ReplaceVariable>();
     }
 }

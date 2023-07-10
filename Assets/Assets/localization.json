@@ -194,7 +194,7 @@
                     "korean": "-"
                 }, {
                     "key": "LOCATION_HEAD_TOP",
-                    "thai": "หมวกส่วนบน",
+                    "thai": "หมวก Top",
                     "english": "Head-Top",
                     "japanese": "-",
                     "traditionalChinese": "-",
@@ -202,16 +202,16 @@
                     "korean": "-"
                 }, {
                     "key": "LOCATION_HEAD_MID",
-                    "thai": "หมวกส่วนกลาง",
-                    "english": "Head-Middle",
+                    "thai": "หมวก Mid",
+                    "english": "Head-Mid",
                     "japanese": "-",
                     "traditionalChinese": "-",
                     "simpifiedChinese": "-",
                     "korean": "-"
                 }, {
                     "key": "LOCATION_HEAD_LOW",
-                    "thai": "หมวกส่วนล่าง",
-                    "english": "Head-Lower",
+                    "thai": "หมวก Low",
+                    "english": "Head-Low",
                     "japanese": "-",
                     "traditionalChinese": "-",
                     "simpifiedChinese": "-",
@@ -274,32 +274,32 @@
                     "korean": "-"
                 }, {
                     "key": "LOCATION_COSTUME_HEAD_TOP",
-                    "thai": "หมวกส่วนบน Costume",
-                    "english": "Costume Head-Top",
+                    "thai": "หมวก Cos Top",
+                    "english": "Cos Head-Top",
                     "japanese": "-",
                     "traditionalChinese": "-",
                     "simpifiedChinese": "-",
                     "korean": "-"
                 }, {
                     "key": "LOCATION_COSTUME_HEAD_MID",
-                    "thai": "หมวกส่วนกลาง Costume",
-                    "english": "Costume Head-Middle",
+                    "thai": "หมวก Cos Mid",
+                    "english": "Cos Head-Mid",
                     "japanese": "-",
                     "traditionalChinese": "-",
                     "simpifiedChinese": "-",
                     "korean": "-"
                 }, {
                     "key": "LOCATION_COSTUME_HEAD_LOW",
-                    "thai": "หมวกส่วนล่าง Costume",
-                    "english": "Costume Head-Lower",
+                    "thai": "หมวก Cos Low",
+                    "english": "Cos Head-Low",
                     "japanese": "-",
                     "traditionalChinese": "-",
                     "simpifiedChinese": "-",
                     "korean": "-"
                 }, {
                     "key": "LOCATION_COSTUME_GARMENT",
-                    "thai": "ผ้าคลุม Costume",
-                    "english": "Costume Garment",
+                    "thai": "ผ้าคลุม Cos",
+                    "english": "Cos Garment",
                     "japanese": "-",
                     "traditionalChinese": "-",
                     "simpifiedChinese": "-",
@@ -314,48 +314,48 @@
                     "korean": "-"
                 }, {
                     "key": "LOCATION_SHADOW_ARMOR",
-                    "thai": "ชุดเกราะ Shadow",
-                    "english": "Shadow Armor",
+                    "thai": "ชุดเกราะ S.",
+                    "english": "S. Armor",
                     "japanese": "-",
                     "traditionalChinese": "-",
                     "simpifiedChinese": "-",
                     "korean": "-"
                 }, {
                     "key": "LOCATION_SHADOW_WEAPON",
-                    "thai": "อาวุธ Shadow",
-                    "english": "Shadow Weapon",
+                    "thai": "อาวุธ S.",
+                    "english": "S. Weapon",
                     "japanese": "-",
                     "traditionalChinese": "-",
                     "simpifiedChinese": "-",
                     "korean": "-"
                 }, {
                     "key": "LOCATION_SHADOW_SHIELD",
-                    "thai": "โล่ Shadow",
-                    "english": "Shadow Shield",
+                    "thai": "โล่ S.",
+                    "english": "S. Shield",
                     "japanese": "-",
                     "traditionalChinese": "-",
                     "simpifiedChinese": "-",
                     "korean": "-"
                 }, {
                     "key": "LOCATION_SHADOW_SHOES",
-                    "thai": "รองเท้า Shadow",
-                    "english": "Shadow Shoes",
+                    "thai": "รองเท้า S.",
+                    "english": "S. Shoes",
                     "japanese": "-",
                     "traditionalChinese": "-",
                     "simpifiedChinese": "-",
                     "korean": "-"
                 }, {
                     "key": "LOCATION_SHADOW_RIGHT_ACCESSORY",
-                    "thai": "ประดับ Shadow ข้างขวา",
-                    "english": "Shadow Right-Accessory",
+                    "thai": "ประดับ S. ข้างขวา",
+                    "english": "S. Right-Accessory",
                     "japanese": "-",
                     "traditionalChinese": "-",
                     "simpifiedChinese": "-",
                     "korean": "-"
                 }, {
                     "key": "LOCATION_SHADOW_LEFT_ACCESSORY",
-                    "thai": "ประดับ Shadow ข้างซ้าย",
-                    "english": "Shadow Left-Accessory",
+                    "thai": "ประดับ S. ข้างซ้าย",
+                    "english": "S. Left-Accessory",
                     "japanese": "-",
                     "traditionalChinese": "-",
                     "simpifiedChinese": "-",
@@ -3058,8 +3058,8 @@
                     "korean": "-"
                 }, {
                     "key": "LOCATION_BOTH_SHADOW_ACCESSORY",
-                    "thai": "ประดับ Shadow สองข้าง",
-                    "english": "Both Shadow Accessory",
+                    "thai": "ประดับ S. สองข้าง",
+                    "english": "Both S. Accessory",
                     "japanese": "-",
                     "traditionalChinese": "-",
                     "simpifiedChinese": "-",
