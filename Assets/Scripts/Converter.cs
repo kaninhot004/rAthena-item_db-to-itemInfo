@@ -2526,6 +2526,7 @@ public class Converter : MonoBehaviour
         finalize = finalize.Replace("[NEW_LINE]", "\",\n			\"");
 
         // TODO: Fix it properly
+        finalize = finalize.Replace("ID ถ้าไม่ใช่", "ID:");
         finalize = finalize.Replace(_localization.GetTexts(Localization.INFINITE) + _localization.GetTexts(Localization.SECOND_ABBREVIATION), _localization.GetTexts(Localization.INFINITE));
         finalize = finalize.Replace(_localization.GetTexts(Localization.WITH) + " 11)", _localization.GetTexts(Localization.TYPE) + ")");
         finalize = finalize.Replace(_localization.GetTexts(Localization.WITH) + " 11 )", _localization.GetTexts(Localization.TYPE) + ")");
@@ -4436,6 +4437,15 @@ public class Converter : MonoBehaviour
                 text = string.Format(_localization.GetTexts(Localization.PET), (monsterDatabase != null) ? "^FF0000" + monsterDatabase.name + "^000000" : temps[0]);
             else
                 text = string.Format(_localization.GetTexts(Localization.PET_WITH_CHANCE), (monsterDatabase != null) ? "^FF0000" + monsterDatabase.name + "^000000" : temps[0], (monsterDatabase != null) ? monsterDatabase.captureRate : "0");
+        }
+        // hateffect
+        if (text.Contains("hateffect "))
+        {
+            var temp = text.Replace("hateffect ", string.Empty);
+            var temps = temp.Split(',');
+            text = string.Format(_localization.GetTexts(Localization.HAT_EFFECT)
+                , (temps[1] == "true") ? _localization.GetTexts(Localization.HAT_EFFECT_TRUE) : _localization.GetTexts(Localization.HAT_EFFECT_FALSE)
+                , temps[0].Replace("HAT_EF_", string.Empty));
         }
         text = text.Replace("sc_end_class", _localization.GetTexts(Localization.SC_END_CLASS));
         text = text.Replace("setmounting()", _localization.GetTexts(Localization.SET_MOUNTING));

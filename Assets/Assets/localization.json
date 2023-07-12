@@ -3112,6 +3112,30 @@
                     "traditionalChinese": "-",
                     "simpifiedChinese": "-",
                     "korean": "-"
+                }, {
+                    "key": "HAT_EFFECT",
+                    "thai": "{0} {1}",
+                    "english": "{0} {1}",
+                    "japanese": "{0} {1}",
+                    "traditionalChinese": "{0} {1}",
+                    "simpifiedChinese": "{0} {1}",
+                    "korean": "{0} {1}"
+                }, {
+                    "key": "HAT_EFFECT_TRUE",
+                    "thai": "ใส่",
+                    "english": "Wear",
+                    "japanese": "-",
+                    "traditionalChinese": "-",
+                    "simpifiedChinese": "-",
+                    "korean": "-"
+                }, {
+                    "key": "HAT_EFFECT_FALSE",
+                    "thai": "ถอด",
+                    "english": "Take off",
+                    "japanese": "-",
+                    "traditionalChinese": "-",
+                    "simpifiedChinese": "-",
+                    "korean": "-"
                 }
             ]
         }

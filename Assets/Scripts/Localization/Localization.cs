@@ -416,6 +416,10 @@ public class Localization : MonoBehaviour
     public const string VIEW = "VIEW";
     public const string ALIAS_NAME = "ALIAS_NAME";
     public const string AEGIS_NAME = "AEGIS_NAME";
+
+    public const string HAT_EFFECT = "HAT_EFFECT";
+    public const string HAT_EFFECT_TRUE = "HAT_EFFECT_TRUE";
+    public const string HAT_EFFECT_FALSE = "HAT_EFFECT_FALSE";
     #endregion
 
     [Serializable]
