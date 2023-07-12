@@ -2200,7 +2200,21 @@ public class Converter : MonoBehaviour
                         _itemListContainer.enchantIds.Add(_itemContainer.id);
                 }
                 else
-                    _itemListContainer.cardIds.Add(_itemContainer.id);
+                {
+                    if (_itemContainer.name.Contains("Card"))
+                        _itemListContainer.cardIds.Add(_itemContainer.id);
+                    else
+                    {
+                        Debug.Log(_itemContainer.id + " was card but not had 'Card' in the name?");
+
+                        if (!string.IsNullOrEmpty(_itemContainer.script)
+                            || !string.IsNullOrEmpty(_itemContainer.equipScript)
+                            || !string.IsNullOrEmpty(_itemContainer.unequipScript))
+                            _itemListContainer.enchant2Ids.Add(_itemContainer.id);
+                        else
+                            _itemListContainer.enchantIds.Add(_itemContainer.id);
+                    }
+                }
             }
 
             var itemId = int.Parse(_itemContainer.id);
