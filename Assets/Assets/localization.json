@@ -2572,18 +2572,18 @@
                     "key": "WILL_BE",
                     "thai": "เป็น",
                     "english": "?",
-                    "japanese": "-",
-                    "traditionalChinese": "-",
-                    "simpifiedChinese": "-",
-                    "korean": "-"
+                    "japanese": "?",
+                    "traditionalChinese": "?",
+                    "simpifiedChinese": "?",
+                    "korean": "?"
                 }, {
                     "key": "IF_NOT",
                     "thai": "ถ้าไม่ใช่",
                     "english": ":",
-                    "japanese": "-",
-                    "traditionalChinese": "-",
-                    "simpifiedChinese": "-",
-                    "korean": "-"
+                    "japanese": ":",
+                    "traditionalChinese": ":",
+                    "simpifiedChinese": ":",
+                    "korean": ":"
                 }, {
                     "key": "INFINITE",
                     "thai": "ถาวร",
