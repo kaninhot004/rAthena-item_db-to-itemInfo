@@ -79,6 +79,7 @@
     <Compile Include="Assets\Scripts\Classes\MonsterDatabase.cs" />
     <Compile Include="Assets\Scripts\Utilities\IsCharNumber.cs" />
     <Compile Include="Assets\Scripts\Classes\ItemListContainer.cs" />
+    <Compile Include="Assets\Scripts\Utilities\SafeReplace.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\DLL\I18N.CJK.dll" />

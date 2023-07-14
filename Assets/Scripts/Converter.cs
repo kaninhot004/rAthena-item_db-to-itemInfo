@@ -2691,6 +2691,21 @@ public class Converter : MonoBehaviour
             && text.Contains("=")
             && text.Contains(";"))
         {
+            bool isFirstTextDot = true;
+            for (int i = 0; i < text.Length; i++)
+            {
+                if (text[i] == ' ')
+                    continue;
+
+                if (text[i] != '.')
+                {
+                    isFirstTextDot = false;
+                    break;
+                }
+                else
+                    break;
+            }
+
             bool isFoundOldVariables = false;
             for (int i = 0; i < _replaceVariables.Count; i++)
             {
@@ -2701,7 +2716,8 @@ public class Converter : MonoBehaviour
                 }
             }
 
-            if (!isFoundOldVariables)
+            if (!isFoundOldVariables
+                && isFirstTextDot)
             {
                 ReplaceVariable replaceVariable = new ReplaceVariable();
                 replaceVariable.variableName = text.Substring(0, text.IndexOf("="));
@@ -5262,7 +5278,7 @@ public class Converter : MonoBehaviour
         text = text.Replace(":", " " + _localization.GetTexts(Localization.IF_NOT) + " ");
 
         for (int i = 0; i < _replaceVariables.Count; i++)
-            text = text.Replace(_replaceVariables[i].variableName, _replaceVariables[i].descriptionConverted);
+            text = SafeReplace.ReplaceWholeWord(text, _replaceVariables[i].variableName, _replaceVariables[i].descriptionConverted);
 
         text = text.Replace("Lv.Lv.", "Lv.");
 
