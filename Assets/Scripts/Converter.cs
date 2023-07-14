@@ -4284,8 +4284,18 @@ public class Converter : MonoBehaviour
         }
         text = text.Replace("bonus bNoMadoFuel", _localization.GetTexts(Localization.BONUS_NO_MADO_FUEL));
         text = text.Replace("bonus bNoWalkDelay", _localization.GetTexts(Localization.BONUS_NO_WALK_DELAY));
-        text = text.Replace("specialeffect2", _localization.GetTexts(Localization.SPECIAL_EFFECT_2));
-        text = text.Replace("specialeffect", _localization.GetTexts(Localization.SPECIAL_EFFECT));
+        // Special Effect 2
+        if (text.Contains("specialeffect2 "))
+        {
+            var temp = text.Replace("specialeffect2 ", string.Empty);
+            text = _localization.GetTexts(Localization.SPECIAL_EFFECT_2) + " " + temp.Replace("EF_", string.Empty);
+        }
+        // Special Effect
+        if (text.Contains("specialeffect "))
+        {
+            var temp = text.Replace("specialeffect ", string.Empty);
+            text = _localization.GetTexts(Localization.SPECIAL_EFFECT) + " " + temp.Replace("EF_", string.Empty);
+        }
         // Unit Skill Use Id
         if (text.Contains("unitskilluseid "))
         {
