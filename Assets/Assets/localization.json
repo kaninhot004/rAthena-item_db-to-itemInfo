@@ -1122,16 +1122,16 @@
                     "korean": "-"
                 }, {
                     "key": "BONUS2_SUB_ELE",
-                    "thai": "• กันกายภาพ {0} +{1}%",
-                    "english": "• Physical Defense {0} +{1}%",
+                    "thai": "• กันธาตุ {0} +{1}%",
+                    "english": "• Defense {0} +{1}%",
                     "japanese": "-",
                     "traditionalChinese": "-",
                     "simpifiedChinese": "-",
                     "korean": "-"
                 }, {
                     "key": "BONUS3_SUB_ELE",
-                    "thai": "• กันกายภาพ {0} โดย {2} +{1}%",
-                    "english": "• Physical Defense {0} by {2} +{1}%",
+                    "thai": "• กันธาตุ {0} โดย {2} +{1}%",
+                    "english": "• Defense {0} by {2} +{1}%",
                     "japanese": "-",
                     "traditionalChinese": "-",
                     "simpifiedChinese": "-",
@@ -3114,12 +3114,12 @@
                     "korean": "-"
                 }, {
                     "key": "HAT_EFFECT",
-                    "thai": "{0} {1}",
-                    "english": "{0} {1}",
-                    "japanese": "{0} {1}",
-                    "traditionalChinese": "{0} {1}",
-                    "simpifiedChinese": "{0} {1}",
-                    "korean": "{0} {1}"
+                    "thai": "• {0} {1}",
+                    "english": "• {0} {1}",
+                    "japanese": "• {0} {1}",
+                    "traditionalChinese": "• {0} {1}",
+                    "simpifiedChinese": "• {0} {1}",
+                    "korean": "• {0} {1}"
                 }, {
                     "key": "HAT_EFFECT_TRUE",
                     "thai": "ใส่",
@@ -3132,6 +3132,14 @@
                     "key": "HAT_EFFECT_FALSE",
                     "thai": "ถอด",
                     "english": "Take off",
+                    "japanese": "-",
+                    "traditionalChinese": "-",
+                    "simpifiedChinese": "-",
+                    "korean": "-"
+                }, {
+                    "key": "SHOW_SCRIPT",
+                    "thai": "• พูดว่า",
+                    "english": "• Say",
                     "japanese": "-",
                     "traditionalChinese": "-",
                     "simpifiedChinese": "-",

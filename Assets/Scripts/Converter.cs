@@ -4296,6 +4296,12 @@ public class Converter : MonoBehaviour
             var temp = text.Replace("specialeffect ", string.Empty);
             text = _localization.GetTexts(Localization.SPECIAL_EFFECT) + " " + temp.Replace("EF_", string.Empty);
         }
+        // Show Script
+        if (text.Contains("showscript "))
+        {
+            var temp = text.Replace("showscript ", string.Empty);
+            text = _localization.GetTexts(Localization.SHOW_SCRIPT) + " " + temp;
+        }
         // Unit Skill Use Id
         if (text.Contains("unitskilluseid "))
         {

@@ -420,6 +420,8 @@ public class Localization : MonoBehaviour
     public const string HAT_EFFECT = "HAT_EFFECT";
     public const string HAT_EFFECT_TRUE = "HAT_EFFECT_TRUE";
     public const string HAT_EFFECT_FALSE = "HAT_EFFECT_FALSE";
+
+    public const string SHOW_SCRIPT = "SHOW_SCRIPT";
     #endregion
 
     [Serializable]
