@@ -189,6 +189,7 @@ public class Converter : MonoBehaviour
     Dictionary<int, ItemContainer> _itemContaianerDatabases = new Dictionary<int, ItemContainer>();
 
     List<ReplaceVariable> _replaceVariables = new List<ReplaceVariable>();
+    List<string> _arrayNames = new List<string>();
 
     void Start()
     {
@@ -4509,6 +4510,23 @@ public class Converter : MonoBehaviour
                 text = text.Substring(0, text.IndexOf("/"));
             text = "[" + GetItemName(text) + "]";
         }
+        // setarray
+        if (text.Contains("setarray "))
+        {
+            text = text.Replace("setarray ", "• ");
+            var arrayName = text.Substring(text.IndexOf("."), text.IndexOf(",") - text.IndexOf("."));
+            _arrayNames.Add(arrayName);
+            text = text.Replace(arrayName + " , ", string.Empty);
+            text = text.Replace(arrayName + " ,", string.Empty);
+            text = text.Replace(arrayName + ", ", string.Empty);
+            text = text.Replace(arrayName + ",", string.Empty);
+        }
+        // full for loop (Only remove it, no translation)
+        if ((text.Contains("for (")
+            || text.Contains("for("))
+            && text.Contains(")"))
+            text = string.Empty;
+
         text = text.Replace("sc_end_class", _localization.GetTexts(Localization.SC_END_CLASS));
         text = text.Replace("setmounting()", _localization.GetTexts(Localization.SET_MOUNTING));
         text = text.Replace("laphine_upgrade()", _localization.GetTexts(Localization.LAPHINE_UPGRADE));
@@ -5295,6 +5313,20 @@ public class Converter : MonoBehaviour
 
         for (int i = 0; i < _replaceVariables.Count; i++)
             text = SafeReplace.ReplaceWholeWord(text, _replaceVariables[i].variableName, _replaceVariables[i].descriptionConverted);
+        for (int i = 0; i < _arrayNames.Count; i++)
+        {
+            if (text.Contains(_arrayNames[i])
+                && text.Contains("[")
+                && text.Contains("]"))
+            {
+                // Find last index of array
+                var index = text.LastIndexOf(_arrayNames[i]);
+                var temptoReplace = text.Substring(index);
+                // Find index of ]
+                var arrayToReplace = temptoReplace.Substring(0, temptoReplace.IndexOf(']') + 1);
+                text = SafeReplace.ReplaceWholeWord(text, arrayToReplace, string.Empty);
+            }
+        }
 
         text = text.Replace("Lv.Lv.", "Lv.");
 
@@ -5951,5 +5983,6 @@ public class Converter : MonoBehaviour
     void ResetRefineGrade()
     {
         _replaceVariables = new List<ReplaceVariable>();
+        _arrayNames = new List<string>();
     }
 }
