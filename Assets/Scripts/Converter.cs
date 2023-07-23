@@ -2605,6 +2605,16 @@ public class Converter : MonoBehaviour
         finalize = finalize.Replace("   •", "•");
         finalize = finalize.Replace("  •", "•");
         finalize = finalize.Replace(" •", "•");
+        finalize = finalize.Replace("\"     ^FF2525" + _localization.GetTexts(Localization.IF) + "^000000 (", "\"^FF2525" + _localization.GetTexts(Localization.IF) + "^000000(");
+        finalize = finalize.Replace("\"    ^FF2525" + _localization.GetTexts(Localization.IF) + "^000000 (", "\"^FF2525" + _localization.GetTexts(Localization.IF) + "^000000(");
+        finalize = finalize.Replace("\"   ^FF2525" + _localization.GetTexts(Localization.IF) + "^000000 (", "\"^FF2525" + _localization.GetTexts(Localization.IF) + "^000000(");
+        finalize = finalize.Replace("\"  ^FF2525" + _localization.GetTexts(Localization.IF) + "^000000 (", "\"^FF2525" + _localization.GetTexts(Localization.IF) + "^000000(");
+        finalize = finalize.Replace("\" ^FF2525" + _localization.GetTexts(Localization.IF) + "^000000 (", "\"^FF2525" + _localization.GetTexts(Localization.IF) + "^000000(");
+        finalize = finalize.Replace("\"     ^FF2525" + _localization.GetTexts(Localization.IF) + "^000000(", "\"^FF2525" + _localization.GetTexts(Localization.IF) + "^000000(");
+        finalize = finalize.Replace("\"    ^FF2525" + _localization.GetTexts(Localization.IF) + "^000000(", "\"^FF2525" + _localization.GetTexts(Localization.IF) + "^000000(");
+        finalize = finalize.Replace("\"   ^FF2525" + _localization.GetTexts(Localization.IF) + "^000000(", "\"^FF2525" + _localization.GetTexts(Localization.IF) + "^000000(");
+        finalize = finalize.Replace("\"  ^FF2525" + _localization.GetTexts(Localization.IF) + "^000000(", "\"^FF2525" + _localization.GetTexts(Localization.IF) + "^000000(");
+        finalize = finalize.Replace("\" ^FF2525" + _localization.GetTexts(Localization.IF) + "^000000(", "\"^FF2525" + _localization.GetTexts(Localization.IF) + "^000000(");
 
         // Write it out
         File.WriteAllText("itemInfo_Sak.lub", finalize, _localization.GetCurrentEncoding);
