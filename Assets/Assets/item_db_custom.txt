@@ -74,3 +74,14 @@
       NoSell: true
     Script: |
       callfunc("GainTraitPoints");
+  - Id: 10000008
+    AegisName: Dismantle_Points
+    Name: Dismantle Points
+    Type: Usable
+    Flags:
+      BuyingStore: true
+    TradeNoUse:
+      Override: 100
+      NoSell: true
+    Script: |
+      callfunc("GainDismantlePoints");
