@@ -13403,7 +13403,7 @@ Body:
           - Sura_Robe    # 29426
           - Sura_Bottom    # 29425
     Script: |
-      bonus4 bAutoSpellOnSkill,"SR_RAMPAGEBLASTER","CH_SOULCOLLECT",300,1;
+      bonus4 bAutoSpellOnSkill,"SR_RAMPAGEBLASTER","CH_SOULCOLLECT",1,300;
   - Combos:
       - Combo:
           - Sura_Robe2    # 29427
