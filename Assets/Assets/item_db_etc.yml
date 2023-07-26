@@ -41568,7 +41568,7 @@ Body:
          }
          if (.@p == EQP_ACC_R) {
             bonus2 bSkillAtk,"RK_DRAGONBREATH_WATER",50;
-            autobonus2 "{ sc_start SC_CHILL; bonus2 bResEff,Eff_Heat,10000; }",100,3000,BF_WEAPON|BF_MAGIC;
+            autobonus2 "{ sc_start SC_CHILL,3000,1; bonus2 bResEff,Eff_Heat,10000; }",100,3000,BF_WEAPON|BF_MAGIC;
          }
       }
       /*Unknow Rate*/
@@ -44214,7 +44214,7 @@ Body:
          bonus bLongAtkRate,10;
       if (eaclass()&EAJL_THIRD && BaseJob == Job_Assassin) {
          bonus bDelayrate,-90;
-         autobonus3 "{ sc_start SC_WEAPONBLOCKING; }",1000,50000,"GC_HALLUCINATIONWALK";
+         autobonus3 "{ sc_start SC_WEAPONBLOCKING,50000,1; }",1000,50000,"GC_HALLUCINATIONWALK";
       }
       if (eaclass()&EAJL_THIRD && BaseJob == Job_Rogue)
          bonus bFixedCastrate,-50;
@@ -48930,7 +48930,7 @@ Body:
     Script: |
       bonus bMaxSPrate,15;
       bonus bDelayrate,-15;
-      autobonus "{ sc_start SC_REFRESH; }",10,20000,BF_MAGIC;
+      autobonus "{ sc_start SC_REFRESH,20000,1; }",10,20000,BF_MAGIC;
   - Id: 300226
     AegisName: L_Skia_Card
     Name: Skia Nerius (Sign Stamp) Card
@@ -48944,7 +48944,7 @@ Body:
     Script: |
       bonus bMaxHPrate,15;
       bonus bVariableCastrate,-15;
-      autobonus "{ sc_start SC_REFRESH; }",10,20000,BF_WEAPON;
+      autobonus "{ sc_start SC_REFRESH,20000,1; }",10,20000,BF_WEAPON;
   - Id: 300227
     AegisName: EP18_Schulang_Card
     Name: Schulang Card
@@ -50574,7 +50574,7 @@ Body:
       DropEffect: CLIENT
     Script: |
       bonus bNoKnockback;
-      autobonus "{ sc_start SC_CP_ARMOR; sc_start SC_CP_WEAPON; sc_start SC_CP_SHIELD; sc_start SC_CP_HELM; }",10,60000,BF_WEAPON|BF_MAGIC;
+      autobonus "{ sc_start SC_CP_ARMOR,60000,1; sc_start SC_CP_WEAPON,60000,1; sc_start SC_CP_SHIELD,60000,1; sc_start SC_CP_HELM,60000,1; }",50,60000,BF_WEAPON|BF_MAGIC,"{ specialeffect2 EF_CHEMICALPROTECTION; }";
   - Id: 300358
     AegisName: L_Issac_Card
     Name: Isaac Wigner (Sign Stamp) Card
@@ -51562,7 +51562,7 @@ Body:
       DropEffect: CLIENT
     Script: |
       bonus2 bSubSkill,"NPC_RAYOFGENESIS",50;
-      autobonus "{ sc_start SC_ASSUMPTIO; }",50,30000,BF_WEAPON|BF_MAGIC;
+      autobonus "{ sc_start SC_ASSUMPTIO,30000,1; }",50,30000,BF_WEAPON|BF_MAGIC,"{ specialeffect2 EF_ASSUMPTIO; }";
   - Id: 300452
     AegisName: aegis_300452
     Name: Friedrich Stolz Heine (Sign Stamp) Card
@@ -51589,7 +51589,7 @@ Body:
       DropEffect: CLIENT
     Script: |
       bonus2 bRegenPercentSP,1,1000;
-      autobonus "{ sc_start SC_ENERGYCOAT; }",50,30000,BF_WEAPON|BF_MAGIC;
+      autobonus "{ sc_start SC_ENERGYCOAT,30000,1; }",50,30000,BF_WEAPON|BF_MAGIC,"{ specialeffect2 EF_ENERGYCOAT; }";
   - Id: 300454
     AegisName: Ice_C_Orb_Hp
     Name: Glacier Flower Meow Power (Vital)
