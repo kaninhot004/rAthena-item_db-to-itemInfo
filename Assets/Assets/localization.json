@@ -3144,6 +3144,22 @@
                     "traditionalChinese": "-",
                     "simpifiedChinese": "-",
                     "korean": "-"
+                }, {
+                    "key": "IS_EQUIPPED",
+                    "thai": "สวมใส่",
+                    "english": "Equipped",
+                    "japanese": "-",
+                    "traditionalChinese": "-",
+                    "simpifiedChinese": "-",
+                    "korean": "-"
+                }, {
+                    "key": "IS_NOT_EQUIPPED",
+                    "thai": "ไม่ได้สวมใส่",
+                    "english": "Not equipped",
+                    "japanese": "-",
+                    "traditionalChinese": "-",
+                    "simpifiedChinese": "-",
+                    "korean": "-"
                 }
             ]
         }

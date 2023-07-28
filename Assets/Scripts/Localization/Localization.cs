@@ -422,6 +422,8 @@ public class Localization : MonoBehaviour
     public const string HAT_EFFECT_FALSE = "HAT_EFFECT_FALSE";
 
     public const string SHOW_SCRIPT = "SHOW_SCRIPT";
+    public const string IS_EQUIPPED = "IS_EQUIPPED";
+    public const string IS_NOT_EQUIPPED = "IS_NOT_EQUIPPED";
     #endregion
 
     [Serializable]

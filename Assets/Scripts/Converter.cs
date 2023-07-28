@@ -5300,6 +5300,8 @@ public class Converter : MonoBehaviour
         text = text.Replace("getequiparmorlv()", _localization.GetTexts(Localization.GET_EQUIPMENT_LEVEL));
         text = text.Replace("getequiparmorlv", _localization.GetTexts(Localization.GET_EQUIPMENT_LEVEL));
         text = text.Replace("ismounting()", _localization.GetTexts(Localization.IF_MOUNTING));
+        text = text.Replace("!isequipped", _localization.GetTexts(Localization.IS_NOT_EQUIPPED));
+        text = text.Replace("isequipped", _localization.GetTexts(Localization.IS_EQUIPPED));
         text = text.Replace("getskilllv", "Lv.");
         text = text.Replace("duplicate_dynamic", "เรียก");
         text = text.Replace("pow (", _localization.GetTexts(Localization.POW) + "(");
