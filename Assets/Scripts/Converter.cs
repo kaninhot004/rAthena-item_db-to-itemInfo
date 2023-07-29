@@ -21,6 +21,10 @@ public class Converter : MonoBehaviour
     string _errorLog;
 
     /// <summary>
+    /// Button to preview item information
+    /// </summary>
+    [SerializeField] Button _btnItemPreview;
+    /// <summary>
     /// Button to generate captcha
     /// </summary>
     [SerializeField] Button _btnCaptchaGenerator;
@@ -56,6 +60,10 @@ public class Converter : MonoBehaviour
     /// Captcha Generator
     /// </summary>
     [SerializeField] CaptchaGenerator _captchaGenerator;
+     /// <summary>
+    /// Item Preview
+    /// </summary>
+    [SerializeField] ItemPreview _itemPreview;
 
     // Settings
 
@@ -193,6 +201,7 @@ public class Converter : MonoBehaviour
 
     void Start()
     {
+        _btnItemPreview.onClick.AddListener(OnItemPreviewButtonTap);
         _btnCaptchaGenerator.onClick.AddListener(OnCaptchaGeneratorButtonTap);
         _btnConvert.onClick.AddListener(OnConvertButtonTap);
         _btnCreator.onClick.AddListener(OnCreatorButtonTap);
@@ -200,6 +209,13 @@ public class Converter : MonoBehaviour
         _objConvertProgression.SetActive(false);
         for (int i = 0; i < _objectsToHideWhenConverterStart.Length; i++)
             _objectsToHideWhenConverterStart[i].SetActive(true);
+    }
+    /// <summary>
+    /// Call when item preview button has been tap
+    /// </summary>
+    void OnItemPreviewButtonTap()
+    {
+        _itemPreview.Setup();
     }
     /// <summary>
     /// Call when captcha generator button has been tap

@@ -57,6 +57,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\Scripts\Localization\Localization.cs" />
+    <Compile Include="Assets\Scripts\ItemPreview.cs" />
     <Compile Include="Assets\Scripts\RefineDatabaseMaker.cs" />
     <Compile Include="Assets\Scripts\Utilities\ReplaceOneTime.cs" />
     <Compile Include="Assets\Scripts\Captcha\CaptchaGenerator.cs" />
