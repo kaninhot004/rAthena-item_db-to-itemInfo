@@ -13,29 +13,37 @@ public class ItemPreview : MonoBehaviour
     [SerializeField] Button _closeButton;
 
     [SerializeField] InputField _itemIdInputField;
-    [SerializeField] Button _loadButton;
+    [SerializeField] InputField _fontSizeInputField;
 
     [SerializeField] Text _itemNameText;
     [SerializeField] TextMeshProUGUI _descriptionText;
+    [SerializeField] TextMeshProUGUI[] _descriptionTexts;
 
     void Start()
     {
         _closeButton.onClick.AddListener(OnCloseButtonTap);
-        _loadButton.onClick.AddListener(OnLoadButtonTap);
+
+        _itemIdInputField.onEndEdit.AddListener((text) =>
+        {
+            OnLoadButtonTap(text);
+        });
+
+        _fontSizeInputField.onEndEdit.AddListener((text) =>
+        {
+            if (!string.IsNullOrEmpty(text))
+            {
+                for (int i = 0; i < _descriptionTexts.Length; i++)
+                    _descriptionTexts[i].fontSize = int.Parse(text);
+            }
+        });
 
         CleanUpDescription();
     }
     void CleanUpDescription()
     {
-        /*for (int i = 0; i < _descriptionTexts.Length; i++)
-        {
-            _descriptionTexts[i].gameObject.SetActive(false);
-            _descriptionTexts[i].text = string.Empty;
-        }*/
-
         _descriptionText.text = string.Empty;
     }
-    void OnLoadButtonTap()
+    void OnLoadButtonTap(string text)
     {
         if (!string.IsNullOrEmpty(_itemIdInputField.text))
         {
@@ -155,22 +163,6 @@ public class ItemPreview : MonoBehaviour
                 + ((itemClassNumber != "0") ? " | View: " + itemClassNumber : string.Empty)
                 + " | <color=grey>" + itemResourceName + "</color>"
                 ;
-
-            /*int printCount = 0;
-            int column = 0;
-
-            for (int i = 0; i < itemDescription.Count; i++)
-            {
-                _descriptionTexts[column].text += itemDescription[i] + "\n";
-                _descriptionTexts[column].gameObject.SetActive(true);
-                printCount++;
-                if (printCount >= 59)
-                {
-                    column++;
-                    printCount = 0;
-                    continue;
-                }
-            }*/
 
             _descriptionText.text = itemDescriptionOneLine.ToString();
         }
