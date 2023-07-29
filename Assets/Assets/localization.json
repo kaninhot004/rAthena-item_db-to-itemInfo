@@ -3160,6 +3160,14 @@
                     "traditionalChinese": "-",
                     "simpifiedChinese": "-",
                     "korean": "-"
+                }, {
+                    "key": "UNIDENTIFIED_DESC",
+                    "thai": "โปรดตรวจสอบ Item เสียก่อน",
+                    "english": "Please identify item",
+                    "japanese": "-",
+                    "traditionalChinese": "-",
+                    "simpifiedChinese": "-",
+                    "korean": "-"
                 }
             ]
         }

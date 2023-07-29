@@ -2303,7 +2303,9 @@ public class Converter : MonoBehaviour
             builder.Append("		unidentifiedResourceName = " + resourceName + ",\n");
             // Unidentified description
             builder.Append("		unidentifiedDescriptionName = {\n");
-            builder.Append("			\"\"\n");
+            builder.Append("			\"" + (isEquipment
+                ? _localization.GetTexts(Localization.UNIDENTIFIED_DESC)
+                : string.Empty) + "\"\n");
             builder.Append("		},\n");
             // Identified display name
             builder.Append("		identifiedDisplayName = \"" + _itemContainer.name + "\",\n");

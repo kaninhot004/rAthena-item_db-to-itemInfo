@@ -424,6 +424,8 @@ public class Localization : MonoBehaviour
     public const string SHOW_SCRIPT = "SHOW_SCRIPT";
     public const string IS_EQUIPPED = "IS_EQUIPPED";
     public const string IS_NOT_EQUIPPED = "IS_NOT_EQUIPPED";
+
+    public const string UNIDENTIFIED_DESC = "UNIDENTIFIED_DESC";
     #endregion
 
     [Serializable]
