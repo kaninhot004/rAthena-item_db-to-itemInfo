@@ -2289,14 +2289,14 @@ public class Converter : MonoBehaviour
                 }
             }
 
+            bool isEquipment = !string.IsNullOrEmpty(_itemContainer.weaponLevel) || !string.IsNullOrEmpty(_itemContainer.armorLevel);
+
             // Id
             builder.Append("	[" + _itemContainer.id + "] = {\n");
             // Unidentified display name
             builder.Append("		unidentifiedDisplayName = \"" + _itemContainer.name
                 +
-                (((_itemContainer.type.ToLower() == "weapon")
-                || (_itemContainer.type.ToLower() == "armor")
-                || (_itemContainer.type.ToLower() == "shadowgear"))
+                (isEquipment
                 ? " [" + (!string.IsNullOrEmpty(_itemContainer.slots) ? _itemContainer.slots : "0") + "]"
                 : string.Empty) + "\",\n");
             // Unidentified resource name
@@ -2337,7 +2337,6 @@ public class Converter : MonoBehaviour
                 : string.Empty)
                 + "			\"^3F28FF" + _localization.GetTexts(Localization.TYPE) + ":^000000 " + _itemContainer.type + "\",\n";
 
-            bool isEquipment = !string.IsNullOrEmpty(_itemContainer.weaponLevel) || !string.IsNullOrEmpty(_itemContainer.armorLevel);
 
             if (!_isHideSubType)
             {
