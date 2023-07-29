@@ -5,6 +5,7 @@ using UnityEngine.UI;
 using System.IO;
 using System;
 using System.Text;
+using TMPro;
 
 public class ItemPreview : MonoBehaviour
 {
@@ -15,7 +16,7 @@ public class ItemPreview : MonoBehaviour
     [SerializeField] Button _loadButton;
 
     [SerializeField] Text _itemNameText;
-    [SerializeField] Text[] _descriptionTexts;
+    [SerializeField] TextMeshProUGUI _descriptionText;
 
     void Start()
     {
@@ -26,11 +27,13 @@ public class ItemPreview : MonoBehaviour
     }
     void CleanUpDescription()
     {
-        for (int i = 0; i < _descriptionTexts.Length; i++)
+        /*for (int i = 0; i < _descriptionTexts.Length; i++)
         {
             _descriptionTexts[i].gameObject.SetActive(false);
             _descriptionTexts[i].text = string.Empty;
-        }
+        }*/
+
+        _descriptionText.text = string.Empty;
     }
     void OnLoadButtonTap()
     {
@@ -54,6 +57,7 @@ public class ItemPreview : MonoBehaviour
             string itemName = string.Empty;
             string itemResourceName = string.Empty;
             List<string> itemDescription = new List<string>();
+            StringBuilder itemDescriptionOneLine = new StringBuilder();
             string itemSlot = string.Empty;
             string itemClassNumber = string.Empty;
 
@@ -115,7 +119,10 @@ public class ItemPreview : MonoBehaviour
                     }
 
                     if (!string.IsNullOrEmpty(description))
+                    {
                         itemDescription.Add(description);
+                        itemDescriptionOneLine.AppendLine(description);
+                    }
                 }
 
                 if (isFound
@@ -149,7 +156,7 @@ public class ItemPreview : MonoBehaviour
                 + " | <color=grey>" + itemResourceName + "</color>"
                 ;
 
-            int printCount = 0;
+            /*int printCount = 0;
             int column = 0;
 
             for (int i = 0; i < itemDescription.Count; i++)
@@ -157,13 +164,15 @@ public class ItemPreview : MonoBehaviour
                 _descriptionTexts[column].text += itemDescription[i] + "\n";
                 _descriptionTexts[column].gameObject.SetActive(true);
                 printCount++;
-                if (printCount >= 34)
+                if (printCount >= 59)
                 {
                     column++;
                     printCount = 0;
                     continue;
                 }
-            }
+            }*/
+
+            _descriptionText.text = itemDescriptionOneLine.ToString();
         }
     }
     void OnCloseButtonTap()
