@@ -9,6 +9,8 @@ using TMPro;
 
 public class ItemPreview : MonoBehaviour
 {
+    const string FONT_SIZE_KEY = "FONT_SIZE";
+
     [SerializeField] GameObject _panelObject;
     [SerializeField] Button _closeButton;
 
@@ -18,6 +20,9 @@ public class ItemPreview : MonoBehaviour
     [SerializeField] Text _itemNameText;
     [SerializeField] TextMeshProUGUI _descriptionText;
     [SerializeField] TextMeshProUGUI[] _descriptionTexts;
+    [SerializeField] RectTransform[] _descriptionBackgrounds;
+
+    [SerializeField] Image _collectionImage;
 
     void Start()
     {
@@ -31,13 +36,30 @@ public class ItemPreview : MonoBehaviour
         _fontSizeInputField.onEndEdit.AddListener((text) =>
         {
             if (!string.IsNullOrEmpty(text))
-            {
-                for (int i = 0; i < _descriptionTexts.Length; i++)
-                    _descriptionTexts[i].fontSize = int.Parse(text);
-            }
+                FontSizeUpdate(Mathf.Clamp(int.Parse(text), 11, 300), true);
         });
 
+        if (PlayerPrefs.HasKey(FONT_SIZE_KEY))
+            FontSizeUpdate(PlayerPrefs.GetInt(FONT_SIZE_KEY), false);
+
         CleanUpDescription();
+    }
+    void FontSizeUpdate(int size, bool isSetSave)
+    {
+        if (isSetSave)
+        {
+            PlayerPrefs.SetInt(FONT_SIZE_KEY, size);
+            PlayerPrefs.Save();
+        }
+
+        _fontSizeInputField.text = size.ToString();
+
+        for (int i = 0; i < _descriptionTexts.Length; i++)
+        {
+            _descriptionTexts[i].fontSize = size;
+            _descriptionTexts[i].rectTransform.sizeDelta = new Vector2(185 + (15 * (size - 11)), 405);
+            _descriptionBackgrounds[i].sizeDelta = new Vector2(185 + (15 * (size - 11)), 405);
+        }
     }
     void CleanUpDescription()
     {
@@ -161,10 +183,11 @@ public class ItemPreview : MonoBehaviour
             _itemNameText.text = itemName
                 + ((itemSlot != "0") ? "[" + itemSlot + "]" : string.Empty)
                 + ((itemClassNumber != "0") ? " | View: " + itemClassNumber : string.Empty)
-                + " | <color=grey>" + itemResourceName + "</color>"
+                //+ " | <color=grey>" + itemResourceName + "</color>"
                 ;
 
             _descriptionText.text = itemDescriptionOneLine.ToString();
+            _collectionImage.sprite = Resources.Load<Sprite>("collection/" + Encoding.Default.GetString(Encoding.UTF8.GetBytes(itemResourceName)));
         }
     }
     void OnCloseButtonTap()
