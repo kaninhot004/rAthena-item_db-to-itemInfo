@@ -187,7 +187,8 @@ public class ItemPreview : MonoBehaviour
                 ;
 
             _descriptionText.text = itemDescriptionOneLine.ToString();
-            _collectionImage.sprite = Resources.Load<Sprite>("collection/" + Encoding.Default.GetString(Encoding.UTF8.GetBytes(itemResourceName)));
+
+            //_collectionImage.sprite = Resources.Load<Sprite>("collection/" + Encoding.Default.GetString(Encoding.UTF8.GetBytes(itemResourceName)));
         }
     }
     void OnCloseButtonTap()
