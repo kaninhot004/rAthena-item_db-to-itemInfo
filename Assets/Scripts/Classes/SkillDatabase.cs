@@ -7,4 +7,5 @@ public class SkillDatabase
     public string name;
     public string nameWithQuote;
     public string description;
+    public bool isCritical;
 }

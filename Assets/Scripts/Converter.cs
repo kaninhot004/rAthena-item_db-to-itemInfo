@@ -199,6 +199,8 @@ public class Converter : MonoBehaviour
     List<ReplaceVariable> _replaceVariables = new List<ReplaceVariable>();
     List<string> _arrayNames = new List<string>();
 
+    List<SkillDatabase> _allSkillDatabases = new List<SkillDatabase>();
+
     void Start()
     {
         _btnItemPreview.onClick.AddListener(OnItemPreviewButtonTap);
@@ -627,6 +629,28 @@ public class Converter : MonoBehaviour
         builder.Remove(builder.Length - 1, 1);
 
         builder.Append(";\n");
+    }
+
+    void ExportSkillLists()
+    {
+        List<string> criticalSkillNames = new List<string>();
+
+        for (int i = 0; i < _allSkillDatabases.Count; i++)
+        {
+            var skillDatabase = _allSkillDatabases[i];
+            if (skillDatabase.isCritical)
+                criticalSkillNames.Add(skillDatabase.description);
+        }
+
+        StringBuilder builder = new StringBuilder();
+
+        foreach (var item in criticalSkillNames)
+            builder.Append(item + "\n");
+
+        File.WriteAllText("critical-skill-list.txt", builder.ToString(), Encoding.UTF8);
+
+        Debug.Log("'critical-skill-list.txt' has been successfully created.");
+        Debug.Log("criticalSkillNames.Count:" + criticalSkillNames.Count);
     }
 
     // Parsing
@@ -1064,6 +1088,7 @@ public class Converter : MonoBehaviour
         _skillDatabases = new Dictionary<int, SkillDatabase>();
         _skillDatabasesByName = new Dictionary<string, SkillDatabase>();
         _skillNameDatabases = new Dictionary<string, int>();
+        _allSkillDatabases = new List<SkillDatabase>();
 
         SkillDatabase skillDatabase = new SkillDatabase();
 
@@ -1080,9 +1105,15 @@ public class Converter : MonoBehaviour
             text = LineEndingsRemover.Fix(text);
 
             if (text.Contains("  - Id:"))
+            {
+                skillDatabase = new SkillDatabase();
+                _allSkillDatabases.Add(skillDatabase);
                 skillDatabase.id = int.Parse(SpacingRemover.Remove(text).Replace("-Id:", string.Empty));
+            }
             else if (text.Contains("    Name:"))
                 skillDatabase.name = QuoteRemover.Remove(text.Replace("    Name: ", string.Empty));
+            else if (text.Contains("Critical: true"))
+                skillDatabase.isCritical = true;
             else if (text.Contains("    Description:"))
             {
                 skillDatabase.description = QuoteRemover.Remove(text.Replace("    Description: ", string.Empty));
@@ -1101,8 +1132,6 @@ public class Converter : MonoBehaviour
                     Debug.LogWarning("Found duplicated skill name: " + skillDatabase.name + " (Old: " + _skillNameDatabases[skillDatabase.name] + " vs New: " + skillDatabase.name + ")");
                 else
                     _skillNameDatabases.Add(skillDatabase.name, skillDatabase.id);
-
-                skillDatabase = new SkillDatabase();
             }
         }
 
@@ -2684,6 +2713,8 @@ public class Converter : MonoBehaviour
         ExportItemMall();
 
         ExportMonsterLists();
+
+        ExportSkillLists();
 
         Debug.Log(DateTime.Now);
 
