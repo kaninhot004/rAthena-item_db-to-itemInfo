@@ -2602,16 +2602,16 @@
                     "korean": "-"
                 }, {
                     "key": "ALL_RACE",
-                    "thai": "All",
-                    "english": "All",
+                    "thai": "ทุกเผ่า",
+                    "english": "All Race",
                     "japanese": "-",
                     "traditionalChinese": "-",
                     "simpifiedChinese": "-",
                     "korean": "-"
                 }, {
                     "key": "ALL_CLASS",
-                    "thai": "All",
-                    "english": "All",
+                    "thai": "ทุก Class",
+                    "english": "All Class",
                     "japanese": "-",
                     "traditionalChinese": "-",
                     "simpifiedChinese": "-",
@@ -2642,16 +2642,16 @@
                     "korean": "-"
                 }, {
                     "key": "ALL_SIZE",
-                    "thai": "All",
-                    "english": "All",
+                    "thai": "ทุกขนาด",
+                    "english": "All Size",
                     "japanese": "-",
                     "traditionalChinese": "-",
                     "simpifiedChinese": "-",
                     "korean": "-"
                 }, {
                     "key": "ALL_ELEMENT",
-                    "thai": "All",
-                    "english": "All",
+                    "thai": "ทุกธาตุ",
+                    "english": "All Element",
                     "japanese": "-",
                     "traditionalChinese": "-",
                     "simpifiedChinese": "-",
