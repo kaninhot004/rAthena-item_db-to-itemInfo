@@ -87,6 +87,7 @@ public class Localization : MonoBehaviour
     public const string REFINABLE = "REFINABLE";
     public const string GRADABLE = "GRADABLE";
     public const string WEIGHT = "WEIGHT";
+    public const string DELAY = "DELAY";
     public const string PRICE = "PRICE";
 
     public const string AUTO_BONUS_3 = "AUTO_BONUS_3";

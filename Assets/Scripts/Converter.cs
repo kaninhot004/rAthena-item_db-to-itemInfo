@@ -60,7 +60,7 @@ public class Converter : MonoBehaviour
     /// Captcha Generator
     /// </summary>
     [SerializeField] CaptchaGenerator _captchaGenerator;
-     /// <summary>
+    /// <summary>
     /// Item Preview
     /// </summary>
     [SerializeField] ItemPreview _itemPreview;
@@ -1636,6 +1636,8 @@ public class Converter : MonoBehaviour
 
         StringBuilder builder = new StringBuilder();
 
+        bool isDelay = false;
+
         for (int i = 0; i < itemDatabases.Length; i++)
         {
             var text = CommentRemover.FixCommentSeperateLine(itemDatabases, i);
@@ -1660,8 +1662,6 @@ public class Converter : MonoBehaviour
                 || text.Contains("    DropAnnounce:")
                 || text.Contains("    NoConsume:")
                 || text.Contains("    DropEffect:")
-                || text.Contains("    Delay:")
-                || text.Contains("    Duration:")
                 || text.Contains("    Status:")
                 || text.Contains("    Stack:")
                 || text.Contains("    Amount:")
@@ -1749,6 +1749,23 @@ public class Converter : MonoBehaviour
 
                 // Hotfix for →
                 _itemContainer.name = _itemContainer.name.Replace("→", " to ");
+            }
+            // Delay
+            else if (text.Contains("    Delay:"))
+                isDelay = true;
+            // Delay
+            else if (isDelay
+                && text.Contains("      Duration:"))
+            {
+                isDelay = false;
+
+                text = QuoteRemover.Remove(text);
+
+                text = SpacingRemover.Remove(text);
+
+                text = text.Replace("Duration:", string.Empty);
+
+                _itemContainer.delay = int.Parse(text);
             }
             // Type
             else if (text.Contains("    Type:"))
@@ -2458,6 +2475,11 @@ public class Converter : MonoBehaviour
                 description += "			\"^3F28FF" + _localization.GetTexts(Localization.WEIGHT) + ":^000000 " + _itemContainer.weight + "\",\n";
             else if (_isZeroValuePrintable)
                 description += "			\"^3F28FF" + _localization.GetTexts(Localization.WEIGHT) + ":^000000 -\",\n";
+
+            if (_itemContainer.delay > 0)
+                description += "			\"^3F28FF" + _localization.GetTexts(Localization.DELAY) + ":^000000 " + TryParseTimer((_itemContainer.delay / 1000).ToString()) + "\",\n";
+            else if (_isZeroValuePrintable)
+                description += "			\"^3F28FF" + _localization.GetTexts(Localization.DELAY) + ":^000000 -\",\n";
 
             if (!string.IsNullOrEmpty(_itemContainer.buy))
                 description += "			\"^3F28FF" + _localization.GetTexts(Localization.PRICE) + ":^000000 " + _itemContainer.buy + "\",\n";

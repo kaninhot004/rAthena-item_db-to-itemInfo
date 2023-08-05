@@ -14,6 +14,7 @@ public class ItemContainer
     public string defense = string.Empty;
     public string range = string.Empty;
     public string slots = string.Empty;
+    public int delay = 0;
     public bool isJob = false;
     public string jobs = string.Empty;
     public bool isClass = false;
