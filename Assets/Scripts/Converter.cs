@@ -2490,7 +2490,7 @@ public class Converter : MonoBehaviour
 
             if (_itemContainer.delay > 0)
                 description += "			\"^3F28FF" + _localization.GetTexts(Localization.DELAY) + ":^000000 " + TryParseTimer((_itemContainer.delay / 1000).ToString()) + "\",\n";
-            else if (_isZeroValuePrintable)
+            else if (_isZeroValuePrintable && !isEquipment)
                 description += "			\"^3F28FF" + _localization.GetTexts(Localization.DELAY) + ":^000000 -\",\n";
 
             if (!string.IsNullOrEmpty(_itemContainer.buy))
