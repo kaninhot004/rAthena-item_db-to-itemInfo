@@ -539,6 +539,7 @@ public class Converter : MonoBehaviour
         List<string> monsterTier8Ids = new List<string>();
         List<string> monsterTier9Ids = new List<string>();
         List<string> monsterTier10Ids = new List<string>();
+        List<string> mvpIds = new List<string>();
 
         for (int i = 0; i < _monsterIds.Count; i++)
         {
@@ -571,6 +572,9 @@ public class Converter : MonoBehaviour
                     monsterTier9Ids.Add(monsterId);
                 else
                     monsterTier10Ids.Add(monsterId);
+
+                if (monsterDatabase.isMvp)
+                    mvpIds.Add(monsterId);
             }
         }
 
@@ -587,6 +591,7 @@ public class Converter : MonoBehaviour
         ExportingItemLists(builder, "monsterTier8Ids", monsterTier8Ids);
         ExportingItemLists(builder, "monsterTier9Ids", monsterTier9Ids);
         ExportingItemLists(builder, "monsterTier10Ids", monsterTier10Ids);
+        ExportingItemLists(builder, "mvpIds", mvpIds);
 
         File.WriteAllText("global-monster-list.txt", builder.ToString(), Encoding.UTF8);
 
@@ -602,6 +607,7 @@ public class Converter : MonoBehaviour
         Debug.Log("monsterTier8Ids.Count:" + monsterTier8Ids.Count);
         Debug.Log("monsterTier9Ids.Count:" + monsterTier9Ids.Count);
         Debug.Log("monsterTier10Ids.Count:" + monsterTier10Ids.Count);
+        Debug.Log("mvpIds.Count:" + mvpIds.Count);
     }
     /// <summary>
     /// Exporting item lists to StringBuilder
@@ -932,6 +938,12 @@ public class Converter : MonoBehaviour
                 monsterDatabase.walkSpeed = int.Parse(SpacingRemover.Remove(text).Replace("WalkSpeed:", string.Empty));
             else if (text.Contains("    AttackMotion: "))
                 monsterDatabase.attackMotion = int.Parse(SpacingRemover.Remove(text).Replace("AttackMotion:", string.Empty));
+            else if (text.Contains("    DamageTaken:"))
+                monsterDatabase.damageTaken = int.Parse(SpacingRemover.Remove(text).Replace("DamageTaken:", string.Empty));
+            else if (text.Contains("    Class:"))
+                monsterDatabase._class = SpacingRemover.Remove(text).Replace("Class:", string.Empty);
+            else if (text.Contains("      Mvp: "))
+                monsterDatabase.isMvp = (SpacingRemover.Remove(text).Replace("Mvp:", string.Empty) == "true") ? true : false;
         }
 
         Debug.Log("There are " + _monsterDatabases.Count + " monster database.");
