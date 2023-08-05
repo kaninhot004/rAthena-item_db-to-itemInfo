@@ -2335,6 +2335,9 @@ public class Converter : MonoBehaviour
             }
 
             bool isEquipment = !string.IsNullOrEmpty(_itemContainer.weaponLevel) || !string.IsNullOrEmpty(_itemContainer.armorLevel);
+            bool isUsable = (_itemContainer.type.ToLower() == "healing")
+                || (_itemContainer.type.ToLower() == "usable")
+                || (_itemContainer.type.ToLower() == "delayconsume");
 
             // Id
             builder.Append("	[" + _itemContainer.id + "] = {\n");
@@ -2490,7 +2493,7 @@ public class Converter : MonoBehaviour
 
             if (_itemContainer.delay > 0)
                 description += "			\"^3F28FF" + _localization.GetTexts(Localization.DELAY) + ":^000000 " + TryParseTimer((_itemContainer.delay / 1000).ToString()) + "\",\n";
-            else if (_isZeroValuePrintable && !isEquipment)
+            else if (_isZeroValuePrintable && isUsable)
                 description += "			\"^3F28FF" + _localization.GetTexts(Localization.DELAY) + ":^000000 -\",\n";
 
             if (!string.IsNullOrEmpty(_itemContainer.buy))
