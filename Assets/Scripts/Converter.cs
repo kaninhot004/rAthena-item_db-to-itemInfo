@@ -2083,13 +2083,13 @@ public class Converter : MonoBehaviour
             else if (text.Contains("      Armor: false"))
                 _itemContainer.locations += _localization.GetTexts(Localization.LOCATION_ARMOR) + " [x], ";
             else if (text.Contains("      Right_Hand: true"))
-                _itemContainer.locations += _localization.GetTexts(Localization.LOCATION_RIGHT_HAND) + ", ";
+                _itemContainer.locations += _localization.GetTexts((_itemContainer.type == "Card") ? Localization.WEAPON : Localization.LOCATION_RIGHT_HAND) + ", ";
             else if (text.Contains("      Right_Hand: false"))
-                _itemContainer.locations += _localization.GetTexts(Localization.LOCATION_RIGHT_HAND) + " [x], ";
+                _itemContainer.locations += _localization.GetTexts((_itemContainer.type == "Card") ? Localization.WEAPON : Localization.LOCATION_RIGHT_HAND) + " [x], ";
             else if (text.Contains("      Left_Hand: true"))
-                _itemContainer.locations += _localization.GetTexts(Localization.LOCATION_LEFT_HAND) + ", ";
+                _itemContainer.locations += _localization.GetTexts((_itemContainer.type == "Card") ? Localization.SHIELD : Localization.LOCATION_LEFT_HAND) + ", ";
             else if (text.Contains("      Left_Hand: false"))
-                _itemContainer.locations += _localization.GetTexts(Localization.LOCATION_LEFT_HAND) + " [x], ";
+                _itemContainer.locations += _localization.GetTexts((_itemContainer.type == "Card") ? Localization.SHIELD : Localization.LOCATION_LEFT_HAND) + " [x], ";
             else if (text.Contains("      Garment: true"))
                 _itemContainer.locations += _localization.GetTexts(Localization.LOCATION_GARMENT) + ", ";
             else if (text.Contains("      Garment: false"))
@@ -2263,6 +2263,9 @@ public class Converter : MonoBehaviour
         {
             _itemContainer = _itemContainers[i];
 
+            bool isEquipment = !string.IsNullOrEmpty(_itemContainer.weaponLevel) || !string.IsNullOrEmpty(_itemContainer.armorLevel);
+            bool isUsable = IsItemTypeUsable(_itemContainer.type);
+
             if (_itemContainer.type == "Card")
             {
                 if (_itemContainer.subType == "Enchant")
@@ -2362,11 +2365,6 @@ public class Converter : MonoBehaviour
                     _itemContainer.buy = string.Empty;
                 }
             }
-
-            bool isEquipment = !string.IsNullOrEmpty(_itemContainer.weaponLevel) || !string.IsNullOrEmpty(_itemContainer.armorLevel);
-            bool isUsable = (_itemContainer.type.ToLower() == "healing")
-                || (_itemContainer.type.ToLower() == "usable")
-                || (_itemContainer.type.ToLower() == "delayconsume");
 
             // Id
             builder.Append("	[" + _itemContainer.id + "] = {\n");
@@ -6083,5 +6081,17 @@ public class Converter : MonoBehaviour
     {
         _replaceVariables = new List<ReplaceVariable>();
         _arrayNames = new List<string>();
+    }
+
+    bool IsItemTypeUsable(string itemType)
+    {
+        itemType = itemType.ToLower();
+
+        if ((itemType == "healing")
+            || (itemType == "usable")
+            || (itemType == "delayconsume"))
+            return true;
+        else
+            return false;
     }
 }

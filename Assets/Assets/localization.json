@@ -3176,6 +3176,14 @@
                     "traditionalChinese": "Cd.",
                     "simpifiedChinese": "Cd.",
                     "korean": "Cd."
+                }, {
+                    "key": "WEAPON",
+                    "thai": "อาวุธ",
+                    "english": "Weapon",
+                    "japanese": "-",
+                    "traditionalChinese": "-",
+                    "simpifiedChinese": "-",
+                    "korean": "-"
                 }
             ]
         }
