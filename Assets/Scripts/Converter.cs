@@ -201,6 +201,8 @@ public class Converter : MonoBehaviour
 
     List<SkillDatabase> _allSkillDatabases = new List<SkillDatabase>();
 
+    string _currentCombo = string.Empty;
+
     void Start()
     {
         _btnItemPreview.onClick.AddListener(OnItemPreviewButtonTap);
@@ -1257,8 +1259,11 @@ public class Converter : MonoBehaviour
                 isScript = true;
             else if (isScript)
             {
+                _currentCombo = string.Empty;
+                for (int j = 0; j < comboDatabase.sameComboDatas[comboDatabase.sameComboDatas.Count - 1].aegisNames.Count; j++)
+                    _currentCombo += comboDatabase.sameComboDatas[comboDatabase.sameComboDatas.Count - 1].aegisNames[j] + " ";
                 var comboScript = ConvertItemScripts(text);
-
+                _currentCombo = string.Empty;
                 if (!string.IsNullOrEmpty(comboScript))
                     script += "			\"" + comboScript + "\",\n";
 
@@ -4658,6 +4663,9 @@ public class Converter : MonoBehaviour
 
     string ParseRace(string text)
     {
+        if (!text.Contains("rc_", StringComparison.CurrentCultureIgnoreCase))
+            Debug.Log("Found wrong race: " + text + GetCurrentItemIdOrCombo());
+
         text = text.Replace("RC_Angel", "^AC6523(Angel)^000000");
         text = text.Replace("RC_Brute", "^AC6523(Brute)^000000");
         text = text.Replace("RC_DemiHuman", "^AC6523(Demi-Human)^000000");
@@ -4676,6 +4684,9 @@ public class Converter : MonoBehaviour
 
     string ParseRace2(string text)
     {
+        if (!text.Contains("rc2_", StringComparison.CurrentCultureIgnoreCase))
+            Debug.Log("Found wrong race2: " + text + GetCurrentItemIdOrCombo());
+
         text = text.ToUpper();
         text = text.Replace("RC2_GOBLIN", "^AC6523(Goblin)^000000");
         text = text.Replace("RC2_KOBOLD", "^AC6523(Kobold)^000000");
@@ -4713,6 +4724,9 @@ public class Converter : MonoBehaviour
 
     string ParseClass(string text)
     {
+        if (!text.Contains("class_", StringComparison.CurrentCultureIgnoreCase))
+            Debug.Log("Found wrong class: " + text + GetCurrentItemIdOrCombo());
+
         text = text.Replace("Class_Normal", "^0040B6(Normal)^000000");
         text = text.Replace("Class_Boss", "^0040B6(Boss)^000000");
         text = text.Replace("Class_Guardian", "^0040B6(Guardian)^000000");
@@ -4722,6 +4736,9 @@ public class Converter : MonoBehaviour
 
     string ParseSize(string text)
     {
+        if (!text.Contains("size_", StringComparison.CurrentCultureIgnoreCase))
+            Debug.Log("Found wrong size: " + text + GetCurrentItemIdOrCombo());
+
         text = text.Replace("Size_Small", "^FF26F5(" + _localization.GetTexts(Localization.SIZE_SMALL) + ")^000000");
         text = text.Replace("Size_Medium", "^FF26F5(" + _localization.GetTexts(Localization.SIZE_MEDIUM) + ")^000000");
         text = text.Replace("Size_Large", "^FF26F5(" + _localization.GetTexts(Localization.SIZE_LARGE) + ")^000000");
@@ -4731,6 +4748,9 @@ public class Converter : MonoBehaviour
 
     string ParseElement(string text)
     {
+        if (!text.Contains("ele_", StringComparison.CurrentCultureIgnoreCase))
+            Debug.Log("Found wrong element: " + text + GetCurrentItemIdOrCombo());
+
         text = text.Replace("Ele_Dark", "^C426FF(Dark)^000000");
         text = text.Replace("Ele_Earth", "^C426FF(Earth)^000000");
         text = text.Replace("Ele_Fire", "^C426FF(Fire)^000000");
@@ -4747,6 +4767,9 @@ public class Converter : MonoBehaviour
 
     string ParseEffect(string text)
     {
+        if (!text.Contains("eff_", StringComparison.CurrentCultureIgnoreCase))
+            Debug.Log("Found wrong effect: " + text + GetCurrentItemIdOrCombo());
+
         text = text.Replace("Eff_Stone", "^EC1B3AStone^000000");
         text = text.Replace("Eff_Freeze", "^EC1B3AFreeze^000000");
         text = text.Replace("Eff_Stun", "^EC1B3AStun^000000");
@@ -6093,5 +6116,14 @@ public class Converter : MonoBehaviour
             return true;
         else
             return false;
+    }
+
+    string GetCurrentItemIdOrCombo()
+    {
+        return ((_itemContainer != null) && !string.IsNullOrEmpty(_itemContainer.id))
+            ? (" on " + _itemContainer.id)
+            : !string.IsNullOrEmpty(_currentCombo)
+            ? (" combo " + _currentCombo)
+            : string.Empty;
     }
 }
