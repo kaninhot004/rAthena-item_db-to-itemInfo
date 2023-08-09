@@ -2284,7 +2284,9 @@ public class Converter : MonoBehaviour
                 }
                 else
                 {
-                    if (_itemContainer.name.Contains("Card"))
+                    _itemListContainer.cardIds.Add(_itemContainer.id);
+
+                    /*if (_itemContainer.name.Contains("Card"))
                         _itemListContainer.cardIds.Add(_itemContainer.id);
                     else
                     {
@@ -2296,7 +2298,7 @@ public class Converter : MonoBehaviour
                             _itemListContainer.enchant2Ids.Add(_itemContainer.id);
                         else
                             _itemListContainer.enchantIds.Add(_itemContainer.id);
-                    }
+                    }*/
                 }
             }
 
