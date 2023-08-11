@@ -380,6 +380,7 @@ public class Converter : MonoBehaviour
         ExportingItemLists(builder, "equipmentIds", _itemListContainer.equipmentIds);
         ExportingItemLists(builder, "costumeIds", _itemListContainer.costumeIds);
         ExportingItemLists(builder, "cardIds", _itemListContainer.cardIds);
+        ExportingItemLists(builder, "card2Ids", _itemListContainer.card2Ids);
         ExportingItemLists(builder, "enchantIds", _itemListContainer.enchantIds);
         ExportingItemLists(builder, "enchant2Ids", _itemListContainer.enchant2Ids);
         ExportingItemLists(builder, "itemGroupIds", _itemListContainer.itemGroupIds);
@@ -1521,6 +1522,7 @@ public class Converter : MonoBehaviour
         Debug.Log("There are " + _itemListContainer.equipmentIds.Count + " equipment database.");
         Debug.Log("There are " + _itemListContainer.costumeIds.Count + " costume database.");
         Debug.Log("There are " + _itemListContainer.cardIds.Count + " card database.");
+        Debug.Log("There are " + _itemListContainer.card2Ids.Count + " card2 database.");
         Debug.Log("There are " + _itemListContainer.enchantIds.Count + " enchant database.");
         Debug.Log("There are " + _itemListContainer.enchant2Ids.Count + " enchant2 database.");
     }
@@ -2275,30 +2277,17 @@ public class Converter : MonoBehaviour
             {
                 if (_itemContainer.subType == "Enchant")
                 {
-                    if (!string.IsNullOrEmpty(_itemContainer.script)
-                        || !string.IsNullOrEmpty(_itemContainer.equipScript)
-                        || !string.IsNullOrEmpty(_itemContainer.unequipScript))
+                    if (IsContainScripts(_itemContainer))
                         _itemListContainer.enchant2Ids.Add(_itemContainer.id);
                     else
                         _itemListContainer.enchantIds.Add(_itemContainer.id);
                 }
                 else
                 {
-                    _itemListContainer.cardIds.Add(_itemContainer.id);
-
-                    /*if (_itemContainer.name.Contains("Card"))
-                        _itemListContainer.cardIds.Add(_itemContainer.id);
+                    if (IsContainScripts(_itemContainer))
+                        _itemListContainer.card2Ids.Add(_itemContainer.id);
                     else
-                    {
-                        Debug.Log(_itemContainer.id + " was card but not had 'Card' in the name?");
-
-                        if (!string.IsNullOrEmpty(_itemContainer.script)
-                            || !string.IsNullOrEmpty(_itemContainer.equipScript)
-                            || !string.IsNullOrEmpty(_itemContainer.unequipScript))
-                            _itemListContainer.enchant2Ids.Add(_itemContainer.id);
-                        else
-                            _itemListContainer.enchantIds.Add(_itemContainer.id);
-                    }*/
+                        _itemListContainer.cardIds.Add(_itemContainer.id);
                 }
             }
 
@@ -6127,5 +6116,12 @@ public class Converter : MonoBehaviour
             : !string.IsNullOrEmpty(_currentCombo)
             ? (" combo " + _currentCombo)
             : string.Empty;
+    }
+
+    bool IsContainScripts(ItemContainer _itemContainer)
+    {
+        return !string.IsNullOrEmpty(_itemContainer.script)
+            || !string.IsNullOrEmpty(_itemContainer.equipScript)
+            || !string.IsNullOrEmpty(_itemContainer.unequipScript);
     }
 }

@@ -10,9 +10,13 @@ public class ItemListContainer
     public List<string> equipmentIds = new List<string>();
     public List<string> costumeIds = new List<string>();
     public List<string> cardIds = new List<string>();
+    /// <summary>
+    /// Only Card that contained scripts will be kept
+    /// </summary>
+    public List<string> card2Ids = new List<string>();
     public List<string> enchantIds = new List<string>();
     /// <summary>
-    /// Only Enchantment that had script will kept
+    /// Only Enchantment that contained scripts will be kept
     /// </summary>
     public List<string> enchant2Ids = new List<string>();
     public List<string> itemGroupIds = new List<string>();
