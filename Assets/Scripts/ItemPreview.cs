@@ -1,9 +1,7 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using System.IO;
-using System;
 using System.Text;
 using TMPro;
 
@@ -20,9 +18,10 @@ public class ItemPreview : MonoBehaviour
     [SerializeField] Text _itemNameText;
     [SerializeField] TextMeshProUGUI _descriptionText;
     [SerializeField] TextMeshProUGUI[] _descriptionTexts;
-    [SerializeField] RectTransform[] _descriptionBackgrounds;
 
     [SerializeField] Image _collectionImage;
+
+    [SerializeField] ScrollRect _descriptionScrollRect;
 
     void Start()
     {
@@ -58,7 +57,6 @@ public class ItemPreview : MonoBehaviour
         {
             _descriptionTexts[i].fontSize = size;
             _descriptionTexts[i].rectTransform.sizeDelta = new Vector2(185 + (15 * (size - 11)), 405);
-            _descriptionBackgrounds[i].sizeDelta = new Vector2(185 + (15 * (size - 11)), 405);
         }
     }
     void CleanUpDescription()
@@ -183,12 +181,13 @@ public class ItemPreview : MonoBehaviour
             _itemNameText.text = itemName
                 + ((itemSlot != "0") ? "[" + itemSlot + "]" : string.Empty)
                 + ((itemClassNumber != "0") ? " | View: " + itemClassNumber : string.Empty)
-                //+ " | <color=grey>" + itemResourceName + "</color>"
                 ;
 
             _descriptionText.text = itemDescriptionOneLine.ToString();
 
             _collectionImage.sprite = Resources.Load<Sprite>("collection/" + Encoding.Default.GetString(Encoding.UTF8.GetBytes(itemResourceName)));
+
+            _descriptionScrollRect.horizontalNormalizedPosition = 0;
         }
     }
     void OnCloseButtonTap()
