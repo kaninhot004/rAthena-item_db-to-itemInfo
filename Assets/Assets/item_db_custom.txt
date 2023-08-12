@@ -85,3 +85,36 @@
       NoSell: true
     Script: |
       callfunc("GainDismantlePoints");
+  - Id: 10000009
+    AegisName: Status_Points
+    Name: Status Points
+    Type: Usable
+    Flags:
+      BuyingStore: true
+    TradeNoUse:
+      Override: 100
+      NoSell: true
+    Script: |
+      callfunc("GainStatusPoints");
+  - Id: 10000010
+    AegisName: Skill_Points
+    Name: Skill Points
+    Type: Usable
+    Flags:
+      BuyingStore: true
+    TradeNoUse:
+      Override: 100
+      NoSell: true
+    Script: |
+      callfunc("GainSkillPoints");
+  - Id: 10000011
+    AegisName: Killing_Floor_Points
+    Name: Killing Floor Points
+    Type: Usable
+    Flags:
+      BuyingStore: true
+    TradeNoUse:
+      Override: 100
+      NoSell: true
+    Script: |
+      callfunc("GainKillingFloorPoints");

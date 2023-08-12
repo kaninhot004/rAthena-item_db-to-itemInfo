@@ -183,6 +183,18 @@
         {
             "itemId": 10000008,
             "itemScriptDescription": "^11B120กดใช้เพื่อ รับ Dismantle Points^000000"
+        },
+        {
+            "itemId": 10000009,
+            "itemScriptDescription": "^11B120กดใช้เพื่อ รับ 1 Status Points^000000"
+        },
+        {
+            "itemId": 10000010,
+            "itemScriptDescription": "^11B120กดใช้เพื่อ รับ 1 Skill Points^000000"
+        },
+        {
+            "itemId": 10000011,
+            "itemScriptDescription": "^11B120กดใช้เพื่อ รับแต้มอาฆาต^000000"
         }
     ]
 }
