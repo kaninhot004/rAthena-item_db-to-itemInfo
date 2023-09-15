@@ -23289,7 +23289,6 @@
 15953="C_Somtam"
 20443="ภฏดฯฤว๏ธง"
 400450="C_Lion_Crown"
-400462="C_Sailor_Cap"
 400466="C_Rainbow_Popcorn"
 400471="C_Angry_Fish"
 400475="C_Bulb_Wreath"
