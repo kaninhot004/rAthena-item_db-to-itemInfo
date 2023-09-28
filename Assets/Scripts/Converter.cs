@@ -544,6 +544,10 @@ public class Converter : MonoBehaviour
         List<string> monsterTier8Ids = new List<string>();
         List<string> monsterTier9Ids = new List<string>();
         List<string> monsterTier10Ids = new List<string>();
+        List<string> monsterExpTier1Ids = new List<string>();
+        List<string> monsterExpTier2Ids = new List<string>();
+        List<string> monsterExpTier3Ids = new List<string>();
+        List<string> monsterExpTier4Ids = new List<string>();
         List<string> mvpIds = new List<string>();
 
         for (int i = 0; i < _monsterIds.Count; i++)
@@ -557,6 +561,7 @@ public class Converter : MonoBehaviour
             if ((monsterDatabase.attackMotion > 1)
                 && (monsterDatabase.walkSpeed != 0))
             {
+                // Tier by HP
                 if (monsterDatabase.hp <= 50)
                     monsterTier1Ids.Add(monsterId);
                 else if (monsterDatabase.hp <= 500)
@@ -578,6 +583,20 @@ public class Converter : MonoBehaviour
                 else
                     monsterTier10Ids.Add(monsterId);
 
+                // Tier by Exp
+                if ((monsterDatabase.baseExp >= 5000)
+                    && (monsterDatabase.baseExp < 50000))
+                    monsterExpTier1Ids.Add(monsterId);
+                else if ((monsterDatabase.baseExp >= 50000)
+                    && (monsterDatabase.baseExp < 500000))
+                    monsterExpTier2Ids.Add(monsterId);
+                else if ((monsterDatabase.baseExp >= 500000)
+                    && (monsterDatabase.baseExp < 1000000))
+                    monsterExpTier3Ids.Add(monsterId);
+                else if ((monsterDatabase.baseExp > 1000000))
+                    monsterExpTier4Ids.Add(monsterId);
+
+                // MvP
                 if (monsterDatabase.isMvp)
                     mvpIds.Add(monsterId);
             }
@@ -596,6 +615,10 @@ public class Converter : MonoBehaviour
         ExportingItemLists(builder, "monsterTier8Ids", monsterTier8Ids);
         ExportingItemLists(builder, "monsterTier9Ids", monsterTier9Ids);
         ExportingItemLists(builder, "monsterTier10Ids", monsterTier10Ids);
+        ExportingItemLists(builder, "monsterExpTier1Ids", monsterExpTier1Ids);
+        ExportingItemLists(builder, "monsterExpTier2Ids", monsterExpTier2Ids);
+        ExportingItemLists(builder, "monsterExpTier3Ids", monsterExpTier3Ids);
+        ExportingItemLists(builder, "monsterExpTier4Ids", monsterExpTier4Ids);
         ExportingItemLists(builder, "mvpIds", mvpIds);
 
         File.WriteAllText("global-monster-list.txt", builder.ToString(), Encoding.UTF8);
@@ -613,25 +636,6 @@ public class Converter : MonoBehaviour
         Debug.Log("monsterTier9Ids.Count:" + monsterTier9Ids.Count);
         Debug.Log("monsterTier10Ids.Count:" + monsterTier10Ids.Count);
         Debug.Log("mvpIds.Count:" + mvpIds.Count);
-    }
-    /// <summary>
-    /// Exporting item lists to StringBuilder
-    /// </summary>
-    /// <param name="builder"></param>
-    /// <param name="listName"></param>
-    /// <param name="items"></param>
-    void ExportingMonsterLists(StringBuilder builder, string listName, List<string> items)
-    {
-        builder.Append("setarray $" + listName + "[0],");
-
-        items.RemoveAll((item) => string.IsNullOrEmpty(item) || string.IsNullOrWhiteSpace(item) || (item == null));
-
-        foreach (var item in items)
-            builder.Append(item + ",");
-
-        builder.Remove(builder.Length - 1, 1);
-
-        builder.Append(";\n");
     }
 
     void ExportSkillLists()
@@ -961,6 +965,8 @@ public class Converter : MonoBehaviour
             }
             else if (text.Contains("    Hp: "))
                 monsterDatabase.hp = int.Parse(SpacingRemover.Remove(text).Replace("Hp:", string.Empty));
+            else if (text.Contains("    BaseExp: "))
+                monsterDatabase.baseExp = int.Parse(SpacingRemover.Remove(text).Replace("BaseExp:", string.Empty));
             else if (text.Contains("    WalkSpeed: "))
                 monsterDatabase.walkSpeed = int.Parse(SpacingRemover.Remove(text).Replace("WalkSpeed:", string.Empty));
             else if (text.Contains("    AttackMotion: "))
