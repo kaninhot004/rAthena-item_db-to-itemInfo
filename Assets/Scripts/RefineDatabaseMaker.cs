@@ -452,16 +452,20 @@ public class RefineDatabaseMaker : MonoBehaviour
                 for (int k = 0; k < refineGroupDatas[i].equipmentLevelDatas[j].refineLevelDatas.Length; k++)
                 {
                     builder.Append("          - Level: " + refineGroupDatas[i].equipmentLevelDatas[j].refineLevelDatas[k].refineLevel + "\n");
-                    builder.Append("            Bonus: " + refineGroupDatas[i].equipmentLevelDatas[j].refineLevelDatas[k].bonus + "\n");
-                    builder.Append("            RandomBonus: " + refineGroupDatas[i].equipmentLevelDatas[j].refineLevelDatas[k].randomBonus + "\n");
+                    if (refineGroupDatas[i].equipmentLevelDatas[j].refineLevelDatas[k].bonus > 0)
+                        builder.Append("            Bonus: " + refineGroupDatas[i].equipmentLevelDatas[j].refineLevelDatas[k].bonus + "\n");
+                    if (refineGroupDatas[i].equipmentLevelDatas[j].refineLevelDatas[k].randomBonus > 0)
+                        builder.Append("            RandomBonus: " + refineGroupDatas[i].equipmentLevelDatas[j].refineLevelDatas[k].randomBonus + "\n");
                     builder.Append("            Chances:\n");
 
                     for (int l = 0; l < refineGroupDatas[i].equipmentLevelDatas[j].refineLevelDatas[k].refineChanceDatas.Length; l++)
                     {
                         var type = refineGroupDatas[i].equipmentLevelDatas[j].refineLevelDatas[k].refineChanceDatas[l].type;
                         builder.Append("              - Type: " + refineGroupDatas[i].equipmentLevelDatas[j].refineLevelDatas[k].refineChanceDatas[l].type + "\n");
-                        builder.Append("                Rate: " + refineGroupDatas[i].equipmentLevelDatas[j].refineLevelDatas[k].refineChanceDatas[l].rate + "\n");
-                        builder.Append("                Price: " + refineGroupDatas[i].equipmentLevelDatas[j].refineLevelDatas[k].refineChanceDatas[l].price + "\n");
+                        if (refineGroupDatas[i].equipmentLevelDatas[j].refineLevelDatas[k].refineChanceDatas[l].rate > 0)
+                            builder.Append("                Rate: " + refineGroupDatas[i].equipmentLevelDatas[j].refineLevelDatas[k].refineChanceDatas[l].rate + "\n");
+                        if (refineGroupDatas[i].equipmentLevelDatas[j].refineLevelDatas[k].refineChanceDatas[l].price > 0)
+                            builder.Append("                Price: " + refineGroupDatas[i].equipmentLevelDatas[j].refineLevelDatas[k].refineChanceDatas[l].price + "\n");
                         builder.Append("                Material: " + ((type == Type.Normal) ? GetMaterial(group, groupLevel) : GetSpecialMaterial(group, groupLevel)) + "\n");
                         if (type == Type.Normal)
                             builder.Append("                DowngradeAmount: 1\n");
