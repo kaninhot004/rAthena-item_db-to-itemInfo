@@ -534,6 +534,7 @@ public class Converter : MonoBehaviour
     void ExportMonsterLists()
     {
         List<string> monsterIds = new List<string>();
+        List<string> attackableMonsterIds = new List<string>();
         List<string> monsterTier1Ids = new List<string>();
         List<string> monsterTier2Ids = new List<string>();
         List<string> monsterTier3Ids = new List<string>();
@@ -556,6 +557,10 @@ public class Converter : MonoBehaviour
             var monsterId = monsterDatabase.id.ToString("f0");
 
             monsterIds.Add(monsterId);
+
+            // For my own purposes
+            if (monsterDatabase.attackMotion > 1)
+                attackableMonsterIds.Add(monsterId);
 
             // For my own purposes
             if ((monsterDatabase.attackMotion > 1)
@@ -605,6 +610,7 @@ public class Converter : MonoBehaviour
         StringBuilder builder = new StringBuilder();
 
         ExportingItemLists(builder, "monsterIds", monsterIds);
+        ExportingItemLists(builder, "attackableMonsterIds", attackableMonsterIds);
         ExportingItemLists(builder, "monsterTier1Ids", monsterTier1Ids);
         ExportingItemLists(builder, "monsterTier2Ids", monsterTier2Ids);
         ExportingItemLists(builder, "monsterTier3Ids", monsterTier3Ids);
