@@ -91,6 +91,7 @@
     <None Include="Assets\TextMesh Pro\Shaders\TMP_Bitmap.shader" />
     <None Include="Assets\Assets\all_english_word.txt" />
     <None Include="Assets\Assets\resourceName.txt" />
+    <None Include="Assets\Assets\all_learnable_skill.txt" />
     <None Include="Assets\TextMesh Pro\Shaders\TMPro_Mobile.cginc" />
     <None Include="Assets\Assets\captcha.txt" />
     <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF SSD.shader" />

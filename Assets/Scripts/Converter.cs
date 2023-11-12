@@ -200,6 +200,7 @@ public class Converter : MonoBehaviour
     List<string> _arrayNames = new List<string>();
 
     List<SkillDatabase> _allSkillDatabases = new List<SkillDatabase>();
+    List<string> _allLearnableSkillDatabases = new List<string>();
 
     string _currentCombo = string.Empty;
 
@@ -286,6 +287,15 @@ public class Converter : MonoBehaviour
         _txtConvertProgression.text = _localization.GetTexts(Localization.CONVERT_PROGRESSION_FETCHING_SKILL) + "..";
 
         FetchSkill();
+
+        if (_isFilesError)
+        {
+            _txtConvertProgression.text = "<color=red>" + _localization.GetTexts(Localization.ERROR) + "</color>: " + _errorLog;
+
+            return;
+        }
+
+        FetchLearnableSkill();
 
         if (_isFilesError)
         {
@@ -576,7 +586,7 @@ public class Converter : MonoBehaviour
                     attackableMonsterTier3Ids.Add(monsterId);
                 else if (monsterDatabase.level < 100)
                     attackableMonsterTier4Ids.Add(monsterId);
-               else if (monsterDatabase.level < 150)
+                else if (monsterDatabase.level < 150)
                     attackableMonsterTier5Ids.Add(monsterId);
                 else
                     attackableMonsterTier6Ids.Add(monsterId);
@@ -690,6 +700,19 @@ public class Converter : MonoBehaviour
 
         Debug.Log("'critical-skill-list.txt' has been successfully created.");
         Debug.Log("criticalSkillNames.Count:" + criticalSkillNames.Count);
+
+        builder = new StringBuilder();
+
+        builder.Append("setarray $learnableSkills$[0],");
+        foreach (var item in _allLearnableSkillDatabases)
+            builder.Append("\"" + item + "\",");
+        builder.Remove(builder.Length - 1, 1);
+        builder.Append(";");
+
+        File.WriteAllText("learnable-skill-list.txt", builder.ToString(), Encoding.UTF8);
+
+        Debug.Log("'learnable-skill-list.txt' has been successfully created.");
+        Debug.Log("learnable.Count:" + _allLearnableSkillDatabases.Count);
     }
 
     // Parsing
@@ -1179,6 +1202,46 @@ public class Converter : MonoBehaviour
         }
 
         Debug.Log("There are " + _skillDatabases.Count + " skill database.");
+    }
+    void FetchLearnableSkill()
+    {
+        var path = Application.dataPath + "/Assets/all_learnable_skill.txt";
+
+        // Is file exists?
+        if (!File.Exists(path))
+        {
+            _errorLog = path + " " + _localization.GetTexts(Localization.NOT_FOUND);
+
+            Debug.Log(_errorLog);
+
+            _isFilesError = true;
+
+            return;
+        }
+
+        var allLearnableSkillDatabasesFile = File.ReadAllText(path);
+
+        var learnableSkillDatabases = allLearnableSkillDatabasesFile.Split('\n');
+
+        _allLearnableSkillDatabases = new List<string>();
+
+        for (int i = 0; i < learnableSkillDatabases.Length; i++)
+        {
+            var text = learnableSkillDatabases[i];
+
+            if (string.IsNullOrEmpty(text)
+                || string.IsNullOrWhiteSpace(text))
+                continue;
+
+            text = CommentRemover.Fix(text);
+
+            text = LineEndingsRemover.Fix(text);
+
+            if (!_allLearnableSkillDatabases.Contains(text))
+                _allLearnableSkillDatabases.Add(text);
+        }
+
+        Debug.Log("There are " + _allLearnableSkillDatabases.Count + " learnable skill.");
     }
     /// <summary>
     /// Parse resource name file into converter
