@@ -6,6 +6,7 @@ public class MonsterDatabase
     public int id = 0;
     public string aegisName = string.Empty;
     public string name = string.Empty;
+    public int level = 0;
     public int hp = 0;
     public int baseExp = 0;
     public int walkSpeed = 0;

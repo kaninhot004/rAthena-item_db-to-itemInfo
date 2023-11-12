@@ -535,6 +535,12 @@ public class Converter : MonoBehaviour
     {
         List<string> monsterIds = new List<string>();
         List<string> attackableMonsterIds = new List<string>();
+        List<string> attackableMonsterTier1Ids = new List<string>();
+        List<string> attackableMonsterTier2Ids = new List<string>();
+        List<string> attackableMonsterTier3Ids = new List<string>();
+        List<string> attackableMonsterTier4Ids = new List<string>();
+        List<string> attackableMonsterTier5Ids = new List<string>();
+        List<string> attackableMonsterTier6Ids = new List<string>();
         List<string> monsterTier1Ids = new List<string>();
         List<string> monsterTier2Ids = new List<string>();
         List<string> monsterTier3Ids = new List<string>();
@@ -560,7 +566,21 @@ public class Converter : MonoBehaviour
 
             // For my own purposes
             if (monsterDatabase.attackMotion > 1)
+            {
                 attackableMonsterIds.Add(monsterId);
+                if (monsterDatabase.level < 10)
+                    attackableMonsterTier1Ids.Add(monsterId);
+                else if (monsterDatabase.level < 30)
+                    attackableMonsterTier2Ids.Add(monsterId);
+                else if (monsterDatabase.level < 50)
+                    attackableMonsterTier3Ids.Add(monsterId);
+                else if (monsterDatabase.level < 100)
+                    attackableMonsterTier4Ids.Add(monsterId);
+               else if (monsterDatabase.level < 150)
+                    attackableMonsterTier5Ids.Add(monsterId);
+                else
+                    attackableMonsterTier6Ids.Add(monsterId);
+            }
 
             // For my own purposes
             if ((monsterDatabase.attackMotion > 1)
@@ -611,6 +631,12 @@ public class Converter : MonoBehaviour
 
         ExportingItemLists(builder, "monsterIds", monsterIds);
         ExportingItemLists(builder, "attackableMonsterIds", attackableMonsterIds);
+        ExportingItemLists(builder, "attackableMonsterTier1Ids", attackableMonsterTier1Ids);
+        ExportingItemLists(builder, "attackableMonsterTier2Ids", attackableMonsterTier2Ids);
+        ExportingItemLists(builder, "attackableMonsterTier3Ids", attackableMonsterTier3Ids);
+        ExportingItemLists(builder, "attackableMonsterTier4Ids", attackableMonsterTier4Ids);
+        ExportingItemLists(builder, "attackableMonsterTier5Ids", attackableMonsterTier5Ids);
+        ExportingItemLists(builder, "attackableMonsterTier6Ids", attackableMonsterTier5Ids);
         ExportingItemLists(builder, "monsterTier1Ids", monsterTier1Ids);
         ExportingItemLists(builder, "monsterTier2Ids", monsterTier2Ids);
         ExportingItemLists(builder, "monsterTier3Ids", monsterTier3Ids);
@@ -969,6 +995,8 @@ public class Converter : MonoBehaviour
                 else
                     _monsterDatabases.Add(monsterDatabase.id, monsterDatabase);
             }
+            else if (text.Contains("    Level: "))
+                monsterDatabase.level = int.Parse(SpacingRemover.Remove(text).Replace("Level:", string.Empty));
             else if (text.Contains("    Hp: "))
                 monsterDatabase.hp = int.Parse(SpacingRemover.Remove(text).Replace("Hp:", string.Empty));
             else if (text.Contains("    BaseExp: "))
