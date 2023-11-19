@@ -575,7 +575,8 @@ public class Converter : MonoBehaviour
             monsterIds.Add(monsterId);
 
             // For my own purposes
-            if (monsterDatabase.attackMotion > 1)
+            if ((monsterDatabase.attack > 0)
+                || (monsterDatabase.attack2 > 0))
             {
                 attackableMonsterIds.Add(monsterId);
                 if (monsterDatabase.level < 10)
@@ -1024,6 +1025,10 @@ public class Converter : MonoBehaviour
                 monsterDatabase.hp = int.Parse(SpacingRemover.Remove(text).Replace("Hp:", string.Empty));
             else if (text.Contains("    BaseExp: "))
                 monsterDatabase.baseExp = int.Parse(SpacingRemover.Remove(text).Replace("BaseExp:", string.Empty));
+            else if (text.Contains("    Attack: "))
+                monsterDatabase.attack = int.Parse(SpacingRemover.Remove(text).Replace("Attack:", string.Empty));
+            else if (text.Contains("    Attack2: "))
+                monsterDatabase.attack2 = int.Parse(SpacingRemover.Remove(text).Replace("Attack2:", string.Empty));
             else if (text.Contains("    WalkSpeed: "))
                 monsterDatabase.walkSpeed = int.Parse(SpacingRemover.Remove(text).Replace("WalkSpeed:", string.Empty));
             else if (text.Contains("    AttackMotion: "))
