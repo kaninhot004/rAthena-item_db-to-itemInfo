@@ -150,35 +150,35 @@
         },
         {
             "itemId": 10000000,
-            "itemScriptDescription": "กดใช้เพื่อ ฟื้นฟู HP, SP และ AP เต็ม สามารถลด Cooldown ได้ที่เมืองหลัก"
+            "itemScriptDescription": "กดใช้เพื่อ ^3F749Dฟื้นฟูพลัง และรักษา อาการผิดปกติทุกชนิด^000000 สามารถลด Cooldown ได้ที่เมืองหลัก"
         },
         {
             "itemId": 10000001,
-            "itemScriptDescription": "กดใช้เพื่อ กลับสู่เมืองหลัก"
+            "itemScriptDescription": "กดใช้เพื่อ ^3F749Dกลับสู่เมืองหลัก^000000"
         },
         {
             "itemId": 10000002,
-            "itemScriptDescription": "กดใช้เพื่อ เพิ่ม EXP"
+            "itemScriptDescription": "กดใช้เพื่อ ^3F749Dเพิ่ม Level^000000"
         },
         {
             "itemId": 10000003,
-            "itemScriptDescription": "กดใช้เพื่อ เพิ่มขีดจำกัด Status และ Trait เมื่อเกิดใหม่"
+            "itemScriptDescription": "กดใช้เพื่อ ^3F749Dเพิ่มขีดจำกัด Status และ Trait เมื่อเกิดใหม่^000000"
         },
         {
             "itemId": 10000004,
-            "itemScriptDescription": "กดใช้เพื่อ เพิ่มขีดจำกัด Level Skill เมื่อเกิดใหม่"
+            "itemScriptDescription": "กดใช้เพื่อ ^3F749Dเพิ่มขีดจำกัด Level Skill เมื่อเกิดใหม่^000000"
         },
         {
             "itemId": 10000005,
-            "itemScriptDescription": "กดใช้เพื่อ ตีบวกทั้งตัวเพิ่มขึ้น 1 ระดับ"
+            "itemScriptDescription": "กดใช้เพื่อ ^3F749Dตีบวกทั้งตัวเพิ่มขึ้น 1 ระดับ^000000"
         },
         {
             "itemId": 10000006,
-            "itemScriptDescription": "กดใช้เพื่อ เพิ่มระดับ Grade ทั้งตัวขึ้น 1 ระดับ"
+            "itemScriptDescription": "กดใช้เพื่อ ^3F749Dเพิ่มระดับ Grade ทั้งตัวขึ้น 1 ระดับ^000000"
         },
         {
             "itemId": 10000007,
-            "itemScriptDescription": "กดใช้เพื่อ รับ ^11B120Dismantle Points^000000"
+            "itemScriptDescription": "กดใช้เพื่อ ^3F749Dรับ Dismantle Points^000000"
         }
     ]
 }
