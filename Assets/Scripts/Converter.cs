@@ -9,6 +9,7 @@ public class Converter : MonoBehaviour
 {
     const string CREATOR_URL = "https://kanintemsrisukgames.wordpress.com/2019/04/05/support-kt-games/";
     const float ONE_SECOND = 1;
+    const bool IS_ITEM_UNCONDITIONAL = true;
 
     [Serializable]
     public class ReplaceVariable
@@ -2542,10 +2543,13 @@ public class Converter : MonoBehaviour
 
                 _itemContainer.jobs = _itemContainer.jobs.Replace("— ", string.Empty);
             }
-            if (!string.IsNullOrEmpty(_itemContainer.jobs))
-                description += "			\"^3F28FF" + _localization.GetTexts(Localization.JOB) + ":^000000 " + (_isUseNewLineInsteadOfCommaForAvailableJob ? (isMultipleJob ? "[NEW_LINE]" : string.Empty) + _itemContainer.jobs.Substring(0, _itemContainer.jobs.Length - 10) : _itemContainer.jobs.Substring(0, _itemContainer.jobs.Length - 2)) + "\",\n";
-            else if (_isZeroValuePrintable && isEquipment)
-                description += "			\"^3F28FF" + _localization.GetTexts(Localization.JOB) + ":^000000 -\",\n";
+            if (!IS_ITEM_UNCONDITIONAL)
+            {
+                if (!string.IsNullOrEmpty(_itemContainer.jobs))
+                    description += "			\"^3F28FF" + _localization.GetTexts(Localization.JOB) + ":^000000 " + (_isUseNewLineInsteadOfCommaForAvailableJob ? (isMultipleJob ? "[NEW_LINE]" : string.Empty) + _itemContainer.jobs.Substring(0, _itemContainer.jobs.Length - 10) : _itemContainer.jobs.Substring(0, _itemContainer.jobs.Length - 2)) + "\",\n";
+                else if (_isZeroValuePrintable && isEquipment)
+                    description += "			\"^3F28FF" + _localization.GetTexts(Localization.JOB) + ":^000000 -\",\n";
+            }
 
             bool isMultipleClass = _itemContainer.classes.Split("[NEW_LINE]").Length > 2;
             if (!isMultipleClass)
@@ -2554,15 +2558,18 @@ public class Converter : MonoBehaviour
 
                 _itemContainer.classes = _itemContainer.classes.Replace("— ", string.Empty);
             }
-            if (!string.IsNullOrEmpty(_itemContainer.classes))
-                description += "			\"^3F28FF" + _localization.GetTexts(Localization.CLASS) + ":^000000 " + (_isUseNewLineInsteadOfCommaForAvailableClass ? (isMultipleClass ? "[NEW_LINE]" : string.Empty) + _itemContainer.classes.Substring(0, _itemContainer.classes.Length - 10) : _itemContainer.classes.Substring(0, _itemContainer.classes.Length - 2)) + "\",\n";
-            else if (_isZeroValuePrintable && isEquipment)
-                description += "			\"^3F28FF" + _localization.GetTexts(Localization.CLASS) + ":^000000 -\",\n";
+            if (!IS_ITEM_UNCONDITIONAL)
+            {
+                if (!string.IsNullOrEmpty(_itemContainer.classes))
+                    description += "			\"^3F28FF" + _localization.GetTexts(Localization.CLASS) + ":^000000 " + (_isUseNewLineInsteadOfCommaForAvailableClass ? (isMultipleClass ? "[NEW_LINE]" : string.Empty) + _itemContainer.classes.Substring(0, _itemContainer.classes.Length - 10) : _itemContainer.classes.Substring(0, _itemContainer.classes.Length - 2)) + "\",\n";
+                else if (_isZeroValuePrintable && isEquipment)
+                    description += "			\"^3F28FF" + _localization.GetTexts(Localization.CLASS) + ":^000000 -\",\n";
 
-            if (!string.IsNullOrEmpty(_itemContainer.gender))
-                description += "			\"^3F28FF" + _localization.GetTexts(Localization.GENDER) + ":^000000 " + _itemContainer.gender.Substring(0, _itemContainer.gender.Length - 2) + "\",\n";
-            else if (_isZeroValuePrintable && isEquipment)
-                description += "			\"^3F28FF" + _localization.GetTexts(Localization.GENDER) + ":^000000 -\",\n";
+                if (!string.IsNullOrEmpty(_itemContainer.gender))
+                    description += "			\"^3F28FF" + _localization.GetTexts(Localization.GENDER) + ":^000000 " + _itemContainer.gender.Substring(0, _itemContainer.gender.Length - 2) + "\",\n";
+                else if (_isZeroValuePrintable && isEquipment)
+                    description += "			\"^3F28FF" + _localization.GetTexts(Localization.GENDER) + ":^000000 -\",\n";
+            }
 
             if (!string.IsNullOrEmpty(_itemContainer.attack))
                 description += "			\"^3F28FF" + _localization.GetTexts(Localization.ATTACK) + ":^000000 " + _itemContainer.attack + "\",\n";
@@ -2594,15 +2601,18 @@ public class Converter : MonoBehaviour
             else if (_isZeroValuePrintable && isEquipment)
                 description += "			\"^3F28FF" + _localization.GetTexts(Localization.ARMOR_LEVEL) + ":^000000 -\",\n";
 
-            if (!string.IsNullOrEmpty(_itemContainer.equipLevelMinimum))
-                description += "			\"^3F28FF" + _localization.GetTexts(Localization.MINIMUM_EQUIP_LEVEL) + ":^000000 " + _itemContainer.equipLevelMinimum + "\",\n";
-            else if (_isZeroValuePrintable && isEquipment)
-                description += "			\"^3F28FF" + _localization.GetTexts(Localization.MINIMUM_EQUIP_LEVEL) + ":^000000 -\",\n";
+            if (!IS_ITEM_UNCONDITIONAL)
+            {
+                if (!string.IsNullOrEmpty(_itemContainer.equipLevelMinimum))
+                    description += "			\"^3F28FF" + _localization.GetTexts(Localization.MINIMUM_EQUIP_LEVEL) + ":^000000 " + _itemContainer.equipLevelMinimum + "\",\n";
+                else if (_isZeroValuePrintable && isEquipment)
+                    description += "			\"^3F28FF" + _localization.GetTexts(Localization.MINIMUM_EQUIP_LEVEL) + ":^000000 -\",\n";
 
-            if (!string.IsNullOrEmpty(_itemContainer.equipLevelMaximum))
-                description += "			\"^3F28FF" + _localization.GetTexts(Localization.MAXIMUM_EQUIP_LEVEL) + ":^000000 " + _itemContainer.equipLevelMaximum + "\",\n";
-            else if (_isZeroValuePrintable && isEquipment)
-                description += "			\"^3F28FF" + _localization.GetTexts(Localization.MAXIMUM_EQUIP_LEVEL) + ":^000000 -\",\n";
+                if (!string.IsNullOrEmpty(_itemContainer.equipLevelMaximum))
+                    description += "			\"^3F28FF" + _localization.GetTexts(Localization.MAXIMUM_EQUIP_LEVEL) + ":^000000 " + _itemContainer.equipLevelMaximum + "\",\n";
+                else if (_isZeroValuePrintable && isEquipment)
+                    description += "			\"^3F28FF" + _localization.GetTexts(Localization.MAXIMUM_EQUIP_LEVEL) + ":^000000 -\",\n";
+            }
 
             if (!_isHideRefinable)
             {
