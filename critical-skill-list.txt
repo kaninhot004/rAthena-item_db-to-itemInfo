@@ -28,4 +28,6 @@ Hawk Rush
 Hawk Boomerang
 Gale Storm
 Crescive Bolt
+Triple Laser
+Mayhemic Thorns
 Focused_Arrow_Strike

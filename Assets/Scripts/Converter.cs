@@ -1238,7 +1238,10 @@ public class Converter : MonoBehaviour
             text = LineEndingsRemover.Fix(text);
 
             if (!_allLearnableSkillDatabases.Contains(text))
-                _allLearnableSkillDatabases.Add(text);
+            {
+                if (!string.IsNullOrEmpty(GetSkillName(text, false, true, true)))
+                    _allLearnableSkillDatabases.Add(text);
+            }
         }
 
         Debug.Log("There are " + _allLearnableSkillDatabases.Count + " learnable skill.");
@@ -6000,7 +6003,7 @@ public class Converter : MonoBehaviour
         return "\"Bio_Reseearch_Docu\"";
     }
 
-    string GetSkillName(string text, bool isKeepSpacebar = false, bool isOnlyString = false)
+    string GetSkillName(string text, bool isKeepSpacebar = false, bool isOnlyString = false, bool isErrorReturnNull = false)
     {
         int _int = 0;
 
@@ -6026,7 +6029,7 @@ public class Converter : MonoBehaviour
             }
         }
 
-        return text;
+        return isErrorReturnNull ? string.Empty : text;
     }
 
     string GetClassNumFromId(ItemContainer itemContainer)

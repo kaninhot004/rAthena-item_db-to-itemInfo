@@ -1,60 +1,70 @@
 ﻿  - Id: 10000000
-    AegisName: Special_Phracon
-    Name: Special Phracon
-    Type: Etc
+    AegisName: Life_Orb
+    Name: Life Orb
+    Type: Usable
     Flags:
       BuyingStore: true
     TradeNoUse:
       Override: 100
       NoSell: true
+    Script: |
+      callfunc("LifeOrb");
   - Id: 10000001
-    AegisName: Special_Emveretarcon
-    Name: Special Emveretarcon
-    Type: Etc
+    AegisName: Return_Orb
+    Name: Return Orb
+    Type: Usable
     Flags:
       BuyingStore: true
     TradeNoUse:
       Override: 100
       NoSell: true
+    Script: |
+      callfunc("ReturnOrb");
   - Id: 10000002
-    AegisName: Special_Oridecon
-    Name: Special Oridecon
-    Type: Etc
+    AegisName: Soul_Orb
+    Name: Soul Orb
+    Type: Usable
     Flags:
       BuyingStore: true
     TradeNoUse:
       Override: 100
       NoSell: true
   - Id: 10000003
-    AegisName: Special_Bradium
-    Name: Special Bradium
-    Type: Etc
+    AegisName: Body_Orb
+    Name: Body Orb
+    Type: Usable
     Flags:
       BuyingStore: true
     TradeNoUse:
       Override: 100
       NoSell: true
+    Script: |
+      callfunc("BodyOrb");
   - Id: 10000004
-    AegisName: Special_Elunium
-    Name: Special Elunium
-    Type: Etc
+    AegisName: Mind_Orb
+    Name: Mind Orb
+    Type: Usable
     Flags:
       BuyingStore: true
     TradeNoUse:
       Override: 100
       NoSell: true
+    Script: |
+      callfunc("MindOrb");
   - Id: 10000005
-    AegisName: Special_Carnium
-    Name: Special Carnium
-    Type: Etc
+    AegisName: Refine_Orb
+    Name: Refine Orb
+    Type: Usable
     Flags:
       BuyingStore: true
     TradeNoUse:
       Override: 100
       NoSell: true
+    Script: |
+      callfunc("RefineOrb");
   - Id: 10000006
-    AegisName: Special_Refine_Box
-    Name: Special Refine Box
+    AegisName: Grade_Orb
+    Name: Grade Orb
     Type: Usable
     Flags:
       BuyingStore: true
@@ -62,19 +72,8 @@
       Override: 100
       NoSell: true
     Script: |
-      callfunc("SpecialRefineBox");
+      callfunc("GradeOrb");
   - Id: 10000007
-    AegisName: Trait_Points
-    Name: Trait Points
-    Type: Usable
-    Flags:
-      BuyingStore: true
-    TradeNoUse:
-      Override: 100
-      NoSell: true
-    Script: |
-      callfunc("GainTraitPoints");
-  - Id: 10000008
     AegisName: Dismantle_Points
     Name: Dismantle Points
     Type: Usable
@@ -85,36 +84,3 @@
       NoSell: true
     Script: |
       callfunc("GainDismantlePoints");
-  - Id: 10000009
-    AegisName: Status_Points
-    Name: Status Points
-    Type: Usable
-    Flags:
-      BuyingStore: true
-    TradeNoUse:
-      Override: 100
-      NoSell: true
-    Script: |
-      callfunc("GainStatusPoints");
-  - Id: 10000010
-    AegisName: Skill_Points
-    Name: Skill Points
-    Type: Usable
-    Flags:
-      BuyingStore: true
-    TradeNoUse:
-      Override: 100
-      NoSell: true
-    Script: |
-      callfunc("GainSkillPoints");
-  - Id: 10000011
-    AegisName: Killing_Floor_Points
-    Name: Killing Floor Points
-    Type: Usable
-    Flags:
-      BuyingStore: true
-    TradeNoUse:
-      Override: 100
-      NoSell: true
-    Script: |
-      callfunc("GainKillingFloorPoints");

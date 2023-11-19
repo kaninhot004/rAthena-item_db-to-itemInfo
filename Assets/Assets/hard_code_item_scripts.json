@@ -150,51 +150,35 @@
         },
         {
             "itemId": 10000000,
-            "itemScriptDescription": "แร่ตีบวกอาวุธ Level 1 ^11B120การตีบวกจะไม่ถูกลดระดับ^000000 ^F81717หากการตีบวกไม่สำเร็จ^000000"
+            "itemScriptDescription": "กดใช้เพื่อ ฟื้นฟู HP, SP และ AP เต็ม สามารถลด Cooldown ได้ที่เมืองหลัก"
         },
         {
             "itemId": 10000001,
-            "itemScriptDescription": "แร่ตีบวกอาวุธ Level 2 ^11B120การตีบวกจะไม่ถูกลดระดับ^000000  ^F81717หากการตีบวกไม่สำเร็จ^000000"
+            "itemScriptDescription": "กดใช้เพื่อ กลับสู่เมืองหลัก"
         },
         {
             "itemId": 10000002,
-            "itemScriptDescription": "แร่ตีบวกอาวุธ Level 3 และ 4 ^11B120การตีบวกจะไม่ถูกลดระดับ^000000 ^F81717หากการตีบวกไม่สำเร็จ^000000"
+            "itemScriptDescription": "กดใช้เพื่อ เพิ่ม EXP"
         },
         {
             "itemId": 10000003,
-            "itemScriptDescription": "แร่ตีบวกอาวุธ Level 5 ^11B120การตีบวกจะไม่ถูกลดระดับ^000000 ^F81717หากการตีบวกไม่สำเร็จ^000000"
+            "itemScriptDescription": "กดใช้เพื่อ เพิ่มขีดจำกัด Status และ Trait เมื่อเกิดใหม่"
         },
         {
             "itemId": 10000004,
-            "itemScriptDescription": "แร่ตีบวกชุดเกราะ Level 1 ^11B120การตีบวกจะไม่ถูกลดระดับ^000000 ^F81717หากการตีบวกไม่สำเร็จ^000000"
+            "itemScriptDescription": "กดใช้เพื่อ เพิ่มขีดจำกัด Level Skill เมื่อเกิดใหม่"
         },
         {
             "itemId": 10000005,
-            "itemScriptDescription": "แร่ตีบวกชุดเกราะ Level 2 ^11B120การตีบวกจะไม่ถูกลดระดับ^000000 ^F81717หากการตีบวกไม่สำเร็จ^000000"
+            "itemScriptDescription": "กดใช้เพื่อ ตีบวกทั้งตัวเพิ่มขึ้น 1 ระดับ"
         },
         {
             "itemId": 10000006,
-            "itemScriptDescription": "^11B120กดใช้เพื่อ สุ่มรับแร่ตีบวกพิเศษ^000000"
+            "itemScriptDescription": "กดใช้เพื่อ เพิ่มระดับ Grade ทั้งตัวขึ้น 1 ระดับ"
         },
         {
             "itemId": 10000007,
-            "itemScriptDescription": "^11B120กดใช้เพื่อ รับ 1 Trait Points^000000"
-        },
-        {
-            "itemId": 10000008,
-            "itemScriptDescription": "^11B120กดใช้เพื่อ รับ Dismantle Points^000000"
-        },
-        {
-            "itemId": 10000009,
-            "itemScriptDescription": "^11B120กดใช้เพื่อ รับ 1 Status Points^000000"
-        },
-        {
-            "itemId": 10000010,
-            "itemScriptDescription": "^11B120กดใช้เพื่อ รับ 1 Skill Points^000000"
-        },
-        {
-            "itemId": 10000011,
-            "itemScriptDescription": "^11B120กดใช้เพื่อ รับแต้มอาฆาต^000000"
+            "itemScriptDescription": "กดใช้เพื่อ รับ ^11B120Dismantle Points^000000"
         }
     ]
 }
