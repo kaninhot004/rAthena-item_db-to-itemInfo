@@ -9,7 +9,7 @@ public class Converter : MonoBehaviour
 {
     const string CREATOR_URL = "https://kanintemsrisukgames.wordpress.com/2019/04/05/support-kt-games/";
     const float ONE_SECOND = 1;
-    const bool IS_ITEM_UNCONDITIONAL = true;
+    const bool IS_ITEM_UNCONDITIONAL = false;
 
     [Serializable]
     public class ReplaceVariable
