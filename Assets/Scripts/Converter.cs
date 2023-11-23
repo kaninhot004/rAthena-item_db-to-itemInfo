@@ -9,7 +9,7 @@ public class Converter : MonoBehaviour
 {
     const string CREATOR_URL = "https://kanintemsrisukgames.wordpress.com/2019/04/05/support-kt-games/";
     const float ONE_SECOND = 1;
-    const bool IS_ITEM_UNCONDITIONAL = false;
+    bool _isItemUnconditional = false;
 
     [Serializable]
     public class ReplaceVariable
@@ -247,6 +247,7 @@ public class Converter : MonoBehaviour
         _isEnchantmentAbleToUse = Input.GetKey(KeyCode.Alpha4);
         _isHideRefinable = Input.GetKey(KeyCode.Alpha4);
         _isHideGradable = Input.GetKey(KeyCode.Alpha4);
+        _isItemUnconditional = Input.GetKey(KeyCode.Alpha4);
 
         for (int i = 0; i < _objectsToHideWhenConverterStart.Length; i++)
             _objectsToHideWhenConverterStart[i].SetActive(false);
@@ -2543,7 +2544,7 @@ public class Converter : MonoBehaviour
 
                 _itemContainer.jobs = _itemContainer.jobs.Replace("— ", string.Empty);
             }
-            if (!IS_ITEM_UNCONDITIONAL)
+            if (!_isItemUnconditional)
             {
                 if (!string.IsNullOrEmpty(_itemContainer.jobs))
                     description += "			\"^3F28FF" + _localization.GetTexts(Localization.JOB) + ":^000000 " + (_isUseNewLineInsteadOfCommaForAvailableJob ? (isMultipleJob ? "[NEW_LINE]" : string.Empty) + _itemContainer.jobs.Substring(0, _itemContainer.jobs.Length - 10) : _itemContainer.jobs.Substring(0, _itemContainer.jobs.Length - 2)) + "\",\n";
@@ -2558,7 +2559,7 @@ public class Converter : MonoBehaviour
 
                 _itemContainer.classes = _itemContainer.classes.Replace("— ", string.Empty);
             }
-            if (!IS_ITEM_UNCONDITIONAL)
+            if (!_isItemUnconditional)
             {
                 if (!string.IsNullOrEmpty(_itemContainer.classes))
                     description += "			\"^3F28FF" + _localization.GetTexts(Localization.CLASS) + ":^000000 " + (_isUseNewLineInsteadOfCommaForAvailableClass ? (isMultipleClass ? "[NEW_LINE]" : string.Empty) + _itemContainer.classes.Substring(0, _itemContainer.classes.Length - 10) : _itemContainer.classes.Substring(0, _itemContainer.classes.Length - 2)) + "\",\n";
@@ -2601,7 +2602,7 @@ public class Converter : MonoBehaviour
             else if (_isZeroValuePrintable && isEquipment)
                 description += "			\"^3F28FF" + _localization.GetTexts(Localization.ARMOR_LEVEL) + ":^000000 -\",\n";
 
-            if (!IS_ITEM_UNCONDITIONAL)
+            if (!_isItemUnconditional)
             {
                 if (!string.IsNullOrEmpty(_itemContainer.equipLevelMinimum))
                     description += "			\"^3F28FF" + _localization.GetTexts(Localization.MINIMUM_EQUIP_LEVEL) + ":^000000 " + _itemContainer.equipLevelMinimum + "\",\n";
