@@ -576,9 +576,15 @@ public class Converter : MonoBehaviour
 
             monsterIds.Add(monsterId);
 
+            var isDummy = 
+                monsterDatabase.aegisName.ToLower().Contains("dummy") 
+                || monsterDatabase.aegisName.ToLower().Contains("_flag")
+                || monsterDatabase.aegisName.ToLower().Contains("treasure")
+                ;
             // For my own purposes
-            if ((monsterDatabase.attack > 0)
+            if (((monsterDatabase.attack > 0)
                 || (monsterDatabase.attack2 > 0))
+                && !isDummy)
             {
                 attackableMonsterIds.Add(monsterId);
                 if (monsterDatabase.level < 10)
