@@ -649,7 +649,7 @@ public class Converter : MonoBehaviour
         ExportingItemLists(builder, "attackableMonsterTier3Ids", attackableMonsterTier3Ids);
         ExportingItemLists(builder, "attackableMonsterTier4Ids", attackableMonsterTier4Ids);
         ExportingItemLists(builder, "attackableMonsterTier5Ids", attackableMonsterTier5Ids);
-        ExportingItemLists(builder, "attackableMonsterTier6Ids", attackableMonsterTier5Ids);
+        ExportingItemLists(builder, "attackableMonsterTier6Ids", attackableMonsterTier6Ids);
         ExportingItemLists(builder, "monsterTier1Ids", monsterTier1Ids);
         ExportingItemLists(builder, "monsterTier2Ids", monsterTier2Ids);
         ExportingItemLists(builder, "monsterTier3Ids", monsterTier3Ids);
