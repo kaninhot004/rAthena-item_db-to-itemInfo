@@ -580,6 +580,7 @@ public class Converter : MonoBehaviour
                 monsterDatabase.aegisName.ToLower().Contains("dummy") 
                 || monsterDatabase.aegisName.ToLower().Contains("_flag")
                 || monsterDatabase.aegisName.ToLower().Contains("treasure")
+                || monsterDatabase.aegisName.ToLower().Contains("hidden")
                 ;
             // For my own purposes
             if (((monsterDatabase.attack > 0)
