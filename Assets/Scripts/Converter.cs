@@ -576,8 +576,8 @@ public class Converter : MonoBehaviour
 
             monsterIds.Add(monsterId);
 
-            var isDummy = 
-                monsterDatabase.aegisName.ToLower().Contains("dummy") 
+            var isDummy =
+                monsterDatabase.aegisName.ToLower().Contains("dummy")
                 || monsterDatabase.aegisName.ToLower().Contains("_flag")
                 || monsterDatabase.aegisName.ToLower().Contains("treasure")
                 || monsterDatabase.aegisName.ToLower().Contains("hidden")
@@ -2397,6 +2397,9 @@ public class Converter : MonoBehaviour
             {
                 if (_itemContainer.subType == "Enchant")
                 {
+                    if (!string.IsNullOrEmpty(_itemContainer.locations))
+                        Debug.Log("Enchantment " + _itemContainer.id + " had location.." + _itemContainer.locations);
+
                     if (IsContainScripts(_itemContainer))
                         _itemListContainer.enchant2Ids.Add(_itemContainer.id);
                     else
