@@ -84,3 +84,36 @@
       NoSell: true
     Script: |
       callfunc("GainDismantlePoints");
+  - Id: 10000008
+    AegisName: Soul_Orb_Pack
+    Name: Soul Orb Pack
+    Type: DelayConsume
+    Flags:
+      BuyingStore: true
+    TradeNoUse:
+      Override: 100
+      NoSell: true
+    Script: |
+      callfunc("GainOrb",10000002,10000008);
+  - Id: 10000009
+    AegisName: Body_Orb_Pack
+    Name: Body Orb Pack
+    Type: DelayConsume
+    Flags:
+      BuyingStore: true
+    TradeNoUse:
+      Override: 100
+      NoSell: true
+    Script: |
+      callfunc("GainOrb",10000003,10000009);
+  - Id: 10000010
+    AegisName: Mind_Orb_Pack
+    Name: Mind Orb Pack
+    Type: DelayConsume
+    Flags:
+      BuyingStore: true
+    TradeNoUse:
+      Override: 100
+      NoSell: true
+    Script: |
+      callfunc("GainOrb",10000004,10000010);

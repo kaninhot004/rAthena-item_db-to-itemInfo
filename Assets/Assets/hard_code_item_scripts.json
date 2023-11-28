@@ -179,6 +179,18 @@
         {
             "itemId": 10000007,
             "itemScriptDescription": "กดใช้เพื่อ ^3F749Dรับ Dismantle Points^000000"
+        },
+        {
+            "itemId": 10000008,
+            "itemScriptDescription": "กดใช้เพื่อ ^3F749Dรับ 30,000 Soul Orb^000000"
+        },
+        {
+            "itemId": 10000009,
+            "itemScriptDescription": "กดใช้เพื่อ ^3F749Dรับ 30,000 Body Orb^000000"
+        },
+        {
+            "itemId": 10000010,
+            "itemScriptDescription": "กดใช้เพื่อ ^3F749Dรับ 30,000 Mind Orb^000000"
         }
     ]
 }
