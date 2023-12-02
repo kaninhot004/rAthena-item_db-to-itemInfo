@@ -529,6 +529,55 @@ public class Converter : MonoBehaviour
             builder.Append(_itemListContainer.buffItemIds[i] + ":90000,");
         }
 
+        // SubType item id
+
+        shopNumber = 0;
+
+        List<string> subTypes = new List<string>();
+        List<int> maxPages = new List<int>();
+        foreach (var item in _itemListContainer.subTypeDatas)
+        {
+            subTypes.Add(item.subType);
+            int maxPage = 0;
+            for (int i = 0; i < item.id.Count; i++)
+            {
+                if ((i == 0)
+                    || (i % 100 == 0))
+                {
+                    if (!string.IsNullOrEmpty(builder.ToString()))
+                        builder.Remove(builder.Length - 1, 1);
+
+                    shopNumber++;
+                    maxPage++;
+                    builder.Append("\n-	shop	Debug" + item.subType + "" + maxPage + "	-1,no,");
+                }
+
+                builder.Append(item.id[i] + ":1000000000,");
+            }
+            maxPages.Add(maxPage);
+        }
+
+        if (!string.IsNullOrEmpty(builder.ToString()))
+            builder.Remove(builder.Length - 1, 1);
+
+        builder.Append("\nsetarray .subType$[0],");
+        for (int i = 0; i < subTypes.Count; i++)
+            builder.Append("\"" + subTypes[i] + "\",");
+
+        if (!string.IsNullOrEmpty(builder.ToString()))
+            builder.Remove(builder.Length - 1, 1);
+
+        builder.Append(";");
+
+        builder.Append("\nsetarray .subTypeMaxPage[0],");
+        for (int i = 0; i < maxPages.Count; i++)
+            builder.Append("\"" + maxPages[i] + "\",");
+
+        if (!string.IsNullOrEmpty(builder.ToString()))
+            builder.Remove(builder.Length - 1, 1);
+
+        builder.Append(";");
+
         var builderDebug = builder.ToString();
 
         if (!string.IsNullOrEmpty(builderDebug)
@@ -2413,6 +2462,8 @@ public class Converter : MonoBehaviour
                         _itemListContainer.cardIds.Add(_itemContainer.id);
                 }
             }
+
+            _itemListContainer.AddSubType(_itemContainer.subType, _itemContainer.id);
 
             var itemId = int.Parse(_itemContainer.id);
 

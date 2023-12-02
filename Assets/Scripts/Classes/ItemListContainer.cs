@@ -4,6 +4,13 @@ using System.Collections.Generic;
 [Serializable]
 public class ItemListContainer
 {
+    [Serializable]
+    public class SubTypeData
+    {
+        public string subType;
+        public List<string> id = new List<string>();
+    }
+
     public List<string> allItemIds = new List<string>();
 
     public List<string> weaponIds = new List<string>();
@@ -25,4 +32,27 @@ public class ItemListContainer
     public List<string> petArmorIds = new List<string>();
     public List<string> fashionCostumeIds = new List<string>();
     public List<string> buffItemIds = new List<string>();
+
+    public List<SubTypeData> subTypeDatas = new List<SubTypeData>();
+
+    public void AddSubType(string subType, string id)
+    {
+        if (string.IsNullOrEmpty(subType))
+            return;
+
+        for (int i = 0; i < subTypeDatas.Count; i++)
+        {
+            if (subTypeDatas[i].subType == subType)
+            {
+                subTypeDatas[i].id.Add(id);
+                return;
+            }
+        }
+
+        SubTypeData subTypeData = new SubTypeData();
+        subTypeData.subType = subType;
+        subTypeData.id.Add(id);
+
+        subTypeDatas.Add(subTypeData);
+    }
 }
