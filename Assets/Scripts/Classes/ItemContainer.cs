@@ -21,6 +21,7 @@ public class ItemContainer
     public string classes = string.Empty;
     public string gender = string.Empty;
     public string locations = string.Empty;
+    public string debugLocations = string.Empty;
     public string weaponLevel = string.Empty;
     public string armorLevel = string.Empty;
     public string equipLevelMinimum = string.Empty;

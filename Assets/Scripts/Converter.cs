@@ -571,12 +571,63 @@ public class Converter : MonoBehaviour
 
         builder.Append("\nsetarray .subTypeMaxPage[0],");
         for (int i = 0; i < maxPages.Count; i++)
-            builder.Append("\"" + maxPages[i] + "\",");
+            builder.Append("" + maxPages[i] + ",");
 
         if (!string.IsNullOrEmpty(builder.ToString()))
             builder.Remove(builder.Length - 1, 1);
 
         builder.Append(";");
+
+        // Location item id
+
+        shopNumber = 0;
+
+        List<string> locations = new List<string>();
+        maxPages = new List<int>();
+        foreach (var item in _itemListContainer.locationDatas)
+        {
+            locations.Add(item.location);
+            int maxPage = 0;
+            for (int i = 0; i < item.id.Count; i++)
+            {
+                if ((i == 0)
+                    || (i % 100 == 0))
+                {
+                    if (!string.IsNullOrEmpty(builder.ToString()))
+                        builder.Remove(builder.Length - 1, 1);
+
+                    shopNumber++;
+                    maxPage++;
+                    builder.Append("\n-	shop	Debug" + item.location + "" + maxPage + "	-1,no,");
+                }
+
+                builder.Append(item.id[i] + ":1000000000,");
+            }
+            maxPages.Add(maxPage);
+        }
+
+        if (!string.IsNullOrEmpty(builder.ToString()))
+            builder.Remove(builder.Length - 1, 1);
+
+        builder.Append("\nsetarray .location$[0],");
+        for (int i = 0; i < locations.Count; i++)
+            builder.Append("\"" + locations[i] + "\",");
+
+        if (!string.IsNullOrEmpty(builder.ToString()))
+            builder.Remove(builder.Length - 1, 1);
+
+        builder.Append(";");
+
+        builder.Append("\nsetarray .locationMaxPage[0],");
+        for (int i = 0; i < maxPages.Count; i++)
+            builder.Append("" + maxPages[i] + ",");
+
+        if (!string.IsNullOrEmpty(builder.ToString()))
+            builder.Remove(builder.Length - 1, 1);
+
+        builder.Append(";");
+
+        // Print
 
         var builderDebug = builder.ToString();
 
@@ -2243,19 +2294,31 @@ public class Converter : MonoBehaviour
                 _itemContainer.gender += _localization.GetTexts(Localization.GENDER_ALL) + ", ";
             // Location
             else if (text.Contains("      Head_Top: true"))
+            {
                 _itemContainer.locations += _localization.GetTexts(Localization.LOCATION_HEAD_TOP) + ", ";
+                _itemContainer.debugLocations += "TOP";
+            }
             else if (text.Contains("      Head_Top: false"))
                 _itemContainer.locations += _localization.GetTexts(Localization.LOCATION_HEAD_TOP) + " [x], ";
             else if (text.Contains("      Head_Mid: true"))
+            {
                 _itemContainer.locations += _localization.GetTexts(Localization.LOCATION_HEAD_MID) + ", ";
+                _itemContainer.debugLocations += "MID";
+            }
             else if (text.Contains("      Head_Mid: false"))
                 _itemContainer.locations += _localization.GetTexts(Localization.LOCATION_HEAD_MID) + " [x], ";
             else if (text.Contains("      Head_Low: true"))
+            {
                 _itemContainer.locations += _localization.GetTexts(Localization.LOCATION_HEAD_LOW) + ", ";
+                _itemContainer.debugLocations += "LOW";
+            }
             else if (text.Contains("      Head_Low: false"))
                 _itemContainer.locations += _localization.GetTexts(Localization.LOCATION_HEAD_LOW) + " [x], ";
             else if (text.Contains("      Armor: true"))
+            {
                 _itemContainer.locations += _localization.GetTexts(Localization.LOCATION_ARMOR) + ", ";
+                _itemContainer.debugLocations += "ARMOR";
+            }
             else if (text.Contains("      Armor: false"))
                 _itemContainer.locations += _localization.GetTexts(Localization.LOCATION_ARMOR) + " [x], ";
             else if (text.Contains("      Right_Hand: true"))
@@ -2263,28 +2326,45 @@ public class Converter : MonoBehaviour
             else if (text.Contains("      Right_Hand: false"))
                 _itemContainer.locations += _localization.GetTexts((_itemContainer.type == "Card") ? Localization.WEAPON : Localization.LOCATION_RIGHT_HAND) + " [x], ";
             else if (text.Contains("      Left_Hand: true"))
+            {
                 _itemContainer.locations += _localization.GetTexts((_itemContainer.type == "Card") ? Localization.SHIELD : Localization.LOCATION_LEFT_HAND) + ", ";
+                if (_itemContainer.type == "Armor")
+                    _itemContainer.debugLocations += "SHIELD";
+            }
             else if (text.Contains("      Left_Hand: false"))
                 _itemContainer.locations += _localization.GetTexts((_itemContainer.type == "Card") ? Localization.SHIELD : Localization.LOCATION_LEFT_HAND) + " [x], ";
             else if (text.Contains("      Garment: true"))
+            {
                 _itemContainer.locations += _localization.GetTexts(Localization.LOCATION_GARMENT) + ", ";
+                _itemContainer.debugLocations += "GARMENT";
+            }
             else if (text.Contains("      Garment: false"))
                 _itemContainer.locations += _localization.GetTexts(Localization.LOCATION_GARMENT) + " [x], ";
             else if (text.Contains("      Shoes: true"))
+            {
                 _itemContainer.locations += _localization.GetTexts(Localization.LOCATION_SHOES) + ", ";
+                _itemContainer.debugLocations += "SHOES";
+            }
             else if (text.Contains("      Shoes: false"))
                 _itemContainer.locations += _localization.GetTexts(Localization.LOCATION_SHOES) + " [x], ";
             else if (text.Contains("      Right_Accessory: true"))
+            {
                 _itemContainer.locations += _localization.GetTexts(Localization.LOCATION_RIGHT_ACCESSORY) + ", ";
+                _itemContainer.debugLocations += "RA";
+            }
             else if (text.Contains("      Right_Accessory: false"))
                 _itemContainer.locations += _localization.GetTexts(Localization.LOCATION_RIGHT_ACCESSORY) + " [x], ";
             else if (text.Contains("      Left_Accessory: true"))
+            {
                 _itemContainer.locations += _localization.GetTexts(Localization.LOCATION_LEFT_ACCESSORY) + ", ";
+                _itemContainer.debugLocations += "LA";
+            }
             else if (text.Contains("      Left_Accessory: false"))
                 _itemContainer.locations += _localization.GetTexts(Localization.LOCATION_LEFT_ACCESSORY) + " [x], ";
             else if (text.Contains("      Costume_Head_Top: true"))
             {
                 _itemContainer.locations += _localization.GetTexts(Localization.LOCATION_COSTUME_HEAD_TOP) + ", ";
+                _itemContainer.debugLocations += "CTOP";
 
                 if (!_itemListContainer.fashionCostumeIds.Contains(_itemContainer.id))
                     _itemListContainer.fashionCostumeIds.Add(_itemContainer.id);
@@ -2294,6 +2374,7 @@ public class Converter : MonoBehaviour
             else if (text.Contains("      Costume_Head_Mid: true"))
             {
                 _itemContainer.locations += _localization.GetTexts(Localization.LOCATION_COSTUME_HEAD_MID) + ", ";
+                _itemContainer.debugLocations += "CMID";
 
                 if (!_itemListContainer.fashionCostumeIds.Contains(_itemContainer.id))
                     _itemListContainer.fashionCostumeIds.Add(_itemContainer.id);
@@ -2303,6 +2384,7 @@ public class Converter : MonoBehaviour
             else if (text.Contains("      Costume_Head_Low: true"))
             {
                 _itemContainer.locations += _localization.GetTexts(Localization.LOCATION_COSTUME_HEAD_LOW) + ", ";
+                _itemContainer.debugLocations += "CLOW";
 
                 if (!_itemListContainer.fashionCostumeIds.Contains(_itemContainer.id))
                     _itemListContainer.fashionCostumeIds.Add(_itemContainer.id);
@@ -2312,6 +2394,7 @@ public class Converter : MonoBehaviour
             else if (text.Contains("      Costume_Garment: true"))
             {
                 _itemContainer.locations += _localization.GetTexts(Localization.LOCATION_COSTUME_GARMENT) + ", ";
+                _itemContainer.debugLocations += "CGARMENT";
 
                 if (!_itemListContainer.fashionCostumeIds.Contains(_itemContainer.id))
                     _itemListContainer.fashionCostumeIds.Add(_itemContainer.id);
@@ -2323,27 +2406,45 @@ public class Converter : MonoBehaviour
             else if (text.Contains("      Ammo: false"))
                 _itemContainer.locations += _localization.GetTexts(Localization.LOCATION_AMMO) + " [x], ";
             else if (text.Contains("      Shadow_Armor: true"))
+            {
                 _itemContainer.locations += _localization.GetTexts(Localization.LOCATION_SHADOW_ARMOR) + ", ";
+                _itemContainer.debugLocations += "SARMOR";
+            }
             else if (text.Contains("      Shadow_Armor: false"))
                 _itemContainer.locations += _localization.GetTexts(Localization.LOCATION_SHADOW_ARMOR) + " [x], ";
             else if (text.Contains("      Shadow_Weapon: true"))
+            {
                 _itemContainer.locations += _localization.GetTexts(Localization.LOCATION_SHADOW_WEAPON) + ", ";
+                _itemContainer.debugLocations += "SWEAPON";
+            }
             else if (text.Contains("      Shadow_Weapon: false"))
                 _itemContainer.locations += _localization.GetTexts(Localization.LOCATION_SHADOW_WEAPON) + " [x], ";
             else if (text.Contains("      Shadow_Shield: true"))
+            {
                 _itemContainer.locations += _localization.GetTexts(Localization.LOCATION_SHADOW_SHIELD) + ", ";
+                _itemContainer.debugLocations += "SSHIELD";
+            }
             else if (text.Contains("      Shadow_Shield: false"))
                 _itemContainer.locations += _localization.GetTexts(Localization.LOCATION_SHADOW_SHIELD) + " [x], ";
             else if (text.Contains("      Shadow_Shoes: true"))
+            {
                 _itemContainer.locations += _localization.GetTexts(Localization.LOCATION_SHADOW_SHOES) + ", ";
+                _itemContainer.debugLocations += "SSHOES";
+            }
             else if (text.Contains("      Shadow_Shoes: false"))
                 _itemContainer.locations += _localization.GetTexts(Localization.LOCATION_SHADOW_SHOES) + " [x], ";
             else if (text.Contains("      Shadow_Right_Accessory: true"))
+            {
                 _itemContainer.locations += _localization.GetTexts(Localization.LOCATION_SHADOW_RIGHT_ACCESSORY) + ", ";
+                _itemContainer.debugLocations += "SRA";
+            }
             else if (text.Contains("      Shadow_Right_Accessory: false"))
                 _itemContainer.locations += _localization.GetTexts(Localization.LOCATION_SHADOW_RIGHT_ACCESSORY) + " [x], ";
             else if (text.Contains("      Shadow_Left_Accessory: true"))
+            {
                 _itemContainer.locations += _localization.GetTexts(Localization.LOCATION_SHADOW_LEFT_ACCESSORY) + ", ";
+                _itemContainer.debugLocations += "SLA";
+            }
             else if (text.Contains("      Shadow_Left_Accessory: false"))
                 _itemContainer.locations += _localization.GetTexts(Localization.LOCATION_SHADOW_LEFT_ACCESSORY) + " [x], ";
             else if (text.Contains("      Both_Hand: true"))
@@ -2351,7 +2452,10 @@ public class Converter : MonoBehaviour
             else if (text.Contains("      Both_Hand: false"))
                 _itemContainer.locations += _localization.GetTexts(Localization.LOCATION_BOTH_HAND) + " [x], ";
             else if (text.Contains("      Both_Accessory: true"))
+            {
                 _itemContainer.locations += _localization.GetTexts(Localization.LOCATION_BOTH_ACCESSORY) + ", ";
+                _itemContainer.debugLocations += "A";
+            }
             else if (text.Contains("      Both_Accessory: false"))
                 _itemContainer.locations += _localization.GetTexts(Localization.LOCATION_BOTH_ACCESSORY) + " [x], ";
             // Weapon Level
@@ -2464,6 +2568,10 @@ public class Converter : MonoBehaviour
             }
 
             _itemListContainer.AddSubType(_itemContainer.subType, _itemContainer.id);
+
+            if ((_itemContainer.type == "Armor")
+                || (_itemContainer.type == "ShadowGear"))
+                _itemListContainer.AddLocation(_itemContainer.debugLocations, _itemContainer.id);
 
             var itemId = int.Parse(_itemContainer.id);
 

@@ -11,6 +11,13 @@ public class ItemListContainer
         public List<string> id = new List<string>();
     }
 
+    [Serializable]
+    public class LocationData
+    {
+        public string location;
+        public List<string> id = new List<string>();
+    }
+
     public List<string> allItemIds = new List<string>();
 
     public List<string> weaponIds = new List<string>();
@@ -34,6 +41,7 @@ public class ItemListContainer
     public List<string> buffItemIds = new List<string>();
 
     public List<SubTypeData> subTypeDatas = new List<SubTypeData>();
+    public List<LocationData> locationDatas = new List<LocationData>();
 
     public void AddSubType(string subType, string id)
     {
@@ -54,5 +62,26 @@ public class ItemListContainer
         subTypeData.id.Add(id);
 
         subTypeDatas.Add(subTypeData);
+    }
+
+    public void AddLocation(string location, string id)
+    {
+        if (string.IsNullOrEmpty(location))
+            return;
+
+        for (int i = 0; i < locationDatas.Count; i++)
+        {
+            if (locationDatas[i].location == location)
+            {
+                locationDatas[i].id.Add(id);
+                return;
+            }
+        }
+
+        LocationData locationData = new LocationData();
+        locationData.location = location;
+        locationData.id.Add(id);
+
+        locationDatas.Add(locationData);
     }
 }
