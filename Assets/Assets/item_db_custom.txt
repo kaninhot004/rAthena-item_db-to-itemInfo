@@ -1,7 +1,7 @@
 ﻿  - Id: 10000000
     AegisName: Life_Orb
     Name: Life Orb
-    Type: Usable
+    Type: DelayConsume
     Flags:
       BuyingStore: true
     TradeNoUse:
@@ -12,7 +12,7 @@
   - Id: 10000001
     AegisName: Return_Orb
     Name: Return Orb
-    Type: Usable
+    Type: DelayConsume
     Flags:
       BuyingStore: true
     TradeNoUse:
@@ -23,34 +23,36 @@
   - Id: 10000002
     AegisName: Soul_Orb
     Name: Soul Orb
-    Type: Usable
+    Type: DelayConsume
     Flags:
       BuyingStore: true
     TradeNoUse:
       Override: 100
       NoSell: true
+    Script: |
+      callfunc("SoulOrb",10000002);
   - Id: 10000003
     AegisName: Body_Orb
     Name: Body Orb
-    Type: Usable
+    Type: DelayConsume
     Flags:
       BuyingStore: true
     TradeNoUse:
       Override: 100
       NoSell: true
     Script: |
-      callfunc("BodyOrb");
+      callfunc("BodyOrb",10000003);
   - Id: 10000004
     AegisName: Mind_Orb
     Name: Mind Orb
-    Type: Usable
+    Type: DelayConsume
     Flags:
       BuyingStore: true
     TradeNoUse:
       Override: 100
       NoSell: true
     Script: |
-      callfunc("MindOrb");
+      callfunc("MindOrb",10000004);
   - Id: 10000005
     AegisName: Refine_Orb
     Name: Refine Orb
@@ -117,3 +119,36 @@
       NoSell: true
     Script: |
       callfunc("GainOrb",10000004,10000010);
+  - Id: 10000011
+    AegisName: Refine_Orb_Pack
+    Name: Refine Orb Pack
+    Type: DelayConsume
+    Flags:
+      BuyingStore: true
+    TradeNoUse:
+      Override: 100
+      NoSell: true
+    Script: |
+      callfunc("GainOrb",10000005,10000011);
+  - Id: 10000012
+    AegisName: Grade_Orb_Pack
+    Name: Grade Orb Pack
+    Type: DelayConsume
+    Flags:
+      BuyingStore: true
+    TradeNoUse:
+      Override: 100
+      NoSell: true
+    Script: |
+      callfunc("GainOrb",10000006,10000012);
+  - Id: 10000013
+    AegisName: Dismantle_Points_Pack
+    Name: Dismantle Points Pack
+    Type: DelayConsume
+    Flags:
+      BuyingStore: true
+    TradeNoUse:
+      Override: 100
+      NoSell: true
+    Script: |
+      callfunc("GainOrb",10000007,10000013);
