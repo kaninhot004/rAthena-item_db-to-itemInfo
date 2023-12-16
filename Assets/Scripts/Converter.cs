@@ -5001,6 +5001,9 @@ public class Converter : MonoBehaviour
         text = text.Replace("RC2_EP172ALPHA", "^AC6523(EP 17.2 Alpha)^000000");
         text = text.Replace("RC2_EP172BETA", "^AC6523(EP 17.2 Beta)^000000");
         text = text.Replace("RC2_EP172BATH", "^AC6523(EP 17.2 Bath)^000000");
+        text = text.Replace("RC2_ILLUSION_TURTLE", "^AC6523(Illusion Turtle)^000000");
+        text = text.Replace("RC2_RACHEL_SANCTUARY", "^AC6523(Rachel Sanctuary)^000000");
+        text = text.Replace("RC2_ILLUSION_LUANDA", "^AC6523(Illusion Luanda)^000000");
         return text;
     }
 
@@ -5069,6 +5072,8 @@ public class Converter : MonoBehaviour
         text = text.Replace("Eff_Freezing", "^EC1B3AFreezing^000000");
         text = text.Replace("Eff_Heat", "^EC1B3AHeat^000000");
         text = text.Replace("Eff_Deepsleep", "^EC1B3ADeep Sleep^000000");
+        text = text.Replace("Eff_WhiteImprison", "^EC1B3AWhite Imprison^000000");
+        text = text.Replace("Eff_Hallucination", "^EC1B3AHallucination^000000");
         return text;
     }
 
