@@ -158,7 +158,7 @@
         },
         {
             "itemId": 10000002,
-            "itemScriptDescription": "กดใช้เพื่อ ^3F749Dเพิ่ม Level^000000"
+            "itemScriptDescription": "กดใช้เพื่อ ^3F749Dรับ Soul Points^000000"
         },
         {
             "itemId": 10000003,
@@ -170,11 +170,11 @@
         },
         {
             "itemId": 10000005,
-            "itemScriptDescription": "กดใช้เพื่อ ^3F749Dตีบวกทั้งตัวเพิ่มขึ้น 1 ระดับ^000000"
+            "itemScriptDescription": "กดใช้เพื่อ ^3F749Dตีบวกทั้งตัวขึ้น 1 ระดับ^000000"
         },
         {
             "itemId": 10000006,
-            "itemScriptDescription": "กดใช้เพื่อ ^3F749Dเพิ่มระดับ Grade ทั้งตัวขึ้น 1 ระดับ^000000"
+            "itemScriptDescription": "กดใช้เพื่อ ^3F749DGrade ทั้งตัวขึ้น 1 ระดับ^000000"
         },
         {
             "itemId": 10000007,

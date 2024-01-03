@@ -242,12 +242,12 @@ public class Converter : MonoBehaviour
     /// </summary>
     void OnConvertButtonTap()
     {
-        _isEquipmentNoValue = Input.GetKey(KeyCode.K);
-        _isItemNoBonus = Input.GetKey(KeyCode.D);
-        _isEnchantmentAbleToUse = Input.GetKey(KeyCode.Alpha4);
-        _isHideRefinable = Input.GetKey(KeyCode.Alpha4);
-        _isHideGradable = Input.GetKey(KeyCode.Alpha4);
-        _isItemUnconditional = Input.GetKey(KeyCode.Alpha4);
+        _isEquipmentNoValue = Input.GetKey(KeyCode.Alpha1);
+        _isItemNoBonus = Input.GetKey(KeyCode.Alpha2);
+        _isEnchantmentAbleToUse = Input.GetKey(KeyCode.Alpha3);
+        _isHideRefinable = Input.GetKey(KeyCode.Alpha3);
+        _isHideGradable = Input.GetKey(KeyCode.Alpha3);
+        _isItemUnconditional = Input.GetKey(KeyCode.Alpha3);
 
         for (int i = 0; i < _objectsToHideWhenConverterStart.Length; i++)
             _objectsToHideWhenConverterStart[i].SetActive(false);
