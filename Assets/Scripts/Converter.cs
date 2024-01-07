@@ -531,8 +531,6 @@ public class Converter : MonoBehaviour
 
         // SubType item id
 
-        shopNumber = 0;
-
         List<string> subTypes = new List<string>();
         List<int> maxPages = new List<int>();
         foreach (var item in _itemListContainer.subTypeDatas)
@@ -547,7 +545,6 @@ public class Converter : MonoBehaviour
                     if (!string.IsNullOrEmpty(builder.ToString()))
                         builder.Remove(builder.Length - 1, 1);
 
-                    shopNumber++;
                     maxPage++;
                     builder.Append("\n-	shop	Debug" + item.subType + "" + maxPage + "	-1,no,");
                 }
@@ -577,10 +574,9 @@ public class Converter : MonoBehaviour
             builder.Remove(builder.Length - 1, 1);
 
         builder.Append(";");
+        builder.Append(";");
 
         // Location item id
-
-        shopNumber = 0;
 
         List<string> locations = new List<string>();
         maxPages = new List<int>();
@@ -596,7 +592,6 @@ public class Converter : MonoBehaviour
                     if (!string.IsNullOrEmpty(builder.ToString()))
                         builder.Remove(builder.Length - 1, 1);
 
-                    shopNumber++;
                     maxPage++;
                     builder.Append("\n-	shop	Debug" + item.location + "" + maxPage + "	-1,no,");
                 }
@@ -605,6 +600,41 @@ public class Converter : MonoBehaviour
             }
             maxPages.Add(maxPage);
         }
+
+        locations.Add("CARD1");
+        int cardMaxPage = 0;
+        for (int i = 0; i < _itemListContainer.cardIds.Count; i++)
+        {
+            if ((i == 0)
+                 || (i % 100 == 0))
+            {
+                if (!string.IsNullOrEmpty(builder.ToString()))
+                    builder.Remove(builder.Length - 1, 1);
+
+                cardMaxPage++;
+                builder.Append("\n-	shop	DebugCARD1" + cardMaxPage + "	-1,no,");
+            }
+
+            builder.Append(_itemListContainer.cardIds[i] + ":1000000000,");
+        }
+        maxPages.Add(cardMaxPage);
+        locations.Add("CARD2");
+        cardMaxPage = 0;
+        for (int i = 0; i < _itemListContainer.card2Ids.Count; i++)
+        {
+            if ((i == 0)
+                 || (i % 100 == 0))
+            {
+                if (!string.IsNullOrEmpty(builder.ToString()))
+                    builder.Remove(builder.Length - 1, 1);
+
+                cardMaxPage++;
+                builder.Append("\n-	shop	DebugCARD2" + cardMaxPage + "	-1,no,");
+            }
+
+            builder.Append(_itemListContainer.card2Ids[i] + ":1000000000,");
+        }
+        maxPages.Add(cardMaxPage);
 
         if (!string.IsNullOrEmpty(builder.ToString()))
             builder.Remove(builder.Length - 1, 1);
