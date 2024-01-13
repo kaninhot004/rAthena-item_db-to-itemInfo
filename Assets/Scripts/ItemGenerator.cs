@@ -17,7 +17,7 @@ public class ItemGenerator : MonoBehaviour
     /// <summary>
     /// Item ID start at?
     /// </summary>
-    public const int START_ID = 10000000;
+    public const int START_ID = 20000000;
     /// <summary>
     /// Maximum randomize english word per generate
     /// </summary>
@@ -55,6 +55,12 @@ public class ItemGenerator : MonoBehaviour
     public const int TIER_4_BONUS_VALUE_TIME_MAX = 501;
     public const int TIER_5_BONUS_VALUE_TIME_MIN = 500;
     public const int TIER_5_BONUS_VALUE_TIME_MAX = 1001;
+
+    public const int TIER_1_LEVEL_REQ = 1;
+    public const int TIER_2_LEVEL_REQ = 30;
+    public const int TIER_3_LEVEL_REQ = 70;
+    public const int TIER_4_LEVEL_REQ = 130;
+    public const int TIER_5_LEVEL_REQ = 200;
 
     public const bool IS_SKIP_ELEMENTAL = true;
 
@@ -488,15 +494,15 @@ public class ItemGenerator : MonoBehaviour
         int levelRequirement = 1;
 
         if (id <= START_ID + (ITEM_PER_TIER * 1))
-            levelRequirement = 1;
+            levelRequirement = TIER_1_LEVEL_REQ;
         else if (id <= START_ID + (ITEM_PER_TIER * 2))
-            levelRequirement = 30;
+            levelRequirement = TIER_2_LEVEL_REQ;
         else if (id <= START_ID + (ITEM_PER_TIER * 3))
-            levelRequirement = 70;
+            levelRequirement = TIER_3_LEVEL_REQ;
         else if (id <= START_ID + (ITEM_PER_TIER * 4))
-            levelRequirement = 110;
+            levelRequirement = TIER_4_LEVEL_REQ;
         else if (id <= START_ID + (ITEM_PER_TIER * 5))
-            levelRequirement = 140;
+            levelRequirement = TIER_5_LEVEL_REQ;
 
         return levelRequirement.ToString("f0");
     }
