@@ -23,6 +23,41 @@ public class ItemGenerator : MonoBehaviour
     /// </summary>
     public const int MAXIMUM_ENGLISH_WORD_GENERATE = 3;
 
+    public const int TIER_1_BONUS_MIN = 1;
+    public const int TIER_1_BONUS_MAX = 4;
+    public const int TIER_2_BONUS_MIN = 2;
+    public const int TIER_2_BONUS_MAX = 7;
+    public const int TIER_3_BONUS_MIN = 3;
+    public const int TIER_3_BONUS_MAX = 10;
+    public const int TIER_4_BONUS_MIN = 4;
+    public const int TIER_4_BONUS_MAX = 13;
+    public const int TIER_5_BONUS_MIN = 5;
+    public const int TIER_5_BONUS_MAX = 16;
+
+    public const int TIER_1_BONUS_VALUE_MIN = 1;
+    public const int TIER_1_BONUS_VALUE_MAX = 11;
+    public const int TIER_2_BONUS_VALUE_MIN = 10;
+    public const int TIER_2_BONUS_VALUE_MAX = 26;
+    public const int TIER_3_BONUS_VALUE_MIN = 25;
+    public const int TIER_3_BONUS_VALUE_MAX = 51;
+    public const int TIER_4_BONUS_VALUE_MIN = 50;
+    public const int TIER_4_BONUS_VALUE_MAX = 101;
+    public const int TIER_5_BONUS_VALUE_MIN = 100;
+    public const int TIER_5_BONUS_VALUE_MAX = 201;
+
+    public const int TIER_1_BONUS_VALUE_TIME_MIN = 1;
+    public const int TIER_1_BONUS_VALUE_TIME_MAX = 11;
+    public const int TIER_2_BONUS_VALUE_TIME_MIN = 10;
+    public const int TIER_2_BONUS_VALUE_TIME_MAX = 51;
+    public const int TIER_3_BONUS_VALUE_TIME_MIN = 50;
+    public const int TIER_3_BONUS_VALUE_TIME_MAX = 201;
+    public const int TIER_4_BONUS_VALUE_TIME_MIN = 200;
+    public const int TIER_4_BONUS_VALUE_TIME_MAX = 501;
+    public const int TIER_5_BONUS_VALUE_TIME_MIN = 500;
+    public const int TIER_5_BONUS_VALUE_TIME_MAX = 1001;
+
+    public const bool IS_SKIP_ELEMENTAL = true;
+
     enum GenerateType { Weapon, Shield, Armor, Ammo };
 
     List<string> _weaponSubTypes = new List<string>() { "Dagger", "1hSword", "2hSword", "1hSpear", "2hSpear", "1hAxe", "2hAxe", "Mace", "Staff", "Bow", "Knuckle", "Musical", "Whip", "Book", "Katar", "Revolver", "Rifle", "Gatling", "Shotgun", "Grenade", "Huuma", "2hStaff" };
@@ -60,12 +95,15 @@ public class ItemGenerator : MonoBehaviour
     List<int> _grenadeViews = new List<int>() { 21 };
     List<int> _huumaViews = new List<int>() { 22 };
 
-    List<string> _bonuses = new List<string>() { "bonus bStr,{n};", "bonus bAgi,{n};", "bonus bVit,{n};", "bonus bInt,{n};", "bonus bDex,{n};", "bonus bLuk,{n};", "bonus bMaxHPrate,{n};", "bonus bMaxSPrate,{n};", "bonus bBaseAtk,{n};", "bonus bAtk2,{n};", "bonus bWeaponAtkRate,{n};", "bonus bMatk,{n};", "bonus bMatkRate,{n};", "bonus bWeaponMatkRate,{n};", "bonus bDef,{n20};", "bonus bDefRate,{n20};", "bonus bDef2,{n20};", "bonus bDef2Rate,{n20};", "bonus bMdef,{n20};", "bonus bMdefRate,{n20};", "bonus bMdef2,{n20};", "bonus bMdef2Rate,{n20};", "bonus bHit,{n2};", "bonus bHitRate,{n5};", "bonus bCritical,{n};", "bonus bCriticalRate,{n5};", "bonus bFlee,{n5};", "bonus bFleeRate,{n20};", "bonus bPerfectHitAddRate,{n20};", "bonus bSpeedAddRate,{n20};", "bonus bAspd,{n20};", "bonus bAspdRate,{n20};", "bonus bHPrecovRate,{n};", "bonus bSPrecovRate,{n};", "bonus bUseSPrate,-{n10};", "bonus bShortAtkRate,{n2};", "bonus bLongAtkRate,{n2};", "bonus bCritAtkRate,{n2};", "bonus bCritDefRate,{n20};", "bonus bCriticalDef,{n20};", "bonus bNearAtkDef,{n20};", "bonus bLongAtkDef,{n20};", "bonus bMagicAtkDef,{n20};", "bonus bMiscAtkDef,{n20};", "bonus bHealPower,{n};", "bonus bHealPower2,{n};", "bonus bFixedCastrate,-{n5};", "bonus bVariableCastrate,-{n5};", "bonus bFixedCast,-{t2};", "bonus bVariableCast,-{t2};", "bonus bNoCastCancel2;", "bonus bDelayrate,-{n2};", "bonus2 bAddEle,{e},{n};", "bonus2 bMagicAddEle,{e},{n};", "bonus2 bSubEle,{e},{n20};", "bonus2 bAddRace,{r},{n};", "bonus2 bMagicAddRace,{r},{n};", "bonus2 bSubRace,{r},{n20};", "bonus2 bAddClass,{c},{n};", "bonus2 bMagicAddClass,{c},{n};", "bonus2 bSubClass,{c},{n20};", "bonus2 bAddSize,{s},{n};", "bonus2 bMagicAddSize,{s},{n};", "bonus2 bSubSize,{s},{n20};", "bonus2 bMagicSubSize,{s},{n20};", "bonus bNoSizeFix;", "bonus bAtkEle,{e};", "bonus bDefEle,{e};", "bonus2 bMagicAtkEle,{e},{n};", "bonus bDefRatioAtkRace,{r};", "bonus bDefRatioAtkEle,{e};", "bonus bDefRatioAtkClass,{c};", "bonus2 bIgnoreDefRaceRate,{r},{n2};", "bonus2 bIgnoreMdefRaceRate,{r},{n2};", "bonus2 bIgnoreDefClassRate,{c},{n2};", "bonus2 bIgnoreMdefClassRate,{c},{n2};", "bonus2 bExpAddRace,{r},{n5};", "bonus2 bExpAddClass,{c},{n5};", "bonus2 bAddEff,{eff},{n};", "bonus2 bResEff,{eff},{n};", "bonus bHPDrainValue,{n};", "bonus bSPDrainValue,{n};", "bonus bShortWeaponDamageReturn,{n20};", "bonus bLongWeaponDamageReturn,{n20};", "bonus bMagicDamageReturn,{n20};", "bonus bReduceDamageReturn,{n20};", "bonus bUnstripableWeapon;", "bonus bUnstripableArmor;", "bonus bUnstripableHelm;", "bonus bUnstripableShield;", "bonus bUnstripable;", "bonus bUnbreakable,{n2};", "bonus2 bDropAddRace,{r},{n5};", "bonus2 bDropAddClass,{c},{n5};", "bonus bDoubleAddRate,{n20};", "bonus bNoKnockback;", "bonus bNoGemStone;", "bonus bIntravision;", "bonus bPerfectHide;", "bonus bNoMadoFuel;", "bonus bNoWalkDelay;" };
-    List<string> _effects = new List<string>() { "Eff_Bleeding", "Eff_Blind", "Eff_Burning", "Eff_Confusion", "Eff_Crystalize", "Eff_Curse", "Eff_Fear", "Eff_Freeze", "Eff_Poison", "Eff_Silence", "Eff_Sleep", "Eff_Stone", "Eff_Stun" };
-    List<string> _elements = new List<string>() { "Ele_Dark", "Ele_Earth", "Ele_Fire", "Ele_Ghost", "Ele_Holy", "Ele_Neutral", "Ele_Poison", "Ele_Undead", "Ele_Water", "Ele_Wind" };
-    List<string> _races = new List<string>() { "RC_Angel", "RC_Brute", "RC_DemiHuman", "RC_Demon", "RC_Dragon", "RC_Fish", "RC_Formless", "RC_Insect", "RC_Plant", "RC_Player_Human", "RC_Player_Doram", "RC_Undead" };
-    List<string> _classes = new List<string>() { "Class_Normal", "Class_Boss" };
-    List<string> _sizes = new List<string>() { "Size_Small", "Size_Medium", "Size_Large" };
+    List<string> _bonuses = new List<string>() { "bonus bStr,{n};", "bonus bAgi,{n};", "bonus bVit,{n};", "bonus bInt,{n};", "bonus bDex,{n};", "bonus bLuk,{n};", "bonus bAllStats,{n5};", "bonus bPow,{n};", "bonus bSta,{n};", "bonus bWis,{n};", "bonus bSpl,{n};", "bonus bCon,{n};", "bonus bCrt,{n};", "bonus bAllTraitStats,{n5};", "bonus bMaxHPrate,{n};", "bonus bMaxSPrate,{n};", "bonus bMaxAPrate,{n};", "bonus bAtk,{n};", "bonus bAtkRate,{n};", "bonus bWeaponAtkRate,{n};", "bonus bMatk,{n};", "bonus bMatkRate,{n};", "bonus bWeaponMatkRate,{n};", "bonus bSpeedAddRate,{n20};", "bonus bCritAtkRate,{n20};", "bonus bCritDefRate,{n20};", "bonus bCriticalDef,{n20};", "bonus bHealPower,{n};", "bonus bHealPower2,{n};", "bonus bFixedCastrate,-{n5};", "bonus bVariableCastrate,-{n5};", "bonus bFixedCast,-{t2};", "bonus bVariableCast,-{t2};", "bonus bNoCastCancel2;", "bonus bDelayrate,-{n2};", "bonus bNoSizeFix;", "bonus bDefRatioAtkClass,{c};", "bonus2 bIgnoreDefClassRate,{c},{n2};", "bonus2 bIgnoreMdefClassRate,{c},{n2};", "bonus2 bIgnoreResRaceRate,{r},{n2};", "bonus2 bIgnoreMResRaceRate,{r},{n2};", "bonus2 bAddEff,{eff},{n};", "bonus2 bResEff,{eff},{n};", "bonus bReduceDamageReturn,{n20};", "bonus bDoubleAddRate,{n20};", "bonus bNoKnockback;", "bonus bIntravision;", "bonus bPerfectHide;", "bonus bNoWalkDelay;" };
+    //List<string> _bonuses = new List<string>() { "bonus bStr,{n};", "bonus bAgi,{n};", "bonus bVit,{n};", "bonus bInt,{n};", "bonus bDex,{n};", "bonus bLuk,{n};", "bonus bMaxHPrate,{n};", "bonus bMaxSPrate,{n};", "bonus bBaseAtk,{n};", "bonus bAtk2,{n};", "bonus bWeaponAtkRate,{n};", "bonus bMatk,{n};", "bonus bMatkRate,{n};", "bonus bWeaponMatkRate,{n};", "bonus bDef,{n20};", "bonus bDefRate,{n20};", "bonus bDef2,{n20};", "bonus bDef2Rate,{n20};", "bonus bMdef,{n20};", "bonus bMdefRate,{n20};", "bonus bMdef2,{n20};", "bonus bMdef2Rate,{n20};", "bonus bHit,{n2};", "bonus bHitRate,{n5};", "bonus bCritical,{n};", "bonus bCriticalRate,{n5};", "bonus bFlee,{n5};", "bonus bFleeRate,{n20};", "bonus bPerfectHitAddRate,{n20};", "bonus bSpeedAddRate,{n20};", "bonus bAspd,{n20};", "bonus bAspdRate,{n20};", "bonus bHPrecovRate,{n};", "bonus bSPrecovRate,{n};", "bonus bUseSPrate,-{n10};", "bonus bShortAtkRate,{n2};", "bonus bLongAtkRate,{n2};", "bonus bCritAtkRate,{n2};", "bonus bCritDefRate,{n20};", "bonus bCriticalDef,{n20};", "bonus bNearAtkDef,{n20};", "bonus bLongAtkDef,{n20};", "bonus bMagicAtkDef,{n20};", "bonus bMiscAtkDef,{n20};", "bonus bHealPower,{n};", "bonus bHealPower2,{n};", "bonus bFixedCastrate,-{n5};", "bonus bVariableCastrate,-{n5};", "bonus bFixedCast,-{t2};", "bonus bVariableCast,-{t2};", "bonus bNoCastCancel2;", "bonus bDelayrate,-{n2};", "bonus2 bAddEle,{e},{n};", "bonus2 bMagicAddEle,{e},{n};", "bonus2 bSubEle,{e},{n20};", "bonus2 bAddRace,{r},{n};", "bonus2 bMagicAddRace,{r},{n};", "bonus2 bSubRace,{r},{n20};", "bonus2 bAddClass,{c},{n};", "bonus2 bMagicAddClass,{c},{n};", "bonus2 bSubClass,{c},{n20};", "bonus2 bAddSize,{s},{n};", "bonus2 bMagicAddSize,{s},{n};", "bonus2 bSubSize,{s},{n20};", "bonus2 bMagicSubSize,{s},{n20};", "bonus bNoSizeFix;", "bonus bAtkEle,{e};", "bonus bDefEle,{e};", "bonus2 bMagicAtkEle,{e},{n};", "bonus bDefRatioAtkRace,{r};", "bonus bDefRatioAtkEle,{e};", "bonus bDefRatioAtkClass,{c};", "bonus2 bIgnoreDefRaceRate,{r},{n2};", "bonus2 bIgnoreMdefRaceRate,{r},{n2};", "bonus2 bIgnoreDefClassRate,{c},{n2};", "bonus2 bIgnoreMdefClassRate,{c},{n2};", "bonus2 bExpAddRace,{r},{n5};", "bonus2 bExpAddClass,{c},{n5};", "bonus2 bAddEff,{eff},{n};", "bonus2 bResEff,{eff},{n};", "bonus bHPDrainValue,{n};", "bonus bSPDrainValue,{n};", "bonus bShortWeaponDamageReturn,{n20};", "bonus bLongWeaponDamageReturn,{n20};", "bonus bMagicDamageReturn,{n20};", "bonus bReduceDamageReturn,{n20};", "bonus bUnstripableWeapon;", "bonus bUnstripableArmor;", "bonus bUnstripableHelm;", "bonus bUnstripableShield;", "bonus bUnstripable;", "bonus bUnbreakable,{n2};", "bonus2 bDropAddRace,{r},{n5};", "bonus2 bDropAddClass,{c},{n5};", "bonus bDoubleAddRate,{n20};", "bonus bNoKnockback;", "bonus bNoGemStone;", "bonus bIntravision;", "bonus bPerfectHide;", "bonus bNoMadoFuel;", "bonus bNoWalkDelay;" };
+    List<string> _effects = new List<string>() { "Eff_Bleeding", "Eff_Blind", "Eff_Burning", "Eff_Confusion", "Eff_Crystalize", "Eff_Curse", "Eff_DPoison", "Eff_Fear", "Eff_Freeze", "Eff_Poison", "Eff_Silence", "Eff_Sleep", "Eff_Stone", "Eff_Stun", "Eff_Freezing", "Eff_Heat", "Eff_Deepsleep", "Eff_WhiteImprison", "Eff_Hallucination" };
+    List<string> _elements = new List<string>() { "Ele_Dark", "Ele_Earth", "Ele_Fire", "Ele_Ghost", "Ele_Holy", "Ele_Neutral", "Ele_Poison", "Ele_Undead", "Ele_Water", "Ele_Wind", "Ele_All" };
+    List<string> _races = new List<string>() { "RC_All" };
+    //List<string> _races = new List<string>() { "RC_Angel", "RC_Brute", "RC_DemiHuman", "RC_Demon", "RC_Dragon", "RC_Fish", "RC_Formless", "RC_Insect", "RC_Plant", "RC_Player_Human", "RC_Player_Doram", "RC_Undead", "RC_All" };
+    List<string> _classes = new List<string>() { "Class_All" };
+    //List<string> _classes = new List<string>() { "Class_Normal", "Class_Boss", "Class_Guardian", "Class_All" };
+    List<string> _sizes = new List<string>() { "Size_Small", "Size_Medium", "Size_Large", "Size_All" };
 
     List<string> _englishWords = new List<string>();
 
@@ -476,18 +514,16 @@ public class ItemGenerator : MonoBehaviour
         int bonusAmount = 1;
 
         if (id <= START_ID + (ITEM_PER_TIER * 1))
-            bonusAmount = Random.Range(1, 4);
+            bonusAmount = Random.Range(TIER_1_BONUS_MIN, TIER_1_BONUS_MAX);
         else if (id <= START_ID + (ITEM_PER_TIER * 2))
-            bonusAmount = Random.Range(2, 7);
+            bonusAmount = Random.Range(TIER_2_BONUS_MIN, TIER_2_BONUS_MAX);
         else if (id <= START_ID + (ITEM_PER_TIER * 3))
-            bonusAmount = Random.Range(3, 10);
+            bonusAmount = Random.Range(TIER_3_BONUS_MIN, TIER_3_BONUS_MAX);
         else if (id <= START_ID + (ITEM_PER_TIER * 4))
-            bonusAmount = Random.Range(4, 13);
+            bonusAmount = Random.Range(TIER_4_BONUS_MIN, TIER_4_BONUS_MAX);
         else if (id <= START_ID + (ITEM_PER_TIER * 5))
-            bonusAmount = Random.Range(5, 16);
+            bonusAmount = Random.Range(TIER_5_BONUS_MIN, TIER_5_BONUS_MAX);
 
-        // Skip elemental bonus?
-        bool isSkipElemental = false;
         // Prevent 2+ elemental per item
         bool isElementalAlreadyHad = false;
 
@@ -499,7 +535,7 @@ public class ItemGenerator : MonoBehaviour
             while (((bonus == "bonus bAtkEle,{e};")
                 || (bonus == "bonus bDefEle,{e};"))
                 && (isElementalAlreadyHad
-                || isSkipElemental))
+                || IS_SKIP_ELEMENTAL))
                 bonus = _bonuses[Random.Range(0, _bonuses.Count)];
 
             // Attack element should stay on weapon or ammo only
@@ -522,15 +558,15 @@ public class ItemGenerator : MonoBehaviour
             int bonusValue = 0;
 
             if (id <= START_ID + (ITEM_PER_TIER * 1))
-                bonusValue = Random.Range(1, 11);
+                bonusValue = Random.Range(TIER_1_BONUS_VALUE_MIN, TIER_1_BONUS_VALUE_MAX);
             else if (id <= START_ID + (ITEM_PER_TIER * 2))
-                bonusValue = Random.Range(10, 26);
+                bonusValue = Random.Range(TIER_2_BONUS_VALUE_MIN, TIER_2_BONUS_VALUE_MAX);
             else if (id <= START_ID + (ITEM_PER_TIER * 3))
-                bonusValue = Random.Range(25, 51);
+                bonusValue = Random.Range(TIER_3_BONUS_VALUE_MIN, TIER_3_BONUS_VALUE_MAX);
             else if (id <= START_ID + (ITEM_PER_TIER * 4))
-                bonusValue = Random.Range(50, 101);
+                bonusValue = Random.Range(TIER_4_BONUS_VALUE_MIN, TIER_4_BONUS_VALUE_MAX);
             else if (id <= START_ID + (ITEM_PER_TIER * 5))
-                bonusValue = Random.Range(100, 200);
+                bonusValue = Random.Range(TIER_5_BONUS_VALUE_MIN, TIER_5_BONUS_VALUE_MAX);
 
             bonus = bonus.Replace("{n20}", (bonusValue / 20 <= 0) ? "1" : (bonusValue / 20).ToString("f0"));
             bonus = bonus.Replace("{n10}", (bonusValue / 10 <= 0) ? "1" : (bonusValue / 10).ToString("f0"));
@@ -542,15 +578,15 @@ public class ItemGenerator : MonoBehaviour
             bonusValue = 1;
 
             if (id <= START_ID + (ITEM_PER_TIER * 1))
-                bonusValue = Random.Range(1, 11);
+                bonusValue = Random.Range(TIER_1_BONUS_VALUE_TIME_MIN, TIER_1_BONUS_VALUE_TIME_MAX);
             else if (id <= START_ID + (ITEM_PER_TIER * 2))
-                bonusValue = Random.Range(10, 51);
+                bonusValue = Random.Range(TIER_2_BONUS_VALUE_TIME_MIN, TIER_2_BONUS_VALUE_TIME_MAX);
             else if (id <= START_ID + (ITEM_PER_TIER * 3))
-                bonusValue = Random.Range(50, 201);
+                bonusValue = Random.Range(TIER_3_BONUS_VALUE_TIME_MIN, TIER_3_BONUS_VALUE_TIME_MAX);
             else if (id <= START_ID + (ITEM_PER_TIER * 4))
-                bonusValue = Random.Range(200, 501);
+                bonusValue = Random.Range(TIER_4_BONUS_VALUE_TIME_MIN, TIER_4_BONUS_VALUE_TIME_MAX);
             else if (id <= START_ID + (ITEM_PER_TIER * 5))
-                bonusValue = Random.Range(500, 1001);
+                bonusValue = Random.Range(TIER_5_BONUS_VALUE_TIME_MIN, TIER_5_BONUS_VALUE_TIME_MAX);
 
             bonus = bonus.Replace("{t2}", (bonusValue <= 0) ? "1" : bonusValue.ToString("f0"));
             bonus = bonus.Replace("{t}", ((bonusValue * 100) <= 0) ? "1" : (bonusValue * 100).ToString("f0"));
