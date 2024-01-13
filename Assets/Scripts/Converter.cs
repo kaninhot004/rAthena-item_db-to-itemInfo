@@ -9,7 +9,9 @@ public class Converter : MonoBehaviour
 {
     const string CREATOR_URL = "https://kanintemsrisukgames.wordpress.com/2019/04/05/support-kt-games/";
     const float ONE_SECOND = 1;
-    bool _isItemUnconditional = false;
+    [SerializeField] bool _isItemUnconditional = false;
+    [SerializeField] bool _isSkipEquipLevel = false;
+    [SerializeField] bool _isSkipNormalEquipEtcCombo = false;
 
     [Serializable]
     public class ReplaceVariable
@@ -248,6 +250,8 @@ public class Converter : MonoBehaviour
         _isHideRefinable = Input.GetKey(KeyCode.Alpha3);
         _isHideGradable = Input.GetKey(KeyCode.Alpha3);
         _isItemUnconditional = Input.GetKey(KeyCode.Alpha3);
+        _isSkipEquipLevel = Input.GetKey(KeyCode.Alpha4);
+        _isSkipNormalEquipEtcCombo = Input.GetKey(KeyCode.Alpha6);
 
         for (int i = 0; i < _objectsToHideWhenConverterStart.Length; i++)
             _objectsToHideWhenConverterStart[i].SetActive(false);
@@ -1466,7 +1470,7 @@ public class Converter : MonoBehaviour
             return;
         }
 
-        var comboDatabasesFile = File.ReadAllText(path);
+        var comboDatabasesFile = (_isSkipNormalEquipEtcCombo ? string.Empty : File.ReadAllText(path));
 
         var comboDatabases = comboDatabasesFile.Split('\n');
 
@@ -1580,9 +1584,9 @@ public class Converter : MonoBehaviour
             return;
         }
 
-        var itemDatabasesFile = File.ReadAllText(path) + "\n"
+        var itemDatabasesFile = (_isSkipNormalEquipEtcCombo ? string.Empty : File.ReadAllText(path)) + "\n"
             + File.ReadAllText(path2) + "\n"
-            + File.ReadAllText(path3) + "\n"
+            + (_isSkipNormalEquipEtcCombo ? string.Empty : File.ReadAllText(path3)) + "\n"
             + File.ReadAllText(path4);
 
         var itemDatabases = itemDatabasesFile.Split('\n');
@@ -1912,9 +1916,9 @@ public class Converter : MonoBehaviour
         var path4 = Application.dataPath + "/Assets/item_db_custom.txt";
         var path5 = Application.dataPath + "/Assets/item_db_test.txt";
 
-        var itemDatabasesFile = File.ReadAllText(path) + "\n"
+        var itemDatabasesFile = (_isSkipNormalEquipEtcCombo ? string.Empty : File.ReadAllText(path)) + "\n"
             + File.ReadAllText(path2) + "\n"
-            + File.ReadAllText(path3) + "\n"
+            + (_isSkipNormalEquipEtcCombo ? string.Empty : File.ReadAllText(path3)) + "\n"
             + File.ReadAllText(path4);
 
         if (_isOnlyUseTestTextAsset
@@ -2697,7 +2701,8 @@ public class Converter : MonoBehaviour
             // Identified description
             builder.Append("		identifiedDescriptionName = {\n");
             // Description
-            var comboBonuses = GetCombo(GetItemDatabase(itemIdToGetCombo).aegisName);
+            var comboData = GetItemDatabase(itemIdToGetCombo);
+            var comboBonuses = GetCombo((comboData != null) ? comboData.aegisName : string.Empty);
 
             string hardcodeBonuses = _hardcodeItemScripts.GetHardcodeItemScript(itemId);
 
@@ -2801,7 +2806,7 @@ public class Converter : MonoBehaviour
             else if (_isZeroValuePrintable && isEquipment)
                 description += "			\"^3F28FF" + _localization.GetTexts(Localization.ARMOR_LEVEL) + ":^000000 -\",\n";
 
-            if (!_isItemUnconditional)
+            if (!_isSkipEquipLevel)
             {
                 if (!string.IsNullOrEmpty(_itemContainer.equipLevelMinimum))
                     description += "			\"^3F28FF" + _localization.GetTexts(Localization.MINIMUM_EQUIP_LEVEL) + ":^000000 " + _itemContainer.equipLevelMinimum + "\",\n";
@@ -5856,6 +5861,9 @@ public class Converter : MonoBehaviour
 
     string GetCombo(string aegisName)
     {
+        if (string.IsNullOrEmpty(aegisName))
+            return string.Empty;
+
         StringBuilder builder = new StringBuilder();
 
         // Loop all combo data

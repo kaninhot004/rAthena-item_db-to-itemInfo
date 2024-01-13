@@ -11,6 +11,10 @@ public class ItemGenerator : MonoBehaviour
     /// </summary>
     public const int ITEM_PER_TIER = 10000;
     /// <summary>
+    /// How many enchantment per tier to generate?
+    /// </summary>
+    public const int ENCHANTMENT_PER_TIER = 1000;
+    /// <summary>
     /// Maximum tier for generate
     /// </summary>
     public const int MAXIMUM_TIER = 5;
@@ -64,7 +68,7 @@ public class ItemGenerator : MonoBehaviour
 
     public const bool IS_SKIP_ELEMENTAL = true;
 
-    enum GenerateType { Weapon, Shield, Armor, Ammo };
+    enum GenerateType { Weapon, Shield, Armor, Ammo, Card };
 
     List<string> _weaponSubTypes = new List<string>() { "Dagger", "1hSword", "2hSword", "1hSpear", "2hSpear", "1hAxe", "2hAxe", "Mace", "Staff", "Bow", "Knuckle", "Musical", "Whip", "Book", "Katar", "Revolver", "Rifle", "Gatling", "Shotgun", "Grenade", "Huuma", "2hStaff" };
     List<string> _ammoSubType = new List<string>() { "Arrow", "Dagger", "Bullet", "Shell", "Grenade", "Shuriken", "Kunai", "CannonBall", "ThrowWeapon" };
@@ -224,7 +228,7 @@ public class ItemGenerator : MonoBehaviour
                     , GenerateBonuses(START_ID + i, location)
                     , GetLevelRequirement(START_ID + i)));
             else if (generateType == GenerateType.Armor)
-                builder.Append(string.Format("  - Id: {0}\n    AegisName: {1}\n    Name: {2}\n    Type: {3}\n    Weight: {5}\n    Defense: {8}\n    Locations:\n        {11}\n    EquipLevelMin: {15}\n    View: {13}\n    Script: |\n{14}"
+                builder.Append(string.Format("  - Id: {0}\n    AegisName: {1}\n    Name: {2}\n    Type: {3}\n    Weight: {5}\n    Defense: {8}\n    Locations:\n        {11}\n    ArmorLevel: {16}\n    EquipLevelMin: {15}\n    View: {13}\n    Script: |\n{14}"
                     , (START_ID + i).ToString("f0")
                     , "aegis_" + (START_ID + i).ToString("f0")
                     , "\"[" + GetTierPrefix(START_ID + i) + "]" + GenerateRandomEnglishWord + "\""
@@ -240,9 +244,10 @@ public class ItemGenerator : MonoBehaviour
                     , "0"
                     , GetArmorView(location).ToString("f0")
                     , GenerateBonuses(START_ID + i, location)
-                    , GetLevelRequirement(START_ID + i)));
+                    , GetLevelRequirement(START_ID + i)
+                    , Random.Range(1, 3).ToString("f0")));
             else if (generateType == GenerateType.Shield)
-                builder.Append(string.Format("  - Id: {0}\n    AegisName: {1}\n    Name: {2}\n    Type: {3}\n    Weight: {5}\n    Defense: {8}\n    Locations:\n        {11}\n    EquipLevelMin: {15}\n    View: {13}\n    Script: |\n{14}"
+                builder.Append(string.Format("  - Id: {0}\n    AegisName: {1}\n    Name: {2}\n    Type: {3}\n    Weight: {5}\n    Defense: {8}\n    Locations:\n        {11}\n    ArmorLevel: {16}\n    EquipLevelMin: {15}\n    View: {13}\n    Script: |\n{14}"
                     , (START_ID + i).ToString("f0")
                     , "aegis_" + (START_ID + i).ToString("f0")
                     , "\"[" + GetTierPrefix(START_ID + i) + "]" + GenerateRandomEnglishWord + "\""
@@ -258,7 +263,8 @@ public class ItemGenerator : MonoBehaviour
                     , "0"
                     , _shieldViews[Random.Range(0, _shieldViews.Count)].ToString("f0")
                     , GenerateBonuses(START_ID + i, location)
-                    , GetLevelRequirement(START_ID + i)));
+                    , GetLevelRequirement(START_ID + i)
+                    , Random.Range(1, 3).ToString("f0")));
             else if (generateType == GenerateType.Weapon)
                 builder.Append(string.Format("  - Id: {0}\n    AegisName: {1}\n    Name: {2}\n    Type: {3}\n    SubType: {4}\n    Weight: {5}\n    Attack: {6}\n    MagicAttack: {7}\n    Defense: {8}\n    Range: {9}\n{16}    Locations:\n        {11}\n    WeaponLevel: {12}\n    EquipLevelMin: {15}\n    View: {13}\n    Script: |\n{14}"
                     , (START_ID + i).ToString("f0")
@@ -278,6 +284,19 @@ public class ItemGenerator : MonoBehaviour
                     , GenerateBonuses(START_ID + i, location)
                     , GetLevelRequirement(START_ID + i)
                     , (subType == "Musical") ? "    Gender: Male\n" : (subType == "Whip") ? "    Gender: Female\n" : string.Empty));
+        }
+
+        int enchantmentId = START_ID + START_ID + (ITEM_PER_TIER * MAXIMUM_TIER);
+        for (int i = 0; i < (ENCHANTMENT_PER_TIER * MAXIMUM_TIER) + 1; i++)
+        {
+            builder.Append(string.Format("  - Id: {0}\n    AegisName: {1}\n    Name: {2}\n    Type: {3}\n    SubType: {4}\n    Weight: {5}\n    Script: |\n{6}"
+                , (enchantmentId + i).ToString("f0")
+                , "aegis_" + (enchantmentId + i).ToString("f0")
+                , "\"[" + GetTierPrefix(enchantmentId + i) + "]" + GenerateRandomEnglishWord + "\""
+                , "Card"
+                , "Enchant"
+                , "10"
+                , GenerateBonuses(enchantmentId + i - (ITEM_PER_TIER * MAXIMUM_TIER), string.Empty)));
         }
 
         File.WriteAllText("generated_items.txt", builder.ToString(), Encoding.UTF8);
@@ -637,7 +656,10 @@ public class ItemGenerator : MonoBehaviour
                     word += _englishWords[Random.Range(0, _englishWords.Count)];
             }
 
-            return word;
+            if (word.Length > 49)
+                return word.Substring(0, 49);
+            else
+                return word;
         }
     }
 
