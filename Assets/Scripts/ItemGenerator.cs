@@ -286,17 +286,17 @@ public class ItemGenerator : MonoBehaviour
                     , (subType == "Musical") ? "    Gender: Male\n" : (subType == "Whip") ? "    Gender: Female\n" : string.Empty));
         }
 
-        int enchantmentId = START_ID + START_ID + (ITEM_PER_TIER * MAXIMUM_TIER);
+        int enchantmentId = START_ID + START_ID;
         for (int i = 0; i < (ENCHANTMENT_PER_TIER * MAXIMUM_TIER) + 1; i++)
         {
             builder.Append(string.Format("  - Id: {0}\n    AegisName: {1}\n    Name: {2}\n    Type: {3}\n    SubType: {4}\n    Weight: {5}\n    Script: |\n{6}"
                 , (enchantmentId + i).ToString("f0")
                 , "aegis_" + (enchantmentId + i).ToString("f0")
-                , "\"[" + GetTierPrefix(enchantmentId + i) + "]" + GenerateRandomEnglishWord + "\""
+                , "\"[" + GetTierPrefix(enchantmentId - START_ID + i, ENCHANTMENT_PER_TIER) + "]" + GenerateRandomEnglishWord + "\""
                 , "Card"
                 , "Enchant"
                 , "10"
-                , GenerateBonuses(enchantmentId + i - (ITEM_PER_TIER * MAXIMUM_TIER), string.Empty)));
+                , GenerateBonuses(enchantmentId - START_ID + i, string.Empty, ENCHANTMENT_PER_TIER)));
         }
 
         File.WriteAllText("generated_items.txt", builder.ToString(), Encoding.UTF8);
@@ -422,17 +422,17 @@ public class ItemGenerator : MonoBehaviour
     /// </summary>
     /// <param name="id"></param>
     /// <returns></returns>
-    string GetTierPrefix(int id)
+    string GetTierPrefix(int id, int itemPerTier = ITEM_PER_TIER)
     {
-        if (id <= START_ID + (ITEM_PER_TIER * 1))
+        if (id <= START_ID + (itemPerTier * 1))
             return "Normal";
-        else if (id <= START_ID + (ITEM_PER_TIER * 2))
+        else if (id <= START_ID + (itemPerTier * 2))
             return "Advance";
-        else if (id <= START_ID + (ITEM_PER_TIER * 3))
+        else if (id <= START_ID + (itemPerTier * 3))
             return "Rare";
-        else if (id <= START_ID + (ITEM_PER_TIER * 4))
+        else if (id <= START_ID + (itemPerTier * 4))
             return "Mystical";
-        else if (id <= START_ID + (ITEM_PER_TIER * 5))
+        else if (id <= START_ID + (itemPerTier * 5))
             return "Legendary";
         else
             return "Normal";
@@ -531,22 +531,22 @@ public class ItemGenerator : MonoBehaviour
     /// <param name="id"></param>
     /// <param name="location"></param>
     /// <returns></returns>
-    string GenerateBonuses(int id, string location)
+    string GenerateBonuses(int id, string location, int itemPerTier = ITEM_PER_TIER)
     {
         StringBuilder builder = new StringBuilder();
 
         // Bonus amount
         int bonusAmount = 1;
 
-        if (id <= START_ID + (ITEM_PER_TIER * 1))
+        if (id <= START_ID + (itemPerTier * 1))
             bonusAmount = Random.Range(TIER_1_BONUS_MIN, TIER_1_BONUS_MAX);
-        else if (id <= START_ID + (ITEM_PER_TIER * 2))
+        else if (id <= START_ID + (itemPerTier * 2))
             bonusAmount = Random.Range(TIER_2_BONUS_MIN, TIER_2_BONUS_MAX);
-        else if (id <= START_ID + (ITEM_PER_TIER * 3))
+        else if (id <= START_ID + (itemPerTier * 3))
             bonusAmount = Random.Range(TIER_3_BONUS_MIN, TIER_3_BONUS_MAX);
-        else if (id <= START_ID + (ITEM_PER_TIER * 4))
+        else if (id <= START_ID + (itemPerTier * 4))
             bonusAmount = Random.Range(TIER_4_BONUS_MIN, TIER_4_BONUS_MAX);
-        else if (id <= START_ID + (ITEM_PER_TIER * 5))
+        else if (id <= START_ID + (itemPerTier * 5))
             bonusAmount = Random.Range(TIER_5_BONUS_MIN, TIER_5_BONUS_MAX);
 
         // Prevent 2+ elemental per item
@@ -582,15 +582,15 @@ public class ItemGenerator : MonoBehaviour
             // Bonus value
             int bonusValue = 0;
 
-            if (id <= START_ID + (ITEM_PER_TIER * 1))
+            if (id <= START_ID + (itemPerTier * 1))
                 bonusValue = Random.Range(TIER_1_BONUS_VALUE_MIN, TIER_1_BONUS_VALUE_MAX);
-            else if (id <= START_ID + (ITEM_PER_TIER * 2))
+            else if (id <= START_ID + (itemPerTier * 2))
                 bonusValue = Random.Range(TIER_2_BONUS_VALUE_MIN, TIER_2_BONUS_VALUE_MAX);
-            else if (id <= START_ID + (ITEM_PER_TIER * 3))
+            else if (id <= START_ID + (itemPerTier * 3))
                 bonusValue = Random.Range(TIER_3_BONUS_VALUE_MIN, TIER_3_BONUS_VALUE_MAX);
-            else if (id <= START_ID + (ITEM_PER_TIER * 4))
+            else if (id <= START_ID + (itemPerTier * 4))
                 bonusValue = Random.Range(TIER_4_BONUS_VALUE_MIN, TIER_4_BONUS_VALUE_MAX);
-            else if (id <= START_ID + (ITEM_PER_TIER * 5))
+            else if (id <= START_ID + (itemPerTier * 5))
                 bonusValue = Random.Range(TIER_5_BONUS_VALUE_MIN, TIER_5_BONUS_VALUE_MAX);
 
             bonus = bonus.Replace("{n20}", (bonusValue / 20 <= 0) ? "1" : (bonusValue / 20).ToString("f0"));
@@ -602,15 +602,15 @@ public class ItemGenerator : MonoBehaviour
             // Bonus 'Time' value
             bonusValue = 1;
 
-            if (id <= START_ID + (ITEM_PER_TIER * 1))
+            if (id <= START_ID + (itemPerTier * 1))
                 bonusValue = Random.Range(TIER_1_BONUS_VALUE_TIME_MIN, TIER_1_BONUS_VALUE_TIME_MAX);
-            else if (id <= START_ID + (ITEM_PER_TIER * 2))
+            else if (id <= START_ID + (itemPerTier * 2))
                 bonusValue = Random.Range(TIER_2_BONUS_VALUE_TIME_MIN, TIER_2_BONUS_VALUE_TIME_MAX);
-            else if (id <= START_ID + (ITEM_PER_TIER * 3))
+            else if (id <= START_ID + (itemPerTier * 3))
                 bonusValue = Random.Range(TIER_3_BONUS_VALUE_TIME_MIN, TIER_3_BONUS_VALUE_TIME_MAX);
-            else if (id <= START_ID + (ITEM_PER_TIER * 4))
+            else if (id <= START_ID + (itemPerTier * 4))
                 bonusValue = Random.Range(TIER_4_BONUS_VALUE_TIME_MIN, TIER_4_BONUS_VALUE_TIME_MAX);
-            else if (id <= START_ID + (ITEM_PER_TIER * 5))
+            else if (id <= START_ID + (itemPerTier * 5))
                 bonusValue = Random.Range(TIER_5_BONUS_VALUE_TIME_MIN, TIER_5_BONUS_VALUE_TIME_MAX);
 
             bonus = bonus.Replace("{t2}", (bonusValue <= 0) ? "1" : bonusValue.ToString("f0"));
