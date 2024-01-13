@@ -915,6 +915,7 @@ public class Converter : MonoBehaviour
     void FetchResourceNameWithType()
     {
         var path = Application.dataPath + "/Assets/item_db_equip.yml";
+        var path2 = Application.dataPath + "/Assets/item_db_etc.yml";
 
         // Is file exists?
         if (!File.Exists(path))
@@ -926,9 +927,21 @@ public class Converter : MonoBehaviour
             return;
         }
 
+        // Is file exists?
+        if (!File.Exists(path2))
+        {
+            _errorLog = path2 + " " + _localization.GetTexts(Localization.NOT_FOUND);
+
+            Debug.Log(_errorLog);
+
+            return;
+        }
+
         var equipmentsFile = File.ReadAllText(path);
+        var enchantmentFile = File.ReadAllText(path2);
 
         var equipments = equipmentsFile.Split('\n');
+        var enchantments = enchantmentFile.Split('\n');
 
         _resourceContainer = new ResourceContainer();
 
@@ -1089,6 +1102,77 @@ public class Converter : MonoBehaviour
                     _resourceContainer.grenades.Add(id);
                 else if (text.ToLower().Contains("huuma"))
                     _resourceContainer.huumas.Add(id);
+            }
+        }
+        for (int i = 0; i < enchantments.Length; i++)
+        {
+            var text = enchantments[i];
+
+            text = CommentRemover.Fix(text);
+
+            text = LineEndingsRemover.Fix(text);
+
+            // Skip
+            if (text.Contains("    Buy:")
+                || text.Contains("    Sell:")
+                || text.Contains("    Jobs:")
+                || text.Contains("    Classes:")
+                || text.Contains("    AliasName:")
+                || text.Contains("    Flags:")
+                || text.Contains("    BuyingStore:")
+                || text.Contains("    DeadBranch:")
+                || text.Contains("    Container:")
+                || text.Contains("    UniqueId:")
+                || text.Contains("    BindOnEquip:")
+                || text.Contains("    DropAnnounce:")
+                || text.Contains("    NoConsume:")
+                || text.Contains("    DropEffect:")
+                || text.Contains("    Delay:")
+                || text.Contains("    Duration:")
+                || text.Contains("    Status:")
+                || text.Contains("    Stack:")
+                || text.Contains("    Amount:")
+                || text.Contains("    Inventory:")
+                || text.Contains("    Cart:")
+                || text.Contains("    Storage:")
+                || text.Contains("    GuildStorage:")
+                || text.Contains("    NoUse:")
+                || text.Contains("    Override:")
+                || text.Contains("    Sitting:")
+                || text.Contains("    Trade:")
+                || text.Contains("    NoDrop:")
+                || text.Contains("    NoTrade:")
+                || text.Contains("    TradePartner:")
+                || text.Contains("    NoSell:")
+                || text.Contains("    NoCart:")
+                || text.Contains("    NoStorage:")
+                || text.Contains("    NoGuildStorage:")
+                || text.Contains("    NoMail:")
+                || text.Contains("    NoAuction:")
+                || text.Contains("    Script:")
+                || text.Contains("    OnEquip_Script:")
+                || text.Contains("    OnUnequip_Script:")
+                || string.IsNullOrEmpty(text)
+                || string.IsNullOrWhiteSpace(text))
+                text = string.Empty;
+
+            // Id
+            if (text.Contains("  - Id:"))
+            {
+                text = QuoteRemover.Remove(text);
+
+                text = SpacingRemover.Remove(text);
+
+                id = text.Replace("-Id:", string.Empty);
+            }
+            else
+            {
+                text = QuoteRemover.Remove(text);
+
+                text = SpacingRemover.Remove(text);
+
+                if (text.ToLower().Contains("enchant"))
+                    _resourceContainer.enchantments.Add(id);
             }
         }
     }
@@ -1586,7 +1670,7 @@ public class Converter : MonoBehaviour
 
         var itemDatabasesFile = (_isSkipNormalEquipEtcCombo ? string.Empty : File.ReadAllText(path)) + "\n"
             + File.ReadAllText(path2) + "\n"
-            + (_isSkipNormalEquipEtcCombo ? string.Empty : File.ReadAllText(path3)) + "\n"
+            + File.ReadAllText(path3) + "\n"
             + File.ReadAllText(path4);
 
         var itemDatabases = itemDatabasesFile.Split('\n');
@@ -1918,7 +2002,7 @@ public class Converter : MonoBehaviour
 
         var itemDatabasesFile = (_isSkipNormalEquipEtcCombo ? string.Empty : File.ReadAllText(path)) + "\n"
             + File.ReadAllText(path2) + "\n"
-            + (_isSkipNormalEquipEtcCombo ? string.Empty : File.ReadAllText(path3)) + "\n"
+            + File.ReadAllText(path3) + "\n"
             + File.ReadAllText(path4);
 
         if (_isOnlyUseTestTextAsset
@@ -2561,9 +2645,19 @@ public class Converter : MonoBehaviour
                     || _itemContainer.locations.Contains(_localization.GetTexts(Localization.LOCATION_LEFT_HAND))))
                     Debug.Log("Item ID: " + _itemContainer.id + " wrong location");
 
-                _itemContaianerDatabases.Add(int.Parse(_itemContainer.id), _itemContainer);
+                bool isSkipThisItem = false;
+                // Just pick ammo
+                if (_isSkipNormalEquipEtcCombo
+                    && (int.Parse(_itemContainer.id) < ItemGenerator.START_ID)
+                    && (_itemContainer.type == "Etc" || _itemContainer.type == "Card"))
+                    isSkipThisItem = true;
 
-                _itemContainers.Add(_itemContainer);
+                if (!isSkipThisItem)
+                {
+                    _itemContaianerDatabases.Add(int.Parse(_itemContainer.id), _itemContainer);
+
+                    _itemContainers.Add(_itemContainer);
+                }
 
                 _itemContainer = new ItemContainer();
 
@@ -6150,6 +6244,13 @@ public class Converter : MonoBehaviour
                     var s = GetResourceNameFromId(int.Parse(_resourceContainer.huumas[UnityEngine.Random.Range(0, _resourceContainer.huumas.Count)]), null, null, null);
                     while (s == "\"Bio_Reseearch_Docu\"")
                         s = GetResourceNameFromId(int.Parse(_resourceContainer.huumas[UnityEngine.Random.Range(0, _resourceContainer.huumas.Count)]), null, null, null);
+                    return s;
+                }
+                else if (subType.ToLower().Contains("enchant"))
+                {
+                    var s = GetResourceNameFromId(int.Parse(_resourceContainer.enchantments[UnityEngine.Random.Range(0, _resourceContainer.enchantments.Count)]), null, null, null);
+                    while (s == "\"Bio_Reseearch_Docu\"")
+                        s = GetResourceNameFromId(int.Parse(_resourceContainer.enchantments[UnityEngine.Random.Range(0, _resourceContainer.enchantments.Count)]), null, null, null);
                     return s;
                 }
 

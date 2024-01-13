@@ -35,4 +35,5 @@ public class ResourceContainer
     public List<string> garments = new List<string>();
     public List<string> shoes = new List<string>();
     public List<string> accessorys = new List<string>();
+    public List<string> enchantments = new List<string>();
 }
