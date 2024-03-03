@@ -8,8 +8,8 @@
       "url": "https://package.openupm.com"
     },
     "com.unity.2d.animation": {
-      "version": "7.0.13",
-      "depth": 1,
+      "version": "7.1.0",
+      "depth": 0,
       "source": "registry",
       "dependencies": {
         "com.unity.2d.common": "6.0.7",
@@ -46,11 +46,11 @@
       "url": "https://packages.unity.com"
     },
     "com.unity.2d.psdimporter": {
-      "version": "6.0.8",
+      "version": "6.0.9",
       "depth": 0,
       "source": "registry",
       "dependencies": {
-        "com.unity.2d.animation": "7.0.13",
+        "com.unity.2d.animation": "7.1.0",
         "com.unity.2d.common": "6.0.7",
         "com.unity.2d.sprite": "1.0.0"
       },
