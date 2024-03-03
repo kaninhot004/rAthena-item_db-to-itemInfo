@@ -15,6 +15,8 @@ Pinpoint Attack
 Servant Weapon Attack
 Servant Weapon Phantom
 Servant Weapon Demolition
+Hack And Slasher
+Hack And Slasher Attack
 Storm Slash
 Massive Flame Blaster
 Explosion Blaster
@@ -28,6 +30,7 @@ Hawk Rush
 Hawk Boomerang
 Gale Storm
 Crescive Bolt
+Mega Sonic Blow
 Triple Laser
 Mayhemic Thorns
 Focused_Arrow_Strike
