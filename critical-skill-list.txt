@@ -30,6 +30,9 @@ Hawk Rush
 Hawk Boomerang
 Gale Storm
 Crescive Bolt
+Only One Bullet
+Spiral Shooting
+Magazine for One
 Mega Sonic Blow
 Triple Laser
 Mayhemic Thorns
