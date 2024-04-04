@@ -20,7 +20,7 @@ public class RandomOptionMaker : MonoBehaviour
     // Methods
 
     [Button()]
-    public void ExportRefineDatabase()
+    public void ExportRandomOptionDatabase()
     {
         List<string> randomOptions = new List<string>();
 
