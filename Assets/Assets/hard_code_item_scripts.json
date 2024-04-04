@@ -122,6 +122,9 @@
         }, {
             "itemId": 100457,
             "itemScriptDescription": "เรียกคืน 1 CRT"
+        }, {
+            "itemId": 10000000,
+            "itemScriptDescription": "กดใช้เพื่อ รับหินตีบวกพิเศษแบบสุ่ม"
         }
     ]
 }

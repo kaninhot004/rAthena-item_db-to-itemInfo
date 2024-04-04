@@ -1,1 +1,11 @@
-﻿
+﻿  - Id: 10000000
+    AegisName: Special_Refine_Box
+    Name: Special Refine Box
+    Type: Usable
+    Flags:
+      BuyingStore: true
+    TradeNoUse:
+      Override: 100
+      NoSell: true
+    Script: |
+      callfunc("SpecialRefineBox");
