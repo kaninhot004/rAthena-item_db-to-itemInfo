@@ -9,6 +9,12 @@ public class Converter : MonoBehaviour
 {
     const string CREATOR_URL = "https://kanintemsrisukgames.wordpress.com/2019/04/05/support-kt-games/";
     const float ONE_SECOND = 1;
+    const int ITEM_DEBUG_PRICE = 1000000000;
+    const int PET_EGG_PRICE = 1000000;
+    const int PET_ARMOR_PRICE = 10000000;
+    const int FASHION_PRICE = 100000000;
+    const int BUFF_PRICE = 1000000;
+
     [SerializeField] bool _isItemUnconditional = false;
     [SerializeField] bool _isSkipEquipLevel = false;
     [SerializeField] bool _isSkipNormalEquipEtcCombo = false;
@@ -450,7 +456,7 @@ public class Converter : MonoBehaviour
                 builder.Append("\n-	shop	ItemMall" + shopNumber + "	-1,no,");
             }
 
-            builder.Append(_itemListContainer.allItemIds[i] + ":1000000000,");
+            builder.Append(_itemListContainer.allItemIds[i] + ":" + ITEM_DEBUG_PRICE + ",");
         }
 
         // Pet eggs item id
@@ -470,7 +476,7 @@ public class Converter : MonoBehaviour
                 builder.Append("\n-	shop	PetEgg" + shopNumber + "	-1,no,");
             }
 
-            builder.Append(_itemListContainer.petEggIds[i] + ":33333,");
+            builder.Append(_itemListContainer.petEggIds[i] + ":" + PET_EGG_PRICE + ",");
         }
 
         // Pet armors item id
@@ -490,7 +496,7 @@ public class Converter : MonoBehaviour
                 builder.Append("\n-	shop	PetArmor" + shopNumber + "	-1,no,");
             }
 
-            builder.Append(_itemListContainer.petArmorIds[i] + ":10000000,");
+            builder.Append(_itemListContainer.petArmorIds[i] + ":" + PET_ARMOR_PRICE + ",");
         }
 
         // Fasion costumes item id
@@ -510,7 +516,7 @@ public class Converter : MonoBehaviour
                 builder.Append("\n-	shop	FashionCostume" + shopNumber + "	-1,no,");
             }
 
-            builder.Append(_itemListContainer.fashionCostumeIds[i] + ":50000000,");
+            builder.Append(_itemListContainer.fashionCostumeIds[i] + ":" + FASHION_PRICE + ",");
         }
 
         // Buffs item id
@@ -530,7 +536,7 @@ public class Converter : MonoBehaviour
                 builder.Append("\n-	shop	BuffItem" + shopNumber + "	-1,no,");
             }
 
-            builder.Append(_itemListContainer.buffItemIds[i] + ":90000,");
+            builder.Append(_itemListContainer.buffItemIds[i] + ":" + BUFF_PRICE + ",");
         }
 
         // SubType item id
@@ -553,7 +559,7 @@ public class Converter : MonoBehaviour
                     builder.Append("\n-	shop	Debug" + item.subType + "" + maxPage + "	-1,no,");
                 }
 
-                builder.Append(item.id[i] + ":1000000000,");
+                builder.Append(item.id[i] + ":" + ITEM_DEBUG_PRICE + ",");
             }
             maxPages.Add(maxPage);
         }
@@ -600,7 +606,7 @@ public class Converter : MonoBehaviour
                     builder.Append("\n-	shop	Debug" + item.location + "" + maxPage + "	-1,no,");
                 }
 
-                builder.Append(item.id[i] + ":1000000000,");
+                builder.Append(item.id[i] + ":" + ITEM_DEBUG_PRICE + ",");
             }
             maxPages.Add(maxPage);
         }
@@ -619,7 +625,7 @@ public class Converter : MonoBehaviour
                 builder.Append("\n-	shop	DebugCARD1" + cardMaxPage + "	-1,no,");
             }
 
-            builder.Append(_itemListContainer.cardIds[i] + ":1000000000,");
+            builder.Append(_itemListContainer.cardIds[i] + ":" + ITEM_DEBUG_PRICE + ",");
         }
         maxPages.Add(cardMaxPage);
         locations.Add("CARD2");
@@ -636,7 +642,7 @@ public class Converter : MonoBehaviour
                 builder.Append("\n-	shop	DebugCARD2" + cardMaxPage + "	-1,no,");
             }
 
-            builder.Append(_itemListContainer.card2Ids[i] + ":1000000000,");
+            builder.Append(_itemListContainer.card2Ids[i] + ":" + ITEM_DEBUG_PRICE + ",");
         }
         maxPages.Add(cardMaxPage);
 
