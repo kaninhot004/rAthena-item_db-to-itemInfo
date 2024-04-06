@@ -9756,7 +9756,7 @@ Body:
     Buy: 2
     Weight: 10
     Script: |
-      callfunc "F_CashStore";
+      callfunc "TheBoxStorage";
   - Id: 12443
     AegisName: F_Neuralizer
     Name: F Neuralizer
@@ -36868,7 +36868,7 @@ Body:
       NoMail: true
       NoAuction: true
     Script: |
-      callfunc "F_CashStore";
+      callfunc "TheBoxStorage";
   - Id: 14845
     AegisName: DF_Blessing_10_Scroll
     Name: "[Scroll] Blessing Lv.10 Scroll"
@@ -58503,7 +58503,7 @@ Body:
     Buy: 2
     Weight: 10
     Script: |
-      callfunc "F_CashStore";
+      callfunc "TheBoxStorage";
   - Id: 22816
     AegisName: G_Mysterious_Water
     Name: True Mysterious Life Potion
@@ -59994,7 +59994,7 @@ Body:
       NoMail: true
       NoAuction: true
     Script: |
-      callfunc "F_CashStore";
+      callfunc "TheBoxStorage";
   - Id: 22999
     AegisName: Comp_Trans_Scroll
     Name: "[Event] Transformation Pack"
