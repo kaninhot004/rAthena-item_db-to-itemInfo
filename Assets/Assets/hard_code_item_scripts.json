@@ -87,8 +87,14 @@
             "itemId": 12442,
             "itemScriptDescription": "กดใช้เพื่อ เปิดคลังเก็บของ"
         }, {
+            "itemId": 12548,
+            "itemScriptDescription": "กดใช้เพื่อ เปิดร้านค้ารับซื้อ"
+        }, {
             "itemId": 12622,
             "itemScriptDescription": "กดใช้เพื่อ ขี่พาหนะ"
+        }, {
+            "itemId": 12790,
+            "itemScriptDescription": "กดใช้เพื่อ เปลี่ยนชื่อตัวละคร (หลังกดใช้ ให้ไปคลิกขวากับตัวละคร ที่หน้าเลือกตัวละคร)"
         }, {
             "itemId": 12928,
             "itemScriptDescription": "กดใช้เพื่อ เคลือบธาตุ Holy ให้อาวุธชั่วคราว"
