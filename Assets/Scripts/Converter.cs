@@ -549,6 +549,7 @@ public class Converter : MonoBehaviour
             subTypes.Add(item.subType);
             int maxPage = 0;
 
+            builder2.Append("deletearray $"+ item.subType + "[0],getarraysize($"+ item.subType + ");\n");
             builder2.Append("setarray $" + item.subType + "[0],");
 
             for (int i = 0; i < item.id.Count; i++)
@@ -604,6 +605,7 @@ public class Converter : MonoBehaviour
             locations.Add(item.location);
             int maxPage = 0;
 
+            builder2.Append("deletearray $" + item.location + "[0],getarraysize($" + item.location + ");\n");
             builder2.Append("setarray $" + item.location + "[0],");
 
             for (int i = 0; i < item.id.Count; i++)
