@@ -255,8 +255,8 @@ public class Converter : MonoBehaviour
         _isEnchantmentAbleToUse = Input.GetKey(KeyCode.Alpha3);
         _isHideRefinable = Input.GetKey(KeyCode.Alpha3);
         _isHideGradable = Input.GetKey(KeyCode.Alpha3);
-        _isItemUnconditional = Input.GetKey(KeyCode.Alpha3);
-        _isSkipEquipLevel = Input.GetKey(KeyCode.Alpha4);
+        _isItemUnconditional = Input.GetKey(KeyCode.Alpha4);
+        _isSkipEquipLevel = Input.GetKey(KeyCode.Alpha5);
         _isSkipNormalEquipEtcCombo = Input.GetKey(KeyCode.Alpha6);
 
         for (int i = 0; i < _objectsToHideWhenConverterStart.Length; i++)
