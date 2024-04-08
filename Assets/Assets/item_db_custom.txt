@@ -9,3 +9,12 @@
       NoSell: true
     Script: |
       callfunc("SpecialRefineBox");
+  - Id: 10000001
+    AegisName: THE_BOX_KEY
+    Name: THE BOX KEY
+    Type: Etc
+    Flags:
+      BuyingStore: true
+    TradeNoUse:
+      Override: 100
+      NoSell: true

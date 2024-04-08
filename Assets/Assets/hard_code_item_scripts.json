@@ -146,6 +146,9 @@
         }, {
             "itemId": 10000000,
             "itemScriptDescription": "กดใช้เพื่อ รับหินตีบวกพิเศษแบบสุ่ม"
+        }, {
+            "itemId": 10000001,
+            "itemScriptDescription": "นำไปสุ่ม Item ตามประเภทได้ที่ Prontera"
         }
     ]
 }
