@@ -442,6 +442,7 @@ public class Converter : MonoBehaviour
         int shopNumber = 0;
 
         StringBuilder builder = new StringBuilder();
+        StringBuilder builder2 = new StringBuilder();
 
         for (int i = 0; i < _itemListContainer.allItemIds.Count; i++)
         {
@@ -547,6 +548,9 @@ public class Converter : MonoBehaviour
         {
             subTypes.Add(item.subType);
             int maxPage = 0;
+
+            builder2.Append("setarray $" + item.subType + "[0],");
+
             for (int i = 0; i < item.id.Count; i++)
             {
                 if ((i == 0)
@@ -560,7 +564,12 @@ public class Converter : MonoBehaviour
                 }
 
                 builder.Append(item.id[i] + ":" + ITEM_DEBUG_PRICE + ",");
+                builder2.Append(item.id[i] + ",");
             }
+
+            builder2.Remove(builder2.Length - 1, 1);
+            builder2.Append(";\n");
+
             maxPages.Add(maxPage);
         }
 
@@ -594,6 +603,9 @@ public class Converter : MonoBehaviour
         {
             locations.Add(item.location);
             int maxPage = 0;
+
+            builder2.Append("setarray $" + item.location + "[0],");
+
             for (int i = 0; i < item.id.Count; i++)
             {
                 if ((i == 0)
@@ -607,7 +619,12 @@ public class Converter : MonoBehaviour
                 }
 
                 builder.Append(item.id[i] + ":" + ITEM_DEBUG_PRICE + ",");
+                builder2.Append(item.id[i] + ",");
             }
+
+            builder2.Remove(builder2.Length - 1, 1);
+            builder2.Append(";\n");
+
             maxPages.Add(maxPage);
         }
 
@@ -675,7 +692,7 @@ public class Converter : MonoBehaviour
             && (builderDebug[builderDebug.Length - 1] == ','))
             builder.Remove(builder.Length - 1, 1);
 
-        File.WriteAllText("item_mall.txt", builder.ToString(), Encoding.UTF8);
+        File.WriteAllText("item_mall.txt", builder.ToString() + "\n" + builder2.ToString(), Encoding.UTF8);
 
         Debug.Log("'item_mall.txt' has been successfully created.");
     }
