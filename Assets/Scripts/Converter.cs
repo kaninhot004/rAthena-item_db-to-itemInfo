@@ -549,7 +549,7 @@ public class Converter : MonoBehaviour
             subTypes.Add(item.subType);
             int maxPage = 0;
 
-            builder2.Append("deletearray $"+ item.subType + "[0],getarraysize($"+ item.subType + ");\n");
+            builder2.Append("deletearray $" + item.subType + "[0],getarraysize($" + item.subType + ");\n");
             builder2.Append("setarray $" + item.subType + "[0],");
 
             for (int i = 0; i < item.id.Count; i++)
@@ -1271,6 +1271,10 @@ public class Converter : MonoBehaviour
                 else
                     _monsterDatabases.Add(monsterDatabase.id, monsterDatabase);
             }
+            else if (text.Contains("    MvpExp: ")
+                || text.Contains("    MvpDrops:")
+                || text.Contains("      Mvp: true"))
+                monsterDatabase.isMvp = true;
             else if (text.Contains("    Level: "))
                 monsterDatabase.level = int.Parse(SpacingRemover.Remove(text).Replace("Level:", string.Empty));
             else if (text.Contains("    Hp: "))
@@ -1289,8 +1293,6 @@ public class Converter : MonoBehaviour
                 monsterDatabase.damageTaken = int.Parse(SpacingRemover.Remove(text).Replace("DamageTaken:", string.Empty));
             else if (text.Contains("    Class:"))
                 monsterDatabase._class = SpacingRemover.Remove(text).Replace("Class:", string.Empty);
-            else if (text.Contains("      Mvp: "))
-                monsterDatabase.isMvp = (SpacingRemover.Remove(text).Replace("Mvp:", string.Empty) == "true") ? true : false;
         }
 
         Debug.Log("There are " + _monsterDatabases.Count + " monster database.");
