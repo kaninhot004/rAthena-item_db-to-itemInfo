@@ -1273,7 +1273,8 @@ public class Converter : MonoBehaviour
             }
             else if (text.Contains("    MvpExp: ")
                 || text.Contains("    MvpDrops:")
-                || text.Contains("      Mvp: true"))
+                || text.Contains("      Mvp: true")
+                || text.Contains("    Class: Boss"))
                 monsterDatabase.isMvp = true;
             else if (text.Contains("    Level: "))
                 monsterDatabase.level = int.Parse(SpacingRemover.Remove(text).Replace("Level:", string.Empty));
