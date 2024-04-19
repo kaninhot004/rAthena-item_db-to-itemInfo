@@ -12,7 +12,7 @@ public class Converter : MonoBehaviour
     const int ITEM_DEBUG_PRICE = 1000000000;
     const int PET_EGG_PRICE = 1000000;
     const int PET_ARMOR_PRICE = 10000000;
-    const int FASHION_PRICE = 100000000;
+    const int FASHION_PRICE = 50000000;
     const int BUFF_PRICE = 1000000;
 
     [SerializeField] bool _isItemUnconditional = false;
