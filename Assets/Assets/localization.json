@@ -1666,8 +1666,8 @@
                     "korean": "-"
                 }, {
                     "key": "BONUS5_AUTO_SPELL",
-                    "thai": "• ตีกายภาพโดย {3} สุ่ม {2}% ร่าย Lv.{1} {0} ใส่ {4}",
-                    "english": "• When deal Physical Damage by {3} had {2}% chance to cast Lv.{1} {0} to {4}",
+                    "thai": "• ตีโดย {3} สุ่ม {2}% ร่าย Lv.{1} {0} ใส่ {4}",
+                    "english": "• When deal damage by {3} had {2}% chance to cast Lv.{1} {0} to {4}",
                     "japanese": "-",
                     "traditionalChinese": "-",
                     "simpifiedChinese": "-",
@@ -1682,8 +1682,8 @@
                     "korean": "-"
                 }, {
                     "key": "BONUS5_AUTO_SPELL_WHEN_HIT",
-                    "thai": "• เมื่อโดนตีกายภาพโดย {3} สุ่ม {2}% ร่าย Lv.{1} {0} ใส่ {4}",
-                    "english": "• When received Physical Damage by {3} had {2}% chance to cast Lv.{1} {0} to {4}",
+                    "thai": "• เมื่อโดนตีโดย {3} สุ่ม {2}% ร่าย Lv.{1} {0} ใส่ {4}",
+                    "english": "• When received damage by {3} had {2}% chance to cast Lv.{1} {0} to {4}",
                     "japanese": "-",
                     "traditionalChinese": "-",
                     "simpifiedChinese": "-",

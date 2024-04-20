@@ -1271,7 +1271,7 @@ public class Converter : MonoBehaviour
                 else
                     _monsterDatabases.Add(monsterDatabase.id, monsterDatabase);
             }
-            else if ((text.Contains("    MvpExp: ") || text.Contains("    MvpDrops:") || text.Contains("      Mvp: true") || text.Contains("    Class: Boss"))
+            else if ((text.Contains("    MvpExp: ") || text.Contains("    MvpDrops:") || text.Contains("      Mvp: true"))
                 && !monsterDatabase.aegisName.Contains("DUMMY")
                 && (monsterDatabase.id != 1288)
                 && (monsterDatabase.id != 1289)
@@ -3523,7 +3523,15 @@ public class Converter : MonoBehaviour
             for (int i = 0; i < allBonus.Length; i++)
             {
                 var currentBonus = allBonus[i];
-
+                if (currentBonus.IndexOf("bonus") > 0)
+                {
+                    var checkEmpty = currentBonus.Substring(0, currentBonus.IndexOf("bonus"));
+                    if (!string.IsNullOrEmpty(checkEmpty)
+                        && !string.IsNullOrWhiteSpace(checkEmpty)
+                        && (checkEmpty != " "))
+                        bonuses += "[NEW_LINE]" + checkEmpty;
+                    currentBonus = currentBonus.Substring(currentBonus.IndexOf("bonus"));
+                }
                 // { Fix
                 if (currentBonus.IndexOf("\"{") > 0)
                     currentBonus = currentBonus.Substring(currentBonus.IndexOf("\"{") + 2);

@@ -1,18 +1,35 @@
-  - Id: 2198
-    AegisName: Lapine_Shield
-    Name: Lapine Shield
+  - Id: 400152
+    AegisName: Smoky_TransformHat_LT
+    Name: Smokey's Transformation Leaf-LT
     Type: Armor
-    Weight: 1000
-    Defense: 25
+    Weight: 600
+    Defense: 7
     Slots: 1
     Locations:
-      Left_Hand: true
-    ArmorLevel: 1
-    EquipLevelMin: 100
+      Head_Top: true
+    ArmorLevel: 2
+    EquipLevelMin: 150
     Refineable: true
-    View: 3
+    Gradable: true
+    View: 1646
     Script: |
-      bonus bMdef,10;
-      if (getrefine() > 7) {
-         bonus bMatk,20;
+      .@g = getenchantgrade();
+      .@r = getrefine();
+      if (BaseLevel>=210) {
+         bonus bPAtk,2;
+         bonus bSMatk,2;
+      }
+      bonus2 bMagicAtkEle,Ele_All,.@r;
+      bonus bMatkRate,2*(.@r/3);
+      bonus bAspd,(.@r/5);
+      autobonus "{ .@r = getrefine(); bonus bMatk,100; bonus bHit,50; bonus3 bAutoSpell,\"SO_CLOUD_KILL\",max(3,getskilllv(\"SO_CLOUD_KILL\")),50; if (.@r>=7) { bonus bMatk,50; bonus bHit,25; if (.@r>=9) { bonus3 bAutoSpell,\"WL_HELLINFERNO\",5,50; if (.@r>=10) { bonus3 bAutoSpell,\"WL_CHAINLIGHTNING\",3,20; } } } }",1,10000,BF_WEAPON;
+      if (.@g >= ENCHANTGRADE_D && .@r>=11) {
+         bonus5 bAutoSpell,"RK_IGNITIONBREAK",9,30,BF_MAGIC,1;
+      }
+      if (.@g >= ENCHANTGRADE_C) {
+         bonus bPAtk,2;
+         bonus bSMatk,2;
+      }
+      if (.@g >= ENCHANTGRADE_B && .@r>=12) {
+         bonus bFixedCast,-500;
       }
