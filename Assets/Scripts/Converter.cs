@@ -6665,6 +6665,7 @@ public class Converter : MonoBehaviour
     {
         return !string.IsNullOrEmpty(_itemContainer.script)
             || !string.IsNullOrEmpty(_itemContainer.equipScript)
-            || !string.IsNullOrEmpty(_itemContainer.unequipScript);
+            || !string.IsNullOrEmpty(_itemContainer.unequipScript)
+            || !string.IsNullOrEmpty(GetCombo(GetItemDatabase(int.Parse(_itemContainer.id)).aegisName));
     }
 }
