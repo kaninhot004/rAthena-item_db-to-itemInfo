@@ -4,6 +4,7 @@ using UnityEngine.UI;
 using System.IO;
 using System;
 using System.Text;
+using System.Linq;
 
 public class Converter : MonoBehaviour
 {
@@ -252,6 +253,8 @@ public class Converter : MonoBehaviour
     /// </summary>
     void OnConvertButtonTap()
     {
+        _easyItemBuilderDatabase = new EasyItemBuilderDatabase();
+
         _isEquipmentNoValue = Input.GetKey(KeyCode.Alpha1);
         _isItemNoBonus = Input.GetKey(KeyCode.Alpha2);
         _isEnchantmentAbleToUse = Input.GetKey(KeyCode.Alpha3);
@@ -414,6 +417,8 @@ public class Converter : MonoBehaviour
         Debug.Log("'global_item_ids.txt' has been successfully created.");
 
         TurnSkillNameIntoDescription();
+
+        _easyItemBuilderDatabase.datas.Sort((a, b) => a.bonus.CompareTo(b.bonus));
 
         builder = new StringBuilder();
         for (int i = 0; i < _easyItemBuilderDatabase.datas.Count; i++)
@@ -2078,8 +2083,6 @@ public class Converter : MonoBehaviour
         _itemContainers = new List<ItemContainer>();
 
         _itemContainer = new ItemContainer();
-
-        _easyItemBuilderDatabase = new EasyItemBuilderDatabase();
 
         StringBuilder builder = new StringBuilder();
 
@@ -4091,60 +4094,85 @@ public class Converter : MonoBehaviour
             var temp = text.Replace("bonus bCastrate,", string.Empty);
             var temps = temp.Split(',');
             text = string.Format(_localization.GetTexts(Localization.BONUS_CAST_RATE), TryParseInt(temps[0]));
+
+            _easyItemBuilderDatabase.Add("Cast % (All)", GetCurrentItemIdOrCombo());
         }
         if (text.Contains("bonus2 bCastrate,"))
         {
             var temp = text.Replace("bonus2 bCastrate,", string.Empty);
             var temps = temp.Split(',');
-            text = string.Format(_localization.GetTexts(Localization.BONUS2_CAST_RATE), GetSkillName(QuoteRemover.Remove(temps[0])), TryParseInt(temps[1]));
+            var skillName = GetSkillName(QuoteRemover.Remove(temps[0]));
+            text = string.Format(_localization.GetTexts(Localization.BONUS2_CAST_RATE), skillName, TryParseInt(temps[1]));
+
+            _easyItemBuilderDatabase.Add("Cast % | " + skillName, GetCurrentItemIdOrCombo());
         }
         if (text.Contains("bonus bFixedCastrate,"))
         {
             var temp = text.Replace("bonus bFixedCastrate,", string.Empty);
             var temps = temp.Split(',');
             text = string.Format(_localization.GetTexts(Localization.BONUS_FIXED_CAST_RATE), TryParseInt(temps[0]));
+
+            _easyItemBuilderDatabase.Add("F. Cast % (All)", GetCurrentItemIdOrCombo());
         }
         if (text.Contains("bonus2 bFixedCastrate,"))
         {
             var temp = text.Replace("bonus2 bFixedCastrate,", string.Empty);
             var temps = temp.Split(',');
-            text = string.Format(_localization.GetTexts(Localization.BONUS2_FIXED_CAST_RATE), GetSkillName(QuoteRemover.Remove(temps[0])), TryParseInt(temps[1]));
+            var skillName = GetSkillName(QuoteRemover.Remove(temps[0]));
+            text = string.Format(_localization.GetTexts(Localization.BONUS2_FIXED_CAST_RATE), skillName, TryParseInt(temps[1]));
+
+            _easyItemBuilderDatabase.Add("F. Cast % | " + skillName, GetCurrentItemIdOrCombo());
         }
         if (text.Contains("bonus bVariableCastrate,"))
         {
             var temp = text.Replace("bonus bVariableCastrate,", string.Empty);
             var temps = temp.Split(',');
             text = string.Format(_localization.GetTexts(Localization.BONUS_VARIABLE_CAST_RATE), TryParseInt(temps[0]));
+
+            _easyItemBuilderDatabase.Add("V. Cast % (All)", GetCurrentItemIdOrCombo());
         }
         if (text.Contains("bonus2 bVariableCastrate,"))
         {
             var temp = text.Replace("bonus2 bVariableCastrate,", string.Empty);
             var temps = temp.Split(',');
-            text = string.Format(_localization.GetTexts(Localization.BONUS2_VARIABLE_CAST_RATE), GetSkillName(QuoteRemover.Remove(temps[0])), TryParseInt(temps[1]));
+            var skillName = GetSkillName(QuoteRemover.Remove(temps[0]));
+            text = string.Format(_localization.GetTexts(Localization.BONUS2_VARIABLE_CAST_RATE), skillName, TryParseInt(temps[1]));
+
+            _easyItemBuilderDatabase.Add("V. Cast % | " + skillName, GetCurrentItemIdOrCombo());
         }
         if (text.Contains("bonus bFixedCast,"))
         {
             var temp = text.Replace("bonus bFixedCast,", string.Empty);
             var temps = temp.Split(',');
             text = string.Format(_localization.GetTexts(Localization.BONUS_FIXED_CAST), TryParseTimer(TryParseInt(temps[0], 1000)));
+
+            _easyItemBuilderDatabase.Add("F. Cast (All)", GetCurrentItemIdOrCombo());
         }
         if (text.Contains("bonus2 bSkillFixedCast,"))
         {
             var temp = text.Replace("bonus2 bSkillFixedCast,", string.Empty);
             var temps = temp.Split(',');
-            text = string.Format(_localization.GetTexts(Localization.BONUS2_SKILL_FIXED_CAST), GetSkillName(QuoteRemover.Remove(temps[0])), TryParseTimer(TryParseInt(temps[1], 1000)));
+            var skillName = GetSkillName(QuoteRemover.Remove(temps[0]));
+            text = string.Format(_localization.GetTexts(Localization.BONUS2_SKILL_FIXED_CAST), skillName, TryParseTimer(TryParseInt(temps[1], 1000)));
+
+            _easyItemBuilderDatabase.Add("F. Cast | " + skillName, GetCurrentItemIdOrCombo());
         }
         if (text.Contains("bonus bVariableCast,"))
         {
             var temp = text.Replace("bonus bVariableCast,", string.Empty);
             var temps = temp.Split(',');
             text = string.Format(_localization.GetTexts(Localization.BONUS_VARIABLE_CAST), TryParseTimer(TryParseInt(temps[0], 1000)));
+
+            _easyItemBuilderDatabase.Add("V. Cast (All)", GetCurrentItemIdOrCombo());
         }
         if (text.Contains("bonus2 bSkillVariableCast,"))
         {
             var temp = text.Replace("bonus2 bSkillVariableCast,", string.Empty);
             var temps = temp.Split(',');
-            text = string.Format(_localization.GetTexts(Localization.BONUS2_SKILL_VARIABLE_CAST), GetSkillName(QuoteRemover.Remove(temps[0])), TryParseTimer(TryParseInt(temps[1], 1000)));
+            var skillName = GetSkillName(QuoteRemover.Remove(temps[0]));
+            text = string.Format(_localization.GetTexts(Localization.BONUS2_SKILL_VARIABLE_CAST), skillName, TryParseTimer(TryParseInt(temps[1], 1000)));
+
+            _easyItemBuilderDatabase.Add("V. Cast | " + skillName, GetCurrentItemIdOrCombo());
         }
         text = text.Replace("bonus bNoCastCancel2", _localization.GetTexts(Localization.BONUS_NO_CAST_CANCEL_2));
         text = text.Replace("bonus bNoCastCancel", _localization.GetTexts(Localization.BONUS_NO_CAST_CANCEL));
@@ -4153,27 +4181,35 @@ public class Converter : MonoBehaviour
             var temp = text.Replace("bonus bDelayrate,", string.Empty);
             var temps = temp.Split(',');
             text = string.Format(_localization.GetTexts(Localization.BONUS_DELAY_RATE), TryParseInt(temps[0]));
+
+            _easyItemBuilderDatabase.Add("Delay % (All)", GetCurrentItemIdOrCombo());
         }
         if (text.Contains("bonus bDelayRate,"))
         {
             var temp = text.Replace("bonus bDelayRate,", string.Empty);
             var temps = temp.Split(',');
             text = string.Format(_localization.GetTexts(Localization.BONUS_DELAY_RATE), TryParseInt(temps[0]));
+
+            _easyItemBuilderDatabase.Add("Delay % (All)", GetCurrentItemIdOrCombo());
         }
         if (text.Contains("bonus2 bSkillDelay,"))
         {
             var temp = text.Replace("bonus2 bSkillDelay,", string.Empty);
             var temps = temp.Split(',');
-            text = string.Format(_localization.GetTexts(Localization.BONUS2_SKILL_DELAY), GetSkillName(QuoteRemover.Remove(temps[0])), TryParseTimer(TryParseInt(temps[1], 1000)));
+            var skillName = GetSkillName(QuoteRemover.Remove(temps[0]));
+            text = string.Format(_localization.GetTexts(Localization.BONUS2_SKILL_DELAY), skillName, TryParseTimer(TryParseInt(temps[1], 1000)));
+
+            _easyItemBuilderDatabase.Add("Delay % | " + skillName, GetCurrentItemIdOrCombo());
         }
         if (text.Contains("bonus2 bSkillCooldown,"))
         {
             var temp = text.Replace("bonus2 bSkillCooldown,", string.Empty);
             var temps = temp.Split(',');
             var skillName = GetSkillName(QuoteRemover.Remove(temps[0]));
-            text = string.Format(_localization.GetTexts(Localization.BONUS2_SKILL_COOLDOWN), skillName, TryParseTimer(TryParseInt(temps[1], 1000)));
+            var value = TryParseTimer(TryParseInt(temps[1], 1000));
+            text = string.Format(_localization.GetTexts(Localization.BONUS2_SKILL_COOLDOWN), skillName, value);
 
-            _easyItemBuilderDatabase.Add("Cooldown | " + skillName, GetCurrentItemIdOrCombo());
+            _easyItemBuilderDatabase.Add("Cooldown | " + skillName, GetCurrentItemIdOrCombo() + " :: " + value);
         }
         if (text.Contains("bonus2 bAddEle,"))
         {

@@ -40,8 +40,6 @@ public class EasyItemBuilderDatabase
         Data data = new Data();
         data.bonus = value;
         data.item = itemName;
-
-        if (!datas.Contains(data))
-            datas.Add(data);
+        datas.Add(data);
     }
 }
