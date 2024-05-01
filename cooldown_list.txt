@@ -1,0 +1,769 @@
+﻿Cooldown | Axe Tornado
+ on 1335
+ on 15891
+ on 28101
+ on 28120
+ on 28127
+ on 28137
+ on 28138
+ on 28141
+ on 520002
+ on 620003
+ on 620004
+ on 620009
+ on 620012
+ on 620015
+ on 311032
+ on 311206
+
+Cooldown | Spiral Pierce
+ on 1490
+
+Cooldown | Lauda Agnus
+ on 1586
+
+Cooldown | Lauda Ramus
+ on 1586
+
+Cooldown | Clearance
+ on 1586
+ on 15365
+ on 450297
+ on 450297
+
+Cooldown | Rampage Blaster
+ on 1847
+ on 1864
+ on 1870
+ on 1873
+ on 24293
+ on 24478
+ on 420198
+ on 560008
+ on 560013
+ on 560019
+ on 560021
+ on 560025
+ on 560026
+ on 310544
+ on 311166
+ on 311234
+
+Cooldown | Improvised Song
+ on 1934
+
+Cooldown | Earth Strain
+ on 2048
+ on 2054
+ on 2064
+ on 22231
+ on 24517
+ on 32266
+ on 640011
+ on 640027
+
+Cooldown | Gravitation Field
+ on 2056
+
+Cooldown | Cicada Skin Sheeding
+ on 2582
+
+Cooldown | Wind Cutter
+ on 5899
+
+Cooldown | Reverberation
+ on 5963
+
+Cooldown | Swirling Petal
+ on 13345
+ on 13346
+ on 32262
+ on 400084
+ on 650003
+ on 650004
+ on 650008
+ on 650013
+ on 650018
+ on 650022
+ on 650024
+ on 650029
+ on 311259
+
+Cooldown | Cross Slash
+ on 13347
+ on 510056
+ on 650003
+ on 650009
+ on 650013
+ on 650018
+ on 650021
+ on 311255
+
+Cooldown | Hundred Spear
+ on 15213
+ on 28977
+ on 32005
+ on 32023
+ on 470084
+ on 470085
+ on 490319
+ on 630003
+ on 630008
+ on 630009
+ on 630012
+ on 630013
+ on 630015
+ on 310129
+ on 310518
+ on 311140
+ on 311195
+
+Cooldown | Dark Claw
+ on 15363
+ on 24307
+ on 450252
+ on 450296
+ on 450296
+ on 490037
+ on 510044
+ on 610008
+ on 610033
+
+Cooldown | Silentium
+ on 15365
+ on 450297
+ on 450297
+
+Cooldown | Crescent Elbow
+ on 15365
+ on 450297
+
+Cooldown | Lope
+ on 15430
+
+Cooldown | Purring
+ on 15430
+
+Cooldown | Pure Soul
+ on 15431
+ on 27405
+ on 27406
+
+Cooldown | Round Trip
+ on 15432
+
+Cooldown | Soul Reaper
+ on 15433
+ on 24415
+ on 400083
+
+Cooldown | Diamond Dust
+ on 15462
+ on 19426
+ on 24297
+ on 28394
+ on 28567
+ on 28984
+ on 400187
+ on 410066
+ on 410067
+ on 450294
+ on 450294
+ on 540014
+
+Cooldown | Greed
+ on 15829
+ on 15829
+
+Cooldown | Acid Demonstration
+ on 15829
+
+Cooldown | Inspiration
+ on 15892
+ on 19343
+ on 400070
+
+Cooldown | Comet
+ on 15897
+ on 15897
+ on 640005
+
+Cooldown | Drain Life
+ on 15906
+
+Cooldown | Metallic Sound
+ on 15945
+ on 20969
+ on 26212
+ on 26216
+ on 26216
+ on 32107
+ on 32111
+ on 32111
+ on 570005
+ on 570010
+ on 570018
+ on 570020
+ on 570023
+ on 570027
+ on 580005
+ on 580010
+ on 580018
+ on 580020
+ on 580023
+ on 580027
+ on 311006
+ on 311242
+
+Cooldown | Crazy Weed
+ on 16094
+ on 19453
+ on 24571
+ on 32403
+ on 310526
+ on 311148
+ on 311213
+
+Cooldown | Severe Rainstorm
+ on 18123
+ on 18170
+ on 18179
+ on 18183
+ on 18188
+ on 18202
+ on 26213
+ on 26215
+ on 32108
+ on 32110
+ on 480064
+ on 570008
+ on 570016
+ on 570017
+ on 570019
+ on 570022
+ on 570024
+ on 570024
+ on 570033
+ on 580008
+ on 580016
+ on 580017
+ on 580019
+ on 580022
+ on 580024
+ on 580024
+ on 580034
+ on 700009
+ on 700013
+ on 700017
+ on 700017
+ on 700025
+ on 700049
+ on 700055
+ on 311006
+ on 311062
+ on 311241
+
+Cooldown | Aimed Bolt
+ on 18186
+ on 18198
+ on 18201
+ on 700003
+ on 700019
+ on 700023
+ on 700043
+ on 700046
+ on 311238
+
+Cooldown | Arrow Storm
+ on 18187
+ on 19484
+ on 20931
+ on 400203
+ on 450251
+ on 480094
+ on 480313
+ on 480314
+ on 700007
+ on 700015
+ on 700024
+ on 700031
+ on 700034
+ on 700042
+ on 700045
+ on 311044
+ on 311239
+
+Cooldown | Self Destruction
+ on 18974
+
+Cooldown | Masquerade - Enervation
+ on 18975
+
+Cooldown | Masquerade - Unlucky
+ on 18975
+
+Cooldown | Masquerade - Laziness
+ on 18975
+
+Cooldown | Masquerade - Weakness
+ on 18975
+
+Cooldown | Masquerade - Ignorance
+ on 18975
+ on 450296
+
+Cooldown | Masquerade - Gloomy
+ on 18975
+ on 450296
+
+Cooldown | Crimson Rock
+ on 18978
+ on 26158
+ on 470095
+ on 470245
+ on 29300
+
+Cooldown | Tetra Vortex
+ on 19193
+
+Cooldown | Earth Drive
+ on 19196
+ on 32263
+ on 310519
+ on 311203
+
+Cooldown | Hammer of God
+ on 19202
+ on 20857
+ on 28253
+ on 810000
+ on 810000
+ on 810002
+ on 810007
+ on 810008
+ on 810013
+ on 311251
+
+Cooldown | Dragon Tail
+ on 19202
+ on 28239
+ on 28257
+ on 840000
+ on 840001
+ on 840002
+ on 840006
+ on 840007
+ on 840008
+ on 311252
+
+Cooldown | Crimson Marker
+ on 19202
+
+Cooldown | Spirit of Savage
+ on 19205
+
+Cooldown | Nyang Grass
+ on 19205
+ on 24641
+ on 400086
+
+Cooldown | Bunch of Shrimp
+ on 19205
+
+Cooldown | Psychic Wave
+ on 19262
+ on 19262
+ on 26118
+ on 26156
+ on 26178
+ on 400187
+ on 490038
+ on 540019
+ on 540024
+ on 550012
+ on 550019
+ on 550023
+ on 550045
+ on 311042
+ on 311225
+
+Cooldown | Howling of Lion
+ on 19329
+ on 410124
+ on 410125
+ on 480085
+ on 560004
+
+Cooldown | Earth Grave
+ on 19426
+ on 24310
+ on 24553
+ on 28394
+ on 28567
+ on 28984
+ on 410066
+ on 410067
+ on 420182
+ on 470245
+ on 540014
+ on 311228
+
+Cooldown | Varetyr Spear
+ on 19426
+ on 22243
+ on 26159
+ on 28394
+ on 450242
+ on 490453
+ on 550013
+ on 550019
+ on 550023
+ on 550046
+ on 310312
+ on 311227
+
+Cooldown | Anti-Material Blast
+ on 20857
+ on 28223
+ on 28236
+ on 410185
+ on 410186
+
+Cooldown | Mass Spiral
+ on 20857
+
+Cooldown | Unlimited
+ on 20931
+ on 400203
+ on 420164
+ on 450293
+ on 480313
+ on 480314
+ on 490145
+ on 310334
+
+Cooldown | Bowling Bash
+ on 21051
+
+Cooldown | Ignition Break
+ on 21051
+ on 24445
+ on 410139
+ on 410140
+ on 600014
+ on 310128
+ on 310517
+ on 311139
+ on 311194
+
+Cooldown | Sonic Wave
+ on 21052
+ on 311196
+
+Cooldown | Hallucination Walk
+ on 22134
+ on 28595
+ on 470130
+ on 480134
+
+Cooldown | Praefatio
+ on 22189
+
+Cooldown | Shield Spell
+ on 22207
+ on 470024
+
+Cooldown | Dark Illusion
+ on 22233
+ on 480134
+
+Cooldown | Kunai Explosion
+ on 24285
+ on 28737
+
+Cooldown | Lunatic Carrot Beat
+ on 24316
+ on 400086
+ on 480075
+ on 490392
+ on 490393
+
+Cooldown | Catnip Meteor
+ on 24317
+ on 550009
+ on 550027
+ on 550043
+ on 550051
+ on 550060
+ on 550065
+ on 550067
+ on 311261
+
+Cooldown | Heat Barrel
+ on 24402
+ on 28484
+ on 32301
+ on 32304
+ on 830005
+
+Cooldown | Illusion - Shadow
+ on 24407
+
+Cooldown | Hiss
+ on 24409
+
+Cooldown | Chattering
+ on 24411
+
+Cooldown | Document of Sun Moon and Star
+ on 24413
+
+Cooldown | Axe Boomerang
+ on 24469
+ on 310004
+ on 310523
+ on 311145
+
+Cooldown | Vulcan Arrow
+ on 24505
+ on 26221
+ on 32117
+
+Cooldown | Jack Frost
+ on 24514
+ on 640004
+ on 640005
+ on 640012
+ on 640028
+
+Cooldown | Feint Bomb
+ on 24535
+
+Cooldown | Spore Explosion
+ on 24568
+ on 32351
+ on 311149
+ on 311212
+
+Cooldown | Cannon Spear
+ on 24580
+ on 450257
+ on 29300
+ on 311200
+
+Cooldown | Ray of Genesis
+ on 24583
+ on 28973
+ on 28974
+ on 480153
+ on 500025
+ on 500027
+ on 500074
+ on 500074
+ on 500092
+ on 311201
+
+Cooldown | Soul Curse
+ on 24660
+ on 550053
+ on 640026
+
+Cooldown | Magma Eruption
+ on 28127
+ on 28138
+
+Cooldown | Fire Rain
+ on 28225
+ on 400085
+ on 830001
+ on 830004
+ on 830007
+
+Cooldown | Howling Mine
+ on 28226
+ on 840000
+
+Cooldown | Shatter Storm
+ on 28238
+ on 28484
+ on 820000
+ on 820002
+ on 820006
+ on 820007
+ on 311253
+
+Cooldown | Scar of Tarou
+ on 28380
+
+Cooldown | Tuna Party
+ on 28381
+ on 28423
+ on 310175
+ on 310175
+ on 310175
+ on 310564
+ on 310564
+ on 310564
+ on 310564
+
+Cooldown | Warmer
+ on 28394
+ on 28567
+ on 310149
+ on 310149
+ on 310149
+
+Cooldown | Assimilate Power
+ on 28503
+ on 32247
+ on 490013
+
+Cooldown | Dragon Breath
+ on 28552
+
+Cooldown | Dragon Breath - Water
+ on 28552
+
+Cooldown | Soul Cutter
+ on 28737
+
+Cooldown | 16th Night
+ on 32262
+
+Cooldown | Book of Dimension
+ on 400083
+
+Cooldown | Light of Star
+ on 400083
+
+Cooldown | Curse Explosion
+ on 400083
+ on 490102
+ on 311468
+
+Cooldown | Lord of Vermilion
+ on 400087
+
+Cooldown | Storm Gust
+ on 400087
+
+Cooldown | Intense Telekinesis
+ on 410129
+ on 410130
+ on 450294
+ on 450294
+ on 490079
+ on 310331
+ on 311158
+ on 311223
+
+Cooldown | Rich's Coin
+ on 410185
+ on 410186
+ on 470027
+ on 470028
+
+Cooldown | Oratio
+ on 420187
+
+Cooldown | Summon Wind Spirit Ventus
+ on 450242
+
+Cooldown | Lightning Walk
+ on 450297
+
+Cooldown | Hell Inferno
+ on 470095
+ on 470245
+
+Cooldown | Highness Heal
+ on 470105
+ on 470106
+ on 4803
+
+Cooldown | Sightless Mind
+ on 470177
+
+Cooldown | Ride In Lightening
+ on 470182
+
+Cooldown | Adoramus
+ on 470182
+
+Cooldown | Summon Water Spirit Aqua
+ on 470192
+
+Cooldown | Shield Press
+ on 480153
+ on 311202
+
+Cooldown | Cart Tornado
+ on 480153
+
+Cooldown | Emergency Escape
+ on 490096
+ on 310315
+
+Cooldown | Chain Lightning
+ on 490098
+
+Cooldown | Recognized Spell
+ on 490103
+
+Cooldown | (SC_ESCAPE)
+ on 490316
+
+Cooldown | Neutral Barrier
+ on 490336
+
+Cooldown | Poison Buster
+ on 540020
+ on 540025
+ on 311159
+ on 311229
+
+Cooldown | Tiger Cannon
+ on 560002
+ on 560007
+ on 560009
+ on 560012
+ on 560017
+ on 560018
+ on 560020
+ on 560024
+ on 560027
+ on 311233
+
+Cooldown | Earth Shaker
+ on 560008
+ on 560026
+ on 560034
+
+Cooldown | Rolling Cutter
+ on 610029
+
+Cooldown | Slug Shot
+ on 820000
+
+Cooldown | Howling of Mandragora
+ on 310137
+ on 310137
+ on 310137
+
+Cooldown | Basilica
+ on 310153
+ on 310153
+ on 310153
+
+Cooldown | Tasty Shrimp Party
+ on 310175
+ on 310175
+ on 310175
+ on 310564
+ on 310564
+ on 310564
+ on 310564
+
+Cooldown | Full Throttle
+ on 311890
+

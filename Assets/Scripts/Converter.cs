@@ -211,6 +211,8 @@ public class Converter : MonoBehaviour
     List<SkillDatabase> _allSkillDatabases = new List<SkillDatabase>();
     List<string> _allLearnableSkillDatabases = new List<string>();
 
+    EasyItemBuilderDatabase _easyItemBuilderDatabase = new EasyItemBuilderDatabase();
+
     string _currentCombo = string.Empty;
 
     void Start()
@@ -412,6 +414,15 @@ public class Converter : MonoBehaviour
         Debug.Log("'global_item_ids.txt' has been successfully created.");
 
         TurnSkillNameIntoDescription();
+
+        builder = new StringBuilder();
+        for (int i = 0; i < _easyItemBuilderDatabase.datas.Count; i++)
+        {
+            builder.Append(_easyItemBuilderDatabase.datas[i].bonus + "\n");
+            builder.Append(_easyItemBuilderDatabase.datas[i].item + "\n");
+            builder.Append("\n");
+        }
+        File.WriteAllText("cooldown_list.txt", builder.ToString(), Encoding.UTF8);
     }
     /// <summary>
     /// Exporting item lists to StringBuilder
@@ -2067,6 +2078,8 @@ public class Converter : MonoBehaviour
         _itemContainers = new List<ItemContainer>();
 
         _itemContainer = new ItemContainer();
+
+        _easyItemBuilderDatabase = new EasyItemBuilderDatabase();
 
         StringBuilder builder = new StringBuilder();
 
@@ -4157,7 +4170,10 @@ public class Converter : MonoBehaviour
         {
             var temp = text.Replace("bonus2 bSkillCooldown,", string.Empty);
             var temps = temp.Split(',');
-            text = string.Format(_localization.GetTexts(Localization.BONUS2_SKILL_COOLDOWN), GetSkillName(QuoteRemover.Remove(temps[0])), TryParseTimer(TryParseInt(temps[1], 1000)));
+            var skillName = GetSkillName(QuoteRemover.Remove(temps[0]));
+            text = string.Format(_localization.GetTexts(Localization.BONUS2_SKILL_COOLDOWN), skillName, TryParseTimer(TryParseInt(temps[1], 1000)));
+
+            _easyItemBuilderDatabase.Add("Cooldown | " + skillName, GetCurrentItemIdOrCombo());
         }
         if (text.Contains("bonus2 bAddEle,"))
         {
