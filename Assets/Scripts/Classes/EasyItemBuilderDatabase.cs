@@ -35,7 +35,7 @@ public class EasyItemBuilderDatabase
         bonus = bonus.Replace("^990B0B", string.Empty);
         bonus = bonus.Replace("^000000", string.Empty);
 
-        Value value = new Value();
+        Data.Value value = new Data.Value();
         value.itemName = itemName;
         value.itemValue = itemValue;
 
