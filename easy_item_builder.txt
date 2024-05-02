@@ -1,0 +1,5224 @@
+﻿Cast % (All)
+ on 5826 == -3
+
+Cooldown | (SC_ESCAPE)
+ on 490316 == -0.5s
+
+Cooldown | 16th Night
+ on 32262 == -25s
+
+Cooldown | Abyss Dagger
+ combo 29509+312033 == -0.2s
+
+Cooldown | Acid Demonstration
+ on 15829 == -0.3s
+
+Cooldown | Acidified Zone Fire
+ combo 29509+312043 == -0.3s
+ combo 29509+312301 == -0.2s
+
+Cooldown | Acidified Zone Ground
+ combo 29509+312043 == -0.3s
+ combo 29509+312301 == -0.2s
+
+Cooldown | Acidified Zone Water
+ combo 29509+312043 == -0.3s
+ combo 29509+312301 == -0.2s
+
+Cooldown | Acidified Zone Wind
+ combo 29509+312043 == -0.3s
+ combo 29509+312301 == -0.2s
+
+Cooldown | Adoramus
+ on 470182 == -1s
+ combo 16089+22259+24292 == -1s
+ combo 16089+22259 == -1s
+ combo 400482+550020 == -1s
+ combo 22222+15163 == -1s
+ combo 24693+24694+24695+24696+24697+24706 == -1s
+ combo 24597+24584+24585+24586+24587+24588 == -1s
+ combo 29516+29514 == -1s
+ combo 24292+24305 == -1s
+ combo 16089+480088 == -0.5s
+
+Cooldown | Aimed Bolt
+ on 311238 == -1s
+ on 700046 == -1s
+ on 700043 == -1s
+ on 700023 == -1s
+ on 700019 == -1s
+ on 700003 == -1s
+ on 18201 == -1s
+ on 18198 == -1s
+ on 18186 == -1s
+ combo 18174+420251 == -1s
+ combo 22257+19199 == -0.5s
+ combo 490145+29509 == -0.3s
+
+Cooldown | Anti-Material Blast
+ on 410186 == -5s
+ on 410185 == -5s
+ on 28236 == -5s
+ on 20857 == -2s
+ on 28223 == -1s
+
+Cooldown | Arbitrium
+ combo 29371+312038 == -0.5s
+
+Cooldown | Arm Cannon
+ combo 18974+490412 == -0.3s
+ combo 32286+480024 == -0.2s
+
+Cooldown | Arrow Storm
+ combo 480359+700057 == -2.5s
+ combo 400266+700054 == -2.5s
+ combo 18178+400022 == -2.5s
+ on 700007 == -1s
+ on 700045 == -1s
+ on 19484 == -1s
+ combo 400116+18187 == -1.8s
+ combo 18122+400476 == -1.5s
+ combo 19199+29342 == -1.5s
+ on 311044 == -1.2s
+ on 700031 == -1.2s
+ on 700034 == -1.2s
+ on 311239 == -1.2s
+ on 700015 == -0.7s
+ on 700024 == -0.7s
+ on 18187 == -0.7s
+ on 700042 == -0.7s
+ combo 480024+18984 == -0.5s
+ combo 480161+18984 == -0.5s
+ combo 19199+29341 == -0.5s
+ on 450251 == -0.3s
+ on 480094 == -0.3s
+ on 20931 == -0.2s
+ on 480313 == -0.2s
+ on 480314 == -0.2s
+ on 400203 == 0.2s
+
+Cooldown | Assimilate Power
+ on 490013 == -3s
+ on 28503 == -3s
+ on 32247 == -1.5s
+
+Cooldown | Axe Boomerang
+ combo 29436+490183 == -3s
+ on 311145 == -2s
+ on 310523 == -2s
+ combo 18973+490412 == -2s
+ combo 2995+15343 == -2s
+ on 24469 == -100-100*(.@r/4) ^FF0000หาร 1000^000000s
+ combo 18973+490240 == -0.5s
+ combo 18973+490239 == -0.5s
+ on 310004 == -(100*getskilllv("WS_OVERTHRUSTMAX")) ^FF0000หาร 1000^000000s
+
+Cooldown | Axe Stomp
+ combo 29509+311903 == -0.3s
+
+Cooldown | Axe Tornado
+ combo 22129+28114 == -200*getskilllv("NC_RESEARCHFE") ^FF0000หาร 1000^000000s
+ on 311206 == -1s
+ on 28138 == -1s
+ combo 520000+450001+470000+480000+490004 == -1s
+ on 1335 == -1s
+ on 28101 == -1s
+ on 311032 == -1s
+ on 28127 == -1s
+ on 28137 == -1s
+ combo 29484+29482 == -1s
+ on 28141 == -1s
+ on 520002 == -1s
+ on 620003 == -1s
+ on 620004 == -1s
+ on 620009 == -1s
+ on 620012 == -1s
+ on 620015 == -1s
+ on 28120 == -100*getskilllv("BS_WEAPONRESEARCH") ^FF0000หาร 1000^000000s
+ combo 490391+620004 == -0.7s
+ on 15891 == -0.5s
+ combo 29725+1335 == -0.5s
+ combo 490206+450098 == -0.5s
+ combo 28561+22129+28114 == -0.5s
+ combo 22234+28127 == -0.5s
+
+Cooldown | Banishing Buster
+ combo 490190+820001 == -1s
+ combo 19202+29347 == -1s
+ combo 19202+29348 == -1.5s
+
+Cooldown | Basilica
+ on 310153 == -5s
+ on 310153 == -3s
+ on 310153 == -2s
+
+Cooldown | Book of Dimension
+ on 400083 == -5s
+ combo 15433+490084 == -10s
+
+Cooldown | Bowling Bash
+ on 21051 == -1s
+
+Cooldown | Bunch of Shrimp
+ on 19205 == -4000*getskilllv("SU_FRESHSHRIMP") ^FF0000หาร 1000^000000s
+
+Cooldown | Cannon Spear
+ on 24580 == -200-100*(.@r/3) ^FF0000หาร 1000^000000s
+ on 29300 == -1s
+ combo 29725+5546 == -100*.@r ^FF0000หาร 1000^000000s
+ on 450257 == -1.5s
+ combo 420246+450257 == -1.5s
+ on 311200 == -0.5s
+ combo 18983+480365 == -0.5s
+ combo 490173+18983 == -0.5s
+ combo 400264+530031 == -0.5s
+ combo 24693+24694+24695+24696+24697+24699 == -0.5s
+ combo 400079+32025 == -0.5s
+ combo 24590+24584+24585+24586+24587+24588 == -0.5s
+ combo 29520+29518 == -0.5s
+
+Cooldown | Cart Tornado
+ on 480153 == -500*(.@r/4) ^FF0000หาร 1000^000000s
+ combo 24693+24694+24695+24696+24697+24701 == -1s
+ combo 24592+24584+24585+24586+24587+24588 == -1s
+ combo 24291+24304 == -1s
+ combo 19477+490260 == -100*(.@r/2) ^FF0000หาร 1000^000000s
+ combo 490391+500014 == -1.8s
+ combo 310261+310262 == -0.7s
+ combo 22257+19190 == -0.3s
+ combo 400234+590024 == -0.3s
+ combo 29725+1100 == -0.2s
+ combo 400234+590022 == -0.2s
+
+Cooldown | Catnip Meteor
+ on 550067 == -2s
+ on 550065 == -2s
+ on 550060 == -2s
+ on 550027 == -2s
+ combo 22257+19205 == -1s
+ combo 400265+550076 == -1s
+ combo 26164+400044 == -1s
+ combo 29671+29670 == -1s
+ on 311261 == -1.5s
+ on 550051 == -1.5s
+ on 550043 == -1.5s
+ on 550009 == -1.5s
+ on 24317 == -(.@r*100) ^FF0000หาร 1000^000000s
+
+Cooldown | Chain Lightning
+ combo 22170+1620 == -1s
+ on 490098 == -0.5s
+
+Cooldown | Chain Reaction Shot
+ combo 29509+311892 == -0.3s
+
+Cooldown | Chattering
+ on 24411 == -3000*(1+.@r/2) ^FF0000หาร 1000^000000s
+
+Cooldown | Cicada Skin Sheeding
+ on 2582 == 30s
+ combo 32285+480024 == 30s
+ combo 18984+490401 == 10s
+
+Cooldown | Clearance
+ on 450297 == -5s
+ on 450297 == -5s
+ on 15365 == -5s
+ combo 15082+20719+22027 == -3s
+ combo 1660+2471+2569+15029 == -3s
+ combo 1657+2471+2569+15029 == -2s
+ on 1586 == -10s
+
+Cooldown | Cloud Kill
+ combo 311011+29435 == -2s
+
+Cooldown | Coluceo Heal
+ combo 15922+20745 == -2s
+
+Cooldown | Comet
+ on 15897 == -45s
+ combo 2198+15897 == 45s
+ on 15897 == -40s
+ combo 2198+15897 == 40s
+ combo 4556+400401 == -20s
+ combo 5966+470086 == -20s
+ combo 2198+5966 == -20000+(.@r >= 9 ? -20000 : 0) ^FF0000หาร 1000^000000s
+ on 640005 == -10s
+ combo 5966+2198+4876 == +20000+(.@r > 9 ? +20000 : 0) ^FF0000หาร 1000^000000s
+
+Cooldown | Conflagration
+ combo 29371+312303 == -2s
+
+Cooldown | Crazy Weed
+ on 19453 == -4.5s
+ on 16094 == -2s
+ on 24571 == -200-100*(.@r/3) ^FF0000หาร 1000^000000s
+ combo 29602+16094 == -200*.@r ^FF0000หาร 1000^000000s
+ on 311213 == -2.5s
+ on 310526 == -1s
+ on 32403 == -1s
+ on 311148 == -1.5s
+
+Cooldown | Crescent Elbow
+ on 450297 == -3s
+ on 15365 == -3s
+
+Cooldown | Crescive Bolt
+ combo 29509+312036 == -0.2s
+
+Cooldown | Crimson Arrow
+ combo 29371+312473 == -0.3s
+
+Cooldown | Crimson Marker
+ on 19202 == -1s
+
+Cooldown | Crimson Rock
+ combo 490289+490419 == -4s
+ combo 490098+29371 == -2s
+ on 470245 == -1s
+ on 470095 == -1s
+ on 26158 == -1s
+ combo 490289+490419 == -1s
+ combo 26151+480154 == -1s
+ combo 400094+26158 == -1s
+ on 18978 == -1000-(.@r*100) ^FF0000หาร 1000^000000s
+ on 29300 == -1.5s
+ combo 32242+18978 == -0.5s
+
+Cooldown | Cross Rain
+ combo 29371+312035 == -1s
+ combo 500092+400530 == -1s
+
+Cooldown | Cross Slash
+ on 311255 == -2s
+ on 650021 == -2s
+ on 650018 == -2s
+ on 650013 == -2s
+ on 650009 == -2s
+ on 13347 == -2s
+ combo 510060+28763 == -2s
+ combo 510068+510022 == -2s
+ combo 510068+510067 == -2s
+ on 650003 == -1s
+ on 510056 == -1s
+ combo 24741+24584+24585+24586+24587+24588 == -1s
+ combo 510002+450004+470003+480003+490007 == -1s
+ combo 24403+24406 == -1s
+ combo 650046+400541 == -1.5s
+
+Cooldown | Curse Explosion
+ combo 15481+490373 == -0.8s
+ on 490102 == -0.5s
+ on 400083 == -0.5s
+ combo 29725+32294 == -0.5s
+ combo 490206+450119 == -0.5s
+ on 311468 == -(100*getskilllv("SP_SOULCURSE")) ^FF0000หาร 1000^000000s
+
+Cooldown | Dark Claw
+ combo 490208+28010 == -8s
+ on 450296 == -5s
+ on 450296 == -5s
+ on 15363 == -5s
+ on 510044 == -30s
+ combo 29596+28044 == -3000*.@r ^FF0000หาร 1000^000000s
+ on 490037 == -25s
+ combo 29725+32267 == -25s
+ on 450252 == -1m
+ on 610033 == -10s
+ on 610008 == -10s
+ on 24307 == -(10000+(2000*.@r)) ^FF0000หาร 1000^000000s
+
+Cooldown | Dark Illusion
+ combo 29725+22233 == -500*(.@r/2) ^FF0000หาร 1000^000000s
+ on 480134 == -4s
+ on 22233 == -1.5s
+
+Cooldown | Deft Stab
+ combo 29509+312033 == -0.2s
+ combo 510139+400534 == -0.2s
+
+Cooldown | Diamond Dust
+ combo 32278+4318 == 5s
+ on 410067 == -4s
+ on 410066 == -4s
+ combo 24596+24584+24585+24586+24587+24588 == -4s
+ on 28984 == -4.5s
+ on 540014 == -2s
+ on 28394 == -2s
+ on 450294 == -200*(.@r/3) ^FF0000หาร 1000^000000s
+ on 450294 == -1s
+ on 400187 == -1s
+ on 19426 == -1s
+ on 15462 == -100*(getskilllv("SA_ADVANCEDBOOK")/2) ^FF0000หาร 1000^000000s
+ on 24297 == -1*((300*.@r)+1000) ^FF0000หาร 1000^000000s
+ on 28567 == -0.5s
+
+Cooldown | Diamond Storm
+ combo 29371+312037 == -0.5s
+
+Cooldown | Document of Sun Moon and Star
+ combo 19396+29581 == -30s
+ on 24413 == -3000*(1+.@r/2) ^FF0000หาร 1000^000000s
+ combo 24412+24413 == -2s
+ combo 24740+24584+24585+24586+24587+24588 == -20s
+ combo 19396+29580 == -10s
+
+Cooldown | Dragon Breath
+ on 28552 == -0.5s
+ combo 27088+311075 == -0.5s
+
+Cooldown | Dragon Breath - Water
+ on 28552 == -0.5s
+ combo 27088+311075 == -0.5s
+
+Cooldown | Dragon Tail
+ on 28239 == -4.5s
+ on 311252 == -2s
+ on 840007 == -2s
+ on 840002 == -2s
+ combo 15432+27182 == -2s
+ combo 400237+840002 == -2s
+ combo 400237+840007 == -2s
+ on 19202 == -200*getskilllv("GS_GROUNDDRIFT") ^FF0000หาร 1000^000000s
+ on 840008 == -1s
+ on 840006 == -1s
+ on 840001 == -1s
+ on 840000 == -1s
+ on 28257 == -1s
+ combo 490190+840001 == -1.5s
+
+Cooldown | Dragonic Breath
+ combo 630041+400529 == -0.2s
+
+Cooldown | Drain Life
+ on 15906 == -2s
+ combo 24296+24309 == -1s
+
+Cooldown | Earth Drive
+ combo 310760+27329 == -3s
+ combo 18983+490222 == -2.2s
+ combo 490221+18983 == -2.2s
+ on 310519 == -1s
+ on 19196 == -1s
+ on 32263 == -1.5s
+ on 311203 == -1.2s
+ combo 18983+28977+490222 == -0.5s
+ combo 490222+490377 == -0.5s
+
+Cooldown | Earth Grave
+ on 410067 == -4s
+ on 410066 == -4s
+ on 28984 == -4.5s
+ on 311228 == -2s
+ on 540014 == -2s
+ on 28394 == -2s
+ on 24553 == -200-100*(.@r/3) ^FF0000หาร 1000^000000s
+ on 470245 == -1s
+ on 420182 == -1s
+ on 19426 == -1s
+ combo 19483+29677+490257 == -1s
+ on 24310 == -1*((300*.@r)+1000) ^FF0000หาร 1000^000000s
+ on 28567 == -0.5s
+
+Cooldown | Earth Shaker
+ on 560034 == -1s
+ on 560026 == -1s
+ on 560008 == -1s
+ combo 18979+480149 == -100*(.@r/2) ^FF0000หาร 1000^000000s
+
+Cooldown | Earth Strain
+ combo 15083+20719+22028 == -5s
+ combo 24296+24309 == -4s
+ combo 19482+29683+490259 == -3s
+ combo 480276+640005 == -3s
+ on 24517 == -200-(.@r/3)*100 ^FF0000หาร 1000^000000s
+ on 22231 == -2.4s
+ combo 22170+1620 == -2.4s
+ on 640027 == -1s
+ on 640011 == -1s
+ on 2064 == -1s
+ on 2054 == -1s
+ on 2048 == -1s
+ on 32266 == -0.3s
+
+Cooldown | Effligo
+ combo 29509+312304 == -0.3s
+
+Cooldown | Emergency Escape
+ on 310315 == -1.5s
+ combo 490206+450105 == -1.5s
+ on 490096 == 0.5s
+
+Cooldown | Epiclesis
+ combo 28430+4803 == -10s
+
+Cooldown | Explosion Blaster
+ combo 560061+400538 == -0.2s
+ combo 29509+311893 == -0.10s
+
+Cooldown | Explosive Powder
+ combo 590080+400532 == -0.2s
+
+Cooldown | Feint Bomb
+ on 24535 == -200-100*(.@r/3) ^FF0000หาร 1000^000000s
+ combo 480161+18975 == -1.8s
+ combo 32287+480024 == -0.8s
+
+Cooldown | Fire Rain
+ on 830001 == -2s
+ combo 22190+28254 == -2s
+ on 830007 == -1s
+ on 830004 == -1s
+ on 28225 == -1s
+ combo 830000+450004+470003+480003+490007 == -1s
+ on 400085 == -1.5s
+
+Cooldown | First Brand
+ combo 560060+400538 == 1.5s
+
+Cooldown | Flash Combo
+ combo 1846+20838 == -1s
+
+Cooldown | Frenzy Shot
+ combo 29509+311892 == -0.3s
+
+Cooldown | Frosty Misty
+ combo 19193+29330 == -5s
+ combo 19193+29329 == -3s
+ combo 19193+29328 == -1s
+
+Cooldown | Frozen Slash
+ combo 29371+312031 == -0.3s
+
+Cooldown | Full Throttle
+ on 311890 == -10m
+
+Cooldown | Fury
+ combo 4430+480149 == 20s
+
+Cooldown | Gale Storm
+ combo 29509+312036 == -0.2s
+
+Cooldown | Grand Judgement
+ combo 29509+311894 == -0.3s
+
+Cooldown | Gravitation Field
+ on 2056 == -2s
+
+Cooldown | Greed
+ on 15829 == 5s
+ on 15829 == -2s
+
+Cooldown | Hack And Slasher
+ combo 29509+311899 == -0.5s
+ combo 600054+400529 == -0.2s
+
+Cooldown | Hallucination Walk
+ on 470130 == -5000*getskilllv("GC_CROSSIMPACT") ^FF0000หาร 1000^000000s
+ on 22134 == -5000*.@b ^FF0000หาร 1000^000000s
+ on 480134 == -20s
+ on 28595 == -1m
+
+Cooldown | Hammer of God
+ on 311251 == -8s
+ on 810008 == -8s
+ on 810007 == -8s
+ on 810002 == -8s
+ on 810013 == -5s
+ on 28253 == -5s
+ on 810000 == -4s
+ on 810000 == -3s
+ combo 311883+300078 == -30s
+ combo 24402+24405 == -2s
+ on 19202 == -2000*getskilllv("GS_PIERCINGSHOT") ^FF0000หาร 1000^000000s
+ on 20857 == -10s
+ combo 400237+810008 == -10s
+ combo 400237+810002 == -10s
+
+Cooldown | Heat Barrel
+ on 830005 == -8000*.@r ^FF0000หาร 1000^000000s
+ on 32304 == -5s
+ on 32301 == -5s
+ combo 24742+24584+24585+24586+24587+24588 == -5s
+ combo 24693+24694+24695+24696+24697+24711 == -5s
+ combo 24402+24405 == -4s
+ on 28484 == -4000*.@S ^FF0000หาร 1000^000000s
+ on 24402 == -1000*(1+.@r/2) ^FF0000หาร 1000^000000s
+
+Cooldown | Hell Inferno
+ on 470245 == -2s
+ on 470095 == -2s
+ combo 26151+480154 == -1s
+
+Cooldown | Help Angel
+ combo 490206+450125 == -1m
+
+Cooldown | Highness Heal
+ on 4803 == -3s
+ on 470106 == -1s
+ on 470105 == -1s
+ combo 28430+4850 == -1s
+
+Cooldown | Hiss
+ combo 490206+450106 == -45s
+ on 24409 == -3000*(1+.@r/2) ^FF0000หาร 1000^000000s
+
+Cooldown | Howling Mine
+ on 840000 == -1s
+ on 28226 == -1s
+
+Cooldown | Howling of Lion
+ on 410125 == -9.5s
+ on 410124 == -9.5s
+ on 19329 == -9.5s
+ combo 19329+410125 == 9.5s
+ combo 470187+480149 == -5s
+ combo 470187+480149 == -3s
+ on 560004 == -2s
+ on 480085 == -0.2s
+
+Cooldown | Howling of Mandragora
+ combo 19190+29321 == -5s
+ combo 490206+450100 == -4s
+ combo 29467+29465 == -3s
+ combo 19190+29320 == -1s
+ on 310137 == -0.4s
+ on 310137 == -0.3s
+ on 310137 == -0.3s
+
+Cooldown | Hundred Spear
+ on 630015 == -2s
+ on 630009 == -2s
+ on 630008 == -2s
+ on 470085 == -1s
+ on 490319 == -1s
+ on 15213 == -1s
+ on 28977 == -1s
+ on 470084 == -1s
+ on 32023 == -1.5s
+ on 311195 == -1.5s
+ on 630003 == -1.5s
+ on 630012 == -1.5s
+ on 630013 == -1.5s
+ on 311140 == -0.5s
+ on 310518 == -0.5s
+ combo 18971+28977+490222 == -0.5s
+ combo 490222+490377 == -0.5s
+ combo 400227+630013 == -0.5s
+ combo 400078+32023 == -0.5s
+ on 310129 == -0.3s
+ combo 400227+630012 == -0.2s
+ on 32005 == .@val ^FF0000หาร 1000^000000s
+
+Cooldown | Ignition Break
+ on 24445 == -200-100*(.@r/3) ^FF0000หาร 1000^000000s
+ on 410140 == -2.5s
+ on 410139 == -2.5s
+ combo 410140+5396 == 2.5s
+ combo 400226+600018 == -1s
+ combo 400267+600028 == -1s
+ on 21051 == -1s
+ on 311194 == -1s
+ combo 490208+21018 == -1.5s
+ on 600014 == -0.7s
+ on 311139 == -0.5s
+ combo 400226+600017 == -0.5s
+ combo 24693+24694+24695+24696+24697+24698 == -0.5s
+ combo 24589+24584+24585+24586+24587+24588 == -0.5s
+ on 310128 == -0.3s
+ on 310517 == -0.3s
+ combo 490113+4875 == -0.2s
+ combo 490206+450086 == -0.10s
+
+Cooldown | Illusion - Shadow
+ combo 15431+490084 == -7s
+ combo 24404+24407 == -3s
+ on 24407 == -2000-(1000*(.@r/2)) ^FF0000หาร 1000^000000s
+
+Cooldown | Improvised Song
+ on 1934 == -2s
+
+Cooldown | Inspiration
+ on 400070 == -10s
+ on 19343 == -10s
+ on 15892 == -10s
+
+Cooldown | Intense Telekinesis
+ combo 29725+19496 == -8000*.@r ^FF0000หาร 1000^000000s
+ on 450294 == -7000*(.@r/3) ^FF0000หาร 1000^000000s
+ on 311223 == -30s
+ on 311158 == -30s
+ on 450294 == -30s
+ combo 480024+18978 == -30s
+ combo 4441+470129 == -2m
+ combo 490206+450111 == -2m
+ combo 19272+4365 == -2m
+ on 310331 == -1m 20s
+ on 410130 == -1m 20s
+ on 410129 == -1m 20s
+ combo 4457+312421 == -1m 20s
+ on 490079 == -1m 15s
+ combo 29725+32266 == -1m 15s
+
+Cooldown | Jack Frost
+ combo 480276+640005 == -3s
+ on 640028 == -1s
+ on 640012 == -1s
+ on 640004 == -1s
+ on 24514 == -1000-(.@r/2)*100 ^FF0000หาร 1000^000000s
+ on 640005 == -1.5s
+
+Cooldown | King's Grace
+ combo 480024+18983 == -15s
+
+Cooldown | Kunai Explosion
+ on 24285 == -2s
+ on 28737 == -1s
+ combo 490206+450117 == -1s
+
+Cooldown | Lauda Agnus
+ on 1586 == -3s
+ combo 15082+20719+22027 == -3s
+ combo 1660+2471+2569+15029 == -3s
+ combo 1657+2471+2569+15029 == -2s
+
+Cooldown | Lauda Ramus
+ on 1586 == -3s
+ combo 15082+20719+22027 == -3s
+ combo 1660+2471+2569+15029 == -3s
+ combo 1657+2471+2569+15029 == -2s
+
+Cooldown | Light of Star
+ on 400083 == 30s
+
+Cooldown | Lightning Land
+ combo 29371+312303 == -2s
+
+Cooldown | Lightning Walk
+ on 450297 == -1s
+
+Cooldown | Lope
+ on 15430 == -1000*(.@r/4) ^FF0000หาร 1000^000000s
+
+Cooldown | Lord of Vermilion
+ on 400087 == -4s
+
+Cooldown | Lunatic Carrot Beat
+ combo 24739+24584+24585+24586+24587+24588 == -5s
+ combo 24408+24409 == -3s
+ on 490393 == -2s
+ on 490392 == -2s
+ on 480075 == 200*getskilllv("SU_SPIRITOFLIFE") ^FF0000หาร 1000^000000s
+ combo 22257+19205 == -1s
+ on 400086 == -0.5s
+ combo 490206+450106 == -0.10s
+ on 24316 == -(.@r*200) ^FF0000หาร 1000^000000s
+
+Cooldown | Madness Crusher
+ combo 29509+312040 == -0.5s
+
+Cooldown | Magma Eruption
+ on 28127 == -3s
+ on 28138 == -1s
+
+Cooldown | Masquerade - Enervation
+ on 18975 == -1s
+
+Cooldown | Masquerade - Gloomy
+ on 450296 == -1s
+ on 18975 == -1s
+
+Cooldown | Masquerade - Ignorance
+ on 450296 == -1s
+ on 18975 == -1s
+
+Cooldown | Masquerade - Laziness
+ on 18975 == -1s
+
+Cooldown | Masquerade - Unlucky
+ on 18975 == -1s
+
+Cooldown | Masquerade - Weakness
+ on 18975 == -1s
+
+Cooldown | Mass Spiral
+ on 20857 == -2s
+
+Cooldown | Massive Flame Blaster
+ combo 560061+400538 == -2s
+ combo 29509+311893 == -0.2s
+
+Cooldown | Mayhemic Thorns
+ combo 500093+400532 == -0.2s
+
+Cooldown | Metallic Sound
+ on 311242 == -2s
+ on 570023 == -2s
+ on 26212 == -2s
+ on 32107 == -2s
+ combo 490095+480024 == -2s
+ on 570005 == -2s
+ on 570010 == -2s
+ on 570018 == -2s
+ on 570020 == -2s
+ on 570027 == -2s
+ on 580005 == -2s
+ on 580010 == -2s
+ on 580018 == -2s
+ on 580020 == -2s
+ on 580023 == -2s
+ on 580027 == -2s
+ combo 1989+400476 == -2s
+ on 15945 == -1s
+ combo 480166+18981 == -1s
+ combo 480024+18976 == -1s
+ combo 480024+18981 == -1s
+ on 32111 == -1s
+ on 26216 == -1s
+ on 26216 == -1s
+ on 32111 == -1s
+ on 20969 == -0.2s
+ combo 490141+29371 == -0.2s
+ on 311006 == -(100*getskilllv("WM_SIRCLEOFNATURE")) ^FF0000หาร 1000^000000s
+
+Cooldown | Meteor Assault
+ combo 490231+490395 == -0.4s
+
+Cooldown | Neutral Barrier
+ on 490336 == -5s
+
+Cooldown | Nyang Grass
+ on 19205 == -8000*getskilllv("SU_CN_METEOR") ^FF0000หาร 1000^000000s
+ on 24641 == -4s
+ on 400086 == -30s
+
+Cooldown | Oratio
+ on 420187 == -1.5s
+
+Cooldown | Over Brand
+ combo 490104+4875 == -2s
+ combo 18823+28551 == -2s
+ combo 490104+28551+18823+4875 == 2s
+
+Cooldown | Overslash
+ combo 29509+311894 == -0.3s
+
+Cooldown | Petitio
+ combo 29509+312304 == -0.3s
+ combo 29509+312691 == -0.2s
+ combo 540081+400537 == -0.2s
+
+Cooldown | Phantom Menace
+ combo 610065+400533 == 5s
+
+Cooldown | Pile Bunker
+ combo 19170+1549 == -1s
+
+Cooldown | Poison Buster
+ on 311229 == -1s
+ on 540025 == -1s
+ on 540020 == -1s
+ on 311159 == -0.5s
+ combo 490170+18980 == -0.5s
+
+Cooldown | Praefatio
+ on 22189 == -1s
+
+Cooldown | Psychic Wave
+ combo 29435+29434 == -2s
+ on 400187 == -2s
+ combo 29604+26159 == -200*.@r ^FF0000หาร 1000^000000s
+ combo 29725+5514 == -200*.@r ^FF0000หาร 1000^000000s
+ on 26118 == -1s
+ combo 400262+550075 == -1s
+ combo 490206+450112 == -1s
+ combo 29725+490034 == -1s
+ combo 19483+29683+490257 == -1s
+ on 19262 == -1s
+ on 19262 == -1s
+ on 26156 == -1s
+ on 26178 == -1s
+ on 490038 == -1s
+ on 540019 == -1s
+ on 540024 == -1s
+ on 550012 == -1s
+ on 550023 == -1s
+ on 550045 == -1s
+ on 311042 == -1.5s
+ on 550019 == -1.5s
+ on 311225 == -1.5s
+
+Cooldown | Pure Soul
+ on 15431 == 50s
+ on 27406 == -4m 50s
+ on 27405 == -4m 50s
+
+Cooldown | Purring
+ on 15430 == -20s
+
+Cooldown | Raising Dragon
+ combo 15081+20719+22026 == -5s
+ combo 490206+450097 == -25s
+
+Cooldown | Rampage Blaster
+ combo 24598+24584+24585+24586+24587+24588 == -7.5s
+ combo 24693+24694+24695+24696+24697+24707 == -7.5s
+ on 24478 == -200-(.@r/3)*100 ^FF0000หาร 1000^000000s
+ combo 1862+400061 == -1s
+ combo 400261+560034 == -1s
+ on 1847 == -1s
+ on 1864 == -1s
+ on 1870 == -1s
+ on 1873 == -1s
+ on 311234 == -1s
+ on 560008 == -1s
+ on 560013 == -1s
+ on 560019 == -1s
+ on 560021 == -1s
+ on 560025 == -1s
+ on 560026 == -1s
+ combo 18979+480149 == -100*(.@r/2) ^FF0000หาร 1000^000000s
+ on 24293 == -1*(2000+500*.@r) ^FF0000หาร 1000^000000s
+ on 311166 == -0.5s
+ combo 490110+29436 == -0.5s
+ on 310544 == -0.5s
+ on 420198 == -0.2s
+
+Cooldown | Ray of Genesis
+ on 480153 == -500*(.@r/4) ^FF0000หาร 1000^000000s
+ on 24583 == -200-100*(.@r/3) ^FF0000หาร 1000^000000s
+ on 311201 == -1s
+ on 500092 == -1s
+ on 500074 == -1s
+ on 28974 == -1s
+ on 28973 == -1s
+ combo 400482+500019 == -1s
+ combo 400262+500051 == -1s
+ combo 500030+28922 == -1s
+ combo 19475+29683+490263 == -1.5s
+ on 500074 == -0.5s
+ on 500027 == -0.5s
+ on 500025 == -0.5s
+ combo 500092+400530 == -0.5s
+
+Cooldown | Recognized Spell
+ on 490103 == 2m
+
+Cooldown | Reverberation
+ on 5963 == -2s
+
+Cooldown | Rich's Coin
+ on 470028 == -3s
+ on 470027 == -3s
+ on 410186 == -3s
+ on 410185 == -3s
+
+Cooldown | Ride In Lightening
+ on 470182 == -0.5s
+ combo 1862+22259 == -0.5s
+ combo 22222+15147 == -0.5s
+
+Cooldown | Rock Down
+ combo 29371+312031 == -0.3s
+
+Cooldown | Rolling Cutter
+ combo 610065+400533 == 2s
+ on 610029 == -0.2s
+
+Cooldown | Round Trip
+ on 15432 == -0.5s
+ combo 490206+450109 == -0.2s
+
+Cooldown | Rush Quake
+ combo 29509+311903 == -0.3s
+
+Cooldown | Savage Impact
+ combo 29509+311898 == -0.3s
+ combo 610064+400533 == -0.2s
+
+Cooldown | Scar of Tarou
+ on 28380 == -5s
+
+Cooldown | Self Destruction
+ combo 480024+18974 == -30s
+ combo 480161+18974 == -30s
+ combo 15079+20719+22024 == -1m
+ on 18974 == -10000*(.@r/4) ^FF0000หาร 1000^000000s
+
+Cooldown | Servant Weapon
+ combo 29509+312300 == -30s
+
+Cooldown | Severe Rainstorm
+ on 311241 == -2s
+ on 580016 == -2s
+ combo 580000+450004+470003+480003+490007 == -2s
+ combo 22174+1746 == -2s
+ on 18123 == -2s
+ on 18170 == -2s
+ on 18179 == -2s
+ on 18183 == -2s
+ on 18188 == -2s
+ on 18202 == -2s
+ on 26215 == -2s
+ on 32110 == -2s
+ on 480064 == -2s
+ on 311062 == -2s
+ on 570022 == -2s
+ on 570033 == -2s
+ on 570016 == -2s
+ on 700013 == -2s
+ on 580022 == -2s
+ on 700049 == -2s
+ on 580034 == -2s
+ on 700055 == -2s
+ on 700025 == -2s
+ combo 22174+450092+1746 == 2s
+ combo 18123+450092 == 2s
+ combo 480064+450092 == 2s
+ on 570019 == -2.5s
+ on 570017 == -2.5s
+ on 580019 == -2.5s
+ on 700009 == -2.5s
+ on 580017 == -2.5s
+ on 700017 == -1s
+ combo 28573+470098 == -1s
+ combo 580008+20838 == -1s
+ on 580008 == -1s
+ on 700017 == -1s
+ on 26213 == -1s
+ on 32108 == -1s
+ on 580024 == -1s
+ on 580024 == -1s
+ on 570008 == -1s
+ on 570024 == -1s
+ on 570024 == -1s
+ combo 29488+29486 == -1s
+ combo 19479+29686+490258 == -1.5s
+ combo 18981+490401 == -1.5s
+ combo 400264+700055 == -0.5s
+ on 311006 == -(100*getskilllv("WM_SIRCLEOFNATURE")) ^FF0000หาร 1000^000000s
+
+Cooldown | SH_HOWLING_OF_CHUL_HO
+ combo 550134+400546 == -0.3s
+
+Cooldown | SH_HYUN_ROKS_BREEZE
+ combo 550135+400546 == -2s
+
+Cooldown | Shadow Stab
+ combo 29509+312039 == -0.5s
+
+Cooldown | Shatter Storm
+ on 28238 == -2s
+ on 311253 == -1s
+ on 820007 == -1s
+ on 820006 == -1s
+ on 820002 == -1s
+ on 820000 == -1s
+ on 28484 == -100*.@S ^FF0000หาร 1000^000000s
+
+Cooldown | Shield Press
+ on 480153 == -300*(.@r/4) ^FF0000หาร 1000^000000s
+ combo 400079+32024 == -1s
+ combo 19196+29314 == -1s
+ combo 19196+29315 == -1.5s
+ combo 22257+19196 == -0.5s
+ combo 19196+29313 == -0.5s
+ on 311202 == -0.3s
+
+Cooldown | Shield Shooting
+ combo 29509+311894 == -0.3s
+
+Cooldown | Shield Spell
+ on 470024 == -2s
+ on 22207 == -2s
+
+Cooldown | Sightless Mind
+ on 470177 == 1m
+
+Cooldown | Silentium
+ on 450297 == -5s
+ on 450297 == -5s
+ on 15365 == -5s
+
+Cooldown | Silvervine Stem Spear
+ combo 24410+24411 == -1s
+
+Cooldown | Sky Net Blow
+ combo 29725+16098 == -0.2s
+ combo 490130+29509 == -0.2s
+
+Cooldown | Slug Shot
+ on 820000 == -2s
+
+Cooldown | Sonic Wave
+ on 311196 == -1.5s
+ on 21052 == -1.5s
+
+Cooldown | Soul Curse
+ on 640026 == -2s
+ on 550053 == -2s
+ combo 400240+550063 == -2s
+ combo 400240+550026 == -2s
+ on 24660 == -1000-100*(.@r/2) ^FF0000หาร 1000^000000s
+ combo 24743+24584+24585+24586+24587+24588 == -1.5s
+ combo 24693+24694+24695+24696+24697+24713 == -1.5s
+
+Cooldown | Soul Cutter
+ on 28737 == -1s
+
+Cooldown | Soul Destroyer
+ combo 490191+18982 == -0.2s
+
+Cooldown | Soul Explosion
+ combo 15433+490084 == -30s
+
+Cooldown | Soul Reaper
+ combo 24743+24584+24585+24586+24587+24588 == -5s
+ on 400083 == -30s
+ combo 15433+490084 == -30s
+ on 24415 == -3000-1000*(.@r/2) ^FF0000หาร 1000^000000s
+ combo 24414+24415 == -2s
+ on 15433 == -1m
+ combo 19397+29584 == -10s
+ combo 19397+29583 == -10s
+
+Cooldown | Spark Blaster
+ combo 590079+400531 == -0.2s
+
+Cooldown | Spiral Pierce
+ on 1490 == 20s
+
+Cooldown | Spirit of Savage
+ on 19205 == -4000*getskilllv("SU_LUNATICCARROTBEAT") ^FF0000หาร 1000^000000s
+ combo 29671+29669 == -1s
+
+Cooldown | Spore Explosion
+ combo 19477+490260 == -300*(.@r/2) ^FF0000หาร 1000^000000s
+ on 311212 == -2s
+ on 311149 == -2s
+ combo 18977+490240 == -2s
+ combo 32286+480024 == -2s
+ combo 18977+490239 == -2s
+ on 24568 == -200-100*(.@r/3) ^FF0000หาร 1000^000000s
+ combo 29602+32351 == -200*.@r ^FF0000หาร 1000^000000s
+ on 32351 == -1s
+ combo 18977+490412 == -0.5s
+
+Cooldown | Stone Skin
+ combo 4302+450225 == -2000*.@r ^FF0000หาร 1000^000000s
+
+Cooldown | Stoop
+ combo 15430+27152 == -6s
+ combo 4097+15430 == -3s
+
+Cooldown | Storm Cannon
+ combo 29371+312473 == -0.3s
+
+Cooldown | Storm Gust
+ on 400087 == -5s
+
+Cooldown | Summon Water Spirit Aqua
+ combo 32278+4318 == -30s
+ on 470192 == -25s
+
+Cooldown | Summon Wind Spirit Ventus
+ on 450242 == -25s
+
+Cooldown | Swirling Petal
+ on 311259 == -2s
+ on 650024 == -2s
+ on 650022 == -2s
+ on 650018 == -2s
+ on 650013 == -2s
+ on 650008 == -2s
+ on 650003 == -2s
+ on 13346 == -1s
+ combo 13337+19210 == -1s
+ combo 490190+650004 == -1s
+ on 13345 == -1s
+ combo 13332+15178+20821 == -1s
+ on 650029 == -1s
+ on 650004 == -1s
+ combo 22257+19203 == -0.5s
+ on 400084 == -0.5s
+ combo 22234+13340 == -0.3s
+ on 32262 == -0.10s
+
+Cooldown | Tasty Shrimp Party
+ on 310564 == -2s
+ on 310564 == -2s
+ on 310564 == -1s
+ on 310564 == -1s
+ on 310175 == -1s
+ on 310175 == -1.5s
+ on 310175 == -0.5s
+
+Cooldown | Terra Drive
+ combo 29371+312037 == -0.5s
+
+Cooldown | Tetra Vortex
+ on 19193 == -500*(getskilllv("WZ_METEOR")+getskilllv("WZ_VERMILION")) ^FF0000หาร 1000^000000s
+
+Cooldown | Tiger Cannon
+ on 311233 == -1s
+ on 560027 == -1s
+ on 560024 == -1s
+ on 560017 == -1s
+ on 560012 == -1s
+ on 560009 == -1s
+ on 560007 == -1s
+ on 560002 == -1s
+ on 560020 == -0.5s
+ on 560018 == -0.5s
+ combo 4123+470187 == -0.5s
+
+Cooldown | Tuna Party
+ on 28381 == -7s
+ on 28423 == -5s
+ on 310564 == -2s
+ on 310564 == -2s
+ on 310564 == -1s
+ on 310564 == -1s
+ on 310175 == -1s
+ on 310175 == -1.5s
+ on 310175 == -0.5s
+
+Cooldown | Unlimited
+ on 490145 == -45s
+ combo 29509+490367 == -45s
+ combo 311359+29431 == -45s
+ combo 310003+310002 == -45s
+ on 310334 == -3m
+ on 20931 == -3m
+ on 450293 == -30s
+ on 400203 == -2m 30s
+ on 480314 == -1m 30s
+ on 480313 == -1m 30s
+ on 420164 == -1m
+ combo 29725+480050 == -18s
+ combo 29600+18187 == -15000*.@r ^FF0000หาร 1000^000000s
+
+Cooldown | Vacuum Extreme
+ combo 32285+480024 == -1s
+
+Cooldown | Varetyr Spear
+ combo 490289+490419 == -4s
+ on 311227 == -2s
+ on 550019 == -2s
+ on 550013 == -2s
+ on 26159 == -2s
+ on 550046 == -2s
+ on 550023 == -2.5s
+ on 490453 == -1s
+ on 450242 == -1s
+ on 310312 == -1s
+ on 22243 == -1s
+ on 19426 == -1s
+ combo 490289+490419 == -1s
+ combo 400440+550019 == -1s
+ combo 480166+18980 == -1s
+ combo 29614+29615 == -1s
+ combo 490168+18980 == -100*(.@r/2) ^FF0000หาร 1000^000000s
+ on 28394 == -0.5s
+ combo 490168+18980 == -0.4s
+
+Cooldown | Vulcan Arrow
+ on 24505 == -200-(.@r/3)*100 ^FF0000หาร 1000^000000s
+ combo 28536+470098 == -0.7s
+ on 32117 == -0.10s
+ on 26221 == -0.10s
+
+Cooldown | Warmer
+ on 310149 == -4s
+ on 310149 == -2s
+ on 310149 == -1s
+ on 28567 == -15s
+ on 28394 == -15s
+ combo 29435+29433 == -15s
+
+Cooldown | Wind Cutter
+ on 5899 == -1.8s
+
+Delay % (All)
+ on 310886 == -getskilllv("WL_CHAINLIGHTNING")
+ on 311359 == -getskilllv("RA_RANGERMAIN")/2
+ on 311433 == -getskilllv("GC_RESEARCHNEWPOISON")/2
+ on 310191 == -getskilllv("ASC_BREAKER")
+ combo 19266+19267 == getequiprefinerycnt(EQI_HEAD_TOP)*-1
+ combo 15212+20856 == -getequiprefinerycnt(EQI_GARMENT)
+ on 29300 == -90
+ on 310334 == -90
+ on 311456 == -9
+ on 311451 == -9
+ on 470027 == -8*getskilllv("RL_H_MINE")
+ on 470028 == -8*getskilllv("RL_H_MINE")
+ on 470006 == -8*getskilllv("RA_UNLIMIT")
+ on 470007 == -8*getskilllv("RA_UNLIMIT")
+ on 400433 == 8-(2*(.@r/2))
+ combo 22202+490332 == -8
+ combo 490097+22202 == -8
+ on 470205 == -8
+ combo 32278+4318 == -8
+ combo 28479+22125+28480 == -8
+ on 400474 == -8
+ combo 32259+18974 == -8
+ combo 28481+22126+28482 == -8
+ on 470205 == -8
+ combo 4381+450295 == -8
+ on 410091 == -8
+ combo 4123+450295 == -8
+ on 470157 == -8
+ on 480269 == -8
+ combo 22202+450175+480076 == -8
+ combo 19482+29677+490259 == -8
+ combo 19481+29680+490262 == -8
+ on 400107 == -8
+ on 400106 == -8
+ on 400105 == -8
+ combo 4112+410254 == -8
+ combo 22126+28461+28462 == -8
+ combo 22125+28459+28460 == -8
+ on 400400 == -8
+ combo 490030+4877 == -8
+ on 700046 == -8
+ combo 490269+19480+29677 == -8
+ combo 15246+20902+22168 == -8
+ on 400001 == -8
+ on 480270 == -8
+ combo 470183+480312 == -8
+ combo 32259+470120 == -8
+ on 311347 == -8
+ combo 15481+490373 == -8
+ on 410018 == -8
+ combo 28429+470120 == -8
+ combo 490147+22007 == 8
+ combo 28506+15037+2476+2575+2884 == -70
+ on 27414 == -70
+ on 29176 == -70
+ combo 29045+450189 == -70
+ on 29045 == -70
+ on 27416 == -70
+ on 27415 == -70
+ on 29223 == -70
+ on 27413 == -70
+ combo 22245+4876 == -70
+ combo 470096+490140 == -70
+ combo 32303+32249+32251 == -7
+ combo 510089+510090 == -7
+ on 400499 == -7
+ on 311347 == -7
+ on 600024 == -7
+ combo 15246+20902+22168 == -7
+ on 450182 == -7
+ combo 420017+15278+20963 == -7
+ on 400498 == -7
+ on 510041 == -7
+ on 470205 == -7
+ on 510006 == -7
+ on 20842 == -7
+ on 500073 == -7
+ on 490316 == -7
+ combo 32219+400075 == -7
+ on 1866 == -7
+ on 510041 == -7
+ on 480248 == -7
+ on 610003 == -7
+ on 21058 == -7
+ on 510020 == -7
+ on 20844 == -7
+ combo 420022+15279+20966 == -7
+ on 510020 == -7
+ on 20843 == -7
+ on 810016 == 7
+ on 610043 == 7
+ on 640039 == 7
+ on 650030 == 7
+ on 450258 == -6*getskilllv("WM_LULLABY_DEEPSLEEP")
+ on 450216 == -6*getskilllv("RK_DRAGONTRAINING")
+ on 22189 == -6*getskilllv("AB_PRAEFATIO")
+ combo 22123+28455+28456 == -6
+ combo 22124+28457+28458 == -6
+ on 490170 == -6
+ on 490191 == -6
+ on 311455 == -6
+ on 15207 == -6
+ combo 27417+300291+300481 == -6
+ on 4950 == -6
+ combo 28475+22123+28476 == -6
+ on 470199 == -6
+ on 28436 == -6
+ on 490377 == -6
+ on 311450 == -6
+ combo 28477+22124+28478 == -6
+ combo 18609+20940 == -6
+ on 470127 == -6
+ on 490376 == -6
+ on 310110 == -6
+ on 310110 == -6
+ on 19283 == -5-3*(.@r/3)
+ combo 31023+450135 == -50
+ on 470026 == -50
+ on 470105 == -50
+ on 470025 == -50
+ combo 31023+450272 == -50
+ on 470106 == -50
+ on 480317 == -5*.@a
+ on 480312 == -5*(.@r/4)
+ on 15407 == -5-(min(10 กับ .@r)*2)
+ on 18970 == -5-(getrefine()/2)
+ on 450185 == -5
+ on 490034 == -5
+ on 450186 == -5
+ on 490095 == -5
+ on 490034 == -5
+ on 19492 == -5
+ on 450185 == -5
+ on 450179 == -5
+ on 450182 == -5
+ on 450201 == -5
+ on 450186 == -5
+ on 490094 == -5
+ on 450001 == -5
+ on 490168 == -5
+ on 20973 == -5
+ combo 400017+450017+480015+490023 == -5
+ on 490281 == -5
+ on 490284 == -5
+ on 490316 == -5
+ on 490364 == -5
+ on 490365 == -5
+ on 450001 == -5
+ on 420246 == -5
+ on 490264 == -5
+ on 420199 == -5
+ on 20993 == -5
+ on 490400 == -5
+ on 490401 == -5
+ on 20993 == -5
+ on 20993 == -5
+ on 410100 == -5
+ on 490269 == -5
+ on 490263 == -5
+ on 490175 == -5
+ on 490219 == -5
+ on 20970 == -5
+ on 490189 == -5
+ on 20972 == -5
+ on 490198 == -5
+ on 20973 == -5
+ on 20973 == -5
+ on 450004 == -5
+ on 490238 == -5
+ on 490262 == -5
+ on 490239 == -5
+ on 490240 == -5
+ on 450004 == -5
+ on 490032 == -5
+ on 490257 == -5
+ on 490259 == -5
+ on 490260 == -5
+ on 490032 == -5
+ on 28946 == -5
+ on 19491 == -5
+ on 2703 == -5
+ on 470181 == -5
+ on 470183 == -5
+ on 470183 == -5
+ on 19101 == -5
+ on 1871 == -5
+ on 19181 == -5
+ on 1640 == -5
+ on 480009 == -5
+ on 480012 == -5
+ on 480014 == -5
+ on 480016 == -5
+ on 480017 == -5
+ on 480018 == -5
+ on 480019 == -5
+ on 480022 == -5
+ on 1577 == -5
+ on 480026 == -5
+ on 480026 == -5
+ on 480041 == -5
+ on 18987 == -5
+ on 18987 == -5
+ on 480050 == -5
+ on 5406 == -5
+ on 15484 == -5
+ on 15483 == -5
+ on 15482 == -5
+ on 15405 == -5
+ on 15405 == -5
+ on 15276 == -5
+ on 15243 == -5
+ on 460020 == -5
+ on 470073 == -5
+ on 15243 == -5
+ on 18200 == -5
+ on 18508 == -5
+ on 18877 == -5
+ on 18892 == -5
+ on 18950 == -5
+ on 5564 == -5
+ on 470094 == -5
+ on 5468 == -5
+ on 5415 == -5
+ on 1340 == -5
+ on 1339 == -5
+ combo 18974+490240 == -5
+ on 480195 == -5
+ on 19438 == -5
+ on 480231 == -5
+ combo 18971+28977+490222 == -5
+ combo 19483+29677+490257 == -5
+ on 19474 == -5
+ on 450243 == -5
+ on 19476 == -5
+ combo 312422+312014 == -5
+ combo 312014+312449 == -5
+ on 480331 == -5
+ on 480331 == -5
+ on 19477 == -5
+ combo 2387+2440+2744+15470 == -5
+ combo 15461+27417 == -5
+ combo 300169+490233 == -5
+ on 19478 == -5
+ on 19479 == -5
+ combo 490391+500014 == -5
+ on 19488 == -5
+ on 450264 == -5
+ on 450264 == -5
+ on 19274 == -5
+ on 450265 == -5
+ on 19321 == -5
+ on 480105 == -5
+ on 480105 == -5
+ on 480106 == -5
+ on 480106 == -5
+ on 19426 == -5
+ on 19426 == -5
+ on 450271 == -5
+ on 480145 == -5
+ combo 312806+312021+400393 == -5
+ combo 312806+312021+400391 == -5
+ combo 312805+312014+400394 == -5
+ combo 312805+312014+400393 == -5
+ combo 312803+312014 == -5
+ on 450270 == -5
+ on 480174 == -5
+ on 450265 == -5
+ on 480192 == -5
+ on 480193 == -5
+ on 480256 == -5
+ on 15969 == -5
+ on 410092 == -5
+ combo 470020+480018+490019+450086 == -5
+ combo 22101+29151 == -5
+ combo 22101+29150 == -5
+ combo 22101+29149 == -5
+ combo 22101+29148 == -5
+ combo 20965+22116 == -5
+ on 28586 == -5
+ on 28595 == -5
+ combo 18652+32227 == -5
+ combo 470020+480018+490019+450086 == -5
+ combo 22101+29153 == -5
+ on 32305 == -5
+ combo 470019+480017+490018+450055 == -5
+ combo 470018+480016+490017+450072 == -5
+ combo 470018+480016+490017+450070 == -5
+ on 32288 == -5
+ on 32287 == -5
+ on 27396 == -5
+ combo 470018+480016+490017+450068 == -5
+ combo 22101+29152 == -5
+ on 28583 == -5
+ combo 470018+480016+490017+450062 == -5
+ on 400153 == -5
+ combo 310188+310189 == -5
+ combo 310078+15399 == -5
+ on 400374 == -5
+ on 400340 == -5
+ on 28394 == -5
+ on 28438 == -5
+ on 400154 == -5
+ on 400153 == -5
+ on 640012 == -5
+ on 700029 == -5
+ on 22167 == -5
+ on 640028 == -5
+ on 28564 == -5
+ combo 630006+450145 == -5
+ combo 32231+15388+15389 == -5
+ combo 28438+4833 == -5
+ on 28567 == -5
+ on 28580 == -5
+ combo 470018+480016+490017+450064 == -5
+ combo 470018+480016+490017+450057 == -5
+ on 610034 == -5
+ combo 470016+480012+490014+450023 == -5
+ on 311347 == -5
+ on 28983 == -5
+ combo 470016+480012+490014+450032 == -5
+ combo 470016+480012+490014+450032 == -5
+ on 28982 == -5
+ combo 470016+480012+490014+450028 == -5
+ combo 470016+480012+490014+450028 == -5
+ on 28980 == -5
+ combo 470016+480012+490014+450023 == -5
+ combo 470016+480012+490014+450034 == -5
+ combo 470016+480012+490014+450022 == -5
+ combo 470016+480012+490014+450022 == -5
+ combo 470016+480012+490014+450018 == -5
+ combo 470016+480012+490014+450018 == -5
+ combo 2964+15073 == -5
+ combo 2935+2387+2440+2744 == -5
+ on 28979 == -5
+ combo 2963+480206 == -5
+ on 28787 == -5
+ on 311014 == -5
+ combo 470018+480016+490017+450056 == -5
+ on 300193 == -5
+ on 29540 == -5
+ on 29540 == -5
+ on 29540 == -5
+ combo 470018+480016+490017+450052 == -5
+ on 32286 == -5
+ on 32285 == -5
+ combo 470018+480016+490017+450052 == -5
+ on 300192 == -5
+ combo 470017+480014+490015+450021 == -5
+ on 310853 == -5
+ combo 470017+480014+490015+450021 == -5
+ on 300396 == -5
+ combo 470016+480012+490014+450050 == -5
+ combo 470016+480012+490014+450050 == -5
+ combo 470016+480012+490014+450036 == -5
+ combo 470016+480012+490014+450036 == -5
+ on 32227 == -5
+ combo 470016+480012+490014+450034 == -5
+ on 400378 == -5
+ on 28485 == -5
+ on 400433 == -5
+ combo 490175+18973 == -5
+ on 400395 == -5
+ combo 490182+28010 == -5
+ combo 480172+18973 == -5
+ on 26146 == -5
+ on 500014 == -5
+ on 500016 == -5
+ on 28370 == -5
+ combo 20926+19261+400014 == -5
+ combo 18974+490239 == -5
+ combo 29585+300133 == -5
+ combo 490219+19474 == -5
+ combo 490095+480024 == -5
+ combo 32288+480024 == -5
+ combo 32287+480024 == -5
+ on 500030 == -5
+ combo 460006+490078 == -5
+ on 400386 == -5
+ on 26176 == -5
+ on 550004 == -5
+ on 500037 == -5
+ combo 480076+22202 == -5
+ on 26175 == -5
+ on 400498 == -5
+ combo 19185+490016 == -5
+ on 500040 == -5
+ on 400499 == -5
+ combo 28431+2387+2440+2935 == -5
+ combo 450271+470198+480284 == -5
+ combo 450270+470197+480283 == -5
+ on 510071 == -5
+ combo 18609+20940+490159 == -5
+ on 22238 == -5
+ on 400394 == -5
+ on 610013 == -5
+ combo 22202+450175+480076 == -5
+ combo 490066+15402+20947+22209 == -5
+ combo 490053+490052 == -5
+ combo 490052+15395+20946+22208 == -5
+ combo 490051+490050 == -5
+ combo 490050+15394+20946+22208 == -5
+ on 22171 == -5
+ combo 490061+490060 == -5
+ combo 490055+490054 == -5
+ combo 490045+490044 == -5
+ combo 490054+15396+20946+22208 == -5
+ on 610019 == -5
+ on 400387 == -5
+ on 610026 == -5
+ combo 490060+15399+20947+22209 == -5
+ combo 490067+490066 == -5
+ combo 500030+28922 == -5
+ combo 15362+4381 == -5
+ combo 490064+15401+20947+22209 == -5
+ on 400393 == -5
+ combo 490065+490064 == -5
+ on 400389 == -5
+ combo 22167+32219 == -5
+ on 400391 == -5
+ combo 27394+300128+300130 == -5
+ on 400392 == -5
+ on 580035 == 5
+ on 570034 == 5
+ on 2744 == 5
+ on 28431 == 5
+ on 590050 == 5
+ on 590052 == 5
+ on 540061 == 5
+ on 540064 == 5
+ on 550104 == 5
+ on 550100 == 5
+ on 550099 == 5
+ combo 311436+310121 == -40
+ combo 311436+310122 == -40
+ combo 311436+310124 == -40
+ combo 311436+310126 == -40
+ combo 311436+310125 == -40
+ combo 311436+310123 == -40
+ combo 22243+4876 == -40
+ combo 470090+4875 == -40
+ combo 450011+480006+470010 == -40
+ combo 470112+4876 == -40
+ on 470180 == -4*.@r
+ combo 19439+20749 == -4*(readparam(bVit)/30)
+ on 312068 == -4
+ on 312068 == -4
+ on 312068 == -4
+ on 460053 == -4
+ on 27343 == -4
+ on 312068 == -4
+ combo 19126+420032 == -4
+ on 20940 == -4
+ combo 2935+2744 == -4
+ on 4949 == -4
+ combo 480076+490030+4877 == -4
+ on 310110 == -4
+ combo 2744+15470 == -4
+ on 470199 == -4
+ on 19179 == -4
+ combo 28431+2935 == -4
+ on 310515 == -4
+ on 310515 == -4
+ on 310515 == -4
+ on 311105 == -4
+ on 311105 == -4
+ on 5503 == -4
+ on 311105 == -4
+ on 311105 == -4
+ on 310515 == -4
+ on 400002 == -4
+ on 312006 == -3-3*getenchantgrade()
+ on 28598 == -30
+ on 32263 == -30
+ on 490102 == -30
+ on 4403 == -30
+ combo 4263+15431 == -30
+ on 490009 == -30
+ on 490029 == -30
+ on 490037 == -30
+ on 490038 == -30
+ combo 18983+28977+490222 == -30
+ combo 18972+490335 == -30
+ on 490079 == -30
+ on 490083 == -30
+ on 490096 == -30
+ on 490393 == -30
+ on 490392 == -30
+ on 490098 == -30
+ combo 490143+310655 == -30
+ combo 310760+27329 == -30
+ combo 28594+4877 == -30
+ on 470048 == -30
+ on 490183 == -30
+ combo 490290+4858 == -30
+ combo 18983+28977+490222 == 30
+ combo 19172+4403 == 30
+ on 311356 == -3*getskilllv("AB_CLEMENTIA")
+ on 15897 == -3*.@r
+ on 400396 == -3*.@r
+ on 420028 == -3*.@a
+ on 630015 == -3*.@a
+ on 480076 == -3*(.@r/4)
+ combo 28974+490365 == -3*(.@r/3)
+ combo 19244+1659 == -3*(.@r/2)
+ on 550030 == -3*(.@r/2)
+ on 19401 == -3-(3*(.@r/3))
+ on 15089 == -3-((.@r>=7)?2:0)
+ on 490398 == -3
+ combo 28535+28534 == -3
+ on 490402 == -3
+ on 490397 == -3
+ on 420032 == -3
+ on 490255 == -3
+ combo 2198+470086 == -3
+ on 490416 == -3
+ on 490403 == -3
+ on 410136 == -3
+ combo 27163+27165 == -3
+ combo 27196+27331 == -3
+ combo 22122+28453+28454 == -3
+ combo 312306+312068 == -3
+ combo 400006+4256 == -3
+ on 490470 == -3
+ on 24674 == -3
+ on 490469 == -3
+ on 490465 == -3
+ on 490464 == -3
+ on 490421 == -3
+ on 22167 == -3
+ on 490420 == -3
+ combo 27396+300128+300130 == -3
+ combo 28473+22122+28474 == -3
+ on 490407 == -3
+ on 410101 == -3
+ on 490406 == -3
+ on 410136 == -3
+ on 490415 == -3
+ on 28945 == -3
+ on 490190 == -3
+ on 480195 == -3
+ on 480195 == -3
+ on 27165 == -3
+ on 480193 == -3
+ combo 313020+450174 == -3
+ on 480094 == -3
+ on 311096 == -3
+ on 28942 == -3
+ on 5372 == -3
+ on 311449 == -3
+ on 5568 == -3
+ on 5593 == -3
+ on 311454 == -3
+ on 15162 == -3
+ on 460053 == -3
+ on 460053 == -3
+ on 19427 == -3
+ on 480193 == -3
+ on 20935 == -3
+ combo 27417+300291 == -3
+ on 490121 == -3
+ on 27292 == -3
+ on 31013 == -3
+ on 490084 == -3
+ on 300456 == -3
+ on 300103 == -3
+ on 310494 == -3
+ on 310852 == -3
+ on 490252 == 3
+ combo 15396+20946+22208 == -25
+ combo 15391+20946+22208 == -25
+ combo 480188+311075 == -25
+ combo 2382+2437+2540 == -25
+ combo 15395+20946+22208 == -25
+ on 490068 == -25
+ combo 15394+20946+22208 == -25
+ combo 311439+480319 == -25
+ combo 15393+20946+22208 == -25
+ combo 311074+470077 == -25
+ combo 15392+20946+22208 == -25
+ on 2398 == -23
+ on 2367 == -23
+ on 400177 == -20
+ combo 15398+20947+22209 == -20
+ combo 15397+20947+22209 == -20
+ on 32303 == -20
+ on 400087 == -20
+ combo 20935+22199+15378 == -20
+ on 400060 == -20
+ combo 20925+22036 == -20
+ on 400048 == -20
+ on 28595 == -20
+ combo 15348+19366+20923+22192 == -20
+ on 32352 == -20
+ combo 15399+20947+22209 == -20
+ on 28595 == -20
+ on 32110 == -20
+ on 28635 == -20
+ on 28771 == -20
+ on 28772 == -20
+ on 400187 == -20
+ on 18190 == -20
+ combo 15400+20947+22209 == -20
+ on 16099 == -20
+ on 400203 == -20
+ combo 4246+15431 == -20
+ combo 4263+15431 == -20
+ on 490145 == -20
+ on 450176 == -20
+ on 19497 == -20
+ on 19496 == -20
+ on 480340 == -20
+ on 19468 == -20
+ combo 15213+20858+22143 == -20
+ combo 15213+20858+22143 == -20
+ on 1181 == -20
+ on 1867 == -20
+ on 2058 == -20
+ on 13346 == -20
+ on 21054 == -20
+ on 21050 == -20
+ on 26162 == -20
+ on 28045 == -20
+ on 400213 == -20
+ combo 15401+20947+22209 == -20
+ combo 15402+20947+22209 == -20
+ combo 22234+28615 == -20
+ on 400396 == -20
+ on 28140 == -20
+ combo 470031+4879 == -20
+ on 550017 == -20
+ on 550006 == -20
+ combo 400047+310125 == -20
+ combo 400047+29551 == -20
+ on 26215 == -20
+ on 32026 == -20
+ on 490211 == -2*getskilllv("WM_REVERBERATION")
+ on 15405 == -2*getskilllv("RK_DRAGONBREATH_WATER")
+ on 22071 == -2*getrefine()
+ on 19379 == -2*.@r
+ on 530028 == -2*.@r
+ on 470086 == -2*(getskilllv("WL_FREEZE_SP")/3)
+ combo 28483+400486 == -2*(.@r/4)
+ combo 490100+400023 == -2*(.@r/4)
+ combo 400465+490383 == -2*(.@r/4)
+ combo 400465+490382 == -2*(.@r/4)
+ combo 490101+400023 == -2*(.@r/4)
+ on 312718 == -2*(.@r/3)
+ on 480192 == -2*(.@r/3)
+ on 312700 == -2*(.@r/3)
+ on 610034 == -2*(.@r/3)
+ on 19451 == -2*(.@b/18)
+ on 19452 == -2*(.@b/18)
+ on 300169 == -2
+ on 5549 == -2
+ on 19427 == -2
+ on 4948 == -2
+ on 2933 == -2
+ on 5569 == -2
+ on 18950 == -2
+ on 300456 == -2
+ on 15162 == -2
+ combo 29053+29054+29055 == -2
+ on 300456 == -2
+ on 24768 == -2
+ on 312306 == -2
+ combo 490222+490377 == -16
+ on 480251 == -15*.@c
+ on 530035 == -15
+ on 540058 == -15
+ on 550031 == -15
+ combo 490391+620004 == -15
+ on 300225 == -15
+ on 550075 == -15
+ combo 28962+4858 == -15
+ combo 19172+28500 == -15
+ combo 400409+310515 == -15
+ combo 510105+510106 == -15
+ combo 400264+700056 == -15
+ on 550091 == -15
+ on 450217 == -15
+ on 550092 == -15
+ combo 15195+16063 == -15
+ combo 480197+400002 == -15
+ combo 28431+2744+2387+2440 == -15
+ on 560038 == -15
+ on 570033 == -15
+ combo 400151+610019 == -15
+ combo 480125+400002 == -15
+ combo 480124+400002 == -15
+ combo 400135+530012 == -15
+ combo 24744+24584+24585+24586+24587+24588 == -15
+ combo 24742+24584+24585+24586+24587+24588 == -15
+ combo 24741+24584+24585+24586+24587+24588 == -15
+ on 510077 == -15
+ on 490381 == -15
+ on 500056 == -15
+ on 450298 == -15
+ on 15481 == -15
+ on 15480 == -15
+ on 470082 == -15
+ on 470082 == -15
+ on 15892 == -15
+ on 470083 == -15
+ on 470083 == -15
+ on 2049 == -15
+ on 1635 == -15
+ combo 15981+27425 == -15
+ combo 4148+410254 == -15
+ on 450309 == -15
+ on 32013 == -15
+ on 450297 == -15
+ on 490427 == -15
+ on 450296 == -15
+ on 450295 == -15
+ on 450294 == -15
+ on 490110 == -15
+ on 490337 == -15
+ on 490367 == -15
+ on 450293 == -15
+ on 490380 == -15
+ on 19199 == -15
+ on 19205 == -15
+ on 15483 == -15
+ on 490413 == -15
+ on 490414 == -15
+ combo 24740+24584+24585+24586+24587+24588 == -15
+ combo 24739+24584+24585+24586+24587+24588 == -15
+ on 580034 == -15
+ on 28552 == -15
+ on 400114 == -15
+ combo 600001+450004+470003+480003+490007 == -15
+ combo 610000+450004+470003+480003+490007 == -15
+ combo 700001+450004+470003+480003+490007 == -15
+ combo 24589+24584+24585+24586+24587+24588 == -15
+ on 400203 == -15
+ combo 24591+24584+24585+24586+24587+24588 == -15
+ combo 24592+24584+24585+24586+24587+24588 == -15
+ combo 24593+24584+24585+24586+24587+24588 == -15
+ combo 24594+24584+24585+24586+24587+24588 == -15
+ combo 24595+24584+24585+24586+24587+24588 == -15
+ combo 24598+24584+24585+24586+24587+24588 == -15
+ on 400465 == -15
+ on 400486 == -15
+ combo 24599+24584+24585+24586+24587+24588 == -15
+ combo 560000+450004+470003+480003+490007 == -15
+ on 400113 == -15
+ on 610039 == -15
+ combo 2387+2440+2744 == -15
+ on 700060 == -15
+ combo 2051+20847 == -15
+ on 800008 == -15
+ on 800016 == -15
+ on 400023 == -15
+ combo 15388+15389 == -15
+ on 28588 == -15
+ on 650029 == -15
+ on 640038 == -15
+ on 28585 == -15
+ on 640035 == -15
+ on 620020 == -15
+ on 28582 == -15
+ on 620018 == -15
+ combo 510001+450001+470000+480000+490004 == -15
+ combo 490076+29509 == -15
+ on 610042 == -15
+ on 15482 == -15
+ on 420164 == -15
+ on 410185 == -15
+ on 410130 == -15
+ combo 24693+24694+24695+24696+24697+24712 == -15
+ on 410129 == -15
+ combo 24693+24694+24695+24696+24697+24711 == -15
+ combo 24693+24694+24695+24696+24697+24710 == -15
+ combo 24693+24694+24695+24696+24697+24709 == -15
+ on 410089 == -15
+ combo 24693+24694+24695+24696+24697+24713 == -15
+ on 410088 == -15
+ on 410067 == -15
+ combo 24693+24694+24695+24696+24697+24714 == -15
+ on 410066 == -15
+ combo 24693+24694+24695+24696+24697+24708 == -15
+ combo 24693+24694+24695+24696+24697+24715 == -15
+ combo 24693+24694+24695+24696+24697+24707 == -15
+ combo 24693+24694+24695+24696+24697+24700 == -15
+ on 600031 == -15
+ on 590049 == -15
+ on 311458 == -15
+ combo 620010+450146 == -15
+ on 590044 == -15
+ combo 24693+24694+24695+24696+24697+24698 == -15
+ on 410186 == -15
+ combo 24693+24694+24695+24696+24697+24706 == -15
+ on 311453 == -15
+ combo 24693+24694+24695+24696+24697+24701 == -15
+ combo 24693+24694+24695+24696+24697+24702 == -15
+ combo 24693+24694+24695+24696+24697+24703 == -15
+ combo 24693+24694+24695+24696+24697+24704 == -15
+ combo 24693+24694+24695+24696+24697+24705 == -15
+ combo 400154+420066 == -12
+ on 610016 == -12
+ on 480088 == -12
+ on 480154 == -12
+ on 610009 == -12
+ combo 4877+490404 == -12
+ on 510028 == -12
+ on 480276 == -12
+ on 480242 == -12
+ on 18198 == -12
+ on 311452 == -12
+ on 311457 == -12
+ on 19366 == -12
+ combo 1668+15089 == -10-min(.@r กับ 10)
+ on 311020 == -10-5*getenchantgrade()
+ combo 310012+310655 == -100
+ on 19347 == -100
+ on 29174 == -100
+ on 310012 == -100
+ on 2904 == -100
+ on 2199 == -100
+ on 450209 == -10*getskilllv("NC_PILEBUNKER")
+ combo 15128+20773 == -10 - (BaseLevel > 129 ? 10 : 0)
+ on 20931 == -10
+ on 450142 == -10
+ on 450179 == -10
+ combo 400150+610019 == -10
+ on 20733 == -10
+ on 580016 == -10
+ on 450133 == -10
+ on 20733 == -10
+ on 580004 == -10
+ on 570063 == -10
+ on 570035 == -10
+ combo 450206+480160 == -10
+ on 450181 == -10
+ on 450200 == -10
+ on 450140 == -10
+ combo 310918+310912 == -10
+ on 450130 == -10
+ on 450129 == -10
+ on 21066 == -10
+ on 21058 == -10
+ on 420180 == -10
+ on 450010 == -10
+ on 590024 == -10
+ on 590022 == -10
+ on 590010 == -10
+ combo 550031+450144 == -10
+ combo 550031+450144 == -10
+ on 450015 == -10
+ on 590009 == -10
+ on 590008 == -10
+ on 580062 == -10
+ on 580036 == -10
+ combo 400048+4803 == -10
+ combo 300192+300193 == -10
+ on 570016 == -10
+ on 840020 == -10
+ on 15829 == -10
+ on 570004 == -10
+ on 450245 == -10
+ combo 22257+19198 == -10
+ on 530014 == -10
+ on 450279 == -10
+ on 530013 == -10
+ on 530012 == -10
+ on 520012 == -10
+ on 510150 == -10
+ on 510139 == -10
+ combo 450140+480050+470045 == -10
+ on 19426 == -10
+ combo 470021+480019+490020+450089 == -10
+ combo 470021+480019+490020+450089 == -10
+ combo 470020+480018+490019+450106 == -10
+ combo 470020+480018+490019+450106 == -10
+ on 15829 == -10
+ combo 470020+480018+490019+450104 == -10
+ combo 470020+480018+490019+450104 == -10
+ combo 470020+480018+490019+450102 == -10
+ on 450280 == -10
+ on 450274 == -10
+ on 530054 == -10
+ on 450201 == -10
+ on 540055 == -10
+ on 22119 == -10
+ on 560006 == -10
+ on 450202 == -10
+ combo 450218+480186 == -10
+ on 450203 == -10
+ on 550143 == -10
+ combo 27062+29724 == -10
+ on 450205 == -10
+ on 550106 == -10
+ on 550103 == -10
+ on 550101 == -10
+ on 550098 == -10
+ on 550097 == -10
+ on 450234 == -10
+ on 550088 == -10
+ on 450243 == -10
+ on 450244 == -10
+ combo 15073+480206 == -10
+ on 300314 == -10
+ on 560025 == -10
+ on 410015 == -10
+ on 22227 == -10
+ on 28531 == -10
+ combo 450144+1846 == -10
+ on 28587 == -10
+ on 400077 == -10
+ on 28584 == -10
+ on 640017 == -10
+ on 640010 == -10
+ on 640006 == -10
+ on 630045 == -10
+ on 630027 == -10
+ combo 2193+2374 == -10
+ on 400077 == -10
+ on 28581 == -10
+ on 620012 == -10
+ on 620010 == -10
+ on 620009 == -10
+ on 400086 == -10
+ combo 520000+450001+470000+480000+490004 == -10
+ combo 520000+450004+470003+480003+490007 == -10
+ combo 530000+450003+470002+480002+490006 == -10
+ combo 18180+400049 == -10
+ on 650034 == -10
+ on 650047 == -10
+ on 32031 == -10
+ on 700046 == -10
+ on 700045 == -10
+ on 700043 == -10
+ on 700041 == -10
+ on 700035 == -10
+ on 700033 == -10
+ on 700032 == -10
+ on 700030 == -10
+ on 700018 == -10
+ on 400060 == -10
+ on 800013 == -10
+ on 32117 == -10
+ combo 18652+32227 == -10
+ on 32261 == -10
+ on 700016 == -10
+ on 830025 == -10
+ on 700010 == -10
+ on 700008 == -10
+ combo 550002+450004+470003+480003+490007 == -10
+ combo 570000+450002+470001+480001+490005 == -10
+ on 510072 == -10
+ combo 580000+450002+470001+480001+490005 == -10
+ combo 400120+28767 == -10
+ on 610021 == -10
+ combo 420019+15353+20964 == -10
+ combo 420021+15347+20965 == -10
+ on 610020 == -10
+ on 610019 == -10
+ on 26140 == -10
+ on 610013 == -10
+ on 600024 == -10
+ on 600018 == -10
+ on 600017 == -10
+ on 600008 == -10
+ on 600004 == -10
+ on 590080 == -10
+ on 410014 == -10
+ on 590029 == -10
+ on 590028 == -10
+ combo 18720+1622 == -10
+ combo 19495+2374 == -10
+ combo 400078+21052 == -10
+ on 610022 == -10
+ on 610023 == -10
+ on 26221 == -10
+ on 400177 == -10
+ combo 640000+450003+470002+480002+490006 == -10
+ on 400187 == -10
+ on 400203 == -10
+ on 400400 == -10
+ on 400401 == -10
+ on 28136 == -10
+ on 400433 == -10
+ on 400440 == -10
+ on 610026 == -10
+ on 26167 == -10
+ on 620003 == -10
+ on 400511 == -10
+ on 26151 == -10
+ on 400530 == -10
+ on 610028 == -10
+ on 830026 == -10
+ on 610027 == -10
+ on 450281 == -10
+ on 510079 == -10
+ on 800002 == -10
+ on 470130 == -10
+ combo 470018+480016+490017+450068 == -10
+ on 15982 == -10
+ on 470192 == -10
+ combo 470018+480016+490017+450064 == -10
+ on 2193 == -10
+ on 470192 == -10
+ on 2374 == -10
+ on 470130 == -10
+ on 15981 == -10
+ on 480001 == -10
+ on 2995 == -10
+ on 470106 == -10
+ on 470106 == -10
+ on 470105 == -10
+ on 470105 == -10
+ on 470009 == -10
+ on 470085 == -10
+ on 470085 == -10
+ on 480000 == -10
+ on 480002 == -10
+ combo 15213+20858+22143 == -10
+ combo 540087+470265 == -10
+ on 480115 == -10
+ combo 4635+410275 == -10
+ combo 18174+420251 == -10
+ combo 470019+480017+490018+450055 == -10
+ combo 470018+480016+490017+450072 == -10
+ combo 490483+480349 == -10
+ combo 490485+480351 == -10
+ combo 490486+480352 == -10
+ combo 550141+470265 == -10
+ on 1673 == -10
+ combo 700101+470265 == -10
+ on 1150 == -10
+ on 480064 == -10
+ on 470008 == -10
+ on 15983 == -10
+ combo 470018+480016+490017+450070 == -10
+ on 480003 == -10
+ on 1641 == -10
+ on 15957 == -10
+ on 470084 == -10
+ on 470084 == -10
+ on 15484 == -10
+ on 15831 == -10
+ on 15831 == -10
+ on 470025 == -10
+ on 15482 == -10
+ on 15830 == -10
+ on 470025 == -10
+ on 15483 == -10
+ on 15830 == -10
+ on 470024 == -10
+ on 15956 == -10
+ on 15822 == -10
+ on 15822 == -10
+ on 15826 == -10
+ on 15826 == -10
+ on 15827 == -10
+ on 15827 == -10
+ on 15828 == -10
+ on 15828 == -10
+ on 15479 == -10
+ combo 470018+480016+490017+450057 == -10
+ on 15431 == -10
+ on 15426 == -10
+ on 470009 == -10
+ on 15892 == -10
+ on 15205 == -10
+ on 15891 == -10
+ on 15879 == -10
+ on 470045 == -10
+ on 470045 == -10
+ on 15277 == -10
+ combo 470018+480016+490017+450062 == -10
+ on 15383 == -10
+ on 15384 == -10
+ on 470038 == -10
+ on 470032 == -10
+ on 470026 == -10
+ on 470026 == -10
+ on 15409 == -10
+ on 15418 == -10
+ on 840032 == -10
+ combo 490484+480350 == -10
+ on 470008 == -10
+ combo 400134+530012 == -10
+ combo 470020+480018+490019+450091 == -10
+ combo 15079+20719+22024 == -10
+ on 490041 == -10
+ on 490028 == -10
+ combo 470020+480018+490019+450091 == -10
+ on 450299 == -10
+ on 480372 == -10
+ on 480359 == -10
+ on 480358 == -10
+ on 480352 == -10
+ on 480351 == -10
+ on 480350 == -10
+ on 480349 == -10
+ on 480348 == -10
+ on 480347 == -10
+ on 480346 == -10
+ combo 2374+15476 == -10
+ on 480345 == -10
+ combo 22119+28518 == -10
+ on 480145 == -10
+ on 480331 == -10
+ on 19172 == -10
+ on 490207 == -10
+ combo 470020+480018+490019+450096 == -10
+ combo 470020+480018+490019+450098 == -10
+ combo 470020+480018+490019+450102 == -10
+ on 510017 == -10
+ combo 470020+480018+490019+450098 == -10
+ on 510009 == -10
+ on 500062 == -10
+ combo 19185+29278 == -10
+ on 500040 == -10
+ combo 19185+490016 == -10
+ on 500037 == -10
+ on 500016 == -10
+ combo 470020+480018+490019+450096 == -10
+ on 500014 == -10
+ on 500004 == -10
+ on 450282 == -10
+ on 19284 == -10
+ on 450283 == -10
+ on 450284 == -10
+ on 450285 == -10
+ on 19172 == -10
+ on 19172 == -10
+ combo 4916+420236 == -10
+ on 480338 == -10
+ on 840021 == -10
+ on 480233 == -10
+ on 480284 == -10
+ on 18813 == -10
+ on 480283 == -10
+ combo 400486+480342 == -10
+ combo 28483+480342 == -10
+ combo 28387+29124+480332 == -10
+ combo 28510+420238 == -10
+ on 480291 == -10
+ combo 470018+480016+490017+450056 == -10
+ on 800006 == -10
+ combo 470020+480018+490019+450090 == -10
+ combo 470020+480018+490019+450090 == -10
+ on 480232 == -10
+ combo 312429+400465 == -10
+ on 480231 == -10
+ on 480292 == -10
+ on 480230 == -10
+ on 480174 == -10
+ on 480148 == -10
+ on 480147 == -10
+ on 480146 == -10
+ combo 450299+470183+480312 == -10
+ on 22231 == 10
+ on 480313 == 10
+ combo 20813+27062+29724 == 10
+ combo 4925+420236 == 10
+ on 470156 == 10
+ on 470113 == 10
+ on 480314 == 10
+ combo 20783+27062+29724 == 10
+ combo 400082+400164 == -1-.@r/3
+ on 311363 == -1*getskilllv("SC_SHADOWFORM")
+ on 20837 == -1*.@val
+ on 610027 == -1*.@a
+ on 510038 == -1*.@a
+ on 18186 == -1*(5+.@r)
+ combo 480161+18975 == -1*(.@r/2)
+ on 4958 == -1
+ on 430003 == -1
+ on 29054 == -1
+ on 2935 == -1
+ on 312306 == -1
+ on 410102 == -1
+ on 312306 == -1
+ on 310488 == -1
+ on 310851 == -1
+ on 19126 == -1
+ on 2933 == -1
+ on 19371 == -1
+ combo 24343+24344 == -1
+ on 29053 == -1
+ on 24343 == -1
+ on 18534 == -1
+ on 312306 == -1
+ on 31012 == -1
+ on 15470 == -1
+ on 5864 == -1
+ on 29055 == -1
+ on 24344 == -1
+ combo 24573+24572+24574 == -.@sum/2
+ combo 19239+400477 == -.@r/2
+ on 480024 == -.@r/2
+ combo 19266+19139 == -.@r
+ on 32007 == -.@r
+ on 15375 == -.@r
+ on 550021 == -.@r
+ on 480114 == -.@r
+ on 32025 == -.@r
+ combo 24465+24464+24466 == -.@r
+ on 24746 == -.@r
+ combo 18974+490412 == -.@r
+ on 450163 == -.@r
+ on 22212 == -.@r
+ on 22203 == -.@r
+ on 15374 == -.@r
+ on 2027 == -.@r
+ on 450263 == .@r
+ combo 400499+480195 == .@r
+ combo 18975+490395 == .@r
+ on 20800 == -.@delay
+ on 19453 == .@delay
+ on 15446 == -.@d
+ on 490279 == -.@a/12
+ combo 2907+15924 == -.@a
+ on 490218 == -.@a
+ on 480045 == -.@a
+ combo 19393+420087 == -(readparam(bAgi)/20)
+ on 460018 == -(min(getrefine() กับ 12)/2)
+ on 311432 == -(getskilllv("NC_TRAININGAXE")/2)
+ combo 300351+311075 == -(getskilllv("ASC_BREAKER")+getskilllv("ASC_METEORASSAULT"))/3
+ combo 27380+311075 == -(getskilllv("ASC_BREAKER")+getskilllv("ASC_METEORASSAULT"))
+ on 312198 == -(getrefine()/2)
+ on 2173 == -(getrefine()*2)
+ combo 24243+24244+24331 == (getequiprefinerycnt(EQI_SHADOW_SHOES)+getequiprefinerycnt(EQI_SHADOW_SHIELD)+getequiprefinerycnt(EQI_SHADOW_ARMOR) >= 25?-6:-1)
+ combo 24243+24244+24245 == (getequiprefinerycnt(EQI_SHADOW_SHOES)+getequiprefinerycnt(EQI_SHADOW_SHIELD)+getequiprefinerycnt(EQI_SHADOW_ARMOR) >= 25?-5:-1)
+ on 18563 == -(5+.@r*3)
+ combo 1620+20847 == -(3*(min(.@weapon กับ 10)/3))
+ on 460003 == -(.@r>=9?12:(.@r>=7?8:4))
+ on 24244 == (.@r<7)?-1:((.@r<9)?-2:-3)
+ on 24243 == (.@r<7)?-1:((.@r<9)?-2:-3)
+ on 24245 == (.@r<7)?-1:((.@r<9)?-2:-3)
+ on 700003 == -(.@r/3*4)
+ on 700019 == -(.@r/3*4)
+ on 312716 == -(.@r/3)
+ on 312699 == -(.@r/3)
+ on 312717 == -(.@r/3)
+ on 24574 == -(.@r/3)
+ on 24331 == -(.@r/3)
+ on 312698 == -(.@r/3)
+ on 1664 == -(.@r/2)*3
+ on 1636 == -(.@r/2)*3
+ on 24768 == -(.@r/2)
+ combo 24447+24446+24448 == -(.@r/2)
+ on 28565 == -(.@i/18)
+ on 28484 == -(.@F)
+ on 4480 == ((getrefine()>14)?-20:-15)
+ on 29278 == -((.@r>=9)?15:((.@r>=7)?10:5))
+ on 18201 == -((.@r/3)*4)
+ on 2193 ==  -10-(5*(.@r-6))
+ combo 410136+480161 ==    -min(.@r กับ 15)
+ combo 29725+22216 ==    -4*.@r
+ on 630008 ==    -3*getskilllv("RK_DRAGONTRAINING")
+ combo 29725+470024 ==    -3*.@r
+ combo 29725+15824 ==    -3*.@r
+ combo 29725+19449 ==    -3*.@r
+ combo 29725+22242 ==    -3*.@r
+ combo 2573+420065 ==    -3*(.@e/20)
+ on 15462 ==    -2*getskilllv("WL_RADIUS")
+ on 26112 ==    -2*getskilllv("SU_PICKYPECK")
+ combo 29725+20972 ==    -2*.@r
+ combo 29725+20970 ==    -2*.@r
+ combo 29725+20984 ==    -2*.@r
+ combo 313020+450174 ==    -2*(.@r_armor/2)
+ on 400084 ==    -2*(.@r/3)
+ on 510018 ==    -1*getskilllv("RG_BACKSTAP")
+ on 510017 ==    -1*getskilllv("KO_LEFT")
+ on 700014 ==    -1*(getskilllv("AC_VULTURE")/2)
+ combo 4958+19050 ==    -1 - ( .@r >= 9 ) ? 1 : 0
+ on 20856 ==    .@val
+ on 22210 ==    .@delay
+ on 480120 ==    -.@a
+ on 610028 ==    -(getskilllv("AS_KATAR")/2)
+
+F. Cast % (All)
+ on 1649 == -getrefine()
+ on 1679 == -getrefine()
+ combo 311074+4556 == -80
+ on 480251 == -70*.@d
+ on 410057 == -70
+ combo 311439+450309 == -70
+ on 410065 == -70
+ on 410064 == -70
+ on 410058 == -70
+ on 410010 == -70
+ on 550021 == -70
+ on 410009 == -70
+ on 2041 == -70
+ on 400101 == -70
+ on 2047 == -70
+ on 32007 == -70
+ on 490068 == -70
+ on 311420 == -70
+ combo 400409+310600 == -70
+ combo 311074+4456 == -70
+ combo 311883+27089 == -70
+ combo 490076+29371 == -70
+ on 13499 == -70
+ on 4556 == -70
+ on 19347 == -7*.@r
+ on 19426 == -7*.@r
+ on 4858 == -7
+ on 2907 == -7
+ on 4857 == -7
+ on 4856 == -7
+ on 4855 == -7
+ on 4854 == -7
+ on 4853 == -7
+ on 22242 == -60
+ on 2400 == -60
+ on 15375 == -50
+ combo 22221+20815 == -50
+ combo 29585+300166 == -50
+ combo 28513+18849 == -50
+ on 5965 == -50
+ combo 19139+20813 == -50
+ combo 28513+18848 == -50
+ on 27089 == -50
+ on 19282 == -50
+ on 22511 == -50
+ on 4456 == -50
+ on 4459 == -50
+ on 29300 == -50
+ on 470085 == -50
+ on 470084 == -50
+ on 400101 == -50
+ on 22227 == -50
+ on 22210 == -50
+ on 29444 == -50
+ on 400418 == -5*.@r
+ on 400419 == -5*.@r
+ combo 410090+420005 == -5*.@c
+ combo 15222+20869+22152+28541 == -5
+ on 18993 == -5
+ combo 15221+20868+22151+28540 == -5
+ on 22167 == -30
+ on 15012 == -3
+ on 15195 == -3
+ combo 15156+20790+22085 == -25-(getequiprefinerycnt(EQI_ARMOR)+getequiprefinerycnt(EQI_GARMENT)+getequiprefinerycnt(EQI_SHOES))
+ combo 15129+20789+22084 == -20-(getequiprefinerycnt(EQI_ARMOR)+getequiprefinerycnt(EQI_GARMENT)+getequiprefinerycnt(EQI_SHOES))
+ combo 15400+20947+22209 == -20
+ combo 15401+20947+22209 == -20
+ on 18526 == -20
+ combo 15399+20947+22209 == -20
+ combo 15398+20947+22209 == -20
+ combo 15397+20947+22209 == -20
+ combo 15471+470171+480224+490261 == -20
+ combo 15402+20947+22209 == -20
+ on 5903 == -2
+ combo 15126+20788+22083 == -15-(getequiprefinerycnt(EQI_ARMOR)+getequiprefinerycnt(EQI_GARMENT)+getequiprefinerycnt(EQI_SHOES))
+ combo 15229+20876+22159+28548 == -15
+ combo 15227+20874+22157+28546 == -15
+ combo 15228+20875+22158+28547 == -15
+ combo 15230+20877+22160+28549 == -15
+ on 1599 == -100
+ on 300389 == -100
+ combo 15223+20870+22153+28542 == -10
+ combo 15224+20871+22154+28543 == -10
+ combo 15083+20719+22028 == -10
+ combo 15225+20872+22155+28544 == -10
+ on 18588 == -10
+ combo 18563+18564 == -10
+ on 5511 == -10
+ on 18585 == -10
+ on 18586 == -10
+ on 18587 == -10
+ combo 15226+20873+22156+28545 == -10
+ on 18731 == -1
+ on 4806 == -1
+ on 4761 == -1
+ on 4760 == -1
+ on 15374 == -((.@r>=9)?70:(.@r>=7?50:0))
+ on 5905 ==    4*(getskilllv("WM_LESSON"))
+ on 15094 ==    21-.@r/2
+
+F. Cast % | Aimed Bolt
+ on 450251 == -100
+
+F. Cast % | Anti-Material Blast
+ on 28236 == -10*getrefine()
+
+F. Cast % | Asura Strike
+ on 560003 == -30
+ on 1859 == -30
+ on 1832 == -100
+ on 1827 == -100
+
+F. Cast % | Banishing Buster
+ on 470028 == -20*getskilllv("RL_BANISHING_BUSTER")
+ on 470027 == -20*getskilllv("RL_BANISHING_BUSTER")
+
+F. Cast % | Crimson Rock
+ on 490396 == -100
+
+F. Cast % | Diamond Dust
+ combo 490206+450112 == -100
+
+F. Cast % | Earth Drive
+ on 28977 == -100
+
+F. Cast % | Earth Grave
+ on 420182 == -100
+
+F. Cast % | Espa
+ on 410097 == -100
+ on 410096 == -100
+
+F. Cast % | Eswhoo
+ on 410097 == -100
+ on 410096 == -100
+
+F. Cast % | Feeling the Sun Moon and Stars
+ on 29656 == -50
+
+F. Cast % | Hatred of the Sun Moon and Stars
+ on 15433 == -50
+
+F. Cast % | Howling of Lion
+ on 410125 == -100
+ on 410124 == -100
+ on 19329 == -100
+
+F. Cast % | Howling of Mandragora
+ on 19391 == -70
+
+F. Cast % | Jack Frost
+ on 490029 == -100
+ on 450226 == -100
+ on 410130 == -100
+ on 410129 == -100
+
+F. Cast % | Magnus Exorcismus
+ on 18791 == -100
+ on 15978 == -100
+ on 15977 == -100
+
+F. Cast % | Mystical Amplification
+ on 19193 == -50
+
+F. Cast % | Oratio
+ on 490429 == -100
+ on 490244 == -100
+ on 490118 == -100
+ on 28564 == -100
+
+F. Cast % | Over Brand
+ on 400070 == -100
+ on 19343 == -100
+
+F. Cast % | Psychic Wave
+ on 410067 == -100
+ on 410066 == -100
+
+F. Cast % | Refresh
+ on 410140 == -100
+ on 410139 == -100
+ on 400177 == -100
+ on 19468 == -100
+ on 5970 == -100
+
+F. Cast % | Renovatio
+ on 490429 == -100
+ on 20993 == -100
+
+F. Cast % | Storm Blast
+ combo 32242+18971 == -100
+
+F. Cast % | Summon Earth Spirit Tera
+ on 490359 == -100
+
+F. Cast % | Summon Water Spirit Aqua
+ on 490359 == -100
+
+F. Cast % | Tetra Vortex
+ on 450226 == -100
+ combo 300142+311075 == -100
+ combo 400101+4556 == -100
+
+F. Cast % | Varetyr Spear
+ on 470192 == -100
+ combo 300227+311073 == -100
+
+F. Cast % | Warmer
+ on 28394 == -50
+
+F. Cast % | Zen
+ combo 29426+29424 == -40
+ on 22145 == -.@c*10
+
+F. Cast (All)
+ combo 310180+310182 == getskilllv("HW_MAGICPOWER")/2*-100 ^FF0000หาร 1000^000000s
+ on 5464 == -80*.@r ^FF0000หาร 1000^000000s
+ combo 19181+420199 == -50*.@f ^FF0000หาร 1000^000000s
+ on 312076 == -1s
+ on 310602 == -1s
+ on 470204 == -1s
+ on 470198 == -1s
+ on 470197 == -1s
+ on 29080 == -1s
+ on 300138 == -1s
+ on 311117 == -1s
+ on 470155 == 1s
+ on 400090 == -150*(.@r/3) ^FF0000หาร 1000^000000s
+ on 311007 == -100*getskilllv("WM_FRIGG_SONG") ^FF0000หาร 1000^000000s
+ on 310885 == -100*getskilllv("WL_COMET") ^FF0000หาร 1000^000000s
+ on 311011 == -100*getskilllv("SO_STRIKING") ^FF0000หาร 1000^000000s
+ on 310887 == -100*getskilllv("LG_INSPIRATION") ^FF0000หาร 1000^000000s
+ on 311010 == -100*getskilllv("GN_TRAINING_SWORD") ^FF0000หาร 1000^000000s
+ on 311358 == -100*getskilllv("AB_EXPIATIO") ^FF0000หาร 1000^000000s
+ on 311427 == -100*(getskilllv("SR_RAISINGDRAGON")/2) ^FF0000หาร 1000^000000s
+ combo 29471+29469 == -100*(getskilllv("HW_SOULDRAIN")/2) ^FF0000หาร 1000^000000s
+ combo 310184+310187 == -100*(getskilllv("CR_AUTOGUARD")/2) ^FF0000หาร 1000^000000s
+ combo 310261+310264 == -100*(getskilllv("CR_ACIDDEMONSTRATION")/2) ^FF0000หาร 1000^000000s
+ on 400089 == -100*(.@r/2) ^FF0000หาร 1000^000000s
+ on 400088 == -100*(.@r/2) ^FF0000หาร 1000^000000s
+ combo 2198+470086 == -100*(.@r/2) ^FF0000หาร 1000^000000s
+ on 29079 == -0.9s
+ on 29078 == -0.8s
+ on 470094 == -0.8s
+ on 470122 == -0.8s
+ combo 490289+490419 == -0.7s
+ on 470265 == -0.7s
+ combo 450182+470066 == -0.7s
+ on 470247 == -0.7s
+ combo 15348+19366+20923+22192 == -0.7s
+ on 29077 == -0.7s
+ on 310601 == -0.7s
+ on 470199 == -0.6s
+ on 29076 == -0.6s
+ on 470127 == -0.6s
+ on 400482 == -0.5s
+ on 400511 == -0.5s
+ on 400529 == -0.5s
+ on 400530 == -0.5s
+ on 400531 == -0.5s
+ combo 490218+490264 == -0.5s
+ on 400155 == -0.5s
+ on 470095 == -0.5s
+ combo 28483+400486 == -0.5s
+ on 29075 == -0.5s
+ on 300377 == -0.5s
+ on 470072 == -0.5s
+ combo 19172+480332 == -0.5s
+ combo 311918+29671 == -0.5s
+ on 400474 == -0.5s
+ on 400534 == -0.5s
+ on 400156 == -0.5s
+ on 400469 == -0.5s
+ on 400457 == -0.5s
+ combo 490281+19476 == -0.5s
+ on 400447 == -0.5s
+ on 470120 == -0.5s
+ on 470129 == -0.5s
+ combo 311468+29654 == -0.5s
+ on 470156 == -0.5s
+ combo 311465+29667 == -0.5s
+ on 400445 == -0.5s
+ on 400440 == -0.5s
+ on 400532 == -0.5s
+ on 470021 == -0.5s
+ combo 550030+19428 == -0.5s
+ on 470020 == -0.5s
+ on 400545 == -0.5s
+ on 400546 == -0.5s
+ on 400154 == -0.5s
+ on 400153 == -0.5s
+ on 400152 == -0.5s
+ on 400111 == -0.5s
+ on 400542 == -0.5s
+ on 400540 == -0.5s
+ on 400539 == -0.5s
+ on 400537 == -0.5s
+ on 22258 == -0.5s
+ on 400536 == -0.5s
+ on 22202 == -0.5s
+ on 410100 == -0.5s
+ on 22167 == -0.5s
+ on 22117 == -0.5s
+ on 22111 == -0.5s
+ on 22008 == -0.5s
+ on 22004 == -0.5s
+ on 400535 == -0.5s
+ on 5603 == -0.5s
+ on 470000 == -0.5s
+ on 470001 == -0.5s
+ on 470002 == -0.5s
+ on 470003 == -0.5s
+ on 470016 == -0.5s
+ on 470017 == -0.5s
+ on 470018 == -0.5s
+ on 470019 == -0.5s
+ combo 22167+400075 == -0.5s
+ combo 490101+400023 == -0.5s
+ on 400543 == -0.5s
+ on 470210 == -0.5s
+ on 470211 == -0.5s
+ on 470212 == -0.5s
+ on 470212 == -0.5s
+ on 470213 == -0.5s
+ on 470213 == -0.5s
+ on 470214 == -0.5s
+ on 470214 == -0.5s
+ on 470215 == -0.5s
+ on 470215 == -0.5s
+ on 470221 == -0.5s
+ on 470221 == -0.5s
+ on 470222 == -0.5s
+ on 470222 == -0.5s
+ on 470223 == -0.5s
+ on 470223 == -0.5s
+ on 470224 == -0.5s
+ on 470224 == -0.5s
+ on 470225 == -0.5s
+ on 470225 == -0.5s
+ on 470226 == -0.5s
+ on 470226 == -0.5s
+ on 470236 == -0.5s
+ on 470236 == -0.5s
+ on 470237 == -0.5s
+ on 470237 == -0.5s
+ on 470238 == -0.5s
+ on 470238 == -0.5s
+ on 470245 == -0.5s
+ on 490279 == -0.5s
+ combo 490100+400023 == -0.5s
+ on 470211 == -0.5s
+ on 470210 == -0.5s
+ on 470187 == -0.5s
+ == -0.5s
+ on 400401 == -0.5s
+ on 400400 == -0.5s
+ on 400245 == -0.5s
+ on 400246 == -0.5s
+ combo 20939+22204 == -0.5s
+ combo 20902+22168 == -0.5s
+ on 310111 == -0.5s
+ on 310600 == -0.5s
+ on 470182 == -0.5s
+ on 470209 == -0.5s
+ on 470183 == -0.5s
+ on 400544 == -0.5s
+ on 470207 == -0.5s
+ combo 310659+29358 == -0.5s
+ on 470209 == -0.5s
+ on 470208 == -0.5s
+ on 470208 == -0.5s
+ on 470207 == -0.5s
+ on 470205 == -0.5s
+ on 470205 == -0.5s
+ on 29056 == -0.5s
+ combo 19205+29357 == -0.5s
+ combo 21050+22190 == -0.5s
+ combo 29488+29487 == -0.5s
+ on 29074 == -0.4s
+ on 470175 == -0.4s
+ combo 19118+22101 == -0.4s
+ combo 19117+22101 == -0.4s
+ on 400192 == -0.3s
+ on 400198 == -0.3s
+ on 400199 == -0.3s
+ on 400239 == -0.3s
+ on 400200 == -0.3s
+ on 400235 == -0.3s
+ on 400375 == -0.3s
+ on 400374 == -0.3s
+ on 400244 == -0.3s
+ on 490276 == -0.3s
+ on 400242 == -0.3s
+ on 400241 == -0.3s
+ on 400240 == -0.3s
+ on 400190 == -0.3s
+ on 400238 == -0.3s
+ on 400237 == -0.3s
+ on 400236 == -0.3s
+ on 400234 == -0.3s
+ on 400201 == -0.3s
+ on 400233 == -0.3s
+ on 400231 == -0.3s
+ on 400230 == -0.3s
+ on 400229 == -0.3s
+ on 400228 == -0.3s
+ on 400227 == -0.3s
+ on 400226 == -0.3s
+ on 400219 == -0.3s
+ on 400218 == -0.3s
+ on 400217 == -0.3s
+ on 400216 == -0.3s
+ on 400191 == -0.3s
+ on 490277 == -0.3s
+ on 400189 == -0.3s
+ combo 24749+24750 == -0.3s
+ combo 32303+32249+32251 == -0.3s
+ combo 32285+480024 == -0.3s
+ combo 32288+480024 == -0.3s
+ combo 490192+18972 == -0.3s
+ combo 490269+19480+29683 == -0.3s
+ combo 490284+19484+29686 == -0.3s
+ combo 24747+24746+24748 == -0.3s
+ on 400181 == -0.3s
+ combo 490053+490052 == -0.3s
+ combo 490051+490050 == -0.3s
+ combo 490055+490054 == -0.3s
+ combo 490045+490044 == -0.3s
+ combo 310658+29154 == -0.3s
+ combo 18849+32237 == -0.3s
+ combo 490328+450264+490327 == -0.3s
+ combo 490330+450265+490329 == -0.3s
+ combo 312306+312076 == -0.3s
+ combo 18978+490289 == -0.3s
+ combo 18849+490370 == -0.3s
+ combo 24747+24748 == -0.3s
+ combo 450263+490086 == -0.3s
+ combo 450263+490440 == -0.3s
+ on 5604 == -0.3s
+ on 22257 == -0.3s
+ on 29541 == -0.3s
+ on 29154 == -0.3s
+ on 400109 == -0.3s
+ on 400110 == -0.3s
+ on 400178 == -0.3s
+ on 400179 == -0.3s
+ on 400180 == -0.3s
+ on 400376 == -0.3s
+ on 400243 == -0.3s
+ on 400377 == -0.3s
+ on 400390 == -0.3s
+ on 400393 == -0.3s
+ on 470110 == -0.3s
+ on 400392 == -0.3s
+ on 470110 == -0.3s
+ on 400391 == -0.3s
+ on 470111 == -0.3s
+ on 400389 == -0.3s
+ on 470174 == -0.3s
+ on 29073 == -0.3s
+ on 400388 == -0.3s
+ on 470173 == -0.3s
+ on 400387 == -0.3s
+ on 400386 == -0.3s
+ on 470173 == -0.3s
+ on 470109 == -0.3s
+ on 470109 == -0.3s
+ on 400394 == -0.3s
+ on 400395 == -0.3s
+ on 470108 == -0.3s
+ on 470108 == -0.3s
+ on 400608 == -0.3s
+ on 400609 == -0.3s
+ on 470093 == -0.3s
+ on 400610 == -0.3s
+ on 400628 == -0.3s
+ on 400629 == -0.3s
+ on 470069 == -0.3s
+ on 470068 == -0.3s
+ on 470067 == -0.3s
+ on 400630 == -0.3s
+ on 410101 == -0.3s
+ on 400385 == -0.3s
+ on 470111 == -0.3s
+ on 470176 == -0.3s
+ on 400383 == -0.3s
+ on 400379 == -0.3s
+ on 470176 == -0.3s
+ on 400380 == -0.3s
+ on 470175 == -0.3s
+ on 470175 == -0.3s
+ on 400381 == -0.3s
+ on 400382 == -0.3s
+ on 470247 == -0.3s
+ on 400378 == -0.3s
+ on 470174 == -0.3s
+ on 490278 == -0.3s
+ on 400384 == -0.3s
+ on 470265 == -0.3s
+ on 15394 == -0.2s
+ combo 22171+480292 == -0.2s
+ combo 470094+480291 == -0.2s
+ on 15961 == -0.2s
+ on 15962 == -0.2s
+ combo 22238+480291 == -0.2s
+ combo 22171+480291 == -0.2s
+ on 15960 == -0.2s
+ on 470183 == -0.2s
+ on 470176 == -0.2s
+ combo 4556+400401 == -0.2s
+ on 15963 == -0.2s
+ on 470094 == -0.2s
+ on 470176 == -0.2s
+ on 29072 == -0.2s
+ combo 22238+480292 == -0.2s
+ on 15395 == -0.2s
+ on 470199 == -0.2s
+ combo 470094+480292 == -0.2s
+ on 470199 == -0.2s
+ combo 19205+29356 == -0.2s
+ on 29541 == -0.2s
+ on 470108 == -0.2s
+ combo 2907+420129 == -0.2s
+ on 15959 == -0.2s
+ on 15396 == -0.2s
+ on 2016 == -0.2s
+ on 29541 == -0.2s
+ on 15391 == -0.2s
+ on 15392 == -0.2s
+ on 15393 == -0.2s
+ combo 2907+15924 == -0.2s
+ on 470174 == -0.2s
+ combo 31319+31320 == -0.2s
+ combo 470122+4490 == -0.2s
+ combo 490066+15402+20947+22209 == -0.2s
+ combo 490067+490066 == -0.2s
+ on 470158 == -0.2s
+ on 470166 == -0.2s
+ combo 490060+15399+20947+22209 == -0.2s
+ combo 18609+20940+490159 == -0.2s
+ on 470173 == -0.2s
+ combo 490061+490060 == -0.2s
+ combo 490128+490129 == -0.2s
+ combo 490126+490127 == -0.2s
+ combo 490124+490125 == -0.2s
+ combo 490064+15401+20947+22209 == -0.2s
+ combo 490122+490123 == -0.2s
+ on 310111 == -0.2s
+ combo 490065+490064 == -0.2s
+ combo 470122+4131 == -0.2s
+ combo 490266+420136 == -0.2s
+ combo 400465+490383 == -0.2s
+ on 470111 == -0.2s
+ combo 400465+490382 == -0.2s
+ on 470173 == -0.2s
+ on 470108 == -0.2s
+ combo 470183+480312 == -0.2s
+ combo 19393+32243 == -0.2s
+ combo 490054+15396+20946+22208 == -0.2s
+ on 470109 == -0.2s
+ on 470109 == -0.2s
+ combo 490050+15394+20946+22208 == -0.2s
+ on 470110 == -0.2s
+ combo 490170+18978 == -0.2s
+ on 470174 == -0.2s
+ on 470110 == -0.2s
+ combo 490052+15395+20946+22208 == -0.2s
+ on 15965 == -0.2s
+ on 15964 == -0.2s
+ on 400376 == -0.2s
+ on 400392 == -0.2s
+ on 400192 == -0.2s
+ on 400216 == -0.2s
+ on 400390 == -0.2s
+ on 400201 == -0.2s
+ on 400200 == -0.2s
+ on 400391 == -0.2s
+ on 400199 == -0.2s
+ on 400198 == -0.2s
+ on 400240 == -0.2s
+ on 400191 == -0.2s
+ on 400389 == -0.2s
+ on 400393 == -0.2s
+ on 400190 == -0.2s
+ on 400189 == -0.2s
+ on 400394 == -0.2s
+ on 400381 == -0.2s
+ on 400181 == -0.2s
+ on 400180 == -0.2s
+ on 400395 == -0.2s
+ on 400217 == -0.2s
+ on 400218 == -0.2s
+ on 400241 == -0.2s
+ on 400385 == -0.2s
+ on 400238 == -0.2s
+ on 400237 == -0.2s
+ on 400383 == -0.2s
+ on 400236 == -0.2s
+ on 400235 == -0.2s
+ on 400384 == -0.2s
+ on 400234 == -0.2s
+ on 400233 == -0.2s
+ on 400231 == -0.2s
+ on 400219 == -0.2s
+ on 400230 == -0.2s
+ on 400386 == -0.2s
+ on 400229 == -0.2s
+ on 400228 == -0.2s
+ on 400387 == -0.2s
+ on 400227 == -0.2s
+ on 400226 == -0.2s
+ on 400388 == -0.2s
+ on 400179 == -0.2s
+ on 400178 == -0.2s
+ on 400239 == -0.2s
+ on 400242 == -0.2s
+ on 400263 == -0.2s
+ on 400049 == -0.2s
+ on 400044 == -0.2s
+ on 400022 == -0.2s
+ on 400021 == -0.2s
+ on 400264 == -0.2s
+ on 400629 == -0.2s
+ on 22257 == -0.2s
+ on 400630 == -0.2s
+ on 400375 == -0.2s
+ on 410102 == -0.2s
+ on 420087 == -0.2s
+ on 400265 == -0.2s
+ on 400266 == -0.2s
+ on 400267 == -0.2s
+ on 400374 == -0.2s
+ on 400377 == -0.2s
+ on 400262 == -0.2s
+ on 400261 == -0.2s
+ on 400378 == -0.2s
+ on 400054 == -0.2s
+ on 400380 == -0.2s
+ on 400476 == -0.2s
+ on 400608 == -0.2s
+ on 400151 == -0.2s
+ on 400145 == -0.2s
+ on 400142 == -0.2s
+ on 400135 == -0.2s
+ on 400609 == -0.2s
+ on 400610 == -0.2s
+ on 400628 == -0.2s
+ on 400243 == -0.2s
+ on 400244 == -0.2s
+ on 400079 == -0.2s
+ on 400061 == -0.2s
+ on 400059 == -0.2s
+ on 400379 == -0.2s
+ on 400382 == -0.2s
+ on 29071 == -0.10s
+ on 310658 == -0.10s
+ combo 28535+28534 == -0.10s
+ on 420199 == -0.10s
+ on 420249 == -0.10s
+ on 310111 == -0.10s
+ on 400164 == -0.10s
+ on 18536 == -0.10s
+ on 420186 == -0.10s
+ on 24286 == -0.10s
+ on 5412 == -0.10s
+ on 5605 == -0.10s
+ on 420248 == -0.10s
+ on 19263 == -.@val*100 ^FF0000หาร 1000^000000s
+ on 19249 == -.@val*100 ^FF0000หาร 1000^000000s
+ on 5464 ==  -80*.@r ^FF0000หาร 1000^000000s
+ on 400368 ==    -15*(.@r-11) ^FF0000หาร 1000^000000s
+ on 400082 ==    -100*.@r ^FF0000หาร 1000^000000s
+ on 19296 ==    -100*(min((.@r-10) กับ 15)/1) ^FF0000หาร 1000^000000s
+ on 19300 ==    -100*(min((.@r-10) กับ 15)/1) ^FF0000หาร 1000^000000s
+ on 400470 ==    -100*(min((.@r-10) กับ 15)/1) ^FF0000หาร 1000^000000s
+ on 400467 ==    -100*(min((.@r-10) กับ 15)/1) ^FF0000หาร 1000^000000s
+ on 19308 ==    -100*(min((.@r-10) กับ 15)/1) ^FF0000หาร 1000^000000s
+ on 400083 ==    -100*(.@r/3) ^FF0000หาร 1000^000000s
+ on 400083 ==    -100*(.@r/3) ^FF0000หาร 1000^000000s
+ on 470181 ==    .@val ^FF0000หาร 1000^000000s
+ on 22238 ==    .@val ^FF0000หาร 1000^000000s
+ on 22171 ==    .@val ^FF0000หาร 1000^000000s
+
+F. Cast | Acidified Zone Fire
+ combo 29509+311902 == -0.5s
+
+F. Cast | Acidified Zone Ground
+ combo 29509+311902 == -0.5s
+
+F. Cast | Acidified Zone Water
+ combo 29509+311902 == -0.5s
+
+F. Cast | Acidified Zone Wind
+ combo 29509+311902 == -0.5s
+
+F. Cast | All Bloom
+ combo 29371+311891 == -1s
+
+F. Cast | Arbitrium
+ combo 29371+311897 == -0.5s
+
+F. Cast | Cold Bolt
+ on 540057 == 10s
+ combo 26152+4416 == 10s
+
+F. Cast | Conflagration
+ combo 29371+311896 == -0.5s
+
+F. Cast | Crescive Bolt
+ combo 29509+311895 == -0.5s
+
+F. Cast | Crimson Arrow
+ combo 29371+311891 == -1s
+
+F. Cast | Crystal Impact
+ combo 29371+311891 == -1s
+
+F. Cast | Destructive Hurricane
+ combo 29371+311891 == -1s
+
+F. Cast | Diamond Storm
+ combo 29371+311896 == -0.5s
+
+F. Cast | Double Casting
+ on 29433 == -0.4s
+
+F. Cast | Dragon Breath
+ on 400177 == -0.2s
+
+F. Cast | Dragon Breath - Water
+ on 400177 == -0.2s
+
+F. Cast | Duple Light
+ on 590006 == -0.5s
+
+F. Cast | Fire Bolt
+ on 540057 == 10s
+ combo 26152+4433 == 10s
+
+F. Cast | Focused Arrow Strike
+ on 29429 == -0.5s
+
+F. Cast | Framen
+ combo 29371+311897 == -0.5s
+
+F. Cast | Frozen Slash
+ combo 29371+311891 == -1s
+
+F. Cast | Gale Storm
+ combo 29509+311895 == -0.5s
+
+F. Cast | Howling of Mandragora
+ combo 490206+450100 == -0.5s
+
+F. Cast | Lightning Bolt
+ on 540057 == 10s
+ combo 31002+28629 == 10s
+ combo 26152+31002 == 10s
+
+F. Cast | Lightning Land
+ combo 29371+311896 == -0.5s
+
+F. Cast | Pneumaticus Procella
+ combo 29371+311897 == -0.5s
+
+F. Cast | Reverberation
+ on 580027 == -0.5s
+ on 580023 == -0.5s
+ on 580013 == -0.5s
+ on 580010 == -0.5s
+ on 580009 == -0.5s
+ on 580002 == -0.5s
+ on 570027 == -0.5s
+ on 570023 == -0.5s
+ on 570013 == -0.5s
+ on 570010 == -0.5s
+ on 570009 == -0.5s
+ on 570002 == -0.5s
+ combo 580008+22133 == -0.5s
+
+F. Cast | Rhythm Shooting
+ combo 29509+311901 == -0.5s
+
+F. Cast | Rock Down
+ combo 29371+311891 == -1s
+
+F. Cast | Rose Blossom
+ combo 29509+311901 == -0.5s
+
+F. Cast | Storm Cannon
+ combo 29371+311891 == -1s
+
+F. Cast | Terra Drive
+ combo 29371+311896 == -0.5s
+
+F. Cast | Venom Swamp
+ combo 29371+311896 == -0.5s
+
+F. Cast | Violent Quake
+ combo 29371+311891 == -1s
+
+V. Cast % (All)
+ on 311005 == -getskilllv("WM_LESSON")
+ on 311430 == -getskilllv("NC_RESEARCHFE")
+ on 310187 == -getskilllv("CR_TRUST")
+ on 5622 == -getrefine()
+ on 5226 == -getrefine()
+ combo 2620+2747 == -getequiprefinerycnt(EQI_HAND_R)/2
+ combo 1473+2711 == -getequiprefinerycnt(EQI_HAND_R)
+ on 311451 == -9
+ on 312791 == -9
+ on 311456 == -9
+ combo 19439+20749 == -8*(readparam(bInt)/30)
+ on 500039 == -8
+ on 310572 == -8
+ on 410019 == -8
+ on 410091 == -8
+ on 420199 == -8
+ on 450131 == -8
+ on 311107 == -8
+ on 311345 == -8
+ on 310572 == -8
+ on 310576 == -8
+ on 310576 == -8
+ on 311107 == -8
+ on 310576 == -8
+ on 24396 == -8
+ on 310576 == -8
+ on 311403 == -8
+ on 550012 == -8
+ on 470154 == -8
+ on 310629 == -8
+ on 310572 == -8
+ on 312070 == -8
+ on 310572 == -8
+ on 4813 == -8
+ combo 22125+28459+28460 == -8
+ combo 22126+28461+28462 == -8
+ combo 32229+15388+15389 == -8
+ combo 28479+22125+28480 == -8
+ combo 28481+22126+28482 == -8
+ combo 300367+300365 == -8
+ on 310568 == -8
+ on 311107 == -8
+ on 310301 == -8
+ on 550013 == -8
+ on 310568 == -8
+ on 310568 == -8
+ on 312070 == -8
+ on 312070 == -8
+ on 311107 == -8
+ on 312070 == -8
+ combo 15481+490386 == 8
+ on 27413 == -70
+ on 27415 == -70
+ on 27416 == -70
+ on 29045 == -70
+ on 29176 == -70
+ on 27414 == -70
+ on 29223 == -70
+ combo 470096+490140 == -70
+ combo 29045+450189 == -70
+ on 480186 == -7
+ on 550013 == -7
+ on 450267 == -7
+ on 450190 == -7
+ on 450150 == -7
+ on 28563 == -7
+ on 26151 == -7
+ on 22208 == -7
+ on 20877 == -7
+ on 16088 == -7
+ on 15399 == -7
+ on 1872 == -7
+ on 480160 == -7
+ on 550030 == -7
+ on 1334 == -7
+ combo 15226+20873+22156+28545 == -7
+ combo 15225+20872+22155+28544 == -7
+ combo 400111+4374 == -7
+ combo 470116+450206 == -7
+ combo 15390+20945+22206 == -7
+ combo 19203+29350 == -7
+ on 450268 == -7
+ on 460018 == -7
+ on 470074 == -7
+ on 490055 == -7
+ on 300173 == -7
+ on 490017 == -7
+ on 490018 == -7
+ on 490045 == -7
+ on 490047 == -7
+ on 480090 == -7
+ on 490049 == -7
+ on 490051 == -7
+ on 490053 == -7
+ on 490057 == -7
+ on 550012 == -7
+ on 490059 == -7
+ on 490061 == -7
+ on 490063 == -7
+ on 490065 == -7
+ on 490067 == -7
+ on 490137 == -7
+ on 500013 == -7
+ on 480021 == -7
+ on 480017 == -7
+ on 480125 == -7
+ on 312902 == -7
+ on 311345 == -7
+ on 310879 == -7
+ on 310709 == -7
+ on 310858 == -7
+ on 840011 == 7
+ on 800017 == 7
+ on 700064 == 7
+ on 630020 == 7
+ on 640038 == 7
+ on 19426 == -6*getskilllv("SO_EL_SYMPATHY")
+ on 311402 == -6
+ on 311450 == -6
+ on 310624 == -6
+ on 310568 == -6
+ on 312901 == -6
+ on 310300 == -6
+ on 311455 == -6
+ combo 19139+19020 == -6
+ on 4814 == -6
+ combo 22124+28457+28458 == -6
+ combo 28475+22123+28476 == -6
+ combo 28477+22124+28478 == -6
+ on 312790 == -6
+ combo 29156+29157+29158 == -6
+ combo 22123+28455+28456 == -6
+ combo 19139+19020 == -6
+ combo 19139+19020 == -6
+ on 18572 == -6
+ on 19138 == 6
+ on 18838 == -50
+ combo 1620+19020 == -50
+ on 2709 == -50
+ on 2899 == -50
+ on 470105 == -50
+ on 4412 == -50
+ on 470106 == -50
+ on 5655 == -50
+ on 28579 == -5+.@a
+ on 300247 == 5-.@r
+ on 300244 == 5-.@r
+ on 300246 == 5-.@r
+ on 300245 == 5-.@r
+ on 490218 == -5-.@b
+ combo 19266+2535 == -5*getequiprefinerycnt(EQI_GARMENT)/2
+ on 20902 == -5*(getrefine()/3)
+ on 19485 == -5*(.@r/3)
+ on 19487 == -5*(.@r/3)
+ on 15083 == -5*(.@r/3)
+ on 27425 == -5*(.@r/2)
+ combo 19266+20813 == -5*(.@r/2)
+ on 18970 == -5-(getrefine()/2)
+ on 480347 == -5
+ on 480105 == -5
+ on 480106 == -5
+ on 311345 == -5
+ combo 28431+2387+2440+2935 == -5
+ on 480348 == -5
+ combo 450270+470197+480283 == -5
+ combo 450271+470198+480284 == -5
+ on 480339 == -5
+ combo 300456+300455 == -5
+ on 480104 == -5
+ on 480322 == -5
+ on 480323 == -5
+ combo 490266+420136 == -5
+ on 22238 == -5
+ on 480104 == -5
+ on 480104 == -5
+ combo 400483+480322 == -5
+ on 20744 == -5
+ on 470108 == -5
+ on 470108 == -5
+ on 470109 == -5
+ on 470110 == -5
+ combo 312424+312014 == -5
+ combo 400483+480339 == -5
+ combo 400483+480323 == -5
+ on 470174 == -5
+ combo 2387+2440+2744+15470 == -5
+ on 480352 == -5
+ on 312674 == -5
+ on 480001 == -5
+ on 480002 == -5
+ on 480003 == -5
+ on 480014 == -5
+ on 480063 == -5
+ combo 19393+32243 == -5
+ on 480085 == -5
+ on 480085 == -5
+ on 480351 == -5
+ on 490014 == -5
+ combo 29585+300288 == -5
+ combo 490124+490125 == -5
+ on 490301 == -5
+ on 19082 == -5
+ on 490302 == -5
+ on 490303 == -5
+ on 490304 == -5
+ on 490305 == -5
+ on 490306 == -5
+ on 490307 == -5
+ combo 490033+400043 == -5
+ combo 28974+18609 == -5
+ on 310659 == -5
+ on 500013 == -5
+ combo 15484+32237 == -5
+ on 500081 == -5
+ on 530049 == -5
+ on 18987 == -5
+ on 18987 == -5
+ combo 15390+20945+22206 == -5
+ on 490300 == -5
+ on 490299 == -5
+ on 490264 == -5
+ on 490235 == -5
+ on 16098 == -5
+ combo 312427+312021 == -5
+ on 490015 == -5
+ on 310880 == -5
+ combo 28956+20852 == -5
+ combo 28956+20852 == -5
+ on 310857 == -5
+ on 19299 == -5
+ on 310708 == -5
+ on 490127 == -5
+ on 310707 == -5
+ combo 480147+450202+470110 == -5
+ combo 480146+450200+470109 == -5
+ combo 460021+490160 == -5
+ combo 460021+490160 == -5
+ on 18865 == -5
+ on 19119 == -5
+ on 470094 == -5
+ on 470073 == -5
+ on 20815 == -5
+ on 28534 == -5
+ on 5355 == -5
+ on 5354 == -5
+ on 28580 == -5
+ on 5286 == -5
+ on 28583 == -5
+ on 28586 == -5
+ on 22102 == -5
+ on 28916 == -5
+ on 20934 == -5
+ on 28921 == -5
+ on 20916 == -5
+ on 28947 == -5
+ on 28951 == -5
+ on 28955 == -5
+ on 28973 == -5
+ on 28974 == -5
+ on 31319 == -5
+ on 31320 == -5
+ on 32249 == -5
+ on 28538 == -5
+ on 15444 == -5
+ on 20908 == -5
+ on 5415 == -5
+ on 15345 == -5
+ on 15345 == -5
+ on 15196 == -5
+ on 15196 == -5
+ on 24327 == -5
+ on 24396 == -5
+ on 24640 == -5
+ on 24688 == -5
+ on 24736 == -5
+ on 24737 == -5
+ on 13078 == -5
+ on 5966 == -5
+ on 26140 == -5
+ on 312016 == -5
+ on 312094 == -5
+ on 5564 == -5
+ on 22192 == -5
+ on 5564 == -5
+ on 28496 == -5
+ on 32252 == -5
+ on 20908 == -5
+ on 312094 == -5
+ on 450003 == -5
+ on 20873 == -5
+ combo 312690+312021 == -5
+ combo 312688+312021 == -5
+ combo 4922+490088 == -5
+ combo 312654+312021 == -5
+ combo 312651+312014 == -5
+ on 20852 == -5
+ combo 312644+312021 == -5
+ combo 312643+312021 == -5
+ on 20852 == -5
+ combo 312642+312021 == -5
+ on 450265 == -5
+ on 450266 == -5
+ combo 312639+312014 == -5
+ on 450270 == -5
+ on 450271 == -5
+ on 460005 == -5
+ combo 312452+312021 == -5
+ on 460020 == -5
+ combo 312804+312021 == -5
+ on 450003 == -5
+ on 400123 == -5
+ on 450002 == -5
+ on 20906 == -5
+ on 1642 == -5
+ on 400375 == -5
+ on 1640 == -5
+ on 1616 == -5
+ on 400384 == -5
+ on 400386 == -5
+ on 400387 == -5
+ on 1577 == -5
+ on 400389 == -5
+ on 400390 == -5
+ on 400464 == -5
+ on 400487 == -5
+ on 410080 == -5
+ on 20876 == -5
+ on 410092 == -5
+ combo 15222+20869+22152+28541 == -5
+ on 450002 == -5
+ combo 15220+20867+22150+28539 == -5
+ combo 312802+312021 == -5
+ on 18892 == -5
+ combo 470020+480018+490019+450100 == -5
+ combo 470021+480019+490020+450111 == -5
+ combo 470019+480017+490018+450084 == -5
+ on 550081 == -5
+ combo 470019+480017+490018+450084 == -5
+ on 4889 == -5
+ combo 470019+480017+490018+450082 == -5
+ combo 19243+20844 == -5
+ combo 470019+480017+490018+450082 == -5
+ combo 470019+480017+490018+450079 == -5
+ combo 470019+480017+490018+450079 == -5
+ combo 470019+480017+490018+450078 == -5
+ on 27331 == -5
+ on 4229 == -5
+ on 27394 == -5
+ combo 470019+480017+490018+450078 == -5
+ combo 470019+480017+490018+450077 == -5
+ on 550082 == -5
+ combo 470021+480019+490020+450112 == -5
+ combo 470019+480017+490018+450077 == -5
+ on 310103 == -5
+ combo 470017+480014+490015+450043 == -5
+ combo 470017+480014+490015+450043 == -5
+ combo 15947+20844 == -5
+ combo 470019+480017+490018+450085 == -5
+ combo 470017+480014+490015+450037 == -5
+ combo 470019+480017+490018+450085 == -5
+ combo 470017+480014+490015+450040 == -5
+ combo 470021+480019+490020+450107 == -5
+ combo 470017+480014+490015+450040 == -5
+ combo 470017+480014+490015+450041 == -5
+ combo 470017+480014+490015+450041 == -5
+ on 640047 == -5
+ combo 470021+480019+490020+450094 == -5
+ combo 470021+480019+490020+450094 == -5
+ on 312900 == -5
+ combo 470021+480019+490020+450093 == -5
+ combo 470017+480014+490015+450042 == -5
+ combo 470017+480014+490015+450042 == -5
+ combo 470021+480019+490020+450093 == -5
+ combo 2935+2387+2440+2744 == -5
+ combo 24326+24327 == -5
+ combo 470021+480019+490020+450110 == -5
+ combo 28437+4815 == -5
+ combo 19299+5966 == -5
+ combo 470021+480019+490020+450110 == -5
+ combo 470021+480019+490020+450111 == -5
+ combo 470020+480018+490019+450100 == -5
+ combo 470017+480014+490015+450037 == -5
+ combo 470021+480019+490020+450112 == -5
+ on 590066 == -5
+ on 300360 == -5
+ combo 470019+480017+490018+450059 == -5
+ combo 470021+480019+490020+450116 == -5
+ combo 470017+480014+490015+450049 == -5
+ combo 470019+480017+490018+450059 == -5
+ on 650043 == -5
+ combo 18937+28359 == -5
+ on 300359 == -5
+ combo 470017+480014+490015+450025 == -5
+ combo 470021+480019+490020+450118 == -5
+ combo 470017+480014+490015+450025 == -5
+ combo 470019+480017+490018+450076 == -5
+ combo 470021+480019+490020+450118 == -5
+ on 300363 == -5
+ combo 470021+480019+490020+450119 == -5
+ on 300457 == -5
+ combo 470018+480016+490017+450066 == -5
+ on 300458 == -5
+ combo 470021+480019+490020+450119 == -5
+ on 640011 == -5
+ combo 470018+480016+490017+450066 == -5
+ combo 470017+480014+490015+450049 == -5
+ combo 470017+480014+490015+450048 == -5
+ combo 470021+480019+490020+450107 == -5
+ on 300098 == -5
+ on 310103 == -5
+ on 310103 == -5
+ combo 470019+480017+490018+450076 == -5
+ combo 470019+480017+490018+450073 == -5
+ combo 470017+480014+490015+450026 == -5
+ combo 470017+480014+490015+450046 == -5
+ combo 470017+480014+490015+450026 == -5
+ on 620010 == -5
+ on 29538 == -5
+ combo 470019+480017+490018+450073 == -5
+ combo 470019+480017+490018+450060 == -5
+ combo 470019+480017+490018+450060 == -5
+ combo 470021+480019+490020+450113 == -5
+ combo 470021+480019+490020+450113 == -5
+ combo 470017+480014+490015+450046 == -5
+ combo 470021+480019+490020+450116 == -5
+ combo 470016+480012+490014+450030 == -5
+ combo 470016+480012+490014+450030 == -5
+ combo 470017+480014+490015+450048 == -5
+ on 550101 == 5
+ on 580036 == 5
+ on 550106 == 5
+ on 570035 == 5
+ on 550097 == 5
+ on 510086 == 5
+ on 540062 == 5
+ combo 24048+24109+24110 == 40-(getequiprefinerycnt(EQI_SHADOW_ACC_R)+getequiprefinerycnt(EQI_SHADOW_ACC_L))
+ combo 15958+20718 == -4*(readparam(bInt)/20)
+ combo 15395+20946+22208 == -4*(readparam(bInt)/15)
+ on 19491 == -4*(.@r/3)
+ on 312718 == -4*(.@r/3)
+ on 15394 == -4*(.@r/2)
+ on 310619 == -4
+ on 311401 == -4
+ on 20872 == -4
+ on 310299 == -4
+ on 4815 == -4
+ combo 28431+2935 == -4
+ combo 2935+2744 == -4
+ on 20876 == -4
+ on 312673 == -4
+ combo 2744+15470 == -4
+ on 19138 == 4
+ on 5673 == 35
+ on 312005 == -3-3*getenchantgrade()
+ combo 311436+29442 == -30
+ on 570003 == -30
+ on 18705 == -30
+ combo 20940+19241 == -30
+ on 2047 == -30
+ on 312798 == -30
+ combo 15210+19275 == -30
+ on 32103 == -30
+ on 15945 == -30
+ combo 300420+490285 == -30
+ on 580003 == -30
+ on 26210 == -30
+ on 4145 == -30
+ on 490104 == -30
+ on 490118 == -30
+ on 28332 == -30
+ on 2041 == -30
+ on 28426 == -30
+ combo 19436+4145 == 30
+ on 4327 == 30
+ on 24644 == -3-.@r/2
+ combo 312399+311916 == -3*getskilllv("SS_TOKEDASU")
+ on 312403 == -3*getskilllv("NV_TRANSCENDENCE")
+ on 311357 == -3*getskilllv("AB_LAUDAAGNUS")
+ combo 28502+2204 == -3*.@c
+ on 480224 == -3*(readparam(bDex)/25)
+ combo 15394+20946+22208 == -3*(readparam(bDex)/15)
+ on 640005 == -3*(.@r/3)
+ on 540005 == -3*(.@r/3)
+ on 19480 == -3*(.@r/3)
+ on 19482 == -3*(.@r/3)
+ combo 28974+490365 == -3*(.@r/3)
+ on 19483 == -3*(.@r/3)
+ on 550009 == -3*(.@r/3)
+ on 590066 == -3*(.@r/2)
+ on 640047 == -3*(.@r/2)
+ combo 16089+400044 == -3*(.@r/2)
+ on 500081 == -3*(.@r/2)
+ on 650043 == -3*(.@r/2)
+ on 15393 == -3*(.@r/2)
+ on 530049 == -3*(.@r/2)
+ on 15089 == -3-((.@r>=7)?2:0)
+ on 2343 == -3
+ on 311454 == -3
+ on 29156 == -3
+ combo 2387+2440+2744 == -3
+ on 24048 == -3
+ on 27257 == -3
+ on 15162 == -3
+ on 500001 == -3
+ combo 490124+490125 == -3
+ on 29158 == -3
+ on 4888 == -3
+ on 4887 == -3
+ on 420154 == -3
+ on 24675 == -3
+ on 24676 == -3
+ combo 5040+5442 == -3
+ on 420153 == -3
+ on 420066 == -3
+ on 29157 == -3
+ on 20876 == -3
+ on 312016 == -3
+ on 24685 == -3
+ on 300459 == -3
+ on 300458 == -3
+ combo 15883+15884 == -3
+ on 300457 == -3
+ on 19139 == -3
+ on 450190 == -3
+ on 18718 == -3
+ combo 28473+22122+28474 == -3
+ on 18701 == -3
+ on 18616 == -3
+ on 18593 == -3
+ combo 1620+19139 == -3
+ combo 1620+19139 == -3
+ on 29538 == -3
+ on 29538 == -3
+ on 20872 == -3
+ on 311449 == -3
+ on 24678 == -3
+ on 24677 == -3
+ on 24686 == -3
+ on 5665 == -3
+ on 2360 == -3
+ on 2772 == -3
+ on 2888 == -3
+ combo 19203+29349 == -3
+ combo 28431+2744+2387+2440 == -3
+ combo 400111+4503 == -3
+ on 5210 == -3
+ on 4886 == -3
+ on 5313 == -3
+ on 312789 == -3
+ on 5521 == -3
+ combo 19299+5966 == -3
+ on 5562 == -3
+ combo 2751+2888 == -3
+ on 5269 == -3
+ combo 22122+28453+28454 == -3
+ on 5740 == -3
+ on 4885 == -3
+ on 490252 == -3
+ on 312672 == -3
+ on 5745 == -3
+ on 2914 == 3
+ on 490255 == 3
+ on 312797 == -27
+ combo 4077+27328 == -25
+ combo 1990+400476 == -25
+ on 32294 == -25
+ on 2988 == -25
+ on 5628 == -25
+ on 2989 == -25
+ combo 2518+2648+2649+5126 == 25
+ on 4077 == 25
+ on 312796 == -24
+ on 312795 == -21
+ on 4831 == -20
+ on 450107 == -20
+ on 450106 == -20
+ on 450100 == -20
+ on 450092 == -20
+ on 450086 == -20
+ on 15480 == -20
+ on 2016 == -20
+ on 20743 == -20
+ on 15481 == -20
+ on 450111 == -20
+ on 5903 == -20
+ on 5559 == -20
+ on 32243 == -20
+ on 2939 == -20
+ on 5897 == -20
+ combo 4208+4258+4325+4327+4382 == -20
+ on 450110 == -20
+ combo 400047+310121 == -20
+ on 450112 == -20
+ combo 19436+32246 == -20
+ on 490266 == -20
+ on 490265 == -20
+ combo 28594+4878 == -20
+ combo 22174+1649 == -20
+ on 450113 == -20
+ combo 400047+29547 == -20
+ combo 15395+20946+22208 == -20
+ combo 18866+1675 == -20
+ combo 32243+420087 == -20
+ combo 15074+480238 == -20
+ on 450116 == -20
+ on 4371 == 20
+ on 311919 == -2*getskilllv("SU_FRESHSHRIMP")
+ on 311012 == -2*getskilllv("SO_DIAMONDDUST")
+ on 29653 == -2*getskilllv("SL_KAAHI")
+ on 311009 == -2*getskilllv("GN_REMODELING_CART")
+ on 20836 == -2*.@val
+ combo 15387+20852 == -2*.@r
+ on 470047 == -2*.@r
+ combo 18992+4327 == -2*.@r
+ combo 15214+19286+22144 == -2*.@c
+ on 550043 == -2*.@a
+ on 540031 == -2*.@a
+ on 20945 == -2*(getrefine()/3)
+ on 480066 == -2*(.@r/3)
+ on 650003 == -2*(.@r/3)
+ on 312716 == -2*(.@r/3)
+ on 312717 == -2*(.@r/3)
+ combo 19239+400477 == -2*(.@r/2)
+ on 450150 == -2*(.@r/2)
+ on 19452 == -2*(.@c/18)
+ on 19451 == -2*(.@c/18)
+ on 312671 == -2
+ on 2932 == -2
+ on 5463 == -2
+ on 5753 == -2
+ on 5740 == -2
+ on 5661 == -2
+ on 5384 == -2
+ combo 19299+5966 == -2
+ on 2895 == -2
+ on 24396 == -2
+ on 311400 == -2
+ combo 490124+490125 == -2
+ on 19267 == -2
+ on 4965 == -2
+ on 310298 == -2
+ on 15162 == -2
+ on 312794 == -18
+ on 311019 == -15-5*getenchantgrade()
+ on 15074 == 15-((.@r>=9) ? 5: 0)
+ on 550082 == -15
+ combo 400079+32350 == -15
+ combo 2998+18942 == -15
+ combo 32249+32251 == -15
+ on 28582 == -15
+ on 300226 == -15
+ on 311458 == -15
+ on 490098 == -15
+ on 19272 == -15
+ on 28585 == -15
+ on 820012 == -15
+ on 540061 == -15
+ on 310711 == -15
+ on 28588 == -15
+ combo 470092+4876 == -15
+ on 700062 == -15
+ on 700061 == -15
+ on 700060 == -15
+ combo 4191+4208+4258+4309+4325+4327 == -15
+ combo 19203+29351 == -15
+ on 312793 == -15
+ on 310303 == -15
+ on 28552 == -15
+ on 15964 == -15
+ on 15965 == -15
+ combo 18906+4077 == -15
+ on 490370 == -15
+ combo 480091+470088 == -15
+ on 550045 == -15
+ on 550046 == -15
+ on 22875 == -15
+ combo 15394+20946+22208 == -15
+ combo 550031+450144 == -15
+ on 500024 == -15
+ on 13346 == -15
+ combo 2365+2881 == -15
+ on 22187 == -15
+ on 15959 == -15
+ on 15960 == -15
+ on 15961 == -15
+ on 15962 == -15
+ on 20903 == -15
+ combo 410080+480124 == -15
+ combo 410080+480125 == -15
+ on 15963 == -15
+ combo 2046+19310+15250+20906+22173+28566 == -15
+ combo 480159+470116 == -15
+ on 29300 == -15
+ on 4486 == -15
+ on 490038 == -15
+ on 450052 == -15
+ on 590034 == -15
+ on 450058 == -15
+ combo 311917+29663 == -15
+ combo 490105+4876 == -15
+ on 450076 == -15
+ on 400261 == -15
+ on 450073 == -15
+ on 400262 == -15
+ on 450072 == -15
+ on 400263 == -15
+ on 450245 == -15
+ on 640035 == -15
+ on 450066 == -15
+ combo 19282+28928 == -15
+ on 400264 == -15
+ on 400265 == -15
+ on 450219 == -15
+ on 450078 == -15
+ on 400266 == -15
+ on 400267 == -15
+ on 480106 == -15
+ combo 480185+470126 == -15
+ on 450207 == -15
+ on 640039 == -15
+ on 590002 == -15
+ on 450178 == -15
+ on 400630 == -15
+ on 400610 == -15
+ on 400609 == -15
+ on 400608 == -15
+ combo 2960+15069+18758+20711 == -15
+ on 400465 == -15
+ on 450077 == -15
+ combo 400409+310568 == -15
+ on 400054 == -15
+ on 400059 == -15
+ on 400049 == -15
+ on 400044 == -15
+ on 311421 == -15
+ on 450247 == -15
+ combo 13337+19210 == -15
+ on 450128 == -15
+ on 311453 == -15
+ combo 410080+480197 == -15
+ on 400145 == -15
+ on 450082 == -15
+ on 590011 == -15
+ on 650029 == -15
+ on 640027 == -15
+ on 400022 == -15
+ combo 480232+450244+470175 == -15
+ on 450079 == -15
+ on 400021 == -15
+ on 400061 == -15
+ combo 2777+2778+5479 == 15
+ on 450191 == 15
+ on 2365 == 15
+ on 311452 == -12
+ on 312792 == -12
+ on 311457 == -12
+ on 1599 == -100
+ combo 19272+4365 == -100
+ on 28595 == -100
+ on 29174 == -100
+ on 4365 == 100
+ on 22035 == -10-.@i
+ combo 22071+5165 == -10-(.@r/2)
+ combo 22071+5164 == -10-(.@r/2)
+ combo 24693+24694+24695+24696+24697+24711 == -10
+ on 15945 == -10
+ combo 28616+15250+19310+20906+22173+28566 == -10
+ combo 310881+29463 == -10
+ combo 18720+1665 == -10
+ combo 312428+400465 == -10
+ combo 24687+24688+24689+24690+24691+24692 == -10
+ combo 24693+24694+24695+24696+24697+24704 == -10
+ combo 24693+24694+24695+24696+24697+24710 == -10
+ combo 24693+24694+24695+24696+24697+24709 == -10
+ combo 26120+15250+19310+20906+22173+28566 == -10
+ combo 24693+24694+24695+24696+24697+24708 == -10
+ combo 24693+24694+24695+24696+24697+24701 == -10
+ combo 400261+590043 == -10
+ combo 1679+2198 == -10
+ on 16099 == -10
+ on 18889 == -10
+ combo 550001+450003+470002+480002+490006 == -10
+ combo 520000+450004+470003+480003+490007 == -10
+ combo 24595+24584+24585+24586+24587+24588 == -10
+ on 18888 == -10
+ combo 24599+24584+24585+24586+24587+24588 == -10
+ on 18887 == -10
+ combo 24600+24584+24585+24586+24587+24588 == -10
+ combo 510002+450002+470001+480001+490005 == -10
+ combo 20939+22204 == -10
+ combo 500001+450004+470003+480003+490007 == -10
+ combo 1636+18539 == -10
+ combo 310080+15401 == -10
+ on 18190 == -10
+ on 16098 == -10
+ combo 26119+15250+19310+20906+22173+28566 == -10
+ on 16096 == -10
+ combo 24592+24584+24585+24586+24587+24588 == -10
+ on 15824 == -10
+ combo 400000+2992 == -10
+ combo 16088+400061 == -10
+ combo 28387+29124+480332 == -10
+ combo 420022+15279+20966 == -10
+ == -10
+ on 312082 == -10
+ on 15980 == -10
+ combo 13341+15250+19310+20906+22173+28566 == -10
+ combo 18166+15250+19310+20906+22173+28566 == -10
+ combo 470120+490218 == -10
+ combo 480324+400465 == -10
+ combo 32221+15383+20939+22204 == -10
+ on 15249 == -10
+ on 15484 == -10
+ combo 480068+450150 == -10
+ on 18890 == -10
+ on 1676 == -10
+ on 5502 == -10
+ combo 450191+490160 == -10
+ combo 480148+450203+470111 == -10
+ on 5564 == -10
+ combo 480067+450150 == -10
+ combo 19185+29277 == -10
+ combo 480066+450150 == -10
+ combo 480065+450150 == -10
+ on 5639 == -10
+ combo 20925+22035 == -10
+ combo 21050+22190 == -10
+ combo 24744+24584+24585+24586+24587+24588 == -10
+ on 2048 == -10
+ on 5408 == -10
+ on 2054 == -10
+ on 2058 == -10
+ on 2064 == -10
+ combo 490219+19474 == -10
+ combo 4168+4169 == -10
+ combo 22071+300401 == -10
+ on 2744 == -10
+ on 2841 == -10
+ on 5138 == -10
+ on 2995 == -10
+ combo 4185+4217+4280+4293+4312 == -10
+ combo 480233+450245+470176 == -10
+ combo 19247+28762 == -10
+ combo 4311+4319+4331+4371 == -10
+ combo 480230+450234+470173 == -10
+ combo 24743+24584+24585+24586+24587+24588 == -10
+ combo 24742+24584+24585+24586+24587+24588 == -10
+ combo 24693+24694+24695+24696+24697+24712 == -10
+ combo 500030+28922 == -10
+ on 15377 == -10
+ combo 32231+410120 == -10
+ combo 620010+450146 == -10
+ on 15400 == -10
+ on 15401 == -10
+ combo 22119+28518 == -10
+ combo 510056+510057 == -10
+ on 5966 == -10
+ combo 24693+24694+24695+24696+24697+24715 == -10
+ on 15448 == -10
+ on 15467 == -10
+ combo 24693+24694+24695+24696+24697+24714 == -10
+ on 15468 == -10
+ combo 24693+24694+24695+24696+24697+24713 == -10
+ combo 19162+15174 == -10
+ combo 32238+32239 == -10
+ combo 2965+18798 == -10
+ combo 490128+490129 == -10
+ combo 20719+22028 == -10
+ combo 15229+20876+22159+28548 == -10
+ combo 15230+20877+22160+28549 == -10
+ combo 4635+410275 == -10
+ combo 24416+24417+24418+24419+24420+24421 == -10
+ combo 22071+4236 == -10
+ combo 400017+450017+480015+490023 == -10
+ combo 400048+4850 == -10
+ combo 24739+24584+24585+24586+24587+24588 == -10
+ on 13483 == -10
+ on 13341 == -10
+ combo 24740+24584+24585+24586+24587+24588 == -10
+ combo 24741+24584+24585+24586+24587+24588 == -10
+ combo 480136+400023 == -10
+ on 310079 == -10
+ on 400179 == -10
+ on 490005 == -10
+ on 540059 == -10
+ on 540054 == -10
+ on 540027 == -10
+ on 540014 == -10
+ on 530012 == -10
+ on 530010 == -10
+ on 530002 == -10
+ on 520012 == -10
+ on 510091 == -10
+ on 510085 == -10
+ on 510057 == -10
+ on 510008 == -10
+ on 500093 == -10
+ on 500092 == -10
+ on 500072 == -10
+ on 500063 == -10
+ on 500061 == -10
+ on 500057 == -10
+ on 500056 == -10
+ on 310634 == -10
+ on 500039 == -10
+ on 500038 == -10
+ on 500033 == -10
+ on 540060 == -10
+ on 540065 == -10
+ on 540079 == -10
+ on 550025 == -10
+ on 550060 == -10
+ on 550052 == -10
+ on 550051 == -10
+ on 550040 == -10
+ on 550039 == -10
+ on 550037 == -10
+ on 550036 == -10
+ on 550035 == -10
+ on 550034 == -10
+ on 310302 == -10
+ on 550023 == -10
+ on 540080 == -10
+ on 550020 == -10
+ on 550019 == -10
+ on 550015 == -10
+ on 550014 == -10
+ on 550011 == -10
+ on 550010 == -10
+ on 550008 == -10
+ on 550006 == -10
+ on 540088 == -10
+ on 540082 == -10
+ on 500030 == -10
+ on 500028 == -10
+ on 500026 == -10
+ on 490153 == -10
+ on 490180 == -10
+ on 490172 == -10
+ on 490171 == -10
+ on 490167 == -10
+ on 490166 == -10
+ on 490165 == -10
+ on 490164 == -10
+ on 490159 == -10
+ on 490156 == -10
+ on 490155 == -10
+ on 490152 == -10
+ on 490184 == -10
+ on 490129 == -10
+ on 490120 == -10
+ on 310710 == -10
+ on 310859 == -10
+ on 310860 == -10
+ on 490023 == -10
+ on 490020 == -10
+ on 490019 == -10
+ on 311071 == -10
+ on 490007 == -10
+ on 490181 == -10
+ on 490185 == -10
+ on 500020 == -10
+ on 490408 == -10
+ on 500019 == -10
+ on 500017 == -10
+ on 500015 == -10
+ on 500003 == -10
+ on 490486 == -10
+ on 490485 == -10
+ on 490484 == -10
+ on 490483 == -10
+ on 490419 == -10
+ on 490418 == -10
+ on 490365 == -10
+ on 490186 == -10
+ on 490364 == -10
+ on 490289 == -10
+ on 490288 == -10
+ on 490278 == -10
+ on 490277 == -10
+ on 490276 == -10
+ on 490272 == -10
+ on 490220 == -10
+ on 490188 == -10
+ on 490187 == -10
+ on 550061 == -10
+ on 550062 == -10
+ on 550064 == -10
+ on 640012 == -10
+ on 650010 == -10
+ on 650004 == -10
+ on 640050 == -10
+ on 640049 == -10
+ on 640037 == -10
+ on 640036 == -10
+ on 640028 == -10
+ on 640025 == -10
+ on 640015 == -10
+ on 640014 == -10
+ on 640011 == -10
+ on 650017 == -10
+ on 640009 == -10
+ on 630041 == -10
+ on 630015 == -10
+ on 630009 == -10
+ on 630008 == -10
+ on 620010 == -10
+ on 600024 == -10
+ on 600014 == -10
+ on 590052 == -10
+ on 590051 == -10
+ on 650012 == -10
+ on 650024 == -10
+ on 590049 == -10
+ on 4828 == -10
+ on 300314 == -10
+ on 300185 == -10
+ on 310092 == -10
+ on 300096 == -10
+ on 29358 == -10
+ on 29174 == -10
+ on 310105 == -10
+ on 310109 == -10
+ on 4830 == -10
+ on 4829 == -10
+ on 4827 == -10
+ on 650033 == -10
+ on 4826 == -10
+ on 4812 == -10
+ on 4169 == -10
+ on 700101 == -10
+ on 700049 == -10
+ on 700046 == -10
+ on 700041 == -10
+ on 700029 == -10
+ on 700019 == -10
+ on 700014 == -10
+ on 590050 == -10
+ on 590044 == -10
+ on 550067 == -10
+ on 550100 == -10
+ on 570005 == -10
+ on 550141 == -10
+ on 550135 == -10
+ on 550133 == -10
+ on 550132 == -10
+ on 550131 == -10
+ on 550130 == -10
+ on 550115 == -10
+ on 550107 == -10
+ on 550102 == -10
+ on 550099 == -10
+ on 570016 == -10
+ on 550094 == -10
+ on 550093 == -10
+ on 550092 == -10
+ on 550091 == -10
+ on 550081 == -10
+ on 550080 == -10
+ on 550077 == -10
+ on 550076 == -10
+ on 550075 == -10
+ on 550068 == -10
+ on 570013 == -10
+ on 570033 == -10
+ on 590043 == -10
+ on 590003 == -10
+ on 590030 == -10
+ on 590029 == -10
+ on 590028 == -10
+ on 590026 == -10
+ on 590017 == -10
+ on 590016 == -10
+ on 590012 == -10
+ on 590010 == -10
+ on 590009 == -10
+ on 590008 == -10
+ on 580061 == -10
+ on 570034 == -10
+ on 580038 == -10
+ on 580037 == -10
+ on 580035 == -10
+ on 580034 == -10
+ on 580016 == -10
+ on 580013 == -10
+ on 580005 == -10
+ on 570062 == -10
+ on 570037 == -10
+ on 570036 == -10
+ on 490006 == -10
+ on 490125 == -10
+ on 490004 == -10
+ on 400146 == -10
+ on 400117 == -10
+ on 400111 == -10
+ on 400095 == -10
+ on 400023 == -10
+ on 32352 == -10
+ on 480351 == -10
+ on 19436 == -10
+ on 32237 == -10
+ on 32221 == -10
+ on 32202 == -10
+ on 32110 == -10
+ on 32108 == -10
+ on 28784 == -10
+ on 28616 == -10
+ on 19436 == -10
+ on 28587 == -10
+ on 28584 == -10
+ on 20902 == -10
+ on 400154 == -10
+ on 28566 == -10
+ on 400178 == -10
+ on 400486 == -10
+ on 400482 == -10
+ on 400467 == -10
+ on 400445 == -10
+ on 400388 == -10
+ on 400385 == -10
+ on 400377 == -10
+ on 400376 == -10
+ on 400246 == -10
+ on 400244 == -10
+ on 400239 == -10
+ on 400228 == -10
+ on 19436 == -10
+ on 400219 == -10
+ on 400218 == -10
+ on 400200 == -10
+ on 400189 == -10
+ on 28581 == -10
+ on 28564 == -10
+ on 410256 == -10
+ on 26118 == -10
+ on 26112 == -10
+ on 24693 == -10
+ on 24585 == -10
+ on 24418 == -10
+ on 22259 == -10
+ on 22242 == -10
+ on 22186 == -10
+ on 22119 == -10
+ on 21058 == -10
+ on 20984 == -10
+ on 20947 == -10
+ on 20947 == -10
+ on 20939 == -10
+ on 20937 == -10
+ on 20937 == -10
+ on 20937 == -10
+ on 20844 == -10
+ on 20744 == -10
+ on 26119 == -10
+ on 28551 == -10
+ on 26120 == -10
+ on 28513 == -10
+ on 28507 == -10
+ on 20744 == -10
+ on 28484 == -10
+ on 28431 == -10
+ on 28371 == -10
+ on 28140 == -10
+ on 26215 == -10
+ on 26213 == -10
+ on 26178 == -10
+ on 26164 == -10
+ on 26162 == -10
+ on 26156 == -10
+ on 26155 == -10
+ on 26154 == -10
+ on 26140 == -10
+ on 20744 == -10
+ on 410079 == -10
+ on 400118 == -10
+ on 20917 == -10
+ on 480345 == -10
+ on 19249 == -10
+ on 460040 == -10
+ on 470122 == -10
+ on 19130 == -10
+ on 480283 == -10
+ on 470173 == -10
+ on 470174 == -10
+ on 470176 == -10
+ on 470182 == -10
+ on 470197 == -10
+ on 19242 == -10
+ on 470198 == -10
+ on 470204 == -10
+ on 470209 == -10
+ on 470212 == -10
+ on 450266 == -10
+ on 470265 == -10
+ on 480019 == -10
+ on 480291 == -10
+ on 480284 == -10
+ on 480083 == -10
+ on 19308 == -10
+ on 480145 == -10
+ on 480146 == -10
+ on 480147 == -10
+ on 311130 == -10
+ on 480206 == -10
+ on 480230 == -10
+ on 480231 == -10
+ on 480233 == -10
+ on 311404 == -10
+ on 470093 == -10
+ on 480346 == -10
+ on 450041 == -10
+ on 450174 == -10
+ on 450166 == -10
+ on 450046 == -10
+ on 450043 == -10
+ on 480349 == -10
+ on 450042 == -10
+ on 450040 == -10
+ on 450191 == -10
+ on 450037 == -10
+ on 450036 == -10
+ on 450030 == -10
+ on 450024 == -10
+ on 480350 == -10
+ on 450018 == -10
+ on 450179 == -10
+ on 450148 == -10
+ on 450202 == -10
+ on 480347 == -10
+ on 450265 == -10
+ on 19307 == 10
+ on 19105 == 10
+ on 2834 == 10
+ on 470157 == 10
+ combo 311071+19436 == 10
+ on 2741 == 10
+ on 311360 == -1*getskilllv("RA_RESEARCHTRAP")
+ on 640025 == -1*.@a
+ on 640026 == -1*.@a
+ on 640023 == -1*.@a
+ on 500036 == -1*.@a
+ on 550041 == -1*.@a
+ on 550044 == -1*.@a
+ on 650012 == -1*.@a
+ on 640024 == -1*.@a
+ on 480105 == -1*(min(.@l กับ 150)/10)
+ on 24110 == -1-((.@r>=7)?1:0)-((.@r>=9)?2:0)
+ on 24109 == -1-((.@r>=7)?1:0)
+ on 2932 == -1
+ on 2731 == -1
+ on 24048 == -1
+ on 312670 == -1
+ combo 15883+15884 == -1
+ on 24048 == -1
+ on 2935 == -1
+ on 15883 == -1
+ on 15470 == -1
+ on 19427 == -.@vit/18
+ on 20943 == .@val
+ on 480238 == .@val
+ combo 24563+24304 == -.@sum/2
+ on 4541 == .@rate
+ combo 24240+24241+24330 == -.@r/5
+ on 24240 == -.@r/2
+ on 24241 == -.@r/2
+ on 24242 == -.@r/2
+ on 24330 == -.@r/2
+ on 4366 == .@r*-1
+ on 24747 == -.@r
+ on 24748 == -.@r
+ on 32350 == -.@r
+ on 19262 == -.@r
+ on 24749 == -.@r
+ on 22132 == -.@r
+ on 24750 == -.@r
+ combo 2786+1473 == -.@r
+ combo 28432+1473 == -.@r
+ combo 19249+13076+13078 == -.@r
+ on 19138 == .@int/8
+ combo 28235+19313 == -.@e
+ on 19343 == .@cast
+ combo 19138+19327 == .@cast
+ on 15446 == -.@c
+ combo 2204+420089 == -.@c
+ on 480045 == -.@c
+ on 15984 == -.@c
+ on 20948 == .@bonus
+ combo 2911+15924 == -.@a
+ on 15883 == -.@a
+ combo 15883+15884 == -(readparam(bInt)/11)
+ on 310010 == -(getskilllv("PR_KYRIE")/2)
+ on 18543 == (getrefine()>6?10:5)
+ on 312196 == -(getrefine()/2)
+ combo 2481+2731 == -(getequiprefinerycnt(EQI_SHOES)/2)
+ on 24286 == -(5+.@r)
+ on 19428 == -(3*(.@r/2))
+ on 24318 == -(2*getskilllv("AC_OWL")+.@r)
+ combo 2525+15163 == -(2*getequiprefinerycnt(EQI_ARMOR))
+ on 28565 == -(.@v/18)
+ on 24021 == -(.@r>=7)?2:1
+ on 18729 == (.@r>=12)?(-5):((.@r>=10)?(-4):(-3))
+ on 19397 == -(.@r/3)*2
+ on 480068 == -(.@r/3)
+ on 24886 == -(.@r/2)
+ on 24885 == -(.@r/2)
+ on 24877 == -(.@r/2)
+ on 24876 == -(.@r/2)
+ on 400070 == -((.@r>=9)?20:(.@r>=7?15:10))
+ on 29277 == -((.@r>=9)?15:((.@r>=7)?10:5))
+ on 550053 ==    -getskilllv("TK_SPTIME")
+ on 550052 ==    -getskilllv("TK_SPTIME")
+ on 550002 ==    getskilllv("SU_NYANGGRASS")*-2
+ on 650017 ==    -getskilllv("NJ_NINPOU")
+ on 550079 ==    -getskilllv("MG_SRECOVERY")
+ on 580000 ==    getskilllv("DC_DANCINGLESSON")*-1
+ on 570000 ==    getskilllv("BA_MUSICALLESSON")*-1
+ combo 22212+4145 ==    -7*.@r
+ combo 311073+311071+470113 ==    7*.@eq
+ on 400084 ==    -5*(.@r/3)
+ on 26112 ==    -2*getskilllv("SU_SV_STEMSPEAR")
+ combo 22212+4145 ==    -2*.@r
+ combo 311073+311071+470113 ==    2*.@eq
+ combo 311073+311071+22212 ==    2*.@eq
+ on 480011 ==    -2*.@a
+ on 510002 ==    -1*getskilllv("NJ_NINPOU")
+ on 500001 ==    -1*getskilllv("AM_LEARNINGPOTION")
+ combo 4965+19050 ==    -1 - ( .@r >= 9 ) ? 1 : 0
+ on 18898 ==    -.@rate
+ on 450003 ==    .@r/3*-1
+ on 450002 ==    .@r/3*-1
+ combo 24473+24303 ==    -.@r/2
+ on 16051 ==    -.@r/2
+ on 16051 ==    -.@r/2
+ combo 311071+22212 ==    -.@eq
+ combo 311073+311071+22212 ==    .@eq
+ on 480120 ==    -.@c
+ combo 311071+470113 ==    -(7*.@eq)
+ combo 311071+22212 ==    -(2*.@eq)
+ combo 311071+470113 ==    -(2*.@eq)
+ on 5468 ==    -(.@r-5)
+
+V. Cast % | Abyss Square
+ on 510118 == -100
+
+V. Cast % | Acid Demonstration
+ on 19453 == -50
+ on 28410 == -(BaseLevel/4)
+
+V. Cast % | Adoramus
+ combo 2472+2570+15030+16018 == -50
+ on 19469 == -5*getskilllv("AB_ORATIO")
+ combo 22182+1631 == .@cast
+ combo 22225+1631 == .@cast
+
+V. Cast % | Arclouse Dash
+ combo 29725+28591 == -50
+ combo 29725+28577 == -50
+ on 470026 == -10*.@a
+ on 470025 == -10*.@a
+
+V. Cast % | Arm Cannon
+ on 28598 == -50
+ combo 490412+490240 == -50
+ combo 18974+490240 == -50
+ combo 18974+490239 == -50
+ on 410089 == -100
+ on 410088 == -100
+
+V. Cast % | Arrow Storm
+ on 5898 == -100
+
+V. Cast % | Asura Strike
+ on 1824 == -25
+ on 1832 == -100
+ on 1827 == -100
+ on 1824 == -100
+
+V. Cast % | Boost Knuckle
+ on 27092 == -100
+
+V. Cast % | Bunch of Shrimp
+ combo 29725+28590 == -50
+ combo 29725+28578 == -50
+ on 450210 == -10*getskilllv("SU_SHRIMPARTY")
+ on 22210 == .@val
+
+V. Cast % | Cart Boost
+ combo 24291+24304 == -100
+
+V. Cast % | Cart Cannon
+ on 470061 == -50
+ on 470061 == -50
+ on 470060 == -50
+ on 470060 == -50
+ on 19125 == -100
+ combo 29725+32264 == -100
+
+V. Cast % | Catnip Meteor
+ combo 29725+28589 == -50
+ combo 29725+28579 == -50
+ on 28585 == -3*(BaseLevel/10)
+ on 28584 == -20
+ on 28382 == -1000
+ on 28583 == -10
+ on 400060 == .@val
+
+V. Cast % | Catnip Powdering
+ combo 29725+28589 == -50
+ combo 29725+28579 == -50
+
+V. Cast % | Chattering
+ combo 29725+28589 == -50
+ combo 29725+28579 == -50
+
+V. Cast % | Cold Bolt
+ on 490034 == -50
+ on 4416 == -25
+ on 24249 == -20-(5*.@r)
+
+V. Cast % | Cold Slower
+ on 28598 == -50
+
+V. Cast % | Coluceo Heal
+ combo 28430+4804 == -100
+ combo 19138+19327 == -100
+
+V. Cast % | Crazy Weed
+ on 19453 == -50
+
+V. Cast % | Crimson Fire Formation
+ on 15831 == -20
+ on 18947 == -10
+
+V. Cast % | Dragon Tail
+ on 28239 == -10*getrefine()
+
+V. Cast % | Earth Spike
+ on 5547 == -25
+
+V. Cast % | Earth Strain
+ on 15426 == -100
+
+V. Cast % | Esma
+ on 26176 == -20
+ combo 15855+26176 == -10
+
+V. Cast % | Estin
+ on 15855 == -50
+
+V. Cast % | Estun
+ on 15855 == -50
+
+V. Cast % | Fire Ball
+ on 27026 == -50
+ on 490387 == -50
+ on 490233 == -50
+ on 5776 == -5
+
+V. Cast % | Fire Bolt
+ on 490034 == -50
+ on 5776 == -5
+ on 4433 == -25
+ on 24249 == -20-(5*.@r)
+
+V. Cast % | Flame Launcher
+ on 28598 == -50
+
+V. Cast % | Focused Arrow Strike
+ combo 18541+1745 == -50
+ on 400473 == -20
+ on 400472 == -20
+ on 15828 == 20
+ on 15879 == -10
+
+V. Cast % | Fresh Shrimp
+ combo 29725+28590 == -50
+ combo 29725+28578 == -50
+ on 450210 == -10*getskilllv("SU_SHRIMPARTY")
+ on 22210 == .@val
+
+V. Cast % | Frosty Misty
+ combo 1646+2161 == -.@r
+
+V. Cast % | Full Protection
+ on 19453 == -50
+
+V. Cast % | Gate of Hell
+ on 28503 == -3*(BaseLevel/20)
+
+V. Cast % | Grand Cross
+ combo 28515+18823 == -100
+
+V. Cast % | Greed
+ on 19407 == -100
+ on 19402 == -100
+ combo 29725+32253 == -100
+
+V. Cast % | Grooming
+ combo 29725+28590 == -50
+ combo 29725+28578 == -50
+
+V. Cast % | Heaven's Drive
+ combo 24265+24278 == -40
+ on 15827 == 30
+ on 5547 == -25
+
+V. Cast % | Hell Inferno
+ on 32266 == -50
+ on 1682 == -30
+
+V. Cast % | Hidden Water
+ on 18948 == -10
+
+V. Cast % | Highness Heal
+ combo 28430+4805 == -100
+
+V. Cast % | Hiss
+ combo 29725+28591 == -50
+ combo 29725+28577 == -50
+ on 470026 == -10*.@a
+ on 470025 == -10*.@a
+
+V. Cast % | Holy Light
+ combo 2380+2436+2539 == -50
+ combo 2472+2570+15030+16018 == -50
+ on 1631 == -25
+
+V. Cast % | Howling of Lion
+ on 19329 == -50
+
+V. Cast % | Howling of Mandragora
+ combo 32242+18977 == -100
+
+V. Cast % | Jack Frost
+ combo 1646+2161 == -.@r
+
+V. Cast % | Judex
+ on 490010 == -50
+ combo 2472+2570+15030+16018 == -50
+ on 19469 == -5*getskilllv("AB_ORATIO")
+ combo 22182+1631 == .@cast
+ combo 22225+1631 == .@cast
+
+V. Cast % | Jupitel Thunder
+ combo 24264+24277 == -40
+ on 26175 == -20
+ on 15827 == 20
+ on 26175 == -10
+ on 15856 == -10
+
+V. Cast % | Kaizel
+ combo 300021+311439 == -50
+
+V. Cast % | Lightning Bolt
+ on 490034 == -50
+ on 31002 == -25
+ on 24249 == -20-(5*.@r)
+
+V. Cast % | Lightning Strike of Destruction
+ on 15831 == -20
+ on 18949 == -10
+
+V. Cast % | Lightning Walk
+ on 490110 == -50
+
+V. Cast % | Lope
+ on 400077 == -50
+ on 400077 == -50
+ on 400060 == -50
+ on 400060 == -50
+ on 22187 == -50
+ on 22187 == -50
+ on 410110 == -100
+ on 410109 == -100
+
+V. Cast % | Lord of Vermilion
+ on 15832 == -10
+ on 24264 == -1*(20+(3*.@r))
+
+V. Cast % | Lunatic Carrot Beat
+ combo 29725+28591 == -50
+ combo 29725+28577 == -50
+ on 28588 == -3*(BaseLevel/10)
+ on 480075 == -20
+ on 480075 == -20
+ on 28587 == -20
+ on 470026 == -10*.@a
+ on 470025 == -10*.@a
+ on 480075 == -10
+ on 28586 == -10
+
+V. Cast % | Magnetic Earth
+ on 550005 == -30
+ on 26147 == -30
+
+V. Cast % | Magnus Exorcismus
+ combo 2472+2570+15030+16018 == -50
+ combo 24260+24273 == -40
+ on 1631 == -25
+ combo 2677+28602 == -25
+ combo 2677+28646 == -25
+ on 18791 == -100
+ on 15978 == -100
+ on 15977 == -100
+
+V. Cast % | Man Hole
+ on 28595 == -100
+
+V. Cast % | Mental Strength
+ on 19329 == -50
+ on 22145 == -.@c*10
+
+V. Cast % | Meow Meow
+ combo 29725+28589 == -50
+ combo 29725+28579 == -50
+
+V. Cast % | Metallic Sound
+ on 22198 == -10*getskilllv("WM_GLOOMYDAY")
+ on 28536 == .@n/2
+ on 28411 == .@n/2
+
+V. Cast % | Meteor Assault
+ on 22134 == -7*(.@a+.@b+.@c)
+ on 470083 == -100
+ on 470082 == -100
+ combo 490231+490395 == -100
+
+V. Cast % | Meteor Storm
+ on 24264 == -1*(20+(3*.@r))
+
+V. Cast % | Mystical Amplification
+ on 2003 == -50
+ on 2000 == -50
+ combo 22257+19193 == -50
+ combo 2003+19193 == 50
+ combo 19193+2000 == 50
+ combo 27087+311075 == -100
+
+V. Cast % | New Moon Kick
+ on 29717 == -50
+
+V. Cast % | Nyang Grass
+ combo 29725+28589 == -50
+ combo 29725+28579 == -50
+
+V. Cast % | Omega Abyss Strike
+ on 510118 == -100
+
+V. Cast % | Oratio
+ on 28564 == -50
+
+V. Cast % | Picky Peck
+ on 490393 == -50
+ on 490392 == -50
+ on 28591 == -50
+ on 28424 == -50
+ combo 490190+550014 == -50
+ combo 15430+490084 == -50
+ combo 29725+28591 == -50
+ combo 29725+28577 == -50
+ on 480075 == -20
+ on 480075 == -20
+ on 470026 == -10*.@a
+ on 470025 == -10*.@a
+ on 480075 == -10
+
+V. Cast % | Power of Flock
+ combo 29725+28591 == -50
+ combo 29725+28577 == -50
+ on 470026 == -10*.@a
+ on 470025 == -10*.@a
+
+V. Cast % | Prominence Kick
+ on 29716 == -50
+
+V. Cast % | Psychic Wave
+ combo 15387+4561 == -100
+
+V. Cast % | Purring
+ combo 29725+28590 == -50
+ combo 29725+28578 == -50
+
+V. Cast % | Ray of Genesis
+ on 490083 == -50
+
+V. Cast % | Reverberation
+ on 470032 == -100
+ on 1940 == -.@per
+
+V. Cast % | Ride In Lightening
+ on 28503 == -5*(BaseLevel/15)
+
+V. Cast % | Scar of Tarou
+ combo 29725+28591 == -50
+ combo 29725+28577 == -50
+ on 480075 == -20
+ on 480075 == -20
+ on 470026 == -10*.@a
+ on 470025 == -10*.@a
+ on 480075 == -10
+
+V. Cast % | Shield Chain
+ on 490028 == -50
+ on 15826 == 20
+
+V. Cast % | Silvervine Root Twist
+ combo 29725+28589 == -50
+ combo 29725+28579 == -50
+
+V. Cast % | Silvervine Stem Spear
+ on 28589 == -50
+ on 28422 == -50
+ combo 15430+490084 == -50
+ combo 29725+28589 == -50
+ combo 29725+28579 == -50
+ on 400060 == .@val
+
+V. Cast % | Spiral Pierce
+ on 32261 == -50
+ on 15826 == 20
+
+V. Cast % | Spirit of Savage
+ combo 29725+28591 == -50
+ combo 29725+28577 == -50
+ on 480075 == -20
+ on 480075 == -20
+ on 470026 == -10*.@a
+ on 470025 == -10*.@a
+ on 480075 == -10
+
+V. Cast % | Spore Explosion
+ on 20986 == -100
+ combo 490412+490240 == -100
+
+V. Cast % | Stoop
+ on 400077 == -50
+ on 400077 == -50
+ on 400060 == -50
+ on 400060 == -50
+ on 15277 == -50
+ on 15277 == -50
+ on 410110 == -100
+ on 410109 == -100
+
+V. Cast % | Storm Gust
+ on 1646 == -8
+ on 15832 == -10
+ on 24264 == -1*(20+(3*.@r))
+ combo 1646+2161 == -.@r
+
+V. Cast % | Summon Spirit Sphere
+ on 19329 == -50
+ on 22145 == -.@c*10
+
+V. Cast % | Swirling Petal
+ on 32262 == -50
+
+V. Cast % | Tasty Shrimp Party
+ combo 29725+28578 == -50
+ combo 29725+28590 == -50
+ on 22210 == .@val
+
+V. Cast % | Throw Huuma Shuriken
+ on 32281 == -25
+ on 15831 == -20
+ on 1339 == -20
+ on 1339 == -10
+
+V. Cast % | Throw Spirit Sphere
+ on 15822 == -30
+ on 15849 == -15
+
+V. Cast % | Thunderstorm
+ on 15832 == -30
+
+V. Cast % | Tracking
+ on 15831 == -30
+ on 13176 == -25
+ on 13171 == -25
+ on 28203 == -20
+
+V. Cast % | Triangle Shot
+ combo 490231+490395 == -100
+
+V. Cast % | Tuna Belly
+ combo 29725+28590 == -50
+ combo 29725+28578 == -50
+ on 450210 == -10*getskilllv("SU_SHRIMPARTY")
+ on 22210 == .@val
+
+V. Cast % | Tuna Party
+ combo 29725+28590 == -50
+ combo 29725+28578 == -50
+ on 450210 == -10*getskilllv("SU_SHRIMPARTY")
+ on 22210 == .@val
+
+V. Cast % | Turn Undead
+ combo 2472+2570+15030+16018 == -50
+ on 1631 == -25
+
+V. Cast % | Vulcan Arm
+ on 27092 == -100
+
+V. Cast % | Vulcan Arrow
+ on 490032 == -50
+ on 15828 == 30
+ on 400473 == -20
+ on 400472 == -20
+
+V. Cast % | Warmer
+ on 28567 == -50
+ on 28394 == -50
+
+V. Cast % | Wind Cutter
+ combo 28506+1449 == -50
+
+V. Cast % | Zen
+ on 490110 == -50
+ on 22213 == -50
+ on 19447 == -50
+
+V. Cast (All)
+ on 5972 == -readparam(bInt)/30 ^FF0000หาร 1000^000000s
+
+V. Cast | Aimed Bolt
+ combo 310003+310001 == -1s
+
+V. Cast | Axe Boomerang
+ on 32253 == -1.5s
+
+V. Cast | Deep Sleep Lullaby
+ on 1984 == -2s
+ on 1930 == -2s
+
+V. Cast | Dragon Breath
+ on 22227 == -2s
+
+V. Cast | Dragon Breath - Water
+ on 22227 == -2s
+
+V. Cast | Earth Drive
+ on 32263 == -0.5s
+
+V. Cast | Gloria Domini
+ on 5985 == -2s
+
+V. Cast | Grand Cross
+ combo 18823+28372 == -2s
+
+V. Cast | Heaven's Drive
+ on 15028 == -3s
+
+V. Cast | Inspiration
+ on 400070 == -2s
+ on 19343 == -2s
+
+V. Cast | Lord of Vermilion
+ on 15025 == -3s
+
+V. Cast | Meteor Storm
+ on 15027 == -3s
+
+V. Cast | Over Brand
+ on 400070 == -1s
+ on 19343 == -1s
+
+V. Cast | Psychic Wave
+ on 28615 == -3s
+ on 1654 == -3s
+ on 15242 == -2s
+ on 15242 == -2s
+ on 15242 == -2s
+
+V. Cast | Reading Spellbook
+ on 2028 == -1000*(getskilllv("WL_FREEZE_SP")) ^FF0000หาร 1000^000000s
+
+V. Cast | Sacrifice
+ on 5985 == -2s
+ on 470024 == -1s
+
+V. Cast | Storm Gust
+ on 15026 == -3s
+
+V. Cast | Summon Fire Ball
+ on 2028 == -1s
+
+V. Cast | Summon Lightning Ball
+ on 2028 == -1s
+
+V. Cast | Summon Stone
+ on 2028 == -1s
+
+V. Cast | Summon Water Ball
+ on 2028 == -1s
+
+V. Cast | Swing Dance
+ on 1984 == -2s
+
+V. Cast | Varetyr Spear
+ on 28394 == -1.5s
+
+V. Cast | Windmill Rush Attack
+ on 1930 == -2s
+

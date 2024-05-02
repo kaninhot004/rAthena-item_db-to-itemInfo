@@ -424,10 +424,16 @@ public class Converter : MonoBehaviour
         for (int i = 0; i < _easyItemBuilderDatabase.datas.Count; i++)
         {
             builder.Append(_easyItemBuilderDatabase.datas[i].bonus + "\n");
-            builder.Append(_easyItemBuilderDatabase.datas[i].item + "\n");
+
+            _easyItemBuilderDatabase.datas[i].values.Sort((a, b) => a.itemValue.CompareTo(b.itemValue));
+            _easyItemBuilderDatabase.datas[i].values.Reverse();
+
+            for (int j = 0; j < _easyItemBuilderDatabase.datas[i].values.Count; j++)
+                builder.Append(_easyItemBuilderDatabase.datas[i].values[j].itemName + " == " + _easyItemBuilderDatabase.datas[i].values[j].itemValue + "\n");
+
             builder.Append("\n");
         }
-        File.WriteAllText("cooldown_list.txt", builder.ToString(), Encoding.UTF8);
+        File.WriteAllText("easy_item_builder.txt", builder.ToString(), Encoding.UTF8);
     }
     /// <summary>
     /// Exporting item lists to StringBuilder
@@ -1618,7 +1624,7 @@ public class Converter : MonoBehaviour
             return;
         }
 
-        var comboDatabasesFile = (_isSkipNormalEquipEtcCombo ? string.Empty : File.ReadAllText(path));
+        var comboDatabasesFile = _isSkipNormalEquipEtcCombo ? string.Empty : File.ReadAllText(path);
 
         var comboDatabases = comboDatabasesFile.Split('\n');
 
@@ -1664,7 +1670,9 @@ public class Converter : MonoBehaviour
             {
                 _currentCombo = string.Empty;
                 for (int j = 0; j < comboDatabase.sameComboDatas[comboDatabase.sameComboDatas.Count - 1].aegisNames.Count; j++)
-                    _currentCombo += comboDatabase.sameComboDatas[comboDatabase.sameComboDatas.Count - 1].aegisNames[j] + " ";
+                    _currentCombo += GetItemIdFromAegisName(comboDatabase.sameComboDatas[comboDatabase.sameComboDatas.Count - 1].aegisNames[j]) + "+";
+                if (!string.IsNullOrEmpty(_currentCombo))
+                    _currentCombo = _currentCombo.Substring(0, _currentCombo.Length - 1);
                 var comboScript = ConvertItemScripts(text);
                 _currentCombo = string.Empty;
                 if (!string.IsNullOrEmpty(comboScript))
@@ -4096,7 +4104,7 @@ public class Converter : MonoBehaviour
             var value = TryParseInt(temps[0]);
             text = string.Format(_localization.GetTexts(Localization.BONUS_CAST_RATE), value);
 
-            _easyItemBuilderDatabase.Add("Cast % (All)", GetCurrentItemIdOrCombo() + " :: " + value);
+            _easyItemBuilderDatabase.Add("Cast % (All)", GetCurrentItemIdOrCombo(), value);
         }
         if (text.Contains("bonus2 bCastrate,"))
         {
@@ -4106,7 +4114,7 @@ public class Converter : MonoBehaviour
             var value = TryParseInt(temps[1]);
             text = string.Format(_localization.GetTexts(Localization.BONUS2_CAST_RATE), skillName, value);
 
-            _easyItemBuilderDatabase.Add("Cast % | " + skillName, GetCurrentItemIdOrCombo() + " :: " + value);
+            _easyItemBuilderDatabase.Add("Cast % | " + skillName, GetCurrentItemIdOrCombo(), value);
         }
         if (text.Contains("bonus bFixedCastrate,"))
         {
@@ -4115,7 +4123,7 @@ public class Converter : MonoBehaviour
             var value = TryParseInt(temps[0]);
             text = string.Format(_localization.GetTexts(Localization.BONUS_FIXED_CAST_RATE), value);
 
-            _easyItemBuilderDatabase.Add("F. Cast % (All)", GetCurrentItemIdOrCombo() + " :: " + value);
+            _easyItemBuilderDatabase.Add("F. Cast % (All)", GetCurrentItemIdOrCombo(), value);
         }
         if (text.Contains("bonus2 bFixedCastrate,"))
         {
@@ -4125,7 +4133,7 @@ public class Converter : MonoBehaviour
             var value = TryParseInt(temps[1]);
             text = string.Format(_localization.GetTexts(Localization.BONUS2_FIXED_CAST_RATE), skillName, value);
 
-            _easyItemBuilderDatabase.Add("F. Cast % | " + skillName, GetCurrentItemIdOrCombo() + " :: " + value);
+            _easyItemBuilderDatabase.Add("F. Cast % | " + skillName, GetCurrentItemIdOrCombo(), value);
         }
         if (text.Contains("bonus bVariableCastrate,"))
         {
@@ -4134,7 +4142,7 @@ public class Converter : MonoBehaviour
             var value = TryParseInt(temps[0]);
             text = string.Format(_localization.GetTexts(Localization.BONUS_VARIABLE_CAST_RATE), value);
 
-            _easyItemBuilderDatabase.Add("V. Cast % (All)", GetCurrentItemIdOrCombo() + " :: " + value);
+            _easyItemBuilderDatabase.Add("V. Cast % (All)", GetCurrentItemIdOrCombo(), value);
         }
         if (text.Contains("bonus2 bVariableCastrate,"))
         {
@@ -4144,7 +4152,7 @@ public class Converter : MonoBehaviour
             var value = TryParseInt(temps[1]);
             text = string.Format(_localization.GetTexts(Localization.BONUS2_VARIABLE_CAST_RATE), skillName, value);
 
-            _easyItemBuilderDatabase.Add("V. Cast % | " + skillName, GetCurrentItemIdOrCombo() + " :: " + value);
+            _easyItemBuilderDatabase.Add("V. Cast % | " + skillName, GetCurrentItemIdOrCombo(), value);
         }
         if (text.Contains("bonus bFixedCast,"))
         {
@@ -4153,7 +4161,7 @@ public class Converter : MonoBehaviour
             var value = TryParseTimer(TryParseInt(temps[0], 1000));
             text = string.Format(_localization.GetTexts(Localization.BONUS_FIXED_CAST), value);
 
-            _easyItemBuilderDatabase.Add("F. Cast (All)", GetCurrentItemIdOrCombo() + " :: " + value);
+            _easyItemBuilderDatabase.Add("F. Cast (All)", GetCurrentItemIdOrCombo(), value);
         }
         if (text.Contains("bonus2 bSkillFixedCast,"))
         {
@@ -4163,7 +4171,7 @@ public class Converter : MonoBehaviour
             var value = TryParseTimer(TryParseInt(temps[1], 1000));
             text = string.Format(_localization.GetTexts(Localization.BONUS2_SKILL_FIXED_CAST), skillName, value);
 
-            _easyItemBuilderDatabase.Add("F. Cast | " + skillName, GetCurrentItemIdOrCombo() + " :: " + value);
+            _easyItemBuilderDatabase.Add("F. Cast | " + skillName, GetCurrentItemIdOrCombo(), value);
         }
         if (text.Contains("bonus bVariableCast,"))
         {
@@ -4172,7 +4180,7 @@ public class Converter : MonoBehaviour
             var value = TryParseTimer(TryParseInt(temps[0], 1000));
             text = string.Format(_localization.GetTexts(Localization.BONUS_VARIABLE_CAST), value);
 
-            _easyItemBuilderDatabase.Add("V. Cast (All)", GetCurrentItemIdOrCombo() + " :: " + value);
+            _easyItemBuilderDatabase.Add("V. Cast (All)", GetCurrentItemIdOrCombo(), value);
         }
         if (text.Contains("bonus2 bSkillVariableCast,"))
         {
@@ -4182,7 +4190,7 @@ public class Converter : MonoBehaviour
             var value = TryParseTimer(TryParseInt(temps[1], 1000));
             text = string.Format(_localization.GetTexts(Localization.BONUS2_SKILL_VARIABLE_CAST), skillName, value);
 
-            _easyItemBuilderDatabase.Add("V. Cast | " + skillName, GetCurrentItemIdOrCombo() + " :: " + value);
+            _easyItemBuilderDatabase.Add("V. Cast | " + skillName, GetCurrentItemIdOrCombo(), value);
         }
         text = text.Replace("bonus bNoCastCancel2", _localization.GetTexts(Localization.BONUS_NO_CAST_CANCEL_2));
         text = text.Replace("bonus bNoCastCancel", _localization.GetTexts(Localization.BONUS_NO_CAST_CANCEL));
@@ -4193,7 +4201,7 @@ public class Converter : MonoBehaviour
             var value = TryParseInt(temps[0]);
             text = string.Format(_localization.GetTexts(Localization.BONUS_DELAY_RATE), value);
 
-            _easyItemBuilderDatabase.Add("Delay % (All)", GetCurrentItemIdOrCombo() + " :: " + value);
+            _easyItemBuilderDatabase.Add("Delay % (All)", GetCurrentItemIdOrCombo(), value);
         }
         if (text.Contains("bonus bDelayRate,"))
         {
@@ -4202,7 +4210,7 @@ public class Converter : MonoBehaviour
             var value = TryParseInt(temps[0]);
             text = string.Format(_localization.GetTexts(Localization.BONUS_DELAY_RATE), value);
 
-            _easyItemBuilderDatabase.Add("Delay % (All)", GetCurrentItemIdOrCombo() + " :: " + value);
+            _easyItemBuilderDatabase.Add("Delay % (All)", GetCurrentItemIdOrCombo(), value);
         }
         if (text.Contains("bonus2 bSkillDelay,"))
         {
@@ -4212,7 +4220,7 @@ public class Converter : MonoBehaviour
             var value = TryParseTimer(TryParseInt(temps[1], 1000));
             text = string.Format(_localization.GetTexts(Localization.BONUS2_SKILL_DELAY), skillName, value);
 
-            _easyItemBuilderDatabase.Add("Delay % | " + skillName, GetCurrentItemIdOrCombo() + " :: " + value);
+            _easyItemBuilderDatabase.Add("Delay % | " + skillName, GetCurrentItemIdOrCombo(), value);
         }
         if (text.Contains("bonus2 bSkillCooldown,"))
         {
@@ -4222,7 +4230,7 @@ public class Converter : MonoBehaviour
             var value = TryParseTimer(TryParseInt(temps[1], 1000));
             text = string.Format(_localization.GetTexts(Localization.BONUS2_SKILL_COOLDOWN), skillName, value);
 
-            _easyItemBuilderDatabase.Add("Cooldown | " + skillName, GetCurrentItemIdOrCombo() + " :: " + value);
+            _easyItemBuilderDatabase.Add("Cooldown | " + skillName, GetCurrentItemIdOrCombo(), value);
         }
         if (text.Contains("bonus2 bAddEle,"))
         {
