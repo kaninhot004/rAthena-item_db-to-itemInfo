@@ -2242,7 +2242,7 @@ public class Converter : MonoBehaviour
             }
             // SubType
             else if (text.Contains("    SubType:"))
-                _itemContainer.subType = text.Replace("    SubType: ", string.Empty);
+                _itemContainer.subType = text.Replace("    SubType: ", string.Empty).Replace("Enchant    ", "Enchant");
             // Buy
             else if (text.Contains("    Buy:"))
             {
