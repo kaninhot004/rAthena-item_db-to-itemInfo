@@ -25830,7 +25830,7 @@
 400592="YellowKitty_HeadPhone"
 400593="PGstone_Knit_Hat_GR"
 400594="Clockwise"
-400595="ฦฎถ๓ภฬพฑท้ฤ"
+400595="ฦฎถ๓ภฬพฑท้ฤธ"
 400596="C_Petit_Choco_Hat"
 400599="C_Merlion_Hat_MSP"
 400600="C_GGH_Numbawan_MSP"
