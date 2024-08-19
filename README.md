@@ -1,4 +1,4 @@
-# ตัวแปลงฐานข้อมูล Item จาก rAthena ไปใช้ในตัวเกม Ragnarok Online (rAthena Item Database to Item Information Converter)
+# ตัวแปลงฐานข้อมูล Item จาก rAthena ไปใช้ในตัวเกม Ragnarok Online (rAthena Item Database to Ragnarok Online Item Information Converter)
 - ทำใช้ส่วนตัวเพื่อการศึกษา (For education and personal use.)
 
 ## วิธีใช้งาน (Tutorial)
