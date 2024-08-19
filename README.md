@@ -1,19 +1,12 @@
-# rAthena-item_db-to-itemInfo
-Simple rAthena item_db converter
+# ตัวแปลงฐานข้อมูล Item จาก rAthena ไปใช้ในตัวเกม Ragnarok Online (rAthena Item Database to Item Information Converter)
+- ทำใช้ส่วนตัวเพื่อการศึกษา (For education and personal use.)
 
----
+## วิธีใช้งาน (Tutorial)
+- ไทย: https://youtu.be/N8S3JNXoG18 (English: https://youtu.be/mGU6DUNvCY4)
 
-# Tutorial
-- English: https://youtu.be/mGU6DUNvCY4
-- Thai: https://youtu.be/N8S3JNXoG18
+## บริจาคสนับสนุน (Donate)
+- [https://kanintemsrisukgames.wordpress.com/2019/04/05/support-kt-games/](https://kanintemsrisukgames.wordpress.com/2019/04/05/support-kt-games/)
 
----
-
-# Donate
-- Donate: https://kanintemsrisukgames.wordpress.com/2019/04/05/support-kt-games/
-
----
-
-# Credit
-- Resource Name Finder & Bug Reporter: [@KingarteR](https://github.com/KingarteR)
-- Bug Reporter: [@EditorFC](https://github.com/EditorFc)
+## ขอบคุณ (Credit)
+- คนที่หา File ที่ขาดหาย (Resource Finder): [@KingarteR](https://github.com/KingarteR)
+- ขอบคุณสำหรับการแจ้งข้อผิดพลาดทั่วไป (Bug Reporter): [@EditorFC](https://github.com/EditorFc)
