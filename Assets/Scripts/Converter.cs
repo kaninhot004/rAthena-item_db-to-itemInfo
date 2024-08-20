@@ -904,6 +904,83 @@ public class Converter : MonoBehaviour
 
         Debug.Log("'learnable-skill-list.txt' has been successfully created.");
         Debug.Log("learnable.Count:" + _allLearnableSkillDatabases.Count);
+
+        int shopNumber = 0;
+        int addedItem = 0;
+        builder = new StringBuilder();
+        builder.Append("\n-	shop	ItemMallSkill" + shopNumber + "	-1,no,");
+        List<int> itemSkillAddedList = new List<int>();
+        for (int i = 0; i < _allSkillDatabases.Count; i++)
+        {
+            if (_allSkillDatabases[i].requiredItems.Count > 0)
+            {
+                for (int j = 0; j < _allSkillDatabases[i].requiredItems.Count; j++)
+                {
+                    var itemId = GetItemIdFromAegisName(_allSkillDatabases[i].requiredItems[j]);
+                    if (itemId <= 0)
+                    {
+                        Debug.LogWarning("Found wrong Item Id for skill ID: " + _allSkillDatabases[i].id);
+
+                        continue;
+                    }
+
+                    if (itemSkillAddedList.Contains(itemId))
+                        continue;
+
+                    itemSkillAddedList.Add(itemId);
+                    builder.Append(itemId + ":" + GetItemMallSkillPrice(itemId) + ",");
+                    addedItem++;
+
+                    if ((addedItem % 100) == 0)
+                    {
+                        if (!string.IsNullOrEmpty(builder.ToString()))
+                            builder.Remove(builder.Length - 1, 1);
+
+                        shopNumber++;
+
+                        builder.Append("\n-	shop	ItemMallSkill" + shopNumber + "	-1,no,");
+                    }
+                }
+            }
+
+            if (_allSkillDatabases[i].requiredEquipments.Count > 0)
+            {
+                for (int j = 0; j < _allSkillDatabases[i].requiredEquipments.Count; j++)
+                {
+                    var itemId = GetItemIdFromAegisName(_allSkillDatabases[i].requiredEquipments[j]);
+                    if (itemId <= 0)
+                    {
+                        Debug.LogWarning("Found wrong Item Id for skill ID: " + _allSkillDatabases[i].id);
+
+                        continue;
+                    }
+
+                    if (itemSkillAddedList.Contains(itemId))
+                        continue;
+
+                    itemSkillAddedList.Add(itemId);
+                    builder.Append(itemId + ":" + GetItemMallSkillPrice(itemId) + ",");
+                    addedItem++;
+
+                    if ((addedItem % 100) == 0)
+                    {
+                        if (!string.IsNullOrEmpty(builder.ToString()))
+                            builder.Remove(builder.Length - 1, 1);
+
+                        shopNumber++;
+
+                        builder.Append("\n-	shop	ItemMallSkill" + shopNumber + "	-1,no,");
+                    }
+                }
+            }
+        }
+
+        if (!string.IsNullOrEmpty(builder.ToString()))
+            builder.Remove(builder.Length - 1, 1);
+
+        File.WriteAllText("item-mall-skill-list.txt", builder.ToString(), Encoding.UTF8);
+
+        Debug.Log("'item-mall-skill-list.txt' has been successfully created.");
     }
 
     // Parsing
@@ -1460,6 +1537,8 @@ public class Converter : MonoBehaviour
 
         SkillDatabase skillDatabase = new SkillDatabase();
 
+        bool isRequiredEquipmentLines = false;
+
         for (int i = 0; i < skillDatabases.Length; i++)
         {
             var text = skillDatabases[i];
@@ -1474,6 +1553,7 @@ public class Converter : MonoBehaviour
 
             if (text.Contains("  - Id:"))
             {
+                isRequiredEquipmentLines = false;
                 skillDatabase = new SkillDatabase();
                 _allSkillDatabases.Add(skillDatabase);
                 skillDatabase.id = int.Parse(SpacingRemover.Remove(text).Replace("-Id:", string.Empty));
@@ -1482,6 +1562,14 @@ public class Converter : MonoBehaviour
                 skillDatabase.name = QuoteRemover.Remove(text.Replace("    Name: ", string.Empty));
             else if (text.Contains("Critical: true"))
                 skillDatabase.isCritical = true;
+            else if (text.Contains("- Item:"))
+                skillDatabase.requiredItems.Add(SpacingRemover.Remove(text).Replace("-Item:", string.Empty));
+            else if (text.Contains("Equipment:"))
+                isRequiredEquipmentLines = true;
+            else if (text.Contains("Unit:") || text.Contains("Status:"))
+                isRequiredEquipmentLines = false;
+            else if (isRequiredEquipmentLines)
+                skillDatabase.requiredEquipments.Add(SpacingRemover.Remove(text).Replace(":true", string.Empty));
             else if (text.Contains("    Description:"))
             {
                 skillDatabase.description = QuoteRemover.Remove(text.Replace("    Description: ", string.Empty));
@@ -6688,5 +6776,17 @@ public class Converter : MonoBehaviour
             || !string.IsNullOrEmpty(_itemContainer.equipScript)
             || !string.IsNullOrEmpty(_itemContainer.unequipScript)
             || !string.IsNullOrEmpty(GetCombo(GetItemDatabase(int.Parse(_itemContainer.id)).aegisName));
+    }
+
+    string GetItemMallSkillPrice(int id)
+    {
+        if (id == 7049)
+            return "10";
+        else if (id == 6128)
+            return "1000";
+        else if (id == 12333)
+            return "1000";
+        else
+            return "-1";
     }
 }
