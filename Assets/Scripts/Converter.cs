@@ -4,7 +4,6 @@ using UnityEngine.UI;
 using System.IO;
 using System;
 using System.Text;
-using System.Linq;
 
 public class Converter : MonoBehaviour
 {
@@ -15,6 +14,15 @@ public class Converter : MonoBehaviour
     const int PET_ARMOR_PRICE = 10000000;
     const int FASHION_PRICE = 50000000;
     const int BUFF_PRICE = 1000000;
+
+    const string STONE_PRICE = "5";
+    const string YGGDRASIL_SEED_PRICE = "9000000";
+    const string YGGDRASIL_BERRY_PRICE = "90000000";
+    const string ELEMENT_CONVERTER_PRICE = "15000";
+    const string PILE_BUNKER_PRICE = "300000";
+    const string CLASS_2_SKILL_ITEM_REQ_PRICE = "3000";
+    const string CLASS_3_SKILL_ITEM_REQ_PRICE = "9000";
+    const string CLASS_4_SKILL_ITEM_REQ_PRICE = "25000";
 
     [SerializeField] bool _isItemUnconditional = false;
     [SerializeField] bool _isSkipEquipLevel = false;
@@ -938,7 +946,7 @@ public class Converter : MonoBehaviour
 
                         shopNumber++;
 
-                        builder.Append("\n-	shop	ItemMallSkill" + shopNumber + "	-1,no,");
+                        builder.Append("\n-	shop	ItemMallSkill" + shopNumber + "	-1,");
                     }
                 }
             }
@@ -6780,12 +6788,70 @@ public class Converter : MonoBehaviour
 
     string GetItemMallSkillPrice(int id)
     {
-        if (id == 7049)
-            return "10";
-        else if (id == 6128)
-            return "1000";
-        else if (id == 12333)
-            return "1000";
+        if (id == 7049) // Stone
+            return STONE_PRICE;
+        else if (id == 7135) // Bottle Grenade
+            return CLASS_2_SKILL_ITEM_REQ_PRICE;
+        else if (id == 7136) // Acid Bottle
+            return CLASS_2_SKILL_ITEM_REQ_PRICE;
+        else if (id == 608) // Yggdrasil Seed
+            return YGGDRASIL_SEED_PRICE;
+        else if (id == 607) // Yggdrasil Berry
+            return YGGDRASIL_BERRY_PRICE;
+        else if (id == 7137) // Plant Bottle
+            return CLASS_2_SKILL_ITEM_REQ_PRICE;
+        else if (id == 7138) // Marine Sphere Bottle
+            return CLASS_2_SKILL_ITEM_REQ_PRICE;
+        else if (id == 7139) // Glistening Coat
+            return CLASS_2_SKILL_ITEM_REQ_PRICE;
+        else if (id == 7142) // Ebmryo
+            return CLASS_2_SKILL_ITEM_REQ_PRICE;
+        else if (id == 6360) // Scarlet Point
+            return CLASS_3_SKILL_ITEM_REQ_PRICE;
+        else if (id == 6361) // Indigo Point
+            return CLASS_3_SKILL_ITEM_REQ_PRICE;
+        else if (id == 6362) // Yellow Wish Point
+            return CLASS_3_SKILL_ITEM_REQ_PRICE;
+        else if (id == 6363) // Lime Green Point
+            return CLASS_3_SKILL_ITEM_REQ_PRICE;
+        else if (id == 12115) // Water Elemental Converter
+            return ELEMENT_CONVERTER_PRICE;
+        else if (id == 12116) // Earth Elemental Converter
+            return ELEMENT_CONVERTER_PRICE;
+        else if (id == 12114) // Fire Elemental Converter
+            return ELEMENT_CONVERTER_PRICE;
+        else if (id == 12118) // Wind Elemental Converter
+            return ELEMENT_CONVERTER_PRICE;
+        else if (id == 6128) // Antidote
+            return CLASS_3_SKILL_ITEM_REQ_PRICE;
+        else if (id == 12333) // Ancilla
+            return CLASS_3_SKILL_ITEM_REQ_PRICE;
+        else if (id == 16030) // Pile Bunker S
+            return PILE_BUNKER_PRICE;
+        else if (id == 16031) // Pile Bunker P
+            return PILE_BUNKER_PRICE;
+        else if (id == 16032) // Pile Bunker T
+            return PILE_BUNKER_PRICE;
+        else if (id == 1000352) // Device Creation Guide
+            return CLASS_4_SKILL_ITEM_REQ_PRICE;
+        else if (id == 1000289) // Device Capsule
+            return CLASS_4_SKILL_ITEM_REQ_PRICE;
+        else if (id == 1000290) // Auto Battle Capsule
+            return CLASS_4_SKILL_ITEM_REQ_PRICE;
+        else if (id == 1000280) // High Coating Bottle
+            return CLASS_4_SKILL_ITEM_REQ_PRICE;
+        else if (id == 1000279) // Icicle Acid Bottle
+            return CLASS_4_SKILL_ITEM_REQ_PRICE;
+        else if (id == 1000277) // Earth Acid Bottle
+            return CLASS_4_SKILL_ITEM_REQ_PRICE;
+        else if (id == 1000278) // Gale Acid Bottle
+            return CLASS_4_SKILL_ITEM_REQ_PRICE;
+        else if (id == 1000276) // Flame Acid Bottle
+            return CLASS_4_SKILL_ITEM_REQ_PRICE;
+        else if (id == 1000281) // High Plant Bottle
+            return CLASS_4_SKILL_ITEM_REQ_PRICE;
+        else if (id == 1000564) // Nw Grenade
+            return CLASS_4_SKILL_ITEM_REQ_PRICE;
         else
             return "-1";
     }
