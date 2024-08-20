@@ -15,14 +15,15 @@ public class Converter : MonoBehaviour
     const int FASHION_PRICE = 50000000;
     const int BUFF_PRICE = 1000000;
 
+    const string CLASS_2_SKILL_ITEM_REQ_PRICE = "3000";
+    const string CLASS_3_SKILL_ITEM_REQ_PRICE = "9000";
+    const string CLASS_4_SKILL_ITEM_REQ_PRICE = "25000";
     const string STONE_PRICE = "5";
     const string YGGDRASIL_SEED_PRICE = "9000000";
     const string YGGDRASIL_BERRY_PRICE = "90000000";
     const string ELEMENT_CONVERTER_PRICE = "15000";
     const string PILE_BUNKER_PRICE = "300000";
-    const string CLASS_2_SKILL_ITEM_REQ_PRICE = "3000";
-    const string CLASS_3_SKILL_ITEM_REQ_PRICE = "9000";
-    const string CLASS_4_SKILL_ITEM_REQ_PRICE = "25000";
+    const string POISON_BOTTLE_PRICE = "15000";
 
     [SerializeField] bool _isItemUnconditional = false;
     [SerializeField] bool _isSkipEquipLevel = false;
@@ -916,7 +917,7 @@ public class Converter : MonoBehaviour
         int shopNumber = 0;
         int addedItem = 0;
         builder = new StringBuilder();
-        builder.Append("\n-	shop	ItemMallSkill" + shopNumber + "	-1,no,");
+        builder.Append("\n-	shop	ItemMallSkill" + shopNumber + "	-1,");
         List<int> itemSkillAddedList = new List<int>();
         for (int i = 0; i < _allSkillDatabases.Count; i++)
         {
@@ -977,12 +978,45 @@ public class Converter : MonoBehaviour
 
                         shopNumber++;
 
-                        builder.Append("\n-	shop	ItemMallSkill" + shopNumber + "	-1,no,");
+                        builder.Append("\n-	shop	ItemMallSkill" + shopNumber + "	-1,");
                     }
                 }
             }
         }
 
+        List<int> missingItemId = new List<int>();
+        missingItemId.Add(22549);
+        missingItemId.Add(12717);
+        missingItemId.Add(12722);
+        missingItemId.Add(12720);
+        missingItemId.Add(12718);
+        missingItemId.Add(12724);
+        missingItemId.Add(12723);
+        missingItemId.Add(12721);
+        missingItemId.Add(12719);
+
+        for (int i = 0; i < missingItemId.Count; i++)
+        {
+            var itemId = missingItemId[i];
+            if (itemSkillAddedList.Contains(itemId))
+                continue;
+
+            itemSkillAddedList.Add(itemId);
+            builder.Append(itemId + ":" + GetItemMallSkillPrice(itemId) + ",");
+            addedItem++;
+
+            if ((addedItem % 100) == 0)
+            {
+                if (!string.IsNullOrEmpty(builder.ToString()))
+                    builder.Remove(builder.Length - 1, 1);
+
+                shopNumber++;
+
+                builder.Append("\n-	shop	ItemMallSkill" + shopNumber + "	-1,");
+            }
+
+
+        }
         if (!string.IsNullOrEmpty(builder.ToString()))
             builder.Remove(builder.Length - 1, 1);
 
@@ -6820,7 +6854,7 @@ public class Converter : MonoBehaviour
             return ELEMENT_CONVERTER_PRICE;
         else if (id == 12114) // Fire Elemental Converter
             return ELEMENT_CONVERTER_PRICE;
-        else if (id == 12118) // Wind Elemental Converter
+        else if (id == 12117) // Wind Elemental Converter
             return ELEMENT_CONVERTER_PRICE;
         else if (id == 6128) // Antidote
             return CLASS_3_SKILL_ITEM_REQ_PRICE;
@@ -6852,6 +6886,24 @@ public class Converter : MonoBehaviour
             return CLASS_4_SKILL_ITEM_REQ_PRICE;
         else if (id == 1000564) // Nw Grenade
             return CLASS_4_SKILL_ITEM_REQ_PRICE;
+        else if (id == 22549) // Poison Bottle
+            return POISON_BOTTLE_PRICE;
+        else if (id == 12717) // Paralysis
+            return CLASS_3_SKILL_ITEM_REQ_PRICE;
+        else if (id == 12722) // Pyrexia
+            return CLASS_3_SKILL_ITEM_REQ_PRICE;
+        else if (id == 12720) // Death Hurt
+            return CLASS_3_SKILL_ITEM_REQ_PRICE;
+        else if (id == 12718) // Leech End
+            return CLASS_3_SKILL_ITEM_REQ_PRICE;
+        else if (id == 12724) // Venom Bleed
+            return CLASS_3_SKILL_ITEM_REQ_PRICE;
+        else if (id == 12723) // Magic Mushroom
+            return CLASS_3_SKILL_ITEM_REQ_PRICE;
+        else if (id == 12721) // Toxin
+            return CLASS_3_SKILL_ITEM_REQ_PRICE;
+        else if (id == 12719) // Oblivion Curse
+            return CLASS_3_SKILL_ITEM_REQ_PRICE;
         else
             return "-1";
     }
