@@ -24,6 +24,9 @@ public class Converter : MonoBehaviour
     const string ELEMENT_CONVERTER_PRICE = "15000";
     const string PILE_BUNKER_PRICE = "300000";
     const string POISON_BOTTLE_PRICE = "15000";
+    const string SPELL_BOOK_TIER_1_PRICE = "100000";
+    const string SPELL_BOOK_TIER_2_PRICE = "500000";
+    const string SPELL_BOOK_TIER_3_PRICE = "1000000";
 
     [SerializeField] bool _isItemUnconditional = false;
     [SerializeField] bool _isSkipEquipLevel = false;
@@ -994,6 +997,16 @@ public class Converter : MonoBehaviour
         missingItemId.Add(12723);
         missingItemId.Add(12721);
         missingItemId.Add(12719);
+        missingItemId.Add(100065);
+        missingItemId.Add(100066);
+        missingItemId.Add(100067);
+        missingItemId.Add(100068);
+        missingItemId.Add(100069);
+        missingItemId.Add(100070);
+        missingItemId.Add(100071);
+        missingItemId.Add(100072);
+        missingItemId.Add(100073);
+        missingItemId.Add(100074);
 
         for (int i = 0; i < missingItemId.Count; i++)
         {
@@ -6904,6 +6917,26 @@ public class Converter : MonoBehaviour
             return CLASS_3_SKILL_ITEM_REQ_PRICE;
         else if (id == 12719) // Oblivion Curse
             return CLASS_3_SKILL_ITEM_REQ_PRICE;
+        else if (id == 100065) // Spell Book (Storm Gust)
+            return SPELL_BOOK_TIER_1_PRICE;
+        else if (id == 100066) // Spell Book (Lord of Vermilion)
+            return SPELL_BOOK_TIER_1_PRICE;
+        else if (id == 100067) // Spell Book (Meteor Storm)
+            return SPELL_BOOK_TIER_1_PRICE;
+        else if (id == 100068) // Spell Book (Drain Life)
+            return SPELL_BOOK_TIER_2_PRICE;
+        else if (id == 100069) // Spell Book (Jack Frost)
+            return SPELL_BOOK_TIER_2_PRICE;
+        else if (id == 100070) // Spell Book (Earth Strain)
+            return SPELL_BOOK_TIER_2_PRICE;
+        else if (id == 100071) // Spell Book (Crimson Rock)
+            return SPELL_BOOK_TIER_2_PRICE;
+        else if (id == 100072) // Spell Book (Chain Lightning)
+            return SPELL_BOOK_TIER_2_PRICE;
+        else if (id == 100073) // Spell Book (Comet)
+            return SPELL_BOOK_TIER_3_PRICE;
+        else if (id == 100074) // Spell Book (Tetra Vortex)
+            return SPELL_BOOK_TIER_3_PRICE;
         else
             return "-1";
     }
