@@ -928,6 +928,9 @@ public class Converter : MonoBehaviour
             {
                 for (int j = 0; j < _allSkillDatabases[i].requiredItems.Count; j++)
                 {
+                    if (IsItemMallSkillError(_allSkillDatabases[i].requiredItems[j]))
+                        continue;
+
                     var itemId = GetItemIdFromAegisName(_allSkillDatabases[i].requiredItems[j]);
                     if (itemId <= 0)
                     {
@@ -959,6 +962,9 @@ public class Converter : MonoBehaviour
             {
                 for (int j = 0; j < _allSkillDatabases[i].requiredEquipments.Count; j++)
                 {
+                    if (IsItemMallSkillError(_allSkillDatabases[i].requiredEquipments[j]))
+                        continue;
+
                     var itemId = GetItemIdFromAegisName(_allSkillDatabases[i].requiredEquipments[j]);
                     if (itemId <= 0)
                     {
@@ -6939,5 +6945,14 @@ public class Converter : MonoBehaviour
             return SPELL_BOOK_TIER_3_PRICE;
         else
             return "-1";
+    }
+
+    bool IsItemMallSkillError(string aegisItemName)
+    {
+        return (aegisItemName == "Fruit_Of_Mastela") // Appeared in Potion Pitcher Lv. 6
+             || (aegisItemName == "Royal_Jelly") // Appeared in Potion Pitcher Lv. 7
+             || (aegisItemName == "Seed_Of_Yggdrasil") // Appeared in Potion Pitcher Lv. 8
+             || (aegisItemName == "Yggdrasilberry") // Appeared in Potion Pitcher Lv. 9
+             ;
     }
 }
