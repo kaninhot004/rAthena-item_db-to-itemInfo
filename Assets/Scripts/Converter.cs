@@ -27,6 +27,7 @@ public class Converter : MonoBehaviour
     const string SPELL_BOOK_TIER_1_PRICE = "100000";
     const string SPELL_BOOK_TIER_2_PRICE = "500000";
     const string SPELL_BOOK_TIER_3_PRICE = "1000000";
+    const string POTION_BOOK_PRICE = "1000";
 
     [SerializeField] bool _isItemUnconditional = false;
     [SerializeField] bool _isSkipEquipLevel = false;
@@ -1013,6 +1014,19 @@ public class Converter : MonoBehaviour
         missingItemId.Add(100072);
         missingItemId.Add(100073);
         missingItemId.Add(100074);
+        missingItemId.Add(6284);
+        missingItemId.Add(6285);
+        missingItemId.Add(11022);
+        missingItemId.Add(11023);
+        missingItemId.Add(11024);
+        missingItemId.Add(6248);
+        missingItemId.Add(6250);
+        missingItemId.Add(6251);
+        missingItemId.Add(6253);
+        missingItemId.Add(6255);
+        missingItemId.Add(6258);
+        missingItemId.Add(6261);
+        missingItemId.Add(6262);
 
         for (int i = 0; i < missingItemId.Count; i++)
         {
@@ -6943,6 +6957,12 @@ public class Converter : MonoBehaviour
             return SPELL_BOOK_TIER_3_PRICE;
         else if (id == 100074) // Spell Book (Tetra Vortex)
             return SPELL_BOOK_TIER_3_PRICE;
+        else if (id == 11022) // Mix Cook Book
+            return POTION_BOOK_PRICE;
+        else if (id == 11023) // Increase Stamina Study
+            return POTION_BOOK_PRICE;
+        else if (id == 11024) // Vital Drink CB
+            return POTION_BOOK_PRICE;
         else
             return "-1";
     }
