@@ -1028,6 +1028,7 @@ public class Converter : MonoBehaviour
         missingItemId.Add(6261);
         missingItemId.Add(6262);
         missingItemId.Add(1000275);
+        missingItemId.Add(7433);
 
         for (int i = 0; i < missingItemId.Count; i++)
         {
@@ -6964,6 +6965,16 @@ public class Converter : MonoBehaviour
             return POTION_BOOK_PRICE;
         else if (id == 11024) // Vital Drink CB
             return POTION_BOOK_PRICE;
+        else if (id == 1000293) // Flame Stone 4th
+            return CLASS_4_SKILL_ITEM_REQ_PRICE;
+        else if (id == 1000295) // Ice Stone 4th
+            return CLASS_4_SKILL_ITEM_REQ_PRICE;
+        else if (id == 1000291) // Wind Stone 4th
+            return CLASS_4_SKILL_ITEM_REQ_PRICE;
+        else if (id == 1000292) // Earth Stone 4th
+            return CLASS_4_SKILL_ITEM_REQ_PRICE;
+        else if (id == 1000294) // Poison Stone 4th
+            return CLASS_4_SKILL_ITEM_REQ_PRICE;
         else
             return "-1";
     }
