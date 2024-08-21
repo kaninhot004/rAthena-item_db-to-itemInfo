@@ -1027,6 +1027,7 @@ public class Converter : MonoBehaviour
         missingItemId.Add(6258);
         missingItemId.Add(6261);
         missingItemId.Add(6262);
+        missingItemId.Add(1000275);
 
         for (int i = 0; i < missingItemId.Count; i++)
         {
