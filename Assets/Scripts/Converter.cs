@@ -28,6 +28,7 @@ public class Converter : MonoBehaviour
     const string SPELL_BOOK_TIER_2_PRICE = "500000";
     const string SPELL_BOOK_TIER_3_PRICE = "1000000";
     const string POTION_BOOK_PRICE = "1000";
+    const string LUN_ANIMA_RUNESTONE_PRICE = "100000";
 
     [SerializeField] bool _isItemUnconditional = false;
     [SerializeField] bool _isSkipEquipLevel = false;
@@ -1029,6 +1030,17 @@ public class Converter : MonoBehaviour
         missingItemId.Add(6262);
         missingItemId.Add(1000275);
         missingItemId.Add(7433);
+        missingItemId.Add(12731);
+        missingItemId.Add(12728);
+        missingItemId.Add(12732);
+        missingItemId.Add(12733);
+        missingItemId.Add(12729);
+        missingItemId.Add(12730);
+        missingItemId.Add(12726);
+        missingItemId.Add(12725);
+        missingItemId.Add(12727);
+        missingItemId.Add(22540);
+        missingItemId.Add(23277);
 
         for (int i = 0; i < missingItemId.Count; i++)
         {
@@ -6975,6 +6987,26 @@ public class Converter : MonoBehaviour
             return CLASS_4_SKILL_ITEM_REQ_PRICE;
         else if (id == 1000294) // Poison Stone 4th
             return CLASS_4_SKILL_ITEM_REQ_PRICE;
+      else if (id == 12731) // Thurisaz Rune
+            return CLASS_3_SKILL_ITEM_REQ_PRICE;
+       else if (id == 12728) // Isa Rune
+            return CLASS_3_SKILL_ITEM_REQ_PRICE;
+       else if (id == 12732) // Wyrd Rune
+            return CLASS_3_SKILL_ITEM_REQ_PRICE;
+       else if (id == 12733) // Hagalaz Rune
+            return CLASS_3_SKILL_ITEM_REQ_PRICE;
+       else if (id == 12729) // Othila Rune
+            return CLASS_3_SKILL_ITEM_REQ_PRICE;
+       else if (id == 12730) // Uruz Rune
+            return CLASS_3_SKILL_ITEM_REQ_PRICE;
+       else if (id == 12726) // Raido Rune
+            return CLASS_3_SKILL_ITEM_REQ_PRICE;
+       else if (id == 12725) // Nauthiz Rune
+            return CLASS_3_SKILL_ITEM_REQ_PRICE;
+       else if (id == 12727) // Berkana Rune
+            return CLASS_3_SKILL_ITEM_REQ_PRICE;
+       else if (id == 22540) // Lux Anima Runestone
+            return LUN_ANIMA_RUNESTONE_PRICE;
         else
             return "-1";
     }
