@@ -48,6 +48,9 @@
             "itemId": 6224,
             "itemScriptDescription": "แร่ตีบวกอาวุธ Level 5"
         }, {
+            "itemId": 6909,
+            "itemScriptDescription": "ใช้สำหรับเคลื่อนย้ายไป Map ใดก็ได้ในแผนที่โลก"
+        }, {
             "itemId": 12020,
             "itemScriptDescription": "กดใช้เพื่อ เคลือบธาตุ Dark ให้อาวุธชั่วคราว"
         }, {
@@ -116,6 +119,9 @@
         }, {
             "itemId": 23177,
             "itemScriptDescription": "กดใช้เพื่อ เปิดคลังเก็บของ"
+        }, {
+            "itemId": 25464,
+            "itemScriptDescription": "ใช้สำหรับเคลื่อนย้ายไป Map ใดก็ได้ในแผนที่โลก"
         }, {
             "itemId": 25793,
             "itemScriptDescription": "กดใช้เพื่อ ขยายขนาดกระเป๋า (ขยายได้มากสุด 100 ช่อง)"
