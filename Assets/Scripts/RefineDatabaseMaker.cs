@@ -14,93 +14,75 @@ public class RefineDatabaseMaker : MonoBehaviour
 
     public const int ARMOR_LEVEL_1_PRICE_BASE = 20000;
     public const int ARMOR_LEVEL_1_PRICE_INCREMENTAL = 20000;
-    public const int ARMOR_LEVEL_1_BONUS_BASE = 100;
-    public const int ARMOR_LEVEL_1_BONUS_INCREMENTAL = 310;
-    public const int ARMOR_LEVEL_1_RANDOM_BONUS_BASE = 10;
-    public const int ARMOR_LEVEL_1_RANDOM_BONUS_INCREMENTAL = 10;
-    public const int ARMOR_LEVEL_1_REFINE_RATE_DECREASE = 520;
+    public const int ARMOR_LEVEL_1_BONUS_INCREMENTAL = 300;
+    public const int ARMOR_LEVEL_1_RANDOM_BONUS_INCREMENTAL = 0;
+    public const int ARMOR_LEVEL_1_REFINE_RATE_DECREASE = 500;
     public const string ARMOR_LEVEL_1_MATERIAL = "Elunium";
-    public const string ARMOR_LEVEL_1_SPECIAL_MATERIAL = "Special_Elunium";
+    public const string ARMOR_LEVEL_1_SPECIAL_MATERIAL = "Refine_Hack_Powder";
 
     public const int ARMOR_LEVEL_2_PRICE_BASE = 40000;
     public const int ARMOR_LEVEL_2_PRICE_INCREMENTAL = 40000;
-    public const int ARMOR_LEVEL_2_BONUS_BASE = 120;
-    public const int ARMOR_LEVEL_2_BONUS_INCREMENTAL = 370;
-    public const int ARMOR_LEVEL_2_RANDOM_BONUS_BASE = 20;
-    public const int ARMOR_LEVEL_2_RANDOM_BONUS_INCREMENTAL = 20;
-    public const int ARMOR_LEVEL_2_REFINE_RATE_DECREASE = 525;
+    public const int ARMOR_LEVEL_2_BONUS_INCREMENTAL = 360;
+    public const int ARMOR_LEVEL_2_RANDOM_BONUS_INCREMENTAL = 0;
+    public const int ARMOR_LEVEL_2_REFINE_RATE_DECREASE = 500;
     public const string ARMOR_LEVEL_2_MATERIAL = "Carnium";
-    public const string ARMOR_LEVEL_2_SPECIAL_MATERIAL = "Special_Carnium";
+    public const string ARMOR_LEVEL_2_SPECIAL_MATERIAL = "Refine_Hack_Powder";
 
     public const int WEAPON_LEVEL_1_PRICE_BASE = 1000;
     public const int WEAPON_LEVEL_1_PRICE_INCREMENTAL = 1000;
-    public const int WEAPON_LEVEL_1_BONUS_BASE = 200;
-    public const int WEAPON_LEVEL_1_BONUS_INCREMENTAL = 305;
-    public const int WEAPON_LEVEL_1_RANDOM_BONUS_BASE = 500;
-    public const int WEAPON_LEVEL_1_RANDOM_BONUS_INCREMENTAL = 185;
-    public const int WEAPON_LEVEL_1_REFINE_RATE_DECREASE = 505;
+    public const int WEAPON_LEVEL_1_BONUS_INCREMENTAL = 300;
+    public const int WEAPON_LEVEL_1_RANDOM_BONUS_INCREMENTAL = 195;
+    public const int WEAPON_LEVEL_1_REFINE_RATE_DECREASE = 450;
     public const string WEAPON_LEVEL_1_MATERIAL = "Phracon";
-    public const string WEAPON_LEVEL_1_SPECIAL_MATERIAL = "Special_Phracon";
+    public const string WEAPON_LEVEL_1_SPECIAL_MATERIAL = "Refine_Hack_Powder";
 
     public const int WEAPON_LEVEL_2_PRICE_BASE = 5000;
     public const int WEAPON_LEVEL_2_PRICE_INCREMENTAL = 5000;
-    public const int WEAPON_LEVEL_2_BONUS_BASE = 300;
-    public const int WEAPON_LEVEL_2_BONUS_INCREMENTAL = 510;
-    public const int WEAPON_LEVEL_2_RANDOM_BONUS_BASE = 120;
-    public const int WEAPON_LEVEL_2_RANDOM_BONUS_INCREMENTAL = 365;
-    public const int WEAPON_LEVEL_2_REFINE_RATE_DECREASE = 510;
+    public const int WEAPON_LEVEL_2_BONUS_INCREMENTAL = 500;
+    public const int WEAPON_LEVEL_2_RANDOM_BONUS_INCREMENTAL = 350;
+    public const int WEAPON_LEVEL_2_REFINE_RATE_DECREASE = 450;
     public const string WEAPON_LEVEL_2_MATERIAL = "Emveretarcon";
-    public const string WEAPON_LEVEL_2_SPECIAL_MATERIAL = "Special_Emveretarcon";
+    public const string WEAPON_LEVEL_2_SPECIAL_MATERIAL = "Refine_Hack_Powder";
 
-    public const int WEAPON_LEVEL_3_PRICE_BASE = 10000;
-    public const int WEAPON_LEVEL_3_PRICE_INCREMENTAL = 10000;
-    public const int WEAPON_LEVEL_3_BONUS_BASE = 500;
-    public const int WEAPON_LEVEL_3_BONUS_INCREMENTAL = 710;
-    public const int WEAPON_LEVEL_3_RANDOM_BONUS_BASE = 200;
-    public const int WEAPON_LEVEL_3_RANDOM_BONUS_INCREMENTAL = 625;
-    public const int WEAPON_LEVEL_3_REFINE_RATE_DECREASE = 515;
+    public const int WEAPON_LEVEL_3_PRICE_BASE = 20000;
+    public const int WEAPON_LEVEL_3_PRICE_INCREMENTAL = 20000;
+    public const int WEAPON_LEVEL_3_BONUS_INCREMENTAL = 700;
+    public const int WEAPON_LEVEL_3_RANDOM_BONUS_INCREMENTAL = 600;
+    public const int WEAPON_LEVEL_3_REFINE_RATE_DECREASE = 450;
     public const string WEAPON_LEVEL_3_MATERIAL = "Oridecon";
-    public const string WEAPON_LEVEL_3_SPECIAL_MATERIAL = "Special_Oridecon";
+    public const string WEAPON_LEVEL_3_SPECIAL_MATERIAL = "Refine_Hack_Powder";
 
-    public const int WEAPON_LEVEL_4_PRICE_BASE = 20000;
-    public const int WEAPON_LEVEL_4_PRICE_INCREMENTAL = 20000;
-    public const int WEAPON_LEVEL_4_BONUS_BASE = 700;
-    public const int WEAPON_LEVEL_4_BONUS_INCREMENTAL = 1020;
-    public const int WEAPON_LEVEL_4_RANDOM_BONUS_BASE = 300;
-    public const int WEAPON_LEVEL_4_RANDOM_BONUS_INCREMENTAL = 1160;
-    public const int WEAPON_LEVEL_4_REFINE_RATE_DECREASE = 520;
+    public const int WEAPON_LEVEL_4_PRICE_BASE = 30000;
+    public const int WEAPON_LEVEL_4_PRICE_INCREMENTAL = 30000;
+    public const int WEAPON_LEVEL_4_BONUS_INCREMENTAL = 1000;
+    public const int WEAPON_LEVEL_4_RANDOM_BONUS_INCREMENTAL = 1120;
+    public const int WEAPON_LEVEL_4_REFINE_RATE_DECREASE = 500;
     public const string WEAPON_LEVEL_4_MATERIAL = "Oridecon";
-    public const string WEAPON_LEVEL_4_SPECIAL_MATERIAL = "Special_Oridecon";
+    public const string WEAPON_LEVEL_4_SPECIAL_MATERIAL = "Refine_Hack_Powder";
 
     public const int WEAPON_LEVEL_5_PRICE_BASE = 40000;
     public const int WEAPON_LEVEL_5_PRICE_INCREMENTAL = 40000;
-    public const int WEAPON_LEVEL_5_BONUS_BASE = 800;
     public const int WEAPON_LEVEL_5_BONUS_INCREMENTAL = 800;
-    public const int WEAPON_LEVEL_5_RANDOM_BONUS_BASE = 100;
-    public const int WEAPON_LEVEL_5_RANDOM_BONUS_INCREMENTAL = 100;
-    public const int WEAPON_LEVEL_5_REFINE_RATE_DECREASE = 525;
+    public const int WEAPON_LEVEL_5_RANDOM_BONUS_INCREMENTAL = 1200;
+    public const int WEAPON_LEVEL_5_REFINE_RATE_DECREASE = 500;
     public const string WEAPON_LEVEL_5_MATERIAL = "Bradium";
-    public const string WEAPON_LEVEL_5_SPECIAL_MATERIAL = "Special_Bradium";
+    public const string WEAPON_LEVEL_5_SPECIAL_MATERIAL = "Refine_Hack_Powder";
 
-    public const int SHADOW_ARMOR_LEVEL_1_PRICE_BASE = 30000;
-    public const int SHADOW_ARMOR_LEVEL_1_PRICE_INCREMENTAL = 30000;
-    public const int SHADOW_ARMOR_LEVEL_1_BONUS_BASE = 1;
-    public const int SHADOW_ARMOR_LEVEL_1_BONUS_INCREMENTAL = 1;
-    public const int SHADOW_ARMOR_LEVEL_1_RANDOM_BONUS_BASE = 1;
-    public const int SHADOW_ARMOR_LEVEL_1_RANDOM_BONUS_INCREMENTAL = 1;
+    public const int SHADOW_ARMOR_LEVEL_1_PRICE_BASE = 40000;
+    public const int SHADOW_ARMOR_LEVEL_1_PRICE_INCREMENTAL = 40000;
+    public const int SHADOW_ARMOR_LEVEL_1_BONUS_INCREMENTAL = 0;
+    public const int SHADOW_ARMOR_LEVEL_1_RANDOM_BONUS_INCREMENTAL = 0;
     public const int SHADOW_ARMOR_LEVEL_1_REFINE_RATE_DECREASE = 500;
-    public const string SHADOW_ARMOR_LEVEL_1_MATERIAL = "Elunium";
-    public const string SHADOW_ARMOR_LEVEL_1_SPECIAL_MATERIAL = "Special_Elunium";
+    public const string SHADOW_ARMOR_LEVEL_1_MATERIAL = "Carnium";
+    public const string SHADOW_ARMOR_LEVEL_1_SPECIAL_MATERIAL = "Refine_Hack_Powder";
 
-    public const int SHADOW_WEAPON_LEVEL_1_PRICE_BASE = 30000;
-    public const int SHADOW_WEAPON_LEVEL_1_PRICE_INCREMENTAL = 30000;
-    public const int SHADOW_WEAPON_LEVEL_1_BONUS_BASE = 1;
-    public const int SHADOW_WEAPON_LEVEL_1_BONUS_INCREMENTAL = 1;
-    public const int SHADOW_WEAPON_LEVEL_1_RANDOM_BONUS_BASE = 1;
-    public const int SHADOW_WEAPON_LEVEL_1_RANDOM_BONUS_INCREMENTAL = 1;
+    public const int SHADOW_WEAPON_LEVEL_1_PRICE_BASE = 40000;
+    public const int SHADOW_WEAPON_LEVEL_1_PRICE_INCREMENTAL = 40000;
+    public const int SHADOW_WEAPON_LEVEL_1_BONUS_INCREMENTAL = 0;
+    public const int SHADOW_WEAPON_LEVEL_1_RANDOM_BONUS_INCREMENTAL = 0;
     public const int SHADOW_WEAPON_LEVEL_1_REFINE_RATE_DECREASE = 500;
-    public const string SHADOW_WEAPON_LEVEL_1_MATERIAL = "Elunium";
-    public const string SHADOW_WEAPON_LEVEL_1_SPECIAL_MATERIAL = "Special_Elunium";
+    public const string SHADOW_WEAPON_LEVEL_1_MATERIAL = "Bradium";
+    public const string SHADOW_WEAPON_LEVEL_1_SPECIAL_MATERIAL = "Refine_Hack_Powder";
 
     // Local classes / structs
 
@@ -202,37 +184,35 @@ public class RefineDatabaseMaker : MonoBehaviour
 
     int GetBonus(Group group, int groupLevel, int refineLevel)
     {
-        refineLevel--;
-
         if (group == Group.Armor)
         {
             if (groupLevel == 1)
-                return ARMOR_LEVEL_1_BONUS_BASE + (ARMOR_LEVEL_1_BONUS_INCREMENTAL * refineLevel);
+                return ARMOR_LEVEL_1_BONUS_INCREMENTAL * refineLevel;
             else
-                return ARMOR_LEVEL_2_BONUS_BASE + (ARMOR_LEVEL_2_BONUS_INCREMENTAL * refineLevel);
+                return ARMOR_LEVEL_2_BONUS_INCREMENTAL * refineLevel;
         }
         else if (group == Group.Weapon)
         {
             if (groupLevel == 1)
-                return WEAPON_LEVEL_1_BONUS_BASE + (WEAPON_LEVEL_1_BONUS_INCREMENTAL * refineLevel);
+                return WEAPON_LEVEL_1_BONUS_INCREMENTAL * refineLevel;
             else if (groupLevel == 2)
-                return WEAPON_LEVEL_2_BONUS_BASE + (WEAPON_LEVEL_2_BONUS_INCREMENTAL * refineLevel);
+                return WEAPON_LEVEL_2_BONUS_INCREMENTAL * refineLevel;
             else if (groupLevel == 3)
-                return WEAPON_LEVEL_3_BONUS_BASE + (WEAPON_LEVEL_3_BONUS_INCREMENTAL * refineLevel);
+                return WEAPON_LEVEL_3_BONUS_INCREMENTAL * refineLevel;
             else if (groupLevel == 4)
-                return WEAPON_LEVEL_4_BONUS_BASE + (WEAPON_LEVEL_4_BONUS_INCREMENTAL * refineLevel);
+                return WEAPON_LEVEL_4_BONUS_INCREMENTAL * refineLevel;
             else
-                return WEAPON_LEVEL_5_BONUS_BASE + (WEAPON_LEVEL_5_BONUS_INCREMENTAL * refineLevel);
+                return WEAPON_LEVEL_5_BONUS_INCREMENTAL * refineLevel;
         }
         else if (group == Group.Shadow_Armor)
         {
             if (groupLevel == 1)
-                return SHADOW_ARMOR_LEVEL_1_BONUS_BASE + (SHADOW_ARMOR_LEVEL_1_BONUS_INCREMENTAL * refineLevel);
+                return SHADOW_ARMOR_LEVEL_1_BONUS_INCREMENTAL * refineLevel;
         }
         else if (group == Group.Shadow_Weapon)
         {
             if (groupLevel == 1)
-                return SHADOW_WEAPON_LEVEL_1_BONUS_BASE + (SHADOW_WEAPON_LEVEL_1_BONUS_INCREMENTAL * refineLevel);
+                return SHADOW_WEAPON_LEVEL_1_BONUS_INCREMENTAL * refineLevel;
         }
 
         return 0;
@@ -245,32 +225,32 @@ public class RefineDatabaseMaker : MonoBehaviour
         if (group == Group.Armor)
         {
             if (groupLevel == 1)
-                return ARMOR_LEVEL_1_RANDOM_BONUS_BASE + (ARMOR_LEVEL_1_RANDOM_BONUS_INCREMENTAL * refineLevel);
+                return ARMOR_LEVEL_1_RANDOM_BONUS_INCREMENTAL * refineLevel;
             else
-                return ARMOR_LEVEL_2_RANDOM_BONUS_BASE + (ARMOR_LEVEL_2_RANDOM_BONUS_INCREMENTAL * refineLevel);
+                return ARMOR_LEVEL_2_RANDOM_BONUS_INCREMENTAL * refineLevel;
         }
         else if (group == Group.Weapon)
         {
             if (groupLevel == 1)
-                return WEAPON_LEVEL_1_RANDOM_BONUS_BASE + (WEAPON_LEVEL_1_RANDOM_BONUS_INCREMENTAL * refineLevel);
+                return WEAPON_LEVEL_1_RANDOM_BONUS_INCREMENTAL * refineLevel;
             else if (groupLevel == 2)
-                return WEAPON_LEVEL_2_RANDOM_BONUS_BASE + (WEAPON_LEVEL_2_RANDOM_BONUS_INCREMENTAL * refineLevel);
+                return WEAPON_LEVEL_2_RANDOM_BONUS_INCREMENTAL * refineLevel;
             else if (groupLevel == 3)
-                return WEAPON_LEVEL_3_RANDOM_BONUS_BASE + (WEAPON_LEVEL_3_RANDOM_BONUS_INCREMENTAL * refineLevel);
+                return WEAPON_LEVEL_3_RANDOM_BONUS_INCREMENTAL * refineLevel;
             else if (groupLevel == 4)
-                return WEAPON_LEVEL_4_RANDOM_BONUS_BASE + (WEAPON_LEVEL_4_RANDOM_BONUS_INCREMENTAL * refineLevel);
+                return WEAPON_LEVEL_4_RANDOM_BONUS_INCREMENTAL * refineLevel;
             else
-                return WEAPON_LEVEL_5_RANDOM_BONUS_BASE + (WEAPON_LEVEL_5_RANDOM_BONUS_INCREMENTAL * refineLevel);
+                return WEAPON_LEVEL_5_RANDOM_BONUS_INCREMENTAL * refineLevel;
         }
         else if (group == Group.Shadow_Armor)
         {
             if (groupLevel == 1)
-                return SHADOW_ARMOR_LEVEL_1_RANDOM_BONUS_BASE + (SHADOW_ARMOR_LEVEL_1_RANDOM_BONUS_INCREMENTAL * refineLevel);
+                return SHADOW_ARMOR_LEVEL_1_RANDOM_BONUS_INCREMENTAL * refineLevel;
         }
         else if (group == Group.Shadow_Weapon)
         {
             if (groupLevel == 1)
-                return SHADOW_WEAPON_LEVEL_1_RANDOM_BONUS_BASE + (SHADOW_WEAPON_LEVEL_1_RANDOM_BONUS_INCREMENTAL * refineLevel);
+                return SHADOW_WEAPON_LEVEL_1_RANDOM_BONUS_INCREMENTAL * refineLevel;
         }
 
         return 0;
