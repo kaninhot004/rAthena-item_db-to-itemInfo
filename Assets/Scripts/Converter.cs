@@ -2944,7 +2944,7 @@ public class Converter : MonoBehaviour
                 }
             }
 
-            _itemListContainer.AddSubType(_itemContainer.subType, _itemContainer.id);
+            _itemListContainer.AddSubType(_itemContainer.subType.Replace("CannonBall", "Cannonball"), _itemContainer.id);
 
             if ((_itemContainer.type == "Armor")
                 || (_itemContainer.type == "ShadowGear"))
