@@ -152,59 +152,11 @@
         },
         {
             "itemId": 10000000,
-            "itemScriptDescription": "กดใช้เพื่อ ^3F749Dฟื้นฟูพลัง และรักษา อาการผิดปกติทุกชนิด^000000 สามารถลด Cooldown ได้ที่เมืองหลัก"
+            "itemScriptDescription": "ผงสำหรับ ^112793เสริมแกร่งอุปกรณ์สวมใส่^000000"
         },
         {
             "itemId": 10000001,
-            "itemScriptDescription": "กดใช้เพื่อ ^3F749Dกลับสู่เมืองหลัก^000000"
-        },
-        {
-            "itemId": 10000002,
-            "itemScriptDescription": "กดใช้เพื่อ ^3F749Dเพิ่ม Level^000000"
-        },
-        {
-            "itemId": 10000003,
-            "itemScriptDescription": "กดใช้เพื่อ ^3F749Dเพิ่มขีดจำกัด Status และ Trait เมื่อเกิดใหม่^000000"
-        },
-        {
-            "itemId": 10000004,
-            "itemScriptDescription": "กดใช้เพื่อ ^3F749Dเพิ่มขีดจำกัด Level Skill เมื่อเกิดใหม่^000000"
-        },
-        {
-            "itemId": 10000005,
-            "itemScriptDescription": "กดใช้เพื่อ ^3F749Dตีบวกทั้งตัวขึ้น 1 ระดับ^000000"
-        },
-        {
-            "itemId": 10000006,
-            "itemScriptDescription": "กดใช้เพื่อ ^3F749DGrade ทั้งตัวขึ้น 1 ระดับ^000000"
-        },
-        {
-            "itemId": 10000007,
-            "itemScriptDescription": "กดใช้เพื่อ ^3F749Dรับ Dismantle Points^000000"
-        },
-        {
-            "itemId": 10000008,
-            "itemScriptDescription": "กดใช้เพื่อ ^3F749Dรับ 30,000 Soul Orb^000000"
-        },
-        {
-            "itemId": 10000009,
-            "itemScriptDescription": "กดใช้เพื่อ ^3F749Dรับ 30,000 Body Orb^000000"
-        },
-        {
-            "itemId": 10000010,
-            "itemScriptDescription": "กดใช้เพื่อ ^3F749Dรับ 30,000 Mind Orb^000000"
-        },
-        {
-            "itemId": 10000011,
-            "itemScriptDescription": "กดใช้เพื่อ ^3F749Dรับ 30,000 Refine Orb^000000"
-        },
-        {
-            "itemId": 10000012,
-            "itemScriptDescription": "กดใช้เพื่อ ^3F749Dรับ 30,000 Grade Orb^000000"
-        },
-        {
-            "itemId": 10000013,
-            "itemScriptDescription": "กดใช้เพื่อ ^3F749Dรับ 30,000 Dismantle Points^000000"
+            "itemScriptDescription": "ตั๋วสำหรับ ^112793สุ่มของที่เมืองหลัก^000000"
         }
     ]
 }
