@@ -78,6 +78,15 @@
             "itemId": 12121,
             "itemScriptDescription": "กดใช้เพื่อ เคลือบธาตุ Wind ให้ชุดเกราะชั่วคราว"
         }, {
+            "itemId": 12406,
+            "itemScriptDescription": "กดใช้เพื่อ เคลือบธาตุ Ghost ให้ชุดเกราะชั่วคราว"
+        }, {
+            "itemId": 14539,
+            "itemScriptDescription": "กดใช้เพื่อ เคลือบธาตุ Dark ให้ชุดเกราะชั่วคราว"
+        }, {
+            "itemId": 14540,
+            "itemScriptDescription": "กดใช้เพื่อ เคลือบธาตุ Holy ให้ชุดเกราะชั่วคราว"
+        }, {
             "itemId": 12211,
             "itemScriptDescription": "กดใช้เพื่อ เปิดคลังเก็บของ"
         }, {
