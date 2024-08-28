@@ -897,7 +897,7 @@ public class Converter : MonoBehaviour
                     attackableMonsterTier3Ids.Add(monsterId);
                 else if (monsterDatabase.level <= 150)
                     attackableMonsterTier4Ids.Add(monsterId);
-                else if (monsterDatabase.level <= 200)
+                else if (monsterDatabase.level <= 185)
                     attackableMonsterTier5Ids.Add(monsterId);
                 else
                     attackableMonsterTier6Ids.Add(monsterId);
