@@ -748,97 +748,159 @@ public class Converter : MonoBehaviour
         List<string> attackableMonsterTier4Ids = new List<string>();
         List<string> attackableMonsterTier5Ids = new List<string>();
         List<string> attackableMonsterTier6Ids = new List<string>();
-        List<string> monsterTier1Ids = new List<string>();
-        List<string> monsterTier2Ids = new List<string>();
-        List<string> monsterTier3Ids = new List<string>();
-        List<string> monsterTier4Ids = new List<string>();
-        List<string> monsterTier5Ids = new List<string>();
-        List<string> monsterTier6Ids = new List<string>();
-        List<string> monsterTier7Ids = new List<string>();
-        List<string> monsterTier8Ids = new List<string>();
-        List<string> monsterTier9Ids = new List<string>();
-        List<string> monsterTier10Ids = new List<string>();
-        List<string> monsterExpTier1Ids = new List<string>();
-        List<string> monsterExpTier2Ids = new List<string>();
-        List<string> monsterExpTier3Ids = new List<string>();
-        List<string> monsterExpTier4Ids = new List<string>();
         List<string> mvpIds = new List<string>();
+
+        List<int> errorMonsterIds = new List<int>
+        {
+            1288,
+            1324,
+            1325,
+            1326,
+            1327,
+            1328,
+            1329,
+            1330,
+            1331,
+            1332,
+            1333,
+            1334,
+            1335,
+            1336,
+            1337,
+            1338,
+            1339,
+            1340,
+            1341,
+            1342,
+            1343,
+            1344,
+            1345,
+            1346,
+            1347,
+            1348,
+            1349,
+            1350,
+            1351,
+            1352,
+            1353,
+            1354,
+            1355,
+            1356,
+            1357,
+            1358,
+            1359,
+            1360,
+            1361,
+            1362,
+            1363,
+            1732,
+            1798,
+            1845,
+            1902,
+            1903,
+            1911,
+            1912,
+            1913,
+            1938,
+            1939,
+            1940,
+            1941,
+            1942,
+            1943,
+            1944,
+            1945,
+            1946,
+            1955,
+            2245,
+            2288,
+            2335,
+            2337,
+            2343,
+            2408,
+            2409,
+            2410,
+            2411,
+            2413,
+            2452,
+            2453,
+            2454,
+            2455,
+            2456,
+            2457,
+            2458,
+            2459,
+            2460,
+            2461,
+            2462,
+            2536,
+            2537,
+            2539,
+            3007,
+            3008,
+            3038,
+            3075,
+            3086,
+            20269,
+            20846,
+            20847,
+            20848,
+            20849,
+            20850,
+            20851,
+            21064,
+            21065,
+            21066,
+            21067,
+            21068,
+            21069,
+            21070,
+            21071,
+            21072,
+            21073,
+            21074,
+            21075,
+            21076,
+            21077,
+            21078,
+            21079,
+            21080,
+            21081,
+            21082,
+            21083,
+            21084,
+            21085,
+            21086
+        };
 
         for (int i = 0; i < _monsterIds.Count; i++)
         {
             var monsterDatabase = _monsterDatabases[_monsterIds[i]];
+
+            if (errorMonsterIds.Contains(monsterDatabase.id))
+                continue;
+
             var monsterId = monsterDatabase.id.ToString("f0");
 
             monsterIds.Add(monsterId);
 
-            var isDummy =
-                monsterDatabase.aegisName.ToLower().Contains("dummy")
-                || monsterDatabase.aegisName.ToLower().Contains("_flag")
-                || monsterDatabase.aegisName.ToLower().Contains("treasure")
-                || monsterDatabase.aegisName.ToLower().Contains("hidden")
-                ;
-            // For my own purposes
-            if (((monsterDatabase.attack > 0)
-                || (monsterDatabase.attack2 > 0))
-                && !isDummy)
+            // MvP
+            if (monsterDatabase.isMvp)
+                mvpIds.Add(monsterId);
+            else
             {
                 attackableMonsterIds.Add(monsterId);
-                if (monsterDatabase.level < 10)
+                if (monsterDatabase.level <= 30)
                     attackableMonsterTier1Ids.Add(monsterId);
-                else if (monsterDatabase.level < 30)
+                else if (monsterDatabase.level <= 50)
                     attackableMonsterTier2Ids.Add(monsterId);
-                else if (monsterDatabase.level < 50)
+                else if (monsterDatabase.level <= 99)
                     attackableMonsterTier3Ids.Add(monsterId);
-                else if (monsterDatabase.level < 100)
+                else if (monsterDatabase.level <= 150)
                     attackableMonsterTier4Ids.Add(monsterId);
-                else if (monsterDatabase.level < 150)
+                else if (monsterDatabase.level <= 200)
                     attackableMonsterTier5Ids.Add(monsterId);
                 else
                     attackableMonsterTier6Ids.Add(monsterId);
-            }
-
-            // For my own purposes
-            if ((monsterDatabase.attackMotion > 1)
-                && (monsterDatabase.walkSpeed != 0))
-            {
-                // Tier by HP
-                if (monsterDatabase.hp <= 50)
-                    monsterTier1Ids.Add(monsterId);
-                else if (monsterDatabase.hp <= 500)
-                    monsterTier2Ids.Add(monsterId);
-                else if (monsterDatabase.hp <= 5000)
-                    monsterTier3Ids.Add(monsterId);
-                else if (monsterDatabase.hp <= 25000)
-                    monsterTier4Ids.Add(monsterId);
-                else if (monsterDatabase.hp <= 50000)
-                    monsterTier5Ids.Add(monsterId);
-                else if (monsterDatabase.hp <= 100000)
-                    monsterTier6Ids.Add(monsterId);
-                else if (monsterDatabase.hp <= 1000000)
-                    monsterTier7Ids.Add(monsterId);
-                else if (monsterDatabase.hp <= 10000000)
-                    monsterTier8Ids.Add(monsterId);
-                else if (monsterDatabase.hp <= 100000000)
-                    monsterTier9Ids.Add(monsterId);
-                else
-                    monsterTier10Ids.Add(monsterId);
-
-                // Tier by Exp
-                if ((monsterDatabase.baseExp >= 5000)
-                    && (monsterDatabase.baseExp < 50000))
-                    monsterExpTier1Ids.Add(monsterId);
-                else if ((monsterDatabase.baseExp >= 50000)
-                    && (monsterDatabase.baseExp < 500000))
-                    monsterExpTier2Ids.Add(monsterId);
-                else if ((monsterDatabase.baseExp >= 500000)
-                    && (monsterDatabase.baseExp < 1000000))
-                    monsterExpTier3Ids.Add(monsterId);
-                else if ((monsterDatabase.baseExp > 1000000))
-                    monsterExpTier4Ids.Add(monsterId);
-
-                // MvP
-                if (monsterDatabase.isMvp)
-                    mvpIds.Add(monsterId);
             }
         }
 
@@ -852,36 +914,12 @@ public class Converter : MonoBehaviour
         ExportingItemLists(builder, "attackableMonsterTier4Ids", attackableMonsterTier4Ids);
         ExportingItemLists(builder, "attackableMonsterTier5Ids", attackableMonsterTier5Ids);
         ExportingItemLists(builder, "attackableMonsterTier6Ids", attackableMonsterTier6Ids);
-        ExportingItemLists(builder, "monsterTier1Ids", monsterTier1Ids);
-        ExportingItemLists(builder, "monsterTier2Ids", monsterTier2Ids);
-        ExportingItemLists(builder, "monsterTier3Ids", monsterTier3Ids);
-        ExportingItemLists(builder, "monsterTier4Ids", monsterTier4Ids);
-        ExportingItemLists(builder, "monsterTier5Ids", monsterTier5Ids);
-        ExportingItemLists(builder, "monsterTier6Ids", monsterTier6Ids);
-        ExportingItemLists(builder, "monsterTier7Ids", monsterTier7Ids);
-        ExportingItemLists(builder, "monsterTier8Ids", monsterTier8Ids);
-        ExportingItemLists(builder, "monsterTier9Ids", monsterTier9Ids);
-        ExportingItemLists(builder, "monsterTier10Ids", monsterTier10Ids);
-        ExportingItemLists(builder, "monsterExpTier1Ids", monsterExpTier1Ids);
-        ExportingItemLists(builder, "monsterExpTier2Ids", monsterExpTier2Ids);
-        ExportingItemLists(builder, "monsterExpTier3Ids", monsterExpTier3Ids);
-        ExportingItemLists(builder, "monsterExpTier4Ids", monsterExpTier4Ids);
         ExportingItemLists(builder, "mvpIds", mvpIds);
 
         File.WriteAllText("global-monster-list.txt", builder.ToString(), Encoding.UTF8);
 
         Debug.Log("'global-monster-list.txt' has been successfully created.");
         Debug.Log("monsterIds.Count:" + monsterIds.Count);
-        Debug.Log("monsterTier1Ids.Count:" + monsterTier1Ids.Count);
-        Debug.Log("monsterTier2Ids.Count:" + monsterTier2Ids.Count);
-        Debug.Log("monsterTier3Ids.Count:" + monsterTier3Ids.Count);
-        Debug.Log("monsterTier4Ids.Count:" + monsterTier4Ids.Count);
-        Debug.Log("monsterTier5Ids.Count:" + monsterTier5Ids.Count);
-        Debug.Log("monsterTier6Ids.Count:" + monsterTier6Ids.Count);
-        Debug.Log("monsterTier7Ids.Count:" + monsterTier7Ids.Count);
-        Debug.Log("monsterTier8Ids.Count:" + monsterTier8Ids.Count);
-        Debug.Log("monsterTier9Ids.Count:" + monsterTier9Ids.Count);
-        Debug.Log("monsterTier10Ids.Count:" + monsterTier10Ids.Count);
         Debug.Log("mvpIds.Count:" + mvpIds.Count);
     }
 
@@ -6987,25 +7025,25 @@ public class Converter : MonoBehaviour
             return CLASS_4_SKILL_ITEM_REQ_PRICE;
         else if (id == 1000294) // Poison Stone 4th
             return CLASS_4_SKILL_ITEM_REQ_PRICE;
-      else if (id == 12731) // Thurisaz Rune
+        else if (id == 12731) // Thurisaz Rune
             return CLASS_3_SKILL_ITEM_REQ_PRICE;
-       else if (id == 12728) // Isa Rune
+        else if (id == 12728) // Isa Rune
             return CLASS_3_SKILL_ITEM_REQ_PRICE;
-       else if (id == 12732) // Wyrd Rune
+        else if (id == 12732) // Wyrd Rune
             return CLASS_3_SKILL_ITEM_REQ_PRICE;
-       else if (id == 12733) // Hagalaz Rune
+        else if (id == 12733) // Hagalaz Rune
             return CLASS_3_SKILL_ITEM_REQ_PRICE;
-       else if (id == 12729) // Othila Rune
+        else if (id == 12729) // Othila Rune
             return CLASS_3_SKILL_ITEM_REQ_PRICE;
-       else if (id == 12730) // Uruz Rune
+        else if (id == 12730) // Uruz Rune
             return CLASS_3_SKILL_ITEM_REQ_PRICE;
-       else if (id == 12726) // Raido Rune
+        else if (id == 12726) // Raido Rune
             return CLASS_3_SKILL_ITEM_REQ_PRICE;
-       else if (id == 12725) // Nauthiz Rune
+        else if (id == 12725) // Nauthiz Rune
             return CLASS_3_SKILL_ITEM_REQ_PRICE;
-       else if (id == 12727) // Berkana Rune
+        else if (id == 12727) // Berkana Rune
             return CLASS_3_SKILL_ITEM_REQ_PRICE;
-       else if (id == 22540) // Lux Anima Runestone
+        else if (id == 22540) // Lux Anima Runestone
             return LUN_ANIMA_RUNESTONE_PRICE;
         else
             return "-1";
