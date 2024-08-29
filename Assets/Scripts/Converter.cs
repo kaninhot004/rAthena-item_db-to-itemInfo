@@ -798,6 +798,8 @@ public class Converter : MonoBehaviour
             1845,
             1902,
             1903,
+            1905,
+            1906,
             1911,
             1912,
             1913,
@@ -877,7 +879,7 @@ public class Converter : MonoBehaviour
         {
             var monsterDatabase = _monsterDatabases[_monsterIds[i]];
 
-            if (errorMonsterIds.Contains(monsterDatabase.id))
+            if (errorMonsterIds.Contains(monsterDatabase.id) || (monsterDatabase.clientAttackMotion <= 0))
                 continue;
 
             var monsterId = monsterDatabase.id.ToString("f0");
@@ -1537,6 +1539,8 @@ public class Converter : MonoBehaviour
                 monsterDatabase.walkSpeed = int.Parse(SpacingRemover.Remove(text).Replace("WalkSpeed:", string.Empty));
             else if (text.Contains("    AttackMotion: "))
                 monsterDatabase.attackMotion = int.Parse(SpacingRemover.Remove(text).Replace("AttackMotion:", string.Empty));
+            else if (text.Contains("    ClientAttackMotion: "))
+                monsterDatabase.clientAttackMotion = int.Parse(SpacingRemover.Remove(text).Replace("ClientAttackMotion:", string.Empty));
             else if (text.Contains("    DamageTaken:"))
                 monsterDatabase.damageTaken = int.Parse(SpacingRemover.Remove(text).Replace("DamageTaken:", string.Empty));
             else if (text.Contains("    Class:"))

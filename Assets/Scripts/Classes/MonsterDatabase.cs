@@ -13,6 +13,7 @@ public class MonsterDatabase
     public int attack2 = 0;
     public int walkSpeed = 0;
     public int attackMotion = 0;
+    public int clientAttackMotion = 0;
     public int captureRate = 0;
     public int damageTaken = 0;
     public string _class = string.Empty;
