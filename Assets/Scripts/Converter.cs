@@ -6678,6 +6678,8 @@ public class Converter : MonoBehaviour
         if (_resourceDatabases.ContainsKey(id))
             return _resourceDatabases[id];
 
+        Debug.LogWarning("Item ID: " + id + " not had resource name");
+
         return "\"Bio_Reseearch_Docu\"";
     }
 
