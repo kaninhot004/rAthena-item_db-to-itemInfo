@@ -84,6 +84,7 @@
     <Compile Include="Assets\Scripts\Classes\MonsterDatabase.cs" />
     <Compile Include="Assets\Scripts\Utilities\IsCharNumber.cs" />
     <Compile Include="Assets\Scripts\Classes\ItemListContainer.cs" />
+    <Compile Include="Assets\Scripts\ErrorResourceNameHelper.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
@@ -115,10 +116,12 @@
     <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile Masking.shader" />
     <None Include="Assets\DLL\I18N.MidEast.dll" />
     <None Include="Assets\DLL\I18N.Rare.dll" />
+    <None Include="Assets\Assets\error_resource_names.txt" />
     <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF Overlay.shader" />
     <None Include="Assets\TextMesh Pro\Shaders\TMP_Bitmap-Mobile.shader" />
     <None Include="Assets\TextMesh Pro\Fonts\LiberationSans - OFL.txt" />
     <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile.shader" />
+    <None Include="Assets\Assets\error_resource_name_helper.txt" />
     <None Include="Assets\Assets\item_db_custom.txt" />
     <None Include="Assets\TextMesh Pro\Shaders\TMP_Sprite.shader" />
     <None Include="Assets\DLL\I18N.dll" />
