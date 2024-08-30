@@ -55,6 +55,8 @@ public class ErrorResourceNameHelper : MonoBehaviour
         StringBuilder builder = new StringBuilder();
 
         bool isApply = false;
+        string itemId = string.Empty;
+        int helpCount = 0;
         for (int i = 0; i < errorResourceNameLines2.Length; i++)
         {
             var text = errorResourceNameLines2[i];
@@ -71,20 +73,28 @@ public class ErrorResourceNameHelper : MonoBehaviour
 
             if (text.Contains("]={"))
             {
-                var id = text.Replace("[", string.Empty).Replace("]={", string.Empty);
-                if (errorItemIds.Contains(id))
+                itemId = text.Replace("[", string.Empty).Replace("]={", string.Empty);
+                if (errorItemIds.Contains(itemId))
                 {
-                    builder.Append(id);
                     isApply = true;
+                    errorItemIds.Remove(itemId);
                 }
             }
             else if (isApply
                 && text.Contains("identifiedResourceName"))
             {
                 isApply = false;
-                builder.Append(Encoding.Default.GetString(Encoding.UTF8.GetBytes(text.Replace("identifiedResourceName", string.Empty).Replace(",", string.Empty) + "\n")));
+                var resourceName = Encoding.Default.GetString(Encoding.UTF8.GetBytes(text.Replace("identifiedResourceName", string.Empty).Replace(",", string.Empty) + "\n"));
+                if (!string.IsNullOrEmpty(resourceName)
+                    && (!resourceName.Contains("=\"\"")))
+                {
+                    builder.Append(itemId + resourceName);
+                    helpCount++;
+                }
             }
         }
+
+        Debug.Log("There are " + helpCount + " resource name found.");
 
         File.WriteAllText("error_resource_name_fixed.txt", builder.ToString(), Encoding.UTF8);
 

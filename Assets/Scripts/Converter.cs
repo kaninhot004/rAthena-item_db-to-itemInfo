@@ -230,6 +230,8 @@ public class Converter : MonoBehaviour
 
     string _currentCombo = string.Empty;
 
+    List<string> errorResourceNames = new List<string>();
+
     void Start()
     {
         _btnItemPreview.onClick.AddListener(OnItemPreviewButtonTap);
@@ -267,6 +269,8 @@ public class Converter : MonoBehaviour
     /// </summary>
     void OnConvertButtonTap()
     {
+        errorResourceNames = new List<string>();
+
         _easyItemBuilderDatabase = new EasyItemBuilderDatabase();
 
         _isEquipmentNoValue = Input.GetKey(KeyCode.Alpha1);
@@ -1111,6 +1115,14 @@ public class Converter : MonoBehaviour
         File.WriteAllText("item-mall-skill-list.txt", builder.ToString(), Encoding.UTF8);
 
         Debug.Log("'item-mall-skill-list.txt' has been successfully created.");
+    }
+
+    void ExportErrorLists()
+    {
+        StringBuilder builder = new StringBuilder();
+        for (int i = 0; i < errorResourceNames.Count; i++)
+            builder.Append(errorResourceNames[i] + "\n");
+        File.WriteAllText("Assets/Assets/error_resource_names.txt", builder.ToString(), Encoding.UTF8);
     }
 
     // Parsing
@@ -3421,6 +3433,8 @@ public class Converter : MonoBehaviour
         ExportMonsterLists();
 
         ExportSkillLists();
+
+        ExportErrorLists();
 
         Debug.Log(DateTime.Now);
 
@@ -6678,7 +6692,8 @@ public class Converter : MonoBehaviour
         if (_resourceDatabases.ContainsKey(id))
             return _resourceDatabases[id];
 
-        Debug.LogWarning("Item ID: " + id + " not had resource name");
+        if (id != 25786)
+            errorResourceNames.Add(id.ToString());
 
         return "\"Bio_Reseearch_Docu\"";
     }

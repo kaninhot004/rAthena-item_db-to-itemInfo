@@ -78,13 +78,13 @@
     <Compile Include="Assets\Scripts\Settings.cs" />
     <Compile Include="Assets\Scripts\Converter.cs" />
     <Compile Include="Assets\Scripts\Classes\ItemContainer.cs" />
+    <Compile Include="Assets\Scripts\ErrorResourceNameHelper.cs" />
     <Compile Include="Assets\Scripts\Utilities\CommentRemover.cs" />
     <Compile Include="Assets\Scripts\ItemGenerator.cs" />
     <Compile Include="Assets\Scripts\Utilities\LineEndingsRemover.cs" />
     <Compile Include="Assets\Scripts\Classes\MonsterDatabase.cs" />
     <Compile Include="Assets\Scripts\Utilities\IsCharNumber.cs" />
     <Compile Include="Assets\Scripts\Classes\ItemListContainer.cs" />
-    <Compile Include="Assets\Scripts\ErrorResourceNameHelper.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
