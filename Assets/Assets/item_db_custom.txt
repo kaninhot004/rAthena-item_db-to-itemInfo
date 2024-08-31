@@ -8,3 +8,22 @@
     Name: Wishing Ticket
     Type: Etc
     Buy: 1
+  - Id: 10000002
+    AegisName: Rise_Stone
+    Name: Rise Stone
+    Type: Etc
+    Buy: 1
+  - Id: 10000003
+    AegisName: Mystery_Buff_Box
+    Name: Mystery Buff Box
+    Type: DelayConsume
+    Buy: 1
+    Script: |
+      MysteryBuffBox();
+  - Id: 10000004
+    AegisName: Mystery_Package_Box
+    Name: Mystery Package Box
+    Type: DelayConsume
+    Buy: 1
+    Script: |
+      MysteryPackageBox();
