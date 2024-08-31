@@ -51,6 +51,9 @@
             "itemId": 6909,
             "itemScriptDescription": "ใช้สำหรับเคลื่อนย้ายไป Map ใดก็ได้ในแผนที่โลก"
         }, {
+            "itemId": 7621,
+            "itemScriptDescription": "เมื่อหมดสติ สามารถเลือกที่จะลุกขึ้นสู้ได้อีกครั้ง"
+        }, {
             "itemId": 12020,
             "itemScriptDescription": "กดใช้เพื่อ เคลือบธาตุ Dark ให้อาวุธชั่วคราว"
         }, {
