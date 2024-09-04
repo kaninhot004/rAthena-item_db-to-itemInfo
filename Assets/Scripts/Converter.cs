@@ -752,6 +752,10 @@ public class Converter : MonoBehaviour
         List<string> attackableMonsterTier4Ids = new List<string>();
         List<string> attackableMonsterTier5Ids = new List<string>();
         List<string> attackableMonsterTier6Ids = new List<string>();
+        List<string> attackableMonsterTier7Ids = new List<string>();
+        List<string> attackableMonsterTier8Ids = new List<string>();
+        List<string> attackableMonsterTier9Ids = new List<string>();
+        List<string> attackableMonsterTier10Ids = new List<string>();
         List<string> mvpIds = new List<string>();
 
         List<int> errorMonsterIds = new List<int>
@@ -896,18 +900,26 @@ public class Converter : MonoBehaviour
             else
             {
                 attackableMonsterIds.Add(monsterId);
-                if (monsterDatabase.level <= 30)
+                if (monsterDatabase.level <= 15)
                     attackableMonsterTier1Ids.Add(monsterId);
-                else if (monsterDatabase.level <= 50)
+                else if (monsterDatabase.level <= 30)
                     attackableMonsterTier2Ids.Add(monsterId);
-                else if (monsterDatabase.level <= 99)
+                else if (monsterDatabase.level <= 50)
                     attackableMonsterTier3Ids.Add(monsterId);
-                else if (monsterDatabase.level <= 150)
+                else if (monsterDatabase.level <= 75)
                     attackableMonsterTier4Ids.Add(monsterId);
-                else if (monsterDatabase.level <= 185)
+                else if (monsterDatabase.level <= 99)
                     attackableMonsterTier5Ids.Add(monsterId);
-                else
+                else if (monsterDatabase.level <= 125)
                     attackableMonsterTier6Ids.Add(monsterId);
+                else if (monsterDatabase.level <= 145)
+                    attackableMonsterTier7Ids.Add(monsterId);
+                else if (monsterDatabase.level <= 165)
+                    attackableMonsterTier8Ids.Add(monsterId);
+                else if (monsterDatabase.level <= 185)
+                    attackableMonsterTier9Ids.Add(monsterId);
+                else
+                    attackableMonsterTier10Ids.Add(monsterId);
             }
         }
 
@@ -921,6 +933,10 @@ public class Converter : MonoBehaviour
         ExportingItemLists(builder, "attackableMonsterTier4Ids", attackableMonsterTier4Ids);
         ExportingItemLists(builder, "attackableMonsterTier5Ids", attackableMonsterTier5Ids);
         ExportingItemLists(builder, "attackableMonsterTier6Ids", attackableMonsterTier6Ids);
+        ExportingItemLists(builder, "attackableMonsterTier7Ids", attackableMonsterTier7Ids);
+        ExportingItemLists(builder, "attackableMonsterTier8Ids", attackableMonsterTier8Ids);
+        ExportingItemLists(builder, "attackableMonsterTier9Ids", attackableMonsterTier9Ids);
+        ExportingItemLists(builder, "attackableMonsterTier10Ids", attackableMonsterTier10Ids);
         ExportingItemLists(builder, "mvpIds", mvpIds);
 
         File.WriteAllText("global-monster-list.txt", builder.ToString(), Encoding.UTF8);
