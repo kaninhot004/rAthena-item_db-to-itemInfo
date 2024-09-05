@@ -10,6 +10,7 @@ public class Converter : MonoBehaviour
     const string CREATOR_URL = "https://kanintemsrisukgames.wordpress.com/2019/04/05/support-kt-games/";
     const float ONE_SECOND = 1;
     const int ITEM_DEBUG_PRICE = 1000000000;
+    const int PET_TAME_PRICE = 500000;
     const int PET_EGG_PRICE = 1000000;
     const int PET_ARMOR_PRICE = 10000000;
     const int FASHION_PRICE = 50000000;
@@ -232,6 +233,8 @@ public class Converter : MonoBehaviour
 
     List<string> errorResourceNames = new List<string>();
 
+    List<string> _petTamingItemIds = new List<string>();
+
     void Start()
     {
         _btnItemPreview.onClick.AddListener(OnItemPreviewButtonTap);
@@ -269,6 +272,8 @@ public class Converter : MonoBehaviour
     /// </summary>
     void OnConvertButtonTap()
     {
+        _petTamingItemIds = new List<string>();
+
         errorResourceNames = new List<string>();
 
         _easyItemBuilderDatabase = new EasyItemBuilderDatabase();
@@ -498,6 +503,26 @@ public class Converter : MonoBehaviour
             }
 
             builder.Append(_itemListContainer.allItemIds[i] + ":" + ITEM_DEBUG_PRICE + ",");
+        }
+
+        // Pet taming item id
+
+        shopNumber = 0;
+
+        for (int i = 0; i < _petTamingItemIds.Count; i++)
+        {
+            if ((i == 0)
+                || (i % 100 == 0))
+            {
+                if (!string.IsNullOrEmpty(builder.ToString()))
+                    builder.Remove(builder.Length - 1, 1);
+
+                shopNumber++;
+
+                builder.Append("\n-	shop	PetTame" + shopNumber + "	-1,");
+            }
+
+            builder.Append(_petTamingItemIds[i] + ":" + PET_TAME_PRICE + ",");
         }
 
         // Pet eggs item id
@@ -5375,6 +5400,9 @@ public class Converter : MonoBehaviour
                 text = string.Format(_localization.GetTexts(Localization.PET), (monsterDatabase != null) ? "^FF0000" + monsterDatabase.name + "^000000" : temps[0]);
             else
                 text = string.Format(_localization.GetTexts(Localization.PET_WITH_CHANCE), (monsterDatabase != null) ? "^FF0000" + monsterDatabase.name + "^000000" : temps[0], (monsterDatabase != null) ? monsterDatabase.captureRate : "0");
+
+            if (!_petTamingItemIds.Contains(_itemContainer.id))
+                _petTamingItemIds.Add(_itemContainer.id);
         }
         // hateffect
         if (text.Contains("hateffect "))
