@@ -436,7 +436,7 @@ public class Converter : MonoBehaviour
         ExportingItemLists(builder, "enchant2Ids", _itemListContainer.enchant2Ids);
         ExportingItemLists(builder, "itemGroupIds", _itemListContainer.itemGroupIds);
 
-        File.WriteAllText("global_item_ids.txt", builder.ToString(), Encoding.UTF8);
+        File.WriteAllText("global_item_ids.txt", RemoveGodItem(builder.ToString()), Encoding.UTF8);
 
         Debug.Log("'global_item_ids.txt' has been successfully created.");
 
@@ -761,7 +761,7 @@ public class Converter : MonoBehaviour
             && (builderDebug[builderDebug.Length - 1] == ','))
             builder.Remove(builder.Length - 1, 1);
 
-        File.WriteAllText("item_mall.txt", builder.ToString() + "\n" + builder2.ToString(), Encoding.UTF8);
+        File.WriteAllText("item_mall.txt", RemoveGodItem(builder.ToString() + "\n" + builder2.ToString()), Encoding.UTF8);
 
         Debug.Log("'item_mall.txt' has been successfully created.");
     }
@@ -7134,5 +7134,16 @@ public class Converter : MonoBehaviour
              || (aegisItemName == "Seed_Of_Yggdrasil") // Appeared in Potion Pitcher Lv. 8
              || (aegisItemName == "Yggdrasilberry") // Appeared in Potion Pitcher Lv. 9
              ;
+    }
+
+    string RemoveGodItem(string input)
+    {
+        input = input.Replace(",1599,", string.Empty);
+        input = input.Replace(",2199,", string.Empty);
+        input = input.Replace(",15065,", string.Empty);
+        input = input.Replace(",2904,", string.Empty);
+        input = input.Replace(",19429,", string.Empty);
+        input = input.Replace(",5013,", string.Empty);
+        return input;
     }
 }
