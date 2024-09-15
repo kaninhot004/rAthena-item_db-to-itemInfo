@@ -9,7 +9,7 @@ public class Converter : MonoBehaviour
 {
     const string CREATOR_URL = "https://kanintemsrisukgames.wordpress.com/2019/04/05/support-kt-games/";
     const float ONE_SECOND = 1;
-    const int ITEM_DEBUG_PRICE = 1000000000;
+    const int ITEM_DEBUG_PRICE = 10000000;
     const int PET_TAME_PRICE = 500000;
     const int PET_EGG_PRICE = 1000000;
     const int PET_ARMOR_PRICE = 10000000;
@@ -3044,8 +3044,8 @@ public class Converter : MonoBehaviour
 
             _itemListContainer.AddSubType(_itemContainer.subType.Replace("CannonBall", "Cannonball"), _itemContainer.id);
 
-            if ((_itemContainer.type == "Armor")
-                || (_itemContainer.type == "ShadowGear"))
+            if ((_itemContainer.type.ToLower() == "armor")
+                || (_itemContainer.type.ToLower() == "shadowgear"))
                 _itemListContainer.AddLocation(_itemContainer.debugLocations, _itemContainer.id);
 
             var itemId = int.Parse(_itemContainer.id);
