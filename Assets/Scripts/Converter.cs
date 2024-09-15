@@ -39,6 +39,8 @@ public class Converter : MonoBehaviour
     public bool IsSkipEquipLevel { set { _isSkipEquipLevel = value; } }
     [SerializeField] bool _isSkipNormalEquipEtcCombo = false;
     public bool IsSkipNormalEquipEtcCombo { set { _isSkipNormalEquipEtcCombo = value; } }
+    [SerializeField] bool _isRemoveBrackets = false;
+    public bool IsRemoveBrackets { set { _isRemoveBrackets = value; } }
 
     [Serializable]
     public class ReplaceVariable
@@ -6324,6 +6326,12 @@ public class Converter : MonoBehaviour
             text = text.Replace("(" + foundSkillNames[i] + ")", foundSkillNames[i]);
 
         text = QuoteRemover.Remove(text);
+
+        if (_isRemoveBrackets)
+        {
+            text = text.Replace("{", string.Empty);
+            text = text.Replace("}", string.Empty);
+        }
 
         return text;
     }

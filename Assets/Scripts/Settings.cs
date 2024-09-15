@@ -17,6 +17,7 @@ public class Settings : MonoBehaviour
     const string FORCE_EQUIPMENT_NO_VALUE_TOGGLE = "IsEquipmentNoValue";
     const string FORCE_ITEM_NO_BONUS_NO_COMBO_TOGGLE = "IsItemNoBonusNoCombo";
     const string SKIP_NORMAL_GAME_ITEM_COMBO_TOGGLE = "IsSkipNormalGameItemCombo";
+    const string REMOVE_BRACKETS_TOGGLE = "IsRemoveBrackets";
 
     [SerializeField] Button _openSettingButton;
     [SerializeField] GameObject _settingCanvasObject;
@@ -41,6 +42,7 @@ public class Settings : MonoBehaviour
     [SerializeField] Toggle _forceEquipmentNoValueToggle;
     [SerializeField] Toggle _forceItemNoBonusNoComboToggle;
     [SerializeField] Toggle _skipNormalGameItemComboToggle;
+    [SerializeField] Toggle _removeBracketsToggle;
 
     [SerializeField] Converter _converter;
 
@@ -69,6 +71,7 @@ public class Settings : MonoBehaviour
         _forceEquipmentNoValueToggle.isOn = (PlayerPrefs.GetInt(FORCE_EQUIPMENT_NO_VALUE_TOGGLE) == 1) ? true : false;
         _forceItemNoBonusNoComboToggle.isOn = (PlayerPrefs.GetInt(FORCE_ITEM_NO_BONUS_NO_COMBO_TOGGLE) == 1) ? true : false;
         _skipNormalGameItemComboToggle.isOn = (PlayerPrefs.GetInt(SKIP_NORMAL_GAME_ITEM_COMBO_TOGGLE) == 1) ? true : false;
+        _removeBracketsToggle.isOn = (PlayerPrefs.GetInt(REMOVE_BRACKETS_TOGGLE) == 1) ? true : false;
         _converter.IsZeroValuePrintAble = _printZeroValueToggle.isOn;
         _converter.IsOnlyUseTestTextAsset = _onlyPrintTestItemToggle.isOn;
         _converter.IsOnlyUseCustomTextAsset = _onlyPrintCustomItemToggle.isOn;
@@ -98,8 +101,15 @@ public class Settings : MonoBehaviour
         _forceEquipmentNoValueToggle.onValueChanged.AddListener(OnForceEquipmentNoValueToggle);
         _forceItemNoBonusNoComboToggle.onValueChanged.AddListener(OnForceItemNoBonusNoComboToggle);
         _skipNormalGameItemComboToggle.onValueChanged.AddListener(OnSkipNormalGameItemComboToggle);
+        _removeBracketsToggle.onValueChanged.AddListener(OnRemoveBracketsToggle);
     }
-    void OnSkipNormalGameItemComboToggle(bool isOn)
+    void OnRemoveBracketsToggle(bool isOn)
+    {
+        PlayerPrefs.SetInt(REMOVE_BRACKETS_TOGGLE, isOn ? 1 : 0);
+        PlayerPrefs.Save();
+        _converter.IsRemoveBrackets = isOn;
+    }
+     void OnSkipNormalGameItemComboToggle(bool isOn)
     {
         PlayerPrefs.SetInt(SKIP_NORMAL_GAME_ITEM_COMBO_TOGGLE, isOn ? 1 : 0);
         PlayerPrefs.Save();
