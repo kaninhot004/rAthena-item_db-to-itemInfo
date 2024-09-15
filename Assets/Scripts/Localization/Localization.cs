@@ -429,6 +429,10 @@ public class Localization : MonoBehaviour
     public const string UNIDENTIFIED_DESC = "UNIDENTIFIED_DESC";
 
     public const string WEAPON = "WEAPON";
+
+    public const string DAY = "DAY";
+    public const string MONTH = "MONTH";
+    public const string YEAR = "YEAR";
     #endregion
 
     [Serializable]

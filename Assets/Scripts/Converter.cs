@@ -466,6 +466,7 @@ public class Converter : MonoBehaviour
     /// <param name="items"></param>
     void ExportingItemLists(StringBuilder builder, string listName, List<string> items)
     {
+        builder.Append("deletearray $" + listName + "[0],getarraysize($" + listName + ");\n");
         builder.Append("setarray $" + listName + "[0],");
 
         items.RemoveAll((item) => string.IsNullOrEmpty(item) || string.IsNullOrWhiteSpace(item) || (item == null));
@@ -5775,6 +5776,10 @@ public class Converter : MonoBehaviour
 
     string AllInOneParse(string text)
     {
+        text = text.Replace("DT_DAYOFMONTH", _localization.GetTexts(Localization.DAY));
+        text = text.Replace("DT_DAY", _localization.GetTexts(Localization.DAY));
+        text = text.Replace("DT_MONTH", _localization.GetTexts(Localization.MONTH));
+        text = text.Replace("DT_YEAR", _localization.GetTexts(Localization.YEAR));
         text = text.Replace("else if (", "^FF2525" + _localization.GetTexts(Localization.CONDITION_NOT_MET) + "^000000(");
         text = text.Replace("else if(", "^FF2525" + _localization.GetTexts(Localization.CONDITION_NOT_MET) + "^000000(");
         text = text.Replace("if (", "^FF2525" + _localization.GetTexts(Localization.IF) + "^000000(");

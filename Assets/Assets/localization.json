@@ -3184,6 +3184,30 @@
                     "traditionalChinese": "-",
                     "simpifiedChinese": "-",
                     "korean": "-"
+                }, {
+                    "key": "DAY",
+                    "thai": "วัน",
+                    "english": "Day",
+                    "japanese": "-",
+                    "traditionalChinese": "-",
+                    "simpifiedChinese": "-",
+                    "korean": "-"
+                }, {
+                    "key": "MONTH",
+                    "thai": "เดือน",
+                    "english": "Month",
+                    "japanese": "-",
+                    "traditionalChinese": "-",
+                    "simpifiedChinese": "-",
+                    "korean": "-"
+                }, {
+                    "key": "YEAR",
+                    "thai": "ปี",
+                    "english": "Year",
+                    "japanese": "-",
+                    "traditionalChinese": "-",
+                    "simpifiedChinese": "-",
+                    "korean": "-"
                 }
             ]
         }
