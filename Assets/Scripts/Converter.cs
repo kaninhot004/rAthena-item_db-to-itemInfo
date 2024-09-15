@@ -5780,6 +5780,7 @@ public class Converter : MonoBehaviour
         text = text.Replace("DT_DAY", _localization.GetTexts(Localization.DAY));
         text = text.Replace("DT_MONTH", _localization.GetTexts(Localization.MONTH));
         text = text.Replace("DT_YEAR", _localization.GetTexts(Localization.YEAR));
+        text = text.Replace("gettime", string.Empty);
         text = text.Replace("else if (", "^FF2525" + _localization.GetTexts(Localization.CONDITION_NOT_MET) + "^000000(");
         text = text.Replace("else if(", "^FF2525" + _localization.GetTexts(Localization.CONDITION_NOT_MET) + "^000000(");
         text = text.Replace("if (", "^FF2525" + _localization.GetTexts(Localization.IF) + "^000000(");
