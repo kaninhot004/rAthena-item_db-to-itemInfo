@@ -8,6 +8,16 @@ public class Settings : MonoBehaviour
     const string ITEM_ID_TOGGLE = "IsPrintItemId";
     const string SUB_TYPE_TOGGLE = "IsPrintSubType";
 
+    const string ITEM_LINK_TOGGLE = "IsUseItemLink";
+    const string REFINABLE_TOGGLE = "IsSkipRefinable";
+    const string GRADABLE_TOGGLE = "IsSkipGradable";
+    const string SKIP_MIN_LV_TOGGLE = "IsSkipMinLv";
+    const string SKIP_GENDER_CLASS_JOB_TOGGLE = "IsSkipGenderClassJob";
+    const string ENCHANTMENT_DOUBLE_CLICK_TOGGLE = "IsEnchantmentDoubleClickable";
+    const string FORCE_EQUIPMENT_NO_VALUE_TOGGLE = "IsEquipmentNoValue";
+    const string FORCE_ITEM_NO_BONUS_NO_COMBO_TOGGLE = "IsItemNoBonusNoCombo";
+    const string SKIP_NORMAL_GAME_ITEM_COMBO_TOGGLE = "IsSkipNormalGameItemCombo";
+
     [SerializeField] Button _openSettingButton;
     [SerializeField] GameObject _settingCanvasObject;
     [SerializeField] Button _closeSettingButton;
@@ -21,6 +31,16 @@ public class Settings : MonoBehaviour
     [SerializeField] Toggle _newLineForAvailableClassToggle;
     [SerializeField] Toggle _itemIdToggle;
     [SerializeField] Toggle _subTypeToggle;
+
+    [SerializeField] Toggle _itemLinkToggle;
+    [SerializeField] Toggle _refinableToggle;
+    [SerializeField] Toggle _gradableToggle;
+    [SerializeField] Toggle _skipMinLvToggle;
+    [SerializeField] Toggle _skipGenderClassJobToggle;
+    [SerializeField] Toggle _enchantmentClickableToggle;
+    [SerializeField] Toggle _forceEquipmentNoValueToggle;
+    [SerializeField] Toggle _forceItemNoBonusNoComboToggle;
+    [SerializeField] Toggle _skipNormalGameItemComboToggle;
 
     [SerializeField] Converter _converter;
 
@@ -40,6 +60,15 @@ public class Settings : MonoBehaviour
         _newLineForAvailableClassToggle.isOn = (PlayerPrefs.GetInt("IsUseNewLineInsteadOfCommaForAvailableClass") == 1) ? true : false;
         _itemIdToggle.isOn = (PlayerPrefs.GetInt(ITEM_ID_TOGGLE) == 1) ? true : false;
         _subTypeToggle.isOn = (PlayerPrefs.GetInt(SUB_TYPE_TOGGLE) == 1) ? true : false;
+        _itemLinkToggle.isOn = (PlayerPrefs.GetInt(ITEM_LINK_TOGGLE) == 1) ? true : false;
+        _refinableToggle.isOn = (PlayerPrefs.GetInt(REFINABLE_TOGGLE) == 1) ? true : false;
+        _gradableToggle.isOn = (PlayerPrefs.GetInt(GRADABLE_TOGGLE) == 1) ? true : false;
+        _skipMinLvToggle.isOn = (PlayerPrefs.GetInt(SKIP_MIN_LV_TOGGLE) == 1) ? true : false;
+        _skipGenderClassJobToggle.isOn = (PlayerPrefs.GetInt(SKIP_GENDER_CLASS_JOB_TOGGLE) == 1) ? true : false;
+        _enchantmentClickableToggle.isOn = (PlayerPrefs.GetInt(ENCHANTMENT_DOUBLE_CLICK_TOGGLE) == 1) ? true : false;
+        _forceEquipmentNoValueToggle.isOn = (PlayerPrefs.GetInt(FORCE_EQUIPMENT_NO_VALUE_TOGGLE) == 1) ? true : false;
+        _forceItemNoBonusNoComboToggle.isOn = (PlayerPrefs.GetInt(FORCE_ITEM_NO_BONUS_NO_COMBO_TOGGLE) == 1) ? true : false;
+        _skipNormalGameItemComboToggle.isOn = (PlayerPrefs.GetInt(SKIP_NORMAL_GAME_ITEM_COMBO_TOGGLE) == 1) ? true : false;
         _converter.IsZeroValuePrintAble = _printZeroValueToggle.isOn;
         _converter.IsOnlyUseTestTextAsset = _onlyPrintTestItemToggle.isOn;
         _converter.IsOnlyUseCustomTextAsset = _onlyPrintCustomItemToggle.isOn;
@@ -60,6 +89,69 @@ public class Settings : MonoBehaviour
         _newLineForAvailableClassToggle.onValueChanged.AddListener(OnNewLineForAvailableClassToggle);
         _itemIdToggle.onValueChanged.AddListener(OnItemIdToggle);
         _subTypeToggle.onValueChanged.AddListener(OnSubTypeToggle);
+        _itemLinkToggle.onValueChanged.AddListener(OnSubTypeToggle);
+        _refinableToggle.onValueChanged.AddListener(OnRefinableToggle);
+        _gradableToggle.onValueChanged.AddListener(OnGradableToggle);
+        _skipMinLvToggle.onValueChanged.AddListener(OnSkipMinLvToggle);
+        _skipGenderClassJobToggle.onValueChanged.AddListener(OnSkipGenderClassJobToggle);
+        _enchantmentClickableToggle.onValueChanged.AddListener(OnEnchantmentClickableToggle);
+        _forceEquipmentNoValueToggle.onValueChanged.AddListener(OnForceEquipmentNoValueToggle);
+        _forceItemNoBonusNoComboToggle.onValueChanged.AddListener(OnForceItemNoBonusNoComboToggle);
+        _skipNormalGameItemComboToggle.onValueChanged.AddListener(OnSkipNormalGameItemComboToggle);
+    }
+    void OnSkipNormalGameItemComboToggle(bool isOn)
+    {
+        PlayerPrefs.SetInt(SKIP_NORMAL_GAME_ITEM_COMBO_TOGGLE, isOn ? 1 : 0);
+        PlayerPrefs.Save();
+        _converter.IsSkipNormalEquipEtcCombo = isOn;
+    }
+    void OnForceItemNoBonusNoComboToggle(bool isOn)
+    {
+        PlayerPrefs.SetInt(FORCE_ITEM_NO_BONUS_NO_COMBO_TOGGLE, isOn ? 1 : 0);
+        PlayerPrefs.Save();
+        _converter.IsItemNoBonus = isOn;
+    }
+    void OnForceEquipmentNoValueToggle(bool isOn)
+    {
+        PlayerPrefs.SetInt(FORCE_EQUIPMENT_NO_VALUE_TOGGLE, isOn ? 1 : 0);
+        PlayerPrefs.Save();
+        _converter.IsEquipmentNoValue = isOn;
+    }
+    void OnEnchantmentClickableToggle(bool isOn)
+    {
+        PlayerPrefs.SetInt(ENCHANTMENT_DOUBLE_CLICK_TOGGLE, isOn ? 1 : 0);
+        PlayerPrefs.Save();
+        _converter.IsEnchantmentAbleToUse = isOn;
+    }
+    void OnSkipGenderClassJobToggle(bool isOn)
+    {
+        PlayerPrefs.SetInt(SKIP_GENDER_CLASS_JOB_TOGGLE, isOn ? 1 : 0);
+        PlayerPrefs.Save();
+        _converter.IsItemUnconditional = isOn;
+    }
+    void OnSkipMinLvToggle(bool isOn)
+    {
+        PlayerPrefs.SetInt(SKIP_MIN_LV_TOGGLE, isOn ? 1 : 0);
+        PlayerPrefs.Save();
+        _converter.IsSkipEquipLevel = isOn;
+    }
+    void OnGradableToggle(bool isOn)
+    {
+        PlayerPrefs.SetInt(GRADABLE_TOGGLE, isOn ? 1 : 0);
+        PlayerPrefs.Save();
+        _converter.IsHideGradable = isOn;
+    }
+    void OnRefinableToggle(bool isOn)
+    {
+        PlayerPrefs.SetInt(REFINABLE_TOGGLE, isOn ? 1 : 0);
+        PlayerPrefs.Save();
+        _converter.IsHideRefinable = isOn;
+    }
+    void OnItemLinkToggle(bool isOn)
+    {
+        PlayerPrefs.SetInt(ITEM_LINK_TOGGLE, isOn ? 1 : 0);
+        PlayerPrefs.Save();
+        _converter.IsItemLink = isOn;
     }
     void OnSubTypeToggle(bool isOn)
     {

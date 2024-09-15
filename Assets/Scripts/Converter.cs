@@ -31,9 +31,14 @@ public class Converter : MonoBehaviour
     const string POTION_BOOK_PRICE = "1000";
     const string LUN_ANIMA_RUNESTONE_PRICE = "100000";
 
+    [SerializeField] bool _isItemLink = false;
+    public bool IsItemLink { set { _isItemLink = value; } }
     [SerializeField] bool _isItemUnconditional = false;
+    public bool IsItemUnconditional { set { _isItemUnconditional = value; } }
     [SerializeField] bool _isSkipEquipLevel = false;
+    public bool IsSkipEquipLevel { set { _isSkipEquipLevel = value; } }
     [SerializeField] bool _isSkipNormalEquipEtcCombo = false;
+    public bool IsSkipNormalEquipEtcCombo { set { _isSkipNormalEquipEtcCombo = value; } }
 
     [Serializable]
     public class ReplaceVariable
@@ -141,22 +146,27 @@ public class Converter : MonoBehaviour
     /// Is equipment type will print as not have any value?
     /// </summary>
     [SerializeField] bool _isEquipmentNoValue;
+    public bool IsEquipmentNoValue { set { _isEquipmentNoValue = value; } }
     /// <summary>
     /// Is non-usable item will print as not have any bonuses and combos?
     /// </summary>
     [SerializeField] bool _isItemNoBonus;
+    public bool IsItemNoBonus { set { _isItemNoBonus = value; } }
     /// <summary>
     /// Is enchantment able to use?
     /// </summary>
     [SerializeField] bool _isEnchantmentAbleToUse;
+    public bool IsEnchantmentAbleToUse { set { _isEnchantmentAbleToUse = value; } }
     /// <summary>
     /// Is hide refinable?
     /// </summary>
     [SerializeField] bool _isHideRefinable;
+    public bool IsHideRefinable { set { _isHideRefinable = value; } }
     /// <summary>
     /// Is hide gradable?
     /// </summary>
     [SerializeField] bool _isHideGradable;
+    public bool IsHideGradable { set { _isHideGradable = value; } }
 
     /// <summary>
     /// Container for 1 item, use while parsing from item_db
@@ -277,15 +287,6 @@ public class Converter : MonoBehaviour
         errorResourceNames = new List<string>();
 
         _easyItemBuilderDatabase = new EasyItemBuilderDatabase();
-
-        _isEquipmentNoValue = Input.GetKey(KeyCode.Alpha1);
-        _isItemNoBonus = Input.GetKey(KeyCode.Alpha2);
-        _isEnchantmentAbleToUse = Input.GetKey(KeyCode.Alpha3);
-        _isHideRefinable = Input.GetKey(KeyCode.Alpha3);
-        _isHideGradable = Input.GetKey(KeyCode.Alpha3);
-        _isItemUnconditional = Input.GetKey(KeyCode.Alpha4);
-        _isSkipEquipLevel = Input.GetKey(KeyCode.Alpha5);
-        _isSkipNormalEquipEtcCombo = Input.GetKey(KeyCode.Alpha6);
 
         for (int i = 0; i < _objectsToHideWhenConverterStart.Length; i++)
             _objectsToHideWhenConverterStart[i].SetActive(false);
@@ -6413,8 +6414,13 @@ public class Converter : MonoBehaviour
                             {
                                 var itemId = GetItemIdFromAegisName(currentAegisName);
 
-                                same_set_name_list += "[NEW_LINE]+ " + GetItemName(itemId.ToString("f0"));
-                                same_set_name_list += "[NEW_LINE]+ (ID:" + itemId + ")";
+                                if (!_isItemLink)
+                                {
+                                    same_set_name_list += "[NEW_LINE]+ " + GetItemName(itemId.ToString("f0"));
+                                    same_set_name_list += "[NEW_LINE]+ (ID:" + itemId + ")";
+                                }
+                                else
+                                    same_set_name_list += "[NEW_LINE]+ <ITEM>" + GetItemName(itemId.ToString("f0")) + "<INFO>" + itemId + "</INFO><ITEM>";
                             }
                         }
 
