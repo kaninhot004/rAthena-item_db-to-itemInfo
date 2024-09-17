@@ -81,6 +81,16 @@ public class Settings : MonoBehaviour
         _converter.IsUseNewLineInsteadOfCommaForAvailableClass = _newLineForAvailableClassToggle.isOn;
         _converter.IsHideItemId = _itemIdToggle.isOn;
         _converter.IsHideSubType = _subTypeToggle.isOn;
+        _converter.IsItemLink = _itemLinkToggle.isOn;
+        _converter.IsHideRefinable = _refinableToggle.isOn;
+        _converter.IsHideGradable = _gradableToggle.isOn;
+        _converter.IsSkipEquipLevel = _skipMinLvToggle.isOn;
+        _converter.IsItemUnconditional = _skipGenderClassJobToggle.isOn;
+        _converter.IsEnchantmentAbleToUse = _enchantmentClickableToggle.isOn;
+        _converter.IsEquipmentNoValue = _forceEquipmentNoValueToggle.isOn;
+        _converter.IsItemNoBonus = _forceItemNoBonusNoComboToggle.isOn;
+        _converter.IsSkipNormalEquipEtcCombo = _skipNormalGameItemComboToggle.isOn;
+        _converter.IsRemoveBrackets = _removeBracketsToggle.isOn;
 
         // Add Toggle Listener
         _printZeroValueToggle.onValueChanged.AddListener(OnPrintZeroValueToggle);
@@ -109,7 +119,7 @@ public class Settings : MonoBehaviour
         PlayerPrefs.Save();
         _converter.IsRemoveBrackets = isOn;
     }
-     void OnSkipNormalGameItemComboToggle(bool isOn)
+    void OnSkipNormalGameItemComboToggle(bool isOn)
     {
         PlayerPrefs.SetInt(SKIP_NORMAL_GAME_ITEM_COMBO_TOGGLE, isOn ? 1 : 0);
         PlayerPrefs.Save();
