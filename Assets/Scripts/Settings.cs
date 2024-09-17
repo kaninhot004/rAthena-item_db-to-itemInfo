@@ -92,7 +92,7 @@ public class Settings : MonoBehaviour
         _newLineForAvailableClassToggle.onValueChanged.AddListener(OnNewLineForAvailableClassToggle);
         _itemIdToggle.onValueChanged.AddListener(OnItemIdToggle);
         _subTypeToggle.onValueChanged.AddListener(OnSubTypeToggle);
-        _itemLinkToggle.onValueChanged.AddListener(OnSubTypeToggle);
+        _itemLinkToggle.onValueChanged.AddListener(OnItemLinkToggle);
         _refinableToggle.onValueChanged.AddListener(OnRefinableToggle);
         _gradableToggle.onValueChanged.AddListener(OnGradableToggle);
         _skipMinLvToggle.onValueChanged.AddListener(OnSkipMinLvToggle);
