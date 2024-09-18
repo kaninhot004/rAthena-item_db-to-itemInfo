@@ -6428,7 +6428,7 @@ public class Converter : MonoBehaviour
                                     same_set_name_list += "[NEW_LINE]+ (ID:" + itemId + ")";
                                 }
                                 else
-                                    same_set_name_list += "[NEW_LINE]+ <ITEM>" + GetItemName(itemId.ToString("f0")) + "<INFO>" + itemId + "</INFO><ITEM>";
+                                    same_set_name_list += "[NEW_LINE]+ <ITEM>" + GetItemName(itemId.ToString("f0")) + "<INFO>" + itemId + "</INFO></ITEM>";
                             }
                         }
 
