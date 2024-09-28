@@ -5526,19 +5526,19 @@ public class Converter : MonoBehaviour
         if (!text.Contains("rc_", StringComparison.CurrentCultureIgnoreCase))
             Debug.Log("Found wrong race: " + text + GetCurrentItemIdOrCombo());
 
-        text = text.Replace("RC_Angel", "^AC6523(Angel)^000000");
-        text = text.Replace("RC_Brute", "^AC6523(Brute)^000000");
-        text = text.Replace("RC_DemiHuman", "^AC6523(Demi-Human)^000000");
-        text = text.Replace("RC_Demon", "^AC6523(Demon)^000000");
-        text = text.Replace("RC_Dragon", "^AC6523(Dragon)^000000");
-        text = text.Replace("RC_Fish", "^AC6523(Fish)^000000");
-        text = text.Replace("RC_Formless", "^AC6523(Formless)^000000");
-        text = text.Replace("RC_Insect", "^AC6523(Insect)^000000");
-        text = text.Replace("RC_Plant", "^AC6523(Plant)^000000");
-        text = text.Replace("RC_Player_Human", "^AC6523(Human)^000000");
-        text = text.Replace("RC_Player_Doram", "^AC6523(Doram)^000000");
-        text = text.Replace("RC_Undead", "^AC6523(Undead)^000000");
-        text = text.Replace("RC_All", "^AC6523(" + _localization.GetTexts(Localization.ALL_RACE) + ")^000000");
+        text = text.Replace("rc_angel", "^AC6523(Angel)^000000");
+        text = text.Replace("rc_brute", "^AC6523(Brute)^000000");
+        text = text.Replace("rc_demihuman", "^AC6523(Demi-Human)^000000");
+        text = text.Replace("rc_demon", "^AC6523(Demon)^000000");
+        text = text.Replace("rc_dragon", "^AC6523(Dragon)^000000");
+        text = text.Replace("rc_fish", "^AC6523(Fish)^000000");
+        text = text.Replace("rc_formless", "^AC6523(Formless)^000000");
+        text = text.Replace("rc_insect", "^AC6523(Insect)^000000");
+        text = text.Replace("rc_plant", "^AC6523(Plant)^000000");
+        text = text.Replace("rc_player_human", "^AC6523(Human)^000000");
+        text = text.Replace("rc_player_doram", "^AC6523(Doram)^000000");
+        text = text.Replace("rc_undead", "^AC6523(Undead)^000000");
+        text = text.Replace("rc_all", "^AC6523(" + _localization.GetTexts(Localization.ALL_RACE) + ")^000000");
         return text;
     }
 
@@ -5548,40 +5548,40 @@ public class Converter : MonoBehaviour
             Debug.Log("Found wrong race2: " + text + GetCurrentItemIdOrCombo());
 
         text = text.ToUpper();
-        text = text.Replace("RC2_GOBLIN", "^AC6523(Goblin)^000000");
-        text = text.Replace("RC2_KOBOLD", "^AC6523(Kobold)^000000");
-        text = text.Replace("RC2_ORC", "^AC6523(Orc)^000000");
-        text = text.Replace("RC2_GOLEM", "^AC6523(Golem)^000000");
-        text = text.Replace("RC2_GUARDIAN", "^AC6523(Guardian)^000000");
-        text = text.Replace("RC2_NINJA", "^AC6523(Ninja)^000000");
-        text = text.Replace("RC2_GVG", "^AC6523(GvG)^000000");
-        text = text.Replace("RC2_BATTLEFIELD", "^AC6523(Battlefield)^000000");
-        text = text.Replace("RC2_TREASURE", "^AC6523(Treasure)^000000");
-        text = text.Replace("RC2_BIOLAB", "^AC6523(Biolab)^000000");
-        text = text.Replace("RC2_MANUK", "^AC6523(Manuk)^000000");
-        text = text.Replace("RC2_SPLENDIDE", "^AC6523(Splendide)^000000");
-        text = text.Replace("RC2_SCARABA", "^AC6523(Scaraba)^000000");
-        text = text.Replace("RC2_OGH_ATK_DEF", "^AC6523(Old Glast Heim)^000000");
-        text = text.Replace("RC2_OGH_Hidden", "^AC6523(Hidden Old Glast Heim)^000000");
-        text = text.Replace("RC2_BIO5_SWORDMAN_THIEF", "^AC6523(Biolab 5 Swordman & Theif)^000000");
-        text = text.Replace("RC2_BIO5_ACOLYTE_MERCHANT", "^AC6523(Biolab 5 Acolyte & Merchant)^000000");
-        text = text.Replace("RC2_BIO5_MAGE_ARCHER", "^AC6523(Biolab 5 Mage & Archer)^000000");
-        text = text.Replace("RC2_BIO5_MVP", "^AC6523(Biolab 5 MvP)^000000");
-        text = text.Replace("RC2_CLOCKTOWER", "^AC6523(Clocktower)^000000");
-        text = text.Replace("RC2_THANATOS", "^AC6523(Thanatos)^000000");
-        text = text.Replace("RC2_FACEWORM", "^AC6523(Faceworm)^000000");
-        text = text.Replace("RC2_HEARTHUNTER", "^AC6523(Heart Hunter)^000000");
-        text = text.Replace("RC2_ROCKRIDGE", "^AC6523(Rockridge)^000000");
-        text = text.Replace("RC2_WERNER_LAB", "^AC6523(Werner's Laboratory)^000000");
-        text = text.Replace("RC2_TEMPLE_DEMON", "^AC6523(Temple of Demon God)^000000");
-        text = text.Replace("RC2_ILLUSION_VAMPIRE", "^AC6523(Illusion Vampire)^000000");
-        text = text.Replace("RC2_MALANGDO", "^AC6523(Malangdo)^000000");
-        text = text.Replace("RC2_EP172ALPHA", "^AC6523(EP 17.2 Alpha)^000000");
-        text = text.Replace("RC2_EP172BETA", "^AC6523(EP 17.2 Beta)^000000");
-        text = text.Replace("RC2_EP172BATH", "^AC6523(EP 17.2 Bath)^000000");
-        text = text.Replace("RC2_ILLUSION_TURTLE", "^AC6523(Illusion Turtle)^000000");
-        text = text.Replace("RC2_RACHEL_SANCTUARY", "^AC6523(Rachel Sanctuary)^000000");
-        text = text.Replace("RC2_ILLUSION_LUANDA", "^AC6523(Illusion Luanda)^000000");
+        text = text.Replace("rc2_goblin", "^AC6523(Goblin)^000000");
+        text = text.Replace("rc2_kobold", "^AC6523(Kobold)^000000");
+        text = text.Replace("rc2_orc", "^AC6523(Orc)^000000");
+        text = text.Replace("rc2_golem", "^AC6523(Golem)^000000");
+        text = text.Replace("rc2_guardian", "^AC6523(Guardian)^000000");
+        text = text.Replace("rc2_ninja", "^AC6523(Ninja)^000000");
+        text = text.Replace("rc2_gvg", "^AC6523(GvG)^000000");
+        text = text.Replace("rc2_battlefield", "^AC6523(Battlefield)^000000");
+        text = text.Replace("rc2_treasure", "^AC6523(Treasure)^000000");
+        text = text.Replace("rc2_biolab", "^AC6523(Biolab)^000000");
+        text = text.Replace("rc2_manuk", "^AC6523(Manuk)^000000");
+        text = text.Replace("rc2_splendide", "^AC6523(Splendide)^000000");
+        text = text.Replace("rc2_scaraba", "^AC6523(Scaraba)^000000");
+        text = text.Replace("rc2_ogh_atk_def", "^AC6523(Old Glast Heim)^000000");
+        text = text.Replace("rc2_ogh_hidden", "^AC6523(Hidden Old Glast Heim)^000000");
+        text = text.Replace("rc2_bio5_swordman_thief", "^AC6523(Biolab 5 Swordman & Theif)^000000");
+        text = text.Replace("rc2_bio5_acolyte_merchant", "^AC6523(Biolab 5 Acolyte & Merchant)^000000");
+        text = text.Replace("rc2_bio5_mage_archer", "^AC6523(Biolab 5 Mage & Archer)^000000");
+        text = text.Replace("rc2_bio5_mvp", "^AC6523(Biolab 5 MvP)^000000");
+        text = text.Replace("rc2_clocktower", "^AC6523(Clocktower)^000000");
+        text = text.Replace("rc2_thanatos", "^AC6523(Thanatos)^000000");
+        text = text.Replace("rc2_faceworm", "^AC6523(Faceworm)^000000");
+        text = text.Replace("rc2_hearthunter", "^AC6523(Heart Hunter)^000000");
+        text = text.Replace("rc2_rockridge", "^AC6523(Rockridge)^000000");
+        text = text.Replace("rc2_werner_lab", "^AC6523(Werner's Laboratory)^000000");
+        text = text.Replace("rc2_temple_demon", "^AC6523(Temple of Demon God)^000000");
+        text = text.Replace("rc2_illusion_vampire", "^AC6523(Illusion Vampire)^000000");
+        text = text.Replace("rc2_malangdo", "^AC6523(Malangdo)^000000");
+        text = text.Replace("rc2_ep172alpha", "^AC6523(EP 17.2 Alpha)^000000");
+        text = text.Replace("rc2_ep172beta", "^AC6523(EP 17.2 Beta)^000000");
+        text = text.Replace("rc2_ep172bath", "^AC6523(EP 17.2 Bath)^000000");
+        text = text.Replace("rc2_illusion_turtle", "^AC6523(Illusion Turtle)^000000");
+        text = text.Replace("rc2_rachel_sanctuary", "^AC6523(Rachel Sanctuary)^000000");
+        text = text.Replace("rc2_illusion_luanda", "^AC6523(Illusion Luanda)^000000");
         return text;
     }
 
@@ -5590,10 +5590,10 @@ public class Converter : MonoBehaviour
         if (!text.Contains("class_", StringComparison.CurrentCultureIgnoreCase))
             Debug.Log("Found wrong class: " + text + GetCurrentItemIdOrCombo());
 
-        text = text.Replace("Class_Normal", "^0040B6(Normal)^000000");
-        text = text.Replace("Class_Boss", "^0040B6(Boss)^000000");
-        text = text.Replace("Class_Guardian", "^0040B6(Guardian)^000000");
-        text = text.Replace("Class_All", "^0040B6(" + _localization.GetTexts(Localization.ALL_CLASS) + ")^000000");
+        text = text.Replace("class_normal", "^0040B6(Normal)^000000");
+        text = text.Replace("class_boss", "^0040B6(Boss)^000000");
+        text = text.Replace("class_guardian", "^0040B6(Guardian)^000000");
+        text = text.Replace("class_all", "^0040B6(" + _localization.GetTexts(Localization.ALL_CLASS) + ")^000000");
         return text;
     }
 
@@ -5602,10 +5602,10 @@ public class Converter : MonoBehaviour
         if (!text.Contains("size_", StringComparison.CurrentCultureIgnoreCase))
             Debug.Log("Found wrong size: " + text + GetCurrentItemIdOrCombo());
 
-        text = text.Replace("Size_Small", "^FF26F5(" + _localization.GetTexts(Localization.SIZE_SMALL) + ")^000000");
-        text = text.Replace("Size_Medium", "^FF26F5(" + _localization.GetTexts(Localization.SIZE_MEDIUM) + ")^000000");
-        text = text.Replace("Size_Large", "^FF26F5(" + _localization.GetTexts(Localization.SIZE_LARGE) + ")^000000");
-        text = text.Replace("Size_All", "^FF26F5(" + _localization.GetTexts(Localization.ALL_SIZE) + ")^000000");
+        text = text.Replace("size_small", "^FF26F5(" + _localization.GetTexts(Localization.SIZE_SMALL) + ")^000000");
+        text = text.Replace("size_medium", "^FF26F5(" + _localization.GetTexts(Localization.SIZE_MEDIUM) + ")^000000");
+        text = text.Replace("size_large", "^FF26F5(" + _localization.GetTexts(Localization.SIZE_LARGE) + ")^000000");
+        text = text.Replace("size_all", "^FF26F5(" + _localization.GetTexts(Localization.ALL_SIZE) + ")^000000");
         return text;
     }
 
@@ -5614,17 +5614,17 @@ public class Converter : MonoBehaviour
         if (!text.Contains("ele_", StringComparison.CurrentCultureIgnoreCase))
             Debug.Log("Found wrong element: " + text + GetCurrentItemIdOrCombo());
 
-        text = text.Replace("Ele_Dark", "^C426FF(Dark)^000000");
-        text = text.Replace("Ele_Earth", "^C426FF(Earth)^000000");
-        text = text.Replace("Ele_Fire", "^C426FF(Fire)^000000");
-        text = text.Replace("Ele_Ghost", "^C426FF(Ghost)^000000");
-        text = text.Replace("Ele_Holy", "^C426FF(Holy)^000000");
-        text = text.Replace("Ele_Neutral", "^C426FF(Neutral)^000000");
-        text = text.Replace("Ele_Poison", "^C426FF(Poison)^000000");
-        text = text.Replace("Ele_Undead", "^C426FF(Undead)^000000");
-        text = text.Replace("Ele_Water", "^C426FF(Water)^000000");
-        text = text.Replace("Ele_Wind", "^C426FF(Wind)^000000");
-        text = text.Replace("Ele_All", "^C426FF(" + _localization.GetTexts(Localization.ALL_ELEMENT) + ")^000000");
+        text = text.Replace("ele_dark", "^C426FF(Dark)^000000");
+        text = text.Replace("ele_earth", "^C426FF(Earth)^000000");
+        text = text.Replace("ele_fire", "^C426FF(Fire)^000000");
+        text = text.Replace("ele_ghost", "^C426FF(Ghost)^000000");
+        text = text.Replace("ele_holy", "^C426FF(Holy)^000000");
+        text = text.Replace("ele_neutral", "^C426FF(Neutral)^000000");
+        text = text.Replace("ele_poison", "^C426FF(Poison)^000000");
+        text = text.Replace("ele_undead", "^C426FF(Undead)^000000");
+        text = text.Replace("ele_water", "^C426FF(Water)^000000");
+        text = text.Replace("ele_wind", "^C426FF(Wind)^000000");
+        text = text.Replace("ele_all", "^C426FF(" + _localization.GetTexts(Localization.ALL_ELEMENT) + ")^000000");
         return text;
     }
 
@@ -5633,45 +5633,45 @@ public class Converter : MonoBehaviour
         if (!text.Contains("eff_", StringComparison.CurrentCultureIgnoreCase))
             Debug.Log("Found wrong effect: " + text + GetCurrentItemIdOrCombo());
 
-        text = text.Replace("Eff_Stone", "^EC1B3AStone^000000");
-        text = text.Replace("Eff_Freeze", "^EC1B3AFreeze^000000");
-        text = text.Replace("Eff_Stun", "^EC1B3AStun^000000");
-        text = text.Replace("Eff_Sleep", "^EC1B3ASleep^000000");
-        text = text.Replace("Eff_Poison", "^EC1B3APoison^000000");
-        text = text.Replace("Eff_Curse", "^EC1B3ACurse^000000");
-        text = text.Replace("Eff_Silence", "^EC1B3ASilence^000000");
-        text = text.Replace("Eff_Confusion", "^EC1B3AConfusion^000000");
-        text = text.Replace("Eff_Blind", "^EC1B3ABlind^000000");
-        text = text.Replace("Eff_Bleeding", "^EC1B3ABleeding^000000");
-        text = text.Replace("Eff_DPoison", "^EC1B3ADeadly Poison^000000");
-        text = text.Replace("Eff_Fear", "^EC1B3AFear^000000");
-        text = text.Replace("Eff_Burning", "^EC1B3ABurning^000000");
-        text = text.Replace("Eff_Crystalize", "^EC1B3ACrystalize^000000");
-        text = text.Replace("Eff_Freezing", "^EC1B3AFreezing^000000");
-        text = text.Replace("Eff_Heat", "^EC1B3AHeat^000000");
-        text = text.Replace("Eff_Deepsleep", "^EC1B3ADeep Sleep^000000");
-        text = text.Replace("Eff_WhiteImprison", "^EC1B3AWhite Imprison^000000");
-        text = text.Replace("Eff_Hallucination", "^EC1B3AHallucination^000000");
+        text = text.Replace("eff_stone", "^EC1B3AStone^000000");
+        text = text.Replace("eff_freeze", "^EC1B3AFreeze^000000");
+        text = text.Replace("eff_stun", "^EC1B3AStun^000000");
+        text = text.Replace("eff_sleep", "^EC1B3ASleep^000000");
+        text = text.Replace("eff_poison", "^EC1B3APoison^000000");
+        text = text.Replace("eff_curse", "^EC1B3ACurse^000000");
+        text = text.Replace("eff_silence", "^EC1B3ASilence^000000");
+        text = text.Replace("eff_confusion", "^EC1B3AConfusion^000000");
+        text = text.Replace("eff_blind", "^EC1B3ABlind^000000");
+        text = text.Replace("eff_bleeding", "^EC1B3ABleeding^000000");
+        text = text.Replace("eff_dpoison", "^EC1B3ADeadly Poison^000000");
+        text = text.Replace("eff_fear", "^EC1B3AFear^000000");
+        text = text.Replace("eff_burning", "^EC1B3ABurning^000000");
+        text = text.Replace("eff_crystalize", "^EC1B3ACrystalize^000000");
+        text = text.Replace("eff_freezing", "^EC1B3AFreezing^000000");
+        text = text.Replace("eff_heat", "^EC1B3AHeat^000000");
+        text = text.Replace("eff_deepsleep", "^EC1B3ADeep Sleep^000000");
+        text = text.Replace("eff_whiteimprison", "^EC1B3AWhite Imprison^000000");
+        text = text.Replace("eff_hallucination", "^EC1B3AHallucination^000000");
         return text;
     }
 
     string ParseAtf(string text)
     {
-        text = text.Replace("ATF_SELF", _localization.GetTexts(Localization.ATF_SELF));
-        text = text.Replace("ATF_TARGET", _localization.GetTexts(Localization.ATF_TARGET));
-        text = text.Replace("ATF_SHORT", _localization.GetTexts(Localization.ATF_SHORT));
-        text = text.Replace("BF_SHORT", _localization.GetTexts(Localization.BF_SHORT));
-        text = text.Replace("ATF_LONG", _localization.GetTexts(Localization.ATF_LONG));
-        text = text.Replace("BF_LONG", _localization.GetTexts(Localization.BF_LONG));
-        text = text.Replace("ATF_SKILL", _localization.GetTexts(Localization.ATF_SKILL));
-        text = text.Replace("ATF_WEAPON", _localization.GetTexts(Localization.ATF_WEAPON));
-        text = text.Replace("BF_WEAPON", _localization.GetTexts(Localization.BF_WEAPON));
-        text = text.Replace("ATF_MAGIC", _localization.GetTexts(Localization.ATF_MAGIC));
-        text = text.Replace("BF_MAGIC", _localization.GetTexts(Localization.BF_MAGIC));
-        text = text.Replace("BF_SKILL", _localization.GetTexts(Localization.BF_SKILL));
-        text = text.Replace("ATF_MISC", _localization.GetTexts(Localization.ATF_MISC));
-        text = text.Replace("BF_MISC", _localization.GetTexts(Localization.BF_MISC));
-        text = text.Replace("BF_NORMAL", _localization.GetTexts(Localization.BF_NORMAL));
+        text = text.Replace("atk_self", _localization.GetTexts(Localization.ATF_SELF));
+        text = text.Replace("atf_target", _localization.GetTexts(Localization.ATF_TARGET));
+        text = text.Replace("atk_short", _localization.GetTexts(Localization.ATF_SHORT));
+        text = text.Replace("bf_short", _localization.GetTexts(Localization.BF_SHORT));
+        text = text.Replace("atf_long", _localization.GetTexts(Localization.ATF_LONG));
+        text = text.Replace("bf_long", _localization.GetTexts(Localization.BF_LONG));
+        text = text.Replace("atf_skill", _localization.GetTexts(Localization.ATF_SKILL));
+        text = text.Replace("atf_weapon", _localization.GetTexts(Localization.ATF_WEAPON));
+        text = text.Replace("bf_weapon", _localization.GetTexts(Localization.BF_WEAPON));
+        text = text.Replace("atf_magic", _localization.GetTexts(Localization.ATF_MAGIC));
+        text = text.Replace("bf_magic", _localization.GetTexts(Localization.BF_MAGIC));
+        text = text.Replace("bf_skill", _localization.GetTexts(Localization.BF_SKILL));
+        text = text.Replace("atf_misc", _localization.GetTexts(Localization.ATF_MISC));
+        text = text.Replace("bf_misc", _localization.GetTexts(Localization.BF_MISC));
+        text = text.Replace("bf_normal", _localization.GetTexts(Localization.BF_NORMAL));
         return text;
     }
 
@@ -5679,35 +5679,35 @@ public class Converter : MonoBehaviour
     {
         string atf = string.Empty;
 
-        if (text.Contains("ATF_SELF"))
+        if (text.Contains("atf_self"))
             atf += _localization.GetTexts(Localization.AUTO_BONUS_ATF_SELF) + ", ";
-        if (text.Contains("ATF_TARGET"))
+        if (text.Contains("atf_target"))
             atf += _localization.GetTexts(Localization.AUTO_BONUS_ATF_TARGET) + ", ";
-        if (text.Contains("ATF_SHORT"))
+        if (text.Contains("atf_short"))
             atf += _localization.GetTexts(Localization.AUTO_BONUS_ATF_SHORT) + ", ";
-        if (text.Contains("BF_SHORT"))
+        if (text.Contains("bf_short"))
             atf += _localization.GetTexts(Localization.AUTO_BONUS_BF_SHORT) + ", ";
-        if (text.Contains("ATF_LONG"))
+        if (text.Contains("atf_long"))
             atf += _localization.GetTexts(Localization.AUTO_BONUS_ATF_LONG) + ", ";
-        if (text.Contains("BF_LONG"))
+        if (text.Contains("bf_long"))
             atf += _localization.GetTexts(Localization.AUTO_BONUS_BF_LONG) + ", ";
-        if (text.Contains("ATF_SKILL"))
+        if (text.Contains("atf_skill"))
             atf += _localization.GetTexts(Localization.AUTO_BONUS_ATF_SKILL) + ", ";
-        if (text.Contains("ATF_WEAPON"))
+        if (text.Contains("atf_weapon"))
             atf += _localization.GetTexts(Localization.AUTO_BONUS_ATF_WEAPON) + ", ";
-        if (text.Contains("BF_WEAPON"))
+        if (text.Contains("bf_weapon"))
             atf += _localization.GetTexts(Localization.AUTO_BONUS_BF_WEAPON) + ", ";
-        if (text.Contains("ATF_MAGIC"))
+        if (text.Contains("atf_magic"))
             atf += _localization.GetTexts(Localization.AUTO_BONUS_ATF_MAGIC) + ", ";
-        if (text.Contains("BF_MAGIC"))
+        if (text.Contains("bf_magic"))
             atf += _localization.GetTexts(Localization.AUTO_BONUS_BF_MAGIC) + ", ";
-        if (text.Contains("BF_SKILL"))
+        if (text.Contains("bf_skill"))
             atf += _localization.GetTexts(Localization.AUTO_BONUS_BF_SKILL) + ", ";
-        if (text.Contains("ATF_MISC"))
+        if (text.Contains("atf_misc"))
             atf += _localization.GetTexts(Localization.AUTO_BONUS_ATF_MISC) + ", ";
-        if (text.Contains("BF_MISC"))
+        if (text.Contains("bf_misc"))
             atf += _localization.GetTexts(Localization.AUTO_BONUS_BF_MISC) + ", ";
-        if (text.Contains("BF_NORMAL"))
+        if (text.Contains("bf_normal"))
             atf += _localization.GetTexts(Localization.AUTO_BONUS_BF_NORMAL) + ", ";
 
         // Remove leftover ,
