@@ -1853,7 +1853,7 @@ public class Converter : MonoBehaviour
 
             if (!_allLearnableSkillDatabases.Contains(text))
             {
-                if (!string.IsNullOrEmpty(GetSkillName(text, false, true, true)))
+                if (!string.IsNullOrEmpty(GetSkillName(text.ToLower(), false, true, true)))
                     _allLearnableSkillDatabases.Add(text);
             }
         }
@@ -5333,9 +5333,9 @@ public class Converter : MonoBehaviour
             var temps = temp.Split(',');
             var duration = (temps.Length > 1) ? TryParseInt(temps[1], 1000) : "0";
             if (duration == "0")
-                text = string.Format(_localization.GetTexts(Localization.SC_START_4_NO_DURATION), ItemGenerator.Capitalize(SpacingRemover.Remove(QuoteRemover.Remove(temps[0]).Replace("sc_", string.Empty))));
+                text = string.Format(_localization.GetTexts(Localization.SC_START_4_NO_DURATION), SpacingRemover.Remove(QuoteRemover.Remove(temps[0]).Replace("sc_", string.Empty)).ToUpper());
             else
-                text = string.Format(_localization.GetTexts(Localization.SC_START_4), ItemGenerator.Capitalize(SpacingRemover.Remove(QuoteRemover.Remove(temps[0]).Replace("sc_", string.Empty))), TryParseTimer(TryParseInt(temps[1], 1000)));
+                text = string.Format(_localization.GetTexts(Localization.SC_START_4), SpacingRemover.Remove(QuoteRemover.Remove(temps[0]).Replace("sc_", string.Empty)).ToUpper(), TryParseTimer(TryParseInt(temps[1], 1000)));
 
             ParseStatusChangeStartIntoItemId();
         }
@@ -5346,9 +5346,9 @@ public class Converter : MonoBehaviour
             var temps = temp.Split(',');
             var duration = (temps.Length > 1) ? TryParseInt(temps[1], 1000) : "0";
             if (duration == "0")
-                text = string.Format(_localization.GetTexts(Localization.SC_START_2_NO_DURATION), ItemGenerator.Capitalize(SpacingRemover.Remove(QuoteRemover.Remove(temps[0]).Replace("sc_", string.Empty))));
+                text = string.Format(_localization.GetTexts(Localization.SC_START_2_NO_DURATION), SpacingRemover.Remove(QuoteRemover.Remove(temps[0]).Replace("sc_", string.Empty)).ToUpper());
             else
-                text = string.Format(_localization.GetTexts(Localization.SC_START_2), ItemGenerator.Capitalize(SpacingRemover.Remove(QuoteRemover.Remove(temps[0]).Replace("sc_", string.Empty))), TryParseTimer(TryParseInt(temps[1], 1000)));
+                text = string.Format(_localization.GetTexts(Localization.SC_START_2), SpacingRemover.Remove(QuoteRemover.Remove(temps[0]).Replace("sc_", string.Empty)).ToUpper(), TryParseTimer(TryParseInt(temps[1], 1000)));
 
             ParseStatusChangeStartIntoItemId();
         }
@@ -5359,9 +5359,9 @@ public class Converter : MonoBehaviour
             var temps = temp.Split(',');
             var duration = (temps.Length > 1) ? TryParseInt(temps[1], 1000) : "0";
             if (duration == "0")
-                text = string.Format(_localization.GetTexts(Localization.SC_START_NO_DURATION), ItemGenerator.Capitalize(SpacingRemover.Remove(QuoteRemover.Remove(temps[0]).Replace("sc_", string.Empty))));
+                text = string.Format(_localization.GetTexts(Localization.SC_START_NO_DURATION), SpacingRemover.Remove(QuoteRemover.Remove(temps[0]).Replace("sc_", string.Empty)).ToUpper());
             else
-                text = string.Format(_localization.GetTexts(Localization.SC_START), ItemGenerator.Capitalize(SpacingRemover.Remove(QuoteRemover.Remove(temps[0]).Replace("sc_", string.Empty))), (temps.Length > 1) ? TryParseTimer(TryParseInt(temps[1], 1000)) : "0");
+                text = string.Format(_localization.GetTexts(Localization.SC_START), SpacingRemover.Remove(QuoteRemover.Remove(temps[0]).Replace("sc_", string.Empty)).ToUpper(), (temps.Length > 1) ? TryParseTimer(TryParseInt(temps[1], 1000)) : "0");
 
             ParseStatusChangeStartIntoItemId();
         }
@@ -5370,7 +5370,7 @@ public class Converter : MonoBehaviour
         {
             var temp = text.Replace("sc_end ", string.Empty);
             var temps = temp.Split(',');
-            text = string.Format(_localization.GetTexts(Localization.SC_END), ItemGenerator.Capitalize(SpacingRemover.Remove(QuoteRemover.Remove(temps[0]).Replace("sc_", string.Empty))));
+            text = string.Format(_localization.GetTexts(Localization.SC_END), SpacingRemover.Remove(QuoteRemover.Remove(temps[0]).Replace("sc_", string.Empty)).ToUpper());
         }
         // active_transform
         if (text.Contains("active_transform "))

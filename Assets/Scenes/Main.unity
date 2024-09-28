@@ -2108,7 +2108,7 @@ MonoBehaviour:
     m_LineSpacing: 0.8
   m_Text: 'Only convert to itemInfo
 
-    <size=125%>(FASTER!!)</size>'
+    (10% FASTER)'
 --- !u!222 &111832050
 CanvasRenderer:
   m_ObjectHideFlags: 0

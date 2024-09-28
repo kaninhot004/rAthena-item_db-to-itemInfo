@@ -1,7 +1,7 @@
 ﻿Cast % (All)
  on 5826 == -3
 
-Cooldown | (sc_escape)
+Cooldown | (SC_ESCAPE)
  on 490316 == -0.5s
 
 Cooldown | 16th Night
@@ -1087,10 +1087,10 @@ Cooldown | Severe Rainstorm
  combo 400264+700055 == -0.5s
  on 311006 == -(100*getskilllv("wm_sircleofnature")) ^FF0000หาร 1000^000000s
 
-Cooldown | sh_howling_of_chul_ho
+Cooldown | SH_HOWLING_OF_CHUL_HO
  combo 550134+400546 == -0.3s
 
-Cooldown | sh_hyun_roks_breeze
+Cooldown | SH_HYUN_ROKS_BREEZE
  combo 550135+400546 == -2s
 
 Cooldown | Shadow Stab
@@ -1204,7 +1204,7 @@ Cooldown | Spore Explosion
  on 32351 == -1s
  combo 18977+490412 == -0.5s
 
-Cooldown | ss_kunaikaiten
+Cooldown | SS_KUNAIKAITEN
  combo 400652+610072 == -0.3s
  combo 610072+470265 == -0.2s
 
