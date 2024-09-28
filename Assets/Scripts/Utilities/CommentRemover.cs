@@ -18,6 +18,7 @@ public class CommentRemover
                 text = text.Substring(0, text.IndexOf("#"));
 
             text = text.Replace("Header:", string.Empty);
+            text = text.Replace("Body:", string.Empty);
             text = text.Replace("  Type: ITEM_DB", string.Empty);
 
             if (text.Contains("  Version: "))

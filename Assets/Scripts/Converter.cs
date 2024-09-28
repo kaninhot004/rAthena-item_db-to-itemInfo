@@ -1811,7 +1811,7 @@ public class Converter : MonoBehaviour
                 if (_skillNameDatabases.ContainsKey(skillDatabase.name))
                     Debug.LogWarning("Found duplicated skill name: " + skillDatabase.name + " (Old: " + _skillNameDatabases[skillDatabase.name] + " vs New: " + skillDatabase.name + ")");
                 else
-                    _skillNameDatabases.Add(skillDatabase.name, skillDatabase.id);
+                    _skillNameDatabases.Add(skillDatabase.name.ToLower(), skillDatabase.id);
             }
         }
 
@@ -2425,7 +2425,7 @@ public class Converter : MonoBehaviour
         {
             if (i % 1000 == 0)
             {
-                _txtConvertProgression.text = _localization.GetTexts(Localization.CONVERT_PROGRESSION_PLEASE_WAIT) + ".. (Input " + ((float)i / (float)itemDatabases.Length).ToString("f0") + "%)";
+                _txtConvertProgression.text = _localization.GetTexts(Localization.CONVERT_PROGRESSION_PLEASE_WAIT) + ".. (Input " + (((float)i / (float)itemDatabases.Length) * 100).ToString("f0") + "%)";
 
                 yield return null;
             }
@@ -3075,7 +3075,7 @@ public class Converter : MonoBehaviour
         {
             if (i % 1000 == 0)
             {
-                _txtConvertProgression.text = _localization.GetTexts(Localization.CONVERT_PROGRESSION_PLEASE_WAIT) + ".. (Output " + ((float)i / (float)_itemContainers.Count).ToString("f0") + "%)";
+                _txtConvertProgression.text = _localization.GetTexts(Localization.CONVERT_PROGRESSION_PLEASE_WAIT) + ".. (Output " + (((float)i / (float)_itemContainers.Count) * 100).ToString("f0") + "%)";
 
                 yield return null;
             }
@@ -3461,10 +3461,10 @@ public class Converter : MonoBehaviour
         finalize = finalize.Replace(_localization.GetTexts(Localization.INFINITE) + _localization.GetTexts(Localization.SECOND_ABBREVIATION), _localization.GetTexts(Localization.INFINITE));
         finalize = finalize.Replace(_localization.GetTexts(Localization.WITH) + " 11)", _localization.GetTexts(Localization.TYPE) + ")");
         finalize = finalize.Replace(_localization.GetTexts(Localization.WITH) + " 11 )", _localization.GetTexts(Localization.TYPE) + ")");
-        finalize = finalize.Replace(_localization.GetTexts(Localization.WITH) + " II_VIEW)", _localization.GetTexts(Localization.TYPE) + ")");
-        finalize = finalize.Replace(_localization.GetTexts(Localization.WITH) + " II_VIEW )", _localization.GetTexts(Localization.TYPE) + ")");
-        finalize = finalize.Replace(_localization.GetTexts(Localization.WITH) + " ITEMINFO_VIEW)", _localization.GetTexts(Localization.TYPE) + ")");
-        finalize = finalize.Replace(_localization.GetTexts(Localization.WITH) + " ITEMINFO_VIEW )", _localization.GetTexts(Localization.TYPE) + ")");
+        finalize = finalize.Replace(_localization.GetTexts(Localization.WITH) + " ii_view)", _localization.GetTexts(Localization.TYPE) + ")");
+        finalize = finalize.Replace(_localization.GetTexts(Localization.WITH) + " ii_view )", _localization.GetTexts(Localization.TYPE) + ")");
+        finalize = finalize.Replace(_localization.GetTexts(Localization.WITH) + " iteminfo_view)", _localization.GetTexts(Localization.TYPE) + ")");
+        finalize = finalize.Replace(_localization.GetTexts(Localization.WITH) + " iteminfo_view )", _localization.GetTexts(Localization.TYPE) + ")");
 
         finalize = finalize.Replace(_localization.GetTexts(Localization.TYPE) + ") " + _localization.GetTexts(Localization.EQUAL) + " 23"
             , _localization.GetTexts(Localization.TYPE) + " " + _localization.GetTexts(Localization.EQUAL) + " Two-handed Staff");
@@ -4394,7 +4394,7 @@ public class Converter : MonoBehaviour
         {
             var temp = text.Replace("bonus2 badditemgrouphealrate,", string.Empty);
             var temps = temp.Split(',');
-            text = string.Format(_localization.GetTexts(Localization.BONUS2_ADD_ITEM_GROUP_HEAL_RATE), QuoteRemover.Remove(temps[0]), TryParseInt(temps[1]));
+            text = string.Format(_localization.GetTexts(Localization.BONUS2_ADD_ITEM_GROUP_HEAL_RATE), QuoteRemover.Remove(temps[0]).Replace("ig_", string.Empty).ToUpper(), TryParseInt(temps[1]));
         }
         if (text.Contains("bonus badditemsphealrate,"))
         {
@@ -4412,7 +4412,7 @@ public class Converter : MonoBehaviour
         {
             var temp = text.Replace("bonus2 badditemgroupsphealrate,", string.Empty);
             var temps = temp.Split(',');
-            text = string.Format(_localization.GetTexts(Localization.BONUS2_ADD_ITEM_GROUP_SP_HEAL_RATE), QuoteRemover.Remove(temps[0]), TryParseInt(temps[1]));
+            text = string.Format(_localization.GetTexts(Localization.BONUS2_ADD_ITEM_GROUP_SP_HEAL_RATE), QuoteRemover.Remove(temps[0]).Replace("ig_", string.Empty).ToUpper(), TryParseInt(temps[1]));
         }
         if (text.Contains("bonus bcastrate,"))
         {
@@ -5198,19 +5198,19 @@ public class Converter : MonoBehaviour
         {
             var temp = text.Replace("bonus2 baddmonsterdropitemgroup,", string.Empty);
             var temps = temp.Split(',');
-            text = string.Format(_localization.GetTexts(Localization.BONUS2_ADD_MONSTER_DROP_ITEM_GROUP), QuoteRemover.Remove(temps[0]), TryParseInt(temps[1], 100));
+            text = string.Format(_localization.GetTexts(Localization.BONUS2_ADD_MONSTER_DROP_ITEM_GROUP), QuoteRemover.Remove(temps[0]).Replace("ig_", string.Empty).ToUpper(), TryParseInt(temps[1], 100));
         }
         if (text.Contains("bonus3 baddmonsterdropitemgroup,"))
         {
             var temp = text.Replace("bonus3 baddmonsterdropitemgroup,", string.Empty);
             var temps = temp.Split(',');
-            text = string.Format(_localization.GetTexts(Localization.BONUS3_ADD_MONSTER_DROP_ITEM_GROUP), QuoteRemover.Remove(temps[0]), ParseRace(temps[1]), TryParseInt(temps[2], 100));
+            text = string.Format(_localization.GetTexts(Localization.BONUS3_ADD_MONSTER_DROP_ITEM_GROUP), QuoteRemover.Remove(temps[0]).Replace("ig_", string.Empty).ToUpper(), ParseRace(temps[1]), TryParseInt(temps[2], 100));
         }
         if (text.Contains("bonus3 baddclassdropitemgroup,"))
         {
             var temp = text.Replace("bonus3 baddclassdropitemgroup,", string.Empty);
             var temps = temp.Split(',');
-            text = string.Format(_localization.GetTexts(Localization.BONUS3_ADD_CLASS_DROP_ITEM_GROUP), QuoteRemover.Remove(temps[0]), ParseClass(temps[1]), TryParseInt(temps[2], 100));
+            text = string.Format(_localization.GetTexts(Localization.BONUS3_ADD_CLASS_DROP_ITEM_GROUP), QuoteRemover.Remove(temps[0]).Replace("ig_", string.Empty).ToUpper(), ParseClass(temps[1]), TryParseInt(temps[2], 100));
         }
         if (text.Contains("bonus2 bgetzenynum,"))
         {
@@ -5267,19 +5267,21 @@ public class Converter : MonoBehaviour
         if (text.Contains("specialeffect2 "))
         {
             var temp = text.Replace("specialeffect2 ", string.Empty);
-            text = _localization.GetTexts(Localization.SPECIAL_EFFECT_2) + " " + temp.Replace("EF_", string.Empty);
+            text = _localization.GetTexts(Localization.SPECIAL_EFFECT_2) + " " + temp.Replace("ef_", string.Empty).ToUpper();
         }
         // Special Effect
         if (text.Contains("specialeffect "))
         {
             var temp = text.Replace("specialeffect ", string.Empty);
-            text = _localization.GetTexts(Localization.SPECIAL_EFFECT) + " " + temp.Replace("EF_", string.Empty);
+            text = _localization.GetTexts(Localization.SPECIAL_EFFECT) + " " + temp.Replace("ef_", string.Empty).ToUpper();
         }
         // Show Script
         if (text.Contains("showscript "))
         {
-            var temp = text.Replace("showscript ", string.Empty);
-            text = _localization.GetTexts(Localization.SHOW_SCRIPT) + " " + temp;
+            text = string.Empty;
+
+            /*var temp = text.Replace("showscript ", string.Empty);
+            text = _localization.GetTexts(Localization.SHOW_SCRIPT) + " " + temp;*/
         }
         // Unit Skill Use Id
         if (text.Contains("unitskilluseid "))
@@ -5331,11 +5333,9 @@ public class Converter : MonoBehaviour
             var temps = temp.Split(',');
             var duration = (temps.Length > 1) ? TryParseInt(temps[1], 1000) : "0";
             if (duration == "0")
-                text = string.Format(_localization.GetTexts(Localization.SC_START_4_NO_DURATION), QuoteRemover.Remove(temps[0]));
+                text = string.Format(_localization.GetTexts(Localization.SC_START_4_NO_DURATION), ItemGenerator.Capitalize(SpacingRemover.Remove(QuoteRemover.Remove(temps[0]).Replace("sc_", string.Empty))));
             else
-                text = string.Format(_localization.GetTexts(Localization.SC_START_4), QuoteRemover.Remove(temps[0]), TryParseTimer(TryParseInt(temps[1], 1000)));
-
-            text = text.Replace("sc_", string.Empty);
+                text = string.Format(_localization.GetTexts(Localization.SC_START_4), ItemGenerator.Capitalize(SpacingRemover.Remove(QuoteRemover.Remove(temps[0]).Replace("sc_", string.Empty))), TryParseTimer(TryParseInt(temps[1], 1000)));
 
             ParseStatusChangeStartIntoItemId();
         }
@@ -5346,11 +5346,9 @@ public class Converter : MonoBehaviour
             var temps = temp.Split(',');
             var duration = (temps.Length > 1) ? TryParseInt(temps[1], 1000) : "0";
             if (duration == "0")
-                text = string.Format(_localization.GetTexts(Localization.SC_START_2_NO_DURATION), QuoteRemover.Remove(temps[0]));
+                text = string.Format(_localization.GetTexts(Localization.SC_START_2_NO_DURATION), ItemGenerator.Capitalize(SpacingRemover.Remove(QuoteRemover.Remove(temps[0]).Replace("sc_", string.Empty))));
             else
-                text = string.Format(_localization.GetTexts(Localization.SC_START_2), QuoteRemover.Remove(temps[0]), TryParseTimer(TryParseInt(temps[1], 1000)));
-
-            text = text.Replace("sc_", string.Empty);
+                text = string.Format(_localization.GetTexts(Localization.SC_START_2), ItemGenerator.Capitalize(SpacingRemover.Remove(QuoteRemover.Remove(temps[0]).Replace("sc_", string.Empty))), TryParseTimer(TryParseInt(temps[1], 1000)));
 
             ParseStatusChangeStartIntoItemId();
         }
@@ -5361,11 +5359,9 @@ public class Converter : MonoBehaviour
             var temps = temp.Split(',');
             var duration = (temps.Length > 1) ? TryParseInt(temps[1], 1000) : "0";
             if (duration == "0")
-                text = string.Format(_localization.GetTexts(Localization.SC_START_NO_DURATION), QuoteRemover.Remove(temps[0]));
+                text = string.Format(_localization.GetTexts(Localization.SC_START_NO_DURATION), ItemGenerator.Capitalize(SpacingRemover.Remove(QuoteRemover.Remove(temps[0]).Replace("sc_", string.Empty))));
             else
-                text = string.Format(_localization.GetTexts(Localization.SC_START), QuoteRemover.Remove(temps[0]), (temps.Length > 1) ? TryParseTimer(TryParseInt(temps[1], 1000)) : "0");
-
-            text = text.Replace("sc_", string.Empty);
+                text = string.Format(_localization.GetTexts(Localization.SC_START), ItemGenerator.Capitalize(SpacingRemover.Remove(QuoteRemover.Remove(temps[0]).Replace("sc_", string.Empty))), (temps.Length > 1) ? TryParseTimer(TryParseInt(temps[1], 1000)) : "0");
 
             ParseStatusChangeStartIntoItemId();
         }
@@ -5374,9 +5370,7 @@ public class Converter : MonoBehaviour
         {
             var temp = text.Replace("sc_end ", string.Empty);
             var temps = temp.Split(',');
-            text = string.Format(_localization.GetTexts(Localization.SC_END), QuoteRemover.Remove(temps[0]));
-
-            text = text.Replace("sc_", string.Empty);
+            text = string.Format(_localization.GetTexts(Localization.SC_END), ItemGenerator.Capitalize(SpacingRemover.Remove(QuoteRemover.Remove(temps[0]).Replace("sc_", string.Empty))));
         }
         // active_transform
         if (text.Contains("active_transform "))
@@ -5406,7 +5400,7 @@ public class Converter : MonoBehaviour
         {
             var temp = text.Replace("groupranditem", string.Empty);
             var temps = temp.Split(',');
-            text = string.Format(_localization.GetTexts(Localization.GET_GROUP_ITEM), QuoteRemover.Remove(temps[0]).Replace("IG_", string.Empty), TryParseInt((temps.Length > 1) ? temps[1] : null, 1, 1));
+            text = string.Format(_localization.GetTexts(Localization.GET_GROUP_ITEM), QuoteRemover.Remove(temps[0]).Replace("ig_", string.Empty).ToUpper(), TryParseInt((temps.Length > 1) ? temps[1] : null, 1, 1));
 
             if (!_isFastConvert && !_itemListContainer.itemGroupIds.Contains(_itemContainer.id))
                 _itemListContainer.itemGroupIds.Add(_itemContainer.id);
@@ -5416,7 +5410,7 @@ public class Converter : MonoBehaviour
         {
             var temp = text.Replace("getrandgroupitem", string.Empty);
             var temps = temp.Split(',');
-            text = string.Format(_localization.GetTexts(Localization.GET_GROUP_ITEM), QuoteRemover.Remove(temps[0]).Replace("IG_", string.Empty), TryParseInt((temps.Length > 1) ? temps[1] : null, 1, 1));
+            text = string.Format(_localization.GetTexts(Localization.GET_GROUP_ITEM), QuoteRemover.Remove(temps[0]).Replace("ig_", string.Empty).ToUpper(), TryParseInt((temps.Length > 1) ? temps[1] : null, 1, 1));
 
             if (!_isFastConvert && !_itemListContainer.itemGroupIds.Contains(_itemContainer.id))
                 _itemListContainer.itemGroupIds.Add(_itemContainer.id);
@@ -5426,7 +5420,7 @@ public class Converter : MonoBehaviour
         {
             var temp = text.Replace("getgroupitem", string.Empty);
             var temps = temp.Split(',');
-            text = string.Format(_localization.GetTexts(Localization.GET_GROUP_ITEM), QuoteRemover.Remove(temps[0]).Replace("IG_", string.Empty), TryParseInt((temps.Length > 1) ? temps[1] : null, 1, 1));
+            text = string.Format(_localization.GetTexts(Localization.GET_GROUP_ITEM), QuoteRemover.Remove(temps[0]).Replace("ig_", string.Empty).ToUpper(), TryParseInt((temps.Length > 1) ? temps[1] : null, 1, 1));
 
             if (!_isFastConvert && !_itemListContainer.itemGroupIds.Contains(_itemContainer.id))
                 _itemListContainer.itemGroupIds.Add(_itemContainer.id);
@@ -5447,13 +5441,15 @@ public class Converter : MonoBehaviour
                 _petTamingItemIds.Add(_itemContainer.id);
         }
         // hateffect
-        if (text.Contains("hateffect "))
+        if (text.Contains("hateffect"))
         {
-            var temp = text.Replace("hateffect ", string.Empty);
+            text = string.Empty;
+
+            /*var temp = text.Replace("hateffect ", string.Empty);
             var temps = temp.Split(',');
             text = string.Format(_localization.GetTexts(Localization.HAT_EFFECT)
                 , (temps[1] == "true") ? _localization.GetTexts(Localization.HAT_EFFECT_TRUE) : _localization.GetTexts(Localization.HAT_EFFECT_FALSE)
-                , temps[0].Replace("hat_ef_", string.Empty));
+                , temps[0].Replace("hat_ef_", string.Empty));*/
         }
         // switch
         if (text.Contains("switch("))
@@ -5475,7 +5471,7 @@ public class Converter : MonoBehaviour
         {
             text = text.Replace("setarray ", "• ");
             var arrayName = text.Substring(text.IndexOf("."), text.IndexOf(",") - text.IndexOf("."));
-            _arrayNames.Add(arrayName);
+            _arrayNames.Add(arrayName.ToUpper());
             text = text.Replace(arrayName + " , ", string.Empty);
             text = text.Replace(arrayName + " ,", string.Empty);
             text = text.Replace(arrayName + ", ", string.Empty);
@@ -5547,7 +5543,6 @@ public class Converter : MonoBehaviour
         if (!text.Contains("rc2_", StringComparison.CurrentCultureIgnoreCase))
             Debug.Log("Found wrong race2: " + text + GetCurrentItemIdOrCombo());
 
-        text = text.ToUpper();
         text = text.Replace("rc2_goblin", "^AC6523(Goblin)^000000");
         text = text.Replace("rc2_kobold", "^AC6523(Kobold)^000000");
         text = text.Replace("rc2_orc", "^AC6523(Orc)^000000");
@@ -5582,6 +5577,8 @@ public class Converter : MonoBehaviour
         text = text.Replace("rc2_illusion_turtle", "^AC6523(Illusion Turtle)^000000");
         text = text.Replace("rc2_rachel_sanctuary", "^AC6523(Rachel Sanctuary)^000000");
         text = text.Replace("rc2_illusion_luanda", "^AC6523(Illusion Luanda)^000000");
+        text = text.Replace("rc2_illusion_moonlight", "^AC6523(Illusion Moonlight)^000000");
+        text = text.Replace("rc2_illusion_frozen", "^AC6523(Illusion Frozen)^000000");
         return text;
     }
 
@@ -5657,9 +5654,9 @@ public class Converter : MonoBehaviour
 
     string ParseAtf(string text)
     {
-        text = text.Replace("atk_self", _localization.GetTexts(Localization.ATF_SELF));
+        text = text.Replace("atf_self", _localization.GetTexts(Localization.ATF_SELF));
         text = text.Replace("atf_target", _localization.GetTexts(Localization.ATF_TARGET));
-        text = text.Replace("atk_short", _localization.GetTexts(Localization.ATF_SHORT));
+        text = text.Replace("atf_short", _localization.GetTexts(Localization.ATF_SHORT));
         text = text.Replace("bf_short", _localization.GetTexts(Localization.BF_SHORT));
         text = text.Replace("atf_long", _localization.GetTexts(Localization.ATF_LONG));
         text = text.Replace("bf_long", _localization.GetTexts(Localization.BF_LONG));
@@ -5853,6 +5850,18 @@ public class Converter : MonoBehaviour
         text = text.Replace("(bspl)", "SPL");
         text = text.Replace("(bcon)", "CON");
         text = text.Replace("(bcrt)", "CRT");
+        text = text.Replace("bstr", "STR");
+        text = text.Replace("bagi", "AGI");
+        text = text.Replace("bvit", "VIT");
+        text = text.Replace("bint", "INT");
+        text = text.Replace("bdex", "DEX");
+        text = text.Replace("bluk", "LUK");
+        text = text.Replace("bpow", "POW");
+        text = text.Replace("bsta", "STA");
+        text = text.Replace("bwis", "WIS");
+        text = text.Replace("bspl", "SPL");
+        text = text.Replace("bcon", "CON");
+        text = text.Replace("bcrt", "CRT");
         text = text.Replace("eaclass()", "Class");
         text = text.Replace("getitempos()", _localization.GetTexts(Localization.GET_ITEM_POS));
         text = text.Replace("eajl_2_1", _localization.GetTexts(Localization.CLASS) + " 2-1");
@@ -5884,16 +5893,19 @@ public class Converter : MonoBehaviour
         text = text.Replace("eaj_hunter", " Hunter");
         text = text.Replace("eaj_priest", " Priest");
         text = text.Replace("eaj_blacksmith", " Blacksmith");
-        text = text.Replace("eaj_assassin", " Assassin");
         text = text.Replace("eaj_star_gladiator", " Star Gladiator");
         text = text.Replace("eaj_stargladiator", " Star Gladiator");
         text = text.Replace("eaj_rebellion", " Rebellion");
         text = text.Replace("eaj_kagerouoboro", " Kagerou & Oboro");
+        text = text.Replace("eaj_kagerou", " Kagerou");
+        text = text.Replace("eaj_oboro", " Oboro");
         text = text.Replace("eaj_death_knight", " Death Knight");
         text = text.Replace("eaj_deathknight", " Death Knight");
         text = text.Replace("eaj_crusader", " Crusader");
         text = text.Replace("eaj_sage", " Sage");
         text = text.Replace("eaj_barddancer", " Bard & Dancer");
+        text = text.Replace("eaj_bard", " Bard");
+        text = text.Replace("eaj_dancer", " Dancer");
         text = text.Replace("eaj_monk", " Monk");
         text = text.Replace("eaj_alchemist", " Alchemist");
         text = text.Replace("eaj_rogue", " Rogue");
@@ -5914,6 +5926,7 @@ public class Converter : MonoBehaviour
         text = text.Replace("eaj_high_priest", " High Priest");
         text = text.Replace("eaj_whitesmith", " Whitesmith");
         text = text.Replace("eaj_assassin_cross", " Assassin Cross");
+        text = text.Replace("eaj_assassin", " Assassin");
         text = text.Replace("eaj_paladin", " Paladin");
         text = text.Replace("eaj_professor", " Professor");
         text = text.Replace("eaj_clowngypsy", " Clown & Gypsy");
@@ -5940,9 +5953,13 @@ public class Converter : MonoBehaviour
         text = text.Replace("eaj_baby_star_gladiator", " Baby Star Gladiator");
         text = text.Replace("eaj_baby_rebellion", " Baby Rebellion");
         text = text.Replace("eaj_baby_kagerouoboro", " Baby Kagerou & Baby Oboro");
+        text = text.Replace("eaj_baby_kagerou", " Baby Kagerou");
+        text = text.Replace("eaj_baby_oboro", " Baby Oboro");
         text = text.Replace("eaj_baby_crusader", " Baby Crusader");
         text = text.Replace("eaj_baby_sage", " Baby Sage");
         text = text.Replace("eaj_baby_barddancer", " Baby Bard & Baby Dancer");
+        text = text.Replace("eaj_baby_bard", " Baby Bard");
+        text = text.Replace("eaj_baby_dancer", " Baby Dancer");
         text = text.Replace("eaj_baby_monk", " Baby Monk");
         text = text.Replace("eaj_baby_alchemist", " Baby Alchemist");
         text = text.Replace("eaj_baby_rogue", " Baby Rouge");
@@ -6028,7 +6045,7 @@ public class Converter : MonoBehaviour
         text = text.Replace("job_swordman", " Swordman", StringComparison.OrdinalIgnoreCase);
         text = text.Replace("job_mage", " Mage", StringComparison.OrdinalIgnoreCase);
         text = text.Replace("job_archer", " Archer", StringComparison.OrdinalIgnoreCase);
-        text = text.Replace("job_acolyte ", " Acolyte", StringComparison.OrdinalIgnoreCase);
+        text = text.Replace("job_acolyte", " Acolyte", StringComparison.OrdinalIgnoreCase);
         text = text.Replace("job_merchant", " Merchant", StringComparison.OrdinalIgnoreCase);
         text = text.Replace("job_thief", " Thief", StringComparison.OrdinalIgnoreCase);
         text = text.Replace("job_taekwon", " Taekwon", StringComparison.OrdinalIgnoreCase);
@@ -6040,16 +6057,19 @@ public class Converter : MonoBehaviour
         text = text.Replace("job_hunter", " Hunter", StringComparison.OrdinalIgnoreCase);
         text = text.Replace("job_priest", " Priest", StringComparison.OrdinalIgnoreCase);
         text = text.Replace("job_blacksmith", " Blacksmith", StringComparison.OrdinalIgnoreCase);
-        text = text.Replace("job_assassin", " Assassin", StringComparison.OrdinalIgnoreCase);
         text = text.Replace("job_star_gladiator", " Star Gladiator", StringComparison.OrdinalIgnoreCase);
         text = text.Replace("job_stargladiator", " Star Gladiator", StringComparison.OrdinalIgnoreCase);
         text = text.Replace("job_rebellion", " Rebellion", StringComparison.OrdinalIgnoreCase);
         text = text.Replace("job_kagerouoboro", " Kagerou & Oboro", StringComparison.OrdinalIgnoreCase);
+        text = text.Replace("job_kagerou", " Kagerou", StringComparison.OrdinalIgnoreCase);
+        text = text.Replace("job_oboro", " Oboro", StringComparison.OrdinalIgnoreCase);
         text = text.Replace("job_death_knight", " Death Knight", StringComparison.OrdinalIgnoreCase);
         text = text.Replace("job_deathknight", " Death Knight", StringComparison.OrdinalIgnoreCase);
         text = text.Replace("job_crusader", " Crusader", StringComparison.OrdinalIgnoreCase);
         text = text.Replace("job_sage", " Sage", StringComparison.OrdinalIgnoreCase);
         text = text.Replace("job_barddancer", " Bard & Dancer", StringComparison.OrdinalIgnoreCase);
+        text = text.Replace("job_bard", " Bard", StringComparison.OrdinalIgnoreCase);
+        text = text.Replace("job_dancer", " Dancer", StringComparison.OrdinalIgnoreCase);
         text = text.Replace("job_monk", " Monk", StringComparison.OrdinalIgnoreCase);
         text = text.Replace("job_alchemist", " Alchemist", StringComparison.OrdinalIgnoreCase);
         text = text.Replace("job_rogue", " Rogue", StringComparison.OrdinalIgnoreCase);
@@ -6070,6 +6090,7 @@ public class Converter : MonoBehaviour
         text = text.Replace("job_high_priest", " High Priest", StringComparison.OrdinalIgnoreCase);
         text = text.Replace("job_whitesmith", " Whitesmith", StringComparison.OrdinalIgnoreCase);
         text = text.Replace("job_assassin_cross", " Assassin Cross", StringComparison.OrdinalIgnoreCase);
+        text = text.Replace("job_assassin", " Assassin", StringComparison.OrdinalIgnoreCase);
         text = text.Replace("job_paladin", " Paladin", StringComparison.OrdinalIgnoreCase);
         text = text.Replace("job_professor", " Professor", StringComparison.OrdinalIgnoreCase);
         text = text.Replace("job_clowngypsy", " Clown & Gypsy", StringComparison.OrdinalIgnoreCase);
@@ -6095,9 +6116,13 @@ public class Converter : MonoBehaviour
         text = text.Replace("job_baby_star_gladiator", " Baby Star Gladiator", StringComparison.OrdinalIgnoreCase);
         text = text.Replace("job_baby_rebellion", " Baby Rebellion", StringComparison.OrdinalIgnoreCase);
         text = text.Replace("job_baby_kagerouoboro", " Baby Kagerou & Baby Oboro", StringComparison.OrdinalIgnoreCase);
+        text = text.Replace("job_baby_kagerou", " Baby Kagerou", StringComparison.OrdinalIgnoreCase);
+        text = text.Replace("job_baby_oboro", " Baby Oboro", StringComparison.OrdinalIgnoreCase);
         text = text.Replace("job_baby_crusader", " Baby Crusader", StringComparison.OrdinalIgnoreCase);
         text = text.Replace("job_baby_sage", " Baby Sage", StringComparison.OrdinalIgnoreCase);
         text = text.Replace("job_baby_barddancer", " Baby Bard & Baby Dancer", StringComparison.OrdinalIgnoreCase);
+        text = text.Replace("job_baby_bard", " Baby Bard", StringComparison.OrdinalIgnoreCase);
+        text = text.Replace("job_baby_dancer", " Baby Dancer", StringComparison.OrdinalIgnoreCase);
         text = text.Replace("job_baby_monk", " Baby Monk", StringComparison.OrdinalIgnoreCase);
         text = text.Replace("job_baby_alchemist", " Baby Alchemist", StringComparison.OrdinalIgnoreCase);
         text = text.Replace("job_baby_rogue", " Baby Rouge", StringComparison.OrdinalIgnoreCase);
@@ -6299,12 +6324,12 @@ public class Converter : MonoBehaviour
             text = SafeReplace.ReplaceWholeWord(text, _replaceVariables[i].variableName, _replaceVariables[i].descriptionConverted);
         for (int i = 0; i < _arrayNames.Count; i++)
         {
-            if (text.Contains(_arrayNames[i])
+            if (text.ToUpper().Contains(_arrayNames[i])
                 && text.Contains("[")
                 && text.Contains("]"))
             {
                 // Find last index of array
-                var index = text.LastIndexOf(_arrayNames[i]);
+                var index = text.ToUpper().LastIndexOf(_arrayNames[i]);
                 var temptoReplace = text.Substring(index);
                 // Find index of ]
                 var arrayToReplace = temptoReplace.Substring(0, temptoReplace.IndexOf(']') + 1);
@@ -6312,6 +6337,7 @@ public class Converter : MonoBehaviour
             }
         }
 
+        text = text.Replace("Lv.Lv.", "Lv.");
         text = text.Replace("lv.lv.", "Lv.");
 
         text = ParseEQI(text);
@@ -6364,6 +6390,8 @@ public class Converter : MonoBehaviour
             text = text.Replace("{", string.Empty);
             text = text.Replace("}", string.Empty);
         }
+
+        text = text.Replace("class", "Class");
 
         return text;
     }
@@ -6796,6 +6824,9 @@ public class Converter : MonoBehaviour
 
     string GetSkillName(string text, bool isKeepSpacebar = false, bool isOnlyString = false, bool isErrorReturnNull = false)
     {
+        if (text.Contains("^990B0B"))
+            return text;
+
         int _int = 0;
 
         if (int.TryParse(text, out _int)
@@ -6820,7 +6851,7 @@ public class Converter : MonoBehaviour
             }
         }
 
-        return isErrorReturnNull ? string.Empty : text;
+        return isErrorReturnNull ? string.Empty : text.ToUpper();
     }
 
     string GetClassNumFromId(ItemContainer itemContainer)
