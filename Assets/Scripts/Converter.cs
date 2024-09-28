@@ -239,7 +239,7 @@ public class Converter : MonoBehaviour
     /// </summary>
     Dictionary<int, int> _itemScriptCopierDatabases = new Dictionary<int, int>();
     /// <summary>
-    /// Item container holder (To get skill directly instead of loop all item)
+    /// Item container holder (To get script directly instead of loop all item)
     /// </summary>
     Dictionary<int, ItemContainer> _itemContaianerDatabases = new Dictionary<int, ItemContainer>();
 
@@ -365,7 +365,8 @@ public class Converter : MonoBehaviour
             return;
         }
 
-        FetchLearnableSkill();
+        if (!_isFastConvert)
+            FetchLearnableSkill();
 
         if (_isFilesError)
         {
@@ -1370,23 +1371,26 @@ public class Converter : MonoBehaviour
 
                 text = SpacingRemover.Remove(text);
 
-                if (text.ToLower().Contains("head_top"))
-                    _resourceContainer.topHeadgears.Add(id);
-                else if (text.ToLower().Contains("head_mid"))
-                    _resourceContainer.middleHeadgears.Add(id);
-                else if (text.ToLower().Contains("head_low"))
-                    _resourceContainer.lowerHeadgears.Add(id);
-                else if (text.ToLower().Contains("garment"))
-                    _resourceContainer.garments.Add(id);
-                else if (text.ToLower().Contains("armor"))
-                    _resourceContainer.armors.Add(id);
-                else if (text.ToLower().Contains("shadow_weapon")
-                    || text.ToLower().Contains("shadow_shield"))
-                    _resourceContainer.shields.Add(id);
-                else if (text.ToLower().Contains("shoes"))
-                    _resourceContainer.shoes.Add(id);
-                else if (text.ToLower().Contains("accessory"))
-                    _resourceContainer.accessorys.Add(id);
+                if (!_isFastConvert || (_isRandomResourceNameForCustomTextAssetOnly && _isRandomResourceName))
+                {
+                    if (text.ToLower().Contains("head_top"))
+                        _resourceContainer.topHeadgears.Add(id);
+                    else if (text.ToLower().Contains("head_mid"))
+                        _resourceContainer.middleHeadgears.Add(id);
+                    else if (text.ToLower().Contains("head_low"))
+                        _resourceContainer.lowerHeadgears.Add(id);
+                    else if (text.ToLower().Contains("garment"))
+                        _resourceContainer.garments.Add(id);
+                    else if (text.ToLower().Contains("armor"))
+                        _resourceContainer.armors.Add(id);
+                    else if (text.ToLower().Contains("shadow_weapon")
+                        || text.ToLower().Contains("shadow_shield"))
+                        _resourceContainer.shields.Add(id);
+                    else if (text.ToLower().Contains("shoes"))
+                        _resourceContainer.shoes.Add(id);
+                    else if (text.ToLower().Contains("accessory"))
+                        _resourceContainer.accessorys.Add(id);
+                }
             }
             else
             {
@@ -1394,52 +1398,55 @@ public class Converter : MonoBehaviour
 
                 text = SpacingRemover.Remove(text);
 
-                if (text.ToLower().Contains("dagger"))
-                    _resourceContainer.daggers.Add(id);
-                else if (text.ToLower().Contains("1hsword"))
-                    _resourceContainer.oneHandedSwords.Add(id);
-                else if (text.ToLower().Contains("2hsword"))
-                    _resourceContainer.twoHandedSwords.Add(id);
-                else if (text.ToLower().Contains("1hspear"))
-                    _resourceContainer.oneHandedSpears.Add(id);
-                else if (text.ToLower().Contains("2hspear"))
-                    _resourceContainer.twoHandedSpears.Add(id);
-                else if (text.ToLower().Contains("1haxe"))
-                    _resourceContainer.oneHandedAxes.Add(id);
-                else if (text.ToLower().Contains("2haxe"))
-                    _resourceContainer.twoHandedAxes.Add(id);
-                else if (text.ToLower().Contains("2hmace"))
-                    _resourceContainer.twoHandedMaces.Add(id);
-                else if (text.ToLower().Contains("mace"))
-                    _resourceContainer.oneHandedMaces.Add(id);
-                else if (text.ToLower().Contains("2hstaff"))
-                    _resourceContainer.twoHandedStaffs.Add(id);
-                else if (text.ToLower().Contains("staff"))
-                    _resourceContainer.oneHandedStaffs.Add(id);
-                else if (text.ToLower().Contains("bow"))
-                    _resourceContainer.bows.Add(id);
-                else if (text.ToLower().Contains("knuckle"))
-                    _resourceContainer.knuckles.Add(id);
-                else if (text.ToLower().Contains("musical"))
-                    _resourceContainer.musicals.Add(id);
-                else if (text.ToLower().Contains("whip"))
-                    _resourceContainer.whips.Add(id);
-                else if (text.ToLower().Contains("book"))
-                    _resourceContainer.books.Add(id);
-                else if (text.ToLower().Contains("katar"))
-                    _resourceContainer.katars.Add(id);
-                else if (text.ToLower().Contains("revolver"))
-                    _resourceContainer.revolvers.Add(id);
-                else if (text.ToLower().Contains("rifle"))
-                    _resourceContainer.rifles.Add(id);
-                else if (text.ToLower().Contains("gatling"))
-                    _resourceContainer.gatlings.Add(id);
-                else if (text.ToLower().Contains("shotgun"))
-                    _resourceContainer.shotguns.Add(id);
-                else if (text.ToLower().Contains("grenade"))
-                    _resourceContainer.grenades.Add(id);
-                else if (text.ToLower().Contains("huuma"))
-                    _resourceContainer.huumas.Add(id);
+                if (!_isFastConvert || (_isRandomResourceNameForCustomTextAssetOnly && _isRandomResourceName))
+                {
+                    if (text.ToLower().Contains("dagger"))
+                        _resourceContainer.daggers.Add(id);
+                    else if (text.ToLower().Contains("1hsword"))
+                        _resourceContainer.oneHandedSwords.Add(id);
+                    else if (text.ToLower().Contains("2hsword"))
+                        _resourceContainer.twoHandedSwords.Add(id);
+                    else if (text.ToLower().Contains("1hspear"))
+                        _resourceContainer.oneHandedSpears.Add(id);
+                    else if (text.ToLower().Contains("2hspear"))
+                        _resourceContainer.twoHandedSpears.Add(id);
+                    else if (text.ToLower().Contains("1haxe"))
+                        _resourceContainer.oneHandedAxes.Add(id);
+                    else if (text.ToLower().Contains("2haxe"))
+                        _resourceContainer.twoHandedAxes.Add(id);
+                    else if (text.ToLower().Contains("2hmace"))
+                        _resourceContainer.twoHandedMaces.Add(id);
+                    else if (text.ToLower().Contains("mace"))
+                        _resourceContainer.oneHandedMaces.Add(id);
+                    else if (text.ToLower().Contains("2hstaff"))
+                        _resourceContainer.twoHandedStaffs.Add(id);
+                    else if (text.ToLower().Contains("staff"))
+                        _resourceContainer.oneHandedStaffs.Add(id);
+                    else if (text.ToLower().Contains("bow"))
+                        _resourceContainer.bows.Add(id);
+                    else if (text.ToLower().Contains("knuckle"))
+                        _resourceContainer.knuckles.Add(id);
+                    else if (text.ToLower().Contains("musical"))
+                        _resourceContainer.musicals.Add(id);
+                    else if (text.ToLower().Contains("whip"))
+                        _resourceContainer.whips.Add(id);
+                    else if (text.ToLower().Contains("book"))
+                        _resourceContainer.books.Add(id);
+                    else if (text.ToLower().Contains("katar"))
+                        _resourceContainer.katars.Add(id);
+                    else if (text.ToLower().Contains("revolver"))
+                        _resourceContainer.revolvers.Add(id);
+                    else if (text.ToLower().Contains("rifle"))
+                        _resourceContainer.rifles.Add(id);
+                    else if (text.ToLower().Contains("gatling"))
+                        _resourceContainer.gatlings.Add(id);
+                    else if (text.ToLower().Contains("shotgun"))
+                        _resourceContainer.shotguns.Add(id);
+                    else if (text.ToLower().Contains("grenade"))
+                        _resourceContainer.grenades.Add(id);
+                    else if (text.ToLower().Contains("huuma"))
+                        _resourceContainer.huumas.Add(id);
+                }
             }
         }
         for (int i = 0; i < enchantments.Length; i++)
@@ -1509,7 +1516,7 @@ public class Converter : MonoBehaviour
 
                 text = SpacingRemover.Remove(text);
 
-                if (text.ToLower().Contains("enchant"))
+                if (!_isFastConvert && text.ToLower().Contains("enchant"))
                     _resourceContainer.enchantments.Add(id);
             }
         }
@@ -4431,7 +4438,8 @@ public class Converter : MonoBehaviour
             var value = TryParseInt(temps[0]);
             text = string.Format(_localization.GetTexts(Localization.BONUS_CAST_RATE), value);
 
-            _easyItemBuilderDatabase.Add("Cast % (All)", GetCurrentItemIdOrCombo(), value);
+            if (!_isFastConvert)
+                _easyItemBuilderDatabase.Add("Cast % (All)", GetCurrentItemIdOrCombo(), value);
         }
         if (text.Contains("bonus2 bCastrate,"))
         {
@@ -4441,7 +4449,8 @@ public class Converter : MonoBehaviour
             var value = TryParseInt(temps[1]);
             text = string.Format(_localization.GetTexts(Localization.BONUS2_CAST_RATE), skillName, value);
 
-            _easyItemBuilderDatabase.Add("Cast % | " + skillName, GetCurrentItemIdOrCombo(), value);
+            if (!_isFastConvert)
+                _easyItemBuilderDatabase.Add("Cast % | " + skillName, GetCurrentItemIdOrCombo(), value);
         }
         if (text.Contains("bonus bFixedCastrate,"))
         {
@@ -4450,7 +4459,8 @@ public class Converter : MonoBehaviour
             var value = TryParseInt(temps[0]);
             text = string.Format(_localization.GetTexts(Localization.BONUS_FIXED_CAST_RATE), value);
 
-            _easyItemBuilderDatabase.Add("F. Cast % (All)", GetCurrentItemIdOrCombo(), value);
+            if (!_isFastConvert)
+                _easyItemBuilderDatabase.Add("F. Cast % (All)", GetCurrentItemIdOrCombo(), value);
         }
         if (text.Contains("bonus2 bFixedCastrate,"))
         {
@@ -4460,7 +4470,8 @@ public class Converter : MonoBehaviour
             var value = TryParseInt(temps[1]);
             text = string.Format(_localization.GetTexts(Localization.BONUS2_FIXED_CAST_RATE), skillName, value);
 
-            _easyItemBuilderDatabase.Add("F. Cast % | " + skillName, GetCurrentItemIdOrCombo(), value);
+            if (!_isFastConvert)
+                _easyItemBuilderDatabase.Add("F. Cast % | " + skillName, GetCurrentItemIdOrCombo(), value);
         }
         if (text.Contains("bonus bVariableCastrate,"))
         {
@@ -4469,7 +4480,8 @@ public class Converter : MonoBehaviour
             var value = TryParseInt(temps[0]);
             text = string.Format(_localization.GetTexts(Localization.BONUS_VARIABLE_CAST_RATE), value);
 
-            _easyItemBuilderDatabase.Add("V. Cast % (All)", GetCurrentItemIdOrCombo(), value);
+            if (!_isFastConvert)
+                _easyItemBuilderDatabase.Add("V. Cast % (All)", GetCurrentItemIdOrCombo(), value);
         }
         if (text.Contains("bonus2 bVariableCastrate,"))
         {
@@ -4479,7 +4491,8 @@ public class Converter : MonoBehaviour
             var value = TryParseInt(temps[1]);
             text = string.Format(_localization.GetTexts(Localization.BONUS2_VARIABLE_CAST_RATE), skillName, value);
 
-            _easyItemBuilderDatabase.Add("V. Cast % | " + skillName, GetCurrentItemIdOrCombo(), value);
+            if (!_isFastConvert)
+                _easyItemBuilderDatabase.Add("V. Cast % | " + skillName, GetCurrentItemIdOrCombo(), value);
         }
         if (text.Contains("bonus bFixedCast,"))
         {
@@ -4488,7 +4501,8 @@ public class Converter : MonoBehaviour
             var value = TryParseTimer(TryParseInt(temps[0], 1000));
             text = string.Format(_localization.GetTexts(Localization.BONUS_FIXED_CAST), value);
 
-            _easyItemBuilderDatabase.Add("F. Cast (All)", GetCurrentItemIdOrCombo(), value);
+            if (!_isFastConvert)
+                _easyItemBuilderDatabase.Add("F. Cast (All)", GetCurrentItemIdOrCombo(), value);
         }
         if (text.Contains("bonus2 bSkillFixedCast,"))
         {
@@ -4498,7 +4512,8 @@ public class Converter : MonoBehaviour
             var value = TryParseTimer(TryParseInt(temps[1], 1000));
             text = string.Format(_localization.GetTexts(Localization.BONUS2_SKILL_FIXED_CAST), skillName, value);
 
-            _easyItemBuilderDatabase.Add("F. Cast | " + skillName, GetCurrentItemIdOrCombo(), value);
+            if (!_isFastConvert)
+                _easyItemBuilderDatabase.Add("F. Cast | " + skillName, GetCurrentItemIdOrCombo(), value);
         }
         if (text.Contains("bonus bVariableCast,"))
         {
@@ -4507,7 +4522,8 @@ public class Converter : MonoBehaviour
             var value = TryParseTimer(TryParseInt(temps[0], 1000));
             text = string.Format(_localization.GetTexts(Localization.BONUS_VARIABLE_CAST), value);
 
-            _easyItemBuilderDatabase.Add("V. Cast (All)", GetCurrentItemIdOrCombo(), value);
+            if (!_isFastConvert)
+                _easyItemBuilderDatabase.Add("V. Cast (All)", GetCurrentItemIdOrCombo(), value);
         }
         if (text.Contains("bonus2 bSkillVariableCast,"))
         {
@@ -4517,7 +4533,8 @@ public class Converter : MonoBehaviour
             var value = TryParseTimer(TryParseInt(temps[1], 1000));
             text = string.Format(_localization.GetTexts(Localization.BONUS2_SKILL_VARIABLE_CAST), skillName, value);
 
-            _easyItemBuilderDatabase.Add("V. Cast | " + skillName, GetCurrentItemIdOrCombo(), value);
+            if (!_isFastConvert)
+                _easyItemBuilderDatabase.Add("V. Cast | " + skillName, GetCurrentItemIdOrCombo(), value);
         }
         text = text.Replace("bonus bNoCastCancel2", _localization.GetTexts(Localization.BONUS_NO_CAST_CANCEL_2));
         text = text.Replace("bonus bNoCastCancel", _localization.GetTexts(Localization.BONUS_NO_CAST_CANCEL));
@@ -4528,7 +4545,8 @@ public class Converter : MonoBehaviour
             var value = TryParseInt(temps[0]);
             text = string.Format(_localization.GetTexts(Localization.BONUS_DELAY_RATE), value);
 
-            _easyItemBuilderDatabase.Add("Delay % (All)", GetCurrentItemIdOrCombo(), value);
+            if (!_isFastConvert)
+                _easyItemBuilderDatabase.Add("Delay % (All)", GetCurrentItemIdOrCombo(), value);
         }
         if (text.Contains("bonus bDelayRate,"))
         {
@@ -4537,7 +4555,8 @@ public class Converter : MonoBehaviour
             var value = TryParseInt(temps[0]);
             text = string.Format(_localization.GetTexts(Localization.BONUS_DELAY_RATE), value);
 
-            _easyItemBuilderDatabase.Add("Delay % (All)", GetCurrentItemIdOrCombo(), value);
+            if (!_isFastConvert)
+                _easyItemBuilderDatabase.Add("Delay % (All)", GetCurrentItemIdOrCombo(), value);
         }
         if (text.Contains("bonus2 bSkillDelay,"))
         {
@@ -4547,7 +4566,8 @@ public class Converter : MonoBehaviour
             var value = TryParseTimer(TryParseInt(temps[1], 1000));
             text = string.Format(_localization.GetTexts(Localization.BONUS2_SKILL_DELAY), skillName, value);
 
-            _easyItemBuilderDatabase.Add("Delay % | " + skillName, GetCurrentItemIdOrCombo(), value);
+            if (!_isFastConvert)
+                _easyItemBuilderDatabase.Add("Delay % | " + skillName, GetCurrentItemIdOrCombo(), value);
         }
         if (text.Contains("bonus2 bSkillCooldown,"))
         {
@@ -4557,7 +4577,8 @@ public class Converter : MonoBehaviour
             var value = TryParseTimer(TryParseInt(temps[1], 1000));
             text = string.Format(_localization.GetTexts(Localization.BONUS2_SKILL_COOLDOWN), skillName, value);
 
-            _easyItemBuilderDatabase.Add("Cooldown | " + skillName, GetCurrentItemIdOrCombo(), value);
+            if (!_isFastConvert)
+                _easyItemBuilderDatabase.Add("Cooldown | " + skillName, GetCurrentItemIdOrCombo(), value);
         }
         if (text.Contains("bonus2 bAddEle,"))
         {
@@ -5453,7 +5474,7 @@ public class Converter : MonoBehaviour
             else
                 text = string.Format(_localization.GetTexts(Localization.PET_WITH_CHANCE), (monsterDatabase != null) ? "^FF0000" + monsterDatabase.name + "^000000" : temps[0], (monsterDatabase != null) ? monsterDatabase.captureRate : "0");
 
-            if (!_petTamingItemIds.Contains(_itemContainer.id))
+            if (!_isFastConvert && !_petTamingItemIds.Contains(_itemContainer.id))
                 _petTamingItemIds.Add(_itemContainer.id);
         }
         // hateffect
@@ -6804,7 +6825,7 @@ public class Converter : MonoBehaviour
         if (_resourceDatabases.ContainsKey(id))
             return _resourceDatabases[id];
 
-        if (id != 25786)
+        if (!_isFastConvert && (id != 25786))
             errorResourceNames.Add(id.ToString());
 
         return "\"Bio_Reseearch_Docu\"";
