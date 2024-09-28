@@ -53,6 +53,10 @@ public class Converter : MonoBehaviour
     string _errorLog;
 
     /// <summary>
+    /// Button to open item generator
+    /// </summary>
+    [SerializeField] Button _btnItemGenerator;
+    /// <summary>
     /// Button to preview item information
     /// </summary>
     [SerializeField] Button _btnItemPreview;
@@ -96,6 +100,10 @@ public class Converter : MonoBehaviour
     /// Item Preview
     /// </summary>
     [SerializeField] ItemPreview _itemPreview;
+    /// <summary>
+    /// Item Generator
+    /// </summary>
+    [SerializeField] ItemGenerator _itemGenerator;
 
     // Settings
 
@@ -249,6 +257,7 @@ public class Converter : MonoBehaviour
 
     void Start()
     {
+        _btnItemGenerator.onClick.AddListener(OnItemGeneratorButtonTap);
         _btnItemPreview.onClick.AddListener(OnItemPreviewButtonTap);
         _btnCaptchaGenerator.onClick.AddListener(OnCaptchaGeneratorButtonTap);
         _btnConvert.onClick.AddListener(OnConvertButtonTap);
@@ -257,6 +266,13 @@ public class Converter : MonoBehaviour
         _objConvertProgression.SetActive(false);
         for (int i = 0; i < _objectsToHideWhenConverterStart.Length; i++)
             _objectsToHideWhenConverterStart[i].SetActive(true);
+    }
+    /// <summary>
+    /// Call when item generator button has been tap
+    /// </summary>
+    void OnItemGeneratorButtonTap()
+    {
+        _itemGenerator.Show();
     }
     /// <summary>
     /// Call when item preview button has been tap
@@ -2997,7 +3013,7 @@ public class Converter : MonoBehaviour
                 bool isSkipThisItem = false;
                 // Just pick ammo
                 if (_isSkipNormalEquipEtcCombo
-                    && (int.Parse(_itemContainer.id) < ItemGenerator.START_ID)
+                    && (int.Parse(_itemContainer.id) < ItemGenerator.Instance.StartId)
                     && (_itemContainer.type == "Etc" || _itemContainer.type == "Card"))
                     isSkipThisItem = true;
 
@@ -6510,7 +6526,7 @@ public class Converter : MonoBehaviour
     {
         if (_isRandomResourceNameForCustomTextAssetOnly)
         {
-            if (_isRandomResourceName && id >= ItemGenerator.START_ID)
+            if (_isRandomResourceName && (id >= ItemGenerator.Instance.StartId))
             {
                 if (subType.ToLower().Contains("dagger"))
                 {

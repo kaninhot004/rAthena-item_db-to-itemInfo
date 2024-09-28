@@ -1,72 +1,121 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using EasyButtons;
 using System.IO;
 using System.Text;
 
 public class ItemGenerator : MonoBehaviour
 {
+    public static ItemGenerator Instance;
+
+    [SerializeField] InputField _itemPerTierInput;
+    [SerializeField] InputField _enchantmentPerTierInput;
+    [SerializeField] InputField _maximumTierInput;
+    [SerializeField] InputField _startIdInput;
+    [SerializeField] InputField _maximumGenerateWordInput;
+    [SerializeField] InputField _tier1BonusMinInput;
+    [SerializeField] InputField _tier1BonusMaxInput;
+    [SerializeField] InputField _tier2BonusMinInput;
+    [SerializeField] InputField _tier2BonusMaxInput;
+    [SerializeField] InputField _tier3BonusMinInput;
+    [SerializeField] InputField _tier3BonusMaxInput;
+    [SerializeField] InputField _tier4BonusMinInput;
+    [SerializeField] InputField _tier4BonusMaxInput;
+    [SerializeField] InputField _tier5BonusMinInput;
+    [SerializeField] InputField _tier5BonusMaxInput;
+    [SerializeField] InputField _tier1BonusValueMinInput;
+    [SerializeField] InputField _tier1BonusValueMaxInput;
+    [SerializeField] InputField _tier2BonusValueMinInput;
+    [SerializeField] InputField _tier2BonusValueMaxInput;
+    [SerializeField] InputField _tier3BonusValueMinInput;
+    [SerializeField] InputField _tier3BonusValueMaxInput;
+    [SerializeField] InputField _tier4BonusValueMinInput;
+    [SerializeField] InputField _tier4BonusValueMaxInput;
+    [SerializeField] InputField _tier5BonusValueMinInput;
+    [SerializeField] InputField _tier5BonusValueMaxInput;
+    [SerializeField] InputField _tier1BonusTimeValueMinInput;
+    [SerializeField] InputField _tier1BonusTimeValueMaxInput;
+    [SerializeField] InputField _tier2BonusTimeValueMinInput;
+    [SerializeField] InputField _tier2BonusTimeValueMaxInput;
+    [SerializeField] InputField _tier3BonusTimeValueMinInput;
+    [SerializeField] InputField _tier3BonusTimeValueMaxInput;
+    [SerializeField] InputField _tier4BonusTimeValueMinInput;
+    [SerializeField] InputField _tier4BonusTimeValueMaxInput;
+    [SerializeField] InputField _tier5BonusTimeValueMinInput;
+    [SerializeField] InputField _tier5BonusTimeValueMaxInput;
+    [SerializeField] InputField _tier1LevelRequirementInput;
+    [SerializeField] InputField _tier2LevelRequirementInput;
+    [SerializeField] InputField _tier3LevelRequirementInput;
+    [SerializeField] InputField _tier4LevelRequirementInput;
+    [SerializeField] InputField _tier5LevelRequirementInput;
+    [SerializeField] Toggle _isSkipElementalToggle;
+    [SerializeField] Button _generateButton;
+    [SerializeField] Button _closeButton;
+    [SerializeField] GameObject _itemGeneraterPanelObject;
+
     /// <summary>
     /// How many item per tier to generate?
     /// </summary>
-    public const int ITEM_PER_TIER = 10000;
+    int _itemPerTier = 10000;
     /// <summary>
     /// How many enchantment per tier to generate?
     /// </summary>
-    public const int ENCHANTMENT_PER_TIER = 1000;
+    int _enchantmentPerTier = 1000;
     /// <summary>
     /// Maximum tier for generate
     /// </summary>
-    public const int MAXIMUM_TIER = 5;
+    int _maximumTier = 5;
     /// <summary>
     /// Item ID start at?
     /// </summary>
-    public const int START_ID = 20000000;
+    int _startId = 20000000;
+    public int StartId { get { return _startId; } }
     /// <summary>
     /// Maximum randomize english word per generate
     /// </summary>
-    public const int MAXIMUM_ENGLISH_WORD_GENERATE = 3;
+    int _maximumGenerateWord = 3;
 
-    public const int TIER_1_BONUS_MIN = 1;
-    public const int TIER_1_BONUS_MAX = 4;
-    public const int TIER_2_BONUS_MIN = 2;
-    public const int TIER_2_BONUS_MAX = 7;
-    public const int TIER_3_BONUS_MIN = 3;
-    public const int TIER_3_BONUS_MAX = 10;
-    public const int TIER_4_BONUS_MIN = 4;
-    public const int TIER_4_BONUS_MAX = 13;
-    public const int TIER_5_BONUS_MIN = 5;
-    public const int TIER_5_BONUS_MAX = 16;
+    int _tier1BonusMin = 1;
+    int _tier1BonusMax = 4;
+    int _tier2BonusMin = 2;
+    int _tier2BonusMax = 7;
+    int _tier3BonusMin = 3;
+    int _tier3BonusMax = 10;
+    int _tier4BonusMin = 4;
+    int _tier4BonusMax = 13;
+    int _tier5BonusMin = 5;
+    int _tier5BonusMax = 16;
 
-    public const int TIER_1_BONUS_VALUE_MIN = 1;
-    public const int TIER_1_BONUS_VALUE_MAX = 11;
-    public const int TIER_2_BONUS_VALUE_MIN = 10;
-    public const int TIER_2_BONUS_VALUE_MAX = 26;
-    public const int TIER_3_BONUS_VALUE_MIN = 25;
-    public const int TIER_3_BONUS_VALUE_MAX = 51;
-    public const int TIER_4_BONUS_VALUE_MIN = 50;
-    public const int TIER_4_BONUS_VALUE_MAX = 101;
-    public const int TIER_5_BONUS_VALUE_MIN = 100;
-    public const int TIER_5_BONUS_VALUE_MAX = 201;
+    int _tier1BonusValueMin = 1;
+    int _tier1BonusValueMax = 11;
+    int _tier2BonusValueMin = 10;
+    int _tier2BonusValueMax = 26;
+    int _tier3BonusValueMin = 25;
+    int _tier3BonusValueMax = 51;
+    int _tier4BonusValueMin = 50;
+    int _tier4BonusValueMax = 101;
+    int _tier5BonusValueMin = 100;
+    int _tier5BonusValueMax = 201;
 
-    public const int TIER_1_BONUS_VALUE_TIME_MIN = 1;
-    public const int TIER_1_BONUS_VALUE_TIME_MAX = 11;
-    public const int TIER_2_BONUS_VALUE_TIME_MIN = 10;
-    public const int TIER_2_BONUS_VALUE_TIME_MAX = 51;
-    public const int TIER_3_BONUS_VALUE_TIME_MIN = 50;
-    public const int TIER_3_BONUS_VALUE_TIME_MAX = 201;
-    public const int TIER_4_BONUS_VALUE_TIME_MIN = 200;
-    public const int TIER_4_BONUS_VALUE_TIME_MAX = 501;
-    public const int TIER_5_BONUS_VALUE_TIME_MIN = 500;
-    public const int TIER_5_BONUS_VALUE_TIME_MAX = 1001;
+    int _tier1BonusTimeValueMin = 1;
+    int _tier1BonusTimeValueMax = 11;
+    int _tier2BonusTimeValueMin = 10;
+    int _tier2BonusTimeValueMax = 51;
+    int _tier3BonusTimeValueMin = 50;
+    int _tier3BonusTimeValueMax = 201;
+    int _tier4BonusTimeValueMin = 200;
+    int _tier4BonusTimeValueMax = 501;
+    int _tier5BonusTimeValueMin = 500;
+    int _tier5BonusTimeValueMax = 1001;
 
-    public const int TIER_1_LEVEL_REQ = 1;
-    public const int TIER_2_LEVEL_REQ = 30;
-    public const int TIER_3_LEVEL_REQ = 70;
-    public const int TIER_4_LEVEL_REQ = 130;
-    public const int TIER_5_LEVEL_REQ = 200;
+    int _tier1LevelRequirement = 1;
+    int _tier2LevelRequirement = 30;
+    int _tier3LevelRequirement = 70;
+    int _tier4LevelRequirement = 130;
+    int _tier5LevelRequirement = 200;
 
-    public const bool IS_SKIP_ELEMENTAL = true;
+    bool _isSkipElemental = true;
 
     enum GenerateType { Weapon, Shield, Armor, Ammo, Card };
 
@@ -119,6 +168,103 @@ public class ItemGenerator : MonoBehaviour
 
     List<string> _englishWords = new List<string>();
 
+    void Start()
+    {
+        Instance = this;
+
+        _itemPerTierInput.onValueChanged.AddListener((input) => { _itemPerTier = TryParseInput(input); });
+        _enchantmentPerTierInput.onValueChanged.AddListener((input) => { _enchantmentPerTier = TryParseInput(input); });
+        _maximumTierInput.onValueChanged.AddListener((input) => { _maximumTier = TryParseInput(input); });
+        _startIdInput.onValueChanged.AddListener((input) => { _startId = TryParseInput(input); });
+        _maximumGenerateWordInput.onValueChanged.AddListener((input) => { _maximumGenerateWord = TryParseInput(input); });
+        _tier1BonusMinInput.onValueChanged.AddListener((input) => { _tier1BonusMin = TryParseInput(input); });
+        _tier1BonusMaxInput.onValueChanged.AddListener((input) => { _tier1BonusMax = TryParseInput(input); });
+        _tier2BonusMinInput.onValueChanged.AddListener((input) => { _tier2BonusMin = TryParseInput(input); });
+        _tier2BonusMaxInput.onValueChanged.AddListener((input) => { _tier2BonusMax = TryParseInput(input); });
+        _tier3BonusMinInput.onValueChanged.AddListener((input) => { _tier3BonusMin = TryParseInput(input); });
+        _tier3BonusMaxInput.onValueChanged.AddListener((input) => { _tier3BonusMax = TryParseInput(input); });
+        _tier4BonusMinInput.onValueChanged.AddListener((input) => { _tier4BonusMin = TryParseInput(input); });
+        _tier4BonusMaxInput.onValueChanged.AddListener((input) => { _tier4BonusMax = TryParseInput(input); });
+        _tier5BonusMinInput.onValueChanged.AddListener((input) => { _tier5BonusMin = TryParseInput(input); });
+        _tier5BonusMaxInput.onValueChanged.AddListener((input) => { _tier5BonusMax = TryParseInput(input); });
+        _tier1BonusValueMinInput.onValueChanged.AddListener((input) => { _tier1BonusValueMin = TryParseInput(input); });
+        _tier1BonusValueMaxInput.onValueChanged.AddListener((input) => { _tier1BonusValueMax = TryParseInput(input); });
+        _tier2BonusValueMinInput.onValueChanged.AddListener((input) => { _tier2BonusValueMin = TryParseInput(input); });
+        _tier2BonusValueMaxInput.onValueChanged.AddListener((input) => { _tier2BonusValueMax = TryParseInput(input); });
+        _tier3BonusValueMinInput.onValueChanged.AddListener((input) => { _tier3BonusValueMin = TryParseInput(input); });
+        _tier3BonusValueMaxInput.onValueChanged.AddListener((input) => { _tier3BonusValueMax = TryParseInput(input); });
+        _tier4BonusValueMinInput.onValueChanged.AddListener((input) => { _tier4BonusValueMin = TryParseInput(input); });
+        _tier4BonusValueMaxInput.onValueChanged.AddListener((input) => { _tier4BonusValueMax = TryParseInput(input); });
+        _tier5BonusValueMinInput.onValueChanged.AddListener((input) => { _tier5BonusValueMin = TryParseInput(input); });
+        _tier5BonusValueMaxInput.onValueChanged.AddListener((input) => { _tier5BonusValueMax = TryParseInput(input); });
+        _tier1BonusTimeValueMinInput.onValueChanged.AddListener((input) => { _tier1BonusTimeValueMin = TryParseInput(input); });
+        _tier1BonusTimeValueMaxInput.onValueChanged.AddListener((input) => { _tier1BonusTimeValueMax = TryParseInput(input); });
+        _tier2BonusTimeValueMinInput.onValueChanged.AddListener((input) => { _tier2BonusTimeValueMin = TryParseInput(input); });
+        _tier2BonusTimeValueMaxInput.onValueChanged.AddListener((input) => { _tier2BonusTimeValueMax = TryParseInput(input); });
+        _tier3BonusTimeValueMinInput.onValueChanged.AddListener((input) => { _tier3BonusTimeValueMin = TryParseInput(input); });
+        _tier3BonusTimeValueMaxInput.onValueChanged.AddListener((input) => { _tier3BonusTimeValueMax = TryParseInput(input); });
+        _tier4BonusTimeValueMinInput.onValueChanged.AddListener((input) => { _tier4BonusTimeValueMin = TryParseInput(input); });
+        _tier4BonusTimeValueMaxInput.onValueChanged.AddListener((input) => { _tier4BonusTimeValueMax = TryParseInput(input); });
+        _tier5BonusTimeValueMinInput.onValueChanged.AddListener((input) => { _tier5BonusTimeValueMin = TryParseInput(input); });
+        _tier5BonusTimeValueMaxInput.onValueChanged.AddListener((input) => { _tier5BonusTimeValueMax = TryParseInput(input); });
+        _tier1LevelRequirementInput.onValueChanged.AddListener((input) => { _tier1LevelRequirement = TryParseInput(input); });
+        _tier2LevelRequirementInput.onValueChanged.AddListener((input) => { _tier2LevelRequirement = TryParseInput(input); });
+        _tier3LevelRequirementInput.onValueChanged.AddListener((input) => { _tier3LevelRequirement = TryParseInput(input); });
+        _tier4LevelRequirementInput.onValueChanged.AddListener((input) => { _tier4LevelRequirement = TryParseInput(input); });
+        _tier5LevelRequirementInput.onValueChanged.AddListener((input) => { _tier5LevelRequirement = TryParseInput(input); });
+        _isSkipElementalToggle.onValueChanged.AddListener((isOn) => { _isSkipElemental = isOn; });
+
+        _itemPerTierInput.text = "10000";
+        _enchantmentPerTierInput.text = "1000";
+        _maximumTierInput.text = "5";
+        _startIdInput.text = "20000000";
+        _maximumGenerateWordInput.text = "3";
+        _tier1BonusMinInput.text = "1";
+        _tier1BonusMaxInput.text = "4";
+        _tier2BonusMinInput.text = "2";
+        _tier2BonusMaxInput.text = "7";
+        _tier3BonusMinInput.text = "3";
+        _tier3BonusMaxInput.text = "10";
+        _tier4BonusMinInput.text = "4";
+        _tier4BonusMaxInput.text = "13";
+        _tier5BonusMinInput.text = "5";
+        _tier5BonusMaxInput.text = "16";
+        _tier1BonusValueMinInput.text = "1";
+        _tier1BonusValueMaxInput.text = "11";
+        _tier2BonusValueMinInput.text = "10";
+        _tier2BonusValueMaxInput.text = "26";
+        _tier3BonusValueMinInput.text = "25";
+        _tier3BonusValueMaxInput.text = "51";
+        _tier4BonusValueMinInput.text = "50";
+        _tier4BonusValueMaxInput.text = "101";
+        _tier5BonusValueMinInput.text = "100";
+        _tier5BonusValueMaxInput.text = "201";
+        _tier1BonusTimeValueMinInput.text = "1";
+        _tier1BonusTimeValueMaxInput.text = "11";
+        _tier2BonusTimeValueMinInput.text = "10";
+        _tier2BonusTimeValueMaxInput.text = "51";
+        _tier3BonusTimeValueMinInput.text = "50";
+        _tier3BonusTimeValueMaxInput.text = "201";
+        _tier4BonusTimeValueMinInput.text = "200";
+        _tier4BonusTimeValueMaxInput.text = "501";
+        _tier5BonusTimeValueMinInput.text = "500";
+        _tier5BonusTimeValueMaxInput.text = "1001";
+        _tier1LevelRequirementInput.text = "1";
+        _tier2LevelRequirementInput.text = "30";
+        _tier3LevelRequirementInput.text = "70";
+        _tier4LevelRequirementInput.text = "130";
+        _tier5LevelRequirementInput.text = "200";
+        _isSkipElementalToggle.isOn = true;
+
+        _generateButton.onClick.AddListener(Generate);
+        _closeButton.onClick.AddListener(() => { _itemGeneraterPanelObject.SetActive(false); });
+    }
+
+    public void Show()
+    {
+        _itemGeneraterPanelObject.SetActive(true);
+    }
+
     /// <summary>
     /// Generate item database
     /// </summary>
@@ -165,7 +311,7 @@ public class ItemGenerator : MonoBehaviour
 
         StringBuilder builder = new StringBuilder();
 
-        for (int i = 0; i < (ITEM_PER_TIER * MAXIMUM_TIER) + 1; i++)
+        for (int i = 0; i < (_itemPerTier * _maximumTier) + 1; i++)
         {
             // Generate type
             int typeRandomize = Random.Range(0, 100);
@@ -222,92 +368,92 @@ public class ItemGenerator : MonoBehaviour
 
             if (generateType == GenerateType.Ammo)
                 builder.Append(string.Format("  - Id: {0}\n    AegisName: {1}\n    Name: {2}\n    Type: {3}\n    SubType: {4}\n    Weight: {5}\n    Attack: {6}\n    MagicAttack: {7}\n    Locations:\n        {11}\n    EquipLevelMin: {15}\n    Script: |\n{14}"
-                    , (START_ID + i).ToString("f0")
-                    , "aegis_" + (START_ID + i).ToString("f0")
-                    , "\"[" + GetTierPrefix(START_ID + i) + "]" + GenerateRandomEnglishWord + "\""
+                    , (_startId + i).ToString("f0")
+                    , "aegis_" + (_startId + i).ToString("f0")
+                    , "\"[" + GetTierPrefix(_startId + i, _itemPerTier) + "]" + GenerateRandomEnglishWord + "\""
                     , "Ammo"
                     , subType
                     , Random.Range(1, 100).ToString("f0")
-                    , GenerateAttack(START_ID + i)
-                    , GenerateAttack(START_ID + i)
+                    , GenerateAttack(_startId + i)
+                    , GenerateAttack(_startId + i)
                     , "0"
                     , "0"
                     , "0"
                     , location
                     , "0"
                     , "0"
-                    , GenerateBonuses(START_ID + i, location)
-                    , GetLevelRequirement(START_ID + i)));
+                    , GenerateBonuses(_startId + i, location, _itemPerTier)
+                    , GetLevelRequirement(_startId + i)));
             else if (generateType == GenerateType.Armor)
                 builder.Append(string.Format("  - Id: {0}\n    AegisName: {1}\n    Name: {2}\n    Type: {3}\n    Weight: {5}\n    Defense: {8}\n    Locations:\n        {11}\n    ArmorLevel: {16}\n    EquipLevelMin: {15}\n    View: {13}\n    Script: |\n{14}"
-                    , (START_ID + i).ToString("f0")
-                    , "aegis_" + (START_ID + i).ToString("f0")
-                    , "\"[" + GetTierPrefix(START_ID + i) + "]" + GenerateRandomEnglishWord + "\""
+                    , (_startId + i).ToString("f0")
+                    , "aegis_" + (_startId + i).ToString("f0")
+                    , "\"[" + GetTierPrefix(_startId + i, _itemPerTier) + "]" + GenerateRandomEnglishWord + "\""
                     , "Armor"
                     , subType
                     , Random.Range(10, 1000).ToString("f0")
                     , "0"
                     , "0"
-                    , GenerateDefense(START_ID + i)
+                    , GenerateDefense(_startId + i)
                     , "0"
                     , "0"
                     , location
                     , "0"
                     , GetArmorView(location).ToString("f0")
-                    , GenerateBonuses(START_ID + i, location)
-                    , GetLevelRequirement(START_ID + i)
+                    , GenerateBonuses(_startId + i, location, _itemPerTier)
+                    , GetLevelRequirement(_startId + i)
                     , Random.Range(1, 3).ToString("f0")));
             else if (generateType == GenerateType.Shield)
                 builder.Append(string.Format("  - Id: {0}\n    AegisName: {1}\n    Name: {2}\n    Type: {3}\n    Weight: {5}\n    Defense: {8}\n    Locations:\n        {11}\n    ArmorLevel: {16}\n    EquipLevelMin: {15}\n    View: {13}\n    Script: |\n{14}"
-                    , (START_ID + i).ToString("f0")
-                    , "aegis_" + (START_ID + i).ToString("f0")
-                    , "\"[" + GetTierPrefix(START_ID + i) + "]" + GenerateRandomEnglishWord + "\""
+                    , (_startId + i).ToString("f0")
+                    , "aegis_" + (_startId + i).ToString("f0")
+                    , "\"[" + GetTierPrefix(_startId + i, _itemPerTier) + "]" + GenerateRandomEnglishWord + "\""
                     , "Armor"
                     , subType
                     , Random.Range(10, 1000).ToString("f0")
                     , "0"
                     , "0"
-                    , GenerateDefense(START_ID + i)
+                    , GenerateDefense(_startId + i)
                     , "0"
                     , "0"
                     , location
                     , "0"
                     , _shieldViews[Random.Range(0, _shieldViews.Count)].ToString("f0")
-                    , GenerateBonuses(START_ID + i, location)
-                    , GetLevelRequirement(START_ID + i)
+                    , GenerateBonuses(_startId + i, location, _itemPerTier)
+                    , GetLevelRequirement(_startId + i)
                     , Random.Range(1, 3).ToString("f0")));
             else if (generateType == GenerateType.Weapon)
                 builder.Append(string.Format("  - Id: {0}\n    AegisName: {1}\n    Name: {2}\n    Type: {3}\n    SubType: {4}\n    Weight: {5}\n    Attack: {6}\n    MagicAttack: {7}\n    Defense: {8}\n    Range: {9}\n{16}    Locations:\n        {11}\n    WeaponLevel: {12}\n    EquipLevelMin: {15}\n    View: {13}\n    Script: |\n{14}"
-                    , (START_ID + i).ToString("f0")
-                    , "aegis_" + (START_ID + i).ToString("f0")
-                    , "\"[" + GetTierPrefix(START_ID + i) + "]" + GenerateRandomEnglishWord + "\""
+                    , (_startId + i).ToString("f0")
+                    , "aegis_" + (_startId + i).ToString("f0")
+                    , "\"[" + GetTierPrefix(_startId + i, _itemPerTier) + "]" + GenerateRandomEnglishWord + "\""
                     , "Weapon"
                     , subType
                     , Random.Range(10, 1000).ToString("f0")
-                    , GenerateAttack(START_ID + i)
-                    , GenerateAttack(START_ID + i)
+                    , GenerateAttack(_startId + i)
+                    , GenerateAttack(_startId + i)
                     , "0"
-                    , GenerateRange(START_ID + i)
+                    , GenerateRange(_startId + i)
                     , "0"
                     , location
                     , Random.Range(1, 5).ToString("f0")
                     , GetWeaponView(subType).ToString("f0")
-                    , GenerateBonuses(START_ID + i, location)
-                    , GetLevelRequirement(START_ID + i)
+                    , GenerateBonuses(_startId + i, location, _itemPerTier)
+                    , GetLevelRequirement(_startId + i)
                     , (subType == "Musical") ? "    Gender: Male\n" : (subType == "Whip") ? "    Gender: Female\n" : string.Empty));
         }
 
-        int enchantmentId = START_ID + START_ID;
-        for (int i = 0; i < (ENCHANTMENT_PER_TIER * MAXIMUM_TIER) + 1; i++)
+        int enchantmentId = _startId + _startId;
+        for (int i = 0; i < (_enchantmentPerTier * _maximumTier) + 1; i++)
         {
             builder.Append(string.Format("  - Id: {0}\n    AegisName: {1}\n    Name: {2}\n    Type: {3}\n    SubType: {4}\n    Weight: {5}\n    Script: |\n{6}"
                 , (enchantmentId + i).ToString("f0")
                 , "aegis_" + (enchantmentId + i).ToString("f0")
-                , "\"[" + GetTierPrefix(enchantmentId - START_ID + i, ENCHANTMENT_PER_TIER) + "]" + GenerateRandomEnglishWord + "\""
+                , "\"[" + GetTierPrefix(enchantmentId - _startId + i, _enchantmentPerTier) + "]" + GenerateRandomEnglishWord + "\""
                 , "Card"
                 , "Enchant"
                 , "10"
-                , GenerateBonuses(enchantmentId - START_ID + i, string.Empty, ENCHANTMENT_PER_TIER)));
+                , GenerateBonuses(enchantmentId - _startId + i, string.Empty, _enchantmentPerTier)));
         }
 
         File.WriteAllText("generated_items.txt", builder.ToString(), Encoding.UTF8);
@@ -433,17 +579,17 @@ public class ItemGenerator : MonoBehaviour
     /// </summary>
     /// <param name="id"></param>
     /// <returns></returns>
-    string GetTierPrefix(int id, int itemPerTier = ITEM_PER_TIER)
+    string GetTierPrefix(int id, int itemPerTier)
     {
-        if (id <= START_ID + (itemPerTier * 1))
+        if (id <= _startId + (itemPerTier * 1))
             return "Normal";
-        else if (id <= START_ID + (itemPerTier * 2))
+        else if (id <= _startId + (itemPerTier * 2))
             return "Advance";
-        else if (id <= START_ID + (itemPerTier * 3))
+        else if (id <= _startId + (itemPerTier * 3))
             return "Rare";
-        else if (id <= START_ID + (itemPerTier * 4))
+        else if (id <= _startId + (itemPerTier * 4))
             return "Mystical";
-        else if (id <= START_ID + (itemPerTier * 5))
+        else if (id <= _startId + (itemPerTier * 5))
             return "Legendary";
         else
             return "Normal";
@@ -457,15 +603,15 @@ public class ItemGenerator : MonoBehaviour
     {
         int attack = 1;
 
-        if (id <= START_ID + (ITEM_PER_TIER * 1))
+        if (id <= _startId + (_itemPerTier * 1))
             attack = Random.Range(25, 51);
-        else if (id <= START_ID + (ITEM_PER_TIER * 2))
+        else if (id <= _startId + (_itemPerTier * 2))
             attack = Random.Range(50, 101);
-        else if (id <= START_ID + (ITEM_PER_TIER * 3))
+        else if (id <= _startId + (_itemPerTier * 3))
             attack = Random.Range(100, 201);
-        else if (id <= START_ID + (ITEM_PER_TIER * 4))
+        else if (id <= _startId + (_itemPerTier * 4))
             attack = Random.Range(200, 301);
-        else if (id <= START_ID + (ITEM_PER_TIER * 5))
+        else if (id <= _startId + (_itemPerTier * 5))
             attack = Random.Range(300, 501);
 
         return attack.ToString("f0");
@@ -479,15 +625,15 @@ public class ItemGenerator : MonoBehaviour
     {
         int defense = 1;
 
-        if (id <= START_ID + (ITEM_PER_TIER * 1))
+        if (id <= _startId + (_itemPerTier * 1))
             defense = Random.Range(1, 6);
-        else if (id <= START_ID + (ITEM_PER_TIER * 2))
+        else if (id <= _startId + (_itemPerTier * 2))
             defense = Random.Range(5, 11);
-        else if (id <= START_ID + (ITEM_PER_TIER * 3))
+        else if (id <= _startId + (_itemPerTier * 3))
             defense = Random.Range(10, 21);
-        else if (id <= START_ID + (ITEM_PER_TIER * 4))
+        else if (id <= _startId + (_itemPerTier * 4))
             defense = Random.Range(20, 36);
-        else if (id <= START_ID + (ITEM_PER_TIER * 5))
+        else if (id <= _startId + (_itemPerTier * 5))
             defense = Random.Range(35, 51);
 
         return defense.ToString("f0");
@@ -501,15 +647,15 @@ public class ItemGenerator : MonoBehaviour
     {
         int range = 1;
 
-        if (id <= START_ID + (ITEM_PER_TIER * 1))
+        if (id <= _startId + (_itemPerTier * 1))
             range = Random.Range(1, 3);
-        else if (id <= START_ID + (ITEM_PER_TIER * 2))
+        else if (id <= _startId + (_itemPerTier * 2))
             range = Random.Range(1, 4);
-        else if (id <= START_ID + (ITEM_PER_TIER * 3))
+        else if (id <= _startId + (_itemPerTier * 3))
             range = Random.Range(1, 5);
-        else if (id <= START_ID + (ITEM_PER_TIER * 4))
+        else if (id <= _startId + (_itemPerTier * 4))
             range = Random.Range(1, 6);
-        else if (id <= START_ID + (ITEM_PER_TIER * 5))
+        else if (id <= _startId + (_itemPerTier * 5))
             range = Random.Range(1, 7);
 
         return range.ToString("f0");
@@ -523,16 +669,16 @@ public class ItemGenerator : MonoBehaviour
     {
         int levelRequirement = 1;
 
-        if (id <= START_ID + (ITEM_PER_TIER * 1))
-            levelRequirement = TIER_1_LEVEL_REQ;
-        else if (id <= START_ID + (ITEM_PER_TIER * 2))
-            levelRequirement = TIER_2_LEVEL_REQ;
-        else if (id <= START_ID + (ITEM_PER_TIER * 3))
-            levelRequirement = TIER_3_LEVEL_REQ;
-        else if (id <= START_ID + (ITEM_PER_TIER * 4))
-            levelRequirement = TIER_4_LEVEL_REQ;
-        else if (id <= START_ID + (ITEM_PER_TIER * 5))
-            levelRequirement = TIER_5_LEVEL_REQ;
+        if (id <= _startId + (_itemPerTier * 1))
+            levelRequirement = _tier1LevelRequirement;
+        else if (id <= _startId + (_itemPerTier * 2))
+            levelRequirement = _tier2LevelRequirement;
+        else if (id <= _startId + (_itemPerTier * 3))
+            levelRequirement = _tier3LevelRequirement;
+        else if (id <= _startId + (_itemPerTier * 4))
+            levelRequirement = _tier4LevelRequirement;
+        else if (id <= _startId + (_itemPerTier * 5))
+            levelRequirement = _tier5LevelRequirement;
 
         return levelRequirement.ToString("f0");
     }
@@ -542,23 +688,23 @@ public class ItemGenerator : MonoBehaviour
     /// <param name="id"></param>
     /// <param name="location"></param>
     /// <returns></returns>
-    string GenerateBonuses(int id, string location, int itemPerTier = ITEM_PER_TIER)
+    string GenerateBonuses(int id, string location, int itemPerTier)
     {
         StringBuilder builder = new StringBuilder();
 
         // Bonus amount
         int bonusAmount = 1;
 
-        if (id <= START_ID + (itemPerTier * 1))
-            bonusAmount = Random.Range(TIER_1_BONUS_MIN, TIER_1_BONUS_MAX);
-        else if (id <= START_ID + (itemPerTier * 2))
-            bonusAmount = Random.Range(TIER_2_BONUS_MIN, TIER_2_BONUS_MAX);
-        else if (id <= START_ID + (itemPerTier * 3))
-            bonusAmount = Random.Range(TIER_3_BONUS_MIN, TIER_3_BONUS_MAX);
-        else if (id <= START_ID + (itemPerTier * 4))
-            bonusAmount = Random.Range(TIER_4_BONUS_MIN, TIER_4_BONUS_MAX);
-        else if (id <= START_ID + (itemPerTier * 5))
-            bonusAmount = Random.Range(TIER_5_BONUS_MIN, TIER_5_BONUS_MAX);
+        if (id <= _startId + (itemPerTier * 1))
+            bonusAmount = Random.Range(_tier1BonusMin, _tier1BonusMax);
+        else if (id <= _startId + (itemPerTier * 2))
+            bonusAmount = Random.Range(_tier2BonusMin, _tier2BonusMax);
+        else if (id <= _startId + (itemPerTier * 3))
+            bonusAmount = Random.Range(_tier3BonusMin, _tier3BonusMax);
+        else if (id <= _startId + (itemPerTier * 4))
+            bonusAmount = Random.Range(_tier4BonusMin, _tier4BonusMax);
+        else if (id <= _startId + (itemPerTier * 5))
+            bonusAmount = Random.Range(_tier5BonusMin, _tier5BonusMax);
 
         // Prevent 2+ elemental per item
         bool isElementalAlreadyHad = false;
@@ -571,7 +717,7 @@ public class ItemGenerator : MonoBehaviour
             while (((bonus == "bonus bAtkEle,{e};")
                 || (bonus == "bonus bDefEle,{e};"))
                 && (isElementalAlreadyHad
-                || IS_SKIP_ELEMENTAL))
+                || _isSkipElemental))
                 bonus = _bonuses[Random.Range(0, _bonuses.Count)];
 
             // Attack element should stay on weapon or ammo only
@@ -603,16 +749,16 @@ public class ItemGenerator : MonoBehaviour
             // Bonus value
             int bonusValue = 0;
 
-            if (id <= START_ID + (itemPerTier * 1))
-                bonusValue = Random.Range(TIER_1_BONUS_VALUE_MIN, TIER_1_BONUS_VALUE_MAX);
-            else if (id <= START_ID + (itemPerTier * 2))
-                bonusValue = Random.Range(TIER_2_BONUS_VALUE_MIN, TIER_2_BONUS_VALUE_MAX);
-            else if (id <= START_ID + (itemPerTier * 3))
-                bonusValue = Random.Range(TIER_3_BONUS_VALUE_MIN, TIER_3_BONUS_VALUE_MAX);
-            else if (id <= START_ID + (itemPerTier * 4))
-                bonusValue = Random.Range(TIER_4_BONUS_VALUE_MIN, TIER_4_BONUS_VALUE_MAX);
-            else if (id <= START_ID + (itemPerTier * 5))
-                bonusValue = Random.Range(TIER_5_BONUS_VALUE_MIN, TIER_5_BONUS_VALUE_MAX);
+            if (id <= _startId + (itemPerTier * 1))
+                bonusValue = Random.Range(_tier1BonusValueMin, _tier1BonusValueMax);
+            else if (id <= _startId + (itemPerTier * 2))
+                bonusValue = Random.Range(_tier2BonusValueMin, _tier2BonusValueMax);
+            else if (id <= _startId + (itemPerTier * 3))
+                bonusValue = Random.Range(_tier3BonusValueMin, _tier3BonusValueMax);
+            else if (id <= _startId + (itemPerTier * 4))
+                bonusValue = Random.Range(_tier4BonusValueMin, _tier4BonusValueMax);
+            else if (id <= _startId + (itemPerTier * 5))
+                bonusValue = Random.Range(_tier5BonusValueMin, _tier5BonusValueMax);
 
             bonus = bonus.Replace("{n20}", (bonusValue / 20 <= 0) ? "1" : (bonusValue / 20).ToString("f0"));
             bonus = bonus.Replace("{n10}", (bonusValue / 10 <= 0) ? "1" : (bonusValue / 10).ToString("f0"));
@@ -623,16 +769,16 @@ public class ItemGenerator : MonoBehaviour
             // Bonus 'Time' value
             bonusValue = 1;
 
-            if (id <= START_ID + (itemPerTier * 1))
-                bonusValue = Random.Range(TIER_1_BONUS_VALUE_TIME_MIN, TIER_1_BONUS_VALUE_TIME_MAX);
-            else if (id <= START_ID + (itemPerTier * 2))
-                bonusValue = Random.Range(TIER_2_BONUS_VALUE_TIME_MIN, TIER_2_BONUS_VALUE_TIME_MAX);
-            else if (id <= START_ID + (itemPerTier * 3))
-                bonusValue = Random.Range(TIER_3_BONUS_VALUE_TIME_MIN, TIER_3_BONUS_VALUE_TIME_MAX);
-            else if (id <= START_ID + (itemPerTier * 4))
-                bonusValue = Random.Range(TIER_4_BONUS_VALUE_TIME_MIN, TIER_4_BONUS_VALUE_TIME_MAX);
-            else if (id <= START_ID + (itemPerTier * 5))
-                bonusValue = Random.Range(TIER_5_BONUS_VALUE_TIME_MIN, TIER_5_BONUS_VALUE_TIME_MAX);
+            if (id <= _startId + (itemPerTier * 1))
+                bonusValue = Random.Range(_tier1BonusTimeValueMin, _tier1BonusTimeValueMax);
+            else if (id <= _startId + (itemPerTier * 2))
+                bonusValue = Random.Range(_tier2BonusTimeValueMin, _tier2BonusTimeValueMax);
+            else if (id <= _startId + (itemPerTier * 3))
+                bonusValue = Random.Range(_tier3BonusTimeValueMin, _tier3BonusTimeValueMax);
+            else if (id <= _startId + (itemPerTier * 4))
+                bonusValue = Random.Range(_tier4BonusTimeValueMin, _tier4BonusTimeValueMax);
+            else if (id <= _startId + (itemPerTier * 5))
+                bonusValue = Random.Range(_tier5BonusTimeValueMin, _tier5BonusTimeValueMax);
 
             bonus = bonus.Replace("{t2}", (bonusValue <= 0) ? "1" : bonusValue.ToString("f0"));
             bonus = bonus.Replace("{t}", ((bonusValue * 100) <= 0) ? "1" : (bonusValue * 100).ToString("f0"));
@@ -698,5 +844,14 @@ public class ItemGenerator : MonoBehaviour
         a[0] = char.ToUpper(a[0]);
 
         return new string(a);
+    }
+
+    int TryParseInput(string input)
+    {
+        int tryParse;
+        if (int.TryParse(input, out tryParse))
+            return int.Parse(input);
+        else
+            return 0;
     }
 }
