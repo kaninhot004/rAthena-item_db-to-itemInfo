@@ -301,8 +301,9 @@ MonoBehaviour:
   _btnFastConvert: {fileID: 1447234262}
   _btnCreator: {fileID: 606623798}
   _objectsToHideWhenConverterStart:
-  - {fileID: 1002731952}
   - {fileID: 1821302966}
+  - {fileID: 1002731952}
+  - {fileID: 1447234259}
   _objConvertProgression: {fileID: 1288952203}
   _txtConvertProgression: {fileID: 1288952205}
   _hardcodeItemScripts: {fileID: 1801718642}
