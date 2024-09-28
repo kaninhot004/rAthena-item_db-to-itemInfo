@@ -49,6 +49,7 @@ public class Converter : MonoBehaviour
         public string descriptionConverted;
     }
 
+    bool _isFastConvert;
     bool _isFilesError;
     string _errorLog;
 
@@ -68,6 +69,7 @@ public class Converter : MonoBehaviour
     /// Button to start convert
     /// </summary>
     [SerializeField] Button _btnConvert;
+    [SerializeField] Button _btnFastConvert;
     /// <summary>
     /// Button to see creator
     /// </summary>
@@ -257,10 +259,13 @@ public class Converter : MonoBehaviour
 
     void Start()
     {
+        _isFastConvert = false;
+
         _btnItemGenerator.onClick.AddListener(OnItemGeneratorButtonTap);
         _btnItemPreview.onClick.AddListener(OnItemPreviewButtonTap);
         _btnCaptchaGenerator.onClick.AddListener(OnCaptchaGeneratorButtonTap);
         _btnConvert.onClick.AddListener(OnConvertButtonTap);
+        _btnFastConvert.onClick.AddListener(OnFastConvertButtonTap);
         _btnCreator.onClick.AddListener(OnCreatorButtonTap);
 
         _objConvertProgression.SetActive(false);
@@ -294,6 +299,12 @@ public class Converter : MonoBehaviour
     void OnCreatorButtonTap()
     {
         Application.OpenURL(CREATOR_URL);
+    }
+    void OnFastConvertButtonTap()
+    {
+        _isFastConvert = true;
+
+        OnConvertButtonTap();
     }
     /// <summary>
     /// Call when convert button has been tap
@@ -429,7 +440,7 @@ public class Converter : MonoBehaviour
             return;
         }
 
-        _txtConvertProgression.text = _localization.GetTexts(Localization.CONVERT_PROGRESSION_PLEASE_WAIT) + "..";
+        _txtConvertProgression.text = _localization.GetTexts(Localization.CONVERT_PROGRESSION_PLEASE_WAIT) + ".. (0%)";
 
         Debug.Log(DateTime.Now);
 
@@ -2111,7 +2122,8 @@ public class Converter : MonoBehaviour
 
                 itemDatabase.id = int.Parse(_id);
 
-                _itemListContainer.allItemIds.Add(_id);
+                if (!_isFastConvert)
+                    _itemListContainer.allItemIds.Add(_id);
             }
             else if (text.Contains("    AegisName:"))
             {
@@ -2155,7 +2167,10 @@ public class Converter : MonoBehaviour
                 isArmor = false;
 
                 if (text.ToLower() == "weapon")
-                    _itemListContainer.weaponIds.Add(_id);
+                {
+                    if (!_isFastConvert)
+                        _itemListContainer.weaponIds.Add(_id);
+                }
                 else if (text.ToLower() == "armor")
                     isArmor = true;
             }
@@ -2177,7 +2192,8 @@ public class Converter : MonoBehaviour
                     || text.ToLower().Contains("shadow_right_accessory")
                     || text.ToLower().Contains("shadow_left_accessory"))
                 {
-                    _itemListContainer.costumeIds.Add(_id);
+                    if (!_isFastConvert)
+                        _itemListContainer.costumeIds.Add(_id);
 
                     // Always clear isArmor
                     isArmor = false;
@@ -2193,7 +2209,8 @@ public class Converter : MonoBehaviour
                     || text.ToLower().Contains("left_accessory")
                     || text.ToLower().Contains("both_accessory"))
                 {
-                    _itemListContainer.equipmentIds.Add(_id);
+                    if (!_isFastConvert)
+                        _itemListContainer.equipmentIds.Add(_id);
 
                     // Always clear isArmor
                     isArmor = false;
@@ -2206,7 +2223,9 @@ public class Converter : MonoBehaviour
 
                 text = SpacingRemover.Remove(text);
 
-                if (text.ToLower().Contains("costume_head_top")
+                if (!_isFastConvert
+                    &&
+                    (text.ToLower().Contains("costume_head_top")
                     || text.ToLower().Contains("costume_head_mid")
                     || text.ToLower().Contains("costume_head_low")
                     || text.ToLower().Contains("costume_garment")
@@ -2215,7 +2234,7 @@ public class Converter : MonoBehaviour
                     || text.ToLower().Contains("shadow_shield")
                     || text.ToLower().Contains("shadow_shoes")
                     || text.ToLower().Contains("shadow_right_accessory")
-                    || text.ToLower().Contains("shadow_left_accessory"))
+                    || text.ToLower().Contains("shadow_left_accessory")))
                     _itemListContainer.costumeIds.Add(_id);
             }
         }
@@ -2391,6 +2410,8 @@ public class Converter : MonoBehaviour
 
         for (int i = 0; i < itemDatabases.Length; i++)
         {
+            _txtConvertProgression.text = _localization.GetTexts(Localization.CONVERT_PROGRESSION_PLEASE_WAIT) + ".. (Input " + ((float)i / (float)itemDatabases.Length).ToString("f0") + "%)";
+
             var text = CommentRemover.FixCommentSeperateLine(itemDatabases, i);
 
             var nextText = ((i + 1) < itemDatabases.Length) ? itemDatabases[i + 1] : string.Empty;
@@ -2523,7 +2544,7 @@ public class Converter : MonoBehaviour
             {
                 _itemContainer.type = text.Replace("    Type: ", string.Empty);
 
-                if (!string.IsNullOrEmpty(_itemContainer.type))
+                if (!_isFastConvert && !string.IsNullOrEmpty(_itemContainer.type))
                 {
                     if ((_itemContainer.type.ToLower() == "petegg")
                         && !_itemListContainer.petEggIds.Contains(_itemContainer.id))
@@ -2849,7 +2870,7 @@ public class Converter : MonoBehaviour
                 _itemContainer.locations += _localization.GetTexts(Localization.LOCATION_COSTUME_HEAD_TOP) + ", ";
                 _itemContainer.debugLocations += "CTOP";
 
-                if (!_itemListContainer.fashionCostumeIds.Contains(_itemContainer.id))
+                if (!_isFastConvert && !_itemListContainer.fashionCostumeIds.Contains(_itemContainer.id))
                     _itemListContainer.fashionCostumeIds.Add(_itemContainer.id);
             }
             else if (text.Contains("      Costume_Head_Top: false"))
@@ -2859,7 +2880,7 @@ public class Converter : MonoBehaviour
                 _itemContainer.locations += _localization.GetTexts(Localization.LOCATION_COSTUME_HEAD_MID) + ", ";
                 _itemContainer.debugLocations += "CMID";
 
-                if (!_itemListContainer.fashionCostumeIds.Contains(_itemContainer.id))
+                if (!_isFastConvert && !_itemListContainer.fashionCostumeIds.Contains(_itemContainer.id))
                     _itemListContainer.fashionCostumeIds.Add(_itemContainer.id);
             }
             else if (text.Contains("      Costume_Head_Mid: false"))
@@ -2869,7 +2890,7 @@ public class Converter : MonoBehaviour
                 _itemContainer.locations += _localization.GetTexts(Localization.LOCATION_COSTUME_HEAD_LOW) + ", ";
                 _itemContainer.debugLocations += "CLOW";
 
-                if (!_itemListContainer.fashionCostumeIds.Contains(_itemContainer.id))
+                if (!_isFastConvert && !_itemListContainer.fashionCostumeIds.Contains(_itemContainer.id))
                     _itemListContainer.fashionCostumeIds.Add(_itemContainer.id);
             }
             else if (text.Contains("      Costume_Head_Low: false"))
@@ -2879,7 +2900,7 @@ public class Converter : MonoBehaviour
                 _itemContainer.locations += _localization.GetTexts(Localization.LOCATION_COSTUME_GARMENT) + ", ";
                 _itemContainer.debugLocations += "CGARMENT";
 
-                if (!_itemListContainer.fashionCostumeIds.Contains(_itemContainer.id))
+                if (!_isFastConvert && !_itemListContainer.fashionCostumeIds.Contains(_itemContainer.id))
                     _itemListContainer.fashionCostumeIds.Add(_itemContainer.id);
             }
             else if (text.Contains("      Costume_Garment: false"))
@@ -3034,6 +3055,8 @@ public class Converter : MonoBehaviour
 
         for (int i = 0; i < _itemContainers.Count; i++)
         {
+            _txtConvertProgression.text = _localization.GetTexts(Localization.CONVERT_PROGRESSION_PLEASE_WAIT) + ".. (Output " + ((float)i / (float)_itemContainers.Count).ToString("f0") + "%)";
+
             _itemContainer = _itemContainers[i];
 
             bool isEquipment = !string.IsNullOrEmpty(_itemContainer.weaponLevel) || !string.IsNullOrEmpty(_itemContainer.armorLevel);
@@ -3046,12 +3069,15 @@ public class Converter : MonoBehaviour
                     if (!string.IsNullOrEmpty(_itemContainer.locations))
                         Debug.Log("Enchantment " + _itemContainer.id + " had location.." + _itemContainer.locations);
 
-                    if (IsContainScripts(_itemContainer))
-                        _itemListContainer.enchant2Ids.Add(_itemContainer.id);
-                    else
-                        _itemListContainer.enchantIds.Add(_itemContainer.id);
+                    if (!_isFastConvert)
+                    {
+                        if (IsContainScripts(_itemContainer))
+                            _itemListContainer.enchant2Ids.Add(_itemContainer.id);
+                        else
+                            _itemListContainer.enchantIds.Add(_itemContainer.id);
+                    }
                 }
-                else
+                else if (!_isFastConvert)
                 {
                     if (IsContainScripts(_itemContainer))
                         _itemListContainer.card2Ids.Add(_itemContainer.id);
@@ -3060,11 +3086,14 @@ public class Converter : MonoBehaviour
                 }
             }
 
-            _itemListContainer.AddSubType(_itemContainer.subType.Replace("CannonBall", "Cannonball"), _itemContainer.id);
+            if (!_isFastConvert)
+            {
+                _itemListContainer.AddSubType(_itemContainer.subType.Replace("CannonBall", "Cannonball"), _itemContainer.id);
 
-            if ((_itemContainer.type.ToLower() == "armor")
-                || (_itemContainer.type.ToLower() == "shadowgear"))
-                _itemListContainer.AddLocation(_itemContainer.debugLocations, _itemContainer.id);
+                if ((_itemContainer.type.ToLower() == "armor")
+                    || (_itemContainer.type.ToLower() == "shadowgear"))
+                    _itemListContainer.AddLocation(_itemContainer.debugLocations, _itemContainer.id);
+            }
 
             var itemId = int.Parse(_itemContainer.id);
 
@@ -3487,15 +3516,18 @@ public class Converter : MonoBehaviour
 
         Debug.Log("Files has been successfully created.");
 
-        ExportItemLists();
+        if (!_isFastConvert)
+        {
+            ExportItemLists();
 
-        ExportItemMall();
+            ExportItemMall();
 
-        ExportMonsterLists();
+            ExportMonsterLists();
 
-        ExportSkillLists();
+            ExportSkillLists();
 
-        ExportErrorLists();
+            ExportErrorLists();
+        }
 
         Debug.Log(DateTime.Now);
 
@@ -5386,7 +5418,7 @@ public class Converter : MonoBehaviour
             var temps = temp.Split(',');
             text = string.Format(_localization.GetTexts(Localization.GET_GROUP_ITEM), QuoteRemover.Remove(temps[0]).Replace("IG_", string.Empty), TryParseInt((temps.Length > 1) ? temps[1] : null, 1, 1));
 
-            if (!_itemListContainer.itemGroupIds.Contains(_itemContainer.id))
+            if (!_isFastConvert && !_itemListContainer.itemGroupIds.Contains(_itemContainer.id))
                 _itemListContainer.itemGroupIds.Add(_itemContainer.id);
         }
         // getrandgroupitem
@@ -5396,7 +5428,7 @@ public class Converter : MonoBehaviour
             var temps = temp.Split(',');
             text = string.Format(_localization.GetTexts(Localization.GET_GROUP_ITEM), QuoteRemover.Remove(temps[0]).Replace("IG_", string.Empty), TryParseInt((temps.Length > 1) ? temps[1] : null, 1, 1));
 
-            if (!_itemListContainer.itemGroupIds.Contains(_itemContainer.id))
+            if (!_isFastConvert && !_itemListContainer.itemGroupIds.Contains(_itemContainer.id))
                 _itemListContainer.itemGroupIds.Add(_itemContainer.id);
         }
         // getgroupitem
@@ -5406,7 +5438,7 @@ public class Converter : MonoBehaviour
             var temps = temp.Split(',');
             text = string.Format(_localization.GetTexts(Localization.GET_GROUP_ITEM), QuoteRemover.Remove(temps[0]).Replace("IG_", string.Empty), TryParseInt((temps.Length > 1) ? temps[1] : null, 1, 1));
 
-            if (!_itemListContainer.itemGroupIds.Contains(_itemContainer.id))
+            if (!_isFastConvert && !_itemListContainer.itemGroupIds.Contains(_itemContainer.id))
                 _itemListContainer.itemGroupIds.Add(_itemContainer.id);
         }
         // pet
@@ -6932,6 +6964,9 @@ public class Converter : MonoBehaviour
     /// </summary>
     void ParseStatusChangeStartIntoItemId()
     {
+        if (_isFastConvert)
+            return;
+
         if (!string.IsNullOrEmpty(_itemContainer.id)
             && !string.IsNullOrEmpty(_itemContainer.type))
         {
