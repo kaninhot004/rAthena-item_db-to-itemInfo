@@ -7,8 +7,7 @@ public class CommentRemover
     /// <returns></returns>
     public static string Fix(string text)
     {
-        if (string.IsNullOrEmpty(text)
-            || string.IsNullOrWhiteSpace(text))
+        if (string.IsNullOrEmpty(text) || string.IsNullOrWhiteSpace(text))
             return string.Empty;
         else
         {

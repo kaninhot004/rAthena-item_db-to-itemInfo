@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using System.IO;
@@ -328,7 +329,7 @@ public class Converter : MonoBehaviour
 
         Debug.Log(DateTime.Now);
 
-        Invoke("FetchingData", ONE_SECOND);
+        Invoke("FetchingData", 0.1f);
     }
     void FetchingData()
     {
@@ -445,7 +446,7 @@ public class Converter : MonoBehaviour
 
         Debug.Log(DateTime.Now);
 
-        Invoke("Convert", ONE_SECOND);
+        Invoke("Convert", 0.1f);
     }
 
     // Exporting
@@ -2378,6 +2379,11 @@ public class Converter : MonoBehaviour
     /// </summary>
     void Convert()
     {
+        StartCoroutine(ConvertCoroutine());
+    }
+
+    IEnumerator ConvertCoroutine()
+    {
         if (File.Exists("itemInfo_Sak.lub"))
             File.Delete("itemInfo_Sak.lub");
         if (File.Exists("itemInfo_true.lub"))
@@ -2417,7 +2423,12 @@ public class Converter : MonoBehaviour
 
         for (int i = 0; i < itemDatabases.Length; i++)
         {
-            _txtConvertProgression.text = _localization.GetTexts(Localization.CONVERT_PROGRESSION_PLEASE_WAIT) + ".. (Input " + ((float)i / (float)itemDatabases.Length).ToString("f0") + "%)";
+            if (i % 1000 == 0)
+            {
+                _txtConvertProgression.text = _localization.GetTexts(Localization.CONVERT_PROGRESSION_PLEASE_WAIT) + ".. (Input " + ((float)i / (float)itemDatabases.Length).ToString("f0") + "%)";
+
+                yield return null;
+            }
 
             var text = CommentRemover.FixCommentSeperateLine(itemDatabases, i);
 
@@ -3062,7 +3073,12 @@ public class Converter : MonoBehaviour
 
         for (int i = 0; i < _itemContainers.Count; i++)
         {
-            _txtConvertProgression.text = _localization.GetTexts(Localization.CONVERT_PROGRESSION_PLEASE_WAIT) + ".. (Output " + ((float)i / (float)_itemContainers.Count).ToString("f0") + "%)";
+            if (i % 1000 == 0)
+            {
+                _txtConvertProgression.text = _localization.GetTexts(Localization.CONVERT_PROGRESSION_PLEASE_WAIT) + ".. (Output " + ((float)i / (float)_itemContainers.Count).ToString("f0") + "%)";
+
+                yield return null;
+            }
 
             _itemContainer = _itemContainers[i];
 
@@ -3539,6 +3555,7 @@ public class Converter : MonoBehaviour
         Debug.Log(DateTime.Now);
 
         _txtConvertProgression.text = _localization.GetTexts(Localization.CONVERT_PROGRESSION_DONE) + "!!";
+        yield return null;
     }
 
     /// <summary>
@@ -3549,8 +3566,8 @@ public class Converter : MonoBehaviour
     string ConvertItemScripts(string text)
     {
         // Comment fix
-        int commentFixRetry = 300;
-        while (text.Contains("/*"))
+        int commentFixRetry = 30;
+        while (text.Contains("/*") && (commentFixRetry > 0))
         {
             var copier = text;
             if (!copier.Contains("*/"))
@@ -3559,51 +3576,17 @@ public class Converter : MonoBehaviour
                 text = copier.Substring(0, copier.IndexOf("/*")) + copier.Substring(copier.IndexOf("*/") + 2);
 
             commentFixRetry--;
-
-            if (commentFixRetry <= 0)
-                break;
         }
 
         commentFixRetry = 30;
-        while (text.Contains("*/"))
+        while (text.Contains("*/") && (commentFixRetry > 0))
         {
             text = text.Replace("*/", string.Empty);
 
             commentFixRetry--;
-
-            if (commentFixRetry <= 0)
-                break;
         }
 
-        // Wrong wording fix
-        text = text.Replace("Ele_dark", "Ele_Dark");
-        text = text.Replace("bonus2 bIgnoreMDefRaceRate", "bonus2 bIgnoreMdefRaceRate");
-        text = text.Replace("bVariableCastRate", "bVariableCastrate");
-        text = text.Replace("bMaxHPRate", "bMaxHPrate");
-        text = text.Replace("bMaxHprate", "bMaxHPrate");
-        text = text.Replace("bMaxSPRate", "bMaxSPrate");
-        text = text.Replace("bHPRecovRate", "bHPrecovRate");
-        text = text.Replace("Baselevel", "BaseLevel");
-        text = text.Replace("buseSPRate", "bUseSPrate");
-        text = text.Replace("bUseSPRate", "bUseSPrate");
-        text = text.Replace("bHealpower2", "bHealPower2");
-        text = text.Replace("bautospellonskill", "bAutoSpellOnSkill");
-        text = text.Replace("bFixedCastRate", "bFixedCastrate");
-        text = text.Replace("bIgnoreMdefRace", "bIgnoreMDefRace");
-        text = text.Replace("bIgnoreMDefClassRate", "bIgnoreMdefClassRate");
-        text = text.Replace("bIgnoreMDefRaceRate", "bIgnoreMdefRaceRate");
-        text = text.Replace("bIgnoreMDefRace2Rate", "bIgnoreMdefRace2Rate");
-        text = text.Replace("bAutoSpellwhenhit", "bAutoSpellWhenHit");
-        text = text.Replace("bflee", "bFlee");
-        text = text.Replace("bAutospell", "bAutoSpell");
-        text = text.Replace("bMaxHp", "bMaxHP");
-        text = text.Replace("bMAtk", "bMatk");
-        text = text.Replace("bBaseatk", "bBaseAtk");
-        text = text.Replace("bMDef,", "bMdef,");
-        text = text.Replace("bSmatk,", "bSMatk,");
-        text = text.Replace("bMres,", "bMRes,");
-        text = text.Replace("bCrate,", "bCRate,");
-        text = text.Replace("bHplus,", "bHPlus,");
+        text = text.ToLower();
 
         if (text.Contains(".@")
             && text.Contains("=")
@@ -3996,444 +3979,444 @@ public class Converter : MonoBehaviour
         text = text.Replace("break;", string.Empty);
         text = text.Replace(";", string.Empty);
 
-        text = text.Replace("UnEquipScript: |", "^666478[" + _localization.GetTexts(Localization.WHEN_UNEQUIP) + "]^000000");
-        text = text.Replace("EquipScript: |", "^666478[" + _localization.GetTexts(Localization.WHEN_EQUIP) + "]^000000");
+        text = text.Replace("unequipscript: |", "^666478[" + _localization.GetTexts(Localization.WHEN_UNEQUIP) + "]^000000");
+        text = text.Replace("equipscript: |", "^666478[" + _localization.GetTexts(Localization.WHEN_EQUIP) + "]^000000");
 
-        text = text.Replace("bonus bStr,", "• Str +");
-        text = text.Replace("bonus bAgi,", "• Agi +");
-        text = text.Replace("bonus bVit,", "• Vit +");
-        text = text.Replace("bonus bInt,", "• Int +");
-        text = text.Replace("bonus bDex,", "• Dex +");
-        text = text.Replace("bonus bLuk,", "• Luk +");
-        text = text.Replace("bonus bAllStats,", "• All Status +");
-        text = text.Replace("bonus bAgiVit,", "• Agi, Vit +");
-        text = text.Replace("bonus bAgiDexStr,", "• Agi, Dex, Str +");
+        text = text.Replace("bonus bstr,", "• Str +");
+        text = text.Replace("bonus bagi,", "• Agi +");
+        text = text.Replace("bonus bvit,", "• Vit +");
+        text = text.Replace("bonus bint,", "• Int +");
+        text = text.Replace("bonus bdex,", "• Dex +");
+        text = text.Replace("bonus bluk,", "• Luk +");
+        text = text.Replace("bonus ballstats,", "• All Status +");
+        text = text.Replace("bonus bagivit,", "• Agi, Vit +");
+        text = text.Replace("bonus bagidexstr,", "• Agi, Dex, Str +");
 
-        text = text.Replace("bonus bPow,", "• Pow +");
-        text = text.Replace("bonus bSta,", "• Sta +");
-        text = text.Replace("bonus bWis,", "• Wis +");
-        text = text.Replace("bonus bSpl,", "• Spl +");
-        text = text.Replace("bonus bCon,", "• Con +");
-        text = text.Replace("bonus bCrt,", "• Crt +");
-        text = text.Replace("bonus bAllTraitStats,", "• All Trait +");
+        text = text.Replace("bonus bpow,", "• Pow +");
+        text = text.Replace("bonus bsta,", "• Sta +");
+        text = text.Replace("bonus bwis,", "• Wis +");
+        text = text.Replace("bonus bspl,", "• Spl +");
+        text = text.Replace("bonus bcon,", "• Con +");
+        text = text.Replace("bonus bcrt,", "• Crt +");
+        text = text.Replace("bonus balltraitstats,", "• All Trait +");
 
-        text = text.Replace("bonus bMaxHP,", "• MaxHP +");
-        if (text.Contains("bonus bMaxHPrate,"))
+        text = text.Replace("bonus bmaxhp,", "• MaxHP +");
+        if (text.Contains("bonus bmaxhprate,"))
         {
-            var temp = text.Replace("bonus bMaxHPrate,", string.Empty);
+            var temp = text.Replace("bonus bmaxhprate,", string.Empty);
             var temps = temp.Split(',');
             text = string.Format("• MaxHP +{0}%", TryParseInt(temps[0]));
         }
-        text = text.Replace("bonus bMaxSP,", "• MaxSP +");
-        if (text.Contains("bonus bMaxSPrate,"))
+        text = text.Replace("bonus bmaxsp,", "• MaxSP +");
+        if (text.Contains("bonus bmaxsprate,"))
         {
-            var temp = text.Replace("bonus bMaxSPrate,", string.Empty);
+            var temp = text.Replace("bonus bmaxsprate,", string.Empty);
             var temps = temp.Split(',');
             text = string.Format("• MaxSP +{0}%", TryParseInt(temps[0]));
         }
-        text = text.Replace("bonus bMaxAP,", "• MaxAP +");
-        if (text.Contains("bonus bMaxAPrate,"))
+        text = text.Replace("bonus bmaxap,", "• MaxAP +");
+        if (text.Contains("bonus bmaxaprate,"))
         {
-            var temp = text.Replace("bonus bMaxAPrate,", string.Empty);
+            var temp = text.Replace("bonus bmaxaprate,", string.Empty);
             var temps = temp.Split(',');
             text = string.Format("• MaxAP +{0}%", TryParseInt(temps[0]));
         }
 
-        text = text.Replace("bonus bBaseAtk,", _localization.GetTexts(Localization.BONUS_BASE_ATK));
-        text = text.Replace("bonus bAtk,", "• Atk +");
-        text = text.Replace("bonus bAtk2,", "• Atk +");
-        if (text.Contains("bonus bAtkRate,"))
+        text = text.Replace("bonus bbaseatk,", _localization.GetTexts(Localization.BONUS_BASE_ATK));
+        text = text.Replace("bonus batk,", "• Atk +");
+        text = text.Replace("bonus batk2,", "• Atk +");
+        if (text.Contains("bonus batkrate,"))
         {
-            var temp = text.Replace("bonus bAtkRate,", string.Empty);
+            var temp = text.Replace("bonus batkrate,", string.Empty);
             var temps = temp.Split(',');
             text = string.Format("• Atk +{0}%", TryParseInt(temps[0]));
         }
-        if (text.Contains("bonus bWeaponAtkRate,"))
+        if (text.Contains("bonus bweaponatkrate,"))
         {
-            var temp = text.Replace("bonus bWeaponAtkRate,", string.Empty);
+            var temp = text.Replace("bonus bweaponatkrate,", string.Empty);
             var temps = temp.Split(',');
             text = string.Format(_localization.GetTexts(Localization.BONUS_WEAPON_ATK_RATE), TryParseInt(temps[0]));
         }
-        text = text.Replace("bonus bMatk,", "• MAtk +");
-        if (text.Contains("bonus bMatkRate,"))
+        text = text.Replace("bonus bmatk,", "• MAtk +");
+        if (text.Contains("bonus bmatkrate,"))
         {
-            var temp = text.Replace("bonus bMatkRate,", string.Empty);
+            var temp = text.Replace("bonus bmatkrate,", string.Empty);
             var temps = temp.Split(',');
             text = string.Format("• MAtk +{0}%", TryParseInt(temps[0]));
         }
-        if (text.Contains("bonus bWeaponMatkRate,"))
+        if (text.Contains("bonus bweaponmatkrate,"))
         {
-            var temp = text.Replace("bonus bWeaponMatkRate,", string.Empty);
+            var temp = text.Replace("bonus bweaponmatkrate,", string.Empty);
             var temps = temp.Split(',');
             text = string.Format(_localization.GetTexts(Localization.BONUS_WEAPON_MATK_RATE), TryParseInt(temps[0]));
         }
-        text = text.Replace("bonus bDef,", "• Def +");
-        if (text.Contains("bonus bDefRate,"))
+        text = text.Replace("bonus bdef,", "• Def +");
+        if (text.Contains("bonus bdefrate,"))
         {
-            var temp = text.Replace("bonus bDefRate,", string.Empty);
+            var temp = text.Replace("bonus bdefrate,", string.Empty);
             var temps = temp.Split(',');
             text = string.Format("• Def +{0}%", TryParseInt(temps[0]));
         }
-        text = text.Replace("bonus bDef2,", _localization.GetTexts(Localization.BONUS_DEF2));
-        if (text.Contains("bonus bDef2Rate,"))
+        text = text.Replace("bonus bdef2,", _localization.GetTexts(Localization.BONUS_DEF2));
+        if (text.Contains("bonus bdef2rate,"))
         {
-            var temp = text.Replace("bonus bDef2Rate,", string.Empty);
+            var temp = text.Replace("bonus bdef2rate,", string.Empty);
             var temps = temp.Split(',');
             text = string.Format(_localization.GetTexts(Localization.BONUS_DEF2_RATE), TryParseInt(temps[0]));
         }
-        text = text.Replace("bonus bMdef,", "• MDef +");
-        if (text.Contains("bonus bMdefRate,"))
+        text = text.Replace("bonus bmdef,", "• MDef +");
+        if (text.Contains("bonus bmdefrate,"))
         {
-            var temp = text.Replace("bonus bMdefRate,", string.Empty);
+            var temp = text.Replace("bonus bmdefrate,", string.Empty);
             var temps = temp.Split(',');
             text = string.Format("• MDef +{0}%", TryParseInt(temps[0]));
         }
-        text = text.Replace("bonus bMdef2,", _localization.GetTexts(Localization.BONUS_MDEF2));
-        if (text.Contains("bonus bMdef2Rate,"))
+        text = text.Replace("bonus bmdef2,", _localization.GetTexts(Localization.BONUS_MDEF2));
+        if (text.Contains("bonus bmdef2rate,"))
         {
-            var temp = text.Replace("bonus bMdef2Rate,", string.Empty);
+            var temp = text.Replace("bonus bmdef2rate,", string.Empty);
             var temps = temp.Split(',');
             text = string.Format(_localization.GetTexts(Localization.BONUS_MDEF2_RATE), TryParseInt(temps[0]));
         }
-        text = text.Replace("bonus bHit,", "• Hit +");
-        if (text.Contains("bonus bHitRate,"))
+        text = text.Replace("bonus bhit,", "• Hit +");
+        if (text.Contains("bonus bhitrate,"))
         {
-            var temp = text.Replace("bonus bHitRate,", string.Empty);
+            var temp = text.Replace("bonus bhitrate,", string.Empty);
             var temps = temp.Split(',');
             text = string.Format("• Hit +{0}%", TryParseInt(temps[0]));
         }
-        text = text.Replace("bonus bCritical,", "• Critical +");
-        text = text.Replace("bonus bCriticalLong,", _localization.GetTexts(Localization.BONUS_CRITICAL_LONG));
-        if (text.Contains("bonus2 bCriticalAddRace,"))
+        text = text.Replace("bonus bcritical,", "• Critical +");
+        text = text.Replace("bonus bcriticallong,", _localization.GetTexts(Localization.BONUS_CRITICAL_LONG));
+        if (text.Contains("bonus2 bcriticaladdrace,"))
         {
-            var temp = text.Replace("bonus2 bCriticalAddRace,", string.Empty);
+            var temp = text.Replace("bonus2 bcriticaladdrace,", string.Empty);
             var temps = temp.Split(',');
             text = string.Format(_localization.GetTexts(Localization.BONUS2_CRITICAL_ADD_RACE), ParseRace(temps[0]), TryParseInt(temps[1]));
         }
-        if (text.Contains("bonus bCriticalRate,"))
+        if (text.Contains("bonus bcriticalrate,"))
         {
-            var temp = text.Replace("bonus bCriticalRate,", string.Empty);
+            var temp = text.Replace("bonus bcriticalrate,", string.Empty);
             var temps = temp.Split(',');
             text = string.Format("• Critical +{0}%", TryParseInt(temps[0]));
         }
-        text = text.Replace("bonus bFlee,", "• Flee +");
-        if (text.Contains("bonus bFleeRate,"))
+        text = text.Replace("bonus bflee,", "• Flee +");
+        if (text.Contains("bonus bfleerate,"))
         {
-            var temp = text.Replace("bonus bFleeRate,", string.Empty);
+            var temp = text.Replace("bonus bfleerate,", string.Empty);
             var temps = temp.Split(',');
             text = string.Format("• Flee +{0}%", TryParseInt(temps[0]));
         }
-        text = text.Replace("bonus bFlee2,", "• Perfect Dodge +");
-        if (text.Contains("bonus bFlee2Rate,"))
+        text = text.Replace("bonus bflee2,", "• Perfect Dodge +");
+        if (text.Contains("bonus bflee2rate,"))
         {
-            var temp = text.Replace("bonus bFlee2Rate,", string.Empty);
+            var temp = text.Replace("bonus bflee2rate,", string.Empty);
             var temps = temp.Split(',');
             text = string.Format("• Perfect Dodge +{0}%", TryParseInt(temps[0]));
         }
-        if (text.Contains("bonus bPerfectHitRate,"))
+        if (text.Contains("bonus bperfecthitrate,"))
         {
-            var temp = text.Replace("bonus bPerfectHitRate,", string.Empty);
+            var temp = text.Replace("bonus bperfecthitrate,", string.Empty);
             var temps = temp.Split(',');
             text = string.Format(_localization.GetTexts(Localization.BONUS_PERFECT_HIT_RATE), TryParseInt(temps[0]));
         }
-        if (text.Contains("bonus bPerfectHitAddRate,"))
+        if (text.Contains("bonus bperfecthitaddrate,"))
         {
-            var temp = text.Replace("bonus bPerfectHitAddRate,", string.Empty);
+            var temp = text.Replace("bonus bperfecthitaddrate,", string.Empty);
             var temps = temp.Split(',');
             text = string.Format("• Perfect Hit +{0}%", TryParseInt(temps[0]));
         }
-        if (text.Contains("bonus bSpeedRate,"))
+        if (text.Contains("bonus bspeedrate,"))
         {
-            var temp = text.Replace("bonus bSpeedRate,", string.Empty);
+            var temp = text.Replace("bonus bspeedrate,", string.Empty);
             var temps = temp.Split(',');
             text = string.Format(_localization.GetTexts(Localization.BONUS_SPEED_RATE), TryParseInt(temps[0]));
         }
-        if (text.Contains("bonus bSpeedAddRate,"))
+        if (text.Contains("bonus bspeedaddrate,"))
         {
-            var temp = text.Replace("bonus bSpeedAddRate,", string.Empty);
+            var temp = text.Replace("bonus bspeedaddrate,", string.Empty);
             var temps = temp.Split(',');
             text = string.Format(_localization.GetTexts(Localization.BONUS_SPEED_ADD_RATE), TryParseInt(temps[0]));
         }
-        text = text.Replace("bonus bAspd,", "• ASPD +");
-        if (text.Contains("bonus bAspdRate,"))
+        text = text.Replace("bonus baspd,", "• ASPD +");
+        if (text.Contains("bonus baspdrate,"))
         {
-            var temp = text.Replace("bonus bAspdRate,", string.Empty);
+            var temp = text.Replace("bonus baspdrate,", string.Empty);
             var temps = temp.Split(',');
             text = string.Format("• ASPD +{0}%", TryParseInt(temps[0]));
         }
-        text = text.Replace("bonus bAtkRange,", _localization.GetTexts(Localization.BONUS_ATK_RANGE));
-        if (text.Contains("bonus bAddMaxWeight,"))
+        text = text.Replace("bonus batkrange,", _localization.GetTexts(Localization.BONUS_ATK_RANGE));
+        if (text.Contains("bonus baddmaxweight,"))
         {
-            var temp = text.Replace("bonus bAddMaxWeight,", string.Empty);
+            var temp = text.Replace("bonus baddmaxweight,", string.Empty);
             var temps = temp.Split(',');
             text = string.Format(_localization.GetTexts(Localization.BONUS_ADD_MAX_WEIGHT), TryParseInt(temps[0], 10));
         }
 
-        text = text.Replace("bonus bPAtk,", "• P.Atk +");
-        if (text.Contains("bonus bPAtkRate,"))
+        text = text.Replace("bonus bpatk,", "• P.Atk +");
+        if (text.Contains("bonus bpatkrate,"))
         {
-            var temp = text.Replace("bonus bPAtkRate,", string.Empty);
+            var temp = text.Replace("bonus bpatkrate,", string.Empty);
             var temps = temp.Split(',');
             text = string.Format("• P.Atk +{0}%", TryParseInt(temps[0]));
         }
-        text = text.Replace("bonus bSMatk,", "• S.MAtk +");
-        if (text.Contains("bonus bSMatkRate,"))
+        text = text.Replace("bonus bsmatk,", "• S.MAtk +");
+        if (text.Contains("bonus bsmatkrate,"))
         {
-            var temp = text.Replace("bonus bSMatkRate,", string.Empty);
+            var temp = text.Replace("bonus bsmatkrate,", string.Empty);
             var temps = temp.Split(',');
             text = string.Format("• S.MAtk +{0}%", TryParseInt(temps[0]));
         }
-        text = text.Replace("bonus bRes,", "• Res +");
-        if (text.Contains("bonus bResRate,"))
+        text = text.Replace("bonus bres,", "• Res +");
+        if (text.Contains("bonus bresrate,"))
         {
-            var temp = text.Replace("bonus bResRate,", string.Empty);
+            var temp = text.Replace("bonus bresrate,", string.Empty);
             var temps = temp.Split(',');
             text = string.Format("• Res +{0}%", TryParseInt(temps[0]));
         }
-        text = text.Replace("bonus bMRes,", "• M.Res +");
-        if (text.Contains("bonus bMResRate,"))
+        text = text.Replace("bonus bmres,", "• M.Res +");
+        if (text.Contains("bonus bmresrate,"))
         {
-            var temp = text.Replace("bonus bMResRate,", string.Empty);
+            var temp = text.Replace("bonus bmresrate,", string.Empty);
             var temps = temp.Split(',');
             text = string.Format("• M.Res +{0}%", TryParseInt(temps[0]));
         }
-        text = text.Replace("bonus bHPlus,", "• H.Plus +");
-        if (text.Contains("bonus bHPlusRate,"))
+        text = text.Replace("bonus bhplus,", "• H.Plus +");
+        if (text.Contains("bonus bhplusrate,"))
         {
-            var temp = text.Replace("bonus bHPlusRate,", string.Empty);
+            var temp = text.Replace("bonus bhplusrate,", string.Empty);
             var temps = temp.Split(',');
             text = string.Format("• H.Plus +{0}%", TryParseInt(temps[0]));
         }
-        text = text.Replace("bonus bCRate,", "• C.Rate +");
-        if (text.Contains("bonus bCRateRate,"))
+        text = text.Replace("bonus bcrate,", "• C.Rate +");
+        if (text.Contains("bonus bcraterate,"))
         {
-            var temp = text.Replace("bonus bCRateRate,", string.Empty);
+            var temp = text.Replace("bonus bcraterate,", string.Empty);
             var temps = temp.Split(',');
             text = string.Format("• C.Rate +{0}%", TryParseInt(temps[0]));
         }
-        if (text.Contains("bonus bHPrecovRate,"))
+        if (text.Contains("bonus bhprecovrate,"))
         {
-            var temp = text.Replace("bonus bHPrecovRate,", string.Empty);
+            var temp = text.Replace("bonus bhprecovrate,", string.Empty);
             var temps = temp.Split(',');
             text = string.Format(_localization.GetTexts(Localization.BONUS_HP_RECOV_RATE), TryParseInt(temps[0]));
         }
-        if (text.Contains("bonus bSPrecovRate,"))
+        if (text.Contains("bonus bsprecovrate,"))
         {
-            var temp = text.Replace("bonus bSPrecovRate,", string.Empty);
+            var temp = text.Replace("bonus bsprecovrate,", string.Empty);
             var temps = temp.Split(',');
             text = string.Format(_localization.GetTexts(Localization.BONUS_SP_RECOV_RATE), TryParseInt(temps[0]));
         }
-        if (text.Contains("bonus2 bHPRegenRate,"))
+        if (text.Contains("bonus2 bhpregenrate,"))
         {
-            var temp = text.Replace("bonus2 bHPRegenRate,", string.Empty);
+            var temp = text.Replace("bonus2 bhpregenrate,", string.Empty);
             var temps = temp.Split(',');
             text = string.Format(_localization.GetTexts(Localization.BONUS2_HP_REGEN_RATE), TryParseInt(temps[0]), TryParseTimer(TryParseInt(temps[1], 1000)));
         }
-        if (text.Contains("bonus2 bHPLossRate,"))
+        if (text.Contains("bonus2 bhplossrate,"))
         {
-            var temp = text.Replace("bonus2 bHPLossRate,", string.Empty);
+            var temp = text.Replace("bonus2 bhplossrate,", string.Empty);
             var temps = temp.Split(',');
             text = string.Format(_localization.GetTexts(Localization.BONUS2_HP_LOSS_RATE), TryParseInt(temps[0]), TryParseTimer(TryParseInt(temps[1], 1000)));
         }
-        if (text.Contains("bonus2 bSPRegenRate,"))
+        if (text.Contains("bonus2 bspregenrate,"))
         {
-            var temp = text.Replace("bonus2 bSPRegenRate,", string.Empty);
+            var temp = text.Replace("bonus2 bspregenrate,", string.Empty);
             var temps = temp.Split(',');
             text = string.Format(_localization.GetTexts(Localization.BONUS2_SP_REGEN_RATE), TryParseInt(temps[0]), TryParseTimer(TryParseInt(temps[1], 1000)));
         }
-        if (text.Contains("bonus2 bSPLossRate,"))
+        if (text.Contains("bonus2 bsplossrate,"))
         {
-            var temp = text.Replace("bonus2 bSPLossRate,", string.Empty);
+            var temp = text.Replace("bonus2 bsplossrate,", string.Empty);
             var temps = temp.Split(',');
             text = string.Format(_localization.GetTexts(Localization.BONUS2_SP_LOSS_RATE), TryParseInt(temps[0]), TryParseTimer(TryParseInt(temps[1], 1000)));
         }
-        if (text.Contains("bonus2 bRegenPercentHP,"))
+        if (text.Contains("bonus2 bregenpercenthp,"))
         {
-            var temp = text.Replace("bonus2 bRegenPercentHP,", string.Empty);
+            var temp = text.Replace("bonus2 bregenpercenthp,", string.Empty);
             var temps = temp.Split(',');
             text = string.Format(_localization.GetTexts(Localization.BONUS2_REGEN_PERCENT_HP), TryParseInt(temps[0]), TryParseTimer(TryParseInt(temps[1], 1000)));
         }
-        if (text.Contains("bonus2 bRegenPercentSP,"))
+        if (text.Contains("bonus2 bregenpercentsp,"))
         {
-            var temp = text.Replace("bonus2 bRegenPercentSP,", string.Empty);
+            var temp = text.Replace("bonus2 bregenpercentsp,", string.Empty);
             var temps = temp.Split(',');
             text = string.Format(_localization.GetTexts(Localization.BONUS2_REGEN_PERCENT_SP), TryParseInt(temps[0]), TryParseTimer(TryParseInt(temps[1], 1000)));
         }
-        text = text.Replace("bonus bNoRegen,1", _localization.GetTexts(Localization.BONUS_STOP_HP_REGEN));
-        text = text.Replace("bonus bNoRegen,2", _localization.GetTexts(Localization.BONUS_STOP_SP_REGEN));
-        if (text.Contains("bonus bUseSPrate,"))
+        text = text.Replace("bonus bnoregen,1", _localization.GetTexts(Localization.BONUS_STOP_HP_REGEN));
+        text = text.Replace("bonus bnoregen,2", _localization.GetTexts(Localization.BONUS_STOP_SP_REGEN));
+        if (text.Contains("bonus busesprate,"))
         {
-            var temp = text.Replace("bonus bUseSPrate,", string.Empty);
+            var temp = text.Replace("bonus busesprate,", string.Empty);
             var temps = temp.Split(',');
             text = string.Format(_localization.GetTexts(Localization.BONUS_USE_SP_RATE), TryParseInt(temps[0]));
         }
-        if (text.Contains("bonus2 bSkillUseSP,"))
+        if (text.Contains("bonus2 bskillusesp,"))
         {
-            var temp = text.Replace("bonus2 bSkillUseSP,", string.Empty);
+            var temp = text.Replace("bonus2 bskillusesp,", string.Empty);
             var temps = temp.Split(',');
             text = string.Format(_localization.GetTexts(Localization.BONUS2_SKILL_USE_SP), GetSkillName(QuoteRemover.Remove(temps[0])), TryParseInt(temps[1]));
             text = text.Replace("--", "+");
         }
-        if (text.Contains("bonus2 bSkillUseSPrate,"))
+        if (text.Contains("bonus2 bskillusesprate,"))
         {
-            var temp = text.Replace("bonus2 bSkillUseSPrate,", string.Empty);
+            var temp = text.Replace("bonus2 bskillusesprate,", string.Empty);
             var temps = temp.Split(',');
             text = string.Format(_localization.GetTexts(Localization.BONUS2_SKILL_USE_SP_RATE), GetSkillName(QuoteRemover.Remove(temps[0])), TryParseInt(temps[1]));
             text = text.Replace("--", "+");
         }
-        if (text.Contains("bonus2 bSkillAtk,"))
+        if (text.Contains("bonus2 bskillatk,"))
         {
-            var temp = text.Replace("bonus2 bSkillAtk,", string.Empty);
+            var temp = text.Replace("bonus2 bskillatk,", string.Empty);
             var temps = temp.Split(',');
             text = string.Format(_localization.GetTexts(Localization.BONUS2_SKILL_ATK), GetSkillName(QuoteRemover.Remove(temps[0])), TryParseInt(temps[1]));
         }
-        if (text.Contains("bonus bShortAtkRate,"))
+        if (text.Contains("bonus bshortatkrate,"))
         {
-            var temp = text.Replace("bonus bShortAtkRate,", string.Empty);
+            var temp = text.Replace("bonus bshortatkrate,", string.Empty);
             var temps = temp.Split(',');
             text = string.Format(_localization.GetTexts(Localization.BONUS_SHORT_ATK_RATE), TryParseInt(temps[0]));
         }
-        if (text.Contains("bonus bLongAtkRate,"))
+        if (text.Contains("bonus blongatkrate,"))
         {
-            var temp = text.Replace("bonus bLongAtkRate,", string.Empty);
+            var temp = text.Replace("bonus blongatkrate,", string.Empty);
             var temps = temp.Split(',');
             text = string.Format(_localization.GetTexts(Localization.BONUS_LONG_ATK_RATE), TryParseInt(temps[0]));
         }
-        if (text.Contains("bonus bCritAtkRate,"))
+        if (text.Contains("bonus bcritatkrate,"))
         {
-            var temp = text.Replace("bonus bCritAtkRate,", string.Empty);
+            var temp = text.Replace("bonus bcritatkrate,", string.Empty);
             var temps = temp.Split(',');
             text = string.Format(_localization.GetTexts(Localization.BONUS_CRIT_ATK_RATE), TryParseInt(temps[0]));
         }
-        if (text.Contains("bonus bCritDefRate,"))
+        if (text.Contains("bonus bcritdefrate,"))
         {
-            var temp = text.Replace("bonus bCritDefRate,", string.Empty);
+            var temp = text.Replace("bonus bcritdefrate,", string.Empty);
             var temps = temp.Split(',');
             text = string.Format(_localization.GetTexts(Localization.BONUS_CRIT_DEF_RATE), TryParseInt(temps[0]));
         }
-        if (text.Contains("bonus bCriticalDef,"))
+        if (text.Contains("bonus bcriticaldef,"))
         {
-            var temp = text.Replace("bonus bCriticalDef,", string.Empty);
+            var temp = text.Replace("bonus bcriticaldef,", string.Empty);
             var temps = temp.Split(',');
             text = string.Format(_localization.GetTexts(Localization.BONUS_CRITICAL_DEF), TryParseInt(temps[0]));
         }
-        if (text.Contains("bonus2 bWeaponAtk,"))
+        if (text.Contains("bonus2 bweaponatk,"))
         {
-            var temp = text.Replace("bonus2 bWeaponAtk,", string.Empty);
+            var temp = text.Replace("bonus2 bweaponatk,", string.Empty);
             var temps = temp.Split(',');
             text = string.Format(_localization.GetTexts(Localization.BONUS2_WEAPON_ATK), QuoteRemover.Remove(temps[0]), TryParseInt(temps[1]));
         }
-        if (text.Contains("bonus2 bWeaponDamageRate,"))
+        if (text.Contains("bonus2 bweapondamagerate,"))
         {
-            var temp = text.Replace("bonus2 bWeaponDamageRate,", string.Empty);
+            var temp = text.Replace("bonus2 bweapondamagerate,", string.Empty);
             var temps = temp.Split(',');
             text = string.Format(_localization.GetTexts(Localization.BONUS2_WEAPON_DAMAGE_RATE), QuoteRemover.Remove(temps[0]), TryParseInt(temps[1]));
         }
-        if (text.Contains("bonus bNearAtkDef,"))
+        if (text.Contains("bonus bnearatkdef,"))
         {
-            var temp = text.Replace("bonus bNearAtkDef,", string.Empty);
+            var temp = text.Replace("bonus bnearatkdef,", string.Empty);
             var temps = temp.Split(',');
             text = string.Format(_localization.GetTexts(Localization.BONUS_NEAR_ATK_DEF), TryParseInt(temps[0]));
         }
-        if (text.Contains("bonus bLongAtkDef,"))
+        if (text.Contains("bonus blongatkdef,"))
         {
-            var temp = text.Replace("bonus bLongAtkDef,", string.Empty);
+            var temp = text.Replace("bonus blongatkdef,", string.Empty);
             var temps = temp.Split(',');
             text = string.Format(_localization.GetTexts(Localization.BONUS_LONG_ATK_DEF), TryParseInt(temps[0]));
         }
-        if (text.Contains("bonus bMagicAtkDef,"))
+        if (text.Contains("bonus bmagicatkdef,"))
         {
-            var temp = text.Replace("bonus bMagicAtkDef,", string.Empty);
+            var temp = text.Replace("bonus bmagicatkdef,", string.Empty);
             var temps = temp.Split(',');
             text = string.Format(_localization.GetTexts(Localization.BONUS_MAGIC_ATK_DEF), TryParseInt(temps[0]));
         }
-        if (text.Contains("bonus bMiscAtkDef,"))
+        if (text.Contains("bonus bmiscatkdef,"))
         {
-            var temp = text.Replace("bonus bMiscAtkDef,", string.Empty);
+            var temp = text.Replace("bonus bmiscatkdef,", string.Empty);
             var temps = temp.Split(',');
             text = string.Format(_localization.GetTexts(Localization.BONUS_MISC_ATK_DEF), TryParseInt(temps[0]));
         }
-        if (text.Contains("bonus bNoWeaponDamage,"))
+        if (text.Contains("bonus bnoweapondamage,"))
         {
-            var temp = text.Replace("bonus bNoWeaponDamage,", string.Empty);
+            var temp = text.Replace("bonus bnoweapondamage,", string.Empty);
             var temps = temp.Split(',');
             text = string.Format(_localization.GetTexts(Localization.BONUS_NO_WEAPON_DAMAGE), TryParseInt(temps[0]));
         }
-        if (text.Contains("bonus bNoMagicDamage,"))
+        if (text.Contains("bonus bnomagicdamage,"))
         {
-            var temp = text.Replace("bonus bNoMagicDamage,", string.Empty);
+            var temp = text.Replace("bonus bnomagicdamage,", string.Empty);
             var temps = temp.Split(',');
             text = string.Format(_localization.GetTexts(Localization.BONUS_NO_MAGIC_DAMAGE), TryParseInt(temps[0]));
         }
-        if (text.Contains("bonus bNoMiscDamage,"))
+        if (text.Contains("bonus bnomiscdamage,"))
         {
-            var temp = text.Replace("bonus bNoMiscDamage,", string.Empty);
+            var temp = text.Replace("bonus bnomiscdamage,", string.Empty);
             var temps = temp.Split(',');
             text = string.Format(_localization.GetTexts(Localization.BONUS_NO_MISC_DAMAGE), TryParseInt(temps[0]));
         }
-        if (text.Contains("bonus bHealPower,"))
+        if (text.Contains("bonus bhealpower,"))
         {
-            var temp = text.Replace("bonus bHealPower,", string.Empty);
+            var temp = text.Replace("bonus bhealpower,", string.Empty);
             var temps = temp.Split(',');
             text = string.Format(_localization.GetTexts(Localization.BONUS_HEAL_POWER), TryParseInt(temps[0]));
         }
-        if (text.Contains("bonus bHealPower2,"))
+        if (text.Contains("bonus bhealpower2,"))
         {
-            var temp = text.Replace("bonus bHealPower2,", string.Empty);
+            var temp = text.Replace("bonus bhealpower2,", string.Empty);
             var temps = temp.Split(',');
             text = string.Format(_localization.GetTexts(Localization.BONUS_HEAL_POWER_2), TryParseInt(temps[0]));
         }
-        if (text.Contains("bonus2 bSkillHeal,"))
+        if (text.Contains("bonus2 bskillheal,"))
         {
-            var temp = text.Replace("bonus2 bSkillHeal,", string.Empty);
+            var temp = text.Replace("bonus2 bskillheal,", string.Empty);
             var temps = temp.Split(',');
             text = string.Format(_localization.GetTexts(Localization.BONUS2_SKILL_HEAL), GetSkillName(QuoteRemover.Remove(temps[0])), TryParseInt(temps[1]));
         }
-        if (text.Contains("bonus2 bSkillHeal2,"))
+        if (text.Contains("bonus2 bskillheal2,"))
         {
-            var temp = text.Replace("bonus2 bSkillHeal2,", string.Empty);
+            var temp = text.Replace("bonus2 bskillheal2,", string.Empty);
             var temps = temp.Split(',');
             text = string.Format(_localization.GetTexts(Localization.BONUS2_SKILL_HEAL_2), GetSkillName(QuoteRemover.Remove(temps[0])), TryParseInt(temps[1]));
         }
-        if (text.Contains("bonus bAddItemHealRate,"))
+        if (text.Contains("bonus badditemhealrate,"))
         {
-            var temp = text.Replace("bonus bAddItemHealRate,", string.Empty);
+            var temp = text.Replace("bonus badditemhealrate,", string.Empty);
             var temps = temp.Split(',');
             text = string.Format(_localization.GetTexts(Localization.BONUS_ADD_ITEM_HEAL_RATE), TryParseInt(temps[0]));
         }
-        if (text.Contains("bonus2 bAddItemHealRate,"))
+        if (text.Contains("bonus2 badditemhealrate,"))
         {
-            var temp = text.Replace("bonus2 bAddItemHealRate,", string.Empty);
+            var temp = text.Replace("bonus2 badditemhealrate,", string.Empty);
             var temps = temp.Split(',');
             text = string.Format(_localization.GetTexts(Localization.BONUS2_ADD_ITEM_HEAL_RATE), GetItemName(QuoteRemover.Remove(temps[0])), TryParseInt(temps[1]));
         }
-        if (text.Contains("bonus2 bAddItemGroupHealRate,"))
+        if (text.Contains("bonus2 badditemgrouphealrate,"))
         {
-            var temp = text.Replace("bonus2 bAddItemGroupHealRate,", string.Empty);
+            var temp = text.Replace("bonus2 badditemgrouphealrate,", string.Empty);
             var temps = temp.Split(',');
             text = string.Format(_localization.GetTexts(Localization.BONUS2_ADD_ITEM_GROUP_HEAL_RATE), QuoteRemover.Remove(temps[0]), TryParseInt(temps[1]));
         }
-        if (text.Contains("bonus bAddItemSPHealRate,"))
+        if (text.Contains("bonus badditemsphealrate,"))
         {
-            var temp = text.Replace("bonus bAddItemSPHealRate,", string.Empty);
+            var temp = text.Replace("bonus badditemsphealrate,", string.Empty);
             var temps = temp.Split(',');
             text = string.Format(_localization.GetTexts(Localization.BONUS_ADD_ITEM_SP_HEAL_RATE), TryParseInt(temps[0]));
         }
-        if (text.Contains("bonus2 bAddItemSPHealRate,"))
+        if (text.Contains("bonus2 badditemsphealrate,"))
         {
-            var temp = text.Replace("bonus2 bAddItemSPHealRate,", string.Empty);
+            var temp = text.Replace("bonus2 badditemsphealrate,", string.Empty);
             var temps = temp.Split(',');
             text = string.Format(_localization.GetTexts(Localization.BONUS2_ADD_ITEM_SP_HEAL_RATE), GetItemName(QuoteRemover.Remove(temps[0])), TryParseInt(temps[1]));
         }
-        if (text.Contains("bonus2 bAddItemGroupSPHealRate,"))
+        if (text.Contains("bonus2 badditemgroupsphealrate,"))
         {
-            var temp = text.Replace("bonus2 bAddItemGroupSPHealRate,", string.Empty);
+            var temp = text.Replace("bonus2 badditemgroupsphealrate,", string.Empty);
             var temps = temp.Split(',');
             text = string.Format(_localization.GetTexts(Localization.BONUS2_ADD_ITEM_GROUP_SP_HEAL_RATE), QuoteRemover.Remove(temps[0]), TryParseInt(temps[1]));
         }
-        if (text.Contains("bonus bCastrate,"))
+        if (text.Contains("bonus bcastrate,"))
         {
-            var temp = text.Replace("bonus bCastrate,", string.Empty);
+            var temp = text.Replace("bonus bcastrate,", string.Empty);
             var temps = temp.Split(',');
             var value = TryParseInt(temps[0]);
             text = string.Format(_localization.GetTexts(Localization.BONUS_CAST_RATE), value);
@@ -4441,9 +4424,9 @@ public class Converter : MonoBehaviour
             if (!_isFastConvert)
                 _easyItemBuilderDatabase.Add("Cast % (All)", GetCurrentItemIdOrCombo(), value);
         }
-        if (text.Contains("bonus2 bCastrate,"))
+        if (text.Contains("bonus2 bcastrate,"))
         {
-            var temp = text.Replace("bonus2 bCastrate,", string.Empty);
+            var temp = text.Replace("bonus2 bcastrate,", string.Empty);
             var temps = temp.Split(',');
             var skillName = GetSkillName(QuoteRemover.Remove(temps[0]));
             var value = TryParseInt(temps[1]);
@@ -4452,9 +4435,9 @@ public class Converter : MonoBehaviour
             if (!_isFastConvert)
                 _easyItemBuilderDatabase.Add("Cast % | " + skillName, GetCurrentItemIdOrCombo(), value);
         }
-        if (text.Contains("bonus bFixedCastrate,"))
+        if (text.Contains("bonus bfixedcastrate,"))
         {
-            var temp = text.Replace("bonus bFixedCastrate,", string.Empty);
+            var temp = text.Replace("bonus bfixedcastrate,", string.Empty);
             var temps = temp.Split(',');
             var value = TryParseInt(temps[0]);
             text = string.Format(_localization.GetTexts(Localization.BONUS_FIXED_CAST_RATE), value);
@@ -4462,9 +4445,9 @@ public class Converter : MonoBehaviour
             if (!_isFastConvert)
                 _easyItemBuilderDatabase.Add("F. Cast % (All)", GetCurrentItemIdOrCombo(), value);
         }
-        if (text.Contains("bonus2 bFixedCastrate,"))
+        if (text.Contains("bonus2 bfixedcastrate,"))
         {
-            var temp = text.Replace("bonus2 bFixedCastrate,", string.Empty);
+            var temp = text.Replace("bonus2 bfixedcastrate,", string.Empty);
             var temps = temp.Split(',');
             var skillName = GetSkillName(QuoteRemover.Remove(temps[0]));
             var value = TryParseInt(temps[1]);
@@ -4473,9 +4456,9 @@ public class Converter : MonoBehaviour
             if (!_isFastConvert)
                 _easyItemBuilderDatabase.Add("F. Cast % | " + skillName, GetCurrentItemIdOrCombo(), value);
         }
-        if (text.Contains("bonus bVariableCastrate,"))
+        if (text.Contains("bonus bvariablecastrate,"))
         {
-            var temp = text.Replace("bonus bVariableCastrate,", string.Empty);
+            var temp = text.Replace("bonus bvariablecastrate,", string.Empty);
             var temps = temp.Split(',');
             var value = TryParseInt(temps[0]);
             text = string.Format(_localization.GetTexts(Localization.BONUS_VARIABLE_CAST_RATE), value);
@@ -4483,9 +4466,9 @@ public class Converter : MonoBehaviour
             if (!_isFastConvert)
                 _easyItemBuilderDatabase.Add("V. Cast % (All)", GetCurrentItemIdOrCombo(), value);
         }
-        if (text.Contains("bonus2 bVariableCastrate,"))
+        if (text.Contains("bonus2 bvariablecastrate,"))
         {
-            var temp = text.Replace("bonus2 bVariableCastrate,", string.Empty);
+            var temp = text.Replace("bonus2 bvariablecastrate,", string.Empty);
             var temps = temp.Split(',');
             var skillName = GetSkillName(QuoteRemover.Remove(temps[0]));
             var value = TryParseInt(temps[1]);
@@ -4494,9 +4477,9 @@ public class Converter : MonoBehaviour
             if (!_isFastConvert)
                 _easyItemBuilderDatabase.Add("V. Cast % | " + skillName, GetCurrentItemIdOrCombo(), value);
         }
-        if (text.Contains("bonus bFixedCast,"))
+        if (text.Contains("bonus bfixedcast,"))
         {
-            var temp = text.Replace("bonus bFixedCast,", string.Empty);
+            var temp = text.Replace("bonus bfixedcast,", string.Empty);
             var temps = temp.Split(',');
             var value = TryParseTimer(TryParseInt(temps[0], 1000));
             text = string.Format(_localization.GetTexts(Localization.BONUS_FIXED_CAST), value);
@@ -4504,9 +4487,9 @@ public class Converter : MonoBehaviour
             if (!_isFastConvert)
                 _easyItemBuilderDatabase.Add("F. Cast (All)", GetCurrentItemIdOrCombo(), value);
         }
-        if (text.Contains("bonus2 bSkillFixedCast,"))
+        if (text.Contains("bonus2 bskillfixedcast,"))
         {
-            var temp = text.Replace("bonus2 bSkillFixedCast,", string.Empty);
+            var temp = text.Replace("bonus2 bskillfixedcast,", string.Empty);
             var temps = temp.Split(',');
             var skillName = GetSkillName(QuoteRemover.Remove(temps[0]));
             var value = TryParseTimer(TryParseInt(temps[1], 1000));
@@ -4515,9 +4498,9 @@ public class Converter : MonoBehaviour
             if (!_isFastConvert)
                 _easyItemBuilderDatabase.Add("F. Cast | " + skillName, GetCurrentItemIdOrCombo(), value);
         }
-        if (text.Contains("bonus bVariableCast,"))
+        if (text.Contains("bonus bvariablecast,"))
         {
-            var temp = text.Replace("bonus bVariableCast,", string.Empty);
+            var temp = text.Replace("bonus bvariablecast,", string.Empty);
             var temps = temp.Split(',');
             var value = TryParseTimer(TryParseInt(temps[0], 1000));
             text = string.Format(_localization.GetTexts(Localization.BONUS_VARIABLE_CAST), value);
@@ -4525,9 +4508,9 @@ public class Converter : MonoBehaviour
             if (!_isFastConvert)
                 _easyItemBuilderDatabase.Add("V. Cast (All)", GetCurrentItemIdOrCombo(), value);
         }
-        if (text.Contains("bonus2 bSkillVariableCast,"))
+        if (text.Contains("bonus2 bskillvariablecast,"))
         {
-            var temp = text.Replace("bonus2 bSkillVariableCast,", string.Empty);
+            var temp = text.Replace("bonus2 bskillvariablecast,", string.Empty);
             var temps = temp.Split(',');
             var skillName = GetSkillName(QuoteRemover.Remove(temps[0]));
             var value = TryParseTimer(TryParseInt(temps[1], 1000));
@@ -4536,11 +4519,11 @@ public class Converter : MonoBehaviour
             if (!_isFastConvert)
                 _easyItemBuilderDatabase.Add("V. Cast | " + skillName, GetCurrentItemIdOrCombo(), value);
         }
-        text = text.Replace("bonus bNoCastCancel2", _localization.GetTexts(Localization.BONUS_NO_CAST_CANCEL_2));
-        text = text.Replace("bonus bNoCastCancel", _localization.GetTexts(Localization.BONUS_NO_CAST_CANCEL));
-        if (text.Contains("bonus bDelayrate,"))
+        text = text.Replace("bonus bnocastcancel2", _localization.GetTexts(Localization.BONUS_NO_CAST_CANCEL_2));
+        text = text.Replace("bonus bnocastcancel", _localization.GetTexts(Localization.BONUS_NO_CAST_CANCEL));
+        if (text.Contains("bonus bdelayrate,"))
         {
-            var temp = text.Replace("bonus bDelayrate,", string.Empty);
+            var temp = text.Replace("bonus bdelayrate,", string.Empty);
             var temps = temp.Split(',');
             var value = TryParseInt(temps[0]);
             text = string.Format(_localization.GetTexts(Localization.BONUS_DELAY_RATE), value);
@@ -4548,19 +4531,9 @@ public class Converter : MonoBehaviour
             if (!_isFastConvert)
                 _easyItemBuilderDatabase.Add("Delay % (All)", GetCurrentItemIdOrCombo(), value);
         }
-        if (text.Contains("bonus bDelayRate,"))
+        if (text.Contains("bonus2 bskilldelay,"))
         {
-            var temp = text.Replace("bonus bDelayRate,", string.Empty);
-            var temps = temp.Split(',');
-            var value = TryParseInt(temps[0]);
-            text = string.Format(_localization.GetTexts(Localization.BONUS_DELAY_RATE), value);
-
-            if (!_isFastConvert)
-                _easyItemBuilderDatabase.Add("Delay % (All)", GetCurrentItemIdOrCombo(), value);
-        }
-        if (text.Contains("bonus2 bSkillDelay,"))
-        {
-            var temp = text.Replace("bonus2 bSkillDelay,", string.Empty);
+            var temp = text.Replace("bonus2 bskilldelay,", string.Empty);
             var temps = temp.Split(',');
             var skillName = GetSkillName(QuoteRemover.Remove(temps[0]));
             var value = TryParseTimer(TryParseInt(temps[1], 1000));
@@ -4569,9 +4542,9 @@ public class Converter : MonoBehaviour
             if (!_isFastConvert)
                 _easyItemBuilderDatabase.Add("Delay % | " + skillName, GetCurrentItemIdOrCombo(), value);
         }
-        if (text.Contains("bonus2 bSkillCooldown,"))
+        if (text.Contains("bonus2 bskillcooldown,"))
         {
-            var temp = text.Replace("bonus2 bSkillCooldown,", string.Empty);
+            var temp = text.Replace("bonus2 bskillcooldown,", string.Empty);
             var temps = temp.Split(',');
             var skillName = GetSkillName(QuoteRemover.Remove(temps[0]));
             var value = TryParseTimer(TryParseInt(temps[1], 1000));
@@ -4580,716 +4553,716 @@ public class Converter : MonoBehaviour
             if (!_isFastConvert)
                 _easyItemBuilderDatabase.Add("Cooldown | " + skillName, GetCurrentItemIdOrCombo(), value);
         }
-        if (text.Contains("bonus2 bAddEle,"))
+        if (text.Contains("bonus2 baddele,"))
         {
-            var temp = text.Replace("bonus2 bAddEle,", string.Empty);
+            var temp = text.Replace("bonus2 baddele,", string.Empty);
             var temps = temp.Split(',');
             text = string.Format(_localization.GetTexts(Localization.BONUS2_ADD_ELE), ParseElement(temps[0]), TryParseInt(temps[1]));
         }
-        if (text.Contains("bonus3 bAddEle,"))
+        if (text.Contains("bonus3 baddele,"))
         {
-            var temp = text.Replace("bonus3 bAddEle,", string.Empty);
+            var temp = text.Replace("bonus3 baddele,", string.Empty);
             var temps = temp.Split(',');
             text = string.Format(_localization.GetTexts(Localization.BONUS3_ADD_ELE), ParseElement(temps[0]), TryParseInt(temps[1]), ParseAtf(temps[2]));
         }
-        if (text.Contains("bonus2 bMagicAddEle,"))
+        if (text.Contains("bonus2 bmagicaddele,"))
         {
-            var temp = text.Replace("bonus2 bMagicAddEle,", string.Empty);
+            var temp = text.Replace("bonus2 bmagicaddele,", string.Empty);
             var temps = temp.Split(',');
             text = string.Format(_localization.GetTexts(Localization.BONUS2_MAGIC_ADD_ELE), ParseElement(temps[0]), TryParseInt(temps[1]));
         }
-        if (text.Contains("bonus2 bSubEle,"))
+        if (text.Contains("bonus2 bsubele,"))
         {
-            var temp = text.Replace("bonus2 bSubEle,", string.Empty);
+            var temp = text.Replace("bonus2 bsubele,", string.Empty);
             var temps = temp.Split(',');
             text = string.Format(_localization.GetTexts(Localization.BONUS2_SUB_ELE), ParseElement(temps[0]), TryParseInt(temps[1]));
         }
-        if (text.Contains("bonus3 bSubEle,"))
+        if (text.Contains("bonus3 bsubele,"))
         {
-            var temp = text.Replace("bonus3 bSubEle,", string.Empty);
+            var temp = text.Replace("bonus3 bsubele,", string.Empty);
             var temps = temp.Split(',');
             text = string.Format(_localization.GetTexts(Localization.BONUS3_SUB_ELE), ParseElement(temps[0]), TryParseInt(temps[1]), ParseAtf(temps[2]));
         }
-        if (text.Contains("bonus2 bSubDefEle,"))
+        if (text.Contains("bonus2 bsubdefele,"))
         {
-            var temp = text.Replace("bonus2 bSubDefEle,", string.Empty);
+            var temp = text.Replace("bonus2 bsubdefele,", string.Empty);
             var temps = temp.Split(',');
             text = string.Format(_localization.GetTexts(Localization.BONUS2_SUB_DEF_ELE), ParseElement(temps[0]), TryParseInt(temps[1]));
         }
-        if (text.Contains("bonus2 bMagicSubDefEle,"))
+        if (text.Contains("bonus2 bmagicsubdefele,"))
         {
-            var temp = text.Replace("bonus2 bMagicSubDefEle,", string.Empty);
+            var temp = text.Replace("bonus2 bmagicsubdefele,", string.Empty);
             var temps = temp.Split(',');
             text = string.Format(_localization.GetTexts(Localization.BONUS2_MAGIC_SUB_DEF_ELE), ParseElement(temps[0]), TryParseInt(temps[1]));
         }
-        if (text.Contains("bonus2 bAddRace,"))
+        if (text.Contains("bonus2 baddrace,"))
         {
-            var temp = text.Replace("bonus2 bAddRace,", string.Empty);
+            var temp = text.Replace("bonus2 baddrace,", string.Empty);
             var temps = temp.Split(',');
             text = string.Format(_localization.GetTexts(Localization.BONUS2_ADD_RACE), ParseRace(temps[0]), TryParseInt(temps[1]));
         }
-        if (text.Contains("bonus2 bMagicAddRace,"))
+        if (text.Contains("bonus2 bmagicaddrace,"))
         {
-            var temp = text.Replace("bonus2 bMagicAddRace,", string.Empty);
+            var temp = text.Replace("bonus2 bmagicaddrace,", string.Empty);
             var temps = temp.Split(',');
             text = string.Format(_localization.GetTexts(Localization.BONUS2_MAGIC_ADD_RACE), ParseRace(temps[0]), TryParseInt(temps[1]));
         }
-        if (text.Contains("bonus2 bSubRace,"))
+        if (text.Contains("bonus2 bsubrace,"))
         {
-            var temp = text.Replace("bonus2 bSubRace,", string.Empty);
+            var temp = text.Replace("bonus2 bsubrace,", string.Empty);
             var temps = temp.Split(',');
             text = string.Format(_localization.GetTexts(Localization.BONUS2_SUB_RACE), ParseRace(temps[0]), TryParseInt(temps[1]));
         }
-        if (text.Contains("bonus3 bSubRace,"))
+        if (text.Contains("bonus3 bsubrace,"))
         {
-            var temp = text.Replace("bonus3 bSubRace,", string.Empty);
+            var temp = text.Replace("bonus3 bsubrace,", string.Empty);
             var temps = temp.Split(',');
             text = string.Format(_localization.GetTexts(Localization.BONUS3_SUB_RACE), ParseRace(temps[0]), TryParseInt(temps[1]), ParseAtf(temps[2]));
         }
-        if (text.Contains("bonus2 bAddClass,"))
+        if (text.Contains("bonus2 baddclass,"))
         {
-            var temp = text.Replace("bonus2 bAddClass,", string.Empty);
+            var temp = text.Replace("bonus2 baddclass,", string.Empty);
             var temps = temp.Split(',');
             text = string.Format(_localization.GetTexts(Localization.BONUS2_ADD_CLASS), ParseClass(temps[0]), TryParseInt(temps[1]));
         }
-        if (text.Contains("bonus2 bMagicAddClass,"))
+        if (text.Contains("bonus2 bmagicaddclass,"))
         {
-            var temp = text.Replace("bonus2 bMagicAddClass,", string.Empty);
+            var temp = text.Replace("bonus2 bmagicaddclass,", string.Empty);
             var temps = temp.Split(',');
             text = string.Format(_localization.GetTexts(Localization.BONUS2_MAGIC_ADD_CLASS), ParseClass(temps[0]), TryParseInt(temps[1]));
         }
-        if (text.Contains("bonus2 bSubClass,"))
+        if (text.Contains("bonus2 bsubclass,"))
         {
-            var temp = text.Replace("bonus2 bSubClass,", string.Empty);
+            var temp = text.Replace("bonus2 bsubclass,", string.Empty);
             var temps = temp.Split(',');
             text = string.Format(_localization.GetTexts(Localization.BONUS2_SUB_CLASS), ParseClass(temps[0]), TryParseInt(temps[1]));
         }
-        if (text.Contains("bonus2 bAddSize,"))
+        if (text.Contains("bonus2 baddsize,"))
         {
-            var temp = text.Replace("bonus2 bAddSize,", string.Empty);
+            var temp = text.Replace("bonus2 baddsize,", string.Empty);
             var temps = temp.Split(',');
             text = string.Format(_localization.GetTexts(Localization.BONUS2_ADD_SIZE), ParseSize(temps[0]), TryParseInt(temps[1]));
         }
-        if (text.Contains("bonus2 bMagicAddSize,"))
+        if (text.Contains("bonus2 bmagicaddsize,"))
         {
-            var temp = text.Replace("bonus2 bMagicAddSize,", string.Empty);
+            var temp = text.Replace("bonus2 bmagicaddsize,", string.Empty);
             var temps = temp.Split(',');
             text = string.Format(_localization.GetTexts(Localization.BONUS2_MAGIC_ADD_SIZE), ParseSize(temps[0]), TryParseInt(temps[1]));
         }
-        if (text.Contains("bonus2 bSubSize,"))
+        if (text.Contains("bonus2 bsubsize,"))
         {
-            var temp = text.Replace("bonus2 bSubSize,", string.Empty);
+            var temp = text.Replace("bonus2 bsubsize,", string.Empty);
             var temps = temp.Split(',');
             text = string.Format(_localization.GetTexts(Localization.BONUS2_SUB_SIZE), ParseSize(temps[0]), TryParseInt(temps[1]));
         }
-        if (text.Contains("bonus2 bWeaponSubSize,"))
+        if (text.Contains("bonus2 bweaponsubsize,"))
         {
-            var temp = text.Replace("bonus2 bWeaponSubSize,", string.Empty);
+            var temp = text.Replace("bonus2 bweaponsubsize,", string.Empty);
             var temps = temp.Split(',');
             text = string.Format(_localization.GetTexts(Localization.BONUS2_WEAPON_SUB_SIZE), ParseSize(temps[0]), TryParseInt(temps[1]));
         }
-        if (text.Contains("bonus2 bMagicSubSize,"))
+        if (text.Contains("bonus2 bmagicsubsize,"))
         {
-            var temp = text.Replace("bonus2 bMagicSubSize,", string.Empty);
+            var temp = text.Replace("bonus2 bmagicsubsize,", string.Empty);
             var temps = temp.Split(',');
             text = string.Format(_localization.GetTexts(Localization.BONUS2_MAGIC_SUB_SIZE), ParseSize(temps[0]), TryParseInt(temps[1]));
         }
-        text = text.Replace("bonus bNoSizeFix", _localization.GetTexts(Localization.BONUS_NO_SIZE_FIX));
-        if (text.Contains("bonus2 bAddDamageClass,"))
+        text = text.Replace("bonus bnosizefix", _localization.GetTexts(Localization.BONUS_NO_SIZE_FIX));
+        if (text.Contains("bonus2 badddamageclass,"))
         {
-            var temp = text.Replace("bonus2 bAddDamageClass,", string.Empty);
+            var temp = text.Replace("bonus2 badddamageclass,", string.Empty);
             var temps = temp.Split(',');
             var monsterDatabase = GetMonsterDatabase(TryParseInt(temps[0]));
             text = string.Format(_localization.GetTexts(Localization.BONUS2_ADD_DAMAGE_CLASS), (monsterDatabase != null) ? "^FF0000" + monsterDatabase.name + "^000000" : temps[0], TryParseInt(temps[1]));
         }
-        if (text.Contains("bonus2 bAddMagicDamageClass,"))
+        if (text.Contains("bonus2 baddmagicdamageclass,"))
         {
-            var temp = text.Replace("bonus2 bAddMagicDamageClass,", string.Empty);
+            var temp = text.Replace("bonus2 baddmagicdamageclass,", string.Empty);
             var temps = temp.Split(',');
             var monsterDatabase = GetMonsterDatabase(TryParseInt(temps[0]));
             text = string.Format(_localization.GetTexts(Localization.BONUS2_ADD_MAGIC_DAMAGE_CLASS), (monsterDatabase != null) ? "^FF0000" + monsterDatabase.name + "^000000" : temps[0], TryParseInt(temps[1]));
         }
-        if (text.Contains("bonus2 bAddDefMonster,"))
+        if (text.Contains("bonus2 badddefmonster,"))
         {
-            var temp = text.Replace("bonus2 bAddDefMonster,", string.Empty);
+            var temp = text.Replace("bonus2 badddefmonster,", string.Empty);
             var temps = temp.Split(',');
             var monsterDatabase = GetMonsterDatabase(TryParseInt(temps[0]));
             text = string.Format(_localization.GetTexts(Localization.BONUS2_ADD_DEF_MONSTER), (monsterDatabase != null) ? "^FF0000" + monsterDatabase.name + "^000000" : temps[0], TryParseInt(temps[1]));
         }
-        if (text.Contains("bonus2 bAddMDefMonster,"))
+        if (text.Contains("bonus2 baddmdefmonster,"))
         {
-            var temp = text.Replace("bonus2 bAddMDefMonster,", string.Empty);
+            var temp = text.Replace("bonus2 baddmdefmonster,", string.Empty);
             var temps = temp.Split(',');
             var monsterDatabase = GetMonsterDatabase(TryParseInt(temps[0]));
             text = string.Format(_localization.GetTexts(Localization.BONUS2_ADD_MDEF_MONSTER), (monsterDatabase != null) ? "^FF0000" + monsterDatabase.name + "^000000" : temps[0], TryParseInt(temps[1]));
         }
-        if (text.Contains("bonus2 bAddRace2,"))
+        if (text.Contains("bonus2 baddrace2,"))
         {
-            var temp = text.Replace("bonus2 bAddRace2,", string.Empty);
+            var temp = text.Replace("bonus2 baddrace2,", string.Empty);
             var temps = temp.Split(',');
             text = string.Format(_localization.GetTexts(Localization.BONUS2_ADD_RACE_2), ParseRace2(temps[0]), TryParseInt(temps[1]));
         }
-        if (text.Contains("bonus2 bSubRace2,"))
+        if (text.Contains("bonus2 bsubrace2,"))
         {
-            var temp = text.Replace("bonus2 bSubRace2,", string.Empty);
+            var temp = text.Replace("bonus2 bsubrace2,", string.Empty);
             var temps = temp.Split(',');
             text = string.Format(_localization.GetTexts(Localization.BONUS2_SUB_RACE_2), ParseRace2(temps[0]), TryParseInt(temps[1]));
         }
-        if (text.Contains("bonus2 bMagicAddRace2,"))
+        if (text.Contains("bonus2 bmagicaddrace2,"))
         {
-            var temp = text.Replace("bonus2 bMagicAddRace2,", string.Empty);
+            var temp = text.Replace("bonus2 bmagicaddrace2,", string.Empty);
             var temps = temp.Split(',');
             text = string.Format(_localization.GetTexts(Localization.BONUS2_MAGIC_ADD_RACE_2), ParseRace2(temps[0]), TryParseInt(temps[1]));
         }
-        if (text.Contains("bonus2 bSubSkill,"))
+        if (text.Contains("bonus2 bsubskill,"))
         {
-            var temp = text.Replace("bonus2 bSubSkill,", string.Empty);
+            var temp = text.Replace("bonus2 bsubskill,", string.Empty);
             var temps = temp.Split(',');
             text = string.Format(_localization.GetTexts(Localization.BONUS2_SUB_SKILL), GetSkillName(QuoteRemover.Remove(temps[0])), TryParseInt(temps[1]));
         }
-        if (text.Contains("bonus bAbsorbDmgMaxHP,"))
+        if (text.Contains("bonus babsorbdmgmaxhp,"))
         {
-            var temp = text.Replace("bonus bAbsorbDmgMaxHP,", string.Empty);
+            var temp = text.Replace("bonus babsorbdmgmaxhp,", string.Empty);
             var temps = temp.Split(',');
             text = string.Format(_localization.GetTexts(Localization.BONUS_ABSORB_DMG_MAX_HP), TryParseInt(temps[0]));
         }
-        if (text.Contains("bonus bAbsorbDmgMaxHP2,"))
+        if (text.Contains("bonus babsorbdmgmaxhp2,"))
         {
-            var temp = text.Replace("bonus bAbsorbDmgMaxHP2,", string.Empty);
+            var temp = text.Replace("bonus babsorbdmgmaxhp2,", string.Empty);
             var temps = temp.Split(',');
             text = string.Format(_localization.GetTexts(Localization.BONUS_ABSORB_DMG_MAX_HP_2), TryParseInt(temps[0]));
         }
-        if (text.Contains("bonus bAtkEle,"))
+        if (text.Contains("bonus batkele,"))
         {
-            var temp = text.Replace("bonus bAtkEle,", string.Empty);
+            var temp = text.Replace("bonus batkele,", string.Empty);
             var temps = temp.Split(',');
             text = string.Format(_localization.GetTexts(Localization.BONUS_ATK_ELE), ParseElement(temps[0]));
         }
-        if (text.Contains("bonus bDefEle,"))
+        if (text.Contains("bonus bdefele,"))
         {
-            var temp = text.Replace("bonus bDefEle,", string.Empty);
+            var temp = text.Replace("bonus bdefele,", string.Empty);
             var temps = temp.Split(',');
             text = string.Format(_localization.GetTexts(Localization.BONUS_DEF_ELE), ParseElement(temps[0]));
         }
-        if (text.Contains("bonus2 bMagicAtkEle,"))
+        if (text.Contains("bonus2 bmagicatkele,"))
         {
-            var temp = text.Replace("bonus2 bMagicAtkEle,", string.Empty);
+            var temp = text.Replace("bonus2 bmagicatkele,", string.Empty);
             var temps = temp.Split(',');
             text = string.Format(_localization.GetTexts(Localization.BONUS2_MAGIC_ATK_ELE), ParseElement(temps[0]), TryParseInt(temps[1]));
         }
-        if (text.Contains("bonus bDefRatioAtkRace,"))
+        if (text.Contains("bonus bdefratioatkrace,"))
         {
-            var temp = text.Replace("bonus bDefRatioAtkRace,", string.Empty);
+            var temp = text.Replace("bonus bdefratioatkrace,", string.Empty);
             var temps = temp.Split(',');
             text = string.Format(_localization.GetTexts(Localization.BONUS_DEF_RATIO_ATK_RACE), ParseRace(temps[0]));
         }
-        if (text.Contains("bonus bDefRatioAtkEle,"))
+        if (text.Contains("bonus bdefratioatkele,"))
         {
-            var temp = text.Replace("bonus bDefRatioAtkEle,", string.Empty);
+            var temp = text.Replace("bonus bdefratioatkele,", string.Empty);
             var temps = temp.Split(',');
             text = string.Format(_localization.GetTexts(Localization.BONUS_DEF_RATIO_ATK_ELE), ParseElement(temps[0]));
         }
-        if (text.Contains("bonus bDefRatioAtkClass,"))
+        if (text.Contains("bonus bdefratioatkclass,"))
         {
-            var temp = text.Replace("bonus bDefRatioAtkClass,", string.Empty);
+            var temp = text.Replace("bonus bdefratioatkclass,", string.Empty);
             var temps = temp.Split(',');
             text = string.Format(_localization.GetTexts(Localization.BONUS_DEF_RATIO_ATK_CLASS), ParseClass(temps[0]));
         }
-        if (text.Contains("bonus4 bSetDefRace,"))
+        if (text.Contains("bonus4 bsetdefrace,"))
         {
-            var temp = text.Replace("bonus4 bSetDefRace,", string.Empty);
+            var temp = text.Replace("bonus4 bsetdefrace,", string.Empty);
             var temps = temp.Split(',');
             text = string.Format(_localization.GetTexts(Localization.BONUS4_SET_DEF_RACE), ParseRace(temps[0]), TryParseInt(temps[1]), TryParseTimer(TryParseInt(temps[2], 1000)), TryParseInt(temps[3]));
         }
-        if (text.Contains("bonus4 bSetMDefRace,"))
+        if (text.Contains("bonus4 bsetmdefrace,"))
         {
-            var temp = text.Replace("bonus4 bSetMDefRace,", string.Empty);
+            var temp = text.Replace("bonus4 bsetmdefrace,", string.Empty);
             var temps = temp.Split(',');
             text = string.Format(_localization.GetTexts(Localization.BONUS4_SET_MDEF_RACE), ParseRace(temps[0]), TryParseInt(temps[1]), TryParseTimer(TryParseInt(temps[2], 1000)), TryParseInt(temps[3]));
         }
-        if (text.Contains("bonus bIgnoreDefEle,"))
+        if (text.Contains("bonus bignoredefele,"))
         {
-            var temp = text.Replace("bonus bIgnoreDefEle,", string.Empty);
+            var temp = text.Replace("bonus bignoredefele,", string.Empty);
             var temps = temp.Split(',');
             text = string.Format(_localization.GetTexts(Localization.BONUS_IGNORE_DEF_ELE), ParseElement(temps[0]));
         }
-        if (text.Contains("bonus bIgnoreDefRace,"))
+        if (text.Contains("bonus bignoredefrace,"))
         {
-            var temp = text.Replace("bonus bIgnoreDefRace,", string.Empty);
+            var temp = text.Replace("bonus bignoredefrace,", string.Empty);
             var temps = temp.Split(',');
             text = string.Format(_localization.GetTexts(Localization.BONUS_IGNORE_DEF_RACE), ParseRace(temps[0]));
         }
-        if (text.Contains("bonus bIgnoreDefClass,"))
+        if (text.Contains("bonus bignoredefclass,"))
         {
-            var temp = text.Replace("bonus bIgnoreDefClass,", string.Empty);
+            var temp = text.Replace("bonus bignoredefclass,", string.Empty);
             var temps = temp.Split(',');
             text = string.Format(_localization.GetTexts(Localization.BONUS_IGNORE_DEF_CLASS), ParseClass(temps[0]));
         }
-        if (text.Contains("bonus bIgnoreMDefRace,"))
+        if (text.Contains("bonus bignoremdefrace,"))
         {
-            var temp = text.Replace("bonus bIgnoreMDefRace,", string.Empty);
+            var temp = text.Replace("bonus bignoremdefrace,", string.Empty);
             var temps = temp.Split(',');
             text = string.Format(_localization.GetTexts(Localization.BONUS_IGNORE_MDEF_RACE), ParseRace(temps[0]));
         }
-        if (text.Contains("bonus2 bIgnoreDefRaceRate,"))
+        if (text.Contains("bonus2 bignoredefracerate,"))
         {
-            var temp = text.Replace("bonus2 bIgnoreDefRaceRate,", string.Empty);
+            var temp = text.Replace("bonus2 bignoredefracerate,", string.Empty);
             var temps = temp.Split(',');
             text = string.Format(_localization.GetTexts(Localization.BONUS2_IGNORE_DEF_RACE_RATE), ParseRace(temps[0]), TryParseInt(temps[1]));
         }
-        if (text.Contains("bonus2 bIgnoreMdefRaceRate,"))
+        if (text.Contains("bonus2 bignoremdefracerate,"))
         {
-            var temp = text.Replace("bonus2 bIgnoreMdefRaceRate,", string.Empty);
+            var temp = text.Replace("bonus2 bignoremdefracerate,", string.Empty);
             var temps = temp.Split(',');
             text = string.Format(_localization.GetTexts(Localization.BONUS2_IGNORE_MDEF_RACE_RATE), ParseRace(temps[0]), TryParseInt(temps[1]));
         }
-        if (text.Contains("bonus2 bIgnoreMdefRace2Rate,"))
+        if (text.Contains("bonus2 bignoremdefrace2rate,"))
         {
-            var temp = text.Replace("bonus2 bIgnoreMdefRace2Rate,", string.Empty);
+            var temp = text.Replace("bonus2 bignoremdefrace2rate,", string.Empty);
             var temps = temp.Split(',');
             text = string.Format(_localization.GetTexts(Localization.BONUS2_IGNORE_MDEF_RACE_2_RATE), ParseRace2(temps[0]), TryParseInt(temps[1]));
         }
-        if (text.Contains("bonus bIgnoreMDefEle,"))
+        if (text.Contains("bonus bignoremdefele,"))
         {
-            var temp = text.Replace("bonus bIgnoreMDefEle,", string.Empty);
+            var temp = text.Replace("bonus bignoremdefele,", string.Empty);
             var temps = temp.Split(',');
             text = string.Format(_localization.GetTexts(Localization.BONUS_IGNORE_MDEF_ELE), ParseElement(temps[0]));
         }
-        if (text.Contains("bonus2 bIgnoreDefClassRate,"))
+        if (text.Contains("bonus2 bignoredefclassrate,"))
         {
-            var temp = text.Replace("bonus2 bIgnoreDefClassRate,", string.Empty);
+            var temp = text.Replace("bonus2 bignoredefclassrate,", string.Empty);
             var temps = temp.Split(',');
             text = string.Format(_localization.GetTexts(Localization.BONUS2_IGNORE_DEF_CLASS_RATE), ParseClass(temps[0]), TryParseInt(temps[1]));
         }
-        if (text.Contains("bonus2 bIgnoreMdefClassRate,"))
+        if (text.Contains("bonus2 bignoremdefclassrate,"))
         {
-            var temp = text.Replace("bonus2 bIgnoreMdefClassRate,", string.Empty);
+            var temp = text.Replace("bonus2 bignoremdefclassrate,", string.Empty);
             var temps = temp.Split(',');
             text = string.Format(_localization.GetTexts(Localization.BONUS2_IGNORE_MDEF_CLASS_RATE), ParseClass(temps[0]), TryParseInt(temps[1]));
         }
-        if (text.Contains("bonus2 bIgnoreResRaceRate,"))
+        if (text.Contains("bonus2 bignoreresracerate,"))
         {
-            var temp = text.Replace("bonus2 bIgnoreResRaceRate,", string.Empty);
+            var temp = text.Replace("bonus2 bignoreresracerate,", string.Empty);
             var temps = temp.Split(',');
             text = string.Format(_localization.GetTexts(Localization.BONUS2_IGNORE_RES_RACE_RATE), ParseRace(temps[0]), TryParseInt(temps[1]));
         }
-        if (text.Contains("bonus2 bIgnoreMResRaceRate,"))
+        if (text.Contains("bonus2 bignoremresracerate,"))
         {
-            var temp = text.Replace("bonus2 bIgnoreMResRaceRate,", string.Empty);
+            var temp = text.Replace("bonus2 bignoremresracerate,", string.Empty);
             var temps = temp.Split(',');
             text = string.Format(_localization.GetTexts(Localization.BONUS2_IGNORE_MRES_RACE_RATE), ParseRace(temps[0]), TryParseInt(temps[1]));
         }
-        if (text.Contains("bonus2 bExpAddRace,"))
+        if (text.Contains("bonus2 bexpaddrace,"))
         {
-            var temp = text.Replace("bonus2 bExpAddRace,", string.Empty);
+            var temp = text.Replace("bonus2 bexpaddrace,", string.Empty);
             var temps = temp.Split(',');
             text = string.Format(_localization.GetTexts(Localization.BONUS2_EXP_ADD_RACE), ParseRace(temps[0]), TryParseInt(temps[1]));
         }
-        if (text.Contains("bonus2 bExpAddClass,"))
+        if (text.Contains("bonus2 bexpaddclass,"))
         {
-            var temp = text.Replace("bonus2 bExpAddClass,", string.Empty);
+            var temp = text.Replace("bonus2 bexpaddclass,", string.Empty);
             var temps = temp.Split(',');
             text = string.Format(_localization.GetTexts(Localization.BONUS2_EXP_ADD_CLASS), ParseClass(temps[0]), TryParseInt(temps[1]));
         }
-        if (text.Contains("bonus2 bAddEff,"))
+        if (text.Contains("bonus2 baddeff,"))
         {
-            var temp = text.Replace("bonus2 bAddEff,", string.Empty);
+            var temp = text.Replace("bonus2 baddeff,", string.Empty);
             var temps = temp.Split(',');
             text = string.Format(_localization.GetTexts(Localization.BONUS2_ADD_EFF), ParseEffect(temps[0]), TryParseInt(temps[1], 100));
         }
-        if (text.Contains("bonus2 bAddEff2,"))
+        if (text.Contains("bonus2 baddeff2,"))
         {
-            var temp = text.Replace("bonus2 bAddEff2,", string.Empty);
+            var temp = text.Replace("bonus2 baddeff2,", string.Empty);
             var temps = temp.Split(',');
             text = string.Format(_localization.GetTexts(Localization.BONUS2_ADD_EFF_2), ParseEffect(temps[0]), TryParseInt(temps[1], 100));
         }
-        if (text.Contains("bonus2 bAddEffWhenHit,"))
+        if (text.Contains("bonus2 baddeffwhenhit,"))
         {
-            var temp = text.Replace("bonus2 bAddEffWhenHit,", string.Empty);
+            var temp = text.Replace("bonus2 baddeffwhenhit,", string.Empty);
             var temps = temp.Split(',');
             text = string.Format(_localization.GetTexts(Localization.BONUS2_ADD_EFF_WHEN_HIT), ParseEffect(temps[0]), TryParseInt(temps[1], 100));
         }
-        if (text.Contains("bonus2 bResEff,"))
+        if (text.Contains("bonus2 breseff,"))
         {
-            var temp = text.Replace("bonus2 bResEff,", string.Empty);
+            var temp = text.Replace("bonus2 breseff,", string.Empty);
             var temps = temp.Split(',');
             text = string.Format(_localization.GetTexts(Localization.BONUS2_RES_EFF), ParseEffect(temps[0]), TryParseInt(temps[1], 100));
         }
-        if (text.Contains("bonus3 bAddEff,"))
+        if (text.Contains("bonus3 baddeff,"))
         {
-            var temp = text.Replace("bonus3 bAddEff,", string.Empty);
+            var temp = text.Replace("bonus3 baddeff,", string.Empty);
             var temps = temp.Split(',');
             text = string.Format(_localization.GetTexts(Localization.BONUS3_ADD_EFF), ParseEffect(temps[0]), TryParseInt(temps[1], 100), ParseAtf(temps[2]));
         }
-        if (text.Contains("bonus4 bAddEff,"))
+        if (text.Contains("bonus4 baddeff,"))
         {
-            var temp = text.Replace("bonus4 bAddEff,", string.Empty);
+            var temp = text.Replace("bonus4 baddeff,", string.Empty);
             var temps = temp.Split(',');
             text = string.Format(_localization.GetTexts(Localization.BONUS4_ADD_EFF), ParseEffect(temps[0]), TryParseInt(temps[1], 100), ParseAtf(temps[2]), TryParseTimer(TryParseInt(temps[3], 1000)));
         }
-        if (text.Contains("bonus3 bAddEffWhenHit,"))
+        if (text.Contains("bonus3 baddeffwhenhit,"))
         {
-            var temp = text.Replace("bonus3 bAddEffWhenHit,", string.Empty);
+            var temp = text.Replace("bonus3 baddeffwhenhit,", string.Empty);
             var temps = temp.Split(',');
             text = string.Format(_localization.GetTexts(Localization.BONUS3_ADD_EFF_WHEN_HIT), ParseEffect(temps[0]), TryParseInt(temps[1], 100), ParseAtf(temps[2]));
         }
-        if (text.Contains("bonus4 bAddEffWhenHit,"))
+        if (text.Contains("bonus4 baddeffwhenhit,"))
         {
-            var temp = text.Replace("bonus4 bAddEffWhenHit,", string.Empty);
+            var temp = text.Replace("bonus4 baddeffwhenhit,", string.Empty);
             var temps = temp.Split(',');
             text = string.Format(_localization.GetTexts(Localization.BONUS4_ADD_EFF_WHEN_HIT), ParseEffect(temps[0]), TryParseInt(temps[1], 100), ParseAtf(temps[2]), TryParseTimer(TryParseInt(temps[3], 1000)));
         }
-        if (text.Contains("bonus3 bAddEffOnSkill,"))
+        if (text.Contains("bonus3 baddeffonskill,"))
         {
-            var temp = text.Replace("bonus3 bAddEffOnSkill,", string.Empty);
+            var temp = text.Replace("bonus3 baddeffonskill,", string.Empty);
             var temps = temp.Split(',');
             text = string.Format(_localization.GetTexts(Localization.BONUS3_ADD_EFF_ON_SKILL), GetSkillName(QuoteRemover.Remove(temps[0])), ParseEffect(temps[1]), TryParseInt(temps[2], 100));
         }
-        if (text.Contains("bonus4 bAddEffOnSkill,"))
+        if (text.Contains("bonus4 baddeffonskill,"))
         {
-            var temp = text.Replace("bonus4 bAddEffOnSkill,", string.Empty);
+            var temp = text.Replace("bonus4 baddeffonskill,", string.Empty);
             var temps = temp.Split(',');
             text = string.Format(_localization.GetTexts(Localization.BONUS4_ADD_EFF_ON_SKILL), GetSkillName(QuoteRemover.Remove(temps[0])), ParseEffect(temps[1]), TryParseInt(temps[2], 100), ParseAtf(temps[3]));
         }
-        if (text.Contains("bonus5 bAddEffOnSkill,"))
+        if (text.Contains("bonus5 baddeffonskill,"))
         {
-            var temp = text.Replace("bonus5 bAddEffOnSkill,", string.Empty);
+            var temp = text.Replace("bonus5 baddeffonskill,", string.Empty);
             var temps = temp.Split(',');
             text = string.Format(_localization.GetTexts(Localization.BONUS5_ADD_EFF_ON_SKILL), GetSkillName(QuoteRemover.Remove(temps[0])), ParseEffect(temps[1]), TryParseInt(temps[2], 100), ParseAtf(temps[3]), TryParseTimer(TryParseInt(temps[4], 1000)));
         }
-        if (text.Contains("bonus2 bComaClass,"))
+        if (text.Contains("bonus2 bcomaclass,"))
         {
-            var temp = text.Replace("bonus2 bComaClass,", string.Empty);
+            var temp = text.Replace("bonus2 bcomaclass,", string.Empty);
             var temps = temp.Split(',');
             text = string.Format(_localization.GetTexts(Localization.BONUS2_COMA_CLASS), ParseClass(temps[0]), TryParseInt(temps[1], 100));
         }
-        if (text.Contains("bonus2 bComaRace,"))
+        if (text.Contains("bonus2 bcomarace,"))
         {
-            var temp = text.Replace("bonus2 bComaRace,", string.Empty);
+            var temp = text.Replace("bonus2 bcomarace,", string.Empty);
             var temps = temp.Split(',');
             text = string.Format(_localization.GetTexts(Localization.BONUS2_COMA_RACE), ParseRace(temps[0]), TryParseInt(temps[1], 100));
         }
-        if (text.Contains("bonus2 bWeaponComaEle,"))
+        if (text.Contains("bonus2 bweaponcomaele,"))
         {
-            var temp = text.Replace("bonus2 bWeaponComaEle,", string.Empty);
+            var temp = text.Replace("bonus2 bweaponcomaele,", string.Empty);
             var temps = temp.Split(',');
             text = string.Format(_localization.GetTexts(Localization.BONUS2_WEAPON_COMA_ELE), ParseElement(temps[0]), TryParseInt(temps[1], 100));
         }
-        if (text.Contains("bonus2 bWeaponComaClass,"))
+        if (text.Contains("bonus2 bweaponcomaclass,"))
         {
-            var temp = text.Replace("bonus2 bWeaponComaClass,", string.Empty);
+            var temp = text.Replace("bonus2 bweaponcomaclass,", string.Empty);
             var temps = temp.Split(',');
             text = string.Format(_localization.GetTexts(Localization.BONUS2_WEAPON_COMA_CLASS), ParseClass(temps[0]), TryParseInt(temps[1], 100));
         }
-        if (text.Contains("bonus2 bWeaponComaRace,"))
+        if (text.Contains("bonus2 bweaponcomarace,"))
         {
-            var temp = text.Replace("bonus2 bWeaponComaRace,", string.Empty);
+            var temp = text.Replace("bonus2 bweaponcomarace,", string.Empty);
             var temps = temp.Split(',');
             text = string.Format(_localization.GetTexts(Localization.BONUS2_WEAPON_COMA_RACE), ParseRace(temps[0]), TryParseInt(temps[1], 100));
         }
-        if (text.Contains("bonus3 bAutoSpell,"))
+        if (text.Contains("bonus3 bautospell,"))
         {
-            var temp = text.Replace("bonus3 bAutoSpell,", string.Empty);
+            var temp = text.Replace("bonus3 bautospell,", string.Empty);
             var temps = temp.Split(',');
             text = string.Format(_localization.GetTexts(Localization.BONUS3_AUTO_SPELL), GetSkillName(QuoteRemover.Remove(temps[0])), TryParseInt(temps[1]), TryParseInt(temps[2], 10));
         }
-        if (text.Contains("bonus3 bAutoSpellWhenHit,"))
+        if (text.Contains("bonus3 bautospellwhenhit,"))
         {
-            var temp = text.Replace("bonus3 bAutoSpellWhenHit,", string.Empty);
+            var temp = text.Replace("bonus3 bautospellwhenhit,", string.Empty);
             var temps = temp.Split(',');
             text = string.Format(_localization.GetTexts(Localization.BONUS3_AUTO_SPELL_WHEN_HIT), GetSkillName(QuoteRemover.Remove(temps[0])), TryParseInt(temps[1]), TryParseInt(temps[2], 10));
         }
-        if (text.Contains("bonus4 bAutoSpell,"))
+        if (text.Contains("bonus4 bautospell,"))
         {
-            var temp = text.Replace("bonus4 bAutoSpell,", string.Empty);
+            var temp = text.Replace("bonus4 bautospell,", string.Empty);
             var temps = temp.Split(',');
             text = string.Format(_localization.GetTexts(Localization.BONUS4_AUTO_SPELL), GetSkillName(QuoteRemover.Remove(temps[0])), TryParseInt(temps[1]), TryParseInt(temps[2], 10), ParseI(temps[3]));
         }
-        if (text.Contains("bonus5 bAutoSpell,"))
+        if (text.Contains("bonus5 bautospell,"))
         {
-            var temp = text.Replace("bonus5 bAutoSpell,", string.Empty);
+            var temp = text.Replace("bonus5 bautospell,", string.Empty);
             var temps = temp.Split(',');
             text = string.Format(_localization.GetTexts(Localization.BONUS5_AUTO_SPELL), GetSkillName(QuoteRemover.Remove(temps[0])), TryParseInt(temps[1]), TryParseInt(temps[2], 10), ParseAtf(temps[3]), ParseI(temps[4]));
         }
-        if (text.Contains("bonus4 bAutoSpellWhenHit,"))
+        if (text.Contains("bonus4 bautospellwhenhit,"))
         {
-            var temp = text.Replace("bonus4 bAutoSpellWhenHit,", string.Empty);
+            var temp = text.Replace("bonus4 bautospellwhenhit,", string.Empty);
             var temps = temp.Split(',');
             text = string.Format(_localization.GetTexts(Localization.BONUS4_AUTO_SPELL_WHEN_HIT), GetSkillName(QuoteRemover.Remove(temps[0])), TryParseInt(temps[1]), TryParseInt(temps[2], 10), ParseI(temps[3]));
         }
-        if (text.Contains("bonus5 bAutoSpellWhenHit,"))
+        if (text.Contains("bonus5 bautospellwhenhit,"))
         {
-            var temp = text.Replace("bonus5 bAutoSpellWhenHit,", string.Empty);
+            var temp = text.Replace("bonus5 bautospellwhenhit,", string.Empty);
             var temps = temp.Split(',');
             text = string.Format(_localization.GetTexts(Localization.BONUS5_AUTO_SPELL_WHEN_HIT), GetSkillName(QuoteRemover.Remove(temps[0])), TryParseInt(temps[1]), TryParseInt(temps[2], 10), ParseAtf(temps[3]), ParseI(temps[4]));
         }
-        if (text.Contains("bonus4 bAutoSpellOnSkill,"))
+        if (text.Contains("bonus4 bautospellonskill,"))
         {
-            var temp = text.Replace("bonus4 bAutoSpellOnSkill,", string.Empty);
+            var temp = text.Replace("bonus4 bautospellonskill,", string.Empty);
             var temps = temp.Split(',');
             text = string.Format(_localization.GetTexts(Localization.BONUS4_AUTO_SPELL_ON_SKILL), GetSkillName(QuoteRemover.Remove(temps[0])), GetSkillName(QuoteRemover.Remove(temps[1])), TryParseInt(temps[2]), TryParseInt(temps[3], 10));
         }
-        if (text.Contains("bonus5 bAutoSpellOnSkill,"))
+        if (text.Contains("bonus5 bautospellonskill,"))
         {
-            var temp = text.Replace("bonus5 bAutoSpellOnSkill,", string.Empty);
+            var temp = text.Replace("bonus5 bautospellonskill,", string.Empty);
             var temps = temp.Split(',');
             text = string.Format(_localization.GetTexts(Localization.BONUS5_AUTO_SPELL_ON_SKILL), GetSkillName(QuoteRemover.Remove(temps[0])), GetSkillName(QuoteRemover.Remove(temps[1])), TryParseInt(temps[2]), TryParseInt(temps[3], 10), ParseI(temps[4]));
         }
-        text = text.Replace("bonus bHPDrainValue,", _localization.GetTexts(Localization.BONUS_HP_DRAIN_VALUE));
-        if (text.Contains("bonus2 bHPDrainValueRace,"))
+        text = text.Replace("bonus bhpdrainvalue,", _localization.GetTexts(Localization.BONUS_HP_DRAIN_VALUE));
+        if (text.Contains("bonus2 bhpdrainvaluerace,"))
         {
-            var temp = text.Replace("bonus2 bHPDrainValueRace,", string.Empty);
+            var temp = text.Replace("bonus2 bhpdrainvaluerace,", string.Empty);
             var temps = temp.Split(',');
             text = string.Format(_localization.GetTexts(Localization.BONUS2_HP_DRAIN_VALUE_RACE), ParseRace(temps[0]), TryParseInt(temps[1]));
         }
-        if (text.Contains("bonus2 bHpDrainValueClass,"))
+        if (text.Contains("bonus2 bhpdrainvalueclass,"))
         {
-            var temp = text.Replace("bonus2 bHpDrainValueClass,", string.Empty);
+            var temp = text.Replace("bonus2 bhpdrainvalueclass,", string.Empty);
             var temps = temp.Split(',');
             text = string.Format(_localization.GetTexts(Localization.BONUS2_HP_DRAIN_VALUE_CLASS), ParseClass(temps[0]), TryParseInt(temps[1]));
         }
-        text = text.Replace("bonus bSPDrainValue,", _localization.GetTexts(Localization.BONUS_SP_DRAIN_VALUE));
-        if (text.Contains("bonus2 bSPDrainValueRace,"))
+        text = text.Replace("bonus bspdrainvalue,", _localization.GetTexts(Localization.BONUS_SP_DRAIN_VALUE));
+        if (text.Contains("bonus2 bspdrainvaluerace,"))
         {
-            var temp = text.Replace("bonus2 bSPDrainValueRace,", string.Empty);
+            var temp = text.Replace("bonus2 bspdrainvaluerace,", string.Empty);
             var temps = temp.Split(',');
             text = string.Format(_localization.GetTexts(Localization.BONUS2_SP_DRAIN_VALUE_RACE), ParseRace(temps[0]), TryParseInt(temps[1]));
         }
-        if (text.Contains("bonus2 bSpDrainValueClass,"))
+        if (text.Contains("bonus2 bspdrainvalueclass,"))
         {
-            var temp = text.Replace("bonus2 bSpDrainValueClass,", string.Empty);
+            var temp = text.Replace("bonus2 bspdrainvalueclass,", string.Empty);
             var temps = temp.Split(',');
             text = string.Format(_localization.GetTexts(Localization.BONUS2_SP_DRAIN_VALUE_CLASS), ParseClass(temps[0]), TryParseInt(temps[1]));
         }
-        if (text.Contains("bonus2 bHPDrainRate,"))
+        if (text.Contains("bonus2 bhpdrainrate,"))
         {
-            var temp = text.Replace("bonus2 bHPDrainRate,", string.Empty);
+            var temp = text.Replace("bonus2 bhpdrainrate,", string.Empty);
             var temps = temp.Split(',');
             text = string.Format(_localization.GetTexts(Localization.BONUS2_HP_DRAIN_RATE), TryParseInt(temps[0], 10), TryParseInt(temps[1]));
         }
-        if (text.Contains("bonus2 bSPDrainRate,"))
+        if (text.Contains("bonus2 bspdrainrate,"))
         {
-            var temp = text.Replace("bonus2 bSPDrainRate,", string.Empty);
+            var temp = text.Replace("bonus2 bspdrainrate,", string.Empty);
             var temps = temp.Split(',');
             text = string.Format(_localization.GetTexts(Localization.BONUS2_SP_DRAIN_RATE), TryParseInt(temps[0], 10), TryParseInt(temps[1]));
         }
-        if (text.Contains("bonus2 bHPVanishRate,"))
+        if (text.Contains("bonus2 bhpvanishrate,"))
         {
-            var temp = text.Replace("bonus2 bHPVanishRate,", string.Empty);
+            var temp = text.Replace("bonus2 bhpvanishrate,", string.Empty);
             var temps = temp.Split(',');
             text = string.Format(_localization.GetTexts(Localization.BONUS2_HP_VANISH_RATE), TryParseInt(temps[0], 10), TryParseInt(temps[1]));
         }
-        if (text.Contains("bonus3 bHPVanishRaceRate,"))
+        if (text.Contains("bonus3 bhpvanishracerate,"))
         {
-            var temp = text.Replace("bonus3 bHPVanishRaceRate,", string.Empty);
+            var temp = text.Replace("bonus3 bhpvanishracerate,", string.Empty);
             var temps = temp.Split(',');
             text = string.Format(_localization.GetTexts(Localization.BONUS3_HP_VANISH_RACE_RATE), ParseRace(temps[0]), TryParseInt(temps[1], 10), TryParseInt(temps[2]));
         }
-        if (text.Contains("bonus3 bHPVanishRate,"))
+        if (text.Contains("bonus3 bhpvanishrate,"))
         {
-            var temp = text.Replace("bonus3 bHPVanishRate,", string.Empty);
+            var temp = text.Replace("bonus3 bhpvanishrate,", string.Empty);
             var temps = temp.Split(',');
             text = string.Format(_localization.GetTexts(Localization.BONUS3_HP_VANISH_RATE), TryParseInt(temps[0], 10), TryParseInt(temps[1]), ParseAtf(temps[2]));
         }
-        if (text.Contains("bonus2 bSPVanishRate,"))
+        if (text.Contains("bonus2 bspvanishrate,"))
         {
-            var temp = text.Replace("bonus2 bSPVanishRate,", string.Empty);
+            var temp = text.Replace("bonus2 bspvanishrate,", string.Empty);
             var temps = temp.Split(',');
             text = string.Format(_localization.GetTexts(Localization.BONUS2_SP_VANISH_RATE), TryParseInt(temps[0], 10), TryParseInt(temps[1]));
         }
-        if (text.Contains("bonus3 bSPVanishRaceRate,"))
+        if (text.Contains("bonus3 bspvanishracerate,"))
         {
-            var temp = text.Replace("bonus3 bSPVanishRaceRate,", string.Empty);
+            var temp = text.Replace("bonus3 bspvanishracerate,", string.Empty);
             var temps = temp.Split(',');
             text = string.Format(_localization.GetTexts(Localization.BONUS3_SP_VANISH_RACE_RATE), ParseRace(temps[0]), TryParseInt(temps[1], 10), TryParseInt(temps[2]));
         }
-        if (text.Contains("bonus3 bSPVanishRate,"))
+        if (text.Contains("bonus3 bspvanishrate,"))
         {
-            var temp = text.Replace("bonus3 bSPVanishRate,", string.Empty);
+            var temp = text.Replace("bonus3 bspvanishrate,", string.Empty);
             var temps = temp.Split(',');
             text = string.Format(_localization.GetTexts(Localization.BONUS3_SP_VANISH_RATE), TryParseInt(temps[0], 10), TryParseInt(temps[1]), ParseAtf(temps[2]));
         }
-        if (text.Contains("bonus3 bStateNoRecoverRace,"))
+        if (text.Contains("bonus3 bstatenorecoverrace,"))
         {
-            var temp = text.Replace("bonus3 bStateNoRecoverRace,", string.Empty);
+            var temp = text.Replace("bonus3 bstatenorecoverrace,", string.Empty);
             var temps = temp.Split(',');
             text = string.Format(_localization.GetTexts(Localization.BONUS3_STATE_NO_RECOVER_RACE), ParseRace(temps[0]), TryParseInt(temps[1], 100), TryParseTimer(TryParseInt(temps[2], 1000)));
         }
-        text = text.Replace("bonus bHPGainValue,", _localization.GetTexts(Localization.BONUS_HP_GAIN_VALUE));
-        text = text.Replace("bonus bSPGainValue,", _localization.GetTexts(Localization.BONUS_SP_GAIN_VALUE));
-        if (text.Contains("bonus2 bSPGainRace,"))
+        text = text.Replace("bonus bhpgainvalue,", _localization.GetTexts(Localization.BONUS_HP_GAIN_VALUE));
+        text = text.Replace("bonus bspgainvalue,", _localization.GetTexts(Localization.BONUS_SP_GAIN_VALUE));
+        if (text.Contains("bonus2 bspgainrace,"))
         {
-            var temp = text.Replace("bonus2 bSPGainRace,", string.Empty);
+            var temp = text.Replace("bonus2 bspgainrace,", string.Empty);
             var temps = temp.Split(',');
             text = string.Format(_localization.GetTexts(Localization.BONUS2_SP_GAIN_RACE), ParseRace(temps[0]), TryParseInt(temps[1]));
         }
-        text = text.Replace("bonus bLongHPGainValue,", _localization.GetTexts(Localization.BONUS_LONG_HP_GAIN_VALUE));
-        text = text.Replace("bonus bLongSPGainValue,", _localization.GetTexts(Localization.BONUS_LONG_SP_GAIN_VALUE));
-        text = text.Replace("bonus bMagicHPGainValue,", _localization.GetTexts(Localization.BONUS_MAGIC_HP_GAIN_VALUE));
-        text = text.Replace("bonus bMagicSPGainValue,", _localization.GetTexts(Localization.BONUS_MAGIC_SP_GAIN_VALUE));
-        if (text.Contains("bonus bShortWeaponDamageReturn,"))
+        text = text.Replace("bonus blonghpgainvalue,", _localization.GetTexts(Localization.BONUS_LONG_HP_GAIN_VALUE));
+        text = text.Replace("bonus blongspgainvalue,", _localization.GetTexts(Localization.BONUS_LONG_SP_GAIN_VALUE));
+        text = text.Replace("bonus bmagichpgainvalue,", _localization.GetTexts(Localization.BONUS_MAGIC_HP_GAIN_VALUE));
+        text = text.Replace("bonus bmagicspgainvalue,", _localization.GetTexts(Localization.BONUS_MAGIC_SP_GAIN_VALUE));
+        if (text.Contains("bonus bshortweapondamagereturn,"))
         {
-            var temp = text.Replace("bonus bShortWeaponDamageReturn,", string.Empty);
+            var temp = text.Replace("bonus bshortweapondamagereturn,", string.Empty);
             var temps = temp.Split(',');
             text = string.Format(_localization.GetTexts(Localization.BONUS_SHORT_WEAPON_DAMAGE_RETURN), TryParseInt(temps[0]));
         }
-        if (text.Contains("bonus bLongWeaponDamageReturn,"))
+        if (text.Contains("bonus blongweapondamagereturn,"))
         {
-            var temp = text.Replace("bonus bLongWeaponDamageReturn,", string.Empty);
+            var temp = text.Replace("bonus blongweapondamagereturn,", string.Empty);
             var temps = temp.Split(',');
             text = string.Format(_localization.GetTexts(Localization.BONUS_LONG_WEAPON_DAMAGE_RETURN), TryParseInt(temps[0]));
         }
-        if (text.Contains("bonus bMagicDamageReturn,"))
+        if (text.Contains("bonus bmagicdamagereturn,"))
         {
-            var temp = text.Replace("bonus bMagicDamageReturn,", string.Empty);
+            var temp = text.Replace("bonus bmagicdamagereturn,", string.Empty);
             var temps = temp.Split(',');
             text = string.Format(_localization.GetTexts(Localization.BONUS_MAGIC_DAMAGE_RETURN), TryParseInt(temps[0]));
         }
-        if (text.Contains("bonus bReduceDamageReturn,"))
+        if (text.Contains("bonus breducedamagereturn,"))
         {
-            var temp = text.Replace("bonus bReduceDamageReturn,", string.Empty);
+            var temp = text.Replace("bonus breducedamagereturn,", string.Empty);
             var temps = temp.Split(',');
             text = string.Format(_localization.GetTexts(Localization.BONUS_REDUCE_DAMAGE_RETURN), TryParseInt(temps[0]));
         }
-        text = text.Replace("bonus bUnstripableWeapon", _localization.GetTexts(Localization.BONUS_UNSTRIPABLE_WEAPON));
-        text = text.Replace("bonus bUnstripableArmor", _localization.GetTexts(Localization.BONUS_UNSTRIPABLE_ARMOR));
-        text = text.Replace("bonus bUnstripableHelm", _localization.GetTexts(Localization.BONUS_UNSTRIPABLE_HELM));
-        text = text.Replace("bonus bUnstripableShield", _localization.GetTexts(Localization.BONUS_UNSTRIPABLE_SHIELD));
-        text = text.Replace("bonus bUnstripable", _localization.GetTexts(Localization.BONUS_UNSTRIPABLE));
-        text = text.Replace("bonus bUnbreakableGarment", _localization.GetTexts(Localization.BONUS_UNBREAKABLE_GARMENT));
-        text = text.Replace("bonus bUnbreakableWeapon", _localization.GetTexts(Localization.BONUS_UNBREAKABLE_WEAPON));
-        text = text.Replace("bonus bUnbreakableArmor", _localization.GetTexts(Localization.BONUS_UNBREAKABLE_ARMOR));
-        text = text.Replace("bonus bUnbreakableHelm", _localization.GetTexts(Localization.BONUS_UNBREAKABLE_HELM));
-        text = text.Replace("bonus bUnbreakableShield", _localization.GetTexts(Localization.BONUS_UNBREAKABLE_SHIELD));
-        text = text.Replace("bonus bUnbreakableShoes", _localization.GetTexts(Localization.BONUS_UNBREAKABLE_SHOES));
-        if (text.Contains("bonus bUnbreakable,"))
+        text = text.Replace("bonus bunstripableweapon", _localization.GetTexts(Localization.BONUS_UNSTRIPABLE_WEAPON));
+        text = text.Replace("bonus bunstripablearmor", _localization.GetTexts(Localization.BONUS_UNSTRIPABLE_ARMOR));
+        text = text.Replace("bonus bunstripablehelm", _localization.GetTexts(Localization.BONUS_UNSTRIPABLE_HELM));
+        text = text.Replace("bonus bunstripableshield", _localization.GetTexts(Localization.BONUS_UNSTRIPABLE_SHIELD));
+        text = text.Replace("bonus bunstripable", _localization.GetTexts(Localization.BONUS_UNSTRIPABLE));
+        text = text.Replace("bonus bunbreakablegarment", _localization.GetTexts(Localization.BONUS_UNBREAKABLE_GARMENT));
+        text = text.Replace("bonus bunbreakableweapon", _localization.GetTexts(Localization.BONUS_UNBREAKABLE_WEAPON));
+        text = text.Replace("bonus bunbreakablearmor", _localization.GetTexts(Localization.BONUS_UNBREAKABLE_ARMOR));
+        text = text.Replace("bonus bunbreakablehelm", _localization.GetTexts(Localization.BONUS_UNBREAKABLE_HELM));
+        text = text.Replace("bonus bunbreakableshield", _localization.GetTexts(Localization.BONUS_UNBREAKABLE_SHIELD));
+        text = text.Replace("bonus bunbreakableshoes", _localization.GetTexts(Localization.BONUS_UNBREAKABLE_SHOES));
+        if (text.Contains("bonus bunbreakable,"))
         {
-            var temp = text.Replace("bonus bUnbreakable,", string.Empty);
+            var temp = text.Replace("bonus bunbreakable,", string.Empty);
             var temps = temp.Split(',');
             text = string.Format(_localization.GetTexts(Localization.BONUS_UNBREAKABLE), TryParseInt(temps[0]));
         }
-        if (text.Contains("bonus bBreakWeaponRate,"))
+        if (text.Contains("bonus bbreakweaponrate,"))
         {
-            var temp = text.Replace("bonus bBreakWeaponRate,", string.Empty);
+            var temp = text.Replace("bonus bbreakweaponrate,", string.Empty);
             var temps = temp.Split(',');
             text = string.Format(_localization.GetTexts(Localization.BONUS_BREAK_WEAPON_RATE), TryParseInt(temps[0], 100));
         }
-        if (text.Contains("bonus bBreakArmorRate,"))
+        if (text.Contains("bonus bbreakarmorrate,"))
         {
-            var temp = text.Replace("bonus bBreakArmorRate,", string.Empty);
+            var temp = text.Replace("bonus bbreakarmorrate,", string.Empty);
             var temps = temp.Split(',');
             text = string.Format(_localization.GetTexts(Localization.BONUS_BREAK_ARMOR_RATE), TryParseInt(temps[0], 100));
         }
-        if (text.Contains("bonus2 bDropAddRace,"))
+        if (text.Contains("bonus2 bdropaddrace,"))
         {
-            var temp = text.Replace("bonus2 bDropAddRace,", string.Empty);
+            var temp = text.Replace("bonus2 bdropaddrace,", string.Empty);
             var temps = temp.Split(',');
             text = string.Format(_localization.GetTexts(Localization.BONUS2_DROP_ADD_RACE), ParseRace(temps[0]), TryParseInt(temps[1]));
         }
-        if (text.Contains("bonus2 bDropAddClass,"))
+        if (text.Contains("bonus2 bdropaddclass,"))
         {
-            var temp = text.Replace("bonus2 bDropAddClass,", string.Empty);
+            var temp = text.Replace("bonus2 bdropaddclass,", string.Empty);
             var temps = temp.Split(',');
             text = string.Format(_localization.GetTexts(Localization.BONUS2_DROP_ADD_CLASS), ParseClass(temps[0]), TryParseInt(temps[1]));
         }
-        if (text.Contains("bonus3 bAddMonsterIdDropItem,"))
+        if (text.Contains("bonus3 baddmonsteriddropitem,"))
         {
-            var temp = text.Replace("bonus3 bAddMonsterIdDropItem,", string.Empty);
+            var temp = text.Replace("bonus3 baddmonsteriddropitem,", string.Empty);
             var temps = temp.Split(',');
             var itemId = QuoteRemover.Remove(temps[0]);
             var monsterDatabase = GetMonsterDatabase(TryParseInt(temps[1]));
             text = string.Format(_localization.GetTexts(Localization.BONUS3_ADD_MONSTER_ID_DROP_ITEM), GetItemName(itemId), (monsterDatabase != null) ? monsterDatabase.name : temps[1], TryParseInt(temps[2], 100), itemId);
         }
-        if (text.Contains("bonus2 bAddMonsterDropItem,"))
+        if (text.Contains("bonus2 baddmonsterdropitem,"))
         {
-            var temp = text.Replace("bonus2 bAddMonsterDropItem,", string.Empty);
+            var temp = text.Replace("bonus2 baddmonsterdropitem,", string.Empty);
             var temps = temp.Split(',');
             var itemId = QuoteRemover.Remove(temps[0]);
             text = string.Format(_localization.GetTexts(Localization.BONUS2_ADD_MONSTER_DROP_ITEM), GetItemName(itemId), TryParseInt(temps[1], 100), itemId);
         }
-        if (text.Contains("bonus3 bAddMonsterDropItem,"))
+        if (text.Contains("bonus3 baddmonsterdropitem,"))
         {
-            var temp = text.Replace("bonus3 bAddMonsterDropItem,", string.Empty);
+            var temp = text.Replace("bonus3 baddmonsterdropitem,", string.Empty);
             var temps = temp.Split(',');
             var itemId = QuoteRemover.Remove(temps[0]);
             text = string.Format(_localization.GetTexts(Localization.BONUS3_ADD_MONSTER_DROP_ITEM), GetItemName(itemId), ParseRace(temps[1]), TryParseInt(temps[2], 100), itemId);
         }
-        if (text.Contains("bonus3 bAddClassDropItem,"))
+        if (text.Contains("bonus3 baddclassdropitem,"))
         {
-            var temp = text.Replace("bonus3 bAddClassDropItem,", string.Empty);
+            var temp = text.Replace("bonus3 baddclassdropitem,", string.Empty);
             var temps = temp.Split(',');
             var itemId = QuoteRemover.Remove(temps[0]);
             text = string.Format(_localization.GetTexts(Localization.BONUS3_ADD_CLASS_DROP_ITEM), GetItemName(itemId), ParseClass(temps[1]), TryParseInt(temps[2], 100), itemId);
         }
-        if (text.Contains("bonus2 bAddMonsterDropItemGroup,"))
+        if (text.Contains("bonus2 baddmonsterdropitemgroup,"))
         {
-            var temp = text.Replace("bonus2 bAddMonsterDropItemGroup,", string.Empty);
+            var temp = text.Replace("bonus2 baddmonsterdropitemgroup,", string.Empty);
             var temps = temp.Split(',');
             text = string.Format(_localization.GetTexts(Localization.BONUS2_ADD_MONSTER_DROP_ITEM_GROUP), QuoteRemover.Remove(temps[0]), TryParseInt(temps[1], 100));
         }
-        if (text.Contains("bonus3 bAddMonsterDropItemGroup,"))
+        if (text.Contains("bonus3 baddmonsterdropitemgroup,"))
         {
-            var temp = text.Replace("bonus3 bAddMonsterDropItemGroup,", string.Empty);
+            var temp = text.Replace("bonus3 baddmonsterdropitemgroup,", string.Empty);
             var temps = temp.Split(',');
             text = string.Format(_localization.GetTexts(Localization.BONUS3_ADD_MONSTER_DROP_ITEM_GROUP), QuoteRemover.Remove(temps[0]), ParseRace(temps[1]), TryParseInt(temps[2], 100));
         }
-        if (text.Contains("bonus3 bAddClassDropItemGroup,"))
+        if (text.Contains("bonus3 baddclassdropitemgroup,"))
         {
-            var temp = text.Replace("bonus3 bAddClassDropItemGroup,", string.Empty);
+            var temp = text.Replace("bonus3 baddclassdropitemgroup,", string.Empty);
             var temps = temp.Split(',');
             text = string.Format(_localization.GetTexts(Localization.BONUS3_ADD_CLASS_DROP_ITEM_GROUP), QuoteRemover.Remove(temps[0]), ParseClass(temps[1]), TryParseInt(temps[2], 100));
         }
-        if (text.Contains("bonus2 bGetZenyNum,"))
+        if (text.Contains("bonus2 bgetzenynum,"))
         {
-            var temp = text.Replace("bonus2 bGetZenyNum,", string.Empty);
+            var temp = text.Replace("bonus2 bgetzenynum,", string.Empty);
             var temps = temp.Split(',');
             text = string.Format(_localization.GetTexts(Localization.BONUS2_GET_ZENY_NUM), TryParseInt(temps[0]), TryParseInt(temps[1]));
         }
-        if (text.Contains("bonus2 bAddGetZenyNum,"))
+        if (text.Contains("bonus2 baddgetzenynum,"))
         {
-            var temp = text.Replace("bonus2 bAddGetZenyNum,", string.Empty);
+            var temp = text.Replace("bonus2 baddgetzenynum,", string.Empty);
             var temps = temp.Split(',');
             text = string.Format(_localization.GetTexts(Localization.BONUS2_ADD_GET_ZENY_NUM), TryParseInt(temps[0]), TryParseInt(temps[1]));
         }
-        if (text.Contains("bonus bDoubleRate,"))
+        if (text.Contains("bonus bdoublerate,"))
         {
-            var temp = text.Replace("bonus bDoubleRate,", string.Empty);
+            var temp = text.Replace("bonus bdoublerate,", string.Empty);
             var temps = temp.Split(',');
             text = string.Format(_localization.GetTexts(Localization.BONUS_DOUBLE_RATE), TryParseInt(temps[0]));
         }
-        if (text.Contains("bonus bDoubleAddRate,"))
+        if (text.Contains("bonus bdoubleaddrate,"))
         {
-            var temp = text.Replace("bonus bDoubleAddRate,", string.Empty);
+            var temp = text.Replace("bonus bdoubleaddrate,", string.Empty);
             var temps = temp.Split(',');
             text = string.Format(_localization.GetTexts(Localization.BONUS_DOUBLE_ADD_RATE), TryParseInt(temps[0]));
         }
-        text = text.Replace("bonus bSplashRange,", _localization.GetTexts(Localization.BONUS_SPLASH_RANGE));
-        text = text.Replace("bonus bSplashAddRange,", _localization.GetTexts(Localization.BONUS_SPLASH_ADD_RANGE));
-        if (text.Contains("bonus2 bAddSkillBlow,"))
+        text = text.Replace("bonus bsplashrange,", _localization.GetTexts(Localization.BONUS_SPLASH_RANGE));
+        text = text.Replace("bonus bsplashaddrange,", _localization.GetTexts(Localization.BONUS_SPLASH_ADD_RANGE));
+        if (text.Contains("bonus2 baddskillblow,"))
         {
-            var temp = text.Replace("bonus2 bAddSkillBlow,", string.Empty);
+            var temp = text.Replace("bonus2 baddskillblow,", string.Empty);
             var temps = temp.Split(',');
             text = string.Format(_localization.GetTexts(Localization.BONUS2_ADD_SKILL_BLOW), GetSkillName(QuoteRemover.Remove(temps[0])), TryParseInt(temps[1]));
         }
-        text = text.Replace("bonus bNoKnockback", _localization.GetTexts(Localization.BONUS_NO_KNOCKBACK));
-        text = text.Replace("bonus bNoGemStone", _localization.GetTexts(Localization.BONUS_NO_GEM_STONE));
-        text = text.Replace("bonus bIntravision", _localization.GetTexts(Localization.BONUS_INTRAVISION));
-        text = text.Replace("bonus bPerfectHide", _localization.GetTexts(Localization.BONUS_PERFECT_HIDE));
-        text = text.Replace("bonus bRestartFullRecover", _localization.GetTexts(Localization.BONUS_RESTART_FULL_RECOVER));
-        if (text.Contains("bonus bClassChange,"))
+        text = text.Replace("bonus bnoknockback", _localization.GetTexts(Localization.BONUS_NO_KNOCKBACK));
+        text = text.Replace("bonus bnogemstone", _localization.GetTexts(Localization.BONUS_NO_GEM_STONE));
+        text = text.Replace("bonus bintravision", _localization.GetTexts(Localization.BONUS_INTRAVISION));
+        text = text.Replace("bonus bperfecthide", _localization.GetTexts(Localization.BONUS_PERFECT_HIDE));
+        text = text.Replace("bonus brestartfullrecover", _localization.GetTexts(Localization.BONUS_RESTART_FULL_RECOVER));
+        if (text.Contains("bonus bclasschange,"))
         {
-            var temp = text.Replace("bonus bClassChange,", string.Empty);
+            var temp = text.Replace("bonus bclasschange,", string.Empty);
             var temps = temp.Split(',');
             text = string.Format(_localization.GetTexts(Localization.BONUS_CLASS_CHANGE), TryParseInt(temps[0], 100));
         }
-        if (text.Contains("bonus bAddStealRate,"))
+        if (text.Contains("bonus baddstealrate,"))
         {
-            var temp = text.Replace("bonus bAddStealRate,", string.Empty);
+            var temp = text.Replace("bonus baddstealrate,", string.Empty);
             var temps = temp.Split(',');
             text = string.Format(_localization.GetTexts(Localization.BONUS_ADD_STEAL_RATE), TryParseInt(temps[0]));
         }
-        text = text.Replace("bonus bNoMadoFuel", _localization.GetTexts(Localization.BONUS_NO_MADO_FUEL));
-        text = text.Replace("bonus bNoWalkDelay", _localization.GetTexts(Localization.BONUS_NO_WALK_DELAY));
+        text = text.Replace("bonus bnomadofuel", _localization.GetTexts(Localization.BONUS_NO_MADO_FUEL));
+        text = text.Replace("bonus bnowalkdelay", _localization.GetTexts(Localization.BONUS_NO_WALK_DELAY));
         // Special Effect 2
         if (text.Contains("specialeffect2 "))
         {
@@ -5362,7 +5335,6 @@ public class Converter : MonoBehaviour
             else
                 text = string.Format(_localization.GetTexts(Localization.SC_START_4), QuoteRemover.Remove(temps[0]), TryParseTimer(TryParseInt(temps[1], 1000)));
 
-            text = text.Replace("SC_", string.Empty);
             text = text.Replace("sc_", string.Empty);
 
             ParseStatusChangeStartIntoItemId();
@@ -5378,7 +5350,6 @@ public class Converter : MonoBehaviour
             else
                 text = string.Format(_localization.GetTexts(Localization.SC_START_2), QuoteRemover.Remove(temps[0]), TryParseTimer(TryParseInt(temps[1], 1000)));
 
-            text = text.Replace("SC_", string.Empty);
             text = text.Replace("sc_", string.Empty);
 
             ParseStatusChangeStartIntoItemId();
@@ -5394,7 +5365,6 @@ public class Converter : MonoBehaviour
             else
                 text = string.Format(_localization.GetTexts(Localization.SC_START), QuoteRemover.Remove(temps[0]), (temps.Length > 1) ? TryParseTimer(TryParseInt(temps[1], 1000)) : "0");
 
-            text = text.Replace("SC_", string.Empty);
             text = text.Replace("sc_", string.Empty);
 
             ParseStatusChangeStartIntoItemId();
@@ -5406,7 +5376,6 @@ public class Converter : MonoBehaviour
             var temps = temp.Split(',');
             text = string.Format(_localization.GetTexts(Localization.SC_END), QuoteRemover.Remove(temps[0]));
 
-            text = text.Replace("SC_", string.Empty);
             text = text.Replace("sc_", string.Empty);
         }
         // active_transform
@@ -5484,7 +5453,7 @@ public class Converter : MonoBehaviour
             var temps = temp.Split(',');
             text = string.Format(_localization.GetTexts(Localization.HAT_EFFECT)
                 , (temps[1] == "true") ? _localization.GetTexts(Localization.HAT_EFFECT_TRUE) : _localization.GetTexts(Localization.HAT_EFFECT_FALSE)
-                , temps[0].Replace("HAT_EF_", string.Empty));
+                , temps[0].Replace("hat_ef_", string.Empty));
         }
         // switch
         if (text.Contains("switch("))

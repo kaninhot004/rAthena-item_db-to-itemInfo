@@ -8,11 +8,8 @@ public class SpacingRemover
         while (text.Contains(" "))
             text = text.Replace(" ", string.Empty);
 
-        if (isTabRemove)
-        {
-            while (text.Contains("\t"))
-                text = text.Replace("\t", string.Empty);
-        }
+        while (isTabRemove && text.Contains("\t"))
+            text = text.Replace("\t", string.Empty);
 
         return text;
     }
