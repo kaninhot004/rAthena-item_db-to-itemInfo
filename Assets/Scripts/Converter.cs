@@ -1786,6 +1786,14 @@ public class Converter : MonoBehaviour
                 skillDatabase.name = QuoteRemover.Remove(text.Replace("    Name: ", string.Empty));
             else if (text.Contains("Critical: true"))
                 skillDatabase.isCritical = true;
+            else if (text.Contains("TargetType: Attack"))
+                skillDatabase.isAttackSkill = true;
+            else if (text.Contains("TargetType: Ground"))
+                skillDatabase.isGroundSkill = true;
+            else if (text.Contains("TargetType: Support"))
+                skillDatabase.isSupportSkill = true;
+            else if (text.Contains("TargetType: Self"))
+                skillDatabase.isSelfSkill = true;
             else if (text.Contains("- Item:"))
                 skillDatabase.requiredItems.Add(SpacingRemover.Remove(text).Replace("-Item:", string.Empty));
             else if (text.Contains("Equipment:"))
@@ -2339,9 +2347,17 @@ public class Converter : MonoBehaviour
 
         StringBuilder builder = new StringBuilder();
         StringBuilder builder2 = new StringBuilder();
+        StringBuilder builder3 = new StringBuilder();
+        StringBuilder offensiveSkillBuilder = new StringBuilder();
+        StringBuilder offensiveSkillIdBuilder = new StringBuilder();
+        StringBuilder offensiveSkillDescription = new StringBuilder();
 
-        builder.Append("setarray $skillDesc$[0],");
+        builder.Append("setarray $skillDescs$[0],");
         builder2.Append("setarray $allSkills$[0],");
+        builder3.Append("setarray $allSkillIds[0],");
+        offensiveSkillBuilder.Append("setarray $offensiveSkills$[0],");
+        offensiveSkillIdBuilder.Append("setarray $offensiveSkillIds[0],");
+        offensiveSkillDescription.Append("setarray $offensiveSkillDescs$[0],");
 
         for (int i = 0; i < availableSkills.Count; i++)
         {
@@ -2356,20 +2372,32 @@ public class Converter : MonoBehaviour
 
             builder.Append("\"" + _skillDatabasesByName[text].description + "\",");
             builder2.Append("\"" + _skillDatabasesByName[text].name + "\",");
+            builder3.Append("" + _skillDatabasesByName[text].id + ",");
+            if (_skillDatabasesByName[text].isAttackSkill || _skillDatabasesByName[text].isGroundSkill || _skillDatabasesByName[text].isSelfSkill)
+            {
+                offensiveSkillBuilder.Append("\"" + _skillDatabasesByName[text].name + "\",");
+                offensiveSkillIdBuilder.Append("" + _skillDatabasesByName[text].id + ",");
+                offensiveSkillDescription.Append("\"" + _skillDatabasesByName[text].description + "\",");
+            }
         }
 
         builder.Remove(builder.Length - 1, 1);
         builder2.Remove(builder2.Length - 1, 1);
+        builder3.Remove(builder3.Length - 1, 1);
+        offensiveSkillBuilder.Remove(offensiveSkillBuilder.Length - 1, 1);
+        offensiveSkillIdBuilder.Remove(offensiveSkillIdBuilder.Length - 1, 1);
+        offensiveSkillDescription.Remove(offensiveSkillDescription.Length - 1, 1);
 
         builder.Append(";\n");
         builder2.Append(";\n");
+        builder3.Append(";\n");
+        offensiveSkillBuilder.Append(";\n");
+        offensiveSkillIdBuilder.Append(";\n");
+        offensiveSkillDescription.Append(";\n");
 
-        File.WriteAllText("skill_desc.txt", builder.ToString(), Encoding.UTF8);
-        File.WriteAllText("skill_name.txt", builder2.ToString(), Encoding.UTF8);
+        File.WriteAllText("skill_lists.txt", builder.ToString() + builder2.ToString() + builder3.ToString() + offensiveSkillBuilder.ToString() + offensiveSkillIdBuilder.ToString() + offensiveSkillDescription.ToString(), Encoding.UTF8);
 
-        Debug.Log("'skill_desc.txt' has been successfully created.");
-        Debug.Log("'skill_name.txt' has been successfully created.");
-
+        Debug.Log("'skill_lists.txt' has been successfully created.");
     }
 
     // Converting

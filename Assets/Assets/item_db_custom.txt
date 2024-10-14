@@ -43,3 +43,139 @@
       NoSell: true
     Script: |
       callfunc("MasteryTicket");
+  - Id: 20000000
+    AegisName: Return_Orb
+    Name: Return Orb
+    Type: DelayConsume
+    Delay:
+      Duration: 3000
+    Script:
+      callfunc("ReturnOrb");
+  - Id: 20000001
+    AegisName: Teleport_Orb
+    Name: Teleport Orb
+    Type: DelayConsume
+    Delay:
+      Duration: 3000
+    Script:
+      callfunc("TeleportOrb");
+  - Id: 20000002
+    AegisName: Body_Orb_Tier_1
+    Name: Body Orb Tier 1
+    Type: Etc
+  - Id: 20000003
+    AegisName: Body_Orb_Tier_2
+    Name: Body Orb Tier 2
+    Type: Etc
+  - Id: 20000004
+    AegisName: Body_Orb_Tier_3
+    Name: Body Orb Tier 3
+    Type: Etc
+  - Id: 20000005
+    AegisName: Body_Orb_Tier_4
+    Name: Body Orb Tier 4
+    Type: Etc
+  - Id: 20000006
+    AegisName: Body_Orb_Tier_5
+    Name: Body Orb Tier 5
+    Type: Etc
+  - Id: 20000007
+    AegisName: Body_Orb_Tier_6
+    Name: Body Orb Tier 6
+    Type: Etc
+  - Id: 20000008
+    AegisName: Body_Orb_Tier_7
+    Name: Body Orb Tier 7
+    Type: Etc
+  - Id: 20000009
+    AegisName: Body_Orb_Tier_8
+    Name: Body Orb Tier 8
+    Type: Etc
+  - Id: 20000010
+    AegisName: Body_Orb_Tier_9
+    Name: Body Orb Tier 9
+    Type: Etc
+  - Id: 20000011
+    AegisName: Body_Orb_Tier_10
+    Name: Body Orb Tier 10
+    Type: Etc
+  - Id: 20000012
+    AegisName: Trait_Orb_Tier_1
+    Name: Trait Orb Tier 1
+    Type: Etc
+  - Id: 20000013
+    AegisName: Trait_Orb_Tier_2
+    Name: Trait Orb Tier 2
+    Type: Etc
+  - Id: 20000014
+    AegisName: Trait_Orb_Tier_3
+    Name: Trait Orb Tier 3
+    Type: Etc
+  - Id: 20000015
+    AegisName: Trait_Orb_Tier_4
+    Name: Trait Orb Tier 4
+    Type: Etc
+  - Id: 20000016
+    AegisName: Trait_Orb_Tier_5
+    Name: Trait Orb Tier 5
+    Type: Etc
+  - Id: 20000017
+    AegisName: Trait_Orb_Tier_6
+    Name: Trait Orb Tier 6
+    Type: Etc
+  - Id: 20000018
+    AegisName: Trait_Orb_Tier_7
+    Name: Trait Orb Tier 7
+    Type: Etc
+  - Id: 20000019
+    AegisName: Trait_Orb_Tier_8
+    Name: Trait Orb Tier 8
+    Type: Etc
+  - Id: 20000020
+    AegisName: Trait_Orb_Tier_9
+    Name: Trait Orb Tier 9
+    Type: Etc
+  - Id: 20000021
+    AegisName: Trait_Orb_Tier_10
+    Name: Trait Orb Tier 10
+    Type: Etc
+  - Id: 20000022
+    AegisName: Skill_Orb_Tier_1
+    Name: Skill Orb Tier 1
+    Type: Etc
+  - Id: 20000023
+    AegisName: Skill_Orb_Tier_2
+    Name: Skill Orb Tier 2
+    Type: Etc
+  - Id: 20000024
+    AegisName: Skill_Orb_Tier_3
+    Name: Skill Orb Tier 3
+    Type: Etc
+  - Id: 20000025
+    AegisName: Skill_Orb_Tier_4
+    Name: Skill Orb Tier 4
+    Type: Etc
+  - Id: 20000026
+    AegisName: Skill_Orb_Tier_5
+    Name: Skill Orb Tier 5
+    Type: Etc
+  - Id: 20000027
+    AegisName: Skill_Orb_Tier_6
+    Name: Skill Orb Tier 6
+    Type: Etc
+  - Id: 20000028
+    AegisName: Skill_Orb_Tier_7
+    Name: Skill Orb Tier 7
+    Type: Etc
+  - Id: 20000029
+    AegisName: Skill_Orb_Tier_8
+    Name: Skill Orb Tier 8
+    Type: Etc
+  - Id: 20000030
+    AegisName: Skill_Orb_Tier_9
+    Name: Skill Orb Tier 9
+    Type: Etc
+  - Id: 20000031
+    AegisName: Skill_Orb_Tier_10
+    Name: Skill Orb Tier 10
+    Type: Etc

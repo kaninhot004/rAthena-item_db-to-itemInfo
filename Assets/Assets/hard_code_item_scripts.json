@@ -189,6 +189,134 @@
         {
             "itemId": 10000006,
             "itemScriptDescription": "กดใช้เพื่อ ^112793เพิ่มความสามารถให้ตัวละคร^000000"
+        },
+        {
+            "itemId": 20000000,
+            "itemScriptDescription": "กดใช้เพื่อ ^112793กลับสู่ห้องพัก^000000"
+        },
+        {
+            "itemId": 20000001,
+            "itemScriptDescription": "กดใช้เพื่อ ^112793สุ่มเคลื่อนย้ายภายใน Map^000000"
+        },
+        {
+            "itemId": 20000002,
+            "itemScriptDescription": "นำไปแลกเป็น ^112793แต้ม Body Tier 1^000000"
+        },
+        {
+            "itemId": 20000003,
+            "itemScriptDescription": "นำไปแลกเป็น ^112793แต้ม Body Tier 2^000000"
+        },
+        {
+            "itemId": 20000004,
+            "itemScriptDescription": "นำไปแลกเป็น ^112793แต้ม Body Tier 3^000000"
+        },
+        {
+            "itemId": 20000005,
+            "itemScriptDescription": "นำไปแลกเป็น ^112793แต้ม Body Tier 4^000000"
+        },
+        {
+            "itemId": 20000006,
+            "itemScriptDescription": "นำไปแลกเป็น ^112793แต้ม Body Tier 5^000000"
+        },
+        {
+            "itemId": 20000007,
+            "itemScriptDescription": "นำไปแลกเป็น ^112793แต้ม Body Tier 6^000000"
+        },
+        {
+            "itemId": 20000008,
+            "itemScriptDescription": "นำไปแลกเป็น ^112793แต้ม Body Tier 7^000000"
+        },
+        {
+            "itemId": 20000009,
+            "itemScriptDescription": "นำไปแลกเป็น ^112793แต้ม Body Tier 8^000000"
+        },
+        {
+            "itemId": 20000010,
+            "itemScriptDescription": "นำไปแลกเป็น ^112793แต้ม Body Tier 9^000000"
+        },
+        {
+            "itemId": 20000011,
+            "itemScriptDescription": "นำไปแลกเป็น ^112793แต้ม Body Tier 10^000000"
+        },
+        {
+            "itemId": 20000012,
+            "itemScriptDescription": "นำไปแลกเป็น ^112793แต้ม Trait Tier 1^000000"
+        },
+        {
+            "itemId": 20000013,
+            "itemScriptDescription": "นำไปแลกเป็น ^112793แต้ม Trait Tier 2^000000"
+        },
+        {
+            "itemId": 20000014,
+            "itemScriptDescription": "นำไปแลกเป็น ^112793แต้ม Trait Tier 3^000000"
+        },
+        {
+            "itemId": 20000015,
+            "itemScriptDescription": "นำไปแลกเป็น ^112793แต้ม Trait Tier 4^000000"
+        },
+        {
+            "itemId": 20000016,
+            "itemScriptDescription": "นำไปแลกเป็น ^112793แต้ม Trait Tier 5^000000"
+        },
+        {
+            "itemId": 20000017,
+            "itemScriptDescription": "นำไปแลกเป็น ^112793แต้ม Trait Tier 6^000000"
+        },
+        {
+            "itemId": 20000018,
+            "itemScriptDescription": "นำไปแลกเป็น ^112793แต้ม Trait Tier 7^000000"
+        },
+        {
+            "itemId": 20000019,
+            "itemScriptDescription": "นำไปแลกเป็น ^112793แต้ม Trait Tier 8^000000"
+        },
+        {
+            "itemId": 20000020,
+            "itemScriptDescription": "นำไปแลกเป็น ^112793แต้ม Trait Tier 9^000000"
+        },
+        {
+            "itemId": 20000021,
+            "itemScriptDescription": "นำไปแลกเป็น ^112793แต้ม Trait Tier 10^000000"
+        },
+        {
+            "itemId": 20000022,
+            "itemScriptDescription": "นำไปแลกเป็น ^112793แต้ม Skill Tier 1^000000"
+        },
+        {
+            "itemId": 20000023,
+            "itemScriptDescription": "นำไปแลกเป็น ^112793แต้ม Skill Tier 2^000000"
+        },
+        {
+            "itemId": 20000024,
+            "itemScriptDescription": "นำไปแลกเป็น ^112793แต้ม Skill Tier 3^000000"
+        },
+        {
+            "itemId": 20000025,
+            "itemScriptDescription": "นำไปแลกเป็น ^112793แต้ม Skill Tier 4^000000"
+        },
+        {
+            "itemId": 20000026,
+            "itemScriptDescription": "นำไปแลกเป็น ^112793แต้ม Skill Tier 5^000000"
+        },
+        {
+            "itemId": 20000027,
+            "itemScriptDescription": "นำไปแลกเป็น ^112793แต้ม Skill Tier 6^000000"
+        },
+        {
+            "itemId": 20000028,
+            "itemScriptDescription": "นำไปแลกเป็น ^112793แต้ม Skill Tier 7^000000"
+        },
+        {
+            "itemId": 20000029,
+            "itemScriptDescription": "นำไปแลกเป็น ^112793แต้ม Skill Tier 8^000000"
+        },
+        {
+            "itemId": 20000030,
+            "itemScriptDescription": "นำไปแลกเป็น ^112793แต้ม Skill Tier 9^000000"
+        },
+        {
+            "itemId": 20000031,
+            "itemScriptDescription": "นำไปแลกเป็น ^112793แต้ม Skill Tier 10^000000"
         }
     ]
 }
