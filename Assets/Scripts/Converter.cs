@@ -2375,9 +2375,13 @@ public class Converter : MonoBehaviour
             builder3.Append("" + _skillDatabasesByName[text].id + ",");
             if (_skillDatabasesByName[text].isAttackSkill || _skillDatabasesByName[text].isGroundSkill || _skillDatabasesByName[text].isSelfSkill)
             {
-                offensiveSkillBuilder.Append("\"" + _skillDatabasesByName[text].name + "\",");
-                offensiveSkillIdBuilder.Append("" + _skillDatabasesByName[text].id + ",");
-                offensiveSkillDescription.Append("\"" + _skillDatabasesByName[text].description + "\",");
+                var errorSkillIds = new List<int>() { 5344, 5345, 5346, 5348, 3012, 5302, 5303, 5304, 5305, 232, 2281, 5375, 5376, 5377, 5378, 5379, 2457, 2458, 2459, 2460, 2428, 378, 2559, 2222, 247, 244, 2535, 279, 2464, 475, 2230, 2269, 222, 220, 147, 154, 2544, 41, 2240, 5336, 2025, 40, 2456, 1007, 398, 478, 2495, 228, 1013, 496, 497, 498, 411, 488, 508, 2242, 2445, 405, 2032, 499, 151, 251, 5009, 5204 };
+                if (!errorSkillIds.Contains(_skillDatabasesByName[text].id))
+                {
+                    offensiveSkillBuilder.Append("\"" + _skillDatabasesByName[text].name + "\",");
+                    offensiveSkillIdBuilder.Append("" + _skillDatabasesByName[text].id + ",");
+                    offensiveSkillDescription.Append("\"" + _skillDatabasesByName[text].description + "\",");
+                }
             }
         }
 
