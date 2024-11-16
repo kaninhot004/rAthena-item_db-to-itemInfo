@@ -317,6 +317,46 @@
         {
             "itemId": 20000031,
             "itemScriptDescription": "นำไปแลกเป็น ^112793แต้ม Skill Tier 10^000000"
+        },
+        {
+            "itemId": 20000032,
+            "itemScriptDescription": "นำไปแลกเป็น ^112793แต้ม Effect Tier 1^000000"
+        },
+        {
+            "itemId": 20000033,
+            "itemScriptDescription": "นำไปแลกเป็น ^112793แต้ม Effect Tier 2^000000"
+        },
+        {
+            "itemId": 20000034,
+            "itemScriptDescription": "นำไปแลกเป็น ^112793แต้ม Effect Tier 3^000000"
+        },
+        {
+            "itemId": 20000035,
+            "itemScriptDescription": "นำไปแลกเป็น ^112793แต้ม Effect Tier 4^000000"
+        },
+        {
+            "itemId": 20000036,
+            "itemScriptDescription": "นำไปแลกเป็น ^112793แต้ม Effect Tier 5^000000"
+        },
+        {
+            "itemId": 20000037,
+            "itemScriptDescription": "นำไปแลกเป็น ^112793แต้ม Effect Tier 6^000000"
+        },
+        {
+            "itemId": 20000038,
+            "itemScriptDescription": "นำไปแลกเป็น ^112793แต้ม Effect Tier 7^000000"
+        },
+        {
+            "itemId": 20000039,
+            "itemScriptDescription": "นำไปแลกเป็น ^112793แต้ม Effect Tier 8^000000"
+        },
+        {
+            "itemId": 20000040,
+            "itemScriptDescription": "นำไปแลกเป็น ^112793แต้ม Effect Tier 9^000000"
+        },
+        {
+            "itemId": 20000041,
+            "itemScriptDescription": "นำไปแลกเป็น ^112793แต้ม Effect Tier 10^000000"
         }
     ]
 }
