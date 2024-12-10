@@ -4,6 +4,7 @@ using System;
 public class ItemContainer
 {
     public string id = string.Empty;
+    public string aegisName = string.Empty;
     public string name = string.Empty;
     public string type = string.Empty;
     public string subType = string.Empty;

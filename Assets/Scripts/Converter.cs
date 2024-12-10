@@ -9,7 +9,7 @@ using System.Text;
 public class Converter : MonoBehaviour
 {
     const string CREATOR_URL = "https://kanintemsrisukgames.wordpress.com/2019/04/05/support-kt-games/";
-    const float ONE_SECOND = 1;
+
     const int ITEM_DEBUG_PRICE = 10000000;
     const int PET_TAME_PRICE = 500000;
     const int PET_EGG_PRICE = 1000000;
@@ -213,6 +213,7 @@ public class Converter : MonoBehaviour
     /// Monsters holder
     /// </summary>
     Dictionary<int, MonsterDatabase> _monsterDatabases = new Dictionary<int, MonsterDatabase>();
+    Dictionary<string, MonsterDatabase> _petDatabases = new Dictionary<string, MonsterDatabase>();
     List<int> _monsterIds = new List<int>();
     /// <summary>
     /// Monsters holder
@@ -1547,6 +1548,8 @@ public class Converter : MonoBehaviour
 
         _monsterDatabases = new Dictionary<int, MonsterDatabase>();
 
+        _petDatabases = new Dictionary<string, MonsterDatabase>();
+
         _monsterIds = new List<int>();
 
         _monsterIdsByAegisName = new Dictionary<string, int>();
@@ -2307,6 +2310,17 @@ public class Converter : MonoBehaviour
 
                 monsterDatabase.name = SpacingRemover.Remove(text).Replace("-Mob:", string.Empty);
             }
+            else if (text.Contains("    TameItem:"))
+            {
+                if (_monsterIdsByAegisName.ContainsKey(monsterDatabase.name))
+                {
+                    var aegisName = QuoteRemover.Remove(text.Replace("    TameItem: ", string.Empty));
+                    _monsterDatabases[_monsterIdsByAegisName[monsterDatabase.name]].tameItemName = aegisName;
+
+                    if (!_petDatabases.ContainsKey(aegisName))
+                        _petDatabases.Add(aegisName, _monsterDatabases[_monsterIdsByAegisName[monsterDatabase.name]]);
+                }
+            }
             else if (text.Contains("    CaptureRate:"))
             {
                 if (_monsterIdsByAegisName.ContainsKey(monsterDatabase.name))
@@ -2466,11 +2480,8 @@ public class Converter : MonoBehaviour
 
             var nextText = ((i + 1) < itemDatabases.Length) ? itemDatabases[i + 1] : string.Empty;
 
-            var nextNextText = ((i + 2) < itemDatabases.Length) ? itemDatabases[i + 2] : string.Empty;
-
             // Skip
-            if (text.Contains("    AegisName:")
-                || text.Contains("    Sell:")
+            if (text.Contains("    Sell:")
                 || text.Contains("    Jobs:")
                 || text.Contains("    Classes:")
                 || text.Contains("    Locations:")
@@ -2571,6 +2582,13 @@ public class Converter : MonoBehaviour
 
                 // Hotfix for →
                 _itemContainer.name = _itemContainer.name.Replace("→", " to ");
+            }
+            // Aegis Name
+            else if (text.Contains("    AegisName:"))
+            {
+                _itemContainer.aegisName = text.Replace("    AegisName: ", string.Empty);
+
+                _itemContainer.aegisName = QuoteRemover.Remove(_itemContainer.aegisName);
             }
             // Delay
             else if (text.Contains("    Delay:"))
@@ -3048,6 +3066,8 @@ public class Converter : MonoBehaviour
             // Script
             else if (_itemContainer.isScript)
             {
+                text = text.Replace("bpet;", "birthp;");
+                text = text.Replace("pet;", "catchpet;");
                 var script = ConvertItemScripts(text);
 
                 if (!string.IsNullOrEmpty(script))
@@ -5458,16 +5478,13 @@ public class Converter : MonoBehaviour
                 _itemListContainer.itemGroupIds.Add(_itemContainer.id);
         }
         // pet
-        if (text.Contains("pet "))
+        if (text.Contains("catchpet"))
         {
-            var temp = text.Replace("pet ", string.Empty);
-            var temps = temp.Split(',');
-            var monsterDatabase = GetMonsterDatabase(QuoteRemover.Remove(temps[0]));
-            if ((monsterDatabase != null)
-                && (monsterDatabase.captureRate <= 0))
-                text = string.Format(_localization.GetTexts(Localization.PET), (monsterDatabase != null) ? "^FF0000" + monsterDatabase.name + "^000000" : temps[0]);
+            var monsterDatabase = GetPetDatabase(_itemContainer.aegisName);
+            if ((monsterDatabase != null) && (monsterDatabase.captureRate <= 0))
+                text = string.Format(_localization.GetTexts(Localization.PET), (monsterDatabase != null) ? "^FF0000" + monsterDatabase.name + "^000000" : string.Empty);
             else
-                text = string.Format(_localization.GetTexts(Localization.PET_WITH_CHANCE), (monsterDatabase != null) ? "^FF0000" + monsterDatabase.name + "^000000" : temps[0], (monsterDatabase != null) ? monsterDatabase.captureRate : "0");
+                text = string.Format(_localization.GetTexts(Localization.PET_WITH_CHANCE), (monsterDatabase != null) ? "^FF0000" + monsterDatabase.name + "^000000" : string.Empty, (monsterDatabase != null) ? monsterDatabase.captureRate : "0");
 
             if (!_isFastConvert && !_petTamingItemIds.Contains(_itemContainer.id))
                 _petTamingItemIds.Add(_itemContainer.id);
@@ -6992,7 +7009,13 @@ public class Converter : MonoBehaviour
 
         return null;
     }
-
+    MonsterDatabase GetPetDatabase(string aegisName)
+    {
+        if (_petDatabases.ContainsKey(aegisName))
+            return _petDatabases[aegisName];
+        else
+            return null;
+    }
     /// <summary>
     /// Get item {name, aegis name} database by ID
     /// </summary>
