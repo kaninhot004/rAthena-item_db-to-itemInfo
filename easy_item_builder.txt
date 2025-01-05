@@ -522,6 +522,9 @@ Cooldown | Emergency Escape
 Cooldown | Epiclesis
  combo 28430+4803 == -10s
 
+Cooldown | Exorcism Of Malicious Soul
+ combo 550155+400544 == -0.3s
+
 Cooldown | Explosion Blaster
  combo 560072+400538 == -0.3s
  combo 560061+400538 == -0.2s
@@ -1221,12 +1224,6 @@ Cooldown | Slug Shot
  combo 29509+313304 == -10s
  combo 29509+29647+313304 == 10s
 
-Cooldown | SOA_EXORCISM_OF_MALICIOUS_SOUL
- combo 550155+400544 == -0.3s
-
-Cooldown | SOA_SOUL_GATHERING
- combo 550155+400544 == -0.3s
-
 Cooldown | Sonic Wave
  on 311196 == -1.5s
  on 21052 == -1.5s
@@ -1251,6 +1248,9 @@ Cooldown | Soul Destroyer
 
 Cooldown | Soul Explosion
  combo 15433+490084 == -30s
+
+Cooldown | Soul Gathering
+ combo 550155+400544 == -0.3s
 
 Cooldown | Soul Reaper
  combo 24743+24584+24585+24586+24587+24588 == -5s
