@@ -245,6 +245,9 @@ Cooldown | Chain Reaction Shot
 Cooldown | Chattering
  on 24411 == -3000*(1+.@r/2) ^FF0000หาร 1000^000000s
 
+Cooldown | Chulho Sonic Claw
+ combo 550159+400546 == 0.2s
+
 Cooldown | Cicada Skin Sheeding
  on 2582 == 30s
  combo 32285+480024 == 30s
@@ -654,6 +657,9 @@ Cooldown | Howling Mine
  on 840000 == -1s
  on 28226 == -1s
 
+Cooldown | Howling of Chulho
+ combo 550134+400546 == -0.3s
+
 Cooldown | Howling of Lion
  on 410125 == -9.5s
  on 410124 == -9.5s
@@ -696,6 +702,9 @@ Cooldown | Hundred Spear
  on 310129 == -0.3s
  combo 400227+630012 == -0.2s
  on 32005 == .@val ^FF0000หาร 1000^000000s
+
+Cooldown | Hyunrok Breeze
+ combo 550135+400546 == -2s
 
 Cooldown | Ignition Break
  on 24445 == -200-100*(.@r/3) ^FF0000หาร 1000^000000s
@@ -1159,15 +1168,6 @@ Cooldown | Severe Rainstorm
  combo 18981+490401 == -1.5s
  combo 400264+700055 == -0.5s
  on 311006 == -(100*getskilllv("wm_sircleofnature")) ^FF0000หาร 1000^000000s
-
-Cooldown | SH_CHUL_HO_SONIC_CLAW
- combo 550159+400546 == 0.2s
-
-Cooldown | SH_HOWLING_OF_CHUL_HO
- combo 550134+400546 == -0.3s
-
-Cooldown | SH_HYUN_ROKS_BREEZE
- combo 550135+400546 == -2s
 
 Cooldown | Shadow Stab
  combo 29509+312947 == -0.5s
