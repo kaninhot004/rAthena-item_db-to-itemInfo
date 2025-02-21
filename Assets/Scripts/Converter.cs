@@ -1952,6 +1952,7 @@ public class Converter : MonoBehaviour
         var comboDatabasesFile = _isSkipNormalEquipEtcCombo ? string.Empty : File.ReadAllText(path);
 
         var comboDatabases = comboDatabasesFile.Split('\n');
+        var copyComboDatabases = _isFastConvert ? new string[0] : comboDatabasesFile.Split('\n');
 
         _comboDatabases = new List<ComboDatabase>();
 
@@ -1988,7 +1989,13 @@ public class Converter : MonoBehaviour
             else if (text.Contains("- Combo:"))
                 comboDatabase.sameComboDatas.Add(new ComboDatabase.SameComboData());
             else if (text.Contains("          - "))
-                comboDatabase.sameComboDatas[comboDatabase.sameComboDatas.Count - 1].aegisNames.Add(SpacingRemover.Remove(QuoteRemover.Remove(text.Replace("          - ", string.Empty))).ToLower());
+            {
+                var aegisName = SpacingRemover.Remove(QuoteRemover.Remove(text.Replace("          - ", string.Empty)));
+                comboDatabase.sameComboDatas[comboDatabase.sameComboDatas.Count - 1].aegisNames.Add(aegisName.ToLower());
+
+                if (!copyComboDatabases[i].Contains("#") && !_isFastConvert)
+                    copyComboDatabases[i] += "    #" + GetItemIdFromAegisName(aegisName);
+            }
             else if (text.Contains("Script: |"))
                 isScript = true;
             else if (isScript)
@@ -2012,6 +2019,15 @@ public class Converter : MonoBehaviour
         }
 
         Debug.Log("There are " + _comboDatabases.Count + " combo database.");
+
+        if (!_isFastConvert)
+        {
+            StringBuilder itemComboDatabaseTextFileBuilder = new StringBuilder();
+            for (int i = 0; i < copyComboDatabases.Length; i++)
+                itemComboDatabaseTextFileBuilder.AppendLine(copyComboDatabases[i]);
+
+            File.WriteAllText("item_combo_with_id.txt", itemComboDatabaseTextFileBuilder.ToString(), Encoding.UTF8);
+        }
     }
     /// <summary>
     /// Parse item database file into converter (Only store ID, Name), also parse into item list
