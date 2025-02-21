@@ -1,32 +1,122 @@
-﻿  - Id: 10000000
+﻿  - Id: 1599
+    AegisName: Angra_Manyu
+    Name: Angra Manyu
+    Type: Weapon
+    SubType: Mace
+    Buy: 1
+    Weight: 1
+    Attack: 1
+    MagicAttack: 1
+    Range: 1
+    Locations:
+      Right_Hand: true
+    WeaponLevel: 1
+    EquipLevelMin: 1
+    Refineable: true
+    Script: |
+      bonus bAllStats,1;
+  - Id: 2199
+    AegisName: Ahura_Mazda
+    Name: Ahura Mazdah
+    Type: Armor
+    Buy: 1
+    Weight: 1
+    Locations:
+      Left_Hand: true
+    ArmorLevel: 1
+    EquipLevelMin: 1
+    Refineable: true
+    View: 1
+    Script: |
+      bonus bAllStats,1;
+  - Id: 15065
+    AegisName: AmeshaSpenta
+    Name: Amesha Spenta
+    Type: Armor
+    Locations:
+      Armor: true
+    ArmorLevel: 1
+    Refineable: true
+    Script: |
+      bonus bAllStats,1;
+  - Id: 2904
+    AegisName: Naqsh
+    Name: Naqsi
+    Type: Armor
+    Locations:
+      Both_Accessory: true
+    ArmorLevel: 1
+    Script: |
+      bonus bAllStats,1;
+  - Id: 19429
+    AegisName: Zarathustra
+    Name: Zarathustra
+    Type: Armor
+    Locations:
+      Head_Low: true
+    ArmorLevel: 1
+    Trade:
+      NoDrop: true
+      NoTrade: true
+      NoCart: true
+      NoGuildStorage: true
+      NoMail: true
+      NoAuction: true
+    Script: |
+      bonus bAllStats,1;
+  - Id: 5013
+    AegisName: Horn_Of_Lord_Kaho
+    Name: Lord Kaho's Horn
+    Type: Armor
+    Buy: 20
+    Weight: 100
+    Defense: 30
+    Locations:
+      Head_Top: true
+    ArmorLevel: 1
+    Refineable: true
+    View: 99
+    Script: |
+      bonus bAllStats,1;
+  - Id: 10000000
     AegisName: Refine_Hack_Powder
     Name: Refine Hack Powder
     Type: Etc
     Buy: 1
+    Trade:
+      NoSell: true
   - Id: 10000001
     AegisName: Wishing_Ticket
     Name: Wishing Ticket
     Type: Etc
     Buy: 1
+    Trade:
+      NoSell: true
   - Id: 10000002
     AegisName: Rise_Stone
     Name: Rise Stone
     Type: Etc
     Buy: 1
+    Trade:
+      NoSell: true
   - Id: 10000003
     AegisName: Mystery_Buff_Box
     Name: Mystery Buff Box
     Type: DelayConsume
     Buy: 1
+    Trade:
+      NoSell: true
     Script: |
-      MysteryBuffBox();
+      callfunc("MysteryBuffBox");
   - Id: 10000004
     AegisName: Mystery_Package_Box
     Name: Mystery Package Box
     Type: DelayConsume
     Buy: 1
+    Trade:
+      NoSell: true
     Script: |
-      MysteryPackageBox();
+      callfunc("MysteryPackageBox");
   - Id: 10000005
     AegisName: God_Ticket
     Name: God Ticket
@@ -43,259 +133,47 @@
       NoSell: true
     Script: |
       callfunc("MasteryTicket");
-  - Id: 20000000
-    AegisName: Return_Orb
-    Name: Return Orb
+  - Id: 10000007
+    AegisName: THE_BOX
+    Name: THE BOX
     Type: DelayConsume
-    Delay:
-      Duration: 3000
-    Script:
-      callfunc("ReturnOrb");
-  - Id: 20000001
-    AegisName: Teleport_Orb
-    Name: Teleport Orb
-    Type: DelayConsume
-    Delay:
-      Duration: 1500
-    Script:
-      callfunc("TeleportOrb");
-  - Id: 20000002
-    AegisName: Sharpening_Stone_Tier_1
-    Name: Sharpening Stone Tier 1
-    Type: DelayConsume
-    Script:
-      callfunc("SharpeningStone",1);
-  - Id: 20000003
-    AegisName: Sharpening_Stone_Tier_2
-    Name: Sharpening Stone Tier 2
-    Type: DelayConsume
-    Script:
-      callfunc("SharpeningStone",2);
-  - Id: 20000004
-    AegisName: Sharpening_Stone_Tier_3
-    Name: Sharpening Stone Tier 3
-    Type: DelayConsume
-    Script:
-      callfunc("SharpeningStone",3);
-  - Id: 20000005
-    AegisName: Sharpening_Stone_Tier_4
-    Name: Sharpening Stone Tier 4
-    Type: DelayConsume
-    Script:
-      callfunc("SharpeningStone",4);
-  - Id: 20000006
-    AegisName: Sharpening_Stone_Tier_5
-    Name: Sharpening Stone Tier 5
-    Type: DelayConsume
-    Script:
-      callfunc("SharpeningStone",5);
-  - Id: 20000007
-    AegisName: Sharpening_Stone_Tier_6
-    Name: Sharpening Stone Tier 6
-    Type: DelayConsume
-    Script:
-      callfunc("SharpeningStone",6);
-  - Id: 20000008
-    AegisName: Sharpening_Stone_Tier_7
-    Name: Sharpening Stone Tier 7
-    Type: DelayConsume
-    Script:
-      callfunc("SharpeningStone",7);
-  - Id: 20000009
-    AegisName: Sharpening_Stone_Tier_8
-    Name: Sharpening Stone Tier 8
-    Type: DelayConsume
-    Script:
-      callfunc("SharpeningStone",8);
-  - Id: 20000010
-    AegisName: Sharpening_Stone_Tier_9
-    Name: Sharpening Stone Tier 9
-    Type: DelayConsume
-    Script:
-      callfunc("SharpeningStone",9);
-  - Id: 20000011
-    AegisName: Sharpening_Stone_Tier_10
-    Name: Sharpening Stone Tier 10
-    Type: DelayConsume
-    Script:
-      callfunc("SharpeningStone",10);
-  - Id: 20000012
-    AegisName: Haste_Stone_Tier_1
-    Name: Haste Stone Tier 1
-    Type: DelayConsume
-    Script:
-      callfunc("HasteStone",1);
-  - Id: 20000013
-    AegisName: Haste_Stone_Tier_2
-    Name: Haste Stone Tier 2
-    Type: DelayConsume
-    Script:
-      callfunc("HasteStone",2);
-  - Id: 20000014
-    AegisName: Haste_Stone_Tier_3
-    Name: Haste Stone Tier 3
-    Type: DelayConsume
-    Script:
-      callfunc("HasteStone",3);
-  - Id: 20000015
-    AegisName: Haste_Stone_Tier_4
-    Name: Haste Stone Tier 4
-    Type: DelayConsume
-    Script:
-      callfunc("HasteStone",4);
-  - Id: 20000016
-    AegisName: Haste_Stone_Tier_5
-    Name: Haste Stone Tier 5
-    Type: DelayConsume
-    Script:
-      callfunc("HasteStone",5);
-  - Id: 20000017
-    AegisName: Haste_Stone_Tier_6
-    Name: Haste Stone Tier 6
-    Type: DelayConsume
-    Script:
-      callfunc("HasteStone",6);
-  - Id: 20000018
-    AegisName: Haste_Stone_Tier_7
-    Name: Haste Stone Tier 7
-    Type: DelayConsume
-    Script:
-      callfunc("HasteStone",7);
-  - Id: 20000019
-    AegisName: Haste_Stone_Tier_8
-    Name: Haste Stone Tier 8
-    Type: DelayConsume
-    Script:
-      callfunc("HasteStone",8);
-  - Id: 20000020
-    AegisName: Haste_Stone_Tier_9
-    Name: Haste Stone Tier 9
-    Type: DelayConsume
-    Script:
-      callfunc("HasteStone",9);
-  - Id: 20000021
-    AegisName: Haste_Stone_Tier_10
-    Name: Haste Stone Tier 10
-    Type: DelayConsume
-    Script:
-      callfunc("HasteStone",10);
-  - Id: 20000022
-    AegisName: Skill_Stone_Tier_1
-    Name: Skill Stone Tier 1
-    Type: DelayConsume
-    Script:
-      callfunc("SkillStone",1);
-  - Id: 20000023
-    AegisName: Skill_Stone_Tier_2
-    Name: Skill Stone Tier 2
-    Type: DelayConsume
-    Script:
-      callfunc("SkillStone",2);
-  - Id: 20000024
-    AegisName: Skill_Stone_Tier_3
-    Name: Skill Stone Tier 3
-    Type: DelayConsume
-    Script:
-      callfunc("SkillStone",3);
-  - Id: 20000025
-    AegisName: Skill_Stone_Tier_4
-    Name: Skill Stone Tier 4
-    Type: DelayConsume
-    Script:
-      callfunc("SkillStone",4);
-  - Id: 20000026
-    AegisName: Skill_Stone_Tier_5
-    Name: Skill Stone Tier 5
-    Type: DelayConsume
-    Script:
-      callfunc("SkillStone",5);
-  - Id: 20000027
-    AegisName: Skill_Stone_Tier_6
-    Name: Skill Stone Tier 6
-    Type: DelayConsume
-    Script:
-      callfunc("SkillStone",6);
-  - Id: 20000028
-    AegisName: Skill_Stone_Tier_7
-    Name: Skill Stone Tier 7
-    Type: DelayConsume
-    Script:
-      callfunc("SkillStone",7);
-  - Id: 20000029
-    AegisName: Skill_Stone_Tier_8
-    Name: Skill Stone Tier 8
-    Type: DelayConsume
-    Script:
-      callfunc("SkillStone",8);
-  - Id: 20000030
-    AegisName: Skill_Stone_Tier_9
-    Name: Skill Stone Tier 9
-    Type: DelayConsume
-    Script:
-      callfunc("SkillStone",9);
-  - Id: 20000031
-    AegisName: Skill_Stone_Tier_10
-    Name: Skill Stone Tier 10
-    Type: DelayConsume
-    Script:
-      callfunc("SkillStone",10);
-  - Id: 20000032
-    AegisName: Effect_Stone_Tier_1
-    Name: Effect Stone Tier 1
-    Type: DelayConsume
-    Script:
-      callfunc("EffectStone",1);
-  - Id: 20000033
-    AegisName: Effect_Stone_Tier_2
-    Name: Effect Stone Tier 2
-    Type: DelayConsume
-    Script:
-      callfunc("EffectStone",2);
-  - Id: 20000034
-    AegisName: Effect_Stone_Tier_3
-    Name: Effect Stone Tier 3
-    Type: DelayConsume
-    Script:
-      callfunc("EffectStone",3);
-  - Id: 20000035
-    AegisName: Effect_Stone_Tier_4
-    Name: Effect Stone Tier 4
-    Type: DelayConsume
-    Script:
-      callfunc("EffectStone",4);
-  - Id: 20000036
-    AegisName: Effect_Stone_Tier_5
-    Name: Effect Stone Tier 5
-    Type: DelayConsume
-    Script:
-      callfunc("EffectStone",5);
-  - Id: 20000037
-    AegisName: Effect_Stone_Tier_6
-    Name: Effect Stone Tier 6
-    Type: DelayConsume
-    Script:
-      callfunc("EffectStone",6);
-  - Id: 20000038
-    AegisName: Effect_Stone_Tier_7
-    Name: Effect Stone Tier 7
-    Type: DelayConsume
-    Script:
-      callfunc("EffectStone",7);
-  - Id: 20000039
-    AegisName: Effect_Stone_Tier_8
-    Name: Effect Stone Tier 8
-    Type: DelayConsume
-    Script:
-      callfunc("EffectStone",8);
-  - Id: 20000040
-    AegisName: Effect_Stone_Tier_9
-    Name: Effect Stone Tier 9
-    Type: DelayConsume
-    Script:
-      callfunc("EffectStone",9);
-  - Id: 20000041
-    AegisName: Effect_Stone_Tier_10
-    Name: Effect Stone Tier 10
-    Type: DelayConsume
-    Script:
-      callfunc("EffectStone",10);
+    Buy: 1
+    Trade:
+      NoSell: true
+    Script: |
+      callfunc("TheBox");
+  - Id: 10000008
+    AegisName: Weapon_Key
+    Name: Weapon Key
+    Type: Etc
+    Buy: 1
+    Trade:
+      NoSell: true
+  - Id: 10000009
+    AegisName: Equipment_Key
+    Name: Equipment Key
+    Type: Etc
+    Buy: 1
+    Trade:
+      NoSell: true
+  - Id: 10000010
+    AegisName: Costume_Key
+    Name: Costume Key
+    Type: Etc
+    Buy: 1
+    Trade:
+      NoSell: true
+  - Id: 10000011
+    AegisName: Card_Key
+    Name: Card Key
+    Type: Etc
+    Buy: 1
+    Trade:
+      NoSell: true
+  - Id: 10000012
+    AegisName: Enchantment_Key
+    Name: Enchantment Key
+    Type: Etc
+    Buy: 1
+    Trade:
+      NoSell: true

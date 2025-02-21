@@ -1801,6 +1801,8 @@ public class Converter : MonoBehaviour
                 skillDatabase.requiredItems.Add(SpacingRemover.Remove(text).Replace("-Item:", string.Empty));
             else if (text.Contains("Equipment:"))
                 isRequiredEquipmentLines = true;
+            else if (isRequiredEquipmentLines && !text.Contains("        "))
+                isRequiredEquipmentLines = false;
             else if (text.Contains("Unit:") || text.Contains("Status:"))
                 isRequiredEquipmentLines = false;
             else if (isRequiredEquipmentLines)
@@ -3110,9 +3112,12 @@ public class Converter : MonoBehaviour
 
                 if (!isSkipThisItem)
                 {
-                    _itemContaianerDatabases.Add(int.Parse(_itemContainer.id), _itemContainer);
+                    if (!_itemContaianerDatabases.ContainsKey(int.Parse(_itemContainer.id)))
+                    {
+                        _itemContaianerDatabases.Add(int.Parse(_itemContainer.id), _itemContainer);
 
-                    _itemContainers.Add(_itemContainer);
+                        _itemContainers.Add(_itemContainer);
+                    }
                 }
 
                 _itemContainer = new ItemContainer();

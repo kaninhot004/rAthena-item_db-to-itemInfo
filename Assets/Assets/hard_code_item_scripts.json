@@ -191,6 +191,30 @@
             "itemScriptDescription": "กดใช้เพื่อ ^112793เพิ่มความสามารถให้ตัวละคร^000000"
         },
         {
+            "itemId": 10000007,
+            "itemScriptDescription": "กดใช้เพื่อ ^112793รับกุญแจสุ่มของประเภทต่าง ๆ^000000"
+        },
+        {
+            "itemId": 10000008,
+            "itemScriptDescription": "สามารถใช้สุ่มรับ Weapon ได้ที่ ^112793THE BOX^000000"
+        },
+        {
+            "itemId": 10000009,
+            "itemScriptDescription": "สามารถใช้สุ่มรับ Equipment ได้ที่ ^112793THE BOX^000000"
+        },
+        {
+            "itemId": 10000010,
+            "itemScriptDescription": "สามารถใช้สุ่มรับ Costume ได้ที่ ^112793THE BOX^000000"
+        },
+        {
+            "itemId": 10000011,
+            "itemScriptDescription": "สามารถใช้สุ่มรับ Card ได้ที่ ^112793THE BOX^000000"
+        },
+        {
+            "itemId": 10000012,
+            "itemScriptDescription": "สามารถใช้สุ่มรับ Enchantment ได้ที่ ^112793THE BOX^000000"
+        },
+        {
             "itemId": 20000000,
             "itemScriptDescription": "กดใช้เพื่อ ^112793กลับสู่ห้องพัก^000000"
         },
