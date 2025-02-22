@@ -84,6 +84,7 @@
     <Compile Include="Assets\Scripts\Utilities\LineEndingsRemover.cs" />
     <Compile Include="Assets\Scripts\Classes\MonsterDatabase.cs" />
     <Compile Include="Assets\Scripts\Utilities\IsCharNumber.cs" />
+    <Compile Include="Assets\Scripts\ResourceNameChecker.cs" />
     <Compile Include="Assets\Scripts\Classes\ItemListContainer.cs" />
   </ItemGroup>
   <ItemGroup>
