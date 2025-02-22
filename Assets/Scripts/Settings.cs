@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -12,7 +10,9 @@ public class Settings : MonoBehaviour
     const string REFINABLE_TOGGLE = "IsSkipRefinable";
     const string GRADABLE_TOGGLE = "IsSkipGradable";
     const string SKIP_MIN_LV_TOGGLE = "IsSkipMinLv";
-    const string SKIP_GENDER_CLASS_JOB_TOGGLE = "IsSkipGenderClassJob";
+    const string SKIP_GENDER_TOGGLE = "IsSkipGender";
+    const string SKIP_CLASS_TOGGLE = "IsSkipClass";
+    const string SKIP_JOB_TOGGLE = "IsSkipJob";
     const string ENCHANTMENT_DOUBLE_CLICK_TOGGLE = "IsEnchantmentDoubleClickable";
     const string FORCE_EQUIPMENT_NO_VALUE_TOGGLE = "IsEquipmentNoValue";
     const string FORCE_ITEM_NO_BONUS_NO_COMBO_TOGGLE = "IsItemNoBonusNoCombo";
@@ -37,7 +37,9 @@ public class Settings : MonoBehaviour
     [SerializeField] Toggle _refinableToggle;
     [SerializeField] Toggle _gradableToggle;
     [SerializeField] Toggle _skipMinLvToggle;
-    [SerializeField] Toggle _skipGenderClassJobToggle;
+    [SerializeField] Toggle _skipGenderToggle;
+    [SerializeField] Toggle _skipClassToggle;
+    [SerializeField] Toggle _skipJobToggle;
     [SerializeField] Toggle _enchantmentClickableToggle;
     [SerializeField] Toggle _forceEquipmentNoValueToggle;
     [SerializeField] Toggle _forceItemNoBonusNoComboToggle;
@@ -66,7 +68,9 @@ public class Settings : MonoBehaviour
         _refinableToggle.isOn = (PlayerPrefs.GetInt(REFINABLE_TOGGLE) == 1) ? true : false;
         _gradableToggle.isOn = (PlayerPrefs.GetInt(GRADABLE_TOGGLE) == 1) ? true : false;
         _skipMinLvToggle.isOn = (PlayerPrefs.GetInt(SKIP_MIN_LV_TOGGLE) == 1) ? true : false;
-        _skipGenderClassJobToggle.isOn = (PlayerPrefs.GetInt(SKIP_GENDER_CLASS_JOB_TOGGLE) == 1) ? true : false;
+        _skipGenderToggle.isOn = (PlayerPrefs.GetInt(SKIP_GENDER_TOGGLE) == 1) ? true : false;
+        _skipClassToggle.isOn = (PlayerPrefs.GetInt(SKIP_CLASS_TOGGLE) == 1) ? true : false;
+        _skipJobToggle.isOn = (PlayerPrefs.GetInt(SKIP_JOB_TOGGLE) == 1) ? true : false;
         _enchantmentClickableToggle.isOn = (PlayerPrefs.GetInt(ENCHANTMENT_DOUBLE_CLICK_TOGGLE) == 1) ? true : false;
         _forceEquipmentNoValueToggle.isOn = (PlayerPrefs.GetInt(FORCE_EQUIPMENT_NO_VALUE_TOGGLE) == 1) ? true : false;
         _forceItemNoBonusNoComboToggle.isOn = (PlayerPrefs.GetInt(FORCE_ITEM_NO_BONUS_NO_COMBO_TOGGLE) == 1) ? true : false;
@@ -85,7 +89,9 @@ public class Settings : MonoBehaviour
         _converter.IsHideRefinable = _refinableToggle.isOn;
         _converter.IsHideGradable = _gradableToggle.isOn;
         _converter.IsSkipEquipLevel = _skipMinLvToggle.isOn;
-        _converter.IsItemUnconditional = _skipGenderClassJobToggle.isOn;
+        _converter.IsSkipItemGender = _skipGenderToggle.isOn;
+        _converter.IsSkipItemClass = _skipClassToggle.isOn;
+        _converter.IsSkipItemJob = _skipJobToggle.isOn;
         _converter.IsEnchantmentAbleToUse = _enchantmentClickableToggle.isOn;
         _converter.IsEquipmentNoValue = _forceEquipmentNoValueToggle.isOn;
         _converter.IsItemNoBonus = _forceItemNoBonusNoComboToggle.isOn;
@@ -106,7 +112,9 @@ public class Settings : MonoBehaviour
         _refinableToggle.onValueChanged.AddListener(OnRefinableToggle);
         _gradableToggle.onValueChanged.AddListener(OnGradableToggle);
         _skipMinLvToggle.onValueChanged.AddListener(OnSkipMinLvToggle);
-        _skipGenderClassJobToggle.onValueChanged.AddListener(OnSkipGenderClassJobToggle);
+        _skipGenderToggle.onValueChanged.AddListener(OnSkipGenderToggle);
+        _skipClassToggle.onValueChanged.AddListener(OnSkipClassToggle);
+        _skipJobToggle.onValueChanged.AddListener(OnSkipJobToggle);
         _enchantmentClickableToggle.onValueChanged.AddListener(OnEnchantmentClickableToggle);
         _forceEquipmentNoValueToggle.onValueChanged.AddListener(OnForceEquipmentNoValueToggle);
         _forceItemNoBonusNoComboToggle.onValueChanged.AddListener(OnForceItemNoBonusNoComboToggle);
@@ -143,11 +151,23 @@ public class Settings : MonoBehaviour
         PlayerPrefs.Save();
         _converter.IsEnchantmentAbleToUse = isOn;
     }
-    void OnSkipGenderClassJobToggle(bool isOn)
+    void OnSkipGenderToggle(bool isOn)
     {
-        PlayerPrefs.SetInt(SKIP_GENDER_CLASS_JOB_TOGGLE, isOn ? 1 : 0);
+        PlayerPrefs.SetInt(SKIP_GENDER_TOGGLE, isOn ? 1 : 0);
         PlayerPrefs.Save();
-        _converter.IsItemUnconditional = isOn;
+        _converter.IsSkipItemGender = isOn;
+    }
+    void OnSkipClassToggle(bool isOn)
+    {
+        PlayerPrefs.SetInt(SKIP_CLASS_TOGGLE, isOn ? 1 : 0);
+        PlayerPrefs.Save();
+        _converter.IsSkipItemClass = isOn;
+    }
+    void OnSkipJobToggle(bool isOn)
+    {
+        PlayerPrefs.SetInt(SKIP_JOB_TOGGLE, isOn ? 1 : 0);
+        PlayerPrefs.Save();
+        _converter.IsSkipItemJob = isOn;
     }
     void OnSkipMinLvToggle(bool isOn)
     {

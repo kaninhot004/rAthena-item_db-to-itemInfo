@@ -34,8 +34,12 @@ public class Converter : MonoBehaviour
 
     [SerializeField] bool _isItemLink = false;
     public bool IsItemLink { set { _isItemLink = value; } }
-    [SerializeField] bool _isItemUnconditional = false;
-    public bool IsItemUnconditional { set { _isItemUnconditional = value; } }
+    [SerializeField] bool _isSkipItemGender = false;
+    public bool IsSkipItemGender { set { _isSkipItemGender = value; } }
+    [SerializeField] bool _isSkipItemClass = false;
+    public bool IsSkipItemClass { set { _isSkipItemClass = value; } }
+    [SerializeField] bool _isSkipItemJob = false;
+    public bool IsSkipItemJob { set { _isSkipItemJob = value; } }
     [SerializeField] bool _isSkipEquipLevel = false;
     public bool IsSkipEquipLevel { set { _isSkipEquipLevel = value; } }
     [SerializeField] bool _isSkipNormalEquipEtcCombo = false;
@@ -3332,7 +3336,7 @@ public class Converter : MonoBehaviour
 
                 _itemContainer.jobs = _itemContainer.jobs.Replace("— ", string.Empty);
             }
-            if (!_isItemUnconditional)
+            if (!_isSkipItemJob)
             {
                 if (!string.IsNullOrEmpty(_itemContainer.jobs))
                     description += "			\"^3F28FF" + _localization.GetTexts(Localization.JOB) + ":^000000 " + (_isUseNewLineInsteadOfCommaForAvailableJob ? (isMultipleJob ? "[NEW_LINE]" : string.Empty) + _itemContainer.jobs.Substring(0, _itemContainer.jobs.Length - 10) : _itemContainer.jobs.Substring(0, _itemContainer.jobs.Length - 2)) + "\",\n";
@@ -3347,13 +3351,15 @@ public class Converter : MonoBehaviour
 
                 _itemContainer.classes = _itemContainer.classes.Replace("— ", string.Empty);
             }
-            if (!_isItemUnconditional)
+            if (!_isSkipItemClass)
             {
                 if (!string.IsNullOrEmpty(_itemContainer.classes))
                     description += "			\"^3F28FF" + _localization.GetTexts(Localization.CLASS) + ":^000000 " + (_isUseNewLineInsteadOfCommaForAvailableClass ? (isMultipleClass ? "[NEW_LINE]" : string.Empty) + _itemContainer.classes.Substring(0, _itemContainer.classes.Length - 10) : _itemContainer.classes.Substring(0, _itemContainer.classes.Length - 2)) + "\",\n";
                 else if (_isZeroValuePrintable && isEquipment)
                     description += "			\"^3F28FF" + _localization.GetTexts(Localization.CLASS) + ":^000000 -\",\n";
-
+            }
+            if (!_isSkipItemGender)
+            {
                 if (!string.IsNullOrEmpty(_itemContainer.gender))
                     description += "			\"^3F28FF" + _localization.GetTexts(Localization.GENDER) + ":^000000 " + _itemContainer.gender.Substring(0, _itemContainer.gender.Length - 2) + "\",\n";
                 else if (_isZeroValuePrintable && isEquipment)
