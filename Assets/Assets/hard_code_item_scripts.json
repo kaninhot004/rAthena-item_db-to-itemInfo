@@ -164,7 +164,7 @@
         },
         {
             "itemId": 10000000,
-            "itemScriptDescription": "ผงสำหรับ ^112793เสริมแกร่งอุปกรณ์สวมใส่^000000"
+            "itemScriptDescription": "ผงโกงสำหรับ ^112793เสริมแกร่งอุปกรณ์สวมใส่ ปลอดภัยแน่นอน 100%^000000"
         },
         {
             "itemId": 10000001,
@@ -192,195 +192,27 @@
         },
         {
             "itemId": 10000007,
-            "itemScriptDescription": "กดใช้เพื่อ ^112793รับกุญแจสุ่มของประเภทต่าง ๆ^000000"
+            "itemScriptDescription": "กดใช้เพื่อ ^112793สุ่มรับ กุญแจไข THE BOX^000000"
         },
         {
             "itemId": 10000008,
-            "itemScriptDescription": "สามารถใช้สุ่มรับ Weapon ได้ที่ ^112793THE BOX^000000"
+            "itemScriptDescription": "นำไปสุ่มรับ Weapon ได้ที่ ^112793THE BOX^000000"
         },
         {
             "itemId": 10000009,
-            "itemScriptDescription": "สามารถใช้สุ่มรับ Equipment ได้ที่ ^112793THE BOX^000000"
+            "itemScriptDescription": "นำไปสุ่มรับ Equipment ได้ที่ ^112793THE BOX^000000"
         },
         {
             "itemId": 10000010,
-            "itemScriptDescription": "สามารถใช้สุ่มรับ Costume ได้ที่ ^112793THE BOX^000000"
+            "itemScriptDescription": "นำไปสุ่มรับ Costume ได้ที่ ^112793THE BOX^000000"
         },
         {
             "itemId": 10000011,
-            "itemScriptDescription": "สามารถใช้สุ่มรับ Card ได้ที่ ^112793THE BOX^000000"
+            "itemScriptDescription": "นำไปสุ่มรับ Card ได้ที่ ^112793THE BOX^000000"
         },
         {
             "itemId": 10000012,
-            "itemScriptDescription": "สามารถใช้สุ่มรับ Enchantment ได้ที่ ^112793THE BOX^000000"
+            "itemScriptDescription": "นำไปสุ่มรับ Enchantment ได้ที่ ^112793THE BOX^000000"
         },
-        {
-            "itemId": 20000000,
-            "itemScriptDescription": "กดใช้เพื่อ ^112793กลับสู่ห้องพัก^000000"
-        },
-        {
-            "itemId": 20000001,
-            "itemScriptDescription": "กดใช้เพื่อ ^112793สุ่มเคลื่อนย้ายภายใน Map^000000"
-        },
-        {
-            "itemId": 20000002,
-            "itemScriptDescription": "กดใช้เพื่อ ^112793เพิ่ม ATK ชั่วคราว^000000"
-        },
-        {
-            "itemId": 20000003,
-            "itemScriptDescription": "กดใช้เพื่อ ^112793เพิ่ม ATK ชั่วคราว^000000"
-        },
-        {
-            "itemId": 20000004,
-            "itemScriptDescription": "กดใช้เพื่อ ^112793เพิ่ม ATK ชั่วคราว^000000"
-        },
-        {
-            "itemId": 20000005,
-            "itemScriptDescription": "กดใช้เพื่อ ^112793เพิ่ม ATK ชั่วคราว^000000"
-        },
-        {
-            "itemId": 20000006,
-            "itemScriptDescription": "กดใช้เพื่อ ^112793เพิ่ม ATK ชั่วคราว^000000"
-        },
-        {
-            "itemId": 20000007,
-            "itemScriptDescription": "กดใช้เพื่อ ^112793เพิ่ม ATK ชั่วคราว^000000"
-        },
-        {
-            "itemId": 20000008,
-            "itemScriptDescription": "กดใช้เพื่อ ^112793เพิ่ม ATK ชั่วคราว^000000"
-        },
-        {
-            "itemId": 20000009,
-            "itemScriptDescription": "กดใช้เพื่อ ^112793เพิ่ม ATK ชั่วคราว^000000"
-        },
-        {
-            "itemId": 20000010,
-            "itemScriptDescription": "กดใช้เพื่อ ^112793เพิ่ม ATK ชั่วคราว^000000"
-        },
-        {
-            "itemId": 20000011,
-            "itemScriptDescription": "กดใช้เพื่อ ^112793เพิ่ม ATK ชั่วคราว^000000"
-        },
-        {
-            "itemId": 20000012,
-            "itemScriptDescription": "กดใช้เพื่อ ^112793เพิ่ม AGI ชั่วคราว^000000"
-        },
-        {
-            "itemId": 20000013,
-            "itemScriptDescription": "กดใช้เพื่อ ^112793เพิ่ม AGI ชั่วคราว^000000"
-        },
-        {
-            "itemId": 20000014,
-            "itemScriptDescription": "กดใช้เพื่อ ^112793เพิ่ม AGI ชั่วคราว^000000"
-        },
-        {
-            "itemId": 20000015,
-            "itemScriptDescription": "กดใช้เพื่อ ^112793เพิ่ม AGI ชั่วคราว^000000"
-        },
-        {
-            "itemId": 20000016,
-            "itemScriptDescription": "กดใช้เพื่อ ^112793เพิ่ม AGI ชั่วคราว^000000"
-        },
-        {
-            "itemId": 20000017,
-            "itemScriptDescription": "กดใช้เพื่อ ^112793เพิ่ม AGI ชั่วคราว^000000"
-        },
-        {
-            "itemId": 20000018,
-            "itemScriptDescription": "กดใช้เพื่อ ^112793เพิ่ม AGI ชั่วคราว^000000"
-        },
-        {
-            "itemId": 20000019,
-            "itemScriptDescription": "กดใช้เพื่อ ^112793เพิ่ม AGI ชั่วคราว^000000"
-        },
-        {
-            "itemId": 20000020,
-            "itemScriptDescription": "กดใช้เพื่อ ^112793เพิ่ม AGI ชั่วคราว^000000"
-        },
-        {
-            "itemId": 20000021,
-            "itemScriptDescription": "กดใช้เพื่อ ^112793เพิ่ม AGI ชั่วคราว^000000"
-        },
-        {
-            "itemId": 20000022,
-            "itemScriptDescription": "กดใช้เพื่อ ^112793สุ่ม ร่าย Skill ชั่วคราว^000000"
-        },
-        {
-            "itemId": 20000023,
-            "itemScriptDescription": "กดใช้เพื่อ ^112793สุ่ม ร่าย Skill ชั่วคราว^000000"
-        },
-        {
-            "itemId": 20000024,
-            "itemScriptDescription": "กดใช้เพื่อ ^112793สุ่ม ร่าย Skill ชั่วคราว^000000"
-        },
-        {
-            "itemId": 20000025,
-            "itemScriptDescription": "กดใช้เพื่อ ^112793สุ่ม ร่าย Skill ชั่วคราว^000000"
-        },
-        {
-            "itemId": 20000026,
-            "itemScriptDescription": "กดใช้เพื่อ ^112793สุ่ม ร่าย Skill ชั่วคราว^000000"
-        },
-        {
-            "itemId": 20000027,
-            "itemScriptDescription": "กดใช้เพื่อ ^112793สุ่ม ร่าย Skill ชั่วคราว^000000"
-        },
-        {
-            "itemId": 20000028,
-            "itemScriptDescription": "กดใช้เพื่อ ^112793สุ่ม ร่าย Skill ชั่วคราว^000000"
-        },
-        {
-            "itemId": 20000029,
-            "itemScriptDescription": "กดใช้เพื่อ ^112793สุ่ม ร่าย Skill ชั่วคราว^000000"
-        },
-        {
-            "itemId": 20000030,
-            "itemScriptDescription": "กดใช้เพื่อ ^112793สุ่ม ร่าย Skill ชั่วคราว^000000"
-        },
-        {
-            "itemId": 20000031,
-            "itemScriptDescription": "กดใช้เพื่อ ^112793สุ่ม ร่าย Skill ชั่วคราว^000000"
-        },
-        {
-            "itemId": 20000032,
-            "itemScriptDescription": "กดใช้เพื่อ ^112793เพิ่ม ATK, ASPD ถาวร^000000"
-        },
-        {
-            "itemId": 20000033,
-            "itemScriptDescription": "กดใช้เพื่อ ^112793เพิ่ม ATK, ASPD ถาวร^000000"
-        },
-        {
-            "itemId": 20000034,
-            "itemScriptDescription": "กดใช้เพื่อ ^112793เพิ่ม ATK, ASPD ถาวร^000000"
-        },
-        {
-            "itemId": 20000035,
-            "itemScriptDescription": "กดใช้เพื่อ ^112793เพิ่ม ATK, ASPD ถาวร^000000"
-        },
-        {
-            "itemId": 20000036,
-            "itemScriptDescription": "กดใช้เพื่อ ^112793เพิ่ม ATK, ASPD ถาวร^000000"
-        },
-        {
-            "itemId": 20000037,
-            "itemScriptDescription": "กดใช้เพื่อ ^112793เพิ่ม ATK, ASPD ถาวร^000000"
-        },
-        {
-            "itemId": 20000038,
-            "itemScriptDescription": "กดใช้เพื่อ ^112793เพิ่ม ATK, ASPD ถาวร^000000"
-        },
-        {
-            "itemId": 20000039,
-            "itemScriptDescription": "กดใช้เพื่อ ^112793เพิ่ม ATK, ASPD ถาวร^000000"
-        },
-        {
-            "itemId": 20000040,
-            "itemScriptDescription": "กดใช้เพื่อ ^112793เพิ่ม ATK, ASPD ถาวร^000000"
-        },
-        {
-            "itemId": 20000041,
-            "itemScriptDescription": "กดใช้เพื่อ ^112793เพิ่ม ATK, ASPD ถาวร^000000"
-        }
     ]
 }
