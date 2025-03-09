@@ -68,5 +68,6 @@ public class HardcodeItemScripts : MonoBehaviour
                 }
             }
         }
+        Debug.Log("There are " + _dictDatas.Count + " hardcode item description");
     }
 }
