@@ -823,6 +823,7 @@ public class Converter : MonoBehaviour
 
         List<int> errorMonsterIds = new List<int>
         {
+            1136,
             1288,
             1324,
             1325,
