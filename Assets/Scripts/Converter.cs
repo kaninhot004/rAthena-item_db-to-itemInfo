@@ -5659,6 +5659,11 @@ public class Converter : MonoBehaviour
         text = text.Replace("rc2_illusion_luanda", "^AC6523(Illusion Luanda)^000000");
         text = text.Replace("rc2_illusion_moonlight", "^AC6523(Illusion Moonlight)^000000");
         text = text.Replace("rc2_illusion_frozen", "^AC6523(Illusion Frozen)^000000");
+        text = text.Replace("RC2_Illusion_Moonlight", "^AC6523(Illusion Moonlight)^000000");
+        text = text.Replace("RC2_Ep16_def", "^AC6523(EP 16 Def)^000000");
+        text = text.Replace("RC2_Edda_Arunafeltz", "^AC6523(Edda Arunafeltz)^000000");
+        text = text.Replace("RC2_Lasagna", "^AC6523(Lasagna)^000000");
+        text = text.Replace("RC2_Glast_Heim_Abyss", "^AC6523(Glast Heim Abyss)^000000");
         return text;
     }
 
