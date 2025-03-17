@@ -7,6 +7,7 @@ public class ItemListContainer
     [Serializable]
     public class SubTypeData
     {
+        public string type;
         public string subType;
         public List<string> id = new List<string>();
     }
@@ -43,14 +44,14 @@ public class ItemListContainer
     public List<SubTypeData> subTypeDatas = new List<SubTypeData>();
     public List<LocationData> locationDatas = new List<LocationData>();
 
-    public void AddSubType(string subType, string id)
+    public void AddSubType(string subType, string id, string type)
     {
-        if (string.IsNullOrEmpty(subType))
+        if (string.IsNullOrEmpty(type) || string.IsNullOrEmpty(subType))
             return;
 
         for (int i = 0; i < subTypeDatas.Count; i++)
         {
-            if (subTypeDatas[i].subType == subType)
+            if ((subTypeDatas[i].type == type) && (subTypeDatas[i].subType == subType))
             {
                 subTypeDatas[i].id.Add(id);
                 return;
@@ -58,6 +59,7 @@ public class ItemListContainer
         }
 
         SubTypeData subTypeData = new SubTypeData();
+        subTypeData.type = type;
         subTypeData.subType = subType;
         subTypeData.id.Add(id);
 

@@ -645,15 +645,17 @@ public class Converter : MonoBehaviour
 
         // SubType item id
 
+        List<string> types = new List<string>();
         List<string> subTypes = new List<string>();
         List<int> maxPages = new List<int>();
         foreach (var item in _itemListContainer.subTypeDatas)
         {
+            types.Add(item.type);
             subTypes.Add(item.subType);
             int maxPage = 0;
 
-            builder2.Append("deletearray $" + item.subType + "[0],getarraysize($" + item.subType + ");\n");
-            builder2.Append("setarray $" + item.subType + "[0],");
+            builder2.Append("deletearray $" + item.type + "_" + item.subType + "[0],getarraysize($" + item.subType + ");\n");
+            builder2.Append("setarray $" + item.type + "_" + item.subType + "[0],");
 
             for (int i = 0; i < item.id.Count; i++)
             {
@@ -664,7 +666,7 @@ public class Converter : MonoBehaviour
                         builder.Remove(builder.Length - 1, 1);
 
                     maxPage++;
-                    builder.Append("\n-	shop	Debug" + item.subType + "" + maxPage + "	-1,no,");
+                    builder.Append("\n-	shop	Debug" + item.type + "_" + item.subType + "" + maxPage + "	-1,no,");
                 }
 
                 builder.Append(item.id[i] + ":" + ITEM_DEBUG_PRICE + ",");
@@ -680,7 +682,7 @@ public class Converter : MonoBehaviour
         if (!string.IsNullOrEmpty(builder.ToString()))
             builder.Remove(builder.Length - 1, 1);
 
-        builder.Append("\nsetarray .subType$[0],");
+        builder.Append("\nsetarray $subType$[0],");
         for (int i = 0; i < subTypes.Count; i++)
             builder.Append("\"" + subTypes[i] + "\",");
 
@@ -689,7 +691,7 @@ public class Converter : MonoBehaviour
 
         builder.Append(";");
 
-        builder.Append("\nsetarray .subTypeMaxPage[0],");
+        builder.Append("\nsetarray $subTypeMaxPage[0],");
         for (int i = 0; i < maxPages.Count; i++)
             builder.Append("" + maxPages[i] + ",");
 
@@ -697,7 +699,17 @@ public class Converter : MonoBehaviour
             builder.Remove(builder.Length - 1, 1);
 
         builder.Append(";");
+
+        builder.Append("\nsetarray $type$[0],");
+        for (int i = 0; i < types.Count; i++)
+            builder.Append("\"" + types[i] + "\",");
+
+        if (!string.IsNullOrEmpty(builder.ToString()))
+            builder.Remove(builder.Length - 1, 1);
+
         builder.Append(";");
+
+        builder.Append("////");
 
         // Location item id
 
@@ -771,7 +783,7 @@ public class Converter : MonoBehaviour
         if (!string.IsNullOrEmpty(builder.ToString()))
             builder.Remove(builder.Length - 1, 1);
 
-        builder.Append("\nsetarray .location$[0],");
+        builder.Append("\nsetarray $location$[0],");
         for (int i = 0; i < locations.Count; i++)
             builder.Append("\"" + locations[i] + "\",");
 
@@ -780,7 +792,7 @@ public class Converter : MonoBehaviour
 
         builder.Append(";");
 
-        builder.Append("\nsetarray .locationMaxPage[0],");
+        builder.Append("\nsetarray $locationMaxPage[0],");
         for (int i = 0; i < maxPages.Count; i++)
             builder.Append("" + maxPages[i] + ",");
 
@@ -3193,7 +3205,7 @@ public class Converter : MonoBehaviour
 
             if (!_isFastConvert)
             {
-                _itemListContainer.AddSubType(_itemContainer.subType.Replace("CannonBall", "Cannonball"), _itemContainer.id);
+                _itemListContainer.AddSubType(_itemContainer.subType.Replace("CannonBall", "Cannonball"), _itemContainer.id, _itemContainer.type);
 
                 if ((_itemContainer.type.ToLower() == "armor")
                     || (_itemContainer.type.ToLower() == "shadowgear"))
