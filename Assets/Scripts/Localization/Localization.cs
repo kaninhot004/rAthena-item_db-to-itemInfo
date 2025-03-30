@@ -15,6 +15,7 @@ public class Localization : MonoBehaviour
     public const string TRADITIONAL_CHINESE = "TRADITIONAL_CHINESE";
     public const string SIMPIFIED_CHINESE = "SIMPIFIED_CHINESE";
     public const string KOREAN = "KOREAN";
+    public const string PORTUGUESE = "PORTUGUESE";
 
     public const string ERROR = "ERROR";
     public const string NOT_FOUND = "NOT_FOUND";
@@ -455,6 +456,7 @@ public class Localization : MonoBehaviour
                 public string traditionalChinese;
                 public string simpifiedChinese;
                 public string korean;
+                public string portuguese;
             }
         }
     }
@@ -509,6 +511,7 @@ public class Localization : MonoBehaviour
                             data.traditionalChinese = jsonData.datas[i].keyDatas[j].traditionalChinese;
                             data.simpifiedChinese = jsonData.datas[i].keyDatas[j].simpifiedChinese;
                             data.korean = jsonData.datas[i].keyDatas[j].korean;
+                            data.portuguese = jsonData.datas[i].keyDatas[j].portuguese;
 
                             _currentLocalizationDatabase.datas.Add(jsonData.datas[i].keyDatas[j].key, data);
                         }
@@ -539,6 +542,8 @@ public class Localization : MonoBehaviour
                 return _currentLocalizationDatabase.datas[key].simpifiedChinese;
             else if (_currentLanguage == KOREAN)
                 return _currentLocalizationDatabase.datas[key].korean;
+            else if (_currentLanguage == PORTUGUESE)
+                return _currentLocalizationDatabase.datas[key].portuguese;
             else
                 return string.Empty;
         }
@@ -583,6 +588,10 @@ public class Localization : MonoBehaviour
         dropdownOption6.text = "Korean";
         dropdownList.Add(dropdownOption6);
 
+        Dropdown.OptionData dropdownOption7 = new Dropdown.OptionData();
+        dropdownOption7.text = "Portuguese";
+        dropdownList.Add(dropdownOption7);
+
         _languageDropdown.AddOptions(dropdownList);
 
         _languageDropdown.value = 0;
@@ -596,6 +605,16 @@ public class Localization : MonoBehaviour
             SetupLanguage(THAI);
         else if (option == 1)
             SetupLanguage(ENGLISH);
+        else if (option == 2)
+            SetupLanguage(JAPANESE);
+        else if (option == 3)
+            SetupLanguage(TRADITIONAL_CHINESE);
+        else if (option == 4)
+            SetupLanguage(SIMPIFIED_CHINESE);
+        else if (option == 5)
+            SetupLanguage(KOREAN);
+        else if (option == 6)
+            SetupLanguage(PORTUGUESE);
     }
 
     public Encoding GetCurrentEncoding { get { return Encoding.Default; } }

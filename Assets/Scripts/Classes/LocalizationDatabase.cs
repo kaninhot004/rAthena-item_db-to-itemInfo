@@ -12,6 +12,7 @@ public class LocalizationDatabase
         public string traditionalChinese;
         public string simpifiedChinese;
         public string korean;
+        public string portuguese;
     }
 
     public Dictionary<string, Data> datas = new Dictionary<string, Data>();

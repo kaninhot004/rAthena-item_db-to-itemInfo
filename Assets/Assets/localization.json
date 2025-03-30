@@ -7,7 +7,8 @@
                     "japanese": "-",
                     "traditionalChinese": "-",
                     "simpifiedChinese": "-",
-                    "korean": "-"
+                    "korean": "-",
+                    "portuguese": "-"
                 }, {
                     "key": "NOT_FOUND",
                     "thai": "not found",
@@ -15,7 +16,8 @@
                     "japanese": "-",
                     "traditionalChinese": "-",
                     "simpifiedChinese": "-",
-                    "korean": "-"
+                    "korean": "-",
+                    "portuguese": "-"
                 }, {
                     "key": "AND",
                     "thai": "และ",
@@ -23,7 +25,8 @@
                     "japanese": "-",
                     "traditionalChinese": "-",
                     "simpifiedChinese": "-",
-                    "korean": "-"
+                    "korean": "-",
+                    "portuguese": "-"
                 }, {
                     "key": "WITH",
                     "thai": "กับ",
@@ -31,7 +34,8 @@
                     "japanese": "-",
                     "traditionalChinese": "-",
                     "simpifiedChinese": "-",
-                    "korean": "-"
+                    "korean": "-",
+                    "portuguese": "-"
                 }, {
                     "key": "OR",
                     "thai": "หรือ",
@@ -39,7 +43,8 @@
                     "japanese": "-",
                     "traditionalChinese": "-",
                     "simpifiedChinese": "-",
-                    "korean": "-"
+                    "korean": "-",
+                    "portuguese": "-"
                 }, {
                     "key": "CAN",
                     "thai": "ได้",
@@ -47,7 +52,8 @@
                     "japanese": "-",
                     "traditionalChinese": "-",
                     "simpifiedChinese": "-",
-                    "korean": "-"
+                    "korean": "-",
+                    "portuguese": "-"
                 }, {
                     "key": "CANNOT",
                     "thai": "ไม่ได้",
@@ -55,7 +61,8 @@
                     "japanese": "-",
                     "traditionalChinese": "-",
                     "simpifiedChinese": "-",
-                    "korean": "-"
+                    "korean": "-",
+                    "portuguese": "-"
                 }, {
                     "key": "CONVERT_PROGRESSION_START",
                     "thai": "Starting now",
@@ -63,7 +70,8 @@
                     "japanese": "-",
                     "traditionalChinese": "-",
                     "simpifiedChinese": "-",
-                    "korean": "-"
+                    "korean": "-",
+                    "portuguese": "-"
                 }, {
                     "key": "CONVERT_PROGRESSION_FETCHING_ITEM",
                     "thai": "Fetching item",
@@ -71,7 +79,8 @@
                     "japanese": "-",
                     "traditionalChinese": "-",
                     "simpifiedChinese": "-",
-                    "korean": "-"
+                    "korean": "-",
+                    "portuguese": "-"
                 }, {
                     "key": "CONVERT_PROGRESSION_FETCHING_RESOURCE_NAME",
                     "thai": "Fetching resource name",
@@ -79,7 +88,8 @@
                     "japanese": "-",
                     "traditionalChinese": "-",
                     "simpifiedChinese": "-",
-                    "korean": "-"
+                    "korean": "-",
+                    "portuguese": "-"
                 }, {
                     "key": "CONVERT_PROGRESSION_FETCHING_SKILL",
                     "thai": "Fetching skill",
@@ -87,7 +97,8 @@
                     "japanese": "-",
                     "traditionalChinese": "-",
                     "simpifiedChinese": "-",
-                    "korean": "-"
+                    "korean": "-",
+                    "portuguese": "-"
                 }, {
                     "key": "CONVERT_PROGRESSION_FETCHING_CLASS_NUMBER",
                     "thai": "Fetching class number",
@@ -95,7 +106,8 @@
                     "japanese": "-",
                     "traditionalChinese": "-",
                     "simpifiedChinese": "-",
-                    "korean": "-"
+                    "korean": "-",
+                    "portuguese": "-"
                 }, {
                     "key": "CONVERT_PROGRESSION_FETCHING_CLASS_MONSTER",
                     "thai": "Fetching monster",
@@ -103,7 +115,8 @@
                     "japanese": "-",
                     "traditionalChinese": "-",
                     "simpifiedChinese": "-",
-                    "korean": "-"
+                    "korean": "-",
+                    "portuguese": "-"
                 }, {
                     "key": "CONVERT_PROGRESSION_FETCHING_ITEM_COMBO",
                     "thai": "Fetching item combo",
@@ -111,7 +124,8 @@
                     "japanese": "-",
                     "traditionalChinese": "-",
                     "simpifiedChinese": "-",
-                    "korean": "-"
+                    "korean": "-",
+                    "portuguese": "-"
                 }, {
                     "key": "CONVERT_PROGRESSION_FETCHING_RESOURCE_NAME_WITH_TYPE",
                     "thai": "Fetching resource name with type",
@@ -119,7 +133,8 @@
                     "japanese": "-",
                     "traditionalChinese": "-",
                     "simpifiedChinese": "-",
-                    "korean": "-"
+                    "korean": "-",
+                    "portuguese": "-"
                 }, {
                     "key": "CONVERT_PROGRESSION_PLEASE_WAIT",
                     "thai": "Please wait",
@@ -127,7 +142,8 @@
                     "japanese": "-",
                     "traditionalChinese": "-",
                     "simpifiedChinese": "-",
-                    "korean": "-"
+                    "korean": "-",
+                    "portuguese": "-"
                 }, {
                     "key": "CONVERT_PROGRESSION_DONE",
                     "thai": "Done",
@@ -135,7 +151,8 @@
                     "japanese": "-",
                     "traditionalChinese": "-",
                     "simpifiedChinese": "-",
-                    "korean": "-"
+                    "korean": "-",
+                    "portuguese": "-"
                 }, {
                     "key": "JOBS_ALL_JOB",
                     "thai": "ทุกอาชีพ",
@@ -143,7 +160,8 @@
                     "japanese": "-",
                     "traditionalChinese": "-",
                     "simpifiedChinese": "-",
-                    "korean": "-"
+                    "korean": "-",
+                    "portuguese": "-"
                 }, {
                     "key": "CLASSES_ALL_CLASS",
                     "thai": "ทุกคลาส",
@@ -151,7 +169,8 @@
                     "japanese": "-",
                     "traditionalChinese": "-",
                     "simpifiedChinese": "-",
-                    "korean": "-"
+                    "korean": "-",
+                    "portuguese": "-"
                 }, {
                     "key": "CLASSES_BABY",
                     "thai": "Baby",
@@ -159,7 +178,8 @@
                     "japanese": "-",
                     "traditionalChinese": "-",
                     "simpifiedChinese": "-",
-                    "korean": "-"
+                    "korean": "-",
+                    "portuguese": "-"
                 }, {
                     "key": "CLASSES_TRANS",
                     "thai": "Trans",
@@ -167,7 +187,8 @@
                     "japanese": "-",
                     "traditionalChinese": "-",
                     "simpifiedChinese": "-",
-                    "korean": "-"
+                    "korean": "-",
+                    "portuguese": "-"
                 }, {
                     "key": "GENDER_FEMALE",
                     "thai": "หญิง",
@@ -175,7 +196,8 @@
                     "japanese": "-",
                     "traditionalChinese": "-",
                     "simpifiedChinese": "-",
-                    "korean": "-"
+                    "korean": "-",
+                    "portuguese": "-"
                 }, {
                     "key": "GENDER_MALE",
                     "thai": "ชาย",
@@ -183,7 +205,8 @@
                     "japanese": "-",
                     "traditionalChinese": "-",
                     "simpifiedChinese": "-",
-                    "korean": "-"
+                    "korean": "-",
+                    "portuguese": "-"
                 }, {
                     "key": "GENDER_ALL",
                     "thai": "ทุกเพศ",
@@ -191,7 +214,8 @@
                     "japanese": "-",
                     "traditionalChinese": "-",
                     "simpifiedChinese": "-",
-                    "korean": "-"
+                    "korean": "-",
+                    "portuguese": "-"
                 }, {
                     "key": "LOCATION_HEAD_TOP",
                     "thai": "หมวก Top",
@@ -199,7 +223,8 @@
                     "japanese": "-",
                     "traditionalChinese": "-",
                     "simpifiedChinese": "-",
-                    "korean": "-"
+                    "korean": "-",
+                    "portuguese": "-"
                 }, {
                     "key": "LOCATION_HEAD_MID",
                     "thai": "หมวก Mid",
@@ -207,7 +232,8 @@
                     "japanese": "-",
                     "traditionalChinese": "-",
                     "simpifiedChinese": "-",
-                    "korean": "-"
+                    "korean": "-",
+                    "portuguese": "-"
                 }, {
                     "key": "LOCATION_HEAD_LOW",
                     "thai": "หมวก Low",
@@ -215,7 +241,8 @@
                     "japanese": "-",
                     "traditionalChinese": "-",
                     "simpifiedChinese": "-",
-                    "korean": "-"
+                    "korean": "-",
+                    "portuguese": "-"
                 }, {
                     "key": "LOCATION_ARMOR",
                     "thai": "ชุด",
@@ -223,7 +250,8 @@
                     "japanese": "-",
                     "traditionalChinese": "-",
                     "simpifiedChinese": "-",
-                    "korean": "-"
+                    "korean": "-",
+                    "portuguese": "-"
                 }, {
                     "key": "LOCATION_RIGHT_HAND",
                     "thai": "มือขวา",
@@ -231,7 +259,8 @@
                     "japanese": "-",
                     "traditionalChinese": "-",
                     "simpifiedChinese": "-",
-                    "korean": "-"
+                    "korean": "-",
+                    "portuguese": "-"
                 }, {
                     "key": "LOCATION_LEFT_HAND",
                     "thai": "มือซ้าย",
@@ -239,7 +268,8 @@
                     "japanese": "-",
                     "traditionalChinese": "-",
                     "simpifiedChinese": "-",
-                    "korean": "-"
+                    "korean": "-",
+                    "portuguese": "-"
                 }, {
                     "key": "LOCATION_GARMENT",
                     "thai": "ผ้าคลุม",
@@ -247,7 +277,8 @@
                     "japanese": "-",
                     "traditionalChinese": "-",
                     "simpifiedChinese": "-",
-                    "korean": "-"
+                    "korean": "-",
+                    "portuguese": "-"
                 }, {
                     "key": "LOCATION_SHOES",
                     "thai": "รองเท้า",
@@ -255,7 +286,8 @@
                     "japanese": "-",
                     "traditionalChinese": "-",
                     "simpifiedChinese": "-",
-                    "korean": "-"
+                    "korean": "-",
+                    "portuguese": "-"
                 }, {
                     "key": "LOCATION_RIGHT_ACCESSORY",
                     "thai": "ประดับขวา",
@@ -263,7 +295,8 @@
                     "japanese": "-",
                     "traditionalChinese": "-",
                     "simpifiedChinese": "-",
-                    "korean": "-"
+                    "korean": "-",
+                    "portuguese": "-"
                 }, {
                     "key": "LOCATION_LEFT_ACCESSORY",
                     "thai": "ประดับซ้าย",
@@ -271,7 +304,8 @@
                     "japanese": "-",
                     "traditionalChinese": "-",
                     "simpifiedChinese": "-",
-                    "korean": "-"
+                    "korean": "-",
+                    "portuguese": "-"
                 }, {
                     "key": "LOCATION_COSTUME_HEAD_TOP",
                     "thai": "หมวก Cos Top",
@@ -279,7 +313,8 @@
                     "japanese": "-",
                     "traditionalChinese": "-",
                     "simpifiedChinese": "-",
-                    "korean": "-"
+                    "korean": "-",
+                    "portuguese": "-"
                 }, {
                     "key": "LOCATION_COSTUME_HEAD_MID",
                     "thai": "หมวก Cos Mid",
@@ -287,7 +322,8 @@
                     "japanese": "-",
                     "traditionalChinese": "-",
                     "simpifiedChinese": "-",
-                    "korean": "-"
+                    "korean": "-",
+                    "portuguese": "-"
                 }, {
                     "key": "LOCATION_COSTUME_HEAD_LOW",
                     "thai": "หมวก Cos Low",
@@ -295,7 +331,8 @@
                     "japanese": "-",
                     "traditionalChinese": "-",
                     "simpifiedChinese": "-",
-                    "korean": "-"
+                    "korean": "-",
+                    "portuguese": "-"
                 }, {
                     "key": "LOCATION_COSTUME_GARMENT",
                     "thai": "ผ้าคลุม Cos",
@@ -303,7 +340,8 @@
                     "japanese": "-",
                     "traditionalChinese": "-",
                     "simpifiedChinese": "-",
-                    "korean": "-"
+                    "korean": "-",
+                    "portuguese": "-"
                 }, {
                     "key": "LOCATION_AMMO",
                     "thai": "กระสุน",
@@ -311,7 +349,8 @@
                     "japanese": "-",
                     "traditionalChinese": "-",
                     "simpifiedChinese": "-",
-                    "korean": "-"
+                    "korean": "-",
+                    "portuguese": "-"
                 }, {
                     "key": "LOCATION_SHADOW_ARMOR",
                     "thai": "ชุด S.",
@@ -319,7 +358,8 @@
                     "japanese": "-",
                     "traditionalChinese": "-",
                     "simpifiedChinese": "-",
-                    "korean": "-"
+                    "korean": "-",
+                    "portuguese": "-"
                 }, {
                     "key": "LOCATION_SHADOW_WEAPON",
                     "thai": "อาวุธ S.",
@@ -327,7 +367,8 @@
                     "japanese": "-",
                     "traditionalChinese": "-",
                     "simpifiedChinese": "-",
-                    "korean": "-"
+                    "korean": "-",
+                    "portuguese": "-"
                 }, {
                     "key": "LOCATION_SHADOW_SHIELD",
                     "thai": "โล่ S.",
@@ -335,7 +376,8 @@
                     "japanese": "-",
                     "traditionalChinese": "-",
                     "simpifiedChinese": "-",
-                    "korean": "-"
+                    "korean": "-",
+                    "portuguese": "-"
                 }, {
                     "key": "LOCATION_SHADOW_SHOES",
                     "thai": "รองเท้า S.",
@@ -343,7 +385,8 @@
                     "japanese": "-",
                     "traditionalChinese": "-",
                     "simpifiedChinese": "-",
-                    "korean": "-"
+                    "korean": "-",
+                    "portuguese": "-"
                 }, {
                     "key": "LOCATION_SHADOW_RIGHT_ACCESSORY",
                     "thai": "ประดับขวา S.",
@@ -351,7 +394,8 @@
                     "japanese": "-",
                     "traditionalChinese": "-",
                     "simpifiedChinese": "-",
-                    "korean": "-"
+                    "korean": "-",
+                    "portuguese": "-"
                 }, {
                     "key": "LOCATION_SHADOW_LEFT_ACCESSORY",
                     "thai": "ประดับซ้าย S.",
@@ -359,7 +403,8 @@
                     "japanese": "-",
                     "traditionalChinese": "-",
                     "simpifiedChinese": "-",
-                    "korean": "-"
+                    "korean": "-",
+                    "portuguese": "-"
                 }, {
                     "key": "LOCATION_BOTH_HAND",
                     "thai": "สองมือ",
@@ -367,7 +412,8 @@
                     "japanese": "-",
                     "traditionalChinese": "-",
                     "simpifiedChinese": "-",
-                    "korean": "-"
+                    "korean": "-",
+                    "portuguese": "-"
                 }, {
                     "key": "LOCATION_BOTH_ACCESSORY",
                     "thai": "ประดับ",
@@ -375,7 +421,8 @@
                     "japanese": "-",
                     "traditionalChinese": "-",
                     "simpifiedChinese": "-",
-                    "korean": "-"
+                    "korean": "-",
+                    "portuguese": "-"
                 }, {
                     "key": "WHEN_EQUIP",
                     "thai": "เมื่อสวมใส่",
@@ -383,7 +430,8 @@
                     "japanese": "-",
                     "traditionalChinese": "-",
                     "simpifiedChinese": "-",
-                    "korean": "-"
+                    "korean": "-",
+                    "portuguese": "-"
                 }, {
                     "key": "WHEN_UNEQUIP",
                     "thai": "เมื่อถอด",
@@ -391,7 +439,8 @@
                     "japanese": "-",
                     "traditionalChinese": "-",
                     "simpifiedChinese": "-",
-                    "korean": "-"
+                    "korean": "-",
+                    "portuguese": "-"
                 }, {
                     "key": "TYPE",
                     "thai": "ประเภท",
@@ -399,7 +448,8 @@
                     "japanese": "-",
                     "traditionalChinese": "-",
                     "simpifiedChinese": "-",
-                    "korean": "-"
+                    "korean": "-",
+                    "portuguese": "-"
                 }, {
                     "key": "SUB_TYPE",
                     "thai": "ประเภทรอง",
@@ -407,7 +457,8 @@
                     "japanese": "-",
                     "traditionalChinese": "-",
                     "simpifiedChinese": "-",
-                    "korean": "-"
+                    "korean": "-",
+                    "portuguese": "-"
                 }, {
                     "key": "LOCATION",
                     "thai": "ตำแหน่ง",
@@ -415,7 +466,8 @@
                     "japanese": "-",
                     "traditionalChinese": "-",
                     "simpifiedChinese": "-",
-                    "korean": "-"
+                    "korean": "-",
+                    "portuguese": "-"
                 }, {
                     "key": "JOB",
                     "thai": "อาชีพ",
@@ -423,7 +475,8 @@
                     "japanese": "-",
                     "traditionalChinese": "-",
                     "simpifiedChinese": "-",
-                    "korean": "-"
+                    "korean": "-",
+                    "portuguese": "-"
                 }, {
                     "key": "CLASS",
                     "thai": "คลาส",
@@ -431,7 +484,8 @@
                     "japanese": "-",
                     "traditionalChinese": "-",
                     "simpifiedChinese": "-",
-                    "korean": "-"
+                    "korean": "-",
+                    "portuguese": "-"
                 }, {
                     "key": "GENDER",
                     "thai": "เพศ",
@@ -439,7 +493,8 @@
                     "japanese": "-",
                     "traditionalChinese": "-",
                     "simpifiedChinese": "-",
-                    "korean": "-"
+                    "korean": "-",
+                    "portuguese": "-"
                 }, {
                     "key": "ATTACK",
                     "thai": "โจมตี",
@@ -447,7 +502,8 @@
                     "japanese": "-",
                     "traditionalChinese": "-",
                     "simpifiedChinese": "-",
-                    "korean": "-"
+                    "korean": "-",
+                    "portuguese": "-"
                 }, {
                     "key": "MAGIC_ATTACK",
                     "thai": "โจมตีเวทย์",
@@ -455,7 +511,8 @@
                     "japanese": "-",
                     "traditionalChinese": "-",
                     "simpifiedChinese": "-",
-                    "korean": "-"
+                    "korean": "-",
+                    "portuguese": "-"
                 }, {
                     "key": "DEFENSE",
                     "thai": "ป้องกัน",
@@ -463,7 +520,8 @@
                     "japanese": "-",
                     "traditionalChinese": "-",
                     "simpifiedChinese": "-",
-                    "korean": "-"
+                    "korean": "-",
+                    "portuguese": "-"
                 }, {
                     "key": "RANGE",
                     "thai": "ระยะตี",
@@ -471,7 +529,8 @@
                     "japanese": "-",
                     "traditionalChinese": "-",
                     "simpifiedChinese": "-",
-                    "korean": "-"
+                    "korean": "-",
+                    "portuguese": "-"
                 }, {
                     "key": "WEAPON_LEVEL",
                     "thai": "Lv. อาวุธ",
@@ -479,7 +538,8 @@
                     "japanese": "-",
                     "traditionalChinese": "-",
                     "simpifiedChinese": "-",
-                    "korean": "-"
+                    "korean": "-",
+                    "portuguese": "-"
                 }, {
                     "key": "ARMOR_LEVEL",
                     "thai": "Lv. ชุด",
@@ -487,7 +547,8 @@
                     "japanese": "-",
                     "traditionalChinese": "-",
                     "simpifiedChinese": "-",
-                    "korean": "-"
+                    "korean": "-",
+                    "portuguese": "-"
                 }, {
                     "key": "MINIMUM_EQUIP_LEVEL",
                     "thai": "Lv. ขั้นต่ำ",
@@ -495,7 +556,8 @@
                     "japanese": "-",
                     "traditionalChinese": "-",
                     "simpifiedChinese": "-",
-                    "korean": "-"
+                    "korean": "-",
+                    "portuguese": "-"
                 }, {
                     "key": "MAXIMUM_EQUIP_LEVEL",
                     "thai": "Lv. สูงสุด",
@@ -503,7 +565,8 @@
                     "japanese": "-",
                     "traditionalChinese": "-",
                     "simpifiedChinese": "-",
-                    "korean": "-"
+                    "korean": "-",
+                    "portuguese": "-"
                 }, {
                     "key": "REFINABLE",
                     "thai": "ตีบวก",
@@ -511,7 +574,8 @@
                     "japanese": "-",
                     "traditionalChinese": "-",
                     "simpifiedChinese": "-",
-                    "korean": "-"
+                    "korean": "-",
+                    "portuguese": "-"
                 }, {
                     "key": "WEIGHT",
                     "thai": "น้ำหนัก",
@@ -519,7 +583,8 @@
                     "japanese": "-",
                     "traditionalChinese": "-",
                     "simpifiedChinese": "-",
-                    "korean": "-"
+                    "korean": "-",
+                    "portuguese": "-"
                 }, {
                     "key": "PRICE",
                     "thai": "ราคา",
@@ -527,7 +592,8 @@
                     "japanese": "-",
                     "traditionalChinese": "-",
                     "simpifiedChinese": "-",
-                    "korean": "-"
+                    "korean": "-",
+                    "portuguese": "-"
                 }, {
                     "key": "AUTO_BONUS_3",
                     "thai": "• เมื่อใช้ {1} สุ่ม {2}% ที่จะ {0}[NEW_LINE]^FF2525(เป็นเวลา {3})^000000",
@@ -535,7 +601,8 @@
                     "japanese": "-",
                     "traditionalChinese": "-",
                     "simpifiedChinese": "-",
-                    "korean": "-"
+                    "korean": "-",
+                    "portuguese": "-"
                 }, {
                     "key": "AUTO_BONUS_2",
                     "thai": "• เมื่อโดน{1} สุ่ม {2}% ที่จะ {0}[NEW_LINE]^FF2525(เป็นเวลา {3})^000000",
@@ -543,7 +610,8 @@
                     "japanese": "-",
                     "traditionalChinese": "-",
                     "simpifiedChinese": "-",
-                    "korean": "-"
+                    "korean": "-",
+                    "portuguese": "-"
                 }, {
                     "key": "AUTO_BONUS_1",
                     "thai": "• เมื่อ{1} สุ่ม {2}% ที่จะ {0}[NEW_LINE]^FF2525(เป็นเวลา {3})^000000",
@@ -551,7 +619,8 @@
                     "japanese": "-",
                     "traditionalChinese": "-",
                     "simpifiedChinese": "-",
-                    "korean": "-"
+                    "korean": "-",
+                    "portuguese": "-"
                 }, {
                     "key": "BONUS_SCRIPT",
                     "thai": "• มีผล {0}[NEW_LINE]^FF2525(เป็นเวลา {1})^000000",
@@ -559,7 +628,8 @@
                     "japanese": "-",
                     "traditionalChinese": "-",
                     "simpifiedChinese": "-",
-                    "korean": "-"
+                    "korean": "-",
+                    "portuguese": "-"
                 }, {
                     "key": "BONUS_BASE_ATK",
                     "thai": "• ฐาน Atk +",
@@ -567,7 +637,8 @@
                     "japanese": "-",
                     "traditionalChinese": "-",
                     "simpifiedChinese": "-",
-                    "korean": "-"
+                    "korean": "-",
+                    "portuguese": "-"
                 }, {
                     "key": "BONUS_WEAPON_ATK_RATE",
                     "thai": "• Atk อาวุธ +{0}%",
@@ -575,7 +646,8 @@
                     "japanese": "-",
                     "traditionalChinese": "-",
                     "simpifiedChinese": "-",
-                    "korean": "-"
+                    "korean": "-",
+                    "portuguese": "-"
                 }, {
                     "key": "BONUS_WEAPON_MATK_RATE",
                     "thai": "• MAtk อาวุธ +{0}%",
@@ -583,7 +655,8 @@
                     "japanese": "-",
                     "traditionalChinese": "-",
                     "simpifiedChinese": "-",
-                    "korean": "-"
+                    "korean": "-",
+                    "portuguese": "-"
                 }, {
                     "key": "BONUS_DEF2",
                     "thai": "• ฐาน Def +",
@@ -591,7 +664,8 @@
                     "japanese": "-",
                     "traditionalChinese": "-",
                     "simpifiedChinese": "-",
-                    "korean": "-"
+                    "korean": "-",
+                    "portuguese": "-"
                 }, {
                     "key": "BONUS_DEF2_RATE",
                     "thai": "• ฐาน Def +{0}%",
@@ -599,7 +673,8 @@
                     "japanese": "-",
                     "traditionalChinese": "-",
                     "simpifiedChinese": "-",
-                    "korean": "-"
+                    "korean": "-",
+                    "portuguese": "-"
                 }, {
                     "key": "BONUS_MDEF2",
                     "thai": "• ฐาน MDef +",
@@ -607,7 +682,8 @@
                     "japanese": "-",
                     "traditionalChinese": "-",
                     "simpifiedChinese": "-",
-                    "korean": "-"
+                    "korean": "-",
+                    "portuguese": "-"
                 }, {
                     "key": "BONUS_MDEF2_RATE",
                     "thai": "• ฐาน MDef +{0}%",
@@ -615,7 +691,8 @@
                     "japanese": "-",
                     "traditionalChinese": "-",
                     "simpifiedChinese": "-",
-                    "korean": "-"
+                    "korean": "-",
+                    "portuguese": "-"
                 }, {
                     "key": "BONUS_CRITICAL_LONG",
                     "thai": "• Critical ตีไกล +",
@@ -623,7 +700,8 @@
                     "japanese": "-",
                     "traditionalChinese": "-",
                     "simpifiedChinese": "-",
-                    "korean": "-"
+                    "korean": "-",
+                    "portuguese": "-"
                 }, {
                     "key": "BONUS2_CRITICAL_ADD_RACE",
                     "thai": "• Critical กับ {0} +{1}",
@@ -631,7 +709,8 @@
                     "japanese": "-",
                     "traditionalChinese": "-",
                     "simpifiedChinese": "-",
-                    "korean": "-"
+                    "korean": "-",
+                    "portuguese": "-"
                 }, {
                     "key": "BONUS_PERFECT_HIT_RATE",
                     "thai": "• Perfect Hit +{0}% (ทับไม่ได้)",
@@ -639,7 +718,8 @@
                     "japanese": "-",
                     "traditionalChinese": "-",
                     "simpifiedChinese": "-",
-                    "korean": "-"
+                    "korean": "-",
+                    "portuguese": "-"
                 }, {
                     "key": "BONUS_SPEED_RATE",
                     "thai": "• เดินเร็ว +{0}% (ทับไม่ได้)",
@@ -647,7 +727,8 @@
                     "japanese": "-",
                     "traditionalChinese": "-",
                     "simpifiedChinese": "-",
-                    "korean": "-"
+                    "korean": "-",
+                    "portuguese": "-"
                 }, {
                     "key": "BONUS_SPEED_ADD_RATE",
                     "thai": "• เดินเร็ว +{0}%",
@@ -655,7 +736,8 @@
                     "japanese": "-",
                     "traditionalChinese": "-",
                     "simpifiedChinese": "-",
-                    "korean": "-"
+                    "korean": "-",
+                    "portuguese": "-"
                 }, {
                     "key": "BONUS_ATK_RANGE",
                     "thai": "• ระยะตี +",
@@ -663,7 +745,8 @@
                     "japanese": "-",
                     "traditionalChinese": "-",
                     "simpifiedChinese": "-",
-                    "korean": "-"
+                    "korean": "-",
+                    "portuguese": "-"
                 }, {
                     "key": "BONUS_ADD_MAX_WEIGHT",
                     "thai": "• แบกของได้หนักขึ้น +{0}",
@@ -671,7 +754,8 @@
                     "japanese": "-",
                     "traditionalChinese": "-",
                     "simpifiedChinese": "-",
-                    "korean": "-"
+                    "korean": "-",
+                    "portuguese": "-"
                 }, {
                     "key": "BONUS_HP_RECOV_RATE",
                     "thai": "• การฟื้นฟู HP ปกติ +{0}%",
@@ -679,7 +763,8 @@
                     "japanese": "-",
                     "traditionalChinese": "-",
                     "simpifiedChinese": "-",
-                    "korean": "-"
+                    "korean": "-",
+                    "portuguese": "-"
                 }, {
                     "key": "BONUS_SP_RECOV_RATE",
                     "thai": "• การฟื้นฟู SP ปกติ +{0}%",
@@ -687,7 +772,8 @@
                     "japanese": "-",
                     "traditionalChinese": "-",
                     "simpifiedChinese": "-",
-                    "korean": "-"
+                    "korean": "-",
+                    "portuguese": "-"
                 }, {
                     "key": "BONUS2_HP_REGEN_RATE",
                     "thai": "• ฟื้นฟู HP +{0} ทุก ๆ {1}",
@@ -695,7 +781,8 @@
                     "japanese": "-",
                     "traditionalChinese": "-",
                     "simpifiedChinese": "-",
-                    "korean": "-"
+                    "korean": "-",
+                    "portuguese": "-"
                 }, {
                     "key": "BONUS2_HP_LOSS_RATE",
                     "thai": "• เสีย HP +{0} ทุก ๆ {1}",
@@ -703,7 +790,8 @@
                     "japanese": "-",
                     "traditionalChinese": "-",
                     "simpifiedChinese": "-",
-                    "korean": "-"
+                    "korean": "-",
+                    "portuguese": "-"
                 }, {
                     "key": "BONUS2_SP_REGEN_RATE",
                     "thai": "• ฟื้นฟู SP +{0} ทุก ๆ {1}",
@@ -711,7 +799,8 @@
                     "japanese": "-",
                     "traditionalChinese": "-",
                     "simpifiedChinese": "-",
-                    "korean": "-"
+                    "korean": "-",
+                    "portuguese": "-"
                 }, {
                     "key": "BONUS2_SP_LOSS_RATE",
                     "thai": "• เสีย SP +{0} ทุก ๆ {1}",
@@ -719,7 +808,8 @@
                     "japanese": "-",
                     "traditionalChinese": "-",
                     "simpifiedChinese": "-",
-                    "korean": "-"
+                    "korean": "-",
+                    "portuguese": "-"
                 }, {
                     "key": "BONUS2_REGEN_PERCENT_HP",
                     "thai": "• ฟื้นฟู +{0}% จาก MaxHP ทุก ๆ {1}",
@@ -727,7 +817,8 @@
                     "japanese": "-",
                     "traditionalChinese": "-",
                     "simpifiedChinese": "-",
-                    "korean": "-"
+                    "korean": "-",
+                    "portuguese": "-"
                 }, {
                     "key": "BONUS2_REGEN_PERCENT_SP",
                     "thai": "• ฟื้นฟู +{0}% จาก MaxSP ทุก ๆ {1}",
@@ -735,7 +826,8 @@
                     "japanese": "-",
                     "traditionalChinese": "-",
                     "simpifiedChinese": "-",
-                    "korean": "-"
+                    "korean": "-",
+                    "portuguese": "-"
                 }, {
                     "key": "BONUS_STOP_HP_REGEN",
                     "thai": "• หยุดการฟื้นฟู HP ปกติ",
@@ -743,7 +835,8 @@
                     "japanese": "-",
                     "traditionalChinese": "-",
                     "simpifiedChinese": "-",
-                    "korean": "-"
+                    "korean": "-",
+                    "portuguese": "-"
                 }, {
                     "key": "BONUS_STOP_SP_REGEN",
                     "thai": "• หยุดการฟื้นฟู SP ปกติ",
@@ -751,7 +844,8 @@
                     "japanese": "-",
                     "traditionalChinese": "-",
                     "simpifiedChinese": "-",
-                    "korean": "-"
+                    "korean": "-",
+                    "portuguese": "-"
                 }, {
                     "key": "BONUS_USE_SP_RATE",
                     "thai": "• ใช้ SP +{0}%",
@@ -759,7 +853,8 @@
                     "japanese": "-",
                     "traditionalChinese": "-",
                     "simpifiedChinese": "-",
-                    "korean": "-"
+                    "korean": "-",
+                    "portuguese": "-"
                 }, {
                     "key": "BONUS2_SKILL_USE_SP",
                     "thai": "• ใช้ SP กับ {0} -{1}",
@@ -767,7 +862,8 @@
                     "japanese": "-",
                     "traditionalChinese": "-",
                     "simpifiedChinese": "-",
-                    "korean": "-"
+                    "korean": "-",
+                    "portuguese": "-"
                 }, {
                     "key": "BONUS2_SKILL_USE_SP_RATE",
                     "thai": "• ใช้ SP กับ {0} -{1}%",
@@ -775,7 +871,8 @@
                     "japanese": "-",
                     "traditionalChinese": "-",
                     "simpifiedChinese": "-",
-                    "korean": "-"
+                    "korean": "-",
+                    "portuguese": "-"
                 }, {
                     "key": "BONUS2_SKILL_ATK",
                     "thai": "• พลัง {0} +{1}%",
@@ -783,7 +880,8 @@
                     "japanese": "-",
                     "traditionalChinese": "-",
                     "simpifiedChinese": "-",
-                    "korean": "-"
+                    "korean": "-",
+                    "portuguese": "-"
                 }, {
                     "key": "BONUS_SHORT_ATK_RATE",
                     "thai": "• ตีกายภาพใกล้ +{0}%",
@@ -791,7 +889,8 @@
                     "japanese": "-",
                     "traditionalChinese": "-",
                     "simpifiedChinese": "-",
-                    "korean": "-"
+                    "korean": "-",
+                    "portuguese": "-"
                 }, {
                     "key": "BONUS_LONG_ATK_RATE",
                     "thai": "• ตีกายภาพไกล +{0}%",
@@ -799,7 +898,8 @@
                     "japanese": "-",
                     "traditionalChinese": "-",
                     "simpifiedChinese": "-",
-                    "korean": "-"
+                    "korean": "-",
+                    "portuguese": "-"
                 }, {
                     "key": "BONUS_CRIT_ATK_RATE",
                     "thai": "• พลัง Critical +{0}%",
@@ -807,7 +907,8 @@
                     "japanese": "-",
                     "traditionalChinese": "-",
                     "simpifiedChinese": "-",
-                    "korean": "-"
+                    "korean": "-",
+                    "portuguese": "-"
                 }, {
                     "key": "BONUS_CRIT_DEF_RATE",
                     "thai": "• กัน Critical +{0}%",
@@ -815,7 +916,8 @@
                     "japanese": "-",
                     "traditionalChinese": "-",
                     "simpifiedChinese": "-",
-                    "korean": "-"
+                    "korean": "-",
+                    "portuguese": "-"
                 }, {
                     "key": "BONUS_CRITICAL_DEF",
                     "thai": "• หลบ Critical +{0}%",
@@ -823,7 +925,8 @@
                     "japanese": "-",
                     "traditionalChinese": "-",
                     "simpifiedChinese": "-",
-                    "korean": "-"
+                    "korean": "-",
+                    "portuguese": "-"
                 }, {
                     "key": "BONUS2_WEAPON_ATK",
                     "thai": "• ถ้าสวมใส่ {0} Atk อาวุธ +{1}",
@@ -831,7 +934,8 @@
                     "japanese": "-",
                     "traditionalChinese": "-",
                     "simpifiedChinese": "-",
-                    "korean": "-"
+                    "korean": "-",
+                    "portuguese": "-"
                 }, {
                     "key": "BONUS2_WEAPON_DAMAGE_RATE",
                     "thai": "• ถ้าสวมใส่ {0} ตีกายภาพ +{1}%",
@@ -839,7 +943,8 @@
                     "japanese": "-",
                     "traditionalChinese": "-",
                     "simpifiedChinese": "-",
-                    "korean": "-"
+                    "korean": "-",
+                    "portuguese": "-"
                 }, {
                     "key": "BONUS_NEAR_ATK_DEF",
                     "thai": "• กันกายภาพใกล้ +{0}%",
@@ -847,7 +952,8 @@
                     "japanese": "-",
                     "traditionalChinese": "-",
                     "simpifiedChinese": "-",
-                    "korean": "-"
+                    "korean": "-",
+                    "portuguese": "-"
                 }, {
                     "key": "BONUS_LONG_ATK_DEF",
                     "thai": "• กันกายภาพไกล +{0}%",
@@ -855,7 +961,8 @@
                     "japanese": "-",
                     "traditionalChinese": "-",
                     "simpifiedChinese": "-",
-                    "korean": "-"
+                    "korean": "-",
+                    "portuguese": "-"
                 }, {
                     "key": "BONUS_MAGIC_ATK_DEF",
                     "thai": "• กันเวทย์ +{0}%",
@@ -863,7 +970,8 @@
                     "japanese": "-",
                     "traditionalChinese": "-",
                     "simpifiedChinese": "-",
-                    "korean": "-"
+                    "korean": "-",
+                    "portuguese": "-"
                 }, {
                     "key": "BONUS_MISC_ATK_DEF",
                     "thai": "• กันอื่น ๆ +{0}%",
@@ -871,7 +979,8 @@
                     "japanese": "-",
                     "traditionalChinese": "-",
                     "simpifiedChinese": "-",
-                    "korean": "-"
+                    "korean": "-",
+                    "portuguese": "-"
                 }, {
                     "key": "BONUS_NO_WEAPON_DAMAGE",
                     "thai": "• กันกายภาพ +{0}%",
@@ -879,7 +988,8 @@
                     "japanese": "-",
                     "traditionalChinese": "-",
                     "simpifiedChinese": "-",
-                    "korean": "-"
+                    "korean": "-",
+                    "portuguese": "-"
                 }, {
                     "key": "BONUS_NO_MAGIC_DAMAGE",
                     "thai": "• กันเวทย์ +{0}%",
@@ -887,7 +997,8 @@
                     "japanese": "-",
                     "traditionalChinese": "-",
                     "simpifiedChinese": "-",
-                    "korean": "-"
+                    "korean": "-",
+                    "portuguese": "-"
                 }, {
                     "key": "BONUS_NO_MISC_DAMAGE",
                     "thai": "• กันอื่น ๆ +{0}%",
@@ -895,7 +1006,8 @@
                     "japanese": "-",
                     "traditionalChinese": "-",
                     "simpifiedChinese": "-",
-                    "korean": "-"
+                    "korean": "-",
+                    "portuguese": "-"
                 }, {
                     "key": "BONUS_HEAL_POWER",
                     "thai": "• พลัง Heal +{0}%",
@@ -903,7 +1015,8 @@
                     "japanese": "-",
                     "traditionalChinese": "-",
                     "simpifiedChinese": "-",
-                    "korean": "-"
+                    "korean": "-",
+                    "portuguese": "-"
                 }, {
                     "key": "BONUS_HEAL_POWER_2",
                     "thai": "• โดน Heal แรงขึ้น +{0}%",
@@ -911,7 +1024,8 @@
                     "japanese": "-",
                     "traditionalChinese": "-",
                     "simpifiedChinese": "-",
-                    "korean": "-"
+                    "korean": "-",
+                    "portuguese": "-"
                 }, {
                     "key": "BONUS2_SKILL_HEAL",
                     "thai": "• {0} พลัง Heal +{1}%",
@@ -919,7 +1033,8 @@
                     "japanese": "-",
                     "traditionalChinese": "-",
                     "simpifiedChinese": "-",
-                    "korean": "-"
+                    "korean": "-",
+                    "portuguese": "-"
                 }, {
                     "key": "BONUS2_SKILL_HEAL_2",
                     "thai": "• โดน {0} Heal แรงขึ้น +{1}%",
@@ -927,7 +1042,8 @@
                     "japanese": "-",
                     "traditionalChinese": "-",
                     "simpifiedChinese": "-",
-                    "korean": "-"
+                    "korean": "-",
+                    "portuguese": "-"
                 }, {
                     "key": "BONUS_ADD_ITEM_HEAL_RATE",
                     "thai": "• (Item)พลัง Heal HP +{0}%",
@@ -935,7 +1051,8 @@
                     "japanese": "-",
                     "traditionalChinese": "-",
                     "simpifiedChinese": "-",
-                    "korean": "-"
+                    "korean": "-",
+                    "portuguese": "-"
                 }, {
                     "key": "BONUS2_ADD_ITEM_HEAL_RATE",
                     "thai": "• {0} พลัง Heal HP +{1}%",
@@ -943,7 +1060,8 @@
                     "japanese": "-",
                     "traditionalChinese": "-",
                     "simpifiedChinese": "-",
-                    "korean": "-"
+                    "korean": "-",
+                    "portuguese": "-"
                 }, {
                     "key": "BONUS2_ADD_ITEM_GROUP_HEAL_RATE",
                     "thai": "• Item กลุ่ม {0} พลัง Heal HP +{1}%",
@@ -951,7 +1069,8 @@
                     "japanese": "-",
                     "traditionalChinese": "-",
                     "simpifiedChinese": "-",
-                    "korean": "-"
+                    "korean": "-",
+                    "portuguese": "-"
                 }, {
                     "key": "BONUS_ADD_ITEM_SP_HEAL_RATE",
                     "thai": "• (Item)พลัง Heal SP +{0}%",
@@ -959,7 +1078,8 @@
                     "japanese": "-",
                     "traditionalChinese": "-",
                     "simpifiedChinese": "-",
-                    "korean": "-"
+                    "korean": "-",
+                    "portuguese": "-"
                 }, {
                     "key": "BONUS2_ADD_ITEM_SP_HEAL_RATE",
                     "thai": "• {0} พลัง Heal SP +{1}%",
@@ -967,7 +1087,8 @@
                     "japanese": "-",
                     "traditionalChinese": "-",
                     "simpifiedChinese": "-",
-                    "korean": "-"
+                    "korean": "-",
+                    "portuguese": "-"
                 }, {
                     "key": "BONUS2_ADD_ITEM_GROUP_SP_HEAL_RATE",
                     "thai": "• Item กลุ่ม {0} พลัง Heal SP +{1}%",
@@ -975,7 +1096,8 @@
                     "japanese": "-",
                     "traditionalChinese": "-",
                     "simpifiedChinese": "-",
-                    "korean": "-"
+                    "korean": "-",
+                    "portuguese": "-"
                 }, {
                     "key": "BONUS_CAST_RATE",
                     "thai": "• ร่าย V. +{0}%",
@@ -983,7 +1105,8 @@
                     "japanese": "-",
                     "traditionalChinese": "-",
                     "simpifiedChinese": "-",
-                    "korean": "-"
+                    "korean": "-",
+                    "portuguese": "-"
                 }, {
                     "key": "BONUS2_CAST_RATE",
                     "thai": "• ร่าย V. {0} +{1}%",
@@ -991,7 +1114,8 @@
                     "japanese": "-",
                     "traditionalChinese": "-",
                     "simpifiedChinese": "-",
-                    "korean": "-"
+                    "korean": "-",
+                    "portuguese": "-"
                 }, {
                     "key": "BONUS_FIXED_CAST_RATE",
                     "thai": "• ร่าย F. +{0}%",
@@ -999,7 +1123,8 @@
                     "japanese": "-",
                     "traditionalChinese": "-",
                     "simpifiedChinese": "-",
-                    "korean": "-"
+                    "korean": "-",
+                    "portuguese": "-"
                 }, {
                     "key": "BONUS2_FIXED_CAST_RATE",
                     "thai": "• ร่าย F. {0} +{1}%",
@@ -1007,7 +1132,8 @@
                     "japanese": "-",
                     "traditionalChinese": "-",
                     "simpifiedChinese": "-",
-                    "korean": "-"
+                    "korean": "-",
+                    "portuguese": "-"
                 }, {
                     "key": "BONUS_VARIABLE_CAST_RATE",
                     "thai": "• ร่าย V. +{0}%",
@@ -1015,7 +1141,8 @@
                     "japanese": "-",
                     "traditionalChinese": "-",
                     "simpifiedChinese": "-",
-                    "korean": "-"
+                    "korean": "-",
+                    "portuguese": "-"
                 }, {
                     "key": "BONUS2_VARIABLE_CAST_RATE",
                     "thai": "• ร่าย V. {0} +{1}%",
@@ -1023,7 +1150,8 @@
                     "japanese": "-",
                     "traditionalChinese": "-",
                     "simpifiedChinese": "-",
-                    "korean": "-"
+                    "korean": "-",
+                    "portuguese": "-"
                 }, {
                     "key": "BONUS_FIXED_CAST",
                     "thai": "• ร่าย F. +{0}",
@@ -1031,7 +1159,8 @@
                     "japanese": "-",
                     "traditionalChinese": "-",
                     "simpifiedChinese": "-",
-                    "korean": "-"
+                    "korean": "-",
+                    "portuguese": "-"
                 }, {
                     "key": "BONUS2_SKILL_FIXED_CAST",
                     "thai": "• ร่าย F. {0} +{1}",
@@ -1039,7 +1168,8 @@
                     "japanese": "-",
                     "traditionalChinese": "-",
                     "simpifiedChinese": "-",
-                    "korean": "-"
+                    "korean": "-",
+                    "portuguese": "-"
                 }, {
                     "key": "BONUS_VARIABLE_CAST",
                     "thai": "• ร่าย V. +{0}",
@@ -1047,7 +1177,8 @@
                     "japanese": "-",
                     "traditionalChinese": "-",
                     "simpifiedChinese": "-",
-                    "korean": "-"
+                    "korean": "-",
+                    "portuguese": "-"
                 }, {
                     "key": "BONUS2_SKILL_VARIABLE_CAST",
                     "thai": "• ร่าย V. {0} +{1}",
@@ -1055,7 +1186,8 @@
                     "japanese": "-",
                     "traditionalChinese": "-",
                     "simpifiedChinese": "-",
-                    "korean": "-"
+                    "korean": "-",
+                    "portuguese": "-"
                 }, {
                     "key": "BONUS_NO_CAST_CANCEL_2",
                     "thai": "• การร่ายไม่ถูกหยุด",
@@ -1063,7 +1195,8 @@
                     "japanese": "-",
                     "traditionalChinese": "-",
                     "simpifiedChinese": "-",
-                    "korean": "-"
+                    "korean": "-",
+                    "portuguese": "-"
                 }, {
                     "key": "BONUS_NO_CAST_CANCEL",
                     "thai": "• การร่ายไม่ถูกหยุด (ใช้ไม่ได้ใน GvG)",
@@ -1071,7 +1204,8 @@
                     "japanese": "-",
                     "traditionalChinese": "-",
                     "simpifiedChinese": "-",
-                    "korean": "-"
+                    "korean": "-",
+                    "portuguese": "-"
                 }, {
                     "key": "BONUS_DELAY_RATE",
                     "thai": "• Delay หลังร่าย +{0}%",
@@ -1079,7 +1213,8 @@
                     "japanese": "-",
                     "traditionalChinese": "-",
                     "simpifiedChinese": "-",
-                    "korean": "-"
+                    "korean": "-",
+                    "portuguese": "-"
                 }, {
                     "key": "BONUS2_SKILL_DELAY",
                     "thai": "• Delay หลังร่าย {0} +{1}",
@@ -1087,7 +1222,8 @@
                     "japanese": "-",
                     "traditionalChinese": "-",
                     "simpifiedChinese": "-",
-                    "korean": "-"
+                    "korean": "-",
+                    "portuguese": "-"
                 }, {
                     "key": "BONUS2_SKILL_COOLDOWN",
                     "thai": "• CD. {0} +{1}",
@@ -1095,7 +1231,8 @@
                     "japanese": "-",
                     "traditionalChinese": "-",
                     "simpifiedChinese": "-",
-                    "korean": "-"
+                    "korean": "-",
+                    "portuguese": "-"
                 }, {
                     "key": "BONUS2_ADD_ELE",
                     "thai": "• ตีกายภาพ {0} +{1}%",
@@ -1103,7 +1240,8 @@
                     "japanese": "-",
                     "traditionalChinese": "-",
                     "simpifiedChinese": "-",
-                    "korean": "-"
+                    "korean": "-",
+                    "portuguese": "-"
                 }, {
                     "key": "BONUS3_ADD_ELE",
                     "thai": "• ตีกายภาพ {0} โดย {2} +{1}%",
@@ -1111,7 +1249,8 @@
                     "japanese": "-",
                     "traditionalChinese": "-",
                     "simpifiedChinese": "-",
-                    "korean": "-"
+                    "korean": "-",
+                    "portuguese": "-"
                 }, {
                     "key": "BONUS2_MAGIC_ADD_ELE",
                     "thai": "• ตีเวทย์ {0} +{1}%",
@@ -1119,7 +1258,8 @@
                     "japanese": "-",
                     "traditionalChinese": "-",
                     "simpifiedChinese": "-",
-                    "korean": "-"
+                    "korean": "-",
+                    "portuguese": "-"
                 }, {
                     "key": "BONUS2_SUB_ELE",
                     "thai": "• กันธาตุ {0} +{1}%",
@@ -1127,7 +1267,8 @@
                     "japanese": "-",
                     "traditionalChinese": "-",
                     "simpifiedChinese": "-",
-                    "korean": "-"
+                    "korean": "-",
+                    "portuguese": "-"
                 }, {
                     "key": "BONUS3_SUB_ELE",
                     "thai": "• กันธาตุ {0} โดย {2} +{1}%",
@@ -1135,7 +1276,8 @@
                     "japanese": "-",
                     "traditionalChinese": "-",
                     "simpifiedChinese": "-",
-                    "korean": "-"
+                    "korean": "-",
+                    "portuguese": "-"
                 }, {
                     "key": "BONUS2_SUB_DEF_ELE",
                     "thai": "• กันกายภาพ {0} +{1}%",
@@ -1143,7 +1285,8 @@
                     "japanese": "-",
                     "traditionalChinese": "-",
                     "simpifiedChinese": "-",
-                    "korean": "-"
+                    "korean": "-",
+                    "portuguese": "-"
                 }, {
                     "key": "BONUS2_MAGIC_SUB_DEF_ELE",
                     "thai": "• กันเวทย์ {0} +{1}%",
@@ -1151,7 +1294,8 @@
                     "japanese": "-",
                     "traditionalChinese": "-",
                     "simpifiedChinese": "-",
-                    "korean": "-"
+                    "korean": "-",
+                    "portuguese": "-"
                 }, {
                     "key": "BONUS2_ADD_RACE",
                     "thai": "• ตีกายภาพ {0} +{1}%",
@@ -1159,7 +1303,8 @@
                     "japanese": "-",
                     "traditionalChinese": "-",
                     "simpifiedChinese": "-",
-                    "korean": "-"
+                    "korean": "-",
+                    "portuguese": "-"
                 }, {
                     "key": "BONUS2_MAGIC_ADD_RACE",
                     "thai": "• ตีเวทย์ {0} +{1}%",
@@ -1167,7 +1312,8 @@
                     "japanese": "-",
                     "traditionalChinese": "-",
                     "simpifiedChinese": "-",
-                    "korean": "-"
+                    "korean": "-",
+                    "portuguese": "-"
                 }, {
                     "key": "BONUS2_SUB_RACE",
                     "thai": "• กัน {0} +{1}%",
@@ -1175,7 +1321,8 @@
                     "japanese": "-",
                     "traditionalChinese": "-",
                     "simpifiedChinese": "-",
-                    "korean": "-"
+                    "korean": "-",
+                    "portuguese": "-"
                 }, {
                     "key": "BONUS3_SUB_RACE",
                     "thai": "• กัน {0} โดย {2} +{1}%",
@@ -1183,7 +1330,8 @@
                     "japanese": "-",
                     "traditionalChinese": "-",
                     "simpifiedChinese": "-",
-                    "korean": "-"
+                    "korean": "-",
+                    "portuguese": "-"
                 }, {
                     "key": "BONUS2_ADD_CLASS",
                     "thai": "• ตีกายภาพ {0} +{1}%",
@@ -1191,7 +1339,8 @@
                     "japanese": "-",
                     "traditionalChinese": "-",
                     "simpifiedChinese": "-",
-                    "korean": "-"
+                    "korean": "-",
+                    "portuguese": "-"
                 }, {
                     "key": "BONUS2_MAGIC_ADD_CLASS",
                     "thai": "• ตีเวทย์ {0} +{1}%",
@@ -1199,7 +1348,8 @@
                     "japanese": "-",
                     "traditionalChinese": "-",
                     "simpifiedChinese": "-",
-                    "korean": "-"
+                    "korean": "-",
+                    "portuguese": "-"
                 }, {
                     "key": "BONUS2_SUB_CLASS",
                     "thai": "• กัน {0} +{1}%",
@@ -1207,7 +1357,8 @@
                     "japanese": "-",
                     "traditionalChinese": "-",
                     "simpifiedChinese": "-",
-                    "korean": "-"
+                    "korean": "-",
+                    "portuguese": "-"
                 }, {
                     "key": "BONUS2_ADD_SIZE",
                     "thai": "• ตีกายภาพ {0} +{1}%",
@@ -1215,7 +1366,8 @@
                     "japanese": "-",
                     "traditionalChinese": "-",
                     "simpifiedChinese": "-",
-                    "korean": "-"
+                    "korean": "-",
+                    "portuguese": "-"
                 }, {
                     "key": "BONUS2_MAGIC_ADD_SIZE",
                     "thai": "• ตีเวทย์ {0} +{1}%",
@@ -1223,7 +1375,8 @@
                     "japanese": "-",
                     "traditionalChinese": "-",
                     "simpifiedChinese": "-",
-                    "korean": "-"
+                    "korean": "-",
+                    "portuguese": "-"
                 }, {
                     "key": "BONUS2_SUB_SIZE",
                     "thai": "• กันกายภาพ {0} +{1}%",
@@ -1231,7 +1384,8 @@
                     "japanese": "-",
                     "traditionalChinese": "-",
                     "simpifiedChinese": "-",
-                    "korean": "-"
+                    "korean": "-",
+                    "portuguese": "-"
                 }, {
                     "key": "BONUS2_WEAPON_SUB_SIZE",
                     "thai": "• กันกายภาพ {0} +{1}%",
@@ -1239,7 +1393,8 @@
                     "japanese": "-",
                     "traditionalChinese": "-",
                     "simpifiedChinese": "-",
-                    "korean": "-"
+                    "korean": "-",
+                    "portuguese": "-"
                 }, {
                     "key": "BONUS2_MAGIC_SUB_SIZE",
                     "thai": "• กันเวทย์ {0} +{1}%",
@@ -1247,7 +1402,8 @@
                     "japanese": "-",
                     "traditionalChinese": "-",
                     "simpifiedChinese": "-",
-                    "korean": "-"
+                    "korean": "-",
+                    "portuguese": "-"
                 }, {
                     "key": "BONUS_NO_SIZE_FIX",
                     "thai": "• ไม่สนใจขนาดในการคำนวณ",
@@ -1255,7 +1411,8 @@
                     "japanese": "-",
                     "traditionalChinese": "-",
                     "simpifiedChinese": "-",
-                    "korean": "-"
+                    "korean": "-",
+                    "portuguese": "-"
                 }, {
                     "key": "BONUS2_ADD_DAMAGE_CLASS",
                     "thai": "• ตีกายภาพกับ {0} +{1}%",
@@ -1263,7 +1420,8 @@
                     "japanese": "-",
                     "traditionalChinese": "-",
                     "simpifiedChinese": "-",
-                    "korean": "-"
+                    "korean": "-",
+                    "portuguese": "-"
                 }, {
                     "key": "BONUS2_ADD_MAGIC_DAMAGE_CLASS",
                     "thai": "• ตีเวทย์กับ {0} +{1}%",
@@ -1271,7 +1429,8 @@
                     "japanese": "-",
                     "traditionalChinese": "-",
                     "simpifiedChinese": "-",
-                    "korean": "-"
+                    "korean": "-",
+                    "portuguese": "-"
                 }, {
                     "key": "BONUS2_ADD_DEF_MONSTER",
                     "thai": "• กันกายภาพจาก {0} +{1}%",
@@ -1279,7 +1438,8 @@
                     "japanese": "-",
                     "traditionalChinese": "-",
                     "simpifiedChinese": "-",
-                    "korean": "-"
+                    "korean": "-",
+                    "portuguese": "-"
                 }, {
                     "key": "BONUS2_ADD_MDEF_MONSTER",
                     "thai": "• กันเวทย์จาก {0} +{1}%",
@@ -1287,7 +1447,8 @@
                     "japanese": "-",
                     "traditionalChinese": "-",
                     "simpifiedChinese": "-",
-                    "korean": "-"
+                    "korean": "-",
+                    "portuguese": "-"
                 }, {
                     "key": "BONUS2_ADD_RACE_2",
                     "thai": "• ตีกายภาพ {0} +{1}%",
@@ -1295,7 +1456,8 @@
                     "japanese": "-",
                     "traditionalChinese": "-",
                     "simpifiedChinese": "-",
-                    "korean": "-"
+                    "korean": "-",
+                    "portuguese": "-"
                 }, {
                     "key": "BONUS2_SUB_RACE_2",
                     "thai": "• กัน {0} +{1}%",
@@ -1303,7 +1465,8 @@
                     "japanese": "-",
                     "traditionalChinese": "-",
                     "simpifiedChinese": "-",
-                    "korean": "-"
+                    "korean": "-",
+                    "portuguese": "-"
                 }, {
                     "key": "BONUS2_MAGIC_ADD_RACE_2",
                     "thai": "• ตีเวทย์ {0} +{1}%",
@@ -1311,7 +1474,8 @@
                     "japanese": "-",
                     "traditionalChinese": "-",
                     "simpifiedChinese": "-",
-                    "korean": "-"
+                    "korean": "-",
+                    "portuguese": "-"
                 }, {
                     "key": "BONUS2_SUB_SKILL",
                     "thai": "• กัน {0} +{1}%",
@@ -1319,7 +1483,8 @@
                     "japanese": "-",
                     "traditionalChinese": "-",
                     "simpifiedChinese": "-",
-                    "korean": "-"
+                    "korean": "-",
+                    "portuguese": "-"
                 }, {
                     "key": "BONUS_ABSORB_DMG_MAX_HP",
                     "thai": "• หากโดน Damage แรงกว่า {0}% จาก MaxHP การคำนวณจะเป็น Damage - {0}% MaxHP (ทับไม่ได้)",
@@ -1327,7 +1492,8 @@
                     "japanese": "-",
                     "traditionalChinese": "-",
                     "simpifiedChinese": "-",
-                    "korean": "-"
+                    "korean": "-",
+                    "portuguese": "-"
                 }, {
                     "key": "BONUS_ABSORB_DMG_MAX_HP_2",
                     "thai": "• หากโดน Damage แรงกว่า {0}% จาก MaxHP จะโดนแค่ {0}% จาก MaxHP (ทับไม่ได้)",
@@ -1335,7 +1501,8 @@
                     "japanese": "-",
                     "traditionalChinese": "-",
                     "simpifiedChinese": "-",
-                    "korean": "-"
+                    "korean": "-",
+                    "portuguese": "-"
                 }, {
                     "key": "BONUS_ATK_ELE",
                     "thai": "• เคลือบอาวุธธาตุ {0}",
@@ -1343,7 +1510,8 @@
                     "japanese": "-",
                     "traditionalChinese": "-",
                     "simpifiedChinese": "-",
-                    "korean": "-"
+                    "korean": "-",
+                    "portuguese": "-"
                 }, {
                     "key": "BONUS_DEF_ELE",
                     "thai": "• เคลือบชุดธาตุ {0}",
@@ -1351,7 +1519,8 @@
                     "japanese": "-",
                     "traditionalChinese": "-",
                     "simpifiedChinese": "-",
-                    "korean": "-"
+                    "korean": "-",
+                    "portuguese": "-"
                 }, {
                     "key": "BONUS2_MAGIC_ATK_ELE",
                     "thai": "• ตีเวทย์ {0} +{1}%",
@@ -1359,7 +1528,8 @@
                     "japanese": "-",
                     "traditionalChinese": "-",
                     "simpifiedChinese": "-",
-                    "korean": "-"
+                    "korean": "-",
+                    "portuguese": "-"
                 }, {
                     "key": "BONUS_DEF_RATIO_ATK_RACE",
                     "thai": "• ตีแรงขึ้นตาม DEF {0}",
@@ -1367,7 +1537,8 @@
                     "japanese": "-",
                     "traditionalChinese": "-",
                     "simpifiedChinese": "-",
-                    "korean": "-"
+                    "korean": "-",
+                    "portuguese": "-"
                 }, {
                     "key": "BONUS_DEF_RATIO_ATK_ELE",
                     "thai": "• ตีแรงขึ้นตาม DEF {0}",
@@ -1375,7 +1546,8 @@
                     "japanese": "-",
                     "traditionalChinese": "-",
                     "simpifiedChinese": "-",
-                    "korean": "-"
+                    "korean": "-",
+                    "portuguese": "-"
                 }, {
                     "key": "BONUS_DEF_RATIO_ATK_CLASS",
                     "thai": "• ตีแรงขึ้นตาม DEF {0}",
@@ -1383,7 +1555,8 @@
                     "japanese": "-",
                     "traditionalChinese": "-",
                     "simpifiedChinese": "-",
-                    "korean": "-"
+                    "korean": "-",
+                    "portuguese": "-"
                 }, {
                     "key": "BONUS4_SET_DEF_RACE",
                     "thai": "• สุ่ม {1}% ลด DEF เหลือ {3} กับ {0} {2}",
@@ -1391,7 +1564,8 @@
                     "japanese": "-",
                     "traditionalChinese": "-",
                     "simpifiedChinese": "-",
-                    "korean": "-"
+                    "korean": "-",
+                    "portuguese": "-"
                 }, {
                     "key": "BONUS4_SET_MDEF_RACE",
                     "thai": "• สุ่ม {1}% ลด MDEF เหลือ {3} กับ {0} {2}",
@@ -1399,7 +1573,8 @@
                     "japanese": "-",
                     "traditionalChinese": "-",
                     "simpifiedChinese": "-",
-                    "korean": "-"
+                    "korean": "-",
+                    "portuguese": "-"
                 }, {
                     "key": "BONUS_IGNORE_DEF_ELE",
                     "thai": "• ไม่สนใจ DEF {0}",
@@ -1407,7 +1582,8 @@
                     "japanese": "-",
                     "traditionalChinese": "-",
                     "simpifiedChinese": "-",
-                    "korean": "-"
+                    "korean": "-",
+                    "portuguese": "-"
                 }, {
                     "key": "BONUS_IGNORE_DEF_RACE",
                     "thai": "• ไม่สนใจ DEF {0}",
@@ -1415,7 +1591,8 @@
                     "japanese": "-",
                     "traditionalChinese": "-",
                     "simpifiedChinese": "-",
-                    "korean": "-"
+                    "korean": "-",
+                    "portuguese": "-"
                 }, {
                     "key": "BONUS_IGNORE_DEF_CLASS",
                     "thai": "• ไม่สนใจ DEF {0}",
@@ -1423,7 +1600,8 @@
                     "japanese": "-",
                     "traditionalChinese": "-",
                     "simpifiedChinese": "-",
-                    "korean": "-"
+                    "korean": "-",
+                    "portuguese": "-"
                 }, {
                     "key": "BONUS_IGNORE_MDEF_RACE",
                     "thai": "• ไม่สนใจ MDEF {0}",
@@ -1431,7 +1609,8 @@
                     "japanese": "-",
                     "traditionalChinese": "-",
                     "simpifiedChinese": "-",
-                    "korean": "-"
+                    "korean": "-",
+                    "portuguese": "-"
                 }, {
                     "key": "BONUS2_IGNORE_DEF_RACE_RATE",
                     "thai": "• ไม่สนใจ DEF {1}% {0}",
@@ -1439,7 +1618,8 @@
                     "japanese": "-",
                     "traditionalChinese": "-",
                     "simpifiedChinese": "-",
-                    "korean": "-"
+                    "korean": "-",
+                    "portuguese": "-"
                 }, {
                     "key": "BONUS2_IGNORE_MDEF_RACE_RATE",
                     "thai": "• ไม่สนใจ MDEF {1}% {0}",
@@ -1447,7 +1627,8 @@
                     "japanese": "-",
                     "traditionalChinese": "-",
                     "simpifiedChinese": "-",
-                    "korean": "-"
+                    "korean": "-",
+                    "portuguese": "-"
                 }, {
                     "key": "BONUS2_IGNORE_MDEF_RACE_2_RATE",
                     "thai": "• ไม่สนใจ MDEF {1}% {0}",
@@ -1455,7 +1636,8 @@
                     "japanese": "-",
                     "traditionalChinese": "-",
                     "simpifiedChinese": "-",
-                    "korean": "-"
+                    "korean": "-",
+                    "portuguese": "-"
                 }, {
                     "key": "BONUS_IGNORE_MDEF_ELE",
                     "thai": "• ไม่สนใจ MDEF {0}",
@@ -1463,7 +1645,8 @@
                     "japanese": "-",
                     "traditionalChinese": "-",
                     "simpifiedChinese": "-",
-                    "korean": "-"
+                    "korean": "-",
+                    "portuguese": "-"
                 }, {
                     "key": "BONUS2_IGNORE_DEF_CLASS_RATE",
                     "thai": "• ไม่สนใจ DEF {1}% {0}",
@@ -1471,7 +1654,8 @@
                     "japanese": "-",
                     "traditionalChinese": "-",
                     "simpifiedChinese": "-",
-                    "korean": "-"
+                    "korean": "-",
+                    "portuguese": "-"
                 }, {
                     "key": "BONUS2_IGNORE_MDEF_CLASS_RATE",
                     "thai": "• ไม่สนใจ MDEF {1}% {0}",
@@ -1479,7 +1663,8 @@
                     "japanese": "-",
                     "traditionalChinese": "-",
                     "simpifiedChinese": "-",
-                    "korean": "-"
+                    "korean": "-",
+                    "portuguese": "-"
                 }, {
                     "key": "BONUS2_IGNORE_RES_RACE_RATE",
                     "thai": "• ไม่สนใจ RES {1}% {0}",
@@ -1487,7 +1672,8 @@
                     "japanese": "-",
                     "traditionalChinese": "-",
                     "simpifiedChinese": "-",
-                    "korean": "-"
+                    "korean": "-",
+                    "portuguese": "-"
                 }, {
                     "key": "BONUS2_IGNORE_MRES_RACE_RATE",
                     "thai": "• ไม่สนใจ MRES {1}% {0}",
@@ -1495,7 +1681,8 @@
                     "japanese": "-",
                     "traditionalChinese": "-",
                     "simpifiedChinese": "-",
-                    "korean": "-"
+                    "korean": "-",
+                    "portuguese": "-"
                 }, {
                     "key": "BONUS2_EXP_ADD_RACE",
                     "thai": "• EXP +{1}% {0}",
@@ -1503,7 +1690,8 @@
                     "japanese": "-",
                     "traditionalChinese": "-",
                     "simpifiedChinese": "-",
-                    "korean": "-"
+                    "korean": "-",
+                    "portuguese": "-"
                 }, {
                     "key": "BONUS2_EXP_ADD_CLASS",
                     "thai": "• EXP +{1}% {0}",
@@ -1511,7 +1699,8 @@
                     "japanese": "-",
                     "traditionalChinese": "-",
                     "simpifiedChinese": "-",
-                    "korean": "-"
+                    "korean": "-",
+                    "portuguese": "-"
                 }, {
                     "key": "BONUS2_ADD_EFF",
                     "thai": "• ตีกายภาพสุ่ม {1}% เกิด {0} กับศัตรู",
@@ -1519,7 +1708,8 @@
                     "japanese": "-",
                     "traditionalChinese": "-",
                     "simpifiedChinese": "-",
-                    "korean": "-"
+                    "korean": "-",
+                    "portuguese": "-"
                 }, {
                     "key": "BONUS2_ADD_EFF_2",
                     "thai": "• ตีกายภาพสุ่ม {1}% เกิด {0} กับตนเอง",
@@ -1527,7 +1717,8 @@
                     "japanese": "-",
                     "traditionalChinese": "-",
                     "simpifiedChinese": "-",
-                    "korean": "-"
+                    "korean": "-",
+                    "portuguese": "-"
                 }, {
                     "key": "BONUS2_ADD_EFF_WHEN_HIT",
                     "thai": "• เมื่อโดนตีกายภาพสุ่ม {1}% เกิด {0} กับศัตรู",
@@ -1535,7 +1726,8 @@
                     "japanese": "-",
                     "traditionalChinese": "-",
                     "simpifiedChinese": "-",
-                    "korean": "-"
+                    "korean": "-",
+                    "portuguese": "-"
                 }, {
                     "key": "BONUS2_RES_EFF",
                     "thai": "• มีโอกาส {1}% กัน {0}",
@@ -1543,7 +1735,8 @@
                     "japanese": "-",
                     "traditionalChinese": "-",
                     "simpifiedChinese": "-",
-                    "korean": "-"
+                    "korean": "-",
+                    "portuguese": "-"
                 }, {
                     "key": "BONUS3_ADD_EFF",
                     "thai": "• ตีโดย {2} สุ่ม {1}% เกิด {0} กับศัตรู",
@@ -1551,7 +1744,8 @@
                     "japanese": "-",
                     "traditionalChinese": "-",
                     "simpifiedChinese": "-",
-                    "korean": "-"
+                    "korean": "-",
+                    "portuguese": "-"
                 }, {
                     "key": "BONUS4_ADD_EFF",
                     "thai": "• ตีโดย {2} สุ่ม {1}% เกิด {0} กับศัตรู {3}",
@@ -1559,7 +1753,8 @@
                     "japanese": "-",
                     "traditionalChinese": "-",
                     "simpifiedChinese": "-",
-                    "korean": "-"
+                    "korean": "-",
+                    "portuguese": "-"
                 }, {
                     "key": "BONUS3_ADD_EFF_WHEN_HIT",
                     "thai": "• เมื่อโดนตีโดย {2} สุ่ม {1}% เกิด {0} กับศัตรู",
@@ -1567,7 +1762,8 @@
                     "japanese": "-",
                     "traditionalChinese": "-",
                     "simpifiedChinese": "-",
-                    "korean": "-"
+                    "korean": "-",
+                    "portuguese": "-"
                 }, {
                     "key": "BONUS4_ADD_EFF_WHEN_HIT",
                     "thai": "• เมื่อโดนตีโดย {2} สุ่ม {1}% เกิด {0} กับศัตรู {3}",
@@ -1575,7 +1771,8 @@
                     "japanese": "-",
                     "traditionalChinese": "-",
                     "simpifiedChinese": "-",
-                    "korean": "-"
+                    "korean": "-",
+                    "portuguese": "-"
                 }, {
                     "key": "BONUS3_ADD_EFF_ON_SKILL",
                     "thai": "• เมื่อร่าย {0} สุ่ม {2}% เกิด {1} กับศัตรู",
@@ -1583,7 +1780,8 @@
                     "japanese": "-",
                     "traditionalChinese": "-",
                     "simpifiedChinese": "-",
-                    "korean": "-"
+                    "korean": "-",
+                    "portuguese": "-"
                 }, {
                     "key": "BONUS4_ADD_EFF_ON_SKILL",
                     "thai": "• เมื่อร่าย {0} กับ {3} สุ่ม {2}% เกิด {1} กับศัตรู",
@@ -1591,7 +1789,8 @@
                     "japanese": "-",
                     "traditionalChinese": "-",
                     "simpifiedChinese": "-",
-                    "korean": "-"
+                    "korean": "-",
+                    "portuguese": "-"
                 }, {
                     "key": "BONUS5_ADD_EFF_ON_SKILL",
                     "thai": "• เมื่อร่าย {0} กับ {3} สุ่ม {2}% เกิด {1} กับศัตรู {4}",
@@ -1599,7 +1798,8 @@
                     "japanese": "-",
                     "traditionalChinese": "-",
                     "simpifiedChinese": "-",
-                    "korean": "-"
+                    "korean": "-",
+                    "portuguese": "-"
                 }, {
                     "key": "BONUS2_COMA_CLASS",
                     "thai": "• ตี {0} สุ่ม {1}% เกิด Coma กับศัตรู",
@@ -1607,7 +1807,8 @@
                     "japanese": "-",
                     "traditionalChinese": "-",
                     "simpifiedChinese": "-",
-                    "korean": "-"
+                    "korean": "-",
+                    "portuguese": "-"
                 }, {
                     "key": "BONUS2_COMA_RACE",
                     "thai": "• ตี {0} สุ่ม {1}% เกิด Coma กับศัตรู",
@@ -1615,7 +1816,8 @@
                     "japanese": "-",
                     "traditionalChinese": "-",
                     "simpifiedChinese": "-",
-                    "korean": "-"
+                    "korean": "-",
+                    "portuguese": "-"
                 }, {
                     "key": "BONUS2_WEAPON_COMA_ELE",
                     "thai": "• ตีกายภาพ {0} สุ่ม {1}% เกิด Coma กับศัตรู",
@@ -1623,7 +1825,8 @@
                     "japanese": "-",
                     "traditionalChinese": "-",
                     "simpifiedChinese": "-",
-                    "korean": "-"
+                    "korean": "-",
+                    "portuguese": "-"
                 }, {
                     "key": "BONUS2_WEAPON_COMA_CLASS",
                     "thai": "• ตีกายภาพ {0} สุ่ม {1}% เกิด Coma กับศัตรู",
@@ -1631,7 +1834,8 @@
                     "japanese": "-",
                     "traditionalChinese": "-",
                     "simpifiedChinese": "-",
-                    "korean": "-"
+                    "korean": "-",
+                    "portuguese": "-"
                 }, {
                     "key": "BONUS2_WEAPON_COMA_RACE",
                     "thai": "• ตีกายภาพ {0} สุ่ม {1}% เกิด Coma กับศัตรู",
@@ -1639,7 +1843,8 @@
                     "japanese": "-",
                     "traditionalChinese": "-",
                     "simpifiedChinese": "-",
-                    "korean": "-"
+                    "korean": "-",
+                    "portuguese": "-"
                 }, {
                     "key": "BONUS3_AUTO_SPELL",
                     "thai": "• ตีกายภาพสุ่ม {2}% ร่าย Lv.{1} {0}",
@@ -1647,7 +1852,8 @@
                     "japanese": "-",
                     "traditionalChinese": "-",
                     "simpifiedChinese": "-",
-                    "korean": "-"
+                    "korean": "-",
+                    "portuguese": "-"
                 }, {
                     "key": "BONUS3_AUTO_SPELL_WHEN_HIT",
                     "thai": "• เมื่อโดนตีกายภาพสุ่ม {2}% ร่าย Lv.{1} {0}",
@@ -1655,7 +1861,8 @@
                     "japanese": "-",
                     "traditionalChinese": "-",
                     "simpifiedChinese": "-",
-                    "korean": "-"
+                    "korean": "-",
+                    "portuguese": "-"
                 }, {
                     "key": "BONUS4_AUTO_SPELL",
                     "thai": "• ตีกายภาพสุ่ม {2}% ร่าย Lv.{1} {0} ใส่ {3}",
@@ -1663,7 +1870,8 @@
                     "japanese": "-",
                     "traditionalChinese": "-",
                     "simpifiedChinese": "-",
-                    "korean": "-"
+                    "korean": "-",
+                    "portuguese": "-"
                 }, {
                     "key": "BONUS5_AUTO_SPELL",
                     "thai": "• ตีโดย {3} สุ่ม {2}% ร่าย Lv.{1} {0} ใส่ {4}",
@@ -1671,7 +1879,8 @@
                     "japanese": "-",
                     "traditionalChinese": "-",
                     "simpifiedChinese": "-",
-                    "korean": "-"
+                    "korean": "-",
+                    "portuguese": "-"
                 }, {
                     "key": "BONUS4_AUTO_SPELL_WHEN_HIT",
                     "thai": "• เมื่อโดนตีกายภาพสุ่ม {2}% ร่าย Lv.{1} {0} ใส่ {3}",
@@ -1679,7 +1888,8 @@
                     "japanese": "-",
                     "traditionalChinese": "-",
                     "simpifiedChinese": "-",
-                    "korean": "-"
+                    "korean": "-",
+                    "portuguese": "-"
                 }, {
                     "key": "BONUS5_AUTO_SPELL_WHEN_HIT",
                     "thai": "• เมื่อโดนตีโดย {3} สุ่ม {2}% ร่าย Lv.{1} {0} ใส่ {4}",
@@ -1687,7 +1897,8 @@
                     "japanese": "-",
                     "traditionalChinese": "-",
                     "simpifiedChinese": "-",
-                    "korean": "-"
+                    "korean": "-",
+                    "portuguese": "-"
                 }, {
                     "key": "BONUS4_AUTO_SPELL_ON_SKILL",
                     "thai": "• เมื่อร่าย {0} สุ่ม {3}% ร่าย Lv.{2} {1}",
@@ -1695,7 +1906,8 @@
                     "japanese": "-",
                     "traditionalChinese": "-",
                     "simpifiedChinese": "-",
-                    "korean": "-"
+                    "korean": "-",
+                    "portuguese": "-"
                 }, {
                     "key": "BONUS5_AUTO_SPELL_ON_SKILL",
                     "thai": "• เมื่อร่าย {0} สุ่ม {3}% ร่าย Lv.{2} {1} ใส่ {4}",
@@ -1703,7 +1915,8 @@
                     "japanese": "-",
                     "traditionalChinese": "-",
                     "simpifiedChinese": "-",
-                    "korean": "-"
+                    "korean": "-",
+                    "portuguese": "-"
                 }, {
                     "key": "BONUS_HP_DRAIN_VALUE",
                     "thai": "• ตีกายภาพ HP +",
@@ -1711,7 +1924,8 @@
                     "japanese": "-",
                     "traditionalChinese": "-",
                     "simpifiedChinese": "-",
-                    "korean": "-"
+                    "korean": "-",
+                    "portuguese": "-"
                 }, {
                     "key": "BONUS2_HP_DRAIN_VALUE_RACE",
                     "thai": "• ตีกายภาพ {0} HP +{1}",
@@ -1719,7 +1933,8 @@
                     "japanese": "-",
                     "traditionalChinese": "-",
                     "simpifiedChinese": "-",
-                    "korean": "-"
+                    "korean": "-",
+                    "portuguese": "-"
                 }, {
                     "key": "BONUS2_HP_DRAIN_VALUE_CLASS",
                     "thai": "• ตีกายภาพ {0} HP +{1}",
@@ -1727,7 +1942,8 @@
                     "japanese": "-",
                     "traditionalChinese": "-",
                     "simpifiedChinese": "-",
-                    "korean": "-"
+                    "korean": "-",
+                    "portuguese": "-"
                 }, {
                     "key": "BONUS_SP_DRAIN_VALUE",
                     "thai": "• ตีกายภาพ SP +",
@@ -1735,7 +1951,8 @@
                     "japanese": "-",
                     "traditionalChinese": "-",
                     "simpifiedChinese": "-",
-                    "korean": "-"
+                    "korean": "-",
+                    "portuguese": "-"
                 }, {
                     "key": "BONUS2_SP_DRAIN_VALUE_RACE",
                     "thai": "• ตีกายภาพ {0} SP +{1}",
@@ -1743,7 +1960,8 @@
                     "japanese": "-",
                     "traditionalChinese": "-",
                     "simpifiedChinese": "-",
-                    "korean": "-"
+                    "korean": "-",
+                    "portuguese": "-"
                 }, {
                     "key": "BONUS2_SP_DRAIN_VALUE_CLASS",
                     "thai": "• ตีกายภาพ {0} SP +{1}",
@@ -1751,7 +1969,8 @@
                     "japanese": "-",
                     "traditionalChinese": "-",
                     "simpifiedChinese": "-",
-                    "korean": "-"
+                    "korean": "-",
+                    "portuguese": "-"
                 }, {
                     "key": "BONUS2_HP_DRAIN_RATE",
                     "thai": "• ตีกายภาพสุ่ม {0}% HP +{1}%",
@@ -1759,7 +1978,8 @@
                     "japanese": "-",
                     "traditionalChinese": "-",
                     "simpifiedChinese": "-",
-                    "korean": "-"
+                    "korean": "-",
+                    "portuguese": "-"
                 }, {
                     "key": "BONUS2_SP_DRAIN_RATE",
                     "thai": "• ตีกายภาพสุ่ม {0}% SP +{1}%",
@@ -1767,7 +1987,8 @@
                     "japanese": "-",
                     "traditionalChinese": "-",
                     "simpifiedChinese": "-",
-                    "korean": "-"
+                    "korean": "-",
+                    "portuguese": "-"
                 }, {
                     "key": "BONUS2_HP_VANISH_RATE",
                     "thai": "• ตีกายภาพสุ่ม {0}% ลด HP ศัตรู {1}%",
@@ -1775,7 +1996,8 @@
                     "japanese": "-",
                     "traditionalChinese": "-",
                     "simpifiedChinese": "-",
-                    "korean": "-"
+                    "korean": "-",
+                    "portuguese": "-"
                 }, {
                     "key": "BONUS3_HP_VANISH_RACE_RATE",
                     "thai": "• ตีกายภาพเผ่า {0} สุ่ม {1}% ลด HP ศัตรู {2}%",
@@ -1783,7 +2005,8 @@
                     "japanese": "-",
                     "traditionalChinese": "-",
                     "simpifiedChinese": "-",
-                    "korean": "-"
+                    "korean": "-",
+                    "portuguese": "-"
                 }, {
                     "key": "BONUS3_HP_VANISH_RATE",
                     "thai": "• ตีโดย {2} สุ่ม {0}% ลด HP ศัตรู {1}%",
@@ -1791,7 +2014,8 @@
                     "japanese": "-",
                     "traditionalChinese": "-",
                     "simpifiedChinese": "-",
-                    "korean": "-"
+                    "korean": "-",
+                    "portuguese": "-"
                 }, {
                     "key": "BONUS2_SP_VANISH_RATE",
                     "thai": "• ตีกายภาพสุ่ม {0}% ลด SP ศัตรู {1}%",
@@ -1799,7 +2023,8 @@
                     "japanese": "-",
                     "traditionalChinese": "-",
                     "simpifiedChinese": "-",
-                    "korean": "-"
+                    "korean": "-",
+                    "portuguese": "-"
                 }, {
                     "key": "BONUS3_SP_VANISH_RACE_RATE",
                     "thai": "• ตีกายภาพ {0} สุ่ม {1}% ลด SP ศัตรู {2}%",
@@ -1807,7 +2032,8 @@
                     "japanese": "-",
                     "traditionalChinese": "-",
                     "simpifiedChinese": "-",
-                    "korean": "-"
+                    "korean": "-",
+                    "portuguese": "-"
                 }, {
                     "key": "BONUS3_SP_VANISH_RATE",
                     "thai": "• ตีโดย {2} สุ่ม {0}% ลด SP ศัตรู {1}%",
@@ -1815,7 +2041,8 @@
                     "japanese": "-",
                     "traditionalChinese": "-",
                     "simpifiedChinese": "-",
-                    "korean": "-"
+                    "korean": "-",
+                    "portuguese": "-"
                 }, {
                     "key": "BONUS3_STATE_NO_RECOVER_RACE",
                     "thai": "• ตีกายภาพ {0} สุ่ม {1}% หยุดการฟื้นฟูทุกอย่าง กับศัตรู {2}",
@@ -1823,7 +2050,8 @@
                     "japanese": "-",
                     "traditionalChinese": "-",
                     "simpifiedChinese": "-",
-                    "korean": "-"
+                    "korean": "-",
+                    "portuguese": "-"
                 }, {
                     "key": "BONUS_HP_GAIN_VALUE",
                     "thai": "• ฆ่าด้วยตีกายภาพใกล้ HP +",
@@ -1831,7 +2059,8 @@
                     "japanese": "-",
                     "traditionalChinese": "-",
                     "simpifiedChinese": "-",
-                    "korean": "-"
+                    "korean": "-",
+                    "portuguese": "-"
                 }, {
                     "key": "BONUS_SP_GAIN_VALUE",
                     "thai": "• ฆ่าด้วยตีกายภาพใกล้ SP +",
@@ -1839,7 +2068,8 @@
                     "japanese": "-",
                     "traditionalChinese": "-",
                     "simpifiedChinese": "-",
-                    "korean": "-"
+                    "korean": "-",
+                    "portuguese": "-"
                 }, {
                     "key": "BONUS2_SP_GAIN_RACE",
                     "thai": "• ฆ่า {0} ด้วยตีกายภาพใกล้ HP +{1}",
@@ -1847,7 +2077,8 @@
                     "japanese": "-",
                     "traditionalChinese": "-",
                     "simpifiedChinese": "-",
-                    "korean": "-"
+                    "korean": "-",
+                    "portuguese": "-"
                 }, {
                     "key": "BONUS_LONG_HP_GAIN_VALUE",
                     "thai": "• ฆ่าด้วยตีกายภาพไกล HP +",
@@ -1855,7 +2086,8 @@
                     "japanese": "-",
                     "traditionalChinese": "-",
                     "simpifiedChinese": "-",
-                    "korean": "-"
+                    "korean": "-",
+                    "portuguese": "-"
                 }, {
                     "key": "BONUS_LONG_SP_GAIN_VALUE",
                     "thai": "• ฆ่าด้วยตีกายภาพไกล SP +",
@@ -1863,7 +2095,8 @@
                     "japanese": "-",
                     "traditionalChinese": "-",
                     "simpifiedChinese": "-",
-                    "korean": "-"
+                    "korean": "-",
+                    "portuguese": "-"
                 }, {
                     "key": "BONUS_MAGIC_HP_GAIN_VALUE",
                     "thai": "• ฆ่าด้วยตีเวทย์ HP +",
@@ -1871,7 +2104,8 @@
                     "japanese": "-",
                     "traditionalChinese": "-",
                     "simpifiedChinese": "-",
-                    "korean": "-"
+                    "korean": "-",
+                    "portuguese": "-"
                 }, {
                     "key": "BONUS_MAGIC_SP_GAIN_VALUE",
                     "thai": "• ฆ่าด้วยตีเวทย์ SP +",
@@ -1879,7 +2113,8 @@
                     "japanese": "-",
                     "traditionalChinese": "-",
                     "simpifiedChinese": "-",
-                    "korean": "-"
+                    "korean": "-",
+                    "portuguese": "-"
                 }, {
                     "key": "BONUS_SHORT_WEAPON_DAMAGE_RETURN",
                     "thai": "• สะท้อนกายภาพใกล้ +{0}%",
@@ -1887,7 +2122,8 @@
                     "japanese": "-",
                     "traditionalChinese": "-",
                     "simpifiedChinese": "-",
-                    "korean": "-"
+                    "korean": "-",
+                    "portuguese": "-"
                 }, {
                     "key": "BONUS_LONG_WEAPON_DAMAGE_RETURN",
                     "thai": "• สะท้อนกายภาพไกล +{0}%",
@@ -1895,7 +2131,8 @@
                     "japanese": "-",
                     "traditionalChinese": "-",
                     "simpifiedChinese": "-",
-                    "korean": "-"
+                    "korean": "-",
+                    "portuguese": "-"
                 }, {
                     "key": "BONUS_MAGIC_DAMAGE_RETURN",
                     "thai": "• สะท้อนเวทย์ +{0}%",
@@ -1903,7 +2140,8 @@
                     "japanese": "-",
                     "traditionalChinese": "-",
                     "simpifiedChinese": "-",
-                    "korean": "-"
+                    "korean": "-",
+                    "portuguese": "-"
                 }, {
                     "key": "BONUS_REDUCE_DAMAGE_RETURN",
                     "thai": "• กันการสะท้อน +{0}%",
@@ -1911,7 +2149,8 @@
                     "japanese": "-",
                     "traditionalChinese": "-",
                     "simpifiedChinese": "-",
-                    "korean": "-"
+                    "korean": "-",
+                    "portuguese": "-"
                 }, {
                     "key": "BONUS_UNSTRIPABLE_WEAPON",
                     "thai": "• กันปลดอาวุธ",
@@ -1919,7 +2158,8 @@
                     "japanese": "-",
                     "traditionalChinese": "-",
                     "simpifiedChinese": "-",
-                    "korean": "-"
+                    "korean": "-",
+                    "portuguese": "-"
                 }, {
                     "key": "BONUS_UNSTRIPABLE_ARMOR",
                     "thai": "• กันปลดชุด",
@@ -1927,7 +2167,8 @@
                     "japanese": "-",
                     "traditionalChinese": "-",
                     "simpifiedChinese": "-",
-                    "korean": "-"
+                    "korean": "-",
+                    "portuguese": "-"
                 }, {
                     "key": "BONUS_UNSTRIPABLE_HELM",
                     "thai": "• กันปลดหมวก",
@@ -1935,7 +2176,8 @@
                     "japanese": "-",
                     "traditionalChinese": "-",
                     "simpifiedChinese": "-",
-                    "korean": "-"
+                    "korean": "-",
+                    "portuguese": "-"
                 }, {
                     "key": "BONUS_UNSTRIPABLE_SHIELD",
                     "thai": "• กันปลดโล่",
@@ -1943,7 +2185,8 @@
                     "japanese": "-",
                     "traditionalChinese": "-",
                     "simpifiedChinese": "-",
-                    "korean": "-"
+                    "korean": "-",
+                    "portuguese": "-"
                 }, {
                     "key": "BONUS_UNSTRIPABLE",
                     "thai": "• กันปลดทุกอย่าง",
@@ -1951,7 +2194,8 @@
                     "japanese": "-",
                     "traditionalChinese": "-",
                     "simpifiedChinese": "-",
-                    "korean": "-"
+                    "korean": "-",
+                    "portuguese": "-"
                 }, {
                     "key": "BONUS_UNBREAKABLE_GARMENT",
                     "thai": "• ผ้าคลุมจะไม่พัง",
@@ -1959,7 +2203,8 @@
                     "japanese": "-",
                     "traditionalChinese": "-",
                     "simpifiedChinese": "-",
-                    "korean": "-"
+                    "korean": "-",
+                    "portuguese": "-"
                 }, {
                     "key": "BONUS_UNBREAKABLE_WEAPON",
                     "thai": "• อาวุธจะไม่พัง",
@@ -1967,7 +2212,8 @@
                     "japanese": "-",
                     "traditionalChinese": "-",
                     "simpifiedChinese": "-",
-                    "korean": "-"
+                    "korean": "-",
+                    "portuguese": "-"
                 }, {
                     "key": "BONUS_UNBREAKABLE_ARMOR",
                     "thai": "• ชุดจะไม่พัง",
@@ -1975,7 +2221,8 @@
                     "japanese": "-",
                     "traditionalChinese": "-",
                     "simpifiedChinese": "-",
-                    "korean": "-"
+                    "korean": "-",
+                    "portuguese": "-"
                 }, {
                     "key": "BONUS_UNBREAKABLE_HELM",
                     "thai": "• หมวกจะไม่พัง",
@@ -1983,7 +2230,8 @@
                     "japanese": "-",
                     "traditionalChinese": "-",
                     "simpifiedChinese": "-",
-                    "korean": "-"
+                    "korean": "-",
+                    "portuguese": "-"
                 }, {
                     "key": "BONUS_UNBREAKABLE_SHIELD",
                     "thai": "• โล่จะไม่พัง",
@@ -1991,7 +2239,8 @@
                     "japanese": "-",
                     "traditionalChinese": "-",
                     "simpifiedChinese": "-",
-                    "korean": "-"
+                    "korean": "-",
+                    "portuguese": "-"
                 }, {
                     "key": "BONUS_UNBREAKABLE_SHOES",
                     "thai": "• รองเท้าจะไม่พัง",
@@ -1999,7 +2248,8 @@
                     "japanese": "-",
                     "traditionalChinese": "-",
                     "simpifiedChinese": "-",
-                    "korean": "-"
+                    "korean": "-",
+                    "portuguese": "-"
                 }, {
                     "key": "BONUS_UNBREAKABLE",
                     "thai": "• กันอุปกรณ์สวมใส่ ทุกชนิดพัง +{0}%",
@@ -2007,7 +2257,8 @@
                     "japanese": "-",
                     "traditionalChinese": "-",
                     "simpifiedChinese": "-",
-                    "korean": "-"
+                    "korean": "-",
+                    "portuguese": "-"
                 }, {
                     "key": "BONUS_BREAK_WEAPON_RATE",
                     "thai": "• มีโอกาส {0}% พังอาวุธเป้าหมาย",
@@ -2015,7 +2266,8 @@
                     "japanese": "-",
                     "traditionalChinese": "-",
                     "simpifiedChinese": "-",
-                    "korean": "-"
+                    "korean": "-",
+                    "portuguese": "-"
                 }, {
                     "key": "BONUS_BREAK_ARMOR_RATE",
                     "thai": "• มีโอกาส {0}% พังชุดเป้าหมาย",
@@ -2023,7 +2275,8 @@
                     "japanese": "-",
                     "traditionalChinese": "-",
                     "simpifiedChinese": "-",
-                    "korean": "-"
+                    "korean": "-",
+                    "portuguese": "-"
                 }, {
                     "key": "BONUS2_DROP_ADD_RACE",
                     "thai": "• Drop +{1}% {0}",
@@ -2031,7 +2284,8 @@
                     "japanese": "-",
                     "traditionalChinese": "-",
                     "simpifiedChinese": "-",
-                    "korean": "-"
+                    "korean": "-",
+                    "portuguese": "-"
                 }, {
                     "key": "BONUS2_DROP_ADD_CLASS",
                     "thai": "• Drop +{1}% {0}",
@@ -2039,7 +2293,8 @@
                     "japanese": "-",
                     "traditionalChinese": "-",
                     "simpifiedChinese": "-",
-                    "korean": "-"
+                    "korean": "-",
+                    "portuguese": "-"
                 }, {
                     "key": "BONUS3_ADD_MONSTER_ID_DROP_ITEM",
                     "thai": "• เมื่อกำจัด {1} สุ่ม {2}% Drop {0} (ID⁞ {3})",
@@ -2047,7 +2302,8 @@
                     "japanese": "-",
                     "traditionalChinese": "-",
                     "simpifiedChinese": "-",
-                    "korean": "-"
+                    "korean": "-",
+                    "portuguese": "-"
                 }, {
                     "key": "BONUS2_ADD_MONSTER_DROP_ITEM",
                     "thai": "• มีโอกาส {1}% Drop {0} (ID⁞ {2})",
@@ -2055,7 +2311,8 @@
                     "japanese": "-",
                     "traditionalChinese": "-",
                     "simpifiedChinese": "-",
-                    "korean": "-"
+                    "korean": "-",
+                    "portuguese": "-"
                 }, {
                     "key": "BONUS3_ADD_MONSTER_DROP_ITEM",
                     "thai": "• มีโอกาส {2}% ที่ {1} จะ Drop {0} (ID⁞ {3})",
@@ -2063,7 +2320,8 @@
                     "japanese": "-",
                     "traditionalChinese": "-",
                     "simpifiedChinese": "-",
-                    "korean": "-"
+                    "korean": "-",
+                    "portuguese": "-"
                 }, {
                     "key": "BONUS3_ADD_CLASS_DROP_ITEM",
                     "thai": "• มีโอกาส {2}% ที่ {1} จะ Drop {0} (ID⁞ {3})",
@@ -2071,7 +2329,8 @@
                     "japanese": "-",
                     "traditionalChinese": "-",
                     "simpifiedChinese": "-",
-                    "korean": "-"
+                    "korean": "-",
+                    "portuguese": "-"
                 }, {
                     "key": "BONUS2_ADD_MONSTER_DROP_ITEM_GROUP",
                     "thai": "• มีโอกาส {1}% Drop Item กลุ่ม {0}",
@@ -2079,7 +2338,8 @@
                     "japanese": "-",
                     "traditionalChinese": "-",
                     "simpifiedChinese": "-",
-                    "korean": "-"
+                    "korean": "-",
+                    "portuguese": "-"
                 }, {
                     "key": "BONUS3_ADD_MONSTER_DROP_ITEM_GROUP",
                     "thai": "• มีโอกาส {2}% Drop Item กลุ่ม {0} {1}",
@@ -2087,7 +2347,8 @@
                     "japanese": "-",
                     "traditionalChinese": "-",
                     "simpifiedChinese": "-",
-                    "korean": "-"
+                    "korean": "-",
+                    "portuguese": "-"
                 }, {
                     "key": "BONUS3_ADD_CLASS_DROP_ITEM_GROUP",
                     "thai": "• มีโอกาส {2}% Drop Item กลุ่ม {0} {1}",
@@ -2095,7 +2356,8 @@
                     "japanese": "-",
                     "traditionalChinese": "-",
                     "simpifiedChinese": "-",
-                    "korean": "-"
+                    "korean": "-",
+                    "portuguese": "-"
                 }, {
                     "key": "BONUS2_GET_ZENY_NUM",
                     "thai": "• เมื่อกำจัด Monster สุ่ม {1}% รับ 1~{0}z (ทับไม่ได้)",
@@ -2103,7 +2365,8 @@
                     "japanese": "-",
                     "traditionalChinese": "-",
                     "simpifiedChinese": "-",
-                    "korean": "-"
+                    "korean": "-",
+                    "portuguese": "-"
                 }, {
                     "key": "BONUS2_ADD_GET_ZENY_NUM",
                     "thai": "• เมื่อกำจัด Monster สุ่ม {1}% รับ 1~{0}z",
@@ -2111,7 +2374,8 @@
                     "japanese": "-",
                     "traditionalChinese": "-",
                     "simpifiedChinese": "-",
-                    "korean": "-"
+                    "korean": "-",
+                    "portuguese": "-"
                 }, {
                     "key": "BONUS_DOUBLE_RATE",
                     "thai": "• มีโอกาสตีกายภาพสองครั้ง +{0}% (ทับไม่ได้)",
@@ -2119,7 +2383,8 @@
                     "japanese": "-",
                     "traditionalChinese": "-",
                     "simpifiedChinese": "-",
-                    "korean": "-"
+                    "korean": "-",
+                    "portuguese": "-"
                 }, {
                     "key": "BONUS_DOUBLE_ADD_RATE",
                     "thai": "• มีโอกาสตีกายภาพสองครั้ง +{0}%",
@@ -2127,7 +2392,8 @@
                     "japanese": "-",
                     "traditionalChinese": "-",
                     "simpifiedChinese": "-",
-                    "korean": "-"
+                    "korean": "-",
+                    "portuguese": "-"
                 }, {
                     "key": "BONUS_SPLASH_RANGE",
                     "thai": "• ตีกระจาย (ทับไม่ได้) +",
@@ -2135,7 +2401,8 @@
                     "japanese": "-",
                     "traditionalChinese": "-",
                     "simpifiedChinese": "-",
-                    "korean": "-"
+                    "korean": "-",
+                    "portuguese": "-"
                 }, {
                     "key": "BONUS_SPLASH_ADD_RANGE",
                     "thai": "• ตีกระจาย +",
@@ -2143,7 +2410,8 @@
                     "japanese": "-",
                     "traditionalChinese": "-",
                     "simpifiedChinese": "-",
-                    "korean": "-"
+                    "korean": "-",
+                    "portuguese": "-"
                 }, {
                     "key": "BONUS2_ADD_SKILL_BLOW",
                     "thai": "• เมื่อใช้ {0} จะผลักเป้าหมาย {1} ช่อง",
@@ -2151,7 +2419,8 @@
                     "japanese": "-",
                     "traditionalChinese": "-",
                     "simpifiedChinese": "-",
-                    "korean": "-"
+                    "korean": "-",
+                    "portuguese": "-"
                 }, {
                     "key": "BONUS_NO_KNOCKBACK",
                     "thai": "• กันการผลัก",
@@ -2159,7 +2428,8 @@
                     "japanese": "-",
                     "traditionalChinese": "-",
                     "simpifiedChinese": "-",
-                    "korean": "-"
+                    "korean": "-",
+                    "portuguese": "-"
                 }, {
                     "key": "BONUS_NO_GEM_STONE",
                     "thai": "• ไม่ต้องใช้ Gemstone ในการร่าย",
@@ -2167,7 +2437,8 @@
                     "japanese": "-",
                     "traditionalChinese": "-",
                     "simpifiedChinese": "-",
-                    "korean": "-"
+                    "korean": "-",
+                    "portuguese": "-"
                 }, {
                     "key": "BONUS_INTRAVISION",
                     "thai": "• มองเห็นการหายตัว",
@@ -2175,7 +2446,8 @@
                     "japanese": "-",
                     "traditionalChinese": "-",
                     "simpifiedChinese": "-",
-                    "korean": "-"
+                    "korean": "-",
+                    "portuguese": "-"
                 }, {
                     "key": "BONUS_PERFECT_HIDE",
                     "thai": "• หายตัวโดยที่ MvP มองไม่เห็น",
@@ -2183,7 +2455,8 @@
                     "japanese": "-",
                     "traditionalChinese": "-",
                     "simpifiedChinese": "-",
-                    "korean": "-"
+                    "korean": "-",
+                    "portuguese": "-"
                 }, {
                     "key": "BONUS_RESTART_FULL_RECOVER",
                     "thai": "• HP และ SP เต็ม เมื่อพ้นจากการหมดสติ",
@@ -2191,7 +2464,8 @@
                     "japanese": "-",
                     "traditionalChinese": "-",
                     "simpifiedChinese": "-",
-                    "korean": "-"
+                    "korean": "-",
+                    "portuguese": "-"
                 }, {
                     "key": "BONUS_CLASS_CHANGE",
                     "thai": "• มีโอกาสเปลี่ยนแปลง รูปแบบเป้าหมาย +{0}%",
@@ -2199,7 +2473,8 @@
                     "japanese": "-",
                     "traditionalChinese": "-",
                     "simpifiedChinese": "-",
-                    "korean": "-"
+                    "korean": "-",
+                    "portuguese": "-"
                 }, {
                     "key": "BONUS_ADD_STEAL_RATE",
                     "thai": "• เพิ่มโอกาสขโมยของ +{0}%",
@@ -2207,7 +2482,8 @@
                     "japanese": "-",
                     "traditionalChinese": "-",
                     "simpifiedChinese": "-",
-                    "korean": "-"
+                    "korean": "-",
+                    "portuguese": "-"
                 }, {
                     "key": "BONUS_NO_MADO_FUEL",
                     "thai": "• ไม่ต้องใช้ Mado Fuel ในการร่าย",
@@ -2215,7 +2491,8 @@
                     "japanese": "-",
                     "traditionalChinese": "-",
                     "simpifiedChinese": "-",
-                    "korean": "-"
+                    "korean": "-",
+                    "portuguese": "-"
                 }, {
                     "key": "BONUS_NO_WALK_DELAY",
                     "thai": "• เมื่อโดนตีจะไม่ชะงัก",
@@ -2223,7 +2500,8 @@
                     "japanese": "-",
                     "traditionalChinese": "-",
                     "simpifiedChinese": "-",
-                    "korean": "-"
+                    "korean": "-",
+                    "portuguese": "-"
                 }, {
                     "key": "SPECIAL_EFFECT_2",
                     "thai": "• แสดง Effect",
@@ -2231,7 +2509,8 @@
                     "japanese": "-",
                     "traditionalChinese": "-",
                     "simpifiedChinese": "-",
-                    "korean": "-"
+                    "korean": "-",
+                    "portuguese": "-"
                 }, {
                     "key": "SPECIAL_EFFECT",
                     "thai": "• แสดง Effect",
@@ -2239,7 +2518,8 @@
                     "japanese": "-",
                     "traditionalChinese": "-",
                     "simpifiedChinese": "-",
-                    "korean": "-"
+                    "korean": "-",
+                    "portuguese": "-"
                 }, {
                     "key": "UNIT_SKILL_USE_ID",
                     "thai": "• รับ Lv.{2} {1}",
@@ -2247,7 +2527,8 @@
                     "japanese": "-",
                     "traditionalChinese": "-",
                     "simpifiedChinese": "-",
-                    "korean": "-"
+                    "korean": "-",
+                    "portuguese": "-"
                 }, {
                     "key": "ITEM_SKILL",
                     "thai": "• รับ Lv.{1} {0}",
@@ -2255,7 +2536,8 @@
                     "japanese": "-",
                     "traditionalChinese": "-",
                     "simpifiedChinese": "-",
-                    "korean": "-"
+                    "korean": "-",
+                    "portuguese": "-"
                 }, {
                     "key": "SKILL",
                     "thai": "• รับ Lv.{1} {0}",
@@ -2263,7 +2545,8 @@
                     "japanese": "-",
                     "traditionalChinese": "-",
                     "simpifiedChinese": "-",
-                    "korean": "-"
+                    "korean": "-",
+                    "portuguese": "-"
                 }, {
                     "key": "PERCENT_HEAL",
                     "thai": "• ฟื้นฟู HP {0}% และ SP {1}%",
@@ -2271,7 +2554,8 @@
                     "japanese": "-",
                     "traditionalChinese": "-",
                     "simpifiedChinese": "-",
-                    "korean": "-"
+                    "korean": "-",
+                    "portuguese": "-"
                 }, {
                     "key": "ITEM_HEAL",
                     "thai": "• ฟื้นฟู {0} HP และ {1} SP",
@@ -2279,7 +2563,8 @@
                     "japanese": "-",
                     "traditionalChinese": "-",
                     "simpifiedChinese": "-",
-                    "korean": "-"
+                    "korean": "-",
+                    "portuguese": "-"
                 }, {
                     "key": "HEAL",
                     "thai": "• ฟื้นฟู {0} HP และ {1} SP",
@@ -2287,7 +2572,8 @@
                     "japanese": "-",
                     "traditionalChinese": "-",
                     "simpifiedChinese": "-",
-                    "korean": "-"
+                    "korean": "-",
+                    "portuguese": "-"
                 }, {
                     "key": "SC_START_4",
                     "thai": "• รับผล {0} เป็นเวลา {1}",
@@ -2295,7 +2581,8 @@
                     "japanese": "-",
                     "traditionalChinese": "-",
                     "simpifiedChinese": "-",
-                    "korean": "-"
+                    "korean": "-",
+                    "portuguese": "-"
                 }, {
                     "key": "SC_START_2",
                     "thai": "• รับผล {0} เป็นเวลา {1}",
@@ -2303,7 +2590,8 @@
                     "japanese": "-",
                     "traditionalChinese": "-",
                     "simpifiedChinese": "-",
-                    "korean": "-"
+                    "korean": "-",
+                    "portuguese": "-"
                 }, {
                     "key": "SC_START",
                     "thai": "• รับผล {0} เป็นเวลา {1}",
@@ -2311,7 +2599,8 @@
                     "japanese": "-",
                     "traditionalChinese": "-",
                     "simpifiedChinese": "-",
-                    "korean": "-"
+                    "korean": "-",
+                    "portuguese": "-"
                 }, {
                     "key": "SC_END",
                     "thai": "• ลบผล {0}",
@@ -2319,7 +2608,8 @@
                     "japanese": "-",
                     "traditionalChinese": "-",
                     "simpifiedChinese": "-",
-                    "korean": "-"
+                    "korean": "-",
+                    "portuguese": "-"
                 }, {
                     "key": "ACTIVE_TRANSFORM",
                     "thai": "• แปลงร่างเป็น {0} เป็นเวลา {1}",
@@ -2327,7 +2617,8 @@
                     "japanese": "-",
                     "traditionalChinese": "-",
                     "simpifiedChinese": "-",
-                    "korean": "-"
+                    "korean": "-",
+                    "portuguese": "-"
                 }, {
                     "key": "GET_ITEM",
                     "thai": "• รับ {0} {1} ชิ้น",
@@ -2335,7 +2626,8 @@
                     "japanese": "-",
                     "traditionalChinese": "-",
                     "simpifiedChinese": "-",
-                    "korean": "-"
+                    "korean": "-",
+                    "portuguese": "-"
                 }, {
                     "key": "GET_GROUP_ITEM",
                     "thai": "• รับ Item กลุ่ม {0} {1} ชิ้น",
@@ -2343,7 +2635,8 @@
                     "japanese": "-",
                     "traditionalChinese": "-",
                     "simpifiedChinese": "-",
-                    "korean": "-"
+                    "korean": "-",
+                    "portuguese": "-"
                 }, {
                     "key": "PET",
                     "thai": "• สำหรับจับ {0}",
@@ -2351,7 +2644,8 @@
                     "japanese": "-",
                     "traditionalChinese": "-",
                     "simpifiedChinese": "-",
-                    "korean": "-"
+                    "korean": "-",
+                    "portuguese": "-"
                 }, {
                     "key": "SC_END_CLASS",
                     "thai": "• ลบ Buff ทุกอย่าง",
@@ -2359,7 +2653,8 @@
                     "japanese": "-",
                     "traditionalChinese": "-",
                     "simpifiedChinese": "-",
-                    "korean": "-"
+                    "korean": "-",
+                    "portuguese": "-"
                 }, {
                     "key": "SET_MOUNTING",
                     "thai": "• ขึ้น/ลง พาหนะ",
@@ -2367,7 +2662,8 @@
                     "japanese": "-",
                     "traditionalChinese": "-",
                     "simpifiedChinese": "-",
-                    "korean": "-"
+                    "korean": "-",
+                    "portuguese": "-"
                 }, {
                     "key": "LAPHINE_UPGRADE",
                     "thai": "• เปิดหน้าต่าง Laphine Upgrade",
@@ -2375,7 +2671,8 @@
                     "japanese": "-",
                     "traditionalChinese": "-",
                     "simpifiedChinese": "-",
-                    "korean": "-"
+                    "korean": "-",
+                    "portuguese": "-"
                 }, {
                     "key": "LAPHINE_SYNTHESIS",
                     "thai": "• เปิดหน้าต่าง Laphine Synthesis",
@@ -2383,7 +2680,8 @@
                     "japanese": "-",
                     "traditionalChinese": "-",
                     "simpifiedChinese": "-",
-                    "korean": "-"
+                    "korean": "-",
+                    "portuguese": "-"
                 }, {
                     "key": "OPEN_STYLIST",
                     "thai": "• เปิดหน้าต่าง Stylist",
@@ -2391,7 +2689,8 @@
                     "japanese": "-",
                     "traditionalChinese": "-",
                     "simpifiedChinese": "-",
-                    "korean": "-"
+                    "korean": "-",
+                    "portuguese": "-"
                 }, {
                     "key": "REFINE_UI",
                     "thai": "• เปิดหน้าต่าง Refine",
@@ -2399,7 +2698,8 @@
                     "japanese": "-",
                     "traditionalChinese": "-",
                     "simpifiedChinese": "-",
-                    "korean": "-"
+                    "korean": "-",
+                    "portuguese": "-"
                 }, {
                     "key": "CONDITION_NOT_MET",
                     "thai": "หากไม่ผ่านเงื่อนไข",
@@ -2407,7 +2707,8 @@
                     "japanese": "-",
                     "traditionalChinese": "-",
                     "simpifiedChinese": "-",
-                    "korean": "-"
+                    "korean": "-",
+                    "portuguese": "-"
                 }, {
                     "key": "IF",
                     "thai": "ถ้า",
@@ -2415,7 +2716,8 @@
                     "japanese": "-",
                     "traditionalChinese": "-",
                     "simpifiedChinese": "-",
-                    "korean": "-"
+                    "korean": "-",
+                    "portuguese": "-"
                 }, {
                     "key": "EQUIP_WITH",
                     "thai": "หากสวมใส่ร่วมกับ",
@@ -2423,7 +2725,8 @@
                     "japanese": "-",
                     "traditionalChinese": "-",
                     "simpifiedChinese": "-",
-                    "korean": "-"
+                    "korean": "-",
+                    "portuguese": "-"
                 }, {
                     "key": "IF_MOUNTING",
                     "thai": "หากขี่หาหนะ",
@@ -2431,7 +2734,8 @@
                     "japanese": "-",
                     "traditionalChinese": "-",
                     "simpifiedChinese": "-",
-                    "korean": "-"
+                    "korean": "-",
+                    "portuguese": "-"
                 }, {
                     "key": "WAS",
                     "thai": "",
@@ -2439,7 +2743,8 @@
                     "japanese": "-",
                     "traditionalChinese": "-",
                     "simpifiedChinese": "-",
-                    "korean": "-"
+                    "korean": "-",
+                    "portuguese": "-"
                 }, {
                     "key": "BASE_JOB",
                     "thai": "ฐานอาชีพ",
@@ -2447,7 +2752,8 @@
                     "japanese": "-",
                     "traditionalChinese": "-",
                     "simpifiedChinese": "-",
-                    "korean": "-"
+                    "korean": "-",
+                    "portuguese": "-"
                 }, {
                     "key": "BASE_CLASS",
                     "thai": "ฐานอาชีพ",
@@ -2455,7 +2761,8 @@
                     "japanese": "-",
                     "traditionalChinese": "-",
                     "simpifiedChinese": "-",
-                    "korean": "-"
+                    "korean": "-",
+                    "portuguese": "-"
                 }, {
                     "key": "READ_PARAM",
                     "thai": "ค่า",
@@ -2463,7 +2770,8 @@
                     "japanese": "-",
                     "traditionalChinese": "-",
                     "simpifiedChinese": "-",
-                    "korean": "-"
+                    "korean": "-",
+                    "portuguese": "-"
                 }, {
                     "key": "HI_CLASS",
                     "thai": "ไฮคลาส",
@@ -2471,7 +2779,8 @@
                     "japanese": "-",
                     "traditionalChinese": "-",
                     "simpifiedChinese": "-",
-                    "korean": "-"
+                    "korean": "-",
+                    "portuguese": "-"
                 }, {
                     "key": "PET_INFO_INTIMATE",
                     "thai": "ความสนิท Pet",
@@ -2479,7 +2788,8 @@
                     "japanese": "-",
                     "traditionalChinese": "-",
                     "simpifiedChinese": "-",
-                    "korean": "-"
+                    "korean": "-",
+                    "portuguese": "-"
                 }, {
                     "key": "PET_INTIMATE_LOYAL",
                     "thai": "สนิทสนม",
@@ -2487,7 +2797,8 @@
                     "japanese": "-",
                     "traditionalChinese": "-",
                     "simpifiedChinese": "-",
-                    "korean": "-"
+                    "korean": "-",
+                    "portuguese": "-"
                 }, {
                     "key": "REFINE_COUNT",
                     "thai": "ตีบวก",
@@ -2495,7 +2806,8 @@
                     "japanese": "-",
                     "traditionalChinese": "-",
                     "simpifiedChinese": "-",
-                    "korean": "-"
+                    "korean": "-",
+                    "portuguese": "-"
                 }, {
                     "key": "GRADE_COUNT",
                     "thai": "เกรด",
@@ -2503,7 +2815,8 @@
                     "japanese": "-",
                     "traditionalChinese": "-",
                     "simpifiedChinese": "-",
-                    "korean": "-"
+                    "korean": "-",
+                    "portuguese": "-"
                 }, {
                     "key": "GET_WEAPON_LEVEL",
                     "thai": "Lv. อาวุธ",
@@ -2511,7 +2824,8 @@
                     "japanese": "-",
                     "traditionalChinese": "-",
                     "simpifiedChinese": "-",
-                    "korean": "-"
+                    "korean": "-",
+                    "portuguese": "-"
                 }, {
                     "key": "GET_EQUIPMENT_LEVEL",
                     "thai": "Lv. อุปกรณ์สวมใส่",
@@ -2519,7 +2833,8 @@
                     "japanese": "-",
                     "traditionalChinese": "-",
                     "simpifiedChinese": "-",
-                    "korean": "-"
+                    "korean": "-",
+                    "portuguese": "-"
                 }, {
                     "key": "POW",
                     "thai": "ยกกำลัง",
@@ -2527,7 +2842,8 @@
                     "japanese": "-",
                     "traditionalChinese": "-",
                     "simpifiedChinese": "-",
-                    "korean": "-"
+                    "korean": "-",
+                    "portuguese": "-"
                 }, {
                     "key": "MIN",
                     "thai": "ใช้ค่าน้อยสุด",
@@ -2535,7 +2851,8 @@
                     "japanese": "-",
                     "traditionalChinese": "-",
                     "simpifiedChinese": "-",
-                    "korean": "-"
+                    "korean": "-",
+                    "portuguese": "-"
                 }, {
                     "key": "MAX",
                     "thai": "ใช้ค่ามากสุด",
@@ -2543,7 +2860,8 @@
                     "japanese": "-",
                     "traditionalChinese": "-",
                     "simpifiedChinese": "-",
-                    "korean": "-"
+                    "korean": "-",
+                    "portuguese": "-"
                 }, {
                     "key": "RAND",
                     "thai": "สุ่ม",
@@ -2551,7 +2869,8 @@
                     "japanese": "-",
                     "traditionalChinese": "-",
                     "simpifiedChinese": "-",
-                    "korean": "-"
+                    "korean": "-",
+                    "portuguese": "-"
                 }, {
                     "key": "EQUAL",
                     "thai": "",
@@ -2559,7 +2878,8 @@
                     "japanese": "-",
                     "traditionalChinese": "-",
                     "simpifiedChinese": "-",
-                    "korean": "-"
+                    "korean": "-",
+                    "portuguese": "-"
                 }, {
                     "key": "NOT_EQUAL",
                     "thai": "ไม่ใช่",
@@ -2567,7 +2887,8 @@
                     "japanese": "-",
                     "traditionalChinese": "-",
                     "simpifiedChinese": "-",
-                    "korean": "-"
+                    "korean": "-",
+                    "portuguese": "-"
                 }, {
                     "key": "WILL_BE",
                     "thai": "เป็น",
@@ -2591,7 +2912,8 @@
                     "japanese": "-",
                     "traditionalChinese": "-",
                     "simpifiedChinese": "-",
-                    "korean": "-"
+                    "korean": "-",
+                    "portuguese": "-"
                 }, {
                     "key": "DIVIDE",
                     "thai": "หาร",
@@ -2599,7 +2921,8 @@
                     "japanese": "-",
                     "traditionalChinese": "-",
                     "simpifiedChinese": "-",
-                    "korean": "-"
+                    "korean": "-",
+                    "portuguese": "-"
                 }, {
                     "key": "ALL_RACE",
                     "thai": "ทุกเผ่า",
@@ -2607,7 +2930,8 @@
                     "japanese": "-",
                     "traditionalChinese": "-",
                     "simpifiedChinese": "-",
-                    "korean": "-"
+                    "korean": "-",
+                    "portuguese": "-"
                 }, {
                     "key": "ALL_CLASS",
                     "thai": "ทุก Class",
@@ -2615,7 +2939,8 @@
                     "japanese": "-",
                     "traditionalChinese": "-",
                     "simpifiedChinese": "-",
-                    "korean": "-"
+                    "korean": "-",
+                    "portuguese": "-"
                 }, {
                     "key": "SIZE_SMALL",
                     "thai": "ขนาดเล็ก",
@@ -2623,7 +2948,8 @@
                     "japanese": "-",
                     "traditionalChinese": "-",
                     "simpifiedChinese": "-",
-                    "korean": "-"
+                    "korean": "-",
+                    "portuguese": "-"
                 }, {
                     "key": "SIZE_MEDIUM",
                     "thai": "ขนาดกลาง",
@@ -2631,7 +2957,8 @@
                     "japanese": "-",
                     "traditionalChinese": "-",
                     "simpifiedChinese": "-",
-                    "korean": "-"
+                    "korean": "-",
+                    "portuguese": "-"
                 }, {
                     "key": "SIZE_LARGE",
                     "thai": "ขนาดใหญ่",
@@ -2639,7 +2966,8 @@
                     "japanese": "-",
                     "traditionalChinese": "-",
                     "simpifiedChinese": "-",
-                    "korean": "-"
+                    "korean": "-",
+                    "portuguese": "-"
                 }, {
                     "key": "ALL_SIZE",
                     "thai": "ทุกขนาด",
@@ -2647,7 +2975,8 @@
                     "japanese": "-",
                     "traditionalChinese": "-",
                     "simpifiedChinese": "-",
-                    "korean": "-"
+                    "korean": "-",
+                    "portuguese": "-"
                 }, {
                     "key": "ALL_ELEMENT",
                     "thai": "ทุกธาตุ",
@@ -2655,7 +2984,8 @@
                     "japanese": "-",
                     "traditionalChinese": "-",
                     "simpifiedChinese": "-",
-                    "korean": "-"
+                    "korean": "-",
+                    "portuguese": "-"
                 }, {
                     "key": "ATF_SELF",
                     "thai": "ตนเอง",
@@ -2663,7 +2993,8 @@
                     "japanese": "-",
                     "traditionalChinese": "-",
                     "simpifiedChinese": "-",
-                    "korean": "-"
+                    "korean": "-",
+                    "portuguese": "-"
                 }, {
                     "key": "ATF_TARGET",
                     "thai": "เป้าหมาย",
@@ -2671,7 +3002,8 @@
                     "japanese": "-",
                     "traditionalChinese": "-",
                     "simpifiedChinese": "-",
-                    "korean": "-"
+                    "korean": "-",
+                    "portuguese": "-"
                 }, {
                     "key": "ATF_SHORT",
                     "thai": "ตีกายภาพ ใกล้",
@@ -2679,7 +3011,8 @@
                     "japanese": "-",
                     "traditionalChinese": "-",
                     "simpifiedChinese": "-",
-                    "korean": "-"
+                    "korean": "-",
+                    "portuguese": "-"
                 }, {
                     "key": "BF_SHORT",
                     "thai": "ตีกายภาพ ใกล้",
@@ -2687,7 +3020,8 @@
                     "japanese": "-",
                     "traditionalChinese": "-",
                     "simpifiedChinese": "-",
-                    "korean": "-"
+                    "korean": "-",
+                    "portuguese": "-"
                 }, {
                     "key": "ATF_LONG",
                     "thai": "ตีกายภาพ ไกล",
@@ -2695,7 +3029,8 @@
                     "japanese": "-",
                     "traditionalChinese": "-",
                     "simpifiedChinese": "-",
-                    "korean": "-"
+                    "korean": "-",
+                    "portuguese": "-"
                 }, {
                     "key": "BF_LONG",
                     "thai": "ตีกายภาพ ไกล",
@@ -2703,7 +3038,8 @@
                     "japanese": "-",
                     "traditionalChinese": "-",
                     "simpifiedChinese": "-",
-                    "korean": "-"
+                    "korean": "-",
+                    "portuguese": "-"
                 }, {
                     "key": "ATF_SKILL",
                     "thai": "ใช้ Skill",
@@ -2711,7 +3047,8 @@
                     "japanese": "-",
                     "traditionalChinese": "-",
                     "simpifiedChinese": "-",
-                    "korean": "-"
+                    "korean": "-",
+                    "portuguese": "-"
                 }, {
                     "key": "ATF_WEAPON",
                     "thai": "ตี",
@@ -2719,7 +3056,8 @@
                     "japanese": "-",
                     "traditionalChinese": "-",
                     "simpifiedChinese": "-",
-                    "korean": "-"
+                    "korean": "-",
+                    "portuguese": "-"
                 }, {
                     "key": "BF_WEAPON",
                     "thai": "ตี",
@@ -2727,7 +3065,8 @@
                     "japanese": "-",
                     "traditionalChinese": "-",
                     "simpifiedChinese": "-",
-                    "korean": "-"
+                    "korean": "-",
+                    "portuguese": "-"
                 }, {
                     "key": "ATF_MAGIC",
                     "thai": "ใช้ Skill",
@@ -2735,7 +3074,8 @@
                     "japanese": "-",
                     "traditionalChinese": "-",
                     "simpifiedChinese": "-",
-                    "korean": "-"
+                    "korean": "-",
+                    "portuguese": "-"
                 }, {
                     "key": "BF_MAGIC",
                     "thai": "ใช้ Skill",
@@ -2743,7 +3083,8 @@
                     "japanese": "-",
                     "traditionalChinese": "-",
                     "simpifiedChinese": "-",
-                    "korean": "-"
+                    "korean": "-",
+                    "portuguese": "-"
                 }, {
                     "key": "BF_SKILL",
                     "thai": "ใช้ Skill",
@@ -2751,7 +3092,8 @@
                     "japanese": "-",
                     "traditionalChinese": "-",
                     "simpifiedChinese": "-",
-                    "korean": "-"
+                    "korean": "-",
+                    "portuguese": "-"
                 }, {
                     "key": "ATF_MISC",
                     "thai": "ใช้ Skill อื่น ๆ",
@@ -2759,7 +3101,8 @@
                     "japanese": "-",
                     "traditionalChinese": "-",
                     "simpifiedChinese": "-",
-                    "korean": "-"
+                    "korean": "-",
+                    "portuguese": "-"
                 }, {
                     "key": "BF_MISC",
                     "thai": "ใช้ Skill อื่น ๆ",
@@ -2767,7 +3110,8 @@
                     "japanese": "-",
                     "traditionalChinese": "-",
                     "simpifiedChinese": "-",
-                    "korean": "-"
+                    "korean": "-",
+                    "portuguese": "-"
                 }, {
                     "key": "BF_NORMAL",
                     "thai": "ตีกายภาพ",
@@ -2775,7 +3119,8 @@
                     "japanese": "-",
                     "traditionalChinese": "-",
                     "simpifiedChinese": "-",
-                    "korean": "-"
+                    "korean": "-",
+                    "portuguese": "-"
                 }, {
                     "key": "AUTO_BONUS_ATF_SELF",
                     "thai": "ตนเอง",
@@ -2783,7 +3128,8 @@
                     "japanese": "-",
                     "traditionalChinese": "-",
                     "simpifiedChinese": "-",
-                    "korean": "-"
+                    "korean": "-",
+                    "portuguese": "-"
                 }, {
                     "key": "AUTO_BONUS_ATF_TARGET",
                     "thai": "ศัตรู",
@@ -2791,7 +3137,8 @@
                     "japanese": "-",
                     "traditionalChinese": "-",
                     "simpifiedChinese": "-",
-                    "korean": "-"
+                    "korean": "-",
+                    "portuguese": "-"
                 }, {
                     "key": "AUTO_BONUS_ATF_SHORT",
                     "thai": "ตีใกล้",
@@ -2799,7 +3146,8 @@
                     "japanese": "-",
                     "traditionalChinese": "-",
                     "simpifiedChinese": "-",
-                    "korean": "-"
+                    "korean": "-",
+                    "portuguese": "-"
                 }, {
                     "key": "AUTO_BONUS_BF_SHORT",
                     "thai": "ตีใกล้",
@@ -2807,7 +3155,8 @@
                     "japanese": "-",
                     "traditionalChinese": "-",
                     "simpifiedChinese": "-",
-                    "korean": "-"
+                    "korean": "-",
+                    "portuguese": "-"
                 }, {
                     "key": "AUTO_BONUS_ATF_LONG",
                     "thai": "ตีไกล",
@@ -2815,7 +3164,8 @@
                     "japanese": "-",
                     "traditionalChinese": "-",
                     "simpifiedChinese": "-",
-                    "korean": "-"
+                    "korean": "-",
+                    "portuguese": "-"
                 }, {
                     "key": "AUTO_BONUS_BF_LONG",
                     "thai": "ตีไกล",
@@ -2823,7 +3173,8 @@
                     "japanese": "-",
                     "traditionalChinese": "-",
                     "simpifiedChinese": "-",
-                    "korean": "-"
+                    "korean": "-",
+                    "portuguese": "-"
                 }, {
                     "key": "AUTO_BONUS_ATF_SKILL",
                     "thai": "ใช้ Skill",
@@ -2831,7 +3182,8 @@
                     "japanese": "-",
                     "traditionalChinese": "-",
                     "simpifiedChinese": "-",
-                    "korean": "-"
+                    "korean": "-",
+                    "portuguese": "-"
                 }, {
                     "key": "AUTO_BONUS_ATF_WEAPON",
                     "thai": "ตีกายภาพ",
@@ -2839,7 +3191,8 @@
                     "japanese": "-",
                     "traditionalChinese": "-",
                     "simpifiedChinese": "-",
-                    "korean": "-"
+                    "korean": "-",
+                    "portuguese": "-"
                 }, {
                     "key": "AUTO_BONUS_BF_WEAPON",
                     "thai": "ตีกายภาพ",
@@ -2847,7 +3200,8 @@
                     "japanese": "-",
                     "traditionalChinese": "-",
                     "simpifiedChinese": "-",
-                    "korean": "-"
+                    "korean": "-",
+                    "portuguese": "-"
                 }, {
                     "key": "AUTO_BONUS_ATF_MAGIC",
                     "thai": "ใช้ Skill",
@@ -2855,7 +3209,8 @@
                     "japanese": "-",
                     "traditionalChinese": "-",
                     "simpifiedChinese": "-",
-                    "korean": "-"
+                    "korean": "-",
+                    "portuguese": "-"
                 }, {
                     "key": "AUTO_BONUS_BF_MAGIC",
                     "thai": "ใช้ Skill",
@@ -2863,7 +3218,8 @@
                     "japanese": "-",
                     "traditionalChinese": "-",
                     "simpifiedChinese": "-",
-                    "korean": "-"
+                    "korean": "-",
+                    "portuguese": "-"
                 }, {
                     "key": "AUTO_BONUS_BF_SKILL",
                     "thai": "ใช้ Skill",
@@ -2871,7 +3227,8 @@
                     "japanese": "-",
                     "traditionalChinese": "-",
                     "simpifiedChinese": "-",
-                    "korean": "-"
+                    "korean": "-",
+                    "portuguese": "-"
                 }, {
                     "key": "AUTO_BONUS_ATF_MISC",
                     "thai": "ใช้ Skill อื่น ๆ",
@@ -2879,7 +3236,8 @@
                     "japanese": "-",
                     "traditionalChinese": "-",
                     "simpifiedChinese": "-",
-                    "korean": "-"
+                    "korean": "-",
+                    "portuguese": "-"
                 }, {
                     "key": "AUTO_BONUS_BF_MISC",
                     "thai": "ใช้ Skill อื่น ๆ",
@@ -2887,7 +3245,8 @@
                     "japanese": "-",
                     "traditionalChinese": "-",
                     "simpifiedChinese": "-",
-                    "korean": "-"
+                    "korean": "-",
+                    "portuguese": "-"
                 }, {
                     "key": "AUTO_BONUS_BF_NORMAL",
                     "thai": "ตีกายภาพ",
@@ -2895,7 +3254,8 @@
                     "japanese": "-",
                     "traditionalChinese": "-",
                     "simpifiedChinese": "-",
-                    "korean": "-"
+                    "korean": "-",
+                    "portuguese": "-"
                 }, {
                     "key": "PHYSICAL_DAMAGE",
                     "thai": "ตีกายภาพ",
@@ -2903,7 +3263,8 @@
                     "japanese": "-",
                     "traditionalChinese": "-",
                     "simpifiedChinese": "-",
-                    "korean": "-"
+                    "korean": "-",
+                    "portuguese": "-"
                 }, {
                     "key": "AUTOSPELL_I_SELF",
                     "thai": "ตนเอง",
@@ -2911,7 +3272,8 @@
                     "japanese": "-",
                     "traditionalChinese": "-",
                     "simpifiedChinese": "-",
-                    "korean": "-"
+                    "korean": "-",
+                    "portuguese": "-"
                 }, {
                     "key": "AUTOSPELL_I_TARGET",
                     "thai": "เป้าหมาย",
@@ -2919,7 +3281,8 @@
                     "japanese": "-",
                     "traditionalChinese": "-",
                     "simpifiedChinese": "-",
-                    "korean": "-"
+                    "korean": "-",
+                    "portuguese": "-"
                 }, {
                     "key": "AUTOSPELL_I_SKILL",
                     "thai": "สุ่ม Lv. Skill",
@@ -2927,7 +3290,8 @@
                     "japanese": "-",
                     "traditionalChinese": "-",
                     "simpifiedChinese": "-",
-                    "korean": "-"
+                    "korean": "-",
+                    "portuguese": "-"
                 }, {
                     "key": "AUTOSPELL_I_SKILL_TO_TARGET",
                     "thai": "สุ่ม Lv. Skill ใส่เป้าหมาย",
@@ -2935,7 +3299,8 @@
                     "japanese": "-",
                     "traditionalChinese": "-",
                     "simpifiedChinese": "-",
-                    "korean": "-"
+                    "korean": "-",
+                    "portuguese": "-"
                 }, {
                     "key": "EQUIP_COMPOUND_ON",
                     "thai": "อุปกรณ์ที่สวมใส่อยู่",
@@ -2943,7 +3308,8 @@
                     "japanese": "-",
                     "traditionalChinese": "-",
                     "simpifiedChinese": "-",
-                    "korean": "-"
+                    "korean": "-",
+                    "portuguese": "-"
                 }, {
                     "key": "FIST",
                     "thai": "มือเปล่า",
@@ -2951,7 +3317,8 @@
                     "japanese": "-",
                     "traditionalChinese": "-",
                     "simpifiedChinese": "-",
-                    "korean": "-"
+                    "korean": "-",
+                    "portuguese": "-"
                 }, {
                     "key": "SHIELD",
                     "thai": "โล่",
@@ -2959,7 +3326,8 @@
                     "japanese": "-",
                     "traditionalChinese": "-",
                     "simpifiedChinese": "-",
-                    "korean": "-"
+                    "korean": "-",
+                    "portuguese": "-"
                 }, {
                     "key": "SC_START_4_NO_DURATION",
                     "thai": "• รับผล {0}",
@@ -2967,7 +3335,8 @@
                     "japanese": "-",
                     "traditionalChinese": "-",
                     "simpifiedChinese": "-",
-                    "korean": "-"
+                    "korean": "-",
+                    "portuguese": "-"
                 }, {
                     "key": "SC_START_2_NO_DURATION",
                     "thai": "• รับผล {0}",
@@ -2975,7 +3344,8 @@
                     "japanese": "-",
                     "traditionalChinese": "-",
                     "simpifiedChinese": "-",
-                    "korean": "-"
+                    "korean": "-",
+                    "portuguese": "-"
                 }, {
                     "key": "SC_START_NO_DURATION",
                     "thai": "• รับผล {0}",
@@ -2983,7 +3353,8 @@
                     "japanese": "-",
                     "traditionalChinese": "-",
                     "simpifiedChinese": "-",
-                    "korean": "-"
+                    "korean": "-",
+                    "portuguese": "-"
                 }, {
                     "key": "PET_WITH_CHANCE",
                     "thai": "• สำหรับจับ {0} โอกาสจับได้ {1}%",
@@ -2991,7 +3362,8 @@
                     "japanese": "-",
                     "traditionalChinese": "-",
                     "simpifiedChinese": "-",
-                    "korean": "-"
+                    "korean": "-",
+                    "portuguese": "-"
                 }, {
                     "key": "CONVERT_PROGRESSION_FETCHING_PET",
                     "thai": "Fetching pet",
@@ -2999,7 +3371,8 @@
                     "japanese": "-",
                     "traditionalChinese": "-",
                     "simpifiedChinese": "-",
-                    "korean": "-"
+                    "korean": "-",
+                    "portuguese": "-"
                 }, {
                     "key": "CONVERT_PROGRESSION_FETCHING_ITEM_SCRIPT_COPIER",
                     "thai": "Fetching item script copier",
@@ -3007,7 +3380,8 @@
                     "japanese": "-",
                     "traditionalChinese": "-",
                     "simpifiedChinese": "-",
-                    "korean": "-"
+                    "korean": "-",
+                    "portuguese": "-"
                 }, {
                     "key": "SECOND_ABBREVIATION",
                     "thai": "s",
@@ -3015,7 +3389,8 @@
                     "japanese": "-",
                     "traditionalChinese": "-",
                     "simpifiedChinese": "-",
-                    "korean": "-"
+                    "korean": "-",
+                    "portuguese": "-"
                 }, {
                     "key": "MINUTE_ABBREVIATION",
                     "thai": "m",
@@ -3023,7 +3398,8 @@
                     "japanese": "-",
                     "traditionalChinese": "-",
                     "simpifiedChinese": "-",
-                    "korean": "-"
+                    "korean": "-",
+                    "portuguese": "-"
                 }, {
                     "key": "HOUR_ABBREVIATION",
                     "thai": "h",
@@ -3031,7 +3407,8 @@
                     "japanese": "-",
                     "traditionalChinese": "-",
                     "simpifiedChinese": "-",
-                    "korean": "-"
+                    "korean": "-",
+                    "portuguese": "-"
                 }, {
                     "key": "DAY_ABBREVIATION",
                     "thai": "d",
@@ -3039,7 +3416,8 @@
                     "japanese": "-",
                     "traditionalChinese": "-",
                     "simpifiedChinese": "-",
-                    "korean": "-"
+                    "korean": "-",
+                    "portuguese": "-"
                 }, {
                     "key": "GRADABLE",
                     "thai": "Grade",
@@ -3055,7 +3433,8 @@
                     "japanese": "-",
                     "traditionalChinese": "-",
                     "simpifiedChinese": "-",
-                    "korean": "-"
+                    "korean": "-",
+                    "portuguese": "-"
                 }, {
                     "key": "LOCATION_BOTH_SHADOW_ACCESSORY",
                     "thai": "ประดับ S.",
@@ -3063,7 +3442,8 @@
                     "japanese": "-",
                     "traditionalChinese": "-",
                     "simpifiedChinese": "-",
-                    "korean": "-"
+                    "korean": "-",
+                    "portuguese": "-"
                 }, {
                     "key": "SELL_PRICE",
                     "thai": "ราคาขาย",
@@ -3071,7 +3451,8 @@
                     "japanese": "-",
                     "traditionalChinese": "-",
                     "simpifiedChinese": "-",
-                    "korean": "-"
+                    "korean": "-",
+                    "portuguese": "-"
                 }, {
                     "key": "MAX_CHANCE",
                     "thai": "โอกาส Drop",
@@ -3079,7 +3460,8 @@
                     "japanese": "-",
                     "traditionalChinese": "-",
                     "simpifiedChinese": "-",
-                    "korean": "-"
+                    "korean": "-",
+                    "portuguese": "-"
                 }, {
                     "key": "SLOT",
                     "thai": "รู",
@@ -3087,7 +3469,8 @@
                     "japanese": "-",
                     "traditionalChinese": "-",
                     "simpifiedChinese": "-",
-                    "korean": "-"
+                    "korean": "-",
+                    "portuguese": "-"
                 }, {
                     "key": "VIEW",
                     "thai": "ค่า View",
@@ -3095,7 +3478,8 @@
                     "japanese": "-",
                     "traditionalChinese": "-",
                     "simpifiedChinese": "-",
-                    "korean": "-"
+                    "korean": "-",
+                    "portuguese": "-"
                 }, {
                     "key": "ALIAS_NAME",
                     "thai": "ฉายา",
@@ -3103,7 +3487,8 @@
                     "japanese": "-",
                     "traditionalChinese": "-",
                     "simpifiedChinese": "-",
-                    "korean": "-"
+                    "korean": "-",
+                    "portuguese": "-"
                 }, {
                     "key": "AEGIS_NAME",
                     "thai": "ชื่อ (Aegis)",
@@ -3111,7 +3496,8 @@
                     "japanese": "-",
                     "traditionalChinese": "-",
                     "simpifiedChinese": "-",
-                    "korean": "-"
+                    "korean": "-",
+                    "portuguese": "-"
                 }, {
                     "key": "HAT_EFFECT",
                     "thai": "• {0} {1}",
@@ -3127,7 +3513,8 @@
                     "japanese": "-",
                     "traditionalChinese": "-",
                     "simpifiedChinese": "-",
-                    "korean": "-"
+                    "korean": "-",
+                    "portuguese": "-"
                 }, {
                     "key": "HAT_EFFECT_FALSE",
                     "thai": "ถอด",
@@ -3135,7 +3522,8 @@
                     "japanese": "-",
                     "traditionalChinese": "-",
                     "simpifiedChinese": "-",
-                    "korean": "-"
+                    "korean": "-",
+                    "portuguese": "-"
                 }, {
                     "key": "SHOW_SCRIPT",
                     "thai": "• พูดว่า",
@@ -3143,7 +3531,8 @@
                     "japanese": "-",
                     "traditionalChinese": "-",
                     "simpifiedChinese": "-",
-                    "korean": "-"
+                    "korean": "-",
+                    "portuguese": "-"
                 }, {
                     "key": "IS_EQUIPPED",
                     "thai": "สวมใส่",
@@ -3151,7 +3540,8 @@
                     "japanese": "-",
                     "traditionalChinese": "-",
                     "simpifiedChinese": "-",
-                    "korean": "-"
+                    "korean": "-",
+                    "portuguese": "-"
                 }, {
                     "key": "IS_NOT_EQUIPPED",
                     "thai": "ไม่ได้สวมใส่",
@@ -3159,7 +3549,8 @@
                     "japanese": "-",
                     "traditionalChinese": "-",
                     "simpifiedChinese": "-",
-                    "korean": "-"
+                    "korean": "-",
+                    "portuguese": "-"
                 }, {
                     "key": "UNIDENTIFIED_DESC",
                     "thai": "โปรดตรวจสอบ Item เสียก่อน",
@@ -3167,7 +3558,8 @@
                     "japanese": "-",
                     "traditionalChinese": "-",
                     "simpifiedChinese": "-",
-                    "korean": "-"
+                    "korean": "-",
+                    "portuguese": "-"
                 }, {
                     "key": "DELAY",
                     "thai": "Cd.",
@@ -3183,7 +3575,8 @@
                     "japanese": "-",
                     "traditionalChinese": "-",
                     "simpifiedChinese": "-",
-                    "korean": "-"
+                    "korean": "-",
+                    "portuguese": "-"
                 }, {
                     "key": "DAY",
                     "thai": "วัน",
@@ -3191,7 +3584,8 @@
                     "japanese": "-",
                     "traditionalChinese": "-",
                     "simpifiedChinese": "-",
-                    "korean": "-"
+                    "korean": "-",
+                    "portuguese": "-"
                 }, {
                     "key": "MONTH",
                     "thai": "เดือน",
@@ -3199,7 +3593,8 @@
                     "japanese": "-",
                     "traditionalChinese": "-",
                     "simpifiedChinese": "-",
-                    "korean": "-"
+                    "korean": "-",
+                    "portuguese": "-"
                 }, {
                     "key": "YEAR",
                     "thai": "ปี",
@@ -3207,7 +3602,8 @@
                     "japanese": "-",
                     "traditionalChinese": "-",
                     "simpifiedChinese": "-",
-                    "korean": "-"
+                    "korean": "-",
+                    "portuguese": "-"
                 }
             ]
         }

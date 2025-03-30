@@ -86,6 +86,7 @@
     <Compile Include="Assets\Scripts\Utilities\IsCharNumber.cs" />
     <Compile Include="Assets\Scripts\ResourceNameChecker.cs" />
     <Compile Include="Assets\Scripts\Classes\ItemListContainer.cs" />
+    <Compile Include="Assets\Scripts\Classes\ItemGeneratorDatabase.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />

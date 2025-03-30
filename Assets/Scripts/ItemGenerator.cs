@@ -273,14 +273,16 @@ public class ItemGenerator : MonoBehaviour
     {
         _itemGeneraterPanelObject.SetActive(false);
 
-        _bonuses = new List<string>() { "bonus bStr,{n};", "bonus bAgi,{n};", "bonus bVit,{n};", "bonus bInt,{n};", "bonus bDex,{n};", "bonus bLuk,{n};", "bonus bAllStats,{n5};", "bonus bPow,{n};", "bonus bSta,{n};", "bonus bWis,{n};", "bonus bSpl,{n};", "bonus bCon,{n};", "bonus bCrt,{n};", "bonus bAllTraitStats,{n5};", "bonus bMaxHPrate,{n};", "bonus bAtk,{n};", "bonus bAtkRate,{n};", "bonus bWeaponAtkRate,{n};", "bonus bMatk,{n};", "bonus bMatkRate,{n};", "bonus bWeaponMatkRate,{n};", "bonus bSpeedAddRate,{n20};", "bonus bCritAtkRate,{n20};", "bonus bCritDefRate,{n20};", "bonus bCriticalDef,{n20};", "bonus bHealPower,{n};", "bonus bFixedCastrate,-{n5};", "bonus bVariableCastrate,-{n5};", "bonus bFixedCast,-{t2};", "bonus bVariableCast,-{t2};", "bonus bNoCastCancel2;", "bonus bDelayrate,-{n2};", "bonus bNoSizeFix;", "bonus bDefRatioAtkClass,Class_All;", "bonus2 bIgnoreDefClassRate,{c},{n2};", "bonus2 bIgnoreMdefClassRate,{c},{n2};", "bonus2 bIgnoreResRaceRate,{r},{n2};", "bonus2 bIgnoreMResRaceRate,{r},{n2};", "bonus2 bAddEff,{eff},{n};", "bonus2 bResEff,{eff},{n};", "bonus bReduceDamageReturn,{n20};", "bonus bDoubleAddRate,{n20};", "bonus bNoKnockback;", "bonus bIntravision;", "bonus bPerfectHide;", "bonus bNoWalkDelay;" };
-        _bonusesNotStack = new List<string>() { "bonus bStr,{n};", "bonus bAgi,{n};", "bonus bVit,{n};", "bonus bInt,{n};", "bonus bDex,{n};", "bonus bLuk,{n};", "bonus bAllStats,{n5};", "bonus bPow,{n};", "bonus bSta,{n};", "bonus bWis,{n};", "bonus bSpl,{n};", "bonus bCon,{n};", "bonus bCrt,{n};", "bonus bAllTraitStats,{n5};", "bonus bMaxHPrate,{n};", "bonus bAtk,{n};", "bonus bAtkRate,{n};", "bonus bWeaponAtkRate,{n};", "bonus bMatk,{n};", "bonus bMatkRate,{n};", "bonus bWeaponMatkRate,{n};", "bonus bSpeedAddRate,{n20};", "bonus bCritAtkRate,{n20};", "bonus bCritDefRate,{n20};", "bonus bCriticalDef,{n20};", "bonus bHealPower,{n};", "bonus bFixedCastrate,-{n5};", "bonus bVariableCastrate,-{n5};", "bonus bFixedCast,-{t2};", "bonus bVariableCast,-{t2};", "bonus bDelayrate,-{n2};", "bonus2 bIgnoreDefClassRate,{c},{n2};", "bonus2 bIgnoreMdefClassRate,{c},{n2};", "bonus2 bIgnoreResRaceRate,{r},{n2};", "bonus2 bIgnoreMResRaceRate,{r},{n2};", "bonus2 bAddEff,{eff},{n};", "bonus2 bResEff,{eff},{n};", "bonus bReduceDamageReturn,{n20};", "bonus bDoubleAddRate,{n20};" };
-        _notStackableBonuses = new List<string>() { "bonus bNoCastCancel2;", "bonus bNoSizeFix;", "bonus bDefRatioAtkClass,Class_All;", "bonus bNoKnockback;", "bonus bIntravision;", "bonus bPerfectHide;", "bonus bNoWalkDelay;" };
-        _effects = new List<string>() { "Eff_Bleeding", "Eff_Blind", "Eff_Burning", "Eff_Confusion", "Eff_Crystalize", "Eff_Curse", "Eff_DPoison", "Eff_Fear", "Eff_Freeze", "Eff_Poison", "Eff_Silence", "Eff_Sleep", "Eff_Stone", "Eff_Stun", "Eff_Freezing", "Eff_Heat", "Eff_Deepsleep", "Eff_WhiteImprison", "Eff_Hallucination" };
-        _elements = new List<string>() { "Ele_Dark", "Ele_Earth", "Ele_Fire", "Ele_Ghost", "Ele_Holy", "Ele_Neutral", "Ele_Poison", "Ele_Undead", "Ele_Water", "Ele_Wind", "Ele_All" };
-        _races = new List<string>() { "RC_All" };
-        _classes = new List<string>() { "Class_All" };
-        _sizes = new List<string>() { "Size_Small", "Size_Medium", "Size_Large", "Size_All" };
+        ItemGeneratorDatabase.ParseJson();
+
+        _bonuses = ItemGeneratorDatabase.MyData.bonuses;
+        _bonusesNotStack = ItemGeneratorDatabase.MyData.bonusesNotStack;
+        _notStackableBonuses = ItemGeneratorDatabase.MyData.notStackableBonuses;
+        _effects = ItemGeneratorDatabase.MyData.effects;
+        _elements = ItemGeneratorDatabase.MyData.elements;
+        _races = ItemGeneratorDatabase.MyData.races;
+        _classes = ItemGeneratorDatabase.MyData.classes;
+        _sizes = ItemGeneratorDatabase.MyData.sizes;
 
         var path = Application.dataPath + "/Assets/all_english_word.txt";
 
