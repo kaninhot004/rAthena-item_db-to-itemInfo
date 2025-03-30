@@ -154,17 +154,14 @@ public class ItemGenerator : MonoBehaviour
     List<int> _grenadeViews = new List<int>() { 21 };
     List<int> _huumaViews = new List<int>() { 22 };
 
-    List<string> _bonuses = new List<string>() { };
-    List<string> _bonusesNotStack = new List<string>() { };
-    List<string> _notStackableBonuses = new List<string>() { };
-    //List<string> _bonuses = new List<string>() { "bonus bStr,{n};", "bonus bAgi,{n};", "bonus bVit,{n};", "bonus bInt,{n};", "bonus bDex,{n};", "bonus bLuk,{n};", "bonus bMaxHPrate,{n};", "bonus bMaxSPrate,{n};", "bonus bBaseAtk,{n};", "bonus bAtk2,{n};", "bonus bWeaponAtkRate,{n};", "bonus bMatk,{n};", "bonus bMatkRate,{n};", "bonus bWeaponMatkRate,{n};", "bonus bDef,{n20};", "bonus bDefRate,{n20};", "bonus bDef2,{n20};", "bonus bDef2Rate,{n20};", "bonus bMdef,{n20};", "bonus bMdefRate,{n20};", "bonus bMdef2,{n20};", "bonus bMdef2Rate,{n20};", "bonus bHit,{n2};", "bonus bHitRate,{n5};", "bonus bCritical,{n};", "bonus bCriticalRate,{n5};", "bonus bFlee,{n5};", "bonus bFleeRate,{n20};", "bonus bPerfectHitAddRate,{n20};", "bonus bSpeedAddRate,{n20};", "bonus bAspd,{n20};", "bonus bAspdRate,{n20};", "bonus bHPrecovRate,{n};", "bonus bSPrecovRate,{n};", "bonus bUseSPrate,-{n10};", "bonus bShortAtkRate,{n2};", "bonus bLongAtkRate,{n2};", "bonus bCritAtkRate,{n2};", "bonus bCritDefRate,{n20};", "bonus bCriticalDef,{n20};", "bonus bNearAtkDef,{n20};", "bonus bLongAtkDef,{n20};", "bonus bMagicAtkDef,{n20};", "bonus bMiscAtkDef,{n20};", "bonus bHealPower,{n};", "bonus bHealPower2,{n};", "bonus bFixedCastrate,-{n5};", "bonus bVariableCastrate,-{n5};", "bonus bFixedCast,-{t2};", "bonus bVariableCast,-{t2};", "bonus bNoCastCancel2;", "bonus bDelayrate,-{n2};", "bonus2 bAddEle,{e},{n};", "bonus2 bMagicAddEle,{e},{n};", "bonus2 bSubEle,{e},{n20};", "bonus2 bAddRace,{r},{n};", "bonus2 bMagicAddRace,{r},{n};", "bonus2 bSubRace,{r},{n20};", "bonus2 bAddClass,{c},{n};", "bonus2 bMagicAddClass,{c},{n};", "bonus2 bSubClass,{c},{n20};", "bonus2 bAddSize,{s},{n};", "bonus2 bMagicAddSize,{s},{n};", "bonus2 bSubSize,{s},{n20};", "bonus2 bMagicSubSize,{s},{n20};", "bonus bNoSizeFix;", "bonus bAtkEle,{e};", "bonus bDefEle,{e};", "bonus2 bMagicAtkEle,{e},{n};", "bonus bDefRatioAtkRace,{r};", "bonus bDefRatioAtkEle,{e};", "bonus bDefRatioAtkClass,{c};", "bonus2 bIgnoreDefRaceRate,{r},{n2};", "bonus2 bIgnoreMdefRaceRate,{r},{n2};", "bonus2 bIgnoreDefClassRate,{c},{n2};", "bonus2 bIgnoreMdefClassRate,{c},{n2};", "bonus2 bExpAddRace,{r},{n5};", "bonus2 bExpAddClass,{c},{n5};", "bonus2 bAddEff,{eff},{n};", "bonus2 bResEff,{eff},{n};", "bonus bHPDrainValue,{n};", "bonus bSPDrainValue,{n};", "bonus bShortWeaponDamageReturn,{n20};", "bonus bLongWeaponDamageReturn,{n20};", "bonus bMagicDamageReturn,{n20};", "bonus bReduceDamageReturn,{n20};", "bonus bUnstripableWeapon;", "bonus bUnstripableArmor;", "bonus bUnstripableHelm;", "bonus bUnstripableShield;", "bonus bUnstripable;", "bonus bUnbreakable,{n2};", "bonus2 bDropAddRace,{r},{n5};", "bonus2 bDropAddClass,{c},{n5};", "bonus bDoubleAddRate,{n20};", "bonus bNoKnockback;", "bonus bNoGemStone;", "bonus bIntravision;", "bonus bPerfectHide;", "bonus bNoMadoFuel;", "bonus bNoWalkDelay;" };
-    List<string> _effects = new List<string>() { };
-    List<string> _elements = new List<string>() { };
-    List<string> _races = new List<string>() { };
-    //List<string> _races = new List<string>() { "RC_Angel", "RC_Brute", "RC_DemiHuman", "RC_Demon", "RC_Dragon", "RC_Fish", "RC_Formless", "RC_Insect", "RC_Plant", "RC_Player_Human", "RC_Player_Doram", "RC_Undead", "RC_All" };
-    List<string> _classes = new List<string>() { };
-    //List<string> _classes = new List<string>() { "Class_Normal", "Class_Boss", "Class_Guardian", "Class_All" };
-    List<string> _sizes = new List<string>() { };
+    string[] _bonuses;
+    string[] _bonusesNotStack;
+    string[] _notStackableBonuses;
+    string[] _effects;
+    string[] _elements;
+    string[] _races;
+    string[] _classes;
+    string[] _sizes;
 
     List<string> _englishWords = new List<string>();
 
@@ -258,6 +255,8 @@ public class ItemGenerator : MonoBehaviour
 
         _generateButton.onClick.AddListener(Generate);
         _closeButton.onClick.AddListener(() => { _itemGeneraterPanelObject.SetActive(false); });
+
+        ItemGeneratorDatabase.ParseJson();
     }
 
     public void Show()
@@ -272,8 +271,6 @@ public class ItemGenerator : MonoBehaviour
     public void Generate()
     {
         _itemGeneraterPanelObject.SetActive(false);
-
-        ItemGeneratorDatabase.ParseJson();
 
         _bonuses = ItemGeneratorDatabase.MyData.bonuses;
         _bonusesNotStack = ItemGeneratorDatabase.MyData.bonusesNotStack;
@@ -715,25 +712,25 @@ public class ItemGenerator : MonoBehaviour
 
         for (int i = 0; i < bonusAmount; i++)
         {
-            string bonus = _bonuses[Random.Range(0, _bonuses.Count)];
+            string bonus = _bonuses[Random.Range(0, _bonuses.Length)];
 
             // Is already had elemental or skipping?
             while (((bonus == "bonus bAtkEle,{e};")
                 || (bonus == "bonus bDefEle,{e};"))
                 && (isElementalAlreadyHad
                 || _isSkipElemental))
-                bonus = _bonuses[Random.Range(0, _bonuses.Count)];
+                bonus = _bonuses[Random.Range(0, _bonuses.Length)];
 
             // Attack element should stay on weapon or ammo only
             while ((bonus == "bonus bAtkEle,{e};")
                 && (!location.Contains("Ammo:")
                 || !location.Contains("Right_Hand:")))
-                bonus = _bonuses[Random.Range(0, _bonuses.Count)];
+                bonus = _bonuses[Random.Range(0, _bonuses.Length)];
 
             // Defense element should stay on armor only
             while ((bonus == "bonus bDefEle,{e};")
                 && !location.Contains("Armor:"))
-                bonus = _bonuses[Random.Range(0, _bonuses.Count)];
+                bonus = _bonuses[Random.Range(0, _bonuses.Length)];
 
             // Mark elemental as already add
             if ((bonus == "bonus bAtkEle,{e};")
@@ -741,11 +738,11 @@ public class ItemGenerator : MonoBehaviour
                 isElementalAlreadyHad = true;
 
             // Not stackable bonus
-            for (int j = 0; j < _notStackableBonuses.Count; j++)
+            for (int j = 0; j < _notStackableBonuses.Length; j++)
             {
                 if (builder.ToString().Contains(_notStackableBonuses[j]))
                 {
-                    bonus = _bonusesNotStack[Random.Range(0, _bonusesNotStack.Count)];
+                    bonus = _bonusesNotStack[Random.Range(0, _bonusesNotStack.Length)];
                     break;
                 }
             }
@@ -788,19 +785,19 @@ public class ItemGenerator : MonoBehaviour
             bonus = bonus.Replace("{t}", ((bonusValue * 100) <= 0) ? "1" : (bonusValue * 100).ToString("f0"));
 
             // Bonus 'Elemental' value
-            bonus = bonus.Replace("{e}", _elements[Random.Range(0, _elements.Count)]);
+            bonus = bonus.Replace("{e}", _elements[Random.Range(0, _elements.Length)]);
 
             // Bonus 'Race' value
-            bonus = bonus.Replace("{r}", _races[Random.Range(0, _races.Count)]);
+            bonus = bonus.Replace("{r}", _races[Random.Range(0, _races.Length)]);
 
             // Bonus 'Class' value
-            bonus = bonus.Replace("{c}", _classes[Random.Range(0, _classes.Count)]);
+            bonus = bonus.Replace("{c}", _classes[Random.Range(0, _classes.Length)]);
 
             // Bonus 'Size' value
-            bonus = bonus.Replace("{s}", _sizes[Random.Range(0, _sizes.Count)]);
+            bonus = bonus.Replace("{s}", _sizes[Random.Range(0, _sizes.Length)]);
 
             // Bonus 'Effect' value
-            bonus = bonus.Replace("{eff}", _effects[Random.Range(0, _effects.Count)]);
+            bonus = bonus.Replace("{eff}", _effects[Random.Range(0, _effects.Length)]);
 
             builder.Append("        " + bonus + "\n");
         }

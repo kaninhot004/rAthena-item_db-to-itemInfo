@@ -1,6 +1,6 @@
 {
-    "datas": {
-        "bonuses": {
+    "data": {
+        "bonuses": [
             "bonus bStr,{n};",
             "bonus bAgi,{n};",
             "bonus bVit,{n};",
@@ -47,8 +47,8 @@
             "bonus bIntravision;",
             "bonus bPerfectHide;",
             "bonus bNoWalkDelay;"
-        },
-        "bonusesNotStack": {
+        ],
+        "bonusesNotStack": [
             "bonus bStr,{n};",
             "bonus bAgi,{n};",
             "bonus bVit,{n};",
@@ -88,8 +88,8 @@
             "bonus2 bResEff,{eff},{n};",
             "bonus bReduceDamageReturn,{n20};",
             "bonus bDoubleAddRate,{n20};"
-        },
-        "notStackableBonuses": {
+        ],
+        "notStackableBonuses": [
             "bonus bNoCastCancel2;",
             "bonus bNoSizeFix;",
             "bonus bDefRatioAtkClass,Class_All;",
@@ -97,8 +97,8 @@
             "bonus bIntravision;",
             "bonus bPerfectHide;",
             "bonus bNoWalkDelay;"
-        },
-        "effects": {
+        ],
+        "effects": [
             "Eff_Bleeding",
             "Eff_Blind",
             "Eff_Burning",
@@ -118,8 +118,8 @@
             "Eff_Deepsleep",
             "Eff_WhiteImprison",
             "Eff_Hallucination"
-        },
-        "elements": {
+        ],
+        "elements": [
             "Ele_Dark",
             "Ele_Earth",
             "Ele_Fire",
@@ -131,18 +131,18 @@
             "Ele_Water",
             "Ele_Wind",
             "Ele_All"
-        },
-        "races": {
+        ],
+        "races": [
             "RC_All"
-        },
-        "classes": {
+        ],
+        "classes": [
             "Class_All"
-        },
-        "sizes": {
+        ],
+        "sizes": [
             "Size_Small",
             "Size_Medium",
             "Size_Large",
             "Size_All"
-        }
+        ]
     }
 }

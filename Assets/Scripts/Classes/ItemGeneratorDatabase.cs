@@ -1,6 +1,5 @@
 using System;
 using System.IO;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class ItemGeneratorDatabase
@@ -14,20 +13,22 @@ public class ItemGeneratorDatabase
     [Serializable]
     public class Data
     {
-        public List<string> bonuses = new List<string>();
-        public List<string> bonusesNotStack = new List<string>();
-        public List<string> notStackableBonuses = new List<string>();
-        public List<string> effects = new List<string>();
-        public List<string> elements = new List<string>();
-        public List<string> races = new List<string>();
-        public List<string> classes = new List<string>();
-        public List<string> sizes = new List<string>();
+        public string[] bonuses;
+        public string[] bonusesNotStack;
+        public string[] notStackableBonuses;
+        public string[] effects;
+        public string[] elements;
+        public string[] races;
+        public string[] classes;
+        public string[] sizes;
     }
 
     public static Data MyData = new Data();
 
     public static void ParseJson()
     {
+        MyData = new Data();
+
         var path = Application.dataPath + "/Assets/item-generator-settings.json";
 
         if (File.Exists(path))
@@ -52,13 +53,13 @@ public class ItemGeneratorDatabase
             }
         }
 
-        Debug.Log("There are " + MyData.bonuses.Count + " item generator bonuses");
-        Debug.Log("There are " + MyData.bonusesNotStack.Count + " item generator bonusesNotStack");
-        Debug.Log("There are " + MyData.notStackableBonuses.Count + " item generator notStackableBonuses");
-        Debug.Log("There are " + MyData.effects.Count + " item generator effects");
-        Debug.Log("There are " + MyData.elements.Count + " item generator elements");
-        Debug.Log("There are " + MyData.races.Count + " item generator races");
-        Debug.Log("There are " + MyData.classes.Count + " item generator classes");
-        Debug.Log("There are " + MyData.sizes.Count + " item generator sizes");
+        Debug.Log("There are " + MyData.bonuses.Length + " item generator bonuses");
+        Debug.Log("There are " + MyData.bonusesNotStack.Length + " item generator bonusesNotStack");
+        Debug.Log("There are " + MyData.notStackableBonuses.Length + " item generator notStackableBonuses");
+        Debug.Log("There are " + MyData.effects.Length + " item generator effects");
+        Debug.Log("There are " + MyData.elements.Length + " item generator elements");
+        Debug.Log("There are " + MyData.races.Length + " item generator races");
+        Debug.Log("There are " + MyData.classes.Length + " item generator classes");
+        Debug.Log("There are " + MyData.sizes.Length + " item generator sizes");
     }
 }
