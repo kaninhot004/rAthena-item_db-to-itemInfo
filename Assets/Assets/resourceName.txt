@@ -26515,7 +26515,7 @@
 610058="นฐภวฤซลธธฃ"
 610064="Dimen_SHC_Katar"
 610065="Dimen_SHC_Cakram"
-610070="aceWormQueen_Teeth"
+610070="FaceWormQueen_Teeth"
 610071="Impact_Furious"
 610072="Humma_Furious"
 620001="Woe_Twohand_Axe2_Z"
