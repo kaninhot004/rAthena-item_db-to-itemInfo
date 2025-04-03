@@ -73,6 +73,7 @@
     <Compile Include="Assets\Scripts\Classes\SkillDatabase.cs" />
     <Compile Include="Assets\Scripts\Classes\LocalizationDatabase.cs" />
     <Compile Include="Assets\Scripts\Classes\ComboDatabase.cs" />
+    <Compile Include="Assets\Scripts\Classes\ItemGeneratorDatabase.cs" />
     <Compile Include="Assets\Scripts\RandomOptionMaker.cs" />
     <Compile Include="Assets\Scripts\Utilities\SafeReplace.cs" />
     <Compile Include="Assets\Scripts\Settings.cs" />
@@ -86,7 +87,6 @@
     <Compile Include="Assets\Scripts\Utilities\IsCharNumber.cs" />
     <Compile Include="Assets\Scripts\ResourceNameChecker.cs" />
     <Compile Include="Assets\Scripts\Classes\ItemListContainer.cs" />
-    <Compile Include="Assets\Scripts\Classes\ItemGeneratorDatabase.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />

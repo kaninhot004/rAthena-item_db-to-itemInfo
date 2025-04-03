@@ -883,6 +883,15 @@
                     "korean": "-",
                     "portuguese": "-"
                 }, {
+                    "key": "BONUS_SKILL_RATIO",
+                    "thai": "• พลัง Skill +{0}%",
+                    "english": "• Skill Damage +{0}%",
+                    "japanese": "-",
+                    "traditionalChinese": "-",
+                    "simpifiedChinese": "-",
+                    "korean": "-",
+                    "portuguese": "-"
+                }, {
                     "key": "BONUS_SHORT_ATK_RATE",
                     "thai": "• ตีกายภาพใกล้ +{0}%",
                     "english": "• Physical Damage (Short) +{0}%",

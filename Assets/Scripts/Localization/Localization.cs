@@ -124,6 +124,7 @@ public class Localization : MonoBehaviour
     public const string BONUS2_SKILL_USE_SP = "BONUS2_SKILL_USE_SP";
     public const string BONUS2_SKILL_USE_SP_RATE = "BONUS2_SKILL_USE_SP_RATE";
     public const string BONUS2_SKILL_ATK = "BONUS2_SKILL_ATK";
+    public const string BONUS_SKILL_RATIO = "BONUS_SKILL_RATIO";
     public const string BONUS_SHORT_ATK_RATE = "BONUS_SHORT_ATK_RATE";
     public const string BONUS_LONG_ATK_RATE = "BONUS_LONG_ATK_RATE";
     public const string BONUS_CRIT_ATK_RATE = "BONUS_CRIT_ATK_RATE";

@@ -4366,6 +4366,12 @@ public class Converter : MonoBehaviour
             var temps = temp.Split(',');
             text = string.Format(_localization.GetTexts(Localization.BONUS2_SKILL_ATK), GetSkillName(QuoteRemover.Remove(temps[0])), TryParseInt(temps[1]));
         }
+        if (text.Contains("bonus bSkillRatio,"))
+        {
+            var temp = text.Replace("bonus bSkillRatio,", string.Empty);
+            var temps = temp.Split(',');
+            text = string.Format(_localization.GetTexts(Localization.BONUS_SKILL_RATIO), TryParseInt(temps[0]));
+        }
         if (text.Contains("bonus bshortatkrate,"))
         {
             var temp = text.Replace("bonus bshortatkrate,", string.Empty);
