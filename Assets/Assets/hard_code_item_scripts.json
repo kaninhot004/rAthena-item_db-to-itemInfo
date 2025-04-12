@@ -213,6 +213,22 @@
         {
             "itemId": 10000012,
             "itemScriptDescription": "นำไปสุ่มรับ Enchantment ได้ที่ ^112793THE BOX^000000"
+        },
+        {
+            "itemId": 10000013,
+            "itemScriptDescription": "นำไปสุ่มรับ Skill Class 1 ได้ที่ ^112793SKILL BOX^000000"
+        },
+        {
+            "itemId": 10000014,
+            "itemScriptDescription": "นำไปสุ่มรับ Skill Class 2 ได้ที่ ^112793SKILL BOX^000000"
+        },
+        {
+            "itemId": 10000015,
+            "itemScriptDescription": "นำไปสุ่มรับ Skill Class 3 ได้ที่ ^112793SKILL BOX^000000"
+        },
+        {
+            "itemId": 10000016,
+            "itemScriptDescription": "นำไปสุ่มรับ Skill Class 4 ได้ที่ ^112793SKILL BOX^000000"
         }
     ]
 }

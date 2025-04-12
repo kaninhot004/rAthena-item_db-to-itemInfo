@@ -177,3 +177,31 @@
     Buy: 1
     Trade:
       NoSell: true
+  - Id: 10000013
+    AegisName: C1_Skill_Orb
+    Name: C1 Skill Orb
+    Type: Etc
+    Buy: 1
+    Trade:
+      NoSell: true
+  - Id: 10000014
+    AegisName: C2_Skill_Orb
+    Name: C2 Skill Orb
+    Type: Etc
+    Buy: 1
+    Trade:
+      NoSell: true
+  - Id: 10000015
+    AegisName: C3_Skill_Orb
+    Name: C3 Skill Orb
+    Type: Etc
+    Buy: 1
+    Trade:
+      NoSell: true
+  - Id: 10000016
+    AegisName: C4_Skill_Orb
+    Name: C4 Skill Orb
+    Type: Etc
+    Buy: 1
+    Trade:
+      NoSell: true

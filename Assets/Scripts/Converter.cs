@@ -2530,6 +2530,7 @@ public class Converter : MonoBehaviour
     }
     bool IsClass1Skill(string skillName)
     {
+        skillName = skillName.Substring(0, 3);
         return skillName.Contains("NV_")
             || skillName.Contains("SM_")
             || skillName.Contains("MG_")
@@ -2547,6 +2548,7 @@ public class Converter : MonoBehaviour
     }
     bool IsClass2Skill(string skillName)
     {
+        skillName = skillName.Substring(0, 3);
         return skillName.Contains("KN_")
             || skillName.Contains("PR_")
             || skillName.Contains("WZ_")
@@ -2578,6 +2580,7 @@ public class Converter : MonoBehaviour
     }
     bool IsClass3Skill(string skillName)
     {
+        skillName = skillName.Substring(0, 3);
         return skillName.Contains("RK_")
             || skillName.Contains("GC_")
             || skillName.Contains("AB_")
@@ -2601,6 +2604,7 @@ public class Converter : MonoBehaviour
     }
     bool IsClass4Skill(string skillName)
     {
+        skillName = skillName.Substring(0, 3);
         return skillName.Contains("DK_")
             || skillName.Contains("AG_")
             || skillName.Contains("IQ_")
