@@ -5,6 +5,7 @@ using System.Collections.Generic;
 public class SkillDatabase
 {
     public int id;
+    public int maxLv;
     public string name;
     public string nameWithQuote;
     public string description;

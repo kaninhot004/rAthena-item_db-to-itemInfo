@@ -1808,6 +1808,8 @@ public class Converter : MonoBehaviour
             }
             else if (text.Contains("    Name:"))
                 skillDatabase.name = QuoteRemover.Remove(text.Replace("    Name: ", string.Empty));
+            else if (text.Contains("    MaxLevel:"))
+                skillDatabase.maxLv = int.Parse(QuoteRemover.Remove(text.Replace("    MaxLevel: ", string.Empty)));
             else if (text.Contains("Critical: true"))
                 skillDatabase.isCritical = true;
             else if (text.Contains("TargetType: Attack"))
@@ -2398,16 +2400,34 @@ public class Converter : MonoBehaviour
                 availableSkills.Add(skillNameDatabases[i]);
         }
 
-        StringBuilder builder = new StringBuilder();
-        StringBuilder builder2 = new StringBuilder();
-        StringBuilder builder3 = new StringBuilder();
+        StringBuilder skillDesc = new StringBuilder();
+        StringBuilder skillName = new StringBuilder();
+        StringBuilder skillId = new StringBuilder();
+        StringBuilder skillMaxLv = new StringBuilder();
+        StringBuilder c1SkillId = new StringBuilder();
+        StringBuilder c2SkillId = new StringBuilder();
+        StringBuilder c3SkillId = new StringBuilder();
+        StringBuilder c4SkillId = new StringBuilder();
+        StringBuilder c1SkillMaxLv = new StringBuilder();
+        StringBuilder c2SkillMaxLv = new StringBuilder();
+        StringBuilder c3SkillMaxLv = new StringBuilder();
+        StringBuilder c4SkillMaxLv = new StringBuilder();
         StringBuilder offensiveSkillBuilder = new StringBuilder();
         StringBuilder offensiveSkillIdBuilder = new StringBuilder();
         StringBuilder offensiveSkillDescription = new StringBuilder();
 
-        builder.Append("setarray $skillDescs$[0],");
-        builder2.Append("setarray $allSkills$[0],");
-        builder3.Append("setarray $allSkillIds[0],");
+        skillDesc.Append("setarray $skillDescs$[0],");
+        skillName.Append("setarray $skillNames$[0],");
+        skillId.Append("setarray $skillIds[0],");
+        skillMaxLv.Append("setarray $skillMaxLvs[0],");
+        c1SkillId.Append("setarray $c1SkillIds[0],");
+        c2SkillId.Append("setarray $c2SkillIds[0],");
+        c3SkillId.Append("setarray $c3SkillIds[0],");
+        c4SkillId.Append("setarray $c4SkillIds[0],");
+        c1SkillMaxLv.Append("setarray $c1SkillMaxLvs[0],");
+        c2SkillMaxLv.Append("setarray $c2SkillMaxLvs[0],");
+        c3SkillMaxLv.Append("setarray $c3SkillMaxLvs[0],");
+        c4SkillMaxLv.Append("setarray $c4SkillMaxLvs[0],");
         offensiveSkillBuilder.Append("setarray $offensiveSkills$[0],");
         offensiveSkillIdBuilder.Append("setarray $offensiveSkillIds[0],");
         offensiveSkillDescription.Append("setarray $offensiveSkillDescs$[0],");
@@ -2423,9 +2443,10 @@ public class Converter : MonoBehaviour
             if (!_skillDatabasesByName.ContainsKey(text))
                 continue;
 
-            builder.Append("\"" + _skillDatabasesByName[text].description + "\",");
-            builder2.Append("\"" + _skillDatabasesByName[text].name + "\",");
-            builder3.Append("" + _skillDatabasesByName[text].id + ",");
+            skillDesc.Append("\"" + _skillDatabasesByName[text].description + "\",");
+            skillName.Append("\"" + _skillDatabasesByName[text].name + "\",");
+            skillId.Append("" + _skillDatabasesByName[text].id + ",");
+            skillMaxLv.Append("" + _skillDatabasesByName[text].maxLv + ",");
             if (_skillDatabasesByName[text].isAttackSkill || _skillDatabasesByName[text].isGroundSkill || _skillDatabasesByName[text].isSelfSkill)
             {
                 var errorSkillIds = new List<int>() { 5344, 5345, 5346, 5348, 3012, 5302, 5303, 5304, 5305, 232, 2281, 5375, 5376, 5377, 5378, 5379, 2457, 2458, 2459, 2460, 2428, 378, 2559, 2222, 247, 244, 2535, 279, 2464, 475, 2230, 2269, 222, 220, 147, 154, 2544, 41, 2240, 5336, 2025, 40, 2456, 1007, 398, 478, 2495, 228, 1013, 496, 497, 498, 411, 488, 508, 2242, 2445, 405, 2032, 499, 151, 251, 5009, 5204 };
@@ -2436,25 +2457,169 @@ public class Converter : MonoBehaviour
                     offensiveSkillDescription.Append("\"" + _skillDatabasesByName[text].description + "\",");
                 }
             }
+            if (IsClass1Skill(_skillDatabasesByName[text].name))
+            {
+                c1SkillId.Append("" + _skillDatabasesByName[text].id + ",");
+                c1SkillMaxLv.Append("" + _skillDatabasesByName[text].maxLv + ",");
+            }
+            else if (IsClass2Skill(_skillDatabasesByName[text].name))
+            {
+                c2SkillId.Append("" + _skillDatabasesByName[text].id + ",");
+                c2SkillMaxLv.Append("" + _skillDatabasesByName[text].maxLv + ",");
+            }
+            else if (IsClass3Skill(_skillDatabasesByName[text].name))
+            {
+                c3SkillId.Append("" + _skillDatabasesByName[text].id + ",");
+                c3SkillMaxLv.Append("" + _skillDatabasesByName[text].maxLv + ",");
+            }
+            else if (IsClass4Skill(_skillDatabasesByName[text].name))
+            {
+                c4SkillId.Append("" + _skillDatabasesByName[text].id + ",");
+                c4SkillMaxLv.Append("" + _skillDatabasesByName[text].maxLv + ",");
+            }
         }
 
-        builder.Remove(builder.Length - 1, 1);
-        builder2.Remove(builder2.Length - 1, 1);
-        builder3.Remove(builder3.Length - 1, 1);
+        skillDesc.Remove(skillDesc.Length - 1, 1);
+        skillName.Remove(skillName.Length - 1, 1);
+        skillId.Remove(skillId.Length - 1, 1);
+        c1SkillId.Remove(c1SkillId.Length - 1, 1);
+        c2SkillId.Remove(c2SkillId.Length - 1, 1);
+        c3SkillId.Remove(c3SkillId.Length - 1, 1);
+        c4SkillId.Remove(c4SkillId.Length - 1, 1);
+        c1SkillMaxLv.Remove(c1SkillMaxLv.Length - 1, 1);
+        c2SkillMaxLv.Remove(c2SkillMaxLv.Length - 1, 1);
+        c3SkillMaxLv.Remove(c3SkillMaxLv.Length - 1, 1);
+        c4SkillMaxLv.Remove(c4SkillMaxLv.Length - 1, 1);
         offensiveSkillBuilder.Remove(offensiveSkillBuilder.Length - 1, 1);
         offensiveSkillIdBuilder.Remove(offensiveSkillIdBuilder.Length - 1, 1);
         offensiveSkillDescription.Remove(offensiveSkillDescription.Length - 1, 1);
 
-        builder.Append(";\n");
-        builder2.Append(";\n");
-        builder3.Append(";\n");
+        skillDesc.Append(";\n");
+        skillName.Append(";\n");
+        skillId.Append(";\n");
+        c1SkillId.Append(";\n");
+        c2SkillId.Append(";\n");
+        c3SkillId.Append(";\n");
+        c4SkillId.Append(";\n");
+        c1SkillMaxLv.Append(";\n");
+        c2SkillMaxLv.Append(";\n");
+        c3SkillMaxLv.Append(";\n");
+        c4SkillMaxLv.Append(";\n");
         offensiveSkillBuilder.Append(";\n");
         offensiveSkillIdBuilder.Append(";\n");
         offensiveSkillDescription.Append(";\n");
 
-        File.WriteAllText("skill_lists.txt", builder.ToString() + builder2.ToString() + builder3.ToString() + offensiveSkillBuilder.ToString() + offensiveSkillIdBuilder.ToString() + offensiveSkillDescription.ToString(), Encoding.UTF8);
+        File.WriteAllText("skill_lists.txt"
+            , skillDesc.ToString()
+            + skillName.ToString()
+            + skillId.ToString()
+            + c1SkillId.ToString()
+            + c2SkillId.ToString()
+            + c3SkillId.ToString()
+            + c4SkillId.ToString()
+            + c1SkillMaxLv.ToString()
+            + c2SkillMaxLv.ToString()
+            + c3SkillMaxLv.ToString()
+            + c4SkillMaxLv.ToString()
+            + offensiveSkillBuilder.ToString()
+            + offensiveSkillIdBuilder.ToString()
+            + offensiveSkillDescription.ToString()
+            , Encoding.UTF8);
 
         Debug.Log("'skill_lists.txt' has been successfully created.");
+    }
+    bool IsClass1Skill(string skillName)
+    {
+        return skillName.Contains("NV_")
+            || skillName.Contains("SM_")
+            || skillName.Contains("MG_")
+            || skillName.Contains("AL_")
+            || skillName.Contains("MC_")
+            || skillName.Contains("AC_")
+            || skillName.Contains("TF_")
+            || skillName.Contains("TK_")
+            || skillName.Contains("SG_")
+            || skillName.Contains("SL_")
+            || skillName.Contains("GS_")
+            || skillName.Contains("NJ_")
+            || skillName.Contains("SU_")
+            ;
+    }
+    bool IsClass2Skill(string skillName)
+    {
+        return skillName.Contains("KN_")
+            || skillName.Contains("PR_")
+            || skillName.Contains("WZ_")
+            || skillName.Contains("BS_")
+            || skillName.Contains("HT_")
+            || skillName.Contains("AS_")
+            || skillName.Contains("RG_")
+            || skillName.Contains("AM_")
+            || skillName.Contains("CR_")
+            || skillName.Contains("MO_")
+            || skillName.Contains("SA_")
+            || skillName.Contains("BD_")
+            || skillName.Contains("BA_")
+            || skillName.Contains("DC_")
+            // High
+            || skillName.Contains("LK_")
+            || skillName.Contains("HP_")
+            || skillName.Contains("HW_")
+            || skillName.Contains("PA_")
+            || skillName.Contains("CH_")
+            || skillName.Contains("PF_")
+            || skillName.Contains("ASC_")
+            || skillName.Contains("SN_")
+            || skillName.Contains("WS_")
+            || skillName.Contains("ST_")
+            //|| skillName.Contains("CR_") // Creator but CR_ was same as Crusader
+            || skillName.Contains("CG_")
+            ;
+    }
+    bool IsClass3Skill(string skillName)
+    {
+        return skillName.Contains("RK_")
+            || skillName.Contains("GC_")
+            || skillName.Contains("AB_")
+            || skillName.Contains("WL_")
+            || skillName.Contains("RA_")
+            || skillName.Contains("NC_")
+            || skillName.Contains("SC_")
+            || skillName.Contains("LG_")
+            || skillName.Contains("SR_")
+            || skillName.Contains("WA_")
+            || skillName.Contains("MI_")
+            || skillName.Contains("WM_")
+            || skillName.Contains("SO_")
+            || skillName.Contains("GN_")
+            || skillName.Contains("RL_")
+            || skillName.Contains("SJ_")
+            || skillName.Contains("SP_")
+            || skillName.Contains("KO_")
+            || skillName.Contains("OB_")
+            ;
+    }
+    bool IsClass4Skill(string skillName)
+    {
+        return skillName.Contains("DK_")
+            || skillName.Contains("AG_")
+            || skillName.Contains("IQ_")
+            || skillName.Contains("IG_")
+            || skillName.Contains("CD_")
+            || skillName.Contains("SHC_")
+            || skillName.Contains("MT_")
+            || skillName.Contains("BO_")
+            || skillName.Contains("ABC_")
+            || skillName.Contains("WH_")
+            || skillName.Contains("TR_")
+            || skillName.Contains("EM_")
+            || skillName.Contains("NW_")
+            || skillName.Contains("SOA_")
+            || skillName.Contains("SH_")
+            || skillName.Contains("HN_")
+            || skillName.Contains("SKE_")
+            || skillName.Contains("SS_")
+            ;
     }
 
     // Converting
