@@ -61,31 +61,31 @@
     <Analyzer Include="C:\Unity\6000.0.38f1\Editor\Data\Tools\Unity.SourceGenerators\Unity.UIToolkit.SourceGenerator.dll" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\Scripts\Utilities\ReplaceOneTime.cs" />
     <Compile Include="Assets\Scripts\Classes\ItemContainer.cs" />
     <Compile Include="Assets\Scripts\RandomOptionMaker.cs" />
-    <Compile Include="Assets\Scripts\ItemPreview.cs" />
-    <Compile Include="Assets\Scripts\AutoTitle.cs" />
-    <Compile Include="Assets\Scripts\Classes\EasyItemBuilderDatabase.cs" />
-    <Compile Include="Assets\Scripts\Converter.cs" />
-    <Compile Include="Assets\Scripts\Localization\Localization.cs" />
-    <Compile Include="Assets\Scripts\Settings.cs" />
-    <Compile Include="Assets\Scripts\Classes\ItemDatabase.cs" />
-    <Compile Include="Assets\Scripts\Classes\MonsterDatabase.cs" />
-    <Compile Include="Assets\Scripts\Utilities\SpacingRemover.cs" />
-    <Compile Include="Assets\Scripts\Utilities\ReplaceOneTime.cs" />
     <Compile Include="Assets\Scripts\Classes\ComboDatabase.cs" />
     <Compile Include="Assets\Scripts\Utilities\QuoteRemover.cs" />
+    <Compile Include="Assets\Scripts\ItemPreview.cs" />
     <Compile Include="Assets\Scripts\Classes\SkillDatabase.cs" />
     <Compile Include="Assets\Scripts\Utilities\SafeReplace.cs" />
     <Compile Include="Assets\Scripts\Utilities\IsCharNumber.cs" />
     <Compile Include="Assets\Scripts\Utilities\LineEndingsRemover.cs" />
+    <Compile Include="Assets\Scripts\AutoTitle.cs" />
     <Compile Include="Assets\Scripts\ErrorResourceNameHelper.cs" />
     <Compile Include="Assets\Scripts\Classes\ResourceContainer.cs" />
+    <Compile Include="Assets\Scripts\Classes\EasyItemBuilderDatabase.cs" />
+    <Compile Include="Assets\Scripts\Converter.cs" />
     <Compile Include="Assets\Scripts\Utilities\CommentRemover.cs" />
+    <Compile Include="Assets\Scripts\Localization\Localization.cs" />
+    <Compile Include="Assets\Scripts\Settings.cs" />
+    <Compile Include="Assets\Scripts\Classes\ItemDatabase.cs" />
     <Compile Include="Assets\Scripts\Classes\ItemListContainer.cs" />
     <Compile Include="Assets\Scripts\HardcodeItemScripts.cs" />
     <Compile Include="Assets\Scripts\Classes\ItemGeneratorDatabase.cs" />
     <Compile Include="Assets\Scripts\Classes\LocalizationDatabase.cs" />
+    <Compile Include="Assets\Scripts\Classes\MonsterDatabase.cs" />
+    <Compile Include="Assets\Scripts\Utilities\SpacingRemover.cs" />
     <Compile Include="Assets\Scripts\ResourceNameChecker.cs" />
     <Compile Include="Assets\Scripts\ItemGenerator.cs" />
     <Compile Include="Assets\Scripts\RefineDatabaseMaker.cs" />
@@ -1136,60 +1136,40 @@
       <HintPath>Library\ScriptAssemblies\UnityEditor.UI.dll</HintPath>
       <Private>False</Private>
     </Reference>
-    <Reference Include="EasyButtons">
-      <HintPath>Library\ScriptAssemblies\EasyButtons.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="PsdPlugin">
-      <HintPath>Library\ScriptAssemblies\PsdPlugin.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="Unity.2D.Common.Editor">
-      <HintPath>Library\ScriptAssemblies\Unity.2D.Common.Editor.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="Unity.2D.Common.Path.Editor">
-      <HintPath>Library\ScriptAssemblies\Unity.2D.Common.Path.Editor.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="Unity.Rider.Editor">
-      <HintPath>Library\ScriptAssemblies\Unity.Rider.Editor.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="Unity.TextMeshPro">
-      <HintPath>Library\ScriptAssemblies\Unity.TextMeshPro.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="Unity.2D.Common.Runtime">
-      <HintPath>Library\ScriptAssemblies\Unity.2D.Common.Runtime.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="Unity.Mathematics">
-      <HintPath>Library\ScriptAssemblies\Unity.Mathematics.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="UnityEngine.UI">
-      <HintPath>Library\ScriptAssemblies\UnityEngine.UI.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
     <Reference Include="Unity.Mathematics.Editor">
       <HintPath>Library\ScriptAssemblies\Unity.Mathematics.Editor.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="EasyButtons">
+      <HintPath>Library\ScriptAssemblies\EasyButtons.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="Unity.2D.Sprite.Editor">
       <HintPath>Library\ScriptAssemblies\Unity.2D.Sprite.Editor.dll</HintPath>
       <Private>False</Private>
     </Reference>
+    <Reference Include="PsdPlugin">
+      <HintPath>Library\ScriptAssemblies\PsdPlugin.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Unity.Rider.Editor">
+      <HintPath>Library\ScriptAssemblies\Unity.Rider.Editor.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
     <Reference Include="Unity.2D.Psdimporter.Editor">
       <HintPath>Library\ScriptAssemblies\Unity.2D.Psdimporter.Editor.dll</HintPath>
       <Private>False</Private>
     </Reference>
-    <Reference Include="Unity.InternalAPIEditorBridge.001">
-      <HintPath>Library\ScriptAssemblies\Unity.InternalAPIEditorBridge.001.dll</HintPath>
+    <Reference Include="Unity.2D.Common.Editor">
+      <HintPath>Library\ScriptAssemblies\Unity.2D.Common.Editor.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="Unity.TextMeshPro.Editor">
       <HintPath>Library\ScriptAssemblies\Unity.TextMeshPro.Editor.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Unity.2D.Common.Path.Editor">
+      <HintPath>Library\ScriptAssemblies\Unity.2D.Common.Path.Editor.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="Unity.Burst.Editor">
@@ -1208,6 +1188,14 @@
       <HintPath>Library\ScriptAssemblies\Unity.VisualStudio.Editor.dll</HintPath>
       <Private>False</Private>
     </Reference>
+    <Reference Include="Unity.InternalAPIEditorBridge.001">
+      <HintPath>Library\ScriptAssemblies\Unity.InternalAPIEditorBridge.001.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Unity.TextMeshPro">
+      <HintPath>Library\ScriptAssemblies\Unity.TextMeshPro.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
     <Reference Include="Unity.2D.PixelPerfect.Editor">
       <HintPath>Library\ScriptAssemblies\Unity.2D.PixelPerfect.Editor.dll</HintPath>
       <Private>False</Private>
@@ -1216,8 +1204,20 @@
       <HintPath>Library\ScriptAssemblies\EasyButtons.Editor.dll</HintPath>
       <Private>False</Private>
     </Reference>
+    <Reference Include="Unity.2D.Common.Runtime">
+      <HintPath>Library\ScriptAssemblies\Unity.2D.Common.Runtime.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
     <Reference Include="Unity.InternalAPIEngineBridge.001">
       <HintPath>Library\ScriptAssemblies\Unity.InternalAPIEngineBridge.001.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Unity.Mathematics">
+      <HintPath>Library\ScriptAssemblies\Unity.Mathematics.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="UnityEngine.UI">
+      <HintPath>Library\ScriptAssemblies\UnityEngine.UI.dll</HintPath>
       <Private>False</Private>
     </Reference>
   </ItemGroup>

@@ -2638,12 +2638,24 @@ public class Converter : MonoBehaviour
 
     IEnumerator ConvertCoroutine()
     {
-        if (File.Exists("itemInfo_Sak.lub"))
-            File.Delete("itemInfo_Sak.lub");
-        if (File.Exists("itemInfo_true.lub"))
-            File.Delete("itemInfo_true.lub");
-        if (File.Exists("itemInfo_Debug.txt"))
-            File.Delete("itemInfo_Debug.txt");
+        if (_isItemLink)
+        {
+            if (File.Exists("itemInfo_Sak_item_link.lub"))
+                File.Delete("itemInfo_Sak_item_link.lub");
+            if (File.Exists("itemInfo_true_item_link.lub"))
+                File.Delete("itemInfo_true_item_link.lub");
+            if (File.Exists("itemInfo_Debug_item_link.txt"))
+                File.Delete("itemInfo_Debug_item_link.txt");
+        }
+        else
+        {
+            if (File.Exists("itemInfo_Sak.lub"))
+                File.Delete("itemInfo_Sak.lub");
+            if (File.Exists("itemInfo_true.lub"))
+                File.Delete("itemInfo_true.lub");
+            if (File.Exists("itemInfo_Debug.txt"))
+                File.Delete("itemInfo_Debug.txt");
+        }
 
         var path = Application.dataPath + "/Assets/item_db_equip.yml";
         var path2 = Application.dataPath + "/Assets/item_db_usable.yml";
@@ -3798,9 +3810,18 @@ public class Converter : MonoBehaviour
         finalize = finalize.Replace("\" ^FF2525" + _localization.GetTexts(Localization.IF) + "^000000(", "\"^FF2525" + _localization.GetTexts(Localization.IF) + "^000000(");
 
         // Write it out
-        File.WriteAllText("itemInfo_Sak.lub", finalize, _localization.GetCurrentEncoding);
-        File.WriteAllText("itemInfo_true.lub", finalize, _localization.GetCurrentEncoding);
-        File.WriteAllText("itemInfo_Debug.txt", finalize, _localization.GetCurrentEncoding);
+        if (_isItemLink)
+        {
+            File.WriteAllText("itemInfo_Sak_item_link.lub", finalize, _localization.GetCurrentEncoding);
+            File.WriteAllText("itemInfo_true_item_link.lub", finalize, _localization.GetCurrentEncoding);
+            File.WriteAllText("itemInfo_Debug_item_link.txt", finalize, _localization.GetCurrentEncoding);
+        }
+        else
+        {
+            File.WriteAllText("itemInfo_Sak.lub", finalize, _localization.GetCurrentEncoding);
+            File.WriteAllText("itemInfo_true.lub", finalize, _localization.GetCurrentEncoding);
+            File.WriteAllText("itemInfo_Debug.txt", finalize, _localization.GetCurrentEncoding);
+        }
 
         Debug.Log("Files has been successfully created.");
 
@@ -3820,6 +3841,7 @@ public class Converter : MonoBehaviour
         Debug.Log(DateTime.Now);
 
         _txtConvertProgression.text = _localization.GetTexts(Localization.CONVERT_PROGRESSION_DONE) + "!!";
+
         yield return null;
     }
 
