@@ -472,7 +472,7 @@ public class Converter : MonoBehaviour
         ExportingItemLists(builder, "enchant2Ids", _itemListContainer.enchant2Ids);
         ExportingItemLists(builder, "itemGroupIds", _itemListContainer.itemGroupIds);
 
-        File.WriteAllText("global_item_ids.txt", RemoveGodItem(builder.ToString()), Encoding.UTF8);
+        File.WriteAllText("global_item_ids.txt", builder.ToString(), Encoding.UTF8);
 
         Debug.Log("'global_item_ids.txt' has been successfully created.");
 
@@ -507,7 +507,7 @@ public class Converter : MonoBehaviour
         builder.Append("setarray $" + listName + "[0],");
 
         items.RemoveAll((item) => string.IsNullOrEmpty(item) || string.IsNullOrWhiteSpace(item) || (item == null));
-
+        items = RemoveGodItem(items);
         foreach (var item in items)
             builder.Append(item + ",");
 
@@ -654,11 +654,14 @@ public class Converter : MonoBehaviour
             subTypes.Add(item.subType);
             int maxPage = 0;
 
-            builder2.Append("deletearray $" + item.type + "_" + item.subType + "[0],getarraysize($" + item.subType + ");\n");
+            builder2.Append("deletearray $" + item.type + "_" + item.subType + "[0],getarraysize($" + item.type + "_" + item.subType + ");\n");
             builder2.Append("setarray $" + item.type + "_" + item.subType + "[0],");
 
             for (int i = 0; i < item.id.Count; i++)
             {
+                if (IsGodItem(int.Parse(item.id[i])))
+                    continue;
+
                 if ((i == 0)
                     || (i % 100 == 0))
                 {
@@ -725,6 +728,9 @@ public class Converter : MonoBehaviour
 
             for (int i = 0; i < item.id.Count; i++)
             {
+                if (IsGodItem(int.Parse(item.id[i])))
+                    continue;
+
                 if ((i == 0)
                     || (i % 100 == 0))
                 {
@@ -809,7 +815,7 @@ public class Converter : MonoBehaviour
             && (builderDebug[builderDebug.Length - 1] == ','))
             builder.Remove(builder.Length - 1, 1);
 
-        File.WriteAllText("item_mall.txt", RemoveGodItem(builder.ToString() + "\n" + builder2.ToString()), Encoding.UTF8);
+        File.WriteAllText("item_mall.txt", builder.ToString() + "\n" + builder2.ToString(), Encoding.UTF8);
 
         Debug.Log("'item_mall.txt' has been successfully created.");
     }
@@ -7511,14 +7517,25 @@ public class Converter : MonoBehaviour
              ;
     }
 
-    string RemoveGodItem(string input)
+    bool IsGodItem(int itemId) { return (itemId == 1599) || (itemId == 2199) || (itemId == 15065) || (itemId == 2904) || (itemId == 19429) || (itemId == 5013); }
+    List<string> RemoveGodItem(List<string> list)
     {
-        input = input.Replace(",1599,", string.Empty);
-        input = input.Replace(",2199,", string.Empty);
-        input = input.Replace(",15065,", string.Empty);
-        input = input.Replace(",2904,", string.Empty);
-        input = input.Replace(",19429,", string.Empty);
-        input = input.Replace(",5013,", string.Empty);
-        return input;
+        List<string> godItemIdList = new List<string>() { "1599", "2199", "15065", "2904", "19429", "5013" };
+        for (int i = 0; i < godItemIdList.Count; i++)
+        {
+            if (list.Contains(godItemIdList[i]))
+                list.Remove(godItemIdList[i]);
+        }
+        return list;
+    }
+    List<int> RemoveGodItem(List<int> list)
+    {
+        List<int> godItemIdList = new List<int>() { 1599, 2199, 15065, 2904, 19429, 5013 };
+        for (int i = 0; i < godItemIdList.Count; i++)
+        {
+            if (list.Contains(godItemIdList[i]))
+                list.Remove(godItemIdList[i]);
+        }
+        return list;
     }
 }
