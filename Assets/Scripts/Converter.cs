@@ -463,8 +463,8 @@ public class Converter : MonoBehaviour
     {
         StringBuilder builder = new StringBuilder();
 
-        ExportingItemLists(builder, "weaponIds", _itemListContainer.weaponIds);
-        ExportingItemLists(builder, "equipmentIds", _itemListContainer.equipmentIds);
+        ExportingItemLists(builder, "weaponIds", _itemListContainer.weaponIds, true);
+        ExportingItemLists(builder, "equipmentIds", _itemListContainer.equipmentIds, true);
         ExportingItemLists(builder, "costumeIds", _itemListContainer.costumeIds);
         ExportingItemLists(builder, "cardIds", _itemListContainer.cardIds);
         ExportingItemLists(builder, "card2Ids", _itemListContainer.card2Ids);
@@ -501,15 +501,20 @@ public class Converter : MonoBehaviour
     /// <param name="builder"></param>
     /// <param name="listName"></param>
     /// <param name="items"></param>
-    void ExportingItemLists(StringBuilder builder, string listName, List<string> items)
+    void ExportingItemLists(StringBuilder builder, string listName, List<string> items, bool isRemoveGodItem = false)
     {
         builder.Append("deletearray $" + listName + "[0],getarraysize($" + listName + ");\n");
         builder.Append("setarray $" + listName + "[0],");
 
         items.RemoveAll((item) => string.IsNullOrEmpty(item) || string.IsNullOrWhiteSpace(item) || (item == null));
-        items = RemoveGodItem(items);
+
         foreach (var item in items)
+        {
+            if (isRemoveGodItem && IsGodItem(int.Parse(item)))
+                continue;
+
             builder.Append(item + ",");
+        }
 
         builder.Remove(builder.Length - 1, 1);
 
@@ -7518,24 +7523,4 @@ public class Converter : MonoBehaviour
     }
 
     bool IsGodItem(int itemId) { return (itemId == 1599) || (itemId == 2199) || (itemId == 15065) || (itemId == 2904) || (itemId == 19429) || (itemId == 5013); }
-    List<string> RemoveGodItem(List<string> list)
-    {
-        List<string> godItemIdList = new List<string>() { "1599", "2199", "15065", "2904", "19429", "5013" };
-        for (int i = 0; i < godItemIdList.Count; i++)
-        {
-            if (list.Contains(godItemIdList[i]))
-                list.Remove(godItemIdList[i]);
-        }
-        return list;
-    }
-    List<int> RemoveGodItem(List<int> list)
-    {
-        List<int> godItemIdList = new List<int>() { 1599, 2199, 15065, 2904, 19429, 5013 };
-        for (int i = 0; i < godItemIdList.Count; i++)
-        {
-            if (list.Contains(godItemIdList[i]))
-                list.Remove(godItemIdList[i]);
-        }
-        return list;
-    }
 }
