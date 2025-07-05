@@ -10,6 +10,7 @@ public class Settings : MonoBehaviour
     const string REFINABLE_TOGGLE = "IsSkipRefinable";
     const string GRADABLE_TOGGLE = "IsSkipGradable";
     const string SKIP_MIN_LV_TOGGLE = "IsSkipMinLv";
+    const string SKIP_MAX_LV_TOGGLE = "IsSkipMaxLv";
     const string SKIP_GENDER_TOGGLE = "IsSkipGender";
     const string SKIP_CLASS_TOGGLE = "IsSkipClass";
     const string SKIP_JOB_TOGGLE = "IsSkipJob";
@@ -37,6 +38,7 @@ public class Settings : MonoBehaviour
     [SerializeField] Toggle _refinableToggle;
     [SerializeField] Toggle _gradableToggle;
     [SerializeField] Toggle _skipMinLvToggle;
+    [SerializeField] Toggle _skipMaxLvToggle;
     [SerializeField] Toggle _skipGenderToggle;
     [SerializeField] Toggle _skipClassToggle;
     [SerializeField] Toggle _skipJobToggle;
@@ -68,6 +70,7 @@ public class Settings : MonoBehaviour
         _refinableToggle.isOn = (PlayerPrefs.GetInt(REFINABLE_TOGGLE) == 1) ? true : false;
         _gradableToggle.isOn = (PlayerPrefs.GetInt(GRADABLE_TOGGLE) == 1) ? true : false;
         _skipMinLvToggle.isOn = (PlayerPrefs.GetInt(SKIP_MIN_LV_TOGGLE) == 1) ? true : false;
+        _skipMaxLvToggle.isOn = (PlayerPrefs.GetInt(SKIP_MAX_LV_TOGGLE) == 1) ? true : false;
         _skipGenderToggle.isOn = (PlayerPrefs.GetInt(SKIP_GENDER_TOGGLE) == 1) ? true : false;
         _skipClassToggle.isOn = (PlayerPrefs.GetInt(SKIP_CLASS_TOGGLE) == 1) ? true : false;
         _skipJobToggle.isOn = (PlayerPrefs.GetInt(SKIP_JOB_TOGGLE) == 1) ? true : false;
@@ -88,7 +91,8 @@ public class Settings : MonoBehaviour
         _converter.IsItemLink = _itemLinkToggle.isOn;
         _converter.IsHideRefinable = _refinableToggle.isOn;
         _converter.IsHideGradable = _gradableToggle.isOn;
-        _converter.IsSkipEquipLevel = _skipMinLvToggle.isOn;
+        _converter.IsSkipEquipMinimumLevel = _skipMinLvToggle.isOn;
+        _converter.IsSkipEquipMaximumLevel = _skipMaxLvToggle.isOn;
         _converter.IsSkipItemGender = _skipGenderToggle.isOn;
         _converter.IsSkipItemClass = _skipClassToggle.isOn;
         _converter.IsSkipItemJob = _skipJobToggle.isOn;
@@ -112,6 +116,7 @@ public class Settings : MonoBehaviour
         _refinableToggle.onValueChanged.AddListener(OnRefinableToggle);
         _gradableToggle.onValueChanged.AddListener(OnGradableToggle);
         _skipMinLvToggle.onValueChanged.AddListener(OnSkipMinLvToggle);
+        _skipMaxLvToggle.onValueChanged.AddListener(OnSkipMaxLvToggle);
         _skipGenderToggle.onValueChanged.AddListener(OnSkipGenderToggle);
         _skipClassToggle.onValueChanged.AddListener(OnSkipClassToggle);
         _skipJobToggle.onValueChanged.AddListener(OnSkipJobToggle);
@@ -173,7 +178,13 @@ public class Settings : MonoBehaviour
     {
         PlayerPrefs.SetInt(SKIP_MIN_LV_TOGGLE, isOn ? 1 : 0);
         PlayerPrefs.Save();
-        _converter.IsSkipEquipLevel = isOn;
+        _converter.IsSkipEquipMinimumLevel = isOn;
+    }
+    void OnSkipMaxLvToggle(bool isOn)
+    {
+        PlayerPrefs.SetInt(SKIP_MAX_LV_TOGGLE, isOn ? 1 : 0);
+        PlayerPrefs.Save();
+        _converter.IsSkipEquipMaximumLevel = isOn;
     }
     void OnGradableToggle(bool isOn)
     {

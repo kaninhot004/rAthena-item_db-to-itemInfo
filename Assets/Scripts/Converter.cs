@@ -40,8 +40,10 @@ public class Converter : MonoBehaviour
     public bool IsSkipItemClass { set { _isSkipItemClass = value; } }
     [SerializeField] bool _isSkipItemJob = false;
     public bool IsSkipItemJob { set { _isSkipItemJob = value; } }
-    [SerializeField] bool _isSkipEquipLevel = false;
-    public bool IsSkipEquipLevel { set { _isSkipEquipLevel = value; } }
+    [SerializeField] bool _isSkipEquipMinimumLevel = false;
+    public bool IsSkipEquipMinimumLevel { set { _isSkipEquipMinimumLevel = value; } }
+    [SerializeField] bool _isSkipEquipMaximumLevel = false;
+    public bool IsSkipEquipMaximumLevel { set { _isSkipEquipMaximumLevel = value; } }
     [SerializeField] bool _isSkipNormalEquipEtcCombo = false;
     public bool IsSkipNormalEquipEtcCombo { set { _isSkipNormalEquipEtcCombo = value; } }
     [SerializeField] bool _isRemoveBrackets = false;
@@ -2493,6 +2495,7 @@ public class Converter : MonoBehaviour
         skillDesc.Remove(skillDesc.Length - 1, 1);
         skillName.Remove(skillName.Length - 1, 1);
         skillId.Remove(skillId.Length - 1, 1);
+        skillMaxLv.Remove(skillMaxLv.Length - 1, 1);
         c1SkillId.Remove(c1SkillId.Length - 1, 1);
         c2SkillId.Remove(c2SkillId.Length - 1, 1);
         c3SkillId.Remove(c3SkillId.Length - 1, 1);
@@ -2508,6 +2511,7 @@ public class Converter : MonoBehaviour
         skillDesc.Append(";\n");
         skillName.Append(";\n");
         skillId.Append(";\n");
+        skillMaxLv.Append(";\n");
         c1SkillId.Append(";\n");
         c2SkillId.Append(";\n");
         c3SkillId.Append(";\n");
@@ -2524,6 +2528,7 @@ public class Converter : MonoBehaviour
             , skillDesc.ToString()
             + skillName.ToString()
             + skillId.ToString()
+            + skillMaxLv.ToString()
             + c1SkillId.ToString()
             + c2SkillId.ToString()
             + c3SkillId.ToString()
@@ -3605,13 +3610,16 @@ public class Converter : MonoBehaviour
             else if (_isZeroValuePrintable && isEquipment)
                 description += "			\"^3F28FF" + _localization.GetTexts(Localization.ARMOR_LEVEL) + ":^000000 -\",\n";
 
-            if (!_isSkipEquipLevel)
+            if (!_isSkipEquipMinimumLevel)
             {
                 if (!string.IsNullOrEmpty(_itemContainer.equipLevelMinimum))
                     description += "			\"^3F28FF" + _localization.GetTexts(Localization.MINIMUM_EQUIP_LEVEL) + ":^000000 " + _itemContainer.equipLevelMinimum + "\",\n";
                 else if (_isZeroValuePrintable && isEquipment)
                     description += "			\"^3F28FF" + _localization.GetTexts(Localization.MINIMUM_EQUIP_LEVEL) + ":^000000 -\",\n";
+            }
 
+            if (!_isSkipEquipMaximumLevel)
+            {
                 if (!string.IsNullOrEmpty(_itemContainer.equipLevelMaximum))
                     description += "			\"^3F28FF" + _localization.GetTexts(Localization.MAXIMUM_EQUIP_LEVEL) + ":^000000 " + _itemContainer.equipLevelMaximum + "\",\n";
                 else if (_isZeroValuePrintable && isEquipment)
