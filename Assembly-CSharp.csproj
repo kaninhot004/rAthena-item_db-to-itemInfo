@@ -72,6 +72,7 @@
     <Compile Include="Assets\Scripts\Utilities\IsCharNumber.cs" />
     <Compile Include="Assets\Scripts\Utilities\LineEndingsRemover.cs" />
     <Compile Include="Assets\Scripts\AutoTitle.cs" />
+    <Compile Include="Assets\Scripts\SpriteRobeFixer.cs" />
     <Compile Include="Assets\Scripts\ErrorResourceNameHelper.cs" />
     <Compile Include="Assets\Scripts\Classes\ResourceContainer.cs" />
     <Compile Include="Assets\Scripts\Classes\EasyItemBuilderDatabase.cs" />
