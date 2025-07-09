@@ -2417,6 +2417,8 @@ public class Converter : MonoBehaviour
         StringBuilder skillName = new StringBuilder();
         StringBuilder skillId = new StringBuilder();
         StringBuilder skillMaxLv = new StringBuilder();
+        StringBuilder betterSkillId = new StringBuilder();
+        StringBuilder betterSkillMaxLv = new StringBuilder();
         StringBuilder c1SkillId = new StringBuilder();
         StringBuilder c2SkillId = new StringBuilder();
         StringBuilder c3SkillId = new StringBuilder();
@@ -2433,6 +2435,8 @@ public class Converter : MonoBehaviour
         skillName.Append("setarray $skillNames$[0],");
         skillId.Append("setarray $skillIds[0],");
         skillMaxLv.Append("setarray $skillMaxLvs[0],");
+        betterSkillId.Append("setarray $betterSkillIds[0],");
+        betterSkillMaxLv.Append("setarray $betterSkillMaxLvs[0],");
         c1SkillId.Append("setarray $c1SkillIds[0],");
         c2SkillId.Append("setarray $c2SkillIds[0],");
         c3SkillId.Append("setarray $c3SkillIds[0],");
@@ -2444,6 +2448,8 @@ public class Converter : MonoBehaviour
         offensiveSkillBuilder.Append("setarray $offensiveSkills$[0],");
         offensiveSkillIdBuilder.Append("setarray $offensiveSkillIds[0],");
         offensiveSkillDescription.Append("setarray $offensiveSkillDescs$[0],");
+
+        var uselessSkillIds = new List<int>() { 147, 31, 26, 27, 2544, 154, 37, 40, 36, 38, 39, 41, 526, 1, 427, 434, 443, 436, 439, 432, 429, 437, 440, 433, 430, 435, 438, 431, 428, 445, 457, 455, 458, 450, 494, 460, 452, 447, 454, 456, 449, 461, 448, 451, 453, 5018, 5020, 151, 50, 422, 493, 423, 446, 238, 243, 227, 228, 231, 244, 247, 496, 497, 498, 101, 98, 96, 106, 1013, 94, 103, 102, 97, 108, 104, 95, 99, 100, 1012, 478, 125, 222, 224, 221, 223, 220, 210, 211, 1007, 485, 477, 86, 2039, 5073, 2025, 2494, 2495, 2475, 2497, 3008, 2283, 2588, 2589, 2462, 2425, 2432, 2430, 5336, 5297 };
 
         for (int i = 0; i < availableSkills.Count; i++)
         {
@@ -2460,6 +2466,11 @@ public class Converter : MonoBehaviour
             skillName.Append("\"" + _skillDatabasesByName[text].name + "\",");
             skillId.Append("" + _skillDatabasesByName[text].id + ",");
             skillMaxLv.Append("" + _skillDatabasesByName[text].maxLv + ",");
+            if (!uselessSkillIds.Contains(_skillDatabasesByName[text].id))
+            {
+                betterSkillId.Append("" + _skillDatabasesByName[text].id + ",");
+                betterSkillMaxLv.Append("" + _skillDatabasesByName[text].maxLv + ",");
+            }
             if (_skillDatabasesByName[text].isAttackSkill || _skillDatabasesByName[text].isGroundSkill || _skillDatabasesByName[text].isSelfSkill)
             {
                 var errorSkillIds = new List<int>() { 5344, 5345, 5346, 5348, 3012, 5302, 5303, 5304, 5305, 232, 2281, 5375, 5376, 5377, 5378, 5379, 2457, 2458, 2459, 2460, 2428, 378, 2559, 2222, 247, 244, 2535, 279, 2464, 475, 2230, 2269, 222, 220, 147, 154, 2544, 41, 2240, 5336, 2025, 40, 2456, 1007, 398, 478, 2495, 228, 1013, 496, 497, 498, 411, 488, 508, 2242, 2445, 405, 2032, 499, 151, 251, 5009, 5204 };
@@ -2496,6 +2507,8 @@ public class Converter : MonoBehaviour
         skillName.Remove(skillName.Length - 1, 1);
         skillId.Remove(skillId.Length - 1, 1);
         skillMaxLv.Remove(skillMaxLv.Length - 1, 1);
+        betterSkillId.Remove(betterSkillId.Length - 1, 1);
+        betterSkillMaxLv.Remove(betterSkillMaxLv.Length - 1, 1);
         c1SkillId.Remove(c1SkillId.Length - 1, 1);
         c2SkillId.Remove(c2SkillId.Length - 1, 1);
         c3SkillId.Remove(c3SkillId.Length - 1, 1);
@@ -2512,6 +2525,8 @@ public class Converter : MonoBehaviour
         skillName.Append(";\n");
         skillId.Append(";\n");
         skillMaxLv.Append(";\n");
+        betterSkillId.Append(";\n");
+        betterSkillMaxLv.Append(";\n");
         c1SkillId.Append(";\n");
         c2SkillId.Append(";\n");
         c3SkillId.Append(";\n");
@@ -2529,6 +2544,8 @@ public class Converter : MonoBehaviour
             + skillName.ToString()
             + skillId.ToString()
             + skillMaxLv.ToString()
+            + betterSkillId.ToString()
+            + betterSkillMaxLv.ToString()
             + c1SkillId.ToString()
             + c2SkillId.ToString()
             + c3SkillId.ToString()
