@@ -48,6 +48,8 @@ public class Converter : MonoBehaviour
     public bool IsSkipNormalEquipEtcCombo { set { _isSkipNormalEquipEtcCombo = value; } }
     [SerializeField] bool _isRemoveBrackets = false;
     public bool IsRemoveBrackets { set { _isRemoveBrackets = value; } }
+    [SerializeField] bool _isRemoveComboItemReq = false;
+    public bool IsRemoveComboItemReq { set { _isRemoveComboItemReq = value; } }
 
     [Serializable]
     public class ReplaceVariable
@@ -6826,7 +6828,8 @@ public class Converter : MonoBehaviour
                         // End
                         same_set_name_list += "^000000\",\n";
 
-                        sum.Append(same_set_name_list);
+                        if (!_isRemoveComboItemReq)
+                            sum.Append(same_set_name_list);
 
                         // Add combo bonus description
                         for (int l = 0; l < currentComboData.descriptions.Count; l++)

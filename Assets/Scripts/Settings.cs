@@ -19,6 +19,7 @@ public class Settings : MonoBehaviour
     const string FORCE_ITEM_NO_BONUS_NO_COMBO_TOGGLE = "IsItemNoBonusNoCombo";
     const string SKIP_NORMAL_GAME_ITEM_COMBO_TOGGLE = "IsSkipNormalGameItemCombo";
     const string REMOVE_BRACKETS_TOGGLE = "IsRemoveBrackets";
+    const string REMOVE_COMBO_ITEM_REQ_TOGGLE = "IsRemoveComboItemReq";
 
     [SerializeField] Button _openSettingButton;
     [SerializeField] GameObject _settingCanvasObject;
@@ -47,6 +48,7 @@ public class Settings : MonoBehaviour
     [SerializeField] Toggle _forceItemNoBonusNoComboToggle;
     [SerializeField] Toggle _skipNormalGameItemComboToggle;
     [SerializeField] Toggle _removeBracketsToggle;
+    [SerializeField] Toggle _removeComboItemReqToggle;
 
     [SerializeField] Converter _converter;
 
@@ -79,6 +81,7 @@ public class Settings : MonoBehaviour
         _forceItemNoBonusNoComboToggle.isOn = (PlayerPrefs.GetInt(FORCE_ITEM_NO_BONUS_NO_COMBO_TOGGLE) == 1) ? true : false;
         _skipNormalGameItemComboToggle.isOn = (PlayerPrefs.GetInt(SKIP_NORMAL_GAME_ITEM_COMBO_TOGGLE) == 1) ? true : false;
         _removeBracketsToggle.isOn = (PlayerPrefs.GetInt(REMOVE_BRACKETS_TOGGLE) == 1) ? true : false;
+        _removeComboItemReqToggle.isOn = (PlayerPrefs.GetInt(REMOVE_COMBO_ITEM_REQ_TOGGLE) == 1) ? true : false;
         _converter.IsZeroValuePrintAble = _printZeroValueToggle.isOn;
         _converter.IsOnlyUseTestTextAsset = _onlyPrintTestItemToggle.isOn;
         _converter.IsOnlyUseCustomTextAsset = _onlyPrintCustomItemToggle.isOn;
@@ -101,6 +104,7 @@ public class Settings : MonoBehaviour
         _converter.IsItemNoBonus = _forceItemNoBonusNoComboToggle.isOn;
         _converter.IsSkipNormalEquipEtcCombo = _skipNormalGameItemComboToggle.isOn;
         _converter.IsRemoveBrackets = _removeBracketsToggle.isOn;
+        _converter.IsRemoveComboItemReq = _removeComboItemReqToggle.isOn;
 
         // Add Toggle Listener
         _printZeroValueToggle.onValueChanged.AddListener(OnPrintZeroValueToggle);
@@ -125,6 +129,13 @@ public class Settings : MonoBehaviour
         _forceItemNoBonusNoComboToggle.onValueChanged.AddListener(OnForceItemNoBonusNoComboToggle);
         _skipNormalGameItemComboToggle.onValueChanged.AddListener(OnSkipNormalGameItemComboToggle);
         _removeBracketsToggle.onValueChanged.AddListener(OnRemoveBracketsToggle);
+        _removeComboItemReqToggle.onValueChanged.AddListener(OnRemoveComboItemReqToggle);
+    }
+    void OnRemoveComboItemReqToggle(bool isOn)
+    {
+        PlayerPrefs.SetInt(REMOVE_COMBO_ITEM_REQ_TOGGLE, isOn ? 1 : 0);
+        PlayerPrefs.Save();
+        _converter.IsRemoveComboItemReq = isOn;
     }
     void OnRemoveBracketsToggle(bool isOn)
     {

@@ -205,3 +205,37 @@
     Buy: 1
     Trade:
       NoSell: true
+  - Id: 10000017
+    AegisName: Sleeping_Pill
+    Name: Sleeping Pill
+    Type: Healing
+    Buy: 1
+    Trade:
+      NoSell: true
+    Script: |
+      percentheal 100,100;
+      healap INT_MAX;
+      sc_end SC_POISON;
+      sc_end SC_SILENCE;
+      sc_end SC_BLIND;
+      sc_end SC_CONFUSION;
+      sc_end SC_CURSE;
+      sc_end SC_HALLUCINATION;
+      sc_end SC_HANDICAPSTATE_DEEPBLIND;
+      sc_end SC_HANDICAPSTATE_DEEPSILENCE;
+      sc_end SC_HANDICAPSTATE_LASSITUDE;
+      sc_end SC_HANDICAPSTATE_CONFLAGRATION;
+      sc_end SC_HANDICAPSTATE_MISFORTUNE;
+      sc_end SC_HANDICAPSTATE_DEADLYPOISON;
+      sc_end SC_HANDICAPSTATE_DEPRESSION;
+      sc_end SC_HANDICAPSTATE_HOLYFLAME;
+      specialeffect2 748;
+  - Id: 10000018
+    AegisName: Clock
+    Name: Clock
+    Type: DelayConsume
+    Buy: 1
+    Trade:
+      NoSell: true
+    Script: |
+      callfunc "PaWClock";

@@ -28557,6 +28557,8 @@
 10000014="Auto_Orb_Archer"
 10000015="Auto_Orb_Magician"
 10000016="Auto_Orb_Merchant"
+10000017="ฟฌตฮป๖ฐจฑโพเ"
+10000018="evt_20th_clock"
 20000000="gemini_e_card"
 20000001="Jewel_Of_Time_Ore"
 20000002="Cursed_Emerald"

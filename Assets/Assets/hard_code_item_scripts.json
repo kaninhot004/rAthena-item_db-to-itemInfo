@@ -81,6 +81,9 @@
             "itemId": 12121,
             "itemScriptDescription": "กดใช้เพื่อ เคลือบธาตุ Wind ให้ชุดเกราะชั่วคราว"
         }, {
+            "itemId": 12887,
+            "itemScriptDescription": "กดใช้เพื่อ เคลื่อนย้ายสุ่มภายใน Map"
+        }, {
             "itemId": 12406,
             "itemScriptDescription": "กดใช้เพื่อ เคลือบธาตุ Ghost ให้ชุดเกราะชั่วคราว"
         }, {
@@ -128,6 +131,9 @@
         }, {
             "itemId": 22998,
             "itemScriptDescription": "กดใช้เพื่อ เปิดคลังเก็บของ"
+        }, {
+            "itemId": 23023,
+            "itemScriptDescription": "กดใช้เพื่อ เคลื่อนย้ายสุ่มภายใน Map (Party)"
         }, {
             "itemId": 23177,
             "itemScriptDescription": "กดใช้เพื่อ เปิดคลังเก็บของ"
@@ -229,6 +235,10 @@
         {
             "itemId": 10000016,
             "itemScriptDescription": "นำไปสุ่มรับ Skill Class 4 ได้ที่ ^112793SKILL BOX^000000"
+        },
+        {
+            "itemId": 10000018,
+            "itemScriptDescription": "กดใช้เพื่อ ^112793ตามล่าศัตรู^000000"
         }
     ]
 }
