@@ -1326,50 +1326,6 @@ public class Converter : MonoBehaviour
 
             text = LineEndingsRemover.Fix(text);
 
-            // Skip
-            if (text.Contains("    Buy:")
-                || text.Contains("    Sell:")
-                || text.Contains("    Jobs:")
-                || text.Contains("    Classes:")
-                || text.Contains("    AliasName:")
-                || text.Contains("    Flags:")
-                || text.Contains("    BuyingStore:")
-                || text.Contains("    DeadBranch:")
-                || text.Contains("    Container:")
-                || text.Contains("    UniqueId:")
-                || text.Contains("    BindOnEquip:")
-                || text.Contains("    DropAnnounce:")
-                || text.Contains("    NoConsume:")
-                || text.Contains("    DropEffect:")
-                || text.Contains("    Delay:")
-                || text.Contains("    Duration:")
-                || text.Contains("    Status:")
-                || text.Contains("    Stack:")
-                || text.Contains("    Amount:")
-                || text.Contains("    Inventory:")
-                || text.Contains("    Cart:")
-                || text.Contains("    Storage:")
-                || text.Contains("    GuildStorage:")
-                || text.Contains("    NoUse:")
-                || text.Contains("    Override:")
-                || text.Contains("    Sitting:")
-                || text.Contains("    Trade:")
-                || text.Contains("    NoDrop:")
-                || text.Contains("    NoTrade:")
-                || text.Contains("    TradePartner:")
-                || text.Contains("    NoSell:")
-                || text.Contains("    NoCart:")
-                || text.Contains("    NoStorage:")
-                || text.Contains("    NoGuildStorage:")
-                || text.Contains("    NoMail:")
-                || text.Contains("    NoAuction:")
-                || text.Contains("    Script:")
-                || text.Contains("    OnEquip_Script:")
-                || text.Contains("    OnUnequip_Script:")
-                || string.IsNullOrEmpty(text)
-                || string.IsNullOrWhiteSpace(text))
-                text = string.Empty;
-
             // Id
             if (text.Contains("  - Id:"))
             {
@@ -1388,8 +1344,9 @@ public class Converter : MonoBehaviour
 
                 text = text.Replace("Type:", string.Empty);
 
-                if ((text.ToLower() == "armor")
-                    || (text.ToLower() == "shadowgear"))
+                var textLower = text.ToLower();
+                if ((textLower == "armor")
+                    || (textLower == "shadowgear"))
                     isArmor = true;
                 else
                     isArmor = false;
@@ -1403,22 +1360,23 @@ public class Converter : MonoBehaviour
 
                 if (_isRandomResourceNameForCustomTextAssetOnly && _isRandomResourceName)
                 {
-                    if (text.ToLower().Contains("head_top"))
+                    var textLower = text.ToLower();
+                    if (textLower.Contains("head_top"))
                         _resourceContainer.topHeadgears.Add(id);
-                    else if (text.ToLower().Contains("head_mid"))
+                    else if (textLower.Contains("head_mid"))
                         _resourceContainer.middleHeadgears.Add(id);
-                    else if (text.ToLower().Contains("head_low"))
+                    else if (textLower.Contains("head_low"))
                         _resourceContainer.lowerHeadgears.Add(id);
-                    else if (text.ToLower().Contains("garment"))
+                    else if (textLower.Contains("garment"))
                         _resourceContainer.garments.Add(id);
-                    else if (text.ToLower().Contains("armor"))
+                    else if (textLower.Contains("armor"))
                         _resourceContainer.armors.Add(id);
-                    else if (text.ToLower().Contains("shadow_weapon")
-                        || text.ToLower().Contains("shadow_shield"))
+                    else if (textLower.Contains("shadow_weapon")
+                        || textLower.Contains("shadow_shield"))
                         _resourceContainer.shields.Add(id);
-                    else if (text.ToLower().Contains("shoes"))
+                    else if (textLower.Contains("shoes"))
                         _resourceContainer.shoes.Add(id);
-                    else if (text.ToLower().Contains("accessory"))
+                    else if (textLower.Contains("accessory"))
                         _resourceContainer.accessorys.Add(id);
                 }
             }
@@ -1430,51 +1388,52 @@ public class Converter : MonoBehaviour
 
                 if (_isRandomResourceNameForCustomTextAssetOnly && _isRandomResourceName)
                 {
-                    if (text.ToLower().Contains("dagger"))
+                    var textLower = text.ToLower();
+                    if (textLower.Contains("dagger"))
                         _resourceContainer.daggers.Add(id);
-                    else if (text.ToLower().Contains("1hsword"))
+                    else if (textLower.Contains("1hsword"))
                         _resourceContainer.oneHandedSwords.Add(id);
-                    else if (text.ToLower().Contains("2hsword"))
+                    else if (textLower.Contains("2hsword"))
                         _resourceContainer.twoHandedSwords.Add(id);
-                    else if (text.ToLower().Contains("1hspear"))
+                    else if (textLower.Contains("1hspear"))
                         _resourceContainer.oneHandedSpears.Add(id);
-                    else if (text.ToLower().Contains("2hspear"))
+                    else if (textLower.Contains("2hspear"))
                         _resourceContainer.twoHandedSpears.Add(id);
-                    else if (text.ToLower().Contains("1haxe"))
+                    else if (textLower.Contains("1haxe"))
                         _resourceContainer.oneHandedAxes.Add(id);
-                    else if (text.ToLower().Contains("2haxe"))
+                    else if (textLower.Contains("2haxe"))
                         _resourceContainer.twoHandedAxes.Add(id);
-                    else if (text.ToLower().Contains("2hmace"))
+                    else if (textLower.Contains("2hmace"))
                         _resourceContainer.twoHandedMaces.Add(id);
-                    else if (text.ToLower().Contains("mace"))
+                    else if (textLower.Contains("mace"))
                         _resourceContainer.oneHandedMaces.Add(id);
-                    else if (text.ToLower().Contains("2hstaff"))
+                    else if (textLower.Contains("2hstaff"))
                         _resourceContainer.twoHandedStaffs.Add(id);
-                    else if (text.ToLower().Contains("staff"))
+                    else if (textLower.Contains("staff"))
                         _resourceContainer.oneHandedStaffs.Add(id);
-                    else if (text.ToLower().Contains("bow"))
+                    else if (textLower.Contains("bow"))
                         _resourceContainer.bows.Add(id);
-                    else if (text.ToLower().Contains("knuckle"))
+                    else if (textLower.Contains("knuckle"))
                         _resourceContainer.knuckles.Add(id);
-                    else if (text.ToLower().Contains("musical"))
+                    else if (textLower.Contains("musical"))
                         _resourceContainer.musicals.Add(id);
-                    else if (text.ToLower().Contains("whip"))
+                    else if (textLower.Contains("whip"))
                         _resourceContainer.whips.Add(id);
-                    else if (text.ToLower().Contains("book"))
+                    else if (textLower.Contains("book"))
                         _resourceContainer.books.Add(id);
-                    else if (text.ToLower().Contains("katar"))
+                    else if (textLower.Contains("katar"))
                         _resourceContainer.katars.Add(id);
-                    else if (text.ToLower().Contains("revolver"))
+                    else if (textLower.Contains("revolver"))
                         _resourceContainer.revolvers.Add(id);
-                    else if (text.ToLower().Contains("rifle"))
+                    else if (textLower.Contains("rifle"))
                         _resourceContainer.rifles.Add(id);
-                    else if (text.ToLower().Contains("gatling"))
+                    else if (textLower.Contains("gatling"))
                         _resourceContainer.gatlings.Add(id);
-                    else if (text.ToLower().Contains("shotgun"))
+                    else if (textLower.Contains("shotgun"))
                         _resourceContainer.shotguns.Add(id);
-                    else if (text.ToLower().Contains("grenade"))
+                    else if (textLower.Contains("grenade"))
                         _resourceContainer.grenades.Add(id);
-                    else if (text.ToLower().Contains("huuma"))
+                    else if (textLower.Contains("huuma"))
                         _resourceContainer.huumas.Add(id);
                 }
             }
@@ -1486,50 +1445,6 @@ public class Converter : MonoBehaviour
             text = CommentRemover.Fix(text);
 
             text = LineEndingsRemover.Fix(text);
-
-            // Skip
-            if (text.Contains("    Buy:")
-                || text.Contains("    Sell:")
-                || text.Contains("    Jobs:")
-                || text.Contains("    Classes:")
-                || text.Contains("    AliasName:")
-                || text.Contains("    Flags:")
-                || text.Contains("    BuyingStore:")
-                || text.Contains("    DeadBranch:")
-                || text.Contains("    Container:")
-                || text.Contains("    UniqueId:")
-                || text.Contains("    BindOnEquip:")
-                || text.Contains("    DropAnnounce:")
-                || text.Contains("    NoConsume:")
-                || text.Contains("    DropEffect:")
-                || text.Contains("    Delay:")
-                || text.Contains("    Duration:")
-                || text.Contains("    Status:")
-                || text.Contains("    Stack:")
-                || text.Contains("    Amount:")
-                || text.Contains("    Inventory:")
-                || text.Contains("    Cart:")
-                || text.Contains("    Storage:")
-                || text.Contains("    GuildStorage:")
-                || text.Contains("    NoUse:")
-                || text.Contains("    Override:")
-                || text.Contains("    Sitting:")
-                || text.Contains("    Trade:")
-                || text.Contains("    NoDrop:")
-                || text.Contains("    NoTrade:")
-                || text.Contains("    TradePartner:")
-                || text.Contains("    NoSell:")
-                || text.Contains("    NoCart:")
-                || text.Contains("    NoStorage:")
-                || text.Contains("    NoGuildStorage:")
-                || text.Contains("    NoMail:")
-                || text.Contains("    NoAuction:")
-                || text.Contains("    Script:")
-                || text.Contains("    OnEquip_Script:")
-                || text.Contains("    OnUnequip_Script:")
-                || string.IsNullOrEmpty(text)
-                || string.IsNullOrWhiteSpace(text))
-                text = string.Empty;
 
             // Id
             if (text.Contains("  - Id:"))
@@ -2136,48 +2051,6 @@ public class Converter : MonoBehaviour
 
             text = LineEndingsRemover.Fix(text);
 
-            // Skip
-            if (text.Contains("    Buy:")
-                || text.Contains("    Sell:")
-                || text.Contains("    Jobs:")
-                || text.Contains("    Classes:")
-                || text.Contains("    AliasName:")
-                || text.Contains("    Flags:")
-                || text.Contains("    BuyingStore:")
-                || text.Contains("    DeadBranch:")
-                || text.Contains("    Container:")
-                || text.Contains("    UniqueId:")
-                || text.Contains("    BindOnEquip:")
-                || text.Contains("    DropAnnounce:")
-                || text.Contains("    NoConsume:")
-                || text.Contains("    DropEffect:")
-                || text.Contains("    Delay:")
-                || text.Contains("    Duration:")
-                || text.Contains("    Status:")
-                || text.Contains("    Stack:")
-                || text.Contains("    Amount:")
-                || text.Contains("    Inventory:")
-                || text.Contains("    Cart:")
-                || text.Contains("    Storage:")
-                || text.Contains("    GuildStorage:")
-                || text.Contains("    NoUse:")
-                || text.Contains("    Override:")
-                || text.Contains("    Sitting:")
-                || text.Contains("    Trade:")
-                || text.Contains("    NoDrop:")
-                || text.Contains("    NoTrade:")
-                || text.Contains("    TradePartner:")
-                || text.Contains("    NoSell:")
-                || text.Contains("    NoCart:")
-                || text.Contains("    NoStorage:")
-                || text.Contains("    NoGuildStorage:")
-                || text.Contains("    NoMail:")
-                || text.Contains("    NoAuction:")
-                || text.Contains("    Script:")
-                || text.Contains("    OnEquip_Script:")
-                || text.Contains("    OnUnequip_Script:"))
-                text = string.Empty;
-
             if (text.Contains("  - Id:"))
             {
                 text = SpacingRemover.Remove(text);
@@ -2241,32 +2114,33 @@ public class Converter : MonoBehaviour
 
                 text = SpacingRemover.Remove(text);
 
-                if (text.ToLower().Contains("costume_head_top")
-                    || text.ToLower().Contains("costume_head_mid")
-                    || text.ToLower().Contains("costume_head_low")
-                    || text.ToLower().Contains("costume_garment")
-                    || text.ToLower().Contains("shadow_armor")
-                    || text.ToLower().Contains("shadow_weapon")
-                    || text.ToLower().Contains("shadow_shield")
-                    || text.ToLower().Contains("shadow_shoes")
-                    || text.ToLower().Contains("shadow_right_accessory")
-                    || text.ToLower().Contains("shadow_left_accessory"))
+                var textLower = text.ToLower();
+                if (textLower.Contains("costume_head_top")
+                    || textLower.Contains("costume_head_mid")
+                    || textLower.Contains("costume_head_low")
+                    || textLower.Contains("costume_garment")
+                    || textLower.Contains("shadow_armor")
+                    || textLower.Contains("shadow_weapon")
+                    || textLower.Contains("shadow_shield")
+                    || textLower.Contains("shadow_shoes")
+                    || textLower.Contains("shadow_right_accessory")
+                    || textLower.Contains("shadow_left_accessory"))
                 {
                     _itemListContainer.costumeIds.Add(_id);
 
                     // Always clear isArmor
                     isArmor = false;
                 }
-                else if (text.ToLower().Contains("head_top")
-                    || text.ToLower().Contains("head_mid")
-                    || text.ToLower().Contains("head_low")
-                    || text.ToLower().Contains("armor")
-                    || text.ToLower().Contains("left_hand")
-                    || text.ToLower().Contains("garment")
-                    || text.ToLower().Contains("shoes")
-                    || text.ToLower().Contains("right_accessory")
-                    || text.ToLower().Contains("left_accessory")
-                    || text.ToLower().Contains("both_accessory"))
+                else if (textLower.Contains("head_top")
+                    || textLower.Contains("head_mid")
+                    || textLower.Contains("head_low")
+                    || textLower.Contains("armor")
+                    || textLower.Contains("left_hand")
+                    || textLower.Contains("garment")
+                    || textLower.Contains("shoes")
+                    || textLower.Contains("right_accessory")
+                    || textLower.Contains("left_accessory")
+                    || textLower.Contains("both_accessory"))
                 {
                     _itemListContainer.equipmentIds.Add(_id);
 
@@ -2281,16 +2155,17 @@ public class Converter : MonoBehaviour
 
                 text = SpacingRemover.Remove(text);
 
-                if ((text.ToLower().Contains("costume_head_top")
-                    || text.ToLower().Contains("costume_head_mid")
-                    || text.ToLower().Contains("costume_head_low")
-                    || text.ToLower().Contains("costume_garment")
-                    || text.ToLower().Contains("shadow_armor")
-                    || text.ToLower().Contains("shadow_weapon")
-                    || text.ToLower().Contains("shadow_shield")
-                    || text.ToLower().Contains("shadow_shoes")
-                    || text.ToLower().Contains("shadow_right_accessory")
-                    || text.ToLower().Contains("shadow_left_accessory")))
+                var textLower = text.ToLower();
+                if (textLower.Contains("costume_head_top")
+                    || textLower.Contains("costume_head_mid")
+                    || textLower.Contains("costume_head_low")
+                    || textLower.Contains("costume_garment")
+                    || textLower.Contains("shadow_armor")
+                    || textLower.Contains("shadow_weapon")
+                    || textLower.Contains("shadow_shield")
+                    || textLower.Contains("shadow_shoes")
+                    || textLower.Contains("shadow_right_accessory")
+                    || textLower.Contains("shadow_left_accessory"))
                     _itemListContainer.costumeIds.Add(_id);
             }
         }
@@ -6848,7 +6723,6 @@ public class Converter : MonoBehaviour
         text = SpacingRemover.Remove(text);
 
         var textLower = text.ToLower();
-
         if (_aegisNameDatabases.ContainsKey(textLower))
             return _aegisNameDatabases[textLower];
         else
