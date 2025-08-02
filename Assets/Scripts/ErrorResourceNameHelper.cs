@@ -6,16 +6,6 @@ using System.Collections.Generic;
 
 public class ErrorResourceNameHelper : MonoBehaviour
 {
-    // Constants
-
-    // Local classes / structs
-
-    // Enums
-
-    // Variables
-
-    // Methods
-
     [Button()]
     public void ExportErrorResourceNameFixer()
     {

@@ -28,29 +28,29 @@ public class SpriteRobeFixer : MonoBehaviour
         List<string> maleList = new List<string>();
         List<string> femaleList = new List<string>();
 
-        _status.text = "Fetching directory 'male' job name";
+        _status.text = "Fetching directory <color=yellow>'male'</color> job name";
         DirectoryInfo dir = new DirectoryInfo(JOB_NAME_PATH + MALE_ENCODE_874);
-        _status.text = "Fetching files 'male' job name";
+        _status.text = "Fetching files <color=yellow>'male'</color> job name";
         var files = dir.GetFiles("*");
-        _status.text = "Adding 'male' job name";
+        _status.text = "Adding <color=yellow>'male'</color> job name";
         foreach (var file in files)
         {
             if (!maleList.Contains(file.Name) && !file.Name.Contains(".meta"))
                 maleList.Add(file.Name);
         }
 
-        _status.text = "Fetching directory 'female' job name";
+        _status.text = "Fetching directory <color=yellow>'female'</color> job name";
         dir = new DirectoryInfo(JOB_NAME_PATH + FEMALE_ENCODE_874);
-        _status.text = "Fetching files 'female' job name";
+        _status.text = "Fetching files <color=yellow>'female'</color> job name";
         files = dir.GetFiles("*");
-        _status.text = "Adding 'female' job name";
+        _status.text = "Adding <color=yellow>'female'</color> job name";
         foreach (var file in files)
         {
             if (!femaleList.Contains(file.Name) && !file.Name.Contains(".meta"))
                 femaleList.Add(file.Name);
         }
 
-        _status.text = "Fetching 'to fix' folders";
+        _status.text = "Fetching <color=yellow>'to fix'</color> folders";
         dir = new DirectoryInfo(TO_FIX_PATH);
         var folders = dir.GetDirectories("*");
         foreach (var folder in folders)
@@ -58,15 +58,15 @@ public class SpriteRobeFixer : MonoBehaviour
             string sprToCopy = string.Empty;
             string actToCopy = string.Empty;
             string lastJobFileName = string.Empty;
-            _status.text = "Fetching 'to fix' folders " + folder.Name;
+            _status.text = "Fetching <color=yellow>'to fix'</color> folders " + folder.Name;
             foreach (var jobFileName in maleList)
             {
                 lastJobFileName = jobFileName;
                 var checkPath = TO_FIX_PATH + folder.Name + "/" + MALE_ENCODE_874 + "/" + jobFileName;
-                _status.text = "Fetching 'to fix' folders " + folder.Name + " spr file to copy";
+                _status.text = "Fetching <color=yellow>'to fix'</color> folders " + folder.Name + " spr file to copy";
                 if (File.Exists(checkPath) && checkPath.Contains(".spr"))
                     sprToCopy = checkPath;
-                _status.text = "Fetching 'to fix' folders " + folder.Name + " act file to copy";
+                _status.text = "Fetching <color=yellow>'to fix'</color> folders " + folder.Name + " act file to copy";
                 if (File.Exists(checkPath) && checkPath.Contains(".act"))
                     actToCopy = checkPath;
                 if (!string.IsNullOrEmpty(sprToCopy) && !string.IsNullOrEmpty(actToCopy))
@@ -75,7 +75,7 @@ public class SpriteRobeFixer : MonoBehaviour
 
             if (string.IsNullOrEmpty(sprToCopy) || string.IsNullOrEmpty(actToCopy))
             {
-                _status.text = "Can't fix 'male' folder " + folder.Name + " because not found " + (string.IsNullOrEmpty(sprToCopy) ? "spr" : "act") + " to copy\nPath:" + TO_FIX_PATH + folder.Name + "/" + MALE_ENCODE_874 + "/" + lastJobFileName;
+                _status.text = "Can't fix <color=yellow>'male'</color> folder " + folder.Name + " because not found " + (string.IsNullOrEmpty(sprToCopy) ? "spr" : "act") + " to copy\nPath:" + TO_FIX_PATH + folder.Name + "/" + MALE_ENCODE_874 + "/" + lastJobFileName;
                 return;
             }
             else
@@ -87,14 +87,14 @@ public class SpriteRobeFixer : MonoBehaviour
                     if (!File.Exists(checkPath) && checkPath.Contains(".spr"))
                     {
                         fixCount++;
-                        _status.text = "Fixing spr 'male' folder " + folder.Name + " file name " + jobFileName;
+                        _status.text = "Fixing spr <color=yellow>'male'</color> folder " + folder.Name + " file name " + jobFileName;
                         File.Copy(sprToCopy, TO_FIX_PATH + folder.Name + "/" + MALE_ENCODE_874 + "/" + jobFileName);
                     }
 
                     if (!File.Exists(checkPath) && checkPath.Contains(".act"))
                     {
                         fixCount++;
-                        _status.text = "Fixing act 'male' folder " + folder.Name + " file name " + jobFileName;
+                        _status.text = "Fixing act <color=yellow>'male'</color> folder " + folder.Name + " file name " + jobFileName;
                         File.Copy(actToCopy, TO_FIX_PATH + folder.Name + "/" + MALE_ENCODE_874 + "/" + jobFileName);
                     }
                 }
@@ -103,14 +103,14 @@ public class SpriteRobeFixer : MonoBehaviour
             sprToCopy = string.Empty;
             actToCopy = string.Empty;
 
-            _status.text = "Fetching 'to fix' folders " + folder.Name;
+            _status.text = "Fetching <color=yellow>'to fix'</color> folders " + folder.Name;
             foreach (var jobFileName in femaleList)
             {
                 var checkPath = TO_FIX_PATH + folder.Name + "/" + FEMALE_ENCODE_874 + "/" + jobFileName;
-                _status.text = "Fetching 'to fix' folders " + folder.Name + " spr file to copy";
+                _status.text = "Fetching <color=yellow>'to fix'</color> folders " + folder.Name + " spr file to copy";
                 if (File.Exists(checkPath) && checkPath.Contains(".spr"))
                     sprToCopy = checkPath;
-                _status.text = "Fetching 'to fix' folders " + folder.Name + " act file to copy";
+                _status.text = "Fetching <color=yellow>'to fix'</color> folders " + folder.Name + " act file to copy";
                 if (File.Exists(checkPath) && checkPath.Contains(".act"))
                     actToCopy = checkPath;
                 if (!string.IsNullOrEmpty(sprToCopy) && !string.IsNullOrEmpty(actToCopy))
@@ -119,7 +119,7 @@ public class SpriteRobeFixer : MonoBehaviour
 
             if (string.IsNullOrEmpty(sprToCopy) || string.IsNullOrEmpty(actToCopy))
             {
-                _status.text = "Can't fix 'female' folder " + folder.Name + " because not found " + (string.IsNullOrEmpty(sprToCopy) ? "spr" : "act") + " to copy";
+                _status.text = "Can't fix <color=yellow>'female'</color> folder " + folder.Name + " because not found " + (string.IsNullOrEmpty(sprToCopy) ? "spr" : "act") + " to copy";
                 return;
             }
             else
@@ -131,20 +131,20 @@ public class SpriteRobeFixer : MonoBehaviour
                     if (!File.Exists(checkPath) && checkPath.Contains(".spr"))
                     {
                         fixCount++;
-                        _status.text = "Fixing spr 'female' folder " + folder.Name + " file name " + jobFileName;
+                        _status.text = "Fixing spr <color=yellow>'female'</color> folder " + folder.Name + " file name " + jobFileName;
                         File.Copy(sprToCopy, TO_FIX_PATH + folder.Name + "/" + FEMALE_ENCODE_874 + "/" + jobFileName);
                     }
 
                     if (!File.Exists(checkPath) && checkPath.Contains(".act"))
                     {
                         fixCount++;
-                        _status.text = "Fixing act 'female' folder " + folder.Name + " file name " + jobFileName;
+                        _status.text = "Fixing act <color=yellow>'female'</color> folder " + folder.Name + " file name " + jobFileName;
                         File.Copy(actToCopy, TO_FIX_PATH + folder.Name + "/" + FEMALE_ENCODE_874 + "/" + jobFileName);
                     }
                 }
             }
         }
 
-        _status.text = "Done fix " + fixCount + " sprite robe";
+        _status.text = "Done fixing <color=yellow>" + fixCount + "</color> sprite robe";
     }
 }
