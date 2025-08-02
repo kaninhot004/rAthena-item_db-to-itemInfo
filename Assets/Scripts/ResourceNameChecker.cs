@@ -30,7 +30,7 @@ public class ResourceNameChecker : MonoBehaviour
 
         if (!File.Exists(Application.dataPath + "/Resources/collection/" + Encoding.Default.GetString(Encoding.UTF8.GetBytes(name)) + ".bmp"))
         {
-            _errorText.text = "'Red Potion' not found make sure you had database at (\\Assets\\Resources\\collection)";
+            _errorText.text = "<color=red>'Red Potion'</color> not found make sure you had database at <color=yellow>(\\Assets\\Resources\\collection)</color>";
             return;
         }
 
