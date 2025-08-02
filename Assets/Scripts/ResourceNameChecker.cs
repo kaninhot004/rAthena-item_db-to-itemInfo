@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class ResourceNameChecker : MonoBehaviour
 {
     [SerializeField] Button _checkButton;
+    [SerializeField] Text _errorText;
 
     void Start()
     {
@@ -26,6 +27,12 @@ public class ResourceNameChecker : MonoBehaviour
         var resourceNames = resourceNamesFile.Split('\n');
 
         StringBuilder errorId = new StringBuilder();
+
+        if (!File.Exists(Application.dataPath + "/Resources/collection/" + Encoding.Default.GetString(Encoding.UTF8.GetBytes(name)) + ".bmp"))
+        {
+            _errorText.text = "'Red Potion' not found make sure you had database at (\\Assets\\Resources\\collection)";
+            return;
+        }
 
         for (int i = 0; i < resourceNames.Length; i++)
         {
