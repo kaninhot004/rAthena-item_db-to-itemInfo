@@ -131,10 +131,10 @@ public class ItemPreview : MonoBehaviour
                     continue;
                 }
 
+                bool isEndDescription = line.Contains("\t\t},") || line.Contains("\t\t\t\"\"");
                 if (isFound
                     && isDescriptionLines
-                    && (line != "\t\t},")
-                    && (line != "\t\t\t\"\"")
+                    && !isEndDescription
                     )
                 {
                     var description = line.Replace("\t\t\t\"", string.Empty).Replace("\",", string.Empty).Replace("^000000", "</color>");
@@ -153,8 +153,7 @@ public class ItemPreview : MonoBehaviour
                     }
                 }
 
-                if (isFound
-                    && (line == "\t\t},"))
+                if (isFound && isEndDescription)
                 {
                     isDescriptionLines = false;
 
